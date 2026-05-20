@@ -1,0 +1,9 @@
+{
+  "name": "agentiq",
+  "version": "1.0.0",
+  "description": "AgentIQ - AI Agents Built for Indian Businesses",
+  "private": true,
+  "dependencies": {
+    "@vercel/speed-insights": "^1.0.14"
+  }
+}
