@@ -812,18 +812,205 @@
   <div>© 2025 AgentIQ · agentiq.co.in · Made in India 🇮🇳</div>
 </footer>
 
+<style>
+  /* ── CHATBOT WIDGET ── */
+  #chat-launcher { position: fixed; bottom: 2rem; right: 2rem; z-index: 9999; display: flex; flex-direction: column; align-items: flex-end; gap: 1rem; }
+  .launcher-nudge { background: var(--surface-2); border: 1px solid var(--border-2); color: var(--text); font-size: 0.82rem; padding: 0.65rem 1rem; border-radius: 12px 12px 0 12px; white-space: nowrap; pointer-events: none; position: relative; animation: nudgePop 0.5s 2s both; }
+  .launcher-nudge strong { color: var(--accent); }
+  .launcher-nudge::after { content: ''; position: absolute; bottom: -8px; right: 10px; width: 0; height: 0; border-left: 8px solid transparent; border-top: 8px solid var(--border-2); }
+  @keyframes nudgePop { from { opacity: 0; transform: translateY(12px) scale(0.95); } to { opacity: 1; transform: translateY(0) scale(1); } }
+  .launcher-btn { width: 60px; height: 60px; border-radius: 50%; background: var(--accent); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 0 0 rgba(212,255,61,0.4); animation: chatPulse 2.5s infinite; transition: transform 0.2s, background 0.2s; position: relative; }
+  .launcher-btn:hover { background: #DDFF52; transform: scale(1.08); }
+  .launcher-btn svg { width: 26px; height: 26px; transition: opacity 0.2s, transform 0.2s; }
+  .launcher-btn .icon-chat { color: #0A0A0B; }
+  .launcher-btn .icon-close { position: absolute; opacity: 0; transform: rotate(-90deg) scale(0.5); color: #0A0A0B; }
+  .launcher-btn.open .icon-chat { opacity: 0; transform: rotate(90deg) scale(0.5); }
+  .launcher-btn.open .icon-close { opacity: 1; transform: rotate(0deg) scale(1); }
+  @keyframes chatPulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(212,255,61,0.4); } 50% { box-shadow: 0 0 0 14px rgba(212,255,61,0); } }
+  #chat-window { position: fixed; bottom: 6.5rem; right: 2rem; width: 390px; max-height: 620px; background: var(--surface); border: 1px solid var(--border-2); border-radius: 20px; display: flex; flex-direction: column; overflow: hidden; z-index: 9998; box-shadow: 0 32px 80px rgba(0,0,0,0.7); transform: scale(0.92) translateY(20px); opacity: 0; pointer-events: none; transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.34,1.56,0.64,1); transform-origin: bottom right; }
+  #chat-window.open { opacity: 1; transform: scale(1) translateY(0); pointer-events: all; }
+  .cw-header { padding: 1.1rem 1.2rem; background: var(--surface-2); border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 0.85rem; flex-shrink: 0; }
+  .cw-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; position: relative; }
+  .cw-avatar::after { content: ''; position: absolute; bottom: 1px; right: 1px; width: 10px; height: 10px; background: #22c55e; border-radius: 50%; border: 2px solid var(--surface-2); }
+  .cw-name { font-family: "Instrument Serif", serif; font-style: italic; font-size: 1.05rem; color: var(--text); line-height: 1.2; }
+  .cw-status { font-size: 0.72rem; color: #22c55e; }
+  .cw-badge { background: rgba(212,255,61,0.12); border: 1px solid rgba(212,255,61,0.25); color: var(--accent); font-size: 0.65rem; padding: 0.2rem 0.55rem; border-radius: 100px; font-weight: 500; white-space: nowrap; margin-left: auto; }
+  .cw-messages { flex: 1; overflow-y: auto; padding: 1.2rem; display: flex; flex-direction: column; gap: 0.85rem; scroll-behavior: smooth; }
+  .cw-messages::-webkit-scrollbar { width: 4px; }
+  .cw-messages::-webkit-scrollbar-thumb { background: var(--border-2); border-radius: 2px; }
+  .cw-msg { display: flex; gap: 0.65rem; align-items: flex-end; animation: cwMsgIn 0.3s ease both; }
+  @keyframes cwMsgIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  .cw-msg.user { flex-direction: row-reverse; }
+  .cw-av { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; flex-shrink: 0; }
+  .cw-av.bot { background: var(--accent); color: #0A0A0B; }
+  .cw-av.usr { background: var(--surface-2); border: 1px solid var(--border-2); }
+  .cw-bubble { max-width: 80%; padding: 0.75rem 1rem; border-radius: 14px; font-size: 0.875rem; line-height: 1.6; }
+  .cw-msg.bot .cw-bubble { background: var(--surface-2); border: 1px solid var(--border); border-bottom-left-radius: 4px; color: var(--text); }
+  .cw-msg.user .cw-bubble { background: var(--accent); color: #0A0A0B; border-bottom-right-radius: 4px; font-weight: 500; }
+  .cw-time { font-size: 0.65rem; color: var(--text-3); margin-top: 0.3rem; display: block; }
+  .cw-msg.user .cw-time { text-align: right; }
+  .cw-typing { display: flex; align-items: center; gap: 4px; padding: 0.7rem 0.95rem; background: var(--surface-2); border: 1px solid var(--border); border-radius: 14px; border-bottom-left-radius: 4px; }
+  .cw-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--text-3); animation: cwDot 1.2s infinite ease-in-out; }
+  .cw-dot:nth-child(2) { animation-delay: 0.2s; }
+  .cw-dot:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes cwDot { 0%,60%,100% { transform: translateY(0); background: var(--text-3); } 30% { transform: translateY(-6px); background: var(--accent); } }
+  .cw-qr { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
+  .cw-qr-btn { background: transparent; border: 1px solid var(--border-2); color: var(--text-2); font-size: 0.75rem; padding: 0.4rem 0.75rem; border-radius: 100px; cursor: pointer; font-family: "Geist", sans-serif; transition: border-color 0.15s, color 0.15s, background 0.15s; }
+  .cw-qr-btn:hover { border-color: var(--accent); color: var(--accent); background: rgba(212,255,61,0.06); }
+  .cw-input-area { padding: 0.9rem 1rem; border-top: 1px solid var(--border); background: var(--surface-2); display: flex; align-items: flex-end; gap: 0.6rem; flex-shrink: 0; }
+  .cw-input-wrap { flex: 1; background: var(--surface); border: 1px solid var(--border-2); border-radius: 12px; display: flex; align-items: flex-end; padding: 0.1rem 0.1rem 0.1rem 0.9rem; transition: border-color 0.2s; }
+  .cw-input-wrap:focus-within { border-color: rgba(212,255,61,0.4); }
+  #cw-input { flex: 1; background: transparent; border: none; outline: none; color: var(--text); font-family: "Geist", sans-serif; font-size: 0.875rem; line-height: 1.5; resize: none; max-height: 100px; padding: 0.55rem 0; min-height: 20px; }
+  #cw-input::placeholder { color: var(--text-3); }
+  .cw-send { width: 34px; height: 34px; border-radius: 8px; background: var(--accent); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background 0.15s, transform 0.15s; margin: 2px; }
+  .cw-send:hover { background: #DDFF52; transform: scale(1.05); }
+  .cw-send:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+  .cw-send svg { width: 16px; height: 16px; color: #0A0A0B; }
+  .cw-footer { padding: 0.5rem; text-align: center; font-size: 0.65rem; color: var(--text-3); border-top: 1px solid var(--border); background: var(--surface); }
+  .cw-footer a { color: var(--accent); text-decoration: none; }
+  .cw-bubble.error { background: rgba(255,107,107,0.1); border-color: rgba(255,107,107,0.3); color: #FF6B6B; }
+  @media(max-width:440px) { #chat-window { width: calc(100vw - 2rem); right: 1rem; bottom: 5.5rem; } #chat-launcher { right: 1rem; } }
+</style>
+
+<!-- CHATBOT LAUNCHER -->
+<div id="chat-launcher">
+  <div class="launcher-nudge" id="cw-nudge"><strong>Hey! 👋</strong> Want AI working for your business 24/7?</div>
+  <button class="launcher-btn" id="cw-launch-btn" aria-label="Open chat" onclick="cwToggle()">
+    <svg class="icon-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+</div>
+
+<!-- CHATBOT WINDOW -->
+<div id="chat-window">
+  <div class="cw-header">
+    <div class="cw-avatar">🤖</div>
+    <div>
+      <div class="cw-name">AgentIQ Assistant</div>
+      <div class="cw-status">● online · replies instantly</div>
+    </div>
+    <div class="cw-badge">AI Powered</div>
+  </div>
+  <div class="cw-messages" id="cw-messages"></div>
+  <div class="cw-input-area">
+    <div class="cw-input-wrap">
+      <textarea id="cw-input" placeholder="Ask me anything..." rows="1" onkeydown="cwKey(event)" oninput="cwResize(this)"></textarea>
+      <button class="cw-send" id="cw-send" onclick="cwSend()" aria-label="Send">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="cw-footer">Powered by <a href="https://agentiq.co.in">agentiq.co.in</a> · Built with Claude AI</div>
+</div>
+
 <script>
+// ── CTA ──
 function handleCTA(e) {
   e.preventDefault();
   const btn = e.target.querySelector('button');
   const inp = document.getElementById('ctaInput');
   if (!inp.value.trim()) { inp.style.borderColor = '#FF6B6B'; return; }
-  btn.textContent = 'We\'ll reach out in 24h ✓';
+  btn.textContent = "We\'ll reach out in 1h ✓";
   btn.style.background = '#0A0A0B';
   btn.style.color = 'var(--accent)';
   inp.value = '';
   inp.style.borderColor = 'var(--accent)';
 }
+
+// ── CHATBOT ──
+const CW_API = 'https://agentiq-backend-production-da1a.up.railway.app/api/chat';
+
+const CW_SYSTEM = `You are the AI assistant for AgentIQ — a world-class AI automation agency based in Mumbai, India, led by Shane.
+
+AgentIQ builds: AI Voice Agents (VAPI + ElevenLabs + Claude), AI Chatbots (Botpress + Claude + Make.com), and AI Short-form Video pipelines. India-first: Hindi, Hinglish, English. WhatsApp-native.
+
+CHATBOT PRICING:
+- Starter Bot — Rs 5,085 | LLM integration, conversational journey, FAQs, lead capture | 2-day delivery, 1 revision
+- Business Bot — Rs 12,205 | Starter + appointment scheduling, CRM integration | 4-day delivery, 2 revisions
+- Pro AI Bot — Rs 25,426 | Full build: RAG, multi-platform (web+WhatsApp+Instagram), user auth, multi-language, source code | 6-day delivery, 3 revisions
+
+First AI agent is FREE on a 45-min strategy call. Website: agentiq.co.in. Shane responds to WhatsApp in 1 hour.
+
+Be sharp and direct. Under 130 words. Give real prices when asked. Never mention freelancing platforms. Guide toward booking a call or sharing WhatsApp number.`;
+
+let cwHistory = [], cwTyping = false, cwOpen = false;
+
+window.addEventListener('DOMContentLoaded', () => {
+  cwAddBot(
+    "Hey! 👋 I'm Shane's AI assistant at AgentIQ.\n\nWe build AI voice agents, chatbots, and short-form video for Indian businesses — live in 48 hours.\n\nWhat can I help you with?",
+    ["What do you build?", "Show me pricing", "How does it work?", "I want to get started"]
+  );
+  setTimeout(() => {
+    const n = document.getElementById('cw-nudge');
+    if (n && !cwOpen) { n.style.transition = 'opacity 0.4s'; n.style.opacity = '0'; setTimeout(() => n.style.display = 'none', 400); }
+  }, 6000);
+});
+
+function cwToggle() {
+  cwOpen = !cwOpen;
+  document.getElementById('chat-window').classList.toggle('open', cwOpen);
+  document.getElementById('cw-launch-btn').classList.toggle('open', cwOpen);
+  if (cwOpen) { document.getElementById('cw-nudge').style.display = 'none'; setTimeout(() => document.getElementById('cw-input').focus(), 300); }
+}
+
+function cwTime() { return new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' }); }
+
+function cwAddBot(text, qr = []) {
+  const c = document.getElementById('cw-messages');
+  const m = document.createElement('div'); m.className = 'cw-msg bot';
+  const fmt = text.replace(/\n\n/g, '</p><p style="margin-top:0.5rem">').replace(/\n/g, '<br>');
+  const qrHTML = qr.length ? `<div class="cw-qr">${qr.map(r => `<button class="cw-qr-btn" onclick="cwQuick('${r.replace(/'/g, "\'")}')">${r}</button>`).join('')}</div>` : '';
+  m.innerHTML = `<div class="cw-av bot">✦</div><div><div class="cw-bubble"><p>${fmt}</p>${qrHTML}</div><span class="cw-time">${cwTime()}</span></div>`;
+  c.appendChild(m); cwScroll();
+}
+
+function cwAddUser(text) {
+  const c = document.getElementById('cw-messages');
+  const m = document.createElement('div'); m.className = 'cw-msg user';
+  m.innerHTML = `<div class="cw-av usr">👤</div><div><div class="cw-bubble">${cwEsc(text)}</div><span class="cw-time">${cwTime()}</span></div>`;
+  c.appendChild(m); cwScroll();
+}
+
+function cwShowTyping() {
+  const c = document.getElementById('cw-messages');
+  const t = document.createElement('div'); t.className = 'cw-msg bot'; t.id = 'cw-typing';
+  t.innerHTML = `<div class="cw-av bot">✦</div><div class="cw-typing"><span class="cw-dot"></span><span class="cw-dot"></span><span class="cw-dot"></span></div>`;
+  c.appendChild(t); cwScroll();
+}
+function cwHideTyping() { const t = document.getElementById('cw-typing'); if (t) t.remove(); }
+
+async function cwSend() {
+  const inp = document.getElementById('cw-input');
+  const btn = document.getElementById('cw-send');
+  const text = inp.value.trim();
+  if (!text || cwTyping) return;
+  inp.value = ''; cwResize(inp);
+  cwAddUser(text);
+  cwHistory.push({ role: 'user', content: text });
+  cwTyping = true; btn.disabled = true; cwShowTyping();
+  try {
+    const res = await fetch(CW_API, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messages: cwHistory })
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || 'Error');
+    cwHistory.push({ role: 'assistant', content: data.reply });
+    cwHideTyping(); cwAddBot(data.reply);
+  } catch (err) {
+    cwHideTyping();
+    const c = document.getElementById('cw-messages');
+    const m = document.createElement('div'); m.className = 'cw-msg bot';
+    m.innerHTML = `<div class="cw-av bot">✦</div><div><div class="cw-bubble error">${cwEsc('Something went wrong. Please try again.')}</div></div>`;
+    c.appendChild(m); cwScroll();
+  } finally { cwTyping = false; btn.disabled = false; inp.focus(); }
+}
+
+function cwQuick(t) { document.getElementById('cw-input').value = t; cwSend(); }
+function cwKey(e) { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); cwSend(); } }
+function cwResize(el) { el.style.height = 'auto'; el.style.height = Math.min(el.scrollHeight, 100) + 'px'; }
+function cwScroll() { const c = document.getElementById('cw-messages'); requestAnimationFrame(() => { c.scrollTop = c.scrollHeight; }); }
+function cwEsc(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 </script>
 
 </body>
