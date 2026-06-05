@@ -1,1017 +1,819 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>AgentIQ — AI Agents Built for Indian Businesses | agentiq.co.in</title>
-<meta name="description" content="AgentIQ builds AI voice agents, chatbots, and short-form video for Indian SMBs. Claude + Vapi + ElevenLabs + Botpress. Live in 48 hours."/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
-<style>
-  :root {
-    --bg: #0A0A0B;
-    --bg-2: #111114;
-    --surface: #16161A;
-    --surface-2: #1C1C22;
-    --border: rgba(255,255,255,0.08);
-    --border-2: rgba(255,255,255,0.14);
-    --text: #F5F4F2;
-    --text-2: #A8A6A1;
-    --text-3: #62605C;
-    --accent: #D4FF3D;
-    --accent-dim: #B8E635;
-    --blue: #6FB4FF;
-    --pink: #FF9DDB;
-    --orange: #FF9C5A;
-  }
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body {
-    background: var(--bg); color: var(--text);
-    font-family: 'Geist', sans-serif; font-weight: 400;
-    line-height: 1.5; overflow-x: hidden;
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AgentIQ — AI Chatbots for WhatsApp, Instagram & Website | India</title>
+  <meta name="description" content="AgentIQ builds done-for-you AI chatbots for WhatsApp, Instagram and your website. Restaurants, salons, healthcare & more — capture leads, take bookings and answer instantly, 24/7. Made in India." />
+  <meta name="theme-color" content="#07173a" />
+  <link rel="canonical" href="https://agentiq.co.in/" />
 
-  /* GRAIN OVERLAY */
-  body::before {
-    content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 1;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
-    opacity: 0.04;
-  }
+  <!-- Favicon (inline SVG, no extra request) -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23FFB36B'/%3E%3Cstop offset='1' stop-color='%23FF6B5C'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='24' height='24' rx='6' fill='url(%23g)'/%3E%3Cpath d='M19 14a2 2 0 0 1-2 2H8l-3 3V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z' fill='none' stroke='%23fff' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23FFB36B'/%3E%3Cstop offset='1' stop-color='%23FF6B5C'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='24' height='24' rx='6' fill='url(%23g)'/%3E%3Cpath d='M19 14a2 2 0 0 1-2 2H8l-3 3V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z' fill='none' stroke='%23fff' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
 
-  /* NAV */
-  nav {
-    position: fixed; top: 1.5rem; left: 50%; transform: translateX(-50%);
-    z-index: 100;
-    display: flex; align-items: center; gap: 0.4rem;
-    padding: 0.55rem 0.55rem 0.55rem 1.4rem;
-    background: rgba(22,22,26,0.72);
-    backdrop-filter: blur(20px) saturate(180%);
-    border: 1px solid var(--border);
-    border-radius: 100px;
-  }
-  .nav-logo {
-    font-family: 'Instrument Serif', serif; font-style: italic;
-    font-size: 1.35rem; color: var(--text);
-    margin-right: 1rem; letter-spacing: -0.01em;
-  }
-  .nav-links { display: flex; list-style: none; gap: 0; }
-  .nav-links a {
-    color: var(--text-2); font-size: 0.82rem; text-decoration: none;
-    padding: 0.4rem 0.85rem; border-radius: 100px;
-    transition: color 0.2s, background 0.2s;
-  }
-  .nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.05); }
-  .nav-cta {
-    background: var(--accent); color: #0A0A0B;
-    padding: 0.55rem 1.2rem; border-radius: 100px;
-    font-size: 0.82rem; font-weight: 500;
-    text-decoration: none;
-    transition: transform 0.15s, background 0.2s;
-  }
-  .nav-cta:hover { background: #DDFF52; transform: scale(1.03); }
+  <!-- Open Graph / social preview -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="AgentIQ" />
+  <meta property="og:url" content="https://agentiq.co.in/" />
+  <meta property="og:title" content="AgentIQ — AI Chatbots for WhatsApp, Instagram & Website" />
+  <meta property="og:description" content="Done-for-you AI chatbots for restaurants, salons, healthcare & more. Capture leads, take bookings and reply in seconds — 24/7. Made in India." />
+  <meta property="og:image" content="https://agentiq.co.in/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="AgentIQ — AI chatbots for WhatsApp, Instagram and websites" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="AgentIQ — AI Chatbots for WhatsApp, Instagram & Website" />
+  <meta name="twitter:description" content="Done-for-you AI chatbots for restaurants, salons, healthcare & more. Reply in seconds, 24/7. Made in India." />
+  <meta name="twitter:image" content="https://agentiq.co.in/og-image.png" />
 
-  @media(max-width: 768px) {
-    nav { padding: 0.5rem 0.5rem 0.5rem 1rem; gap: 0.2rem; }
-    .nav-links { display: none; }
-    .nav-logo { font-size: 1.15rem; margin-right: 0.5rem; }
+  <!-- Structured data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "AgentIQ",
+    "description": "AgentIQ builds done-for-you AI chatbots for WhatsApp, Instagram and websites — purpose-built for restaurants, salons, healthcare and more. Capture leads, take bookings and reply in seconds, 24/7.",
+    "url": "https://agentiq.co.in/",
+    "logo": "https://agentiq.co.in/og-image.png",
+    "image": "https://agentiq.co.in/og-image.png",
+    "telephone": "+91-91597-75266",
+    "priceRange": "₹₹",
+    "areaServed": {
+      "@type": "Country",
+      "name": "India"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "IN"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+91-91597-75266",
+      "contactType": "sales",
+      "availableLanguage": ["en", "hi"]
+    },
+    "knowsAbout": ["WhatsApp chatbots", "Instagram automation", "Website chatbots", "AI customer support", "Appointment booking bots"],
+    "makesOffer": [
+      { "@type": "Offer", "name": "Starter", "priceCurrency": "INR", "price": "14999" },
+      { "@type": "Offer", "name": "Growth", "priceCurrency": "INR", "price": "34999" },
+      { "@type": "Offer", "name": "Enterprise", "description": "Custom pricing for high-volume AI assistants" }
+    ]
   }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "How much does it cost and what's included?", "acceptedAnswer": { "@type": "Answer", "text": "Plans start at a one-time setup of ₹14,999 plus ₹4,999/mo (single channel), with the Growth plan at ₹34,999 setup + ₹9,999/mo for all three channels. Every plan includes design, training on your content, launch and ongoing optimisation. GST is extra." } },
+      { "@type": "Question", "name": "How fast can we go live?", "acceptedAnswer": { "@type": "Answer", "text": "Most bots are live within 7 days. After a kickoff call we collect your menu/services, FAQs and policies, build and train the assistant, test it with you, then deploy across your chosen channels. No coding required." } },
+      { "@type": "Question", "name": "Which channels and tools do you integrate with?", "acceptedAnswer": { "@type": "Answer", "text": "WhatsApp (official Business API), Instagram DMs, and a website chat widget — all powered by one assistant. We also connect to CRMs, Google Sheets, payment links (Razorpay/UPI), Shopify and booking calendars." } },
+      { "@type": "Question", "name": "Does it support Hindi and a human takeover?", "acceptedAnswer": { "@type": "Answer", "text": "Yes — your assistant replies in English, Hindi and Hinglish, with regional languages on request. When a customer asks for a person or the query is sensitive, the bot hands off to your team and notifies them instantly." } },
+      { "@type": "Question", "name": "Where is our data stored, and who owns it?", "acceptedAnswer": { "@type": "Answer", "text": "Your data and conversations belong to you. We use encrypted, India-compliant infrastructure, share access only with your authorised team, and never sell or reuse your data. You can export or delete your data at any time." } }
+    ]
+  }
+  </script>
 
-  /* HERO */
-  #hero {
-    min-height: 100vh; padding: 8rem 2rem 4rem;
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    text-align: center; position: relative;
-  }
-  .hero-eyebrow {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    background: rgba(255,255,255,0.05); border: 1px solid var(--border);
-    padding: 0.4rem 0.85rem 0.4rem 0.4rem; border-radius: 100px;
-    font-size: 0.78rem; color: var(--text-2); margin-bottom: 2rem;
-    opacity: 0; animation: fadeUp 0.7s 0.1s forwards;
-  }
-  .eyebrow-pill {
-    background: var(--accent); color: #0A0A0B;
-    padding: 0.15rem 0.6rem; border-radius: 100px;
-    font-size: 0.7rem; font-weight: 500;
-  }
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
 
-  .hero-headline {
-    font-family: 'Instrument Serif', serif;
-    font-size: clamp(2.8rem, 8vw, 6.8rem);
-    font-weight: 400; line-height: 1.02; letter-spacing: -0.02em;
-    max-width: 18ch; color: var(--text);
-    margin-bottom: 1.5rem;
-    opacity: 0; animation: fadeUp 0.8s 0.25s forwards;
-  }
-  .hero-headline em { font-style: italic; color: var(--text-2); }
-  .hero-headline .accent { color: var(--accent); font-style: italic; }
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['DM Sans', 'system-ui', 'sans-serif'],
+            display: ['Space Grotesk', 'DM Sans', 'sans-serif'],
+          },
+          colors: {
+            ink: '#07173a',
+            primary: '#FF6B5C',
+            coral: '#FF6B5C',
+            orange: '#FF9F45',
+            primarySoft: '#FFB36B',
+            cyan: '#22D3EE',
+            blue: '#3B82F6',
+          },
+          keyframes: {
+            float: { '0%,100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-14px)' } },
+            blob: {
+              '0%,100%': { transform: 'translate(0,0) scale(1)' },
+              '33%': { transform: 'translate(30px,-40px) scale(1.1)' },
+              '66%': { transform: 'translate(-25px,25px) scale(0.95)' },
+            },
+            shimmer: { '0%': { backgroundPosition: '-200% 0' }, '100%': { backgroundPosition: '200% 0' } },
+            dot: { '0%,80%,100%': { transform: 'scale(0.6)', opacity: '0.4' }, '40%': { transform: 'scale(1)', opacity: '1' } },
+            marquee: { '0%': { transform: 'translateX(0)' }, '100%': { transform: 'translateX(-50%)' } },
+          },
+          animation: {
+            float: 'float 6s ease-in-out infinite',
+            blob: 'blob 18s ease-in-out infinite',
+            shimmer: 'shimmer 2.5s linear infinite',
+            marquee: 'marquee 28s linear infinite',
+          },
+        },
+      },
+    };
+  </script>
 
-  .hero-sub {
-    font-size: 1.05rem; color: var(--text-2);
-    max-width: 50ch; line-height: 1.6; margin-bottom: 2.5rem;
-    opacity: 0; animation: fadeUp 0.8s 0.4s forwards;
-  }
-  .hero-cta {
-    background: var(--accent); color: #0A0A0B;
-    padding: 0.95rem 1.8rem; border-radius: 100px;
-    font-size: 0.95rem; font-weight: 500; text-decoration: none;
-    display: inline-flex; align-items: center; gap: 0.6rem;
-    transition: background 0.2s, transform 0.15s;
-    opacity: 0; animation: fadeUp 0.8s 0.55s forwards;
-  }
-  .hero-cta:hover { background: #DDFF52; transform: translateY(-2px); }
-  .cta-arrow {
-    width: 22px; height: 22px; background: #0A0A0B;
-    border-radius: 50%; display: flex; align-items: center; justify-content: center;
-    color: var(--accent); font-size: 0.7rem;
-  }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  /* HERO ORBIT GRAPHIC */
-  .hero-bg {
-    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-    width: 1200px; height: 1200px;
-    pointer-events: none; z-index: -1;
-  }
-  .orbit-ring {
-    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-    border: 1px solid var(--border); border-radius: 50%;
-  }
-  .ring-1 { width: 800px; height: 800px; }
-  .ring-2 { width: 1000px; height: 1000px; }
-  .ring-3 { width: 1200px; height: 1200px; }
-  .hero-glow {
-    position: absolute; top: 60%; left: 50%; transform: translate(-50%, -50%);
-    width: 800px; height: 800px;
-    background: radial-gradient(circle, rgba(212,255,61,0.08) 0%, transparent 60%);
-    pointer-events: none; z-index: -1;
-  }
-
-  /* WORDMARK MARQUEE */
-  .wordmark-row {
-    overflow: hidden; padding: 3rem 0;
-    border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
-  }
-  .wordmark-track {
-    display: flex; gap: 4rem;
-    animation: marquee 30s linear infinite;
-    white-space: nowrap;
-  }
-  @keyframes marquee {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-  }
-  .wordmark {
-    font-family: 'Instrument Serif', serif; font-style: italic;
-    font-size: clamp(4rem, 10vw, 8rem); color: var(--text);
-    font-weight: 400; letter-spacing: -0.03em;
-    display: inline-flex; align-items: center; gap: 4rem;
-  }
-  .wordmark::after {
-    content: '✦'; color: var(--accent); font-size: 0.5em;
-    font-style: normal;
-  }
-
-  /* SECTION HEADER */
-  section { position: relative; z-index: 2; }
-  .sec-wrap { padding: 6rem 2rem; max-width: 1280px; margin: 0 auto; }
-  .sec-tag {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    color: var(--text-2); font-size: 0.78rem;
-    margin-bottom: 1rem;
-  }
-  .sec-tag::before {
-    content: ''; width: 8px; height: 8px; border-radius: 50%;
-    background: var(--accent);
-  }
-  .sec-title {
-    font-family: 'Instrument Serif', serif;
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: 400; line-height: 1.05; letter-spacing: -0.02em;
-    max-width: 18ch; margin-bottom: 4rem;
-  }
-  .sec-title em { font-style: italic; color: var(--text-2); }
-
-  /* SERVICE CARDS */
-  .services-stack { display: flex; flex-direction: column; gap: 1rem; }
-  .service-row {
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: 28px; padding: 2.5rem;
-    display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
-    align-items: center; min-height: 420px;
-    transition: border-color 0.3s;
-  }
-  .service-row:hover { border-color: var(--border-2); }
-  .service-row.reverse .service-info { order: 2; }
-  @media(max-width: 900px) {
-    .service-row, .service-row.reverse { grid-template-columns: 1fr; gap: 2rem; }
-    .service-row.reverse .service-info { order: 1; }
-    .service-row { padding: 1.5rem; }
-  }
-
-  .service-info {}
-  .service-num {
-    font-family: 'Instrument Serif', serif; font-style: italic;
-    color: var(--text-3); font-size: 1rem; margin-bottom: 1rem;
-  }
-  .service-title {
-    font-family: 'Instrument Serif', serif;
-    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
-    font-weight: 400; line-height: 1.1; letter-spacing: -0.02em;
-    margin-bottom: 1rem;
-  }
-  .service-desc {
-    font-size: 0.95rem; color: var(--text-2);
-    line-height: 1.7; margin-bottom: 2rem;
-  }
-  .service-bullets { list-style: none; }
-  .service-bullets li {
-    display: flex; align-items: center; gap: 0.7rem;
-    padding: 0.5rem 0; font-size: 0.88rem; color: var(--text);
-    border-top: 1px solid var(--border);
-  }
-  .service-bullets li:last-child { border-bottom: 1px solid var(--border); }
-  .check-icon {
-    width: 18px; height: 18px; background: var(--accent);
-    border-radius: 50%; display: inline-flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-  }
-  .check-icon svg { width: 10px; height: 10px; }
-
-  /* MOCKUPS */
-  .mockup {
-    background: var(--bg-2); border: 1px solid var(--border);
-    border-radius: 20px; padding: 1.25rem;
-    position: relative; overflow: hidden;
-    aspect-ratio: 1.1 / 1;
-  }
-
-  /* Mockup 1 — Voice Call */
-  .mock-call {
-    display: flex; flex-direction: column;
-    background: linear-gradient(180deg, #1A1A20 0%, #131318 100%);
-  }
-  .call-header {
-    display: flex; align-items: center; justify-content: space-between;
-    padding-bottom: 1rem; border-bottom: 1px solid var(--border);
-  }
-  .call-status {
-    display: flex; align-items: center; gap: 0.5rem;
-    font-size: 0.78rem; color: var(--text-2);
-  }
-  .call-dot {
-    width: 8px; height: 8px; background: #FF4444;
-    border-radius: 50%; animation: blink 1.5s infinite;
-  }
-  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
-  .call-duration { font-family: monospace; font-size: 0.78rem; color: var(--text); }
-  .call-body {
-    flex: 1; display: flex; flex-direction: column;
-    align-items: center; justify-content: center; gap: 0.75rem;
-    padding: 1.5rem 0;
-  }
-  .call-avatar {
-    width: 60px; height: 60px; border-radius: 50%;
-    background: linear-gradient(135deg, var(--blue), var(--pink));
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Instrument Serif', serif; font-size: 1.3rem; color: #0A0A0B;
-  }
-  .call-name { font-size: 0.95rem; font-weight: 500; }
-  .call-number { font-size: 0.78rem; color: var(--text-2); font-family: monospace; }
-  .waveform {
-    display: flex; align-items: center; gap: 3px; height: 30px;
-    margin: 0.5rem 0;
-  }
-  .wave-bar {
-    width: 3px; background: var(--accent);
-    border-radius: 100px;
-    animation: wave 1s ease-in-out infinite;
-  }
-  .wave-bar:nth-child(1) { height: 30%; animation-delay: 0s; }
-  .wave-bar:nth-child(2) { height: 60%; animation-delay: 0.1s; }
-  .wave-bar:nth-child(3) { height: 90%; animation-delay: 0.2s; }
-  .wave-bar:nth-child(4) { height: 60%; animation-delay: 0.3s; }
-  .wave-bar:nth-child(5) { height: 40%; animation-delay: 0.4s; }
-  .wave-bar:nth-child(6) { height: 80%; animation-delay: 0.5s; }
-  .wave-bar:nth-child(7) { height: 50%; animation-delay: 0.6s; }
-  .wave-bar:nth-child(8) { height: 70%; animation-delay: 0.7s; }
-  .wave-bar:nth-child(9) { height: 35%; animation-delay: 0.8s; }
-  @keyframes wave {
-    0%, 100% { transform: scaleY(0.5); }
-    50% { transform: scaleY(1.2); }
-  }
-  .call-transcript {
-    background: rgba(255,255,255,0.04); border: 1px solid var(--border);
-    border-radius: 12px; padding: 0.7rem 0.9rem;
-    font-size: 0.78rem; color: var(--text-2);
-    line-height: 1.5; max-width: 80%;
-  }
-  .call-transcript-label {
-    font-size: 0.65rem; color: var(--accent);
-    text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px;
-    font-weight: 500;
-  }
-  .call-actions { display: flex; gap: 0.6rem; justify-content: center; padding-top: 1rem; border-top: 1px solid var(--border); }
-  .call-btn {
-    width: 38px; height: 38px; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 0.8rem;
-  }
-  .btn-mute { background: rgba(255,255,255,0.08); color: var(--text); }
-  .btn-end { background: #FF4444; color: white; }
-
-  /* Mockup 2 — WhatsApp Chat */
-  .mock-chat {
-    background: #0E1418;
-    display: flex; flex-direction: column;
-  }
-  .chat-header {
-    display: flex; align-items: center; gap: 0.7rem;
-    padding-bottom: 0.85rem; border-bottom: 1px solid var(--border);
-  }
-  .chat-avatar {
-    width: 36px; height: 36px; border-radius: 50%;
-    background: #25D366; display: flex; align-items: center; justify-content: center;
-    font-size: 0.95rem;
-  }
-  .chat-name { font-size: 0.88rem; font-weight: 500; }
-  .chat-status { font-size: 0.7rem; color: #25D366; display: flex; align-items: center; gap: 4px; }
-  .chat-status::before {
-    content: ''; width: 6px; height: 6px; background: #25D366;
-    border-radius: 50%; display: inline-block;
-  }
-  .chat-body {
-    flex: 1; display: flex; flex-direction: column; gap: 0.4rem;
-    padding: 1rem 0; overflow: hidden;
-  }
-  .bubble {
-    max-width: 80%; padding: 0.55rem 0.8rem; border-radius: 14px;
-    font-size: 0.8rem; line-height: 1.4;
-  }
-  .b-user {
-    background: #075E54; color: white;
-    align-self: flex-end; border-bottom-right-radius: 4px;
-  }
-  .b-bot {
-    background: rgba(255,255,255,0.06); color: var(--text);
-    align-self: flex-start; border-bottom-left-radius: 4px;
-  }
-  .b-time { font-size: 0.65rem; color: var(--text-3); text-align: right; margin-top: 2px; }
-  .b-typing {
-    background: rgba(255,255,255,0.06); align-self: flex-start;
-    padding: 0.7rem 1rem; border-radius: 14px; border-bottom-left-radius: 4px;
-    display: inline-flex; gap: 3px;
-  }
-  .typing-dot {
-    width: 6px; height: 6px; border-radius: 50%; background: var(--text-2);
-    animation: typing 1.2s infinite;
-  }
-  .typing-dot:nth-child(2) { animation-delay: 0.2s; }
-  .typing-dot:nth-child(3) { animation-delay: 0.4s; }
-  @keyframes typing {
-    0%, 60%, 100% { opacity: 0.3; transform: translateY(0); }
-    30% { opacity: 1; transform: translateY(-3px); }
-  }
-  .chat-input {
-    margin-top: auto; background: rgba(255,255,255,0.06);
-    border-radius: 100px; padding: 0.5rem 0.8rem;
-    font-size: 0.78rem; color: var(--text-3);
-    display: flex; align-items: center; gap: 0.6rem;
-  }
-  .chat-input-send {
-    margin-left: auto; width: 28px; height: 28px;
-    background: #25D366; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center; color: white;
-    font-size: 0.75rem;
-  }
-
-  /* Mockup 3 — Video Editor */
-  .mock-video {
-    background: linear-gradient(180deg, #1A1A20 0%, #131318 100%);
-    display: flex; flex-direction: column; gap: 0.7rem;
-  }
-  .video-frame {
-    flex: 1; background: linear-gradient(135deg, #FF6B6B 0%, #FF9C5A 50%, #D4FF3D 100%);
-    border-radius: 12px; position: relative; overflow: hidden;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .video-frame::before {
-    content: ''; position: absolute; inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
-    opacity: 0.6; mix-blend-mode: overlay;
-  }
-  .video-caption {
-    position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
-    background: rgba(0,0,0,0.7); color: white; padding: 0.35rem 0.85rem;
-    border-radius: 6px; font-size: 0.85rem; font-weight: 600;
-    text-transform: uppercase; letter-spacing: 0.04em;
-    border-bottom: 2px solid var(--accent);
-  }
-  .video-play {
-    width: 50px; height: 50px; background: rgba(0,0,0,0.6);
-    border-radius: 50%; display: flex; align-items: center; justify-content: center;
-    color: white; backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,255,255,0.2);
-  }
-  .video-stats {
-    position: absolute; top: 12px; right: 12px;
-    background: rgba(0,0,0,0.5); padding: 4px 10px; border-radius: 100px;
-    font-size: 0.7rem; color: white; backdrop-filter: blur(10px);
-    display: flex; align-items: center; gap: 4px;
-  }
-  .timeline {
-    background: rgba(255,255,255,0.04); border-radius: 8px;
-    padding: 0.6rem; display: flex; gap: 4px; align-items: center;
-  }
-  .timeline-clip {
-    height: 28px; border-radius: 4px;
-    flex: 1;
-  }
-  .clip-1 { background: var(--blue); flex: 2; }
-  .clip-2 { background: var(--accent); flex: 3; }
-  .clip-3 { background: var(--pink); flex: 1.5; }
-  .clip-4 { background: var(--orange); flex: 2.5; }
-  .timeline-playhead {
-    width: 2px; height: 36px; background: var(--text);
-    border-radius: 100px;
-  }
-  .video-tools {
-    display: flex; gap: 4px;
-  }
-  .video-tool {
-    flex: 1; background: rgba(255,255,255,0.04); border-radius: 6px;
-    padding: 0.45rem; text-align: center;
-    font-size: 0.65rem; color: var(--text-2);
-  }
-  .video-tool.active { background: rgba(212,255,61,0.15); color: var(--accent); }
-
-  /* WHY US */
-  .why-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1rem;
-  }
-  .why-item {
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: 20px; padding: 2rem 1.75rem;
-    transition: border-color 0.2s, background 0.3s;
-  }
-  .why-item:hover { border-color: var(--border-2); background: var(--surface-2); }
-  .why-num {
-    font-family: 'Instrument Serif', serif;
-    font-size: 2.5rem; color: var(--accent); line-height: 1;
-    margin-bottom: 1rem;
-  }
-  .why-h {
-    font-family: 'Instrument Serif', serif; font-size: 1.3rem;
-    font-weight: 400; margin-bottom: 0.6rem; letter-spacing: -0.01em;
-  }
-  .why-d { font-size: 0.88rem; color: var(--text-2); line-height: 1.6; }
-
-  /* PROCESS */
-  .process-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 0;
-    border: 1px solid var(--border); border-radius: 20px;
-    overflow: hidden;
-  }
-  .step {
-    padding: 2rem 1.75rem;
-    border-right: 1px solid var(--border);
-    background: var(--surface);
-    position: relative;
-  }
-  .step:last-child { border-right: none; }
-  @media(max-width: 900px) {
-    .step { border-right: none; border-bottom: 1px solid var(--border); }
-    .step:last-child { border-bottom: none; }
-  }
-  .step-label {
-    font-family: 'Instrument Serif', serif; font-style: italic;
-    color: var(--accent); font-size: 0.95rem; margin-bottom: 1rem;
-  }
-  .step-h { font-family: 'Instrument Serif', serif; font-size: 1.3rem; margin-bottom: 0.5rem; letter-spacing: -0.01em; }
-  .step-d { font-size: 0.85rem; color: var(--text-2); line-height: 1.6; }
-
-  /* CTA */
-  #contact { padding: 8rem 2rem; text-align: center; position: relative; }
-  .cta-glow {
-    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-    width: 700px; height: 700px;
-    background: radial-gradient(circle, rgba(212,255,61,0.07) 0%, transparent 60%);
-    pointer-events: none;
-  }
-  .cta-eyebrow {
-    color: var(--accent); font-size: 0.78rem;
-    text-transform: uppercase; letter-spacing: 0.15em;
-    margin-bottom: 1.5rem;
-  }
-  .cta-headline {
-    font-family: 'Instrument Serif', serif;
-    font-size: clamp(2.5rem, 7vw, 5.5rem);
-    font-weight: 400; line-height: 1.05; letter-spacing: -0.02em;
-    max-width: 14ch; margin: 0 auto 1.5rem;
-  }
-  .cta-headline em { font-style: italic; color: var(--accent); }
-  .cta-sub { font-size: 1rem; color: var(--text-2); max-width: 40ch; margin: 0 auto 2.5rem; }
-  .cta-row { display: flex; gap: 0.5rem; max-width: 460px; margin: 0 auto; }
-  .cta-input {
-    flex: 1; background: var(--surface); border: 1px solid var(--border);
-    color: var(--text); padding: 0.9rem 1.3rem; border-radius: 100px;
-    font-family: 'Geist', sans-serif; font-size: 0.9rem; outline: none;
-    transition: border-color 0.2s;
-  }
-  .cta-input:focus { border-color: var(--accent); }
-  .cta-input::placeholder { color: var(--text-3); }
-  .cta-submit {
-    background: var(--accent); color: #0A0A0B; border: none;
-    padding: 0.9rem 1.6rem; border-radius: 100px;
-    font-size: 0.9rem; font-weight: 500; cursor: pointer;
-    transition: background 0.2s, transform 0.15s;
-  }
-  .cta-submit:hover { background: #DDFF52; transform: translateY(-1px); }
-
-  /* FOOTER */
-  footer {
-    border-top: 1px solid var(--border); padding: 2.5rem 2rem;
-    display: flex; justify-content: space-between; align-items: center;
-    flex-wrap: wrap; gap: 1.5rem;
-    font-size: 0.82rem; color: var(--text-2);
-    position: relative; z-index: 2;
-  }
-  .foot-logo { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 1.3rem; color: var(--text); }
-  .foot-nav { display: flex; gap: 1.5rem; }
-  .foot-nav a { color: var(--text-2); text-decoration: none; transition: color 0.2s; }
-  .foot-nav a:hover { color: var(--text); }
-</style>
+  <style>
+    html { -webkit-font-smoothing: antialiased; }
+    body { background: #07173a; }
+    .glass { background: rgba(255,255,255,0.05); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,0.10); }
+    .glass-strong { background: rgba(255,255,255,0.08); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.14); }
+    .grad-text { background: linear-gradient(100deg,#FFB36B 0%,#FF6B5C 45%,#22D3EE 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .grad-border { position: relative; }
+    .grad-border::before { content:''; position:absolute; inset:0; border-radius:inherit; padding:1px; background: linear-gradient(135deg,rgba(255,159,69,.6),rgba(34,211,232,.5)); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events:none; }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); }
+    .reveal.in { opacity: 1; transform: none; }
+    .dot { width:7px; height:7px; border-radius:9999px; background:#FF9F45; animation: dot 1.3s infinite ease-in-out; }
+    .dot:nth-child(2){ animation-delay:.18s } .dot:nth-child(3){ animation-delay:.36s }
+    .noise { background-image: radial-gradient(rgba(255,255,255,.03) 1px, transparent 1px); background-size: 22px 22px; }
+    ::selection { background: rgba(255,107,92,.45); color:#fff; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .reveal { opacity: 1 !important; transform: none !important; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
 </head>
-<body>
 
-<nav>
-  <a href="#" class="nav-logo">agentiq<span style="color: var(--accent);">.</span></a>
-  <ul class="nav-links">
-    <li><a href="#services">services</a></li>
-    <li><a href="#why">why us</a></li>
-    <li><a href="#process">process</a></li>
-    <li><a href="#contact">contact</a></li>
-  </ul>
-  <a href="#contact" class="nav-cta">Book a call</a>
-</nav>
+<body class="font-sans text-slate-200 antialiased overflow-x-hidden">
 
-<!-- HERO -->
-<section id="hero">
-  <div class="hero-bg">
-    <div class="orbit-ring ring-1"></div>
-    <div class="orbit-ring ring-2"></div>
-    <div class="orbit-ring ring-3"></div>
+  <!-- Ambient background -->
+  <div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+    <div class="absolute inset-0" style="background:linear-gradient(165deg,#0c2a5e 0%,#08183a 45%,#060f28 100%)"></div>
+    <div class="absolute -top-28 -left-20 w-[34rem] h-[34rem] rounded-full bg-coral/40 blur-[110px] animate-blob"></div>
+    <div class="absolute top-1/4 -right-24 w-[32rem] h-[32rem] rounded-full bg-orange/30 blur-[120px] animate-blob" style="animation-delay:-6s"></div>
+    <div class="absolute bottom-0 left-1/3 w-[30rem] h-[30rem] rounded-full bg-red-500/25 blur-[120px] animate-blob" style="animation-delay:-12s"></div>
+    <div class="absolute top-1/2 left-0 w-[26rem] h-[26rem] rounded-full bg-blue/20 blur-[120px] animate-blob" style="animation-delay:-9s"></div>
+    <div class="absolute inset-0 noise"></div>
   </div>
-  <div class="hero-glow"></div>
 
-  <div class="hero-eyebrow">
-    <span class="eyebrow-pill">NEW</span>
-    Built for Indian businesses & SMBs
-  </div>
-  <h1 class="hero-headline">
-    Smarter <em>agents.</em> Higher <span class="accent">IQ.</span> Built for India.
-  </h1>
-  <p class="hero-sub">
-    AgentIQ builds AI voice agents that book your appointments, chatbots that close your leads, and short-form video that grows your reach. All in one agency — engineered for Indian businesses.
-  </p>
-  <a href="#contact" class="hero-cta">
-    Book a free call
-    <span class="cta-arrow">→</span>
-  </a>
-</section>
+  <!-- Skip link -->
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-[60] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-primary focus:text-white">Skip to content</a>
 
-<!-- WORDMARK MARQUEE -->
-<div class="wordmark-row">
-  <div class="wordmark-track">
-    <span class="wordmark">AgentIQ</span>
-    <span class="wordmark">AgentIQ</span>
-    <span class="wordmark">AgentIQ</span>
-    <span class="wordmark">AgentIQ</span>
-    <span class="wordmark">AgentIQ</span>
-    <span class="wordmark">AgentIQ</span>
-    <span class="wordmark">AgentIQ</span>
-    <span class="wordmark">AgentIQ</span>
-  </div>
-</div>
+  <!-- NAVBAR -->
+  <header class="fixed top-3 left-3 right-3 z-50">
+    <nav class="max-w-6xl mx-auto glass rounded-2xl px-4 sm:px-5 py-3 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2.5 group" aria-label="AgentIQ home">
+        <span class="grid place-items-center w-9 h-9 rounded-xl bg-gradient-to-br from-coral to-orange text-white shadow-lg shadow-coral/30">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </span>
+        <span class="font-display font-700 text-lg text-white tracking-tight">Agent<span class="grad-text">IQ</span></span>
+      </a>
+      <div class="hidden md:flex items-center gap-7 text-sm text-slate-300">
+        <a href="#how" class="hover:text-white transition-colors">Products</a>
+        <a href="#demo" class="hover:text-white transition-colors">Live demo</a>
+        <a href="#industries" class="hover:text-white transition-colors">Industries</a>
+        <a href="#pricing" class="hover:text-white transition-colors">Pricing</a>
+        <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
+      </div>
+      <a href="#book" class="cursor-pointer text-sm font-500 px-4 py-2 rounded-xl bg-white text-ink hover:bg-cyan hover:text-white transition-colors duration-200">Book a demo</a>
+    </nav>
+  </header>
 
-<!-- SERVICES -->
-<section id="services">
-  <div class="sec-wrap">
-    <div class="sec-tag">What we do</div>
-    <h2 class="sec-title">Three services. <em>One agency.</em> Built for India.</h2>
+  <main id="main">
 
-    <div class="services-stack">
+    <!-- HERO -->
+    <section class="relative pt-36 sm:pt-44 pb-20 px-5">
+      <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <div class="reveal inline-flex items-center gap-2 glass rounded-full pl-2 pr-3.5 py-1.5 text-xs text-slate-300 mb-6">
+            <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-400/15 text-emerald-300 font-500">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>Live
+            </span>
+            Trusted by growing businesses across India
+          </div>
 
-      <!-- Voice Agents -->
-      <div class="service-row">
-        <div class="service-info">
-          <div class="service-num">01 / Voice</div>
-          <h3 class="service-title">AI Voice Agents & Appointment Setters</h3>
-          <p class="service-desc">Your AI rep answers every call, qualifies every lead, and books appointments — in Hindi, English, or any Indian language. Powered by Claude + Vapi + ElevenLabs.</p>
-          <ul class="service-bullets">
-            <li><span class="check-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="#0A0A0B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>24/7 inbound + outbound calling</li>
-            <li><span class="check-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="#0A0A0B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>20+ Indian languages including Hindi, Tamil, Telugu</li>
-            <li><span class="check-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="#0A0A0B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Auto-routes to humans when needed</li>
-          </ul>
+          <h1 class="reveal font-display font-700 text-white text-4xl sm:text-5xl lg:text-[3.4rem] leading-[1.05] tracking-tight">
+            AI chatbots that <span class="grad-text">reply in seconds</span> and book more sales — 24/7
+          </h1>
+
+          <p class="reveal mt-6 text-lg text-slate-300/90 max-w-xl leading-relaxed">
+            We build done-for-you AI assistants for <span class="text-white font-500">WhatsApp, Instagram and your website</span>. Purpose-built for restaurants, salons and healthcare — take orders, reservations and bookings, answer instantly in English & Hindi, and turn conversations into customers, even while you sleep.
+          </p>
+
+          <div class="reveal mt-8 flex flex-col sm:flex-row gap-3">
+            <a href="#book" class="cursor-pointer group inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-cyan to-blue text-white font-500 shadow-lg shadow-cyan/30 hover:shadow-blue/30 transition-shadow duration-200">
+              Book a free demo
+              <svg class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#demo" class="cursor-pointer inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl glass-strong text-white font-500 hover:bg-white/10 transition-colors duration-200">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+              Try the live demo
+            </a>
+          </div>
+
+          <div class="reveal mt-9 flex flex-wrap items-center gap-x-7 gap-y-3 text-sm text-slate-400">
+            <div class="flex items-center gap-2"><svg class="w-4 h-4 text-cyan" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Live in 7 days</div>
+            <div class="flex items-center gap-2"><svg class="w-4 h-4 text-cyan" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>No code needed</div>
+            <div class="flex items-center gap-2"><svg class="w-4 h-4 text-cyan" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Hindi + English</div>
+          </div>
         </div>
-        <div class="mockup mock-call">
-          <div class="call-header">
-            <div class="call-status">
-              <span class="call-dot"></span>
-              Live call
+
+        <!-- Hero chat mockup -->
+        <div class="reveal relative">
+          <div class="absolute -inset-6 bg-gradient-to-tr from-coral/25 to-cyan/20 blur-2xl rounded-[2rem]"></div>
+          <div class="relative glass-strong rounded-[1.75rem] p-4 sm:p-5 shadow-2xl shadow-black/40 animate-float">
+            <div class="flex items-center gap-3 pb-3.5 border-b border-white/10">
+              <span class="grid place-items-center w-10 h-10 rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 text-white">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
+              </span>
+              <div>
+                <p class="text-white font-500 text-sm leading-tight">AgentIQ Assistant</p>
+                <p class="text-emerald-300 text-xs flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>typically replies instantly</p>
+              </div>
             </div>
-            <div class="call-duration">00:01:24</div>
-          </div>
-          <div class="call-body">
-            <div class="call-avatar">A</div>
-            <div class="call-name">Anjali (AI Agent)</div>
-            <div class="call-number">+91 98765 43210</div>
-            <div class="waveform">
-              <span class="wave-bar"></span><span class="wave-bar"></span><span class="wave-bar"></span><span class="wave-bar"></span><span class="wave-bar"></span><span class="wave-bar"></span><span class="wave-bar"></span><span class="wave-bar"></span><span class="wave-bar"></span>
+            <div class="space-y-3 pt-4 text-sm">
+              <div class="max-w-[80%] bg-white/10 rounded-2xl rounded-tl-md px-3.5 py-2.5 text-slate-100">Hi! Do you deliver to my area? 📍</div>
+              <div class="ml-auto max-w-[82%] bg-gradient-to-br from-cyan to-blue text-white rounded-2xl rounded-tr-md px-3.5 py-2.5">Yes! We deliver across the city in 90 mins. Want me to share today's offers and place your order here?</div>
+              <div class="max-w-[80%] bg-white/10 rounded-2xl rounded-tl-md px-3.5 py-2.5 text-slate-100">Yes please 🙌</div>
+              <div class="ml-auto inline-flex items-center gap-1.5 bg-white/8 rounded-2xl rounded-tr-md px-4 py-3"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
             </div>
-            <div class="call-transcript">
-              <div class="call-transcript-label">Live transcript</div>
-              "Haan ji, main aapka appointment 4 baje book kar deti hoon..."
-            </div>
-          </div>
-          <div class="call-actions">
-            <div class="call-btn btn-mute">🔇</div>
-            <div class="call-btn btn-end">📞</div>
           </div>
         </div>
       </div>
+    </section>
 
-      <!-- Chatbots -->
-      <div class="service-row reverse">
-        <div class="service-info">
-          <div class="service-num">02 / Chat</div>
-          <h3 class="service-title">AI Chatbots that close leads on WhatsApp</h3>
-          <p class="service-desc">Botpress-powered chatbots that handle FAQs, capture leads, and book appointments — directly on the platform your customers already use. No fluff, no hallucinations.</p>
-          <ul class="service-bullets">
-            <li><span class="check-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="#0A0A0B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>WhatsApp, web chat, Instagram DM</li>
-            <li><span class="check-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="#0A0A0B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Syncs with your CRM automatically</li>
-            <li><span class="check-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="#0A0A0B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Knowledge base from your existing docs</li>
+    <!-- LOGO MARQUEE / INTEGRATIONS -->
+    <section class="py-12 px-5">
+      <p class="reveal text-center text-xs uppercase tracking-[0.2em] text-slate-500 mb-7">Connects with the tools you already use</p>
+      <div class="reveal relative max-w-5xl mx-auto overflow-hidden [mask-image:linear-gradient(90deg,transparent,#000_12%,#000_88%,transparent)]">
+        <div class="flex gap-12 w-max animate-marquee text-slate-400">
+          <div class="flex gap-12 items-center shrink-0" id="logoset"></div>
+          <div class="flex gap-12 items-center shrink-0" aria-hidden="true" id="logoset2"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- THREE PRODUCTS -->
+    <section id="how" class="py-20 px-5">
+      <div class="max-w-6xl mx-auto">
+        <div class="reveal text-center max-w-2xl mx-auto mb-14">
+          <p class="text-cyan text-sm font-500 tracking-wide mb-3">THREE PRODUCTS, ONE BRAIN</p>
+          <h2 class="font-display font-700 text-white text-3xl sm:text-4xl tracking-tight">See our bots in action</h2>
+          <p class="mt-4 text-slate-400">A single AI assistant, deployed wherever your customers already are. Here's a real sample of each — trained for your industry.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-5 items-start">
+
+          <!-- WhatsApp · Restaurant -->
+          <article class="reveal grad-border glass rounded-2xl overflow-hidden flex flex-col">
+            <div class="flex items-center gap-3 px-4 py-3.5 border-b border-white/10" style="background:linear-gradient(90deg,rgba(37,211,102,.16),transparent)">
+              <span class="grid place-items-center w-9 h-9 rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 text-white shrink-0">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
+              </span>
+              <div class="min-w-0"><p class="text-white font-500 text-sm leading-tight truncate">Spice Route · WhatsApp</p><p class="text-emerald-300 text-xs">Restaurant ordering</p></div>
+            </div>
+            <div class="px-4 py-4 space-y-2.5 text-[13px] flex-1">
+              <div class="max-w-[85%] bg-white/10 rounded-2xl rounded-tl-md px-3 py-2 text-slate-100">Table for 4 tonight at 8? 🍽️</div>
+              <div class="ml-auto max-w-[88%] bg-gradient-to-br from-emerald-500 to-emerald-600 text-white rounded-2xl rounded-tr-md px-3 py-2">Booked! ✅ Table for 4 at 8:00 PM. Want to pre-order starters so they're ready?</div>
+              <div class="max-w-[85%] bg-white/10 rounded-2xl rounded-tl-md px-3 py-2 text-slate-100">Yes — 2 Paneer Tikka 🍢</div>
+              <div class="ml-auto max-w-[88%] bg-gradient-to-br from-emerald-500 to-emerald-600 text-white rounded-2xl rounded-tr-md px-3 py-2">Added 2× Paneer Tikka (₹520). Pay now via link or at the table?</div>
+            </div>
+            <div class="px-5 pb-5 pt-1"><p class="text-slate-400 text-sm">Food ordering, table reservations &amp; payment links — fully automated on WhatsApp.</p></div>
+          </article>
+
+          <!-- Instagram · Salon -->
+          <article class="reveal grad-border glass rounded-2xl overflow-hidden flex flex-col">
+            <div class="flex items-center gap-3 px-4 py-3.5 border-b border-white/10" style="background:linear-gradient(90deg,rgba(225,48,108,.16),transparent)">
+              <span class="grid place-items-center w-9 h-9 rounded-full text-white shrink-0" style="background:linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7)">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069M12 0C8.741 0 8.332.014 7.052.072 2.695.272.273 2.69.073 7.052.014 8.332 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.69.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0m0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324M12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8m6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881"/></svg>
+              </span>
+              <div class="min-w-0"><p class="text-white font-500 text-sm leading-tight truncate">Luxe Salon · Instagram</p><p class="text-fuchsia-300 text-xs">DM booking</p></div>
+            </div>
+            <div class="px-4 py-4 space-y-2.5 text-[13px] flex-1">
+              <div class="max-w-[85%] bg-white/10 rounded-2xl rounded-tl-md px-3 py-2 text-slate-100">Any slot for hair spa this Saturday? 💆‍♀️</div>
+              <div class="ml-auto max-w-[88%] bg-gradient-to-br from-fuchsia-500 to-pink-500 text-white rounded-2xl rounded-tr-md px-3 py-2">Yes! Sat 11:30 AM or 4:00 PM with our senior stylist. Which works?</div>
+              <div class="max-w-[85%] bg-white/10 rounded-2xl rounded-tl-md px-3 py-2 text-slate-100">11:30 please</div>
+              <div class="ml-auto max-w-[88%] bg-gradient-to-br from-fuchsia-500 to-pink-500 text-white rounded-2xl rounded-tr-md px-3 py-2">Booked for Sat 11:30 AM 🎉 Reminder + location sent. See you soon!</div>
+            </div>
+            <div class="px-5 pb-5 pt-1"><p class="text-slate-400 text-sm">Turn story replies &amp; DMs into confirmed salon and spa appointments in seconds.</p></div>
+          </article>
+
+          <!-- Website · Healthcare -->
+          <article class="reveal grad-border glass rounded-2xl overflow-hidden flex flex-col">
+            <div class="flex items-center gap-3 px-4 py-3.5 border-b border-white/10" style="background:linear-gradient(90deg,rgba(34,211,232,.16),transparent)">
+              <span class="grid place-items-center w-9 h-9 rounded-full bg-gradient-to-br from-cyan to-blue text-white shrink-0">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10"/></svg>
+              </span>
+              <div class="min-w-0"><p class="text-white font-500 text-sm leading-tight truncate">City Care · Website</p><p class="text-cyan text-xs">Appointment widget</p></div>
+            </div>
+            <div class="px-4 py-4 space-y-2.5 text-[13px] flex-1">
+              <div class="max-w-[85%] bg-white/10 rounded-2xl rounded-tl-md px-3 py-2 text-slate-100">I need a dermatologist appointment.</div>
+              <div class="ml-auto max-w-[88%] bg-gradient-to-br from-cyan to-blue text-white rounded-2xl rounded-tr-md px-3 py-2">Sure! Dr. Rao has Mon 10:15 AM &amp; Tue 6:00 PM open. Shall I book one?</div>
+              <div class="max-w-[85%] bg-white/10 rounded-2xl rounded-tl-md px-3 py-2 text-slate-100">Tuesday 6 PM works.</div>
+              <div class="ml-auto max-w-[88%] bg-gradient-to-br from-cyan to-blue text-white rounded-2xl rounded-tr-md px-3 py-2">Confirmed for Tue 6:00 PM with Dr. Rao 📋 Pre-visit form sent on WhatsApp.</div>
+            </div>
+            <div class="px-5 pb-5 pt-1"><p class="text-slate-400 text-sm">Qualify patients, book appointments and share forms — right from your website.</p></div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- LIVE DEMO -->
+    <section id="demo" class="py-20 px-5">
+      <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+        <div class="reveal">
+          <p class="text-cyan text-sm font-500 tracking-wide mb-3">LIVE DEMO</p>
+          <h2 class="font-display font-700 text-white text-3xl sm:text-4xl tracking-tight">See it think. Tap a question.</h2>
+          <p class="mt-4 text-slate-400 max-w-md">This is a real-time preview of how your assistant feels to a customer — typing indicators, instant answers and natural conversation. Pick a prompt to watch it respond.</p>
+          <ul class="mt-7 space-y-3 text-sm text-slate-300">
+            <li class="flex items-center gap-3"><svg class="w-5 h-5 text-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>Trained on your products, prices & policies</li>
+            <li class="flex items-center gap-3"><svg class="w-5 h-5 text-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>Smart hand-off to a human anytime</li>
+            <li class="flex items-center gap-3"><svg class="w-5 h-5 text-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>Captures name & number automatically</li>
           </ul>
         </div>
-        <div class="mockup mock-chat">
-          <div class="chat-header">
-            <div class="chat-avatar">💬</div>
+
+        <!-- Demo widget -->
+        <div class="reveal">
+          <div class="glass-strong rounded-[1.75rem] overflow-hidden shadow-2xl shadow-black/40">
+            <div class="flex items-center gap-3 px-5 py-4 bg-white/5 border-b border-white/10">
+              <span class="grid place-items-center w-9 h-9 rounded-full bg-gradient-to-br from-coral to-orange text-white">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              </span>
+              <div class="flex-1">
+                <p class="text-white font-500 text-sm leading-tight">AgentIQ</p>
+                <p class="text-emerald-300 text-xs flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>online</p>
+              </div>
+            </div>
+            <div id="chatlog" class="px-5 py-5 space-y-3 h-[22rem] overflow-y-auto text-sm" aria-live="polite"></div>
+            <div class="px-4 pb-4 pt-2 border-t border-white/10">
+              <div id="chips" class="flex flex-wrap gap-2"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESULTS / CASE STUDIES -->
+    <section id="results" class="py-20 px-5">
+      <div class="max-w-6xl mx-auto">
+        <div class="reveal text-center max-w-2xl mx-auto mb-12">
+          <p class="text-cyan text-sm font-500 tracking-wide mb-3">RESULTS</p>
+          <h2 class="font-display font-700 text-white text-3xl sm:text-4xl tracking-tight">Numbers our clients actually feel</h2>
+        </div>
+
+        <!-- stat counters -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+          <div class="reveal glass rounded-2xl p-6 text-center">
+            <p class="font-display font-700 text-white text-4xl"><span class="count" data-to="92">0</span>%</p>
+            <p class="text-slate-400 text-sm mt-2">queries auto-resolved</p>
+          </div>
+          <div class="reveal glass rounded-2xl p-6 text-center">
+            <p class="font-display font-700 text-white text-4xl"><span class="count" data-to="3">0</span>×</p>
+            <p class="text-slate-400 text-sm mt-2">more leads captured</p>
+          </div>
+          <div class="reveal glass rounded-2xl p-6 text-center">
+            <p class="font-display font-700 text-white text-4xl">&lt;<span class="count" data-to="5">0</span>s</p>
+            <p class="text-slate-400 text-sm mt-2">average reply time</p>
+          </div>
+          <div class="reveal glass rounded-2xl p-6 text-center">
+            <p class="font-display font-700 text-white text-4xl"><span class="count" data-to="24">0</span>/7</p>
+            <p class="text-slate-400 text-sm mt-2">always responding</p>
+          </div>
+        </div>
+
+        <!-- case studies -->
+        <div class="grid md:grid-cols-3 gap-5">
+          <article class="reveal glass rounded-2xl p-6 flex flex-col hover:bg-white/[0.06] transition-colors duration-200">
+            <span class="text-xs font-500 px-2.5 py-1 rounded-full bg-emerald-400/15 text-emerald-300 w-max mb-4">D2C • Skincare</span>
+            <p class="text-slate-200 leading-relaxed flex-1">"WhatsApp orders went from a trickle to <span class="text-white font-500">40+ a day</span>. The bot handles sizing and shipping so my team only steps in to close."</p>
+            <div class="mt-5 pt-4 border-t border-white/10 flex items-center gap-3">
+              <span class="grid place-items-center w-9 h-9 rounded-full bg-gradient-to-br from-coral to-orange text-white text-sm font-600">A</span>
+              <div><p class="text-white text-sm font-500">Aarohi M.</p><p class="text-slate-500 text-xs">Founder, Glow Co. • Bengaluru</p></div>
+            </div>
+          </article>
+
+          <article class="reveal glass rounded-2xl p-6 flex flex-col hover:bg-white/[0.06] transition-colors duration-200">
+            <span class="text-xs font-500 px-2.5 py-1 rounded-full bg-fuchsia-400/15 text-fuchsia-300 w-max mb-4">Real Estate</span>
+            <p class="text-slate-200 leading-relaxed flex-1">"Instagram DMs used to sit unread for hours. Now every enquiry gets a reply in seconds and books a site visit. <span class="text-white font-500">Conversions doubled.</span>"</p>
+            <div class="mt-5 pt-4 border-t border-white/10 flex items-center gap-3">
+              <span class="grid place-items-center w-9 h-9 rounded-full bg-gradient-to-br from-coral to-orange text-white text-sm font-600">R</span>
+              <div><p class="text-white text-sm font-500">Rohan S.</p><p class="text-slate-500 text-xs">Sales Head, Skyline Realty • Pune</p></div>
+            </div>
+          </article>
+
+          <article class="reveal glass rounded-2xl p-6 flex flex-col hover:bg-white/[0.06] transition-colors duration-200">
+            <span class="text-xs font-500 px-2.5 py-1 rounded-full bg-cyan/15 text-cyan w-max mb-4">Clinic • Healthcare</span>
+            <p class="text-slate-200 leading-relaxed flex-1">"Appointment booking is fully automated on our website now. We saved <span class="text-white font-500">~30 hours a week</span> at the front desk."</p>
+            <div class="mt-5 pt-4 border-t border-white/10 flex items-center gap-3">
+              <span class="grid place-items-center w-9 h-9 rounded-full bg-gradient-to-br from-coral to-orange text-white text-sm font-600">P</span>
+              <div><p class="text-white text-sm font-500">Dr. Priya K.</p><p class="text-slate-500 text-xs">Smile Dental • Hyderabad</p></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- INDUSTRIES -->
+    <section id="industries" class="py-20 px-5">
+      <div class="max-w-6xl mx-auto">
+        <div class="reveal text-center max-w-2xl mx-auto mb-12">
+          <p class="text-cyan text-sm font-500 tracking-wide mb-3">SPECIALISTS, NOT GENERALISTS</p>
+          <h2 class="font-display font-700 text-white text-3xl sm:text-4xl tracking-tight">Built for the businesses India runs on</h2>
+          <p class="mt-4 text-slate-400">We've trained AI assistants for these industries again and again — so your bot launches with proven flows, not guesswork.</p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <!-- Restaurants -->
+          <article class="reveal grad-border glass rounded-2xl p-6 hover:bg-white/[0.06] transition-colors duration-200">
+            <span class="grid place-items-center w-12 h-12 rounded-xl bg-coral/15 text-coral mb-5">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 2v7c0 1.1.9 2 2 2a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-3 4.5c0 2.5 3 2.5 3 4.5v4"/></svg>
+            </span>
+            <h3 class="font-display font-600 text-white text-lg mb-2">Restaurants &amp; Cafés</h3>
+            <p class="text-slate-400 text-sm leading-relaxed mb-4">WhatsApp food ordering, table reservations, menu sharing and payment links — no missed orders at peak hours.</p>
+            <div class="flex flex-wrap gap-2 text-xs">
+              <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300">Food ordering</span>
+              <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300">Reservations</span>
+              <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300">Payments</span>
+            </div>
+          </article>
+
+          <!-- Salons -->
+          <article class="reveal grad-border glass rounded-2xl p-6 hover:bg-white/[0.06] transition-colors duration-200">
+            <span class="grid place-items-center w-12 h-12 rounded-xl bg-orange/15 text-orange mb-5">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
+            </span>
+            <h3 class="font-display font-600 text-white text-lg mb-2">Salons &amp; Spas</h3>
+            <p class="text-slate-400 text-sm leading-relaxed mb-4">Appointment booking from Instagram &amp; WhatsApp, stylist selection, reminders and rebooking nudges that cut no-shows.</p>
+            <div class="flex flex-wrap gap-2 text-xs">
+              <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300">Bookings</span>
+              <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300">Reminders</span>
+              <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300">Rebooking</span>
+            </div>
+          </article>
+
+          <!-- Healthcare -->
+          <article class="reveal grad-border glass rounded-2xl p-6 hover:bg-white/[0.06] transition-colors duration-200">
+            <span class="grid place-items-center w-12 h-12 rounded-xl bg-cyan/15 text-cyan mb-5">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27"/></svg>
+            </span>
+            <h3 class="font-display font-600 text-white text-lg mb-2">Clinics &amp; Hospitals</h3>
+            <p class="text-slate-400 text-sm leading-relaxed mb-4">Appointment scheduling by department, doctor availability, pre-visit forms and report follow-ups — on web &amp; WhatsApp.</p>
+            <div class="flex flex-wrap gap-2 text-xs">
+              <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300">Appointments</span>
+              <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300">Triage</span>
+              <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300">Forms</span>
+            </div>
+          </article>
+
+          <!-- Real estate -->
+          <article class="reveal glass rounded-2xl p-6 hover:bg-white/[0.06] transition-colors duration-200">
+            <span class="grid place-items-center w-11 h-11 rounded-xl bg-white/5 text-slate-200 mb-4">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01M16 6h.01M12 6h.01M12 10h.01M16 10h.01M8 10h.01M12 14h.01M16 14h.01M8 14h.01"/></svg>
+            </span>
+            <h3 class="font-display font-600 text-white text-base mb-1.5">Real Estate</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">Qualify buyers, share listings and book site visits the moment an enquiry lands.</p>
+          </article>
+
+          <!-- Retail / D2C -->
+          <article class="reveal glass rounded-2xl p-6 hover:bg-white/[0.06] transition-colors duration-200">
+            <span class="grid place-items-center w-11 h-11 rounded-xl bg-white/5 text-slate-200 mb-4">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            </span>
+            <h3 class="font-display font-600 text-white text-base mb-1.5">Retail &amp; D2C</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">Product discovery, order tracking and cart recovery across WhatsApp &amp; Instagram.</p>
+          </article>
+
+          <!-- Education -->
+          <article class="reveal glass rounded-2xl p-6 hover:bg-white/[0.06] transition-colors duration-200">
+            <span class="grid place-items-center w-11 h-11 rounded-xl bg-white/5 text-slate-200 mb-4">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1 2 3 6 3s6-2 6-3v-5"/></svg>
+            </span>
+            <h3 class="font-display font-600 text-white text-base mb-1.5">Coaching &amp; Education</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">Answer course queries, capture admission leads and schedule counselling calls.</p>
+          </article>
+        </div>
+
+        <p class="reveal text-center text-slate-400 text-sm mt-9">Don't see your industry? <a href="#book" class="text-cyan hover:text-white transition-colors cursor-pointer font-500">We build custom bots too →</a></p>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="pricing" class="py-20 px-5">
+      <div class="max-w-6xl mx-auto">
+        <div class="reveal text-center max-w-2xl mx-auto mb-12">
+          <p class="text-cyan text-sm font-500 tracking-wide mb-3">PRICING</p>
+          <h2 class="font-display font-700 text-white text-3xl sm:text-4xl tracking-tight">Simple plans. Built to pay for themselves.</h2>
+          <p class="mt-4 text-slate-400">One-time setup + monthly. All plans include design, training and launch. GST extra.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-5 items-stretch">
+          <!-- Starter -->
+          <div class="reveal glass rounded-2xl p-7 flex flex-col">
+            <h3 class="font-display font-600 text-white text-xl">Starter</h3>
+            <p class="text-slate-400 text-sm mt-1">One channel to get going fast.</p>
+            <div class="mt-6 mb-1"><span class="font-display font-700 text-white text-4xl">₹14,999</span></div>
+            <p class="text-slate-500 text-sm">setup • then ₹4,999/mo</p>
+            <ul class="mt-6 space-y-3 text-sm text-slate-300 flex-1">
+              <li class="flex gap-2.5"><svg class="w-5 h-5 text-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>1 channel (WhatsApp / IG / Web)</li>
+              <li class="flex gap-2.5"><svg class="w-5 h-5 text-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Up to 1,000 chats/mo</li>
+              <li class="flex gap-2.5"><svg class="w-5 h-5 text-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Lead capture + email alerts</li>
+              <li class="flex gap-2.5"><svg class="w-5 h-5 text-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Email support</li>
+            </ul>
+            <a href="#book" class="cursor-pointer mt-7 inline-flex justify-center px-5 py-3 rounded-xl glass-strong text-white font-500 hover:bg-white/10 transition-colors duration-200">Book a demo</a>
+          </div>
+
+          <!-- Growth (featured) -->
+          <div class="reveal relative grad-border rounded-2xl p-7 flex flex-col bg-white/[0.06] shadow-2xl shadow-coral/20">
+            <span class="absolute -top-3 left-1/2 -translate-x-1/2 text-xs font-600 px-3 py-1 rounded-full bg-gradient-to-r from-coral to-orange text-white">Most popular</span>
+            <h3 class="font-display font-600 text-white text-xl">Growth</h3>
+            <p class="text-slate-400 text-sm mt-1">Omni-channel for serious growth.</p>
+            <div class="mt-6 mb-1"><span class="font-display font-700 text-white text-4xl">₹34,999</span></div>
+            <p class="text-slate-500 text-sm">setup • then ₹9,999/mo</p>
+            <ul class="mt-6 space-y-3 text-sm text-slate-300 flex-1">
+              <li class="flex gap-2.5"><svg class="w-5 h-5 text-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>All 3 channels connected</li>
+              <li class="flex gap-2.5"><svg class="w-5 h-5 text-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Up to 10,000 chats/mo</li>
+              <li class="flex gap-2.5"><svg class="w-5 h-5 text-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>CRM + payment link integration</li>
+              <li class="flex gap-2.5"><svg class="w-5 h-5 text-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Monthly optimisation + priority support</li>
+            </ul>
+            <a href="#book" class="cursor-pointer mt-7 inline-flex justify-center px-5 py-3 rounded-xl bg-gradient-to-r from-cyan to-blue text-white font-500 shadow-lg shadow-cyan/30 hover:shadow-blue/30 transition-shadow duration-200">Book a demo</a>
+          </div>
+
+          <!-- Enterprise -->
+          <div class="reveal glass rounded-2xl p-7 flex flex-col">
+            <h3 class="font-display font-600 text-white text-xl">Enterprise</h3>
+            <p class="text-slate-400 text-sm mt-1">Custom AI for high volume.</p>
+            <div class="mt-6 mb-1"><span class="font-display font-700 text-white text-4xl">Custom</span></div>
+            <p class="text-slate-500 text-sm">tailored to your stack</p>
+            <ul class="mt-6 space-y-3 text-sm text-slate-300 flex-1">
+              <li class="flex gap-2.5"><svg class="w-5 h-5 text-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Unlimited chats & channels</li>
+              <li class="flex gap-2.5"><svg class="w-5 h-5 text-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Custom workflows & APIs</li>
+              <li class="flex gap-2.5"><svg class="w-5 h-5 text-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Dedicated success manager</li>
+              <li class="flex gap-2.5"><svg class="w-5 h-5 text-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>SLA + onboarding training</li>
+            </ul>
+            <a href="#book" class="cursor-pointer mt-7 inline-flex justify-center px-5 py-3 rounded-xl glass-strong text-white font-500 hover:bg-white/10 transition-colors duration-200">Talk to us</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-20 px-5">
+      <div class="max-w-3xl mx-auto">
+        <div class="reveal text-center mb-12">
+          <p class="text-cyan text-sm font-500 tracking-wide mb-3">FAQ</p>
+          <h2 class="font-display font-700 text-white text-3xl sm:text-4xl tracking-tight">Questions, answered</h2>
+        </div>
+
+        <div class="space-y-3">
+          <details class="reveal group glass rounded-2xl px-5 sm:px-6 [&_summary::-webkit-details-marker]:hidden">
+            <summary class="cursor-pointer list-none flex items-center justify-between gap-4 py-5 text-white font-500">
+              How much does it cost and what's included?
+              <svg class="w-5 h-5 text-cyan shrink-0 transition-transform duration-200 group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <p class="text-slate-400 text-sm leading-relaxed pb-5 -mt-1">Plans start at a one-time setup of ₹14,999 plus ₹4,999/mo (single channel), with our most popular Growth plan at ₹34,999 setup + ₹9,999/mo for all three channels. Every plan includes design, training on your content, launch and ongoing optimisation. GST is extra.</p>
+          </details>
+
+          <details class="reveal group glass rounded-2xl px-5 sm:px-6 [&_summary::-webkit-details-marker]:hidden">
+            <summary class="cursor-pointer list-none flex items-center justify-between gap-4 py-5 text-white font-500">
+              How fast can we go live?
+              <svg class="w-5 h-5 text-cyan shrink-0 transition-transform duration-200 group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <p class="text-slate-400 text-sm leading-relaxed pb-5 -mt-1">Most bots are live within 7 days. After a quick kickoff call we collect your menu/services, FAQs and policies, build and train the assistant, test it with you, then deploy across your chosen channels. No coding required on your end.</p>
+          </details>
+
+          <details class="reveal group glass rounded-2xl px-5 sm:px-6 [&_summary::-webkit-details-marker]:hidden">
+            <summary class="cursor-pointer list-none flex items-center justify-between gap-4 py-5 text-white font-500">
+              Which channels and tools do you integrate with?
+              <svg class="w-5 h-5 text-cyan shrink-0 transition-transform duration-200 group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <p class="text-slate-400 text-sm leading-relaxed pb-5 -mt-1">WhatsApp (official Business API), Instagram DMs, and a website chat widget — all powered by one assistant. We also connect to CRMs, Google Sheets, payment links (Razorpay/UPI), Shopify and booking calendars so leads and orders flow straight into your existing tools.</p>
+          </details>
+
+          <details class="reveal group glass rounded-2xl px-5 sm:px-6 [&_summary::-webkit-details-marker]:hidden">
+            <summary class="cursor-pointer list-none flex items-center justify-between gap-4 py-5 text-white font-500">
+              Does it support Hindi and a human takeover?
+              <svg class="w-5 h-5 text-cyan shrink-0 transition-transform duration-200 group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <p class="text-slate-400 text-sm leading-relaxed pb-5 -mt-1">Yes — your assistant replies fluently in English, Hindi and Hinglish, and we can add regional languages on request. Whenever a customer asks for a person or the query is sensitive, the bot does a smooth handoff to your team and notifies them instantly, so nothing falls through the cracks.</p>
+          </details>
+
+          <details class="reveal group glass rounded-2xl px-5 sm:px-6 [&_summary::-webkit-details-marker]:hidden">
+            <summary class="cursor-pointer list-none flex items-center justify-between gap-4 py-5 text-white font-500">
+              Where is our data stored, and who owns it?
+              <svg class="w-5 h-5 text-cyan shrink-0 transition-transform duration-200 group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <p class="text-slate-400 text-sm leading-relaxed pb-5 -mt-1">Your data and conversations belong to you. We use encrypted, India-compliant infrastructure, share access only with your authorised team, and never sell or reuse your data to train anyone else's bot. You can export your data or request deletion at any time.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- BOOK A DEMO -->
+    <section id="book" class="py-20 px-5">
+      <div class="max-w-5xl mx-auto reveal grad-border glass-strong rounded-[2rem] p-8 sm:p-12 grid lg:grid-cols-2 gap-10 items-center">
+        <div>
+          <h2 class="font-display font-700 text-white text-3xl sm:text-4xl tracking-tight">Book your free demo</h2>
+          <p class="mt-4 text-slate-300 max-w-md">See your own AI assistant in action in a 20-minute call. We'll map your channels, show a live mockup, and give you a launch plan — no obligation.</p>
+          <div class="mt-7 space-y-3 text-sm text-slate-300">
+            <a href="tel:+919159775266" class="flex items-center gap-3 hover:text-white transition-colors cursor-pointer"><svg class="w-5 h-5 text-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>+91 91597 75266</a>
+            <a href="https://wa.me/919159775266?text=Hi%20AgentIQ%2C%20I%27d%20like%20to%20book%20a%20demo" target="_blank" rel="noopener" class="flex items-center gap-3 hover:text-white transition-colors cursor-pointer"><svg class="w-5 h-5 text-emerald-400 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>Chat on WhatsApp · +91 91597 75266</a>
+            <p class="flex items-center gap-3"><svg class="w-5 h-5 text-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Made in India · serving businesses nationwide</p>
+          </div>
+        </div>
+
+        <form id="leadform" class="space-y-4" novalidate>
+          <div>
+            <label for="name" class="block text-sm text-slate-300 mb-1.5">Your name</label>
+            <input id="name" name="name" type="text" required placeholder="Aarohi Mehta" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan focus:border-transparent transition" />
+          </div>
+          <div class="grid sm:grid-cols-2 gap-4">
             <div>
-              <div class="chat-name">AgentIQ Sales Bot</div>
-              <div class="chat-status">online · usually replies instantly</div>
+              <label for="phone" class="block text-sm text-slate-300 mb-1.5">WhatsApp number</label>
+              <input id="phone" name="phone" type="tel" required placeholder="+91 91597 75266" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan focus:border-transparent transition" />
+            </div>
+            <div>
+              <label for="business" class="block text-sm text-slate-300 mb-1.5">Business name</label>
+              <input id="business" name="business" type="text" placeholder="Glow Co." class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan focus:border-transparent transition" />
             </div>
           </div>
-          <div class="chat-body">
-            <div class="bubble b-user">Hi, I'm interested in your services</div>
-            <div class="bubble b-bot">Hello! 👋 I'd love to help. Are you looking for voice agents, chatbots, or AI video?</div>
-            <div class="bubble b-user">Voice agents — for my clinic</div>
-            <div class="bubble b-bot">Got it! How many patient calls do you handle daily?</div>
-            <div class="bubble b-user">Around 50</div>
-            <div class="b-typing">
-              <span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span>
-            </div>
+          <div>
+            <label for="channel" class="block text-sm text-slate-300 mb-1.5">Where do most leads come from?</label>
+            <select id="channel" name="channel" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-cyan focus:border-transparent transition">
+              <option class="bg-ink">WhatsApp</option>
+              <option class="bg-ink">Instagram</option>
+              <option class="bg-ink">Website</option>
+              <option class="bg-ink">All of the above</option>
+            </select>
           </div>
-          <div class="chat-input">
-            <span>Type a message...</span>
-            <div class="chat-input-send">↑</div>
-          </div>
-        </div>
+          <button type="submit" class="cursor-pointer w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-cyan to-blue text-white font-500 shadow-lg shadow-cyan/30 hover:shadow-blue/30 transition-shadow duration-200">
+            Request my demo
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+          <p id="formmsg" class="text-sm text-emerald-300 hidden" role="status">Thanks! We've opened our calendar in a new tab — pick a slot, or we'll WhatsApp you shortly. If the tab didn't open, <a href="https://wa.me/919159775266?text=Hi%20AgentIQ%2C%20I%27d%20like%20to%20book%20a%20demo" target="_blank" rel="noopener" class="underline hover:text-white">message us on WhatsApp</a>.</p>
+        </form>
       </div>
+    </section>
 
-      <!-- Video -->
-      <div class="service-row">
-        <div class="service-info">
-          <div class="service-num">03 / Video</div>
-          <h3 class="service-title">AI-Edited Reels & Short-form content</h3>
-          <p class="service-desc">We turn your long-form content, podcasts, or raw footage into scroll-stopping Reels, Shorts and TikToks — using AI to cut, caption, and remix at scale.</p>
-          <ul class="service-bullets">
-            <li><span class="check-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="#0A0A0B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>30+ Reels/Shorts from one podcast</li>
-            <li><span class="check-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="#0A0A0B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Auto-captions with brand-fit styling</li>
-            <li><span class="check-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="#0A0A0B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Hooks tested for max retention</li>
-          </ul>
-        </div>
-        <div class="mockup mock-video">
-          <div class="video-frame">
-            <div class="video-play">▶</div>
-            <div class="video-stats">
-              <span style="color:var(--accent);">●</span> REC · 0:08
-            </div>
-            <div class="video-caption">SCALE FASTER</div>
-          </div>
-          <div class="timeline">
-            <div class="timeline-clip clip-1"></div>
-            <div class="timeline-clip clip-2"></div>
-            <div class="timeline-playhead"></div>
-            <div class="timeline-clip clip-3"></div>
-            <div class="timeline-clip clip-4"></div>
-          </div>
-          <div class="video-tools">
-            <div class="video-tool">Cut</div>
-            <div class="video-tool active">Caption</div>
-            <div class="video-tool">FX</div>
-            <div class="video-tool">Music</div>
-            <div class="video-tool">Export</div>
-          </div>
-        </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="px-5 pb-10 pt-8 border-t border-white/5">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-500">
+      <div class="flex items-center gap-2.5">
+        <span class="grid place-items-center w-7 h-7 rounded-lg bg-gradient-to-br from-coral to-orange text-white"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+        <span class="text-slate-300 font-500">AgentIQ</span>
+        <span class="hidden sm:inline">· AI chatbots, made in India</span>
       </div>
-
+      <p>© <span id="year"></span> AgentIQ. All rights reserved.</p>
     </div>
-  </div>
-</section>
+  </footer>
 
-<!-- WHY US -->
-<section id="why">
-  <div class="sec-wrap">
-    <div class="sec-tag">Why AgentIQ</div>
-    <h2 class="sec-title">Enterprise AI quality. <em>SMB-friendly pricing.</em></h2>
+  <!-- Floating WhatsApp button -->
+  <a href="https://wa.me/919159775266?text=Hi%20AgentIQ%2C%20I%27d%20like%20to%20book%20a%20demo" target="_blank" rel="noopener" aria-label="Chat with AgentIQ on WhatsApp" class="cursor-pointer fixed bottom-5 right-5 z-50 grid place-items-center w-14 h-14 rounded-full bg-emerald-500 text-white shadow-xl shadow-emerald-500/30 hover:bg-emerald-400 transition-colors duration-200 animate-float">
+    <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
+  </a>
 
-    <div class="why-grid">
-      <div class="why-item">
-        <div class="why-num">01</div>
-        <div class="why-h">India-first by design</div>
-        <div class="why-d">Hindi, Hinglish, regional languages. WhatsApp-native. Built for how Indian businesses actually operate.</div>
-      </div>
-      <div class="why-item">
-        <div class="why-num">02</div>
-        <div class="why-h">Best-in-class stack</div>
-        <div class="why-d">Claude + Vapi + ElevenLabs + Botpress. No proprietary black box — you own everything we build.</div>
-      </div>
-      <div class="why-item">
-        <div class="why-num">03</div>
-        <div class="why-h">3 services, 1 agency</div>
-        <div class="why-d">Voice, chat, and video — all under one roof. No vendor-juggling. No silos. One team, one invoice.</div>
-      </div>
-      <div class="why-item">
-        <div class="why-num">04</div>
-        <div class="why-h">Not enterprise pricing</div>
-        <div class="why-d">Haptik charges crores. We deliver the same-quality stack for clinics, real estate, D2C brands.</div>
-      </div>
-    </div>
-  </div>
-</section>
+  <script>
+    (function () {
+      'use strict';
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      document.getElementById('year').textContent = new Date().getFullYear();
 
-<!-- PROCESS -->
-<section id="process">
-  <div class="sec-wrap">
-    <div class="sec-tag">The process</div>
-    <h2 class="sec-title">Live in 48 hours. <em>No exceptions.</em></h2>
+      // Scroll reveals
+      var revs = document.querySelectorAll('.reveal');
+      if (reduce || !('IntersectionObserver' in window)) {
+        revs.forEach(function (e) { e.classList.add('in'); });
+      } else {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (en) {
+            if (en.isIntersecting) { en.target.style.transitionDelay = (en.target.dataset.delay || 0) + 'ms'; en.target.classList.add('in'); io.unobserve(en.target); }
+          });
+        }, { threshold: 0.12 });
+        // stagger siblings
+        document.querySelectorAll('.grid').forEach(function (grid) {
+          grid.querySelectorAll(':scope > .reveal').forEach(function (el, i) { el.dataset.delay = i * 90; });
+        });
+        revs.forEach(function (e) { io.observe(e); });
+      }
 
-    <div class="process-grid">
-      <div class="step">
-        <div class="step-label">/ day 0</div>
-        <h4 class="step-h">Discovery call</h4>
-        <p class="step-d">A 45-min call to understand your business and identify what to automate first.</p>
-      </div>
-      <div class="step">
-        <div class="step-label">/ day 1</div>
-        <h4 class="step-h">We build</h4>
-        <p class="step-d">Voice agent, chatbot or video pipeline — fully built and tested. You review before go-live.</p>
-      </div>
-      <div class="step">
-        <div class="step-label">/ day 2</div>
-        <h4 class="step-h">Go live</h4>
-        <p class="step-d">Your AI agent or content pipeline goes live. Dashboard access. Real-time monitoring.</p>
-      </div>
-      <div class="step">
-        <div class="step-label">/ ongoing</div>
-        <h4 class="step-h">We scale</h4>
-        <p class="step-d">Tune, optimize, add channels and languages. Your AI stack grows with your business.</p>
-      </div>
-    </div>
-  </div>
-</section>
+      // Count-up
+      var counted = false;
+      function runCount() {
+        if (counted) return; counted = true;
+        document.querySelectorAll('.count').forEach(function (el) {
+          var to = parseInt(el.dataset.to, 10), dur = 1400, t0 = null;
+          if (reduce) { el.textContent = to; return; }
+          function step(ts) {
+            if (!t0) t0 = ts;
+            var p = Math.min((ts - t0) / dur, 1);
+            el.textContent = Math.round((1 - Math.pow(1 - p, 3)) * to);
+            if (p < 1) requestAnimationFrame(step);
+          }
+          requestAnimationFrame(step);
+        });
+      }
+      var res = document.getElementById('results');
+      if (res && 'IntersectionObserver' in window) {
+        new IntersectionObserver(function (e, o) { if (e[0].isIntersecting) { runCount(); o.disconnect(); } }, { threshold: 0.3 }).observe(res);
+      } else { runCount(); }
 
-<!-- CTA -->
-<section id="contact">
-  <div class="cta-glow"></div>
-  <div class="cta-eyebrow">Ready to build?</div>
-  <h2 class="cta-headline">Your first AI agent, <em>free.</em></h2>
-  <p class="cta-sub">Book a free 45-min strategy call. We'll show you exactly what to automate — and build the first agent live, on the call.</p>
-  <form class="cta-row" onsubmit="handleCTA(event)">
-    <input class="cta-input" type="text" placeholder="Your WhatsApp number" id="ctaInput"/>
-    <button class="cta-submit" type="submit">Get started →</button>
-  </form>
-</section>
+      // Integration logos (Simple Icons paths)
+      var logos = [
+        { n: 'WhatsApp', p: 'M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884' },
+        { n: 'Instagram', p: 'M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069M12 0C8.741 0 8.332.014 7.052.072 2.695.272.273 2.69.073 7.052.014 8.332 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.69.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0m0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324M12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8m6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881' },
+        { n: 'Messenger', p: 'M.001 11.639C.001 4.949 5.241 0 12 0s12 4.95 12 11.639c0 6.689-5.24 11.638-12 11.638-1.21 0-2.38-.16-3.47-.46a.96.96 0 0 0-.64.05l-2.39 1.05a.96.96 0 0 1-1.35-.85l-.07-2.14a.97.97 0 0 0-.32-.68A11.39 11.39 0 0 1 .001 11.639m8.32-2.19-3.52 5.6c-.35.53.32 1.139.82.75l3.79-2.87c.26-.2.6-.2.87 0l2.8 2.1c.84.63 2.04.4 2.6-.48l3.52-5.6c.35-.53-.32-1.13-.82-.75l-3.79 2.87c-.25.2-.6.2-.86 0l-2.8-2.1a1.8 1.8 0 0 0-2.61.48' },
+        { n: 'Shopify', p: 'M15.337 2.738c-.05-.038-.137-.038-.187 0-.025 0-.7.137-.95.2-.262.062-.512.137-.787.225-.262-.825-.737-1.575-1.6-1.575h-.075c-.25-.312-.55-.45-.812-.45-2.025.012-2.987 2.525-3.287 3.812-.788.238-1.35.413-1.413.438-.437.137-.45.15-.5.562-.05.3-1.187 9.113-1.187 9.113L13.4 24l5.05-1.087S15.4 2.8 15.337 2.738M12.6 4.063l-1.262.387c0-.087.012-.187.012-.287 0-.787-.112-1.425-.287-1.937.687.087 1.15.875 1.537 1.837m-2.025-1.7c.2.5.325 1.2.325 2.162v.137l-2.625.812c.512-1.95 1.462-2.9 2.3-3.112zm-.812-.762c.15 0 .3.05.437.15-1.112.525-2.3 1.837-2.8 4.462l-2.075.638C5.825 5.262 6.937 1.6 9.762 1.6' },
+        { n: 'Razorpay', p: 'M22.436 0l-11.91 7.773-1.174 4.276 6.625-4.297L11.65 24h4.391l6.395-24zM14.26 10.098L3.389 17.166 1.564 24h9.008l3.688-13.902z' },
+        { n: 'HubSpot', p: 'M18.164 7.93V5.084a2.198 2.198 0 0 0 1.267-1.978v-.067A2.2 2.2 0 0 0 17.238.845h-.067a2.2 2.2 0 0 0-2.193 2.194v.067a2.196 2.196 0 0 0 1.252 1.973l.013.006v2.852a6.22 6.22 0 0 0-2.969 1.31l.012-.01-7.86-6.12a2.43 2.43 0 0 0 .085-.62V2.39A2.475 2.475 0 1 0 2.99 4.866h.04c.428-.002.83-.116 1.178-.314l-.012.006 7.736 6.022a6.247 6.247 0 0 0 .096 7.13l-.014-.02-2.353 2.353a2.028 2.028 0 0 0-.585-.093 2.047 2.047 0 1 0 2.046 2.047c0-.21-.033-.412-.092-.602l.004.013 2.328-2.328a6.26 6.26 0 1 0 4.673-11.157zm-1.022 9.405a3.21 3.21 0 1 1 .002-6.42 3.21 3.21 0 0 1-.002 6.42' },
+        { n: 'Google Sheets', p: 'M11.318 12.545H7.91v-1.909h3.41v1.91zM14.728 0v6h6l-6-6zm1.363 10.636h-3.41v1.91h3.41v-1.91zm0 3.273h-3.41v1.91h3.41v-1.91zM20.727 6.5v15.864c0 .904-.732 1.636-1.636 1.636H4.909a1.636 1.636 0 0 1-1.636-1.636V1.636C3.273.732 4.005 0 4.909 0h9.318v6.5h6.5zM17.455 9.273H6.545v7.909h10.91v-7.91z' },
+        { n: 'Telegram', p: 'M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0m4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z' },
+      ];
+      function svgFor(l) {
+        return '<span class="flex items-center gap-2.5 shrink-0 hover:text-white transition-colors duration-200"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="' + l.p + '"/></svg><span class="text-sm font-500 whitespace-nowrap">' + l.n + '</span></span>';
+      }
+      var html = logos.map(svgFor).join('');
+      var ls1 = document.getElementById('logoset'), ls2 = document.getElementById('logoset2');
+      if (ls1) ls1.innerHTML = html;
+      if (ls2) ls2.innerHTML = html;
 
-<footer>
-  <div class="foot-logo">agentiq<span style="color: var(--accent);">.</span></div>
-  <div class="foot-nav">
-    <a href="#services">Services</a>
-    <a href="#why">Why us</a>
-    <a href="#process">Process</a>
-    <a href="#contact">Contact</a>
-  </div>
-  <div>© 2025 AgentIQ · agentiq.co.in · Made in India 🇮🇳</div>
-</footer>
+      // Interactive demo
+      var convo = {
+        'Book a table for tonight': "Sure! How many guests and what time? I can confirm instantly and even take pre-orders so your food's ready when you arrive. 🍽️",
+        'Schedule a salon visit': "I'd love to! Which service — haircut, hair spa or grooming? I'll show open slots with your favourite stylist and lock it in. 💇",
+        'Book a doctor appointment': "Of course. Tell me the department and I'll show the next available slots, book it, and send your pre-visit form on WhatsApp. 🩺",
+        'Can it talk in Hindi?': "Bilkul! 🙌 Main Hindi aur English dono mein baat kar sakta hoon — aur aap chaaho toh Hinglish mein bhi. Aapki language preference kya hai?",
+        'Book a demo': "Love it! Drop your name and WhatsApp number in the form below and our team will reach out within a few hours to lock a 20-min slot. 📅",
+      };
+      var log = document.getElementById('chatlog'), chips = document.getElementById('chips');
+      function bubble(text, who) {
+        var d = document.createElement('div');
+        d.className = who === 'me'
+          ? 'ml-auto max-w-[82%] bg-gradient-to-br from-cyan to-blue text-white rounded-2xl rounded-tr-md px-3.5 py-2.5'
+          : 'max-w-[82%] bg-white/10 text-slate-100 rounded-2xl rounded-tl-md px-3.5 py-2.5';
+        d.textContent = text;
+        log.appendChild(d); log.scrollTop = log.scrollHeight; return d;
+      }
+      function typing() {
+        var d = document.createElement('div');
+        d.className = 'inline-flex items-center gap-1.5 bg-white/8 rounded-2xl rounded-tl-md px-4 py-3';
+        d.innerHTML = '<span class="dot"></span><span class="dot"></span><span class="dot"></span>';
+        log.appendChild(d); log.scrollTop = log.scrollHeight; return d;
+      }
+      function botReply(text) {
+        var t = typing();
+        var wait = reduce ? 250 : 850;
+        setTimeout(function () {
+          t.remove();
+          if (reduce) { bubble(text, 'bot'); return; }
+          // streaming text
+          var d = bubble('', 'bot'); var i = 0;
+          (function stream() {
+            if (i <= text.length) { d.textContent = text.slice(0, i); log.scrollTop = log.scrollHeight; i += 2; setTimeout(stream, 14); }
+          })();
+        }, wait);
+      }
+      var asked = {};
+      function ask(q) {
+        if (asked[q]) return; asked[q] = true;
+        bubble(q, 'me');
+        botReply(convo[q]);
+      }
+      Object.keys(convo).forEach(function (q) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'cursor-pointer text-sm px-3.5 py-2 rounded-full glass text-slate-200 hover:bg-white/10 hover:text-white transition-colors duration-200';
+        b.textContent = q;
+        b.addEventListener('click', function () { ask(q); });
+        chips.appendChild(b);
+      });
+      // seed greeting
+      bubble("Namaste! 👋 I'm AgentIQ. Pick a prompt below to see how I handle real bookings.", 'bot');
 
-<style>
-  /* ── CHATBOT WIDGET ── */
-  #chat-launcher { position: fixed; bottom: 2rem; right: 2rem; z-index: 9999; display: flex; flex-direction: column; align-items: flex-end; gap: 1rem; }
-  .launcher-nudge { background: var(--surface-2); border: 1px solid var(--border-2); color: var(--text); font-size: 0.82rem; padding: 0.65rem 1rem; border-radius: 12px 12px 0 12px; white-space: nowrap; pointer-events: none; position: relative; animation: nudgePop 0.5s 2s both; }
-  .launcher-nudge strong { color: var(--accent); }
-  .launcher-nudge::after { content: ''; position: absolute; bottom: -8px; right: 10px; width: 0; height: 0; border-left: 8px solid transparent; border-top: 8px solid var(--border-2); }
-  @keyframes nudgePop { from { opacity: 0; transform: translateY(12px) scale(0.95); } to { opacity: 1; transform: translateY(0) scale(1); } }
-  .launcher-btn { width: 60px; height: 60px; border-radius: 50%; background: var(--accent); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 0 0 rgba(212,255,61,0.4); animation: chatPulse 2.5s infinite; transition: transform 0.2s, background 0.2s; position: relative; }
-  .launcher-btn:hover { background: #DDFF52; transform: scale(1.08); }
-  .launcher-btn svg { width: 26px; height: 26px; transition: opacity 0.2s, transform 0.2s; }
-  .launcher-btn .icon-chat { color: #0A0A0B; }
-  .launcher-btn .icon-close { position: absolute; opacity: 0; transform: rotate(-90deg) scale(0.5); color: #0A0A0B; }
-  .launcher-btn.open .icon-chat { opacity: 0; transform: rotate(90deg) scale(0.5); }
-  .launcher-btn.open .icon-close { opacity: 1; transform: rotate(0deg) scale(1); }
-  @keyframes chatPulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(212,255,61,0.4); } 50% { box-shadow: 0 0 0 14px rgba(212,255,61,0); } }
-  #chat-window { position: fixed; bottom: 6.5rem; right: 2rem; width: 390px; max-height: 620px; background: var(--surface); border: 1px solid var(--border-2); border-radius: 20px; display: flex; flex-direction: column; overflow: hidden; z-index: 9998; box-shadow: 0 32px 80px rgba(0,0,0,0.7); transform: scale(0.92) translateY(20px); opacity: 0; pointer-events: none; transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.34,1.56,0.64,1); transform-origin: bottom right; }
-  #chat-window.open { opacity: 1; transform: scale(1) translateY(0); pointer-events: all; }
-  .cw-header { padding: 1.1rem 1.2rem; background: var(--surface-2); border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 0.85rem; flex-shrink: 0; }
-  .cw-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; position: relative; }
-  .cw-avatar::after { content: ''; position: absolute; bottom: 1px; right: 1px; width: 10px; height: 10px; background: #22c55e; border-radius: 50%; border: 2px solid var(--surface-2); }
-  .cw-name { font-family: "Instrument Serif", serif; font-style: italic; font-size: 1.05rem; color: var(--text); line-height: 1.2; }
-  .cw-status { font-size: 0.72rem; color: #22c55e; }
-  .cw-badge { background: rgba(212,255,61,0.12); border: 1px solid rgba(212,255,61,0.25); color: var(--accent); font-size: 0.65rem; padding: 0.2rem 0.55rem; border-radius: 100px; font-weight: 500; white-space: nowrap; margin-left: auto; }
-  .cw-messages { flex: 1; overflow-y: auto; padding: 1.2rem; display: flex; flex-direction: column; gap: 0.85rem; scroll-behavior: smooth; }
-  .cw-messages::-webkit-scrollbar { width: 4px; }
-  .cw-messages::-webkit-scrollbar-thumb { background: var(--border-2); border-radius: 2px; }
-  .cw-msg { display: flex; gap: 0.65rem; align-items: flex-end; animation: cwMsgIn 0.3s ease both; }
-  @keyframes cwMsgIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-  .cw-msg.user { flex-direction: row-reverse; }
-  .cw-av { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; flex-shrink: 0; }
-  .cw-av.bot { background: var(--accent); color: #0A0A0B; }
-  .cw-av.usr { background: var(--surface-2); border: 1px solid var(--border-2); }
-  .cw-bubble { max-width: 80%; padding: 0.75rem 1rem; border-radius: 14px; font-size: 0.875rem; line-height: 1.6; }
-  .cw-msg.bot .cw-bubble { background: var(--surface-2); border: 1px solid var(--border); border-bottom-left-radius: 4px; color: var(--text); }
-  .cw-msg.user .cw-bubble { background: var(--accent); color: #0A0A0B; border-bottom-right-radius: 4px; font-weight: 500; }
-  .cw-time { font-size: 0.65rem; color: var(--text-3); margin-top: 0.3rem; display: block; }
-  .cw-msg.user .cw-time { text-align: right; }
-  .cw-typing { display: flex; align-items: center; gap: 4px; padding: 0.7rem 0.95rem; background: var(--surface-2); border: 1px solid var(--border); border-radius: 14px; border-bottom-left-radius: 4px; }
-  .cw-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--text-3); animation: cwDot 1.2s infinite ease-in-out; }
-  .cw-dot:nth-child(2) { animation-delay: 0.2s; }
-  .cw-dot:nth-child(3) { animation-delay: 0.4s; }
-  @keyframes cwDot { 0%,60%,100% { transform: translateY(0); background: var(--text-3); } 30% { transform: translateY(-6px); background: var(--accent); } }
-  .cw-qr { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
-  .cw-qr-btn { background: transparent; border: 1px solid var(--border-2); color: var(--text-2); font-size: 0.75rem; padding: 0.4rem 0.75rem; border-radius: 100px; cursor: pointer; font-family: "Geist", sans-serif; transition: border-color 0.15s, color 0.15s, background 0.15s; }
-  .cw-qr-btn:hover { border-color: var(--accent); color: var(--accent); background: rgba(212,255,61,0.06); }
-  .cw-input-area { padding: 0.9rem 1rem; border-top: 1px solid var(--border); background: var(--surface-2); display: flex; align-items: flex-end; gap: 0.6rem; flex-shrink: 0; }
-  .cw-input-wrap { flex: 1; background: var(--surface); border: 1px solid var(--border-2); border-radius: 12px; display: flex; align-items: flex-end; padding: 0.1rem 0.1rem 0.1rem 0.9rem; transition: border-color 0.2s; }
-  .cw-input-wrap:focus-within { border-color: rgba(212,255,61,0.4); }
-  #cw-input { flex: 1; background: transparent; border: none; outline: none; color: var(--text); font-family: "Geist", sans-serif; font-size: 0.875rem; line-height: 1.5; resize: none; max-height: 100px; padding: 0.55rem 0; min-height: 20px; }
-  #cw-input::placeholder { color: var(--text-3); }
-  .cw-send { width: 34px; height: 34px; border-radius: 8px; background: var(--accent); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background 0.15s, transform 0.15s; margin: 2px; }
-  .cw-send:hover { background: #DDFF52; transform: scale(1.05); }
-  .cw-send:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
-  .cw-send svg { width: 16px; height: 16px; color: #0A0A0B; }
-  .cw-footer { padding: 0.5rem; text-align: center; font-size: 0.65rem; color: var(--text-3); border-top: 1px solid var(--border); background: var(--surface); }
-  .cw-footer a { color: var(--accent); text-decoration: none; }
-  .cw-bubble.error { background: rgba(255,107,107,0.1); border-color: rgba(255,107,107,0.3); color: #FF6B6B; }
-  @media(max-width:440px) { #chat-window { width: calc(100vw - 2rem); right: 1rem; bottom: 5.5rem; } #chat-launcher { right: 1rem; } }
-</style>
+      // ==== BOOKING CALENDAR ====
+      var BOOKING_URL = 'https://calendar.google.com/calendar/u/0?cid=c29ydGVkc3BlY2llc0BnbWFpbC5jb20';
 
-<!-- CHATBOT LAUNCHER -->
-<div id="chat-launcher">
-  <div class="launcher-nudge" id="cw-nudge"><strong>Hey! 👋</strong> Want AI working for your business 24/7?</div>
-  <button class="launcher-btn" id="cw-launch-btn" aria-label="Open chat" onclick="cwToggle()">
-    <svg class="icon-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-    <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-  </button>
-</div>
-
-<!-- CHATBOT WINDOW -->
-<div id="chat-window">
-  <div class="cw-header">
-    <div class="cw-avatar">🤖</div>
-    <div>
-      <div class="cw-name">AgentIQ Assistant</div>
-      <div class="cw-status">● online · replies instantly</div>
-    </div>
-    <div class="cw-badge">AI Powered</div>
-  </div>
-  <div class="cw-messages" id="cw-messages"></div>
-  <div class="cw-input-area">
-    <div class="cw-input-wrap">
-      <textarea id="cw-input" placeholder="Ask me anything..." rows="1" onkeydown="cwKey(event)" oninput="cwResize(this)"></textarea>
-      <button class="cw-send" id="cw-send" onclick="cwSend()" aria-label="Send">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
-      </button>
-    </div>
-  </div>
-  <div class="cw-footer">Powered by <a href="https://agentiq.co.in">agentiq.co.in</a> · Built with Claude AI</div>
-</div>
-
-<script>
-// ── CTA ──
-function handleCTA(e) {
-  e.preventDefault();
-  const btn = e.target.querySelector('button');
-  const inp = document.getElementById('ctaInput');
-  if (!inp.value.trim()) { inp.style.borderColor = '#FF6B6B'; return; }
-  btn.textContent = "We\'ll reach out in 1h ✓";
-  btn.style.background = '#0A0A0B';
-  btn.style.color = 'var(--accent)';
-  inp.value = '';
-  inp.style.borderColor = 'var(--accent)';
-}
-
-// ── CHATBOT ──
-const CW_API = 'https://agentiq-backend-production-da1a.up.railway.app/api/chat';
-
-const CW_SYSTEM = `You are the AI assistant for AgentIQ — a world-class AI automation agency based in Mumbai, India, led by Shane.
-
-AgentIQ builds: AI Voice Agents (VAPI + ElevenLabs + Claude), AI Chatbots (Botpress + Claude + Make.com), and AI Short-form Video pipelines. India-first: Hindi, Hinglish, English. WhatsApp-native.
-
-CHATBOT PRICING:
-- Starter Bot — Rs 5,085 | LLM integration, conversational journey, FAQs, lead capture | 2-day delivery, 1 revision
-- Business Bot — Rs 12,205 | Starter + appointment scheduling, CRM integration | 4-day delivery, 2 revisions
-- Pro AI Bot — Rs 25,426 | Full build: RAG, multi-platform (web+WhatsApp+Instagram), user auth, multi-language, source code | 6-day delivery, 3 revisions
-
-First AI agent is FREE on a 45-min strategy call. Website: agentiq.co.in. Shane responds to WhatsApp in 1 hour.
-
-Be sharp and direct. Under 130 words. Give real prices when asked. Never mention freelancing platforms. Guide toward booking a call or sharing WhatsApp number.`;
-
-let cwHistory = [], cwTyping = false, cwOpen = false;
-
-window.addEventListener('DOMContentLoaded', () => {
-  cwAddBot(
-    "Hey! 👋 I'm Shane's AI assistant at AgentIQ.\n\nWe build AI voice agents, chatbots, and short-form video for Indian businesses — live in 48 hours.\n\nWhat can I help you with?",
-    ["What do you build?", "Show me pricing", "How does it work?", "I want to get started"]
-  );
-  setTimeout(() => {
-    const n = document.getElementById('cw-nudge');
-    if (n && !cwOpen) { n.style.transition = 'opacity 0.4s'; n.style.opacity = '0'; setTimeout(() => n.style.display = 'none', 400); }
-  }, 6000);
-});
-
-function cwToggle() {
-  cwOpen = !cwOpen;
-  document.getElementById('chat-window').classList.toggle('open', cwOpen);
-  document.getElementById('cw-launch-btn').classList.toggle('open', cwOpen);
-  if (cwOpen) { document.getElementById('cw-nudge').style.display = 'none'; setTimeout(() => document.getElementById('cw-input').focus(), 300); }
-}
-
-function cwTime() { return new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' }); }
-
-function cwAddBot(text, qr = []) {
-  const c = document.getElementById('cw-messages');
-  const m = document.createElement('div'); m.className = 'cw-msg bot';
-  const fmt = text.replace(/\n\n/g, '</p><p style="margin-top:0.5rem">').replace(/\n/g, '<br>');
-  const qrHTML = qr.length ? `<div class="cw-qr">${qr.map(r => `<button class="cw-qr-btn" onclick="cwQuick('${r.replace(/'/g, "\'")}')">${r}</button>`).join('')}</div>` : '';
-  m.innerHTML = `<div class="cw-av bot">✦</div><div><div class="cw-bubble"><p>${fmt}</p>${qrHTML}</div><span class="cw-time">${cwTime()}</span></div>`;
-  c.appendChild(m); cwScroll();
-}
-
-function cwAddUser(text) {
-  const c = document.getElementById('cw-messages');
-  const m = document.createElement('div'); m.className = 'cw-msg user';
-  m.innerHTML = `<div class="cw-av usr">👤</div><div><div class="cw-bubble">${cwEsc(text)}</div><span class="cw-time">${cwTime()}</span></div>`;
-  c.appendChild(m); cwScroll();
-}
-
-function cwShowTyping() {
-  const c = document.getElementById('cw-messages');
-  const t = document.createElement('div'); t.className = 'cw-msg bot'; t.id = 'cw-typing';
-  t.innerHTML = `<div class="cw-av bot">✦</div><div class="cw-typing"><span class="cw-dot"></span><span class="cw-dot"></span><span class="cw-dot"></span></div>`;
-  c.appendChild(t); cwScroll();
-}
-function cwHideTyping() { const t = document.getElementById('cw-typing'); if (t) t.remove(); }
-
-async function cwSend() {
-  const inp = document.getElementById('cw-input');
-  const btn = document.getElementById('cw-send');
-  const text = inp.value.trim();
-  if (!text || cwTyping) return;
-  inp.value = ''; cwResize(inp);
-  cwAddUser(text);
-  cwHistory.push({ role: 'user', content: text });
-  cwTyping = true; btn.disabled = true; cwShowTyping();
-  try {
-    const res = await fetch(CW_API, {
-      method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ messages: cwHistory })
-    });
-    const data = await res.json();
-    if (!res.ok) throw new Error(data.error || 'Error');
-    cwHistory.push({ role: 'assistant', content: data.reply });
-    cwHideTyping(); cwAddBot(data.reply);
-  } catch (err) {
-    cwHideTyping();
-    const c = document.getElementById('cw-messages');
-    const m = document.createElement('div'); m.className = 'cw-msg bot';
-    m.innerHTML = `<div class="cw-av bot">✦</div><div><div class="cw-bubble error">${cwEsc('Something went wrong. Please try again.')}</div></div>`;
-    c.appendChild(m); cwScroll();
-  } finally { cwTyping = false; btn.disabled = false; inp.focus(); }
-}
-
-function cwQuick(t) { document.getElementById('cw-input').value = t; cwSend(); }
-function cwKey(e) { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); cwSend(); } }
-function cwResize(el) { el.style.height = 'auto'; el.style.height = Math.min(el.scrollHeight, 100) + 'px'; }
-function cwScroll() { const c = document.getElementById('cw-messages'); requestAnimationFrame(() => { c.scrollTop = c.scrollHeight; }); }
-function cwEsc(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
-</script>
-
+      // Lead form
+      var form = document.getElementById('leadform');
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var name = document.getElementById('name'), phone = document.getElementById('phone');
+        var ok = true;
+        [name, phone].forEach(function (f) {
+          if (!f.value.trim()) { f.classList.add('ring-2', 'ring-red-400'); ok = false; }
+          else { f.classList.remove('ring-2', 'ring-red-400'); }
+        });
+        if (!ok) return;
+        document.getElementById('formmsg').classList.remove('hidden');
+        form.querySelector('button[type=submit]').textContent = 'Opening calendar… ✓';
+        // Pre-fill name only on schedulers that support it (Calendly / Cal.com)
+        var url = BOOKING_URL;
+        if (/calendly\.com|cal\.com/.test(BOOKING_URL)) {
+          try {
+            url += (BOOKING_URL.indexOf('?') === -1 ? '?' : '&') + 'name=' + encodeURIComponent(name.value.trim());
+          } catch (err) {}
+        }
+        window.open(url, '_blank', 'noopener');
+      });
+    })();
+  </script>
 </body>
 </html>
