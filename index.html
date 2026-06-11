@@ -134,6 +134,11 @@
     .dot:nth-child(2){ animation-delay:.18s } .dot:nth-child(3){ animation-delay:.36s }
     .noise { background-image: radial-gradient(rgba(255,255,255,.03) 1px, transparent 1px); background-size: 22px 22px; }
     ::selection { background: rgba(255,107,92,.45); color:#fff; }
+    .card-lift { transition: transform .25s cubic-bezier(.16,1,.3,1), box-shadow .25s ease; }
+    .card-lift:hover { transform: translateY(-4px); box-shadow: 0 20px 50px rgba(0,0,0,.35); }
+    .glow-card { box-shadow: 0 0 0 1px rgba(34,211,238,.25), 0 0 60px rgba(34,211,238,.12), 0 0 30px rgba(255,107,92,.1); }
+    .stat-num { background: linear-gradient(135deg,#fff 0%,rgba(255,255,255,.7) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .section-label { font-size: .7rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: #22D3EE; }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation: none !important; transition: none !important; }
       .reveal { opacity: 1 !important; transform: none !important; }
@@ -308,36 +313,36 @@
   <main id="main">
 
     <!-- HERO -->
-    <section class="relative pt-36 sm:pt-44 pb-20 px-5">
-      <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+    <section class="relative pt-36 sm:pt-48 pb-24 px-5">
+      <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
         <div>
-          <div class="reveal inline-flex items-center gap-2 glass rounded-full pl-2 pr-3.5 py-1.5 text-xs text-slate-300 mb-6">
-            <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-400/15 text-emerald-300 font-500">
+          <div class="reveal inline-flex items-center gap-2 glass rounded-full pl-2 pr-4 py-1.5 text-xs text-slate-300 mb-8">
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-400/15 text-emerald-300 font-600">
               <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>Live
             </span>
-            Trusted by growing businesses across India
+            Trusted by 50+ businesses across India
           </div>
 
-          <h1 class="reveal font-display font-700 text-white text-4xl sm:text-5xl lg:text-[3.4rem] leading-[1.05] tracking-tight">
-            AI chatbots that <span class="grad-text">reply in seconds</span> and book more sales — 24/7
+          <h1 class="reveal font-display font-700 text-white text-5xl sm:text-6xl lg:text-[4.2rem] leading-[1.02] tracking-tight">
+            AI chatbots that<br><span class="grad-text">reply in seconds</span><br>and close more sales
           </h1>
 
-          <p class="reveal mt-6 text-lg text-slate-300/90 max-w-xl leading-relaxed">
-            We build done-for-you AI assistants for <span class="text-white font-500">WhatsApp, Instagram and your website</span>. Purpose-built for restaurants, salons and healthcare — take orders, reservations and bookings, answer instantly in English & Hindi, and turn conversations into customers, even while you sleep.
+          <p class="reveal mt-7 text-xl text-slate-400 max-w-lg leading-relaxed">
+            Done-for-you AI assistants for <span class="text-white font-500">WhatsApp, Instagram and your website</span> — live in 7 days, no code needed.
           </p>
 
-          <div class="reveal mt-8 flex flex-col sm:flex-row gap-3">
-            <a href="#book" class="cursor-pointer group inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-cyan to-blue text-white font-500 shadow-lg shadow-cyan/30 hover:shadow-blue/30 transition-shadow duration-200">
+          <div class="reveal mt-9 flex flex-col sm:flex-row gap-3">
+            <a href="#book" class="cursor-pointer group inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl bg-gradient-to-r from-coral to-orange text-white font-600 shadow-lg shadow-coral/30 hover:shadow-coral/50 transition-shadow duration-200 text-[15px]">
               Book a free demo
               <svg class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
-            <a href="#demo" class="cursor-pointer inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl glass-strong text-white font-500 hover:bg-white/10 transition-colors duration-200">
-              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-              Try the live demo
+            <a href="#demo" class="cursor-pointer inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl glass-strong text-white font-500 hover:bg-white/10 transition-colors duration-200 text-[15px]">
+              <svg class="w-4 h-4 text-cyan" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+              Try live demo
             </a>
           </div>
 
-          <div class="reveal mt-9 flex flex-wrap items-center gap-x-7 gap-y-3 text-sm text-slate-400">
+          <div class="reveal mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 text-sm text-slate-500">
             <div class="flex items-center gap-2"><svg class="w-4 h-4 text-cyan" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Live in 7 days</div>
             <div class="flex items-center gap-2"><svg class="w-4 h-4 text-cyan" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>No code needed</div>
             <div class="flex items-center gap-2"><svg class="w-4 h-4 text-cyan" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Hindi + English</div>
@@ -346,22 +351,32 @@
 
         <!-- Hero chat mockup -->
         <div class="reveal relative">
-          <div class="absolute -inset-6 bg-gradient-to-tr from-coral/25 to-cyan/20 blur-2xl rounded-[2rem]"></div>
-          <div class="relative glass-strong rounded-[1.75rem] p-4 sm:p-5 shadow-2xl shadow-black/40 animate-float">
-            <div class="flex items-center gap-3 pb-3.5 border-b border-white/10">
-              <span class="grid place-items-center w-10 h-10 rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 text-white">
+          <div class="absolute -inset-8 bg-gradient-to-tr from-coral/20 to-cyan/15 blur-3xl rounded-[2rem]"></div>
+          <div class="relative glass-strong rounded-[1.75rem] p-5 shadow-2xl shadow-black/50 animate-float">
+            <!-- WhatsApp header -->
+            <div class="flex items-center gap-3 pb-4 border-b border-white/10">
+              <span class="grid place-items-center w-10 h-10 rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 text-white shrink-0">
                 <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
               </span>
               <div>
-                <p class="text-white font-500 text-sm leading-tight">AgentIQ Assistant</p>
-                <p class="text-emerald-300 text-xs flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>typically replies instantly</p>
+                <p class="text-white font-600 text-sm">Spice Route · WhatsApp</p>
+                <p class="text-emerald-300 text-xs flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>online · replies instantly</p>
               </div>
             </div>
-            <div class="space-y-3 pt-4 text-sm">
-              <div class="max-w-[80%] bg-white/10 rounded-2xl rounded-tl-md px-3.5 py-2.5 text-slate-100">Hi! Do you deliver to my area? 📍</div>
-              <div class="ml-auto max-w-[82%] bg-gradient-to-br from-cyan to-blue text-white rounded-2xl rounded-tr-md px-3.5 py-2.5">Yes! We deliver across the city in 90 mins. Want me to share today's offers and place your order here?</div>
-              <div class="max-w-[80%] bg-white/10 rounded-2xl rounded-tl-md px-3.5 py-2.5 text-slate-100">Yes please 🙌</div>
-              <div class="ml-auto inline-flex items-center gap-1.5 bg-white/8 rounded-2xl rounded-tr-md px-4 py-3"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+            <div class="space-y-3 pt-4 text-[13px]">
+              <div class="max-w-[78%] bg-white/10 rounded-2xl rounded-tl-md px-4 py-2.5 text-slate-100">Table for 4 tonight at 8? 🍽️</div>
+              <div class="ml-auto max-w-[80%] bg-gradient-to-br from-emerald-500 to-emerald-600 text-white rounded-2xl rounded-tr-md px-4 py-2.5">Booked! ✅ Table for 4 at 8 PM confirmed. Want to pre-order starters so they're ready when you arrive?</div>
+              <div class="max-w-[78%] bg-white/10 rounded-2xl rounded-tl-md px-4 py-2.5 text-slate-100">Yes — 2 Paneer Tikka 🍢</div>
+              <div class="ml-auto max-w-[80%] bg-gradient-to-br from-emerald-500 to-emerald-600 text-white rounded-2xl rounded-tr-md px-4 py-2.5">Added 2× Paneer Tikka (₹520). Pay now via link or at the table? 🙌</div>
+              <div class="inline-flex items-center gap-1.5 bg-white/8 rounded-2xl rounded-tl-md px-4 py-3"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+            </div>
+            <!-- Platform badges -->
+            <div class="mt-5 pt-4 border-t border-white/8 flex items-center justify-between">
+              <span class="text-xs text-slate-500">Also available on</span>
+              <div class="flex items-center gap-3">
+                <span class="text-xs px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-400">Instagram DM</span>
+                <span class="text-xs px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-400">Website</span>
+              </div>
             </div>
           </div>
         </div>
@@ -391,7 +406,7 @@
         <div class="grid md:grid-cols-3 gap-5 items-start">
 
           <!-- WhatsApp · Restaurant -->
-          <article class="reveal grad-border glass rounded-2xl overflow-hidden flex flex-col">
+          <article class="reveal grad-border glass rounded-2xl overflow-hidden flex flex-col card-lift">
             <div class="flex items-center gap-3 px-4 py-3.5 border-b border-white/10" style="background:linear-gradient(90deg,rgba(37,211,102,.16),transparent)">
               <span class="grid place-items-center w-9 h-9 rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 text-white shrink-0">
                 <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
@@ -408,7 +423,7 @@
           </article>
 
           <!-- Instagram · Salon -->
-          <article class="reveal grad-border glass rounded-2xl overflow-hidden flex flex-col">
+          <article class="reveal grad-border glass rounded-2xl overflow-hidden flex flex-col card-lift">
             <div class="flex items-center gap-3 px-4 py-3.5 border-b border-white/10" style="background:linear-gradient(90deg,rgba(225,48,108,.16),transparent)">
               <span class="grid place-items-center w-9 h-9 rounded-full text-white shrink-0" style="background:linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7)">
                 <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069M12 0C8.741 0 8.332.014 7.052.072 2.695.272.273 2.69.073 7.052.014 8.332 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.69.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0m0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324M12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8m6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881"/></svg>
@@ -425,7 +440,7 @@
           </article>
 
           <!-- Website · Healthcare -->
-          <article class="reveal grad-border glass rounded-2xl overflow-hidden flex flex-col">
+          <article class="reveal grad-border glass rounded-2xl overflow-hidden flex flex-col card-lift">
             <div class="flex items-center gap-3 px-4 py-3.5 border-b border-white/10" style="background:linear-gradient(90deg,rgba(34,211,232,.16),transparent)">
               <span class="grid place-items-center w-9 h-9 rounded-full bg-gradient-to-br from-cyan to-blue text-white shrink-0">
                 <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10"/></svg>
@@ -497,51 +512,81 @@
         </div>
 
         <!-- stat counters -->
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
-          <div class="reveal glass rounded-2xl p-6 text-center">
-            <p class="font-display font-700 text-white text-4xl"><span class="count" data-to="92">0</span>%</p>
-            <p class="text-slate-400 text-sm mt-2">queries auto-resolved</p>
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-5 mb-16">
+          <div class="reveal glass rounded-2xl p-7 text-center card-lift">
+            <p class="font-display font-700 stat-num text-6xl sm:text-7xl leading-none"><span class="count" data-to="92">0</span>%</p>
+            <p class="text-slate-400 text-sm mt-3 leading-snug">queries auto-resolved</p>
           </div>
-          <div class="reveal glass rounded-2xl p-6 text-center">
-            <p class="font-display font-700 text-white text-4xl"><span class="count" data-to="3">0</span>×</p>
-            <p class="text-slate-400 text-sm mt-2">more leads captured</p>
+          <div class="reveal glass rounded-2xl p-7 text-center card-lift">
+            <p class="font-display font-700 stat-num text-6xl sm:text-7xl leading-none"><span class="count" data-to="3">0</span>×</p>
+            <p class="text-slate-400 text-sm mt-3 leading-snug">more leads captured</p>
           </div>
-          <div class="reveal glass rounded-2xl p-6 text-center">
-            <p class="font-display font-700 text-white text-4xl">&lt;<span class="count" data-to="5">0</span>s</p>
-            <p class="text-slate-400 text-sm mt-2">average reply time</p>
+          <div class="reveal glass rounded-2xl p-7 text-center card-lift">
+            <p class="font-display font-700 stat-num text-6xl sm:text-7xl leading-none">&lt;<span class="count" data-to="5">0</span>s</p>
+            <p class="text-slate-400 text-sm mt-3 leading-snug">average reply time</p>
           </div>
-          <div class="reveal glass rounded-2xl p-6 text-center">
-            <p class="font-display font-700 text-white text-4xl"><span class="count" data-to="24">0</span>/7</p>
-            <p class="text-slate-400 text-sm mt-2">always responding</p>
+          <div class="reveal glass rounded-2xl p-7 text-center card-lift">
+            <p class="font-display font-700 stat-num text-6xl sm:text-7xl leading-none"><span class="count" data-to="24">0</span>/7</p>
+            <p class="text-slate-400 text-sm mt-3 leading-snug">always responding</p>
           </div>
         </div>
 
-        <!-- case studies -->
+        <!-- testimonials -->
         <div class="grid md:grid-cols-3 gap-5">
-          <article class="reveal glass rounded-2xl p-6 flex flex-col hover:bg-white/[0.06] transition-colors duration-200">
-            <span class="text-xs font-500 px-2.5 py-1 rounded-full bg-emerald-400/15 text-emerald-300 w-max mb-4">D2C • Skincare</span>
-            <p class="text-slate-200 leading-relaxed flex-1">"WhatsApp orders went from a trickle to <span class="text-white font-500">40+ a day</span>. The bot handles sizing and shipping so my team only steps in to close."</p>
-            <div class="mt-5 pt-4 border-t border-white/10 flex items-center gap-3">
-              <span class="grid place-items-center w-9 h-9 rounded-full bg-gradient-to-br from-coral to-orange text-white text-sm font-600">A</span>
-              <div><p class="text-white text-sm font-500">Aarohi M.</p><p class="text-slate-500 text-xs">Founder, Glow Co. • Bengaluru</p></div>
+          <article class="reveal grad-border glass rounded-2xl p-7 flex flex-col card-lift">
+            <div class="flex items-start justify-between mb-5">
+              <span class="text-xs font-600 px-3 py-1 rounded-full bg-emerald-400/15 text-emerald-300">D2C · Skincare</span>
+              <div class="flex gap-0.5">
+                <svg class="w-4 h-4 text-orange fill-orange" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg class="w-4 h-4 text-orange fill-orange" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg class="w-4 h-4 text-orange fill-orange" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg class="w-4 h-4 text-orange fill-orange" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg class="w-4 h-4 text-orange fill-orange" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </div>
+            </div>
+            <svg class="w-8 h-8 text-coral/40 mb-3" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+            <p class="text-slate-200 leading-relaxed flex-1 text-[15px]">WhatsApp orders went from a trickle to <span class="text-white font-600">40+ a day</span>. The bot handles sizing and shipping so my team only steps in to close.</p>
+            <div class="mt-6 pt-5 border-t border-white/10 flex items-center gap-3">
+              <span class="grid place-items-center w-10 h-10 rounded-full bg-gradient-to-br from-coral to-orange text-white text-sm font-700 shrink-0">A</span>
+              <div><p class="text-white text-sm font-600">Aarohi M.</p><p class="text-slate-500 text-xs mt-0.5">Founder, Glow Co. · Bengaluru</p></div>
             </div>
           </article>
 
-          <article class="reveal glass rounded-2xl p-6 flex flex-col hover:bg-white/[0.06] transition-colors duration-200">
-            <span class="text-xs font-500 px-2.5 py-1 rounded-full bg-fuchsia-400/15 text-fuchsia-300 w-max mb-4">Real Estate</span>
-            <p class="text-slate-200 leading-relaxed flex-1">"Instagram DMs used to sit unread for hours. Now every enquiry gets a reply in seconds and books a site visit. <span class="text-white font-500">Conversions doubled.</span>"</p>
-            <div class="mt-5 pt-4 border-t border-white/10 flex items-center gap-3">
-              <span class="grid place-items-center w-9 h-9 rounded-full bg-gradient-to-br from-coral to-orange text-white text-sm font-600">R</span>
-              <div><p class="text-white text-sm font-500">Rohan S.</p><p class="text-slate-500 text-xs">Sales Head, Skyline Realty • Pune</p></div>
+          <article class="reveal grad-border glass rounded-2xl p-7 flex flex-col card-lift">
+            <div class="flex items-start justify-between mb-5">
+              <span class="text-xs font-600 px-3 py-1 rounded-full bg-fuchsia-400/15 text-fuchsia-300">Real Estate</span>
+              <div class="flex gap-0.5">
+                <svg class="w-4 h-4 text-orange fill-orange" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg class="w-4 h-4 text-orange fill-orange" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg class="w-4 h-4 text-orange fill-orange" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg class="w-4 h-4 text-orange fill-orange" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg class="w-4 h-4 text-orange fill-orange" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </div>
+            </div>
+            <svg class="w-8 h-8 text-fuchsia-400/40 mb-3" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+            <p class="text-slate-200 leading-relaxed flex-1 text-[15px]">Instagram DMs used to sit unread for hours. Now every enquiry gets a reply in seconds and books a site visit. <span class="text-white font-600">Conversions doubled.</span></p>
+            <div class="mt-6 pt-5 border-t border-white/10 flex items-center gap-3">
+              <span class="grid place-items-center w-10 h-10 rounded-full bg-gradient-to-br from-fuchsia-500 to-pink-500 text-white text-sm font-700 shrink-0">R</span>
+              <div><p class="text-white text-sm font-600">Rohan S.</p><p class="text-slate-500 text-xs mt-0.5">Sales Head, Skyline Realty · Pune</p></div>
             </div>
           </article>
 
-          <article class="reveal glass rounded-2xl p-6 flex flex-col hover:bg-white/[0.06] transition-colors duration-200">
-            <span class="text-xs font-500 px-2.5 py-1 rounded-full bg-cyan/15 text-cyan w-max mb-4">Clinic • Healthcare</span>
-            <p class="text-slate-200 leading-relaxed flex-1">"Appointment booking is fully automated on our website now. We saved <span class="text-white font-500">~30 hours a week</span> at the front desk."</p>
-            <div class="mt-5 pt-4 border-t border-white/10 flex items-center gap-3">
-              <span class="grid place-items-center w-9 h-9 rounded-full bg-gradient-to-br from-coral to-orange text-white text-sm font-600">P</span>
-              <div><p class="text-white text-sm font-500">Dr. Priya K.</p><p class="text-slate-500 text-xs">Smile Dental • Hyderabad</p></div>
+          <article class="reveal grad-border glass rounded-2xl p-7 flex flex-col card-lift">
+            <div class="flex items-start justify-between mb-5">
+              <span class="text-xs font-600 px-3 py-1 rounded-full bg-cyan/15 text-cyan">Clinic · Healthcare</span>
+              <div class="flex gap-0.5">
+                <svg class="w-4 h-4 text-orange fill-orange" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg class="w-4 h-4 text-orange fill-orange" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg class="w-4 h-4 text-orange fill-orange" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg class="w-4 h-4 text-orange fill-orange" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg class="w-4 h-4 text-orange fill-orange" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </div>
+            </div>
+            <svg class="w-8 h-8 text-cyan/40 mb-3" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+            <p class="text-slate-200 leading-relaxed flex-1 text-[15px]">Appointment booking is fully automated on our website now. We saved <span class="text-white font-600">~30 hours a week</span> at the front desk.</p>
+            <div class="mt-6 pt-5 border-t border-white/10 flex items-center gap-3">
+              <span class="grid place-items-center w-10 h-10 rounded-full bg-gradient-to-br from-cyan to-blue text-white text-sm font-700 shrink-0">P</span>
+              <div><p class="text-white text-sm font-600">Dr. Priya K.</p><p class="text-slate-500 text-xs mt-0.5">Smile Dental · Hyderabad</p></div>
             </div>
           </article>
         </div>
@@ -559,7 +604,7 @@
 
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           <!-- Restaurants -->
-          <article class="reveal grad-border glass rounded-2xl p-6 hover:bg-white/[0.06] transition-colors duration-200">
+          <article class="reveal grad-border glass rounded-2xl p-6 card-lift">
             <span class="grid place-items-center w-12 h-12 rounded-xl bg-coral/15 text-coral mb-5">
               <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 2v7c0 1.1.9 2 2 2a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-3 4.5c0 2.5 3 2.5 3 4.5v4"/></svg>
             </span>
@@ -573,7 +618,7 @@
           </article>
 
           <!-- Salons -->
-          <article class="reveal grad-border glass rounded-2xl p-6 hover:bg-white/[0.06] transition-colors duration-200">
+          <article class="reveal grad-border glass rounded-2xl p-6 card-lift">
             <span class="grid place-items-center w-12 h-12 rounded-xl bg-orange/15 text-orange mb-5">
               <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
             </span>
@@ -587,7 +632,7 @@
           </article>
 
           <!-- Healthcare -->
-          <article class="reveal grad-border glass rounded-2xl p-6 hover:bg-white/[0.06] transition-colors duration-200">
+          <article class="reveal grad-border glass rounded-2xl p-6 card-lift">
             <span class="grid place-items-center w-12 h-12 rounded-xl bg-cyan/15 text-cyan mb-5">
               <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27"/></svg>
             </span>
@@ -601,7 +646,7 @@
           </article>
 
           <!-- Real estate -->
-          <article class="reveal glass rounded-2xl p-6 hover:bg-white/[0.06] transition-colors duration-200">
+          <article class="reveal grad-border glass rounded-2xl p-6 card-lift">
             <span class="grid place-items-center w-11 h-11 rounded-xl bg-white/5 text-slate-200 mb-4">
               <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01M16 6h.01M12 6h.01M12 10h.01M16 10h.01M8 10h.01M12 14h.01M16 14h.01M8 14h.01"/></svg>
             </span>
@@ -610,7 +655,7 @@
           </article>
 
           <!-- Retail / D2C -->
-          <article class="reveal glass rounded-2xl p-6 hover:bg-white/[0.06] transition-colors duration-200">
+          <article class="reveal grad-border glass rounded-2xl p-6 card-lift">
             <span class="grid place-items-center w-11 h-11 rounded-xl bg-white/5 text-slate-200 mb-4">
               <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
             </span>
@@ -619,7 +664,7 @@
           </article>
 
           <!-- Education -->
-          <article class="reveal glass rounded-2xl p-6 hover:bg-white/[0.06] transition-colors duration-200">
+          <article class="reveal grad-border glass rounded-2xl p-6 card-lift">
             <span class="grid place-items-center w-11 h-11 rounded-xl bg-white/5 text-slate-200 mb-4">
               <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1 2 3 6 3s6-2 6-3v-5"/></svg>
             </span>
@@ -643,49 +688,49 @@
 
         <div class="grid md:grid-cols-3 gap-5 items-stretch">
           <!-- Starter -->
-          <div class="reveal glass rounded-2xl p-7 flex flex-col">
-            <h3 class="font-display font-600 text-white text-xl">Starter</h3>
-            <p class="text-slate-400 text-sm mt-1">One channel to get going fast.</p>
-            <div class="mt-6 mb-1"><span class="font-display font-700 text-white text-4xl">₹14,999</span></div>
-            <p class="text-slate-500 text-sm">setup • then ₹4,999/mo</p>
-            <ul class="mt-6 space-y-3 text-sm text-slate-300 flex-1">
-              <li class="flex gap-2.5"><svg class="w-5 h-5 text-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>1 channel (WhatsApp / IG / Web)</li>
-              <li class="flex gap-2.5"><svg class="w-5 h-5 text-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Up to 1,000 chats/mo</li>
-              <li class="flex gap-2.5"><svg class="w-5 h-5 text-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Lead capture + email alerts</li>
-              <li class="flex gap-2.5"><svg class="w-5 h-5 text-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Email support</li>
+          <div class="reveal glass rounded-2xl p-8 flex flex-col card-lift">
+            <h3 class="font-display font-700 text-white text-xl">Starter</h3>
+            <p class="text-slate-400 text-sm mt-1.5">One channel to get going fast.</p>
+            <div class="mt-7 mb-1"><span class="font-display font-700 text-white text-5xl">₹14,999</span></div>
+            <p class="text-slate-500 text-sm">setup · then ₹4,999/mo</p>
+            <ul class="mt-7 space-y-3.5 text-sm text-slate-300 flex-1">
+              <li class="flex gap-3"><svg class="w-5 h-5 text-cyan shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>1 channel (WhatsApp / IG / Web)</li>
+              <li class="flex gap-3"><svg class="w-5 h-5 text-cyan shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Up to 1,000 chats/mo</li>
+              <li class="flex gap-3"><svg class="w-5 h-5 text-cyan shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Lead capture + email alerts</li>
+              <li class="flex gap-3"><svg class="w-5 h-5 text-cyan shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Email support</li>
             </ul>
-            <a href="#book" class="cursor-pointer mt-7 inline-flex justify-center px-5 py-3 rounded-xl glass-strong text-white font-500 hover:bg-white/10 transition-colors duration-200">Book a demo</a>
+            <a href="#book" class="cursor-pointer mt-8 inline-flex justify-center px-5 py-3.5 rounded-xl glass-strong text-white font-500 hover:bg-white/10 transition-colors duration-200">Get started</a>
           </div>
 
           <!-- Growth (featured) -->
-          <div class="reveal relative grad-border rounded-2xl p-7 flex flex-col bg-white/[0.06] shadow-2xl shadow-coral/20">
-            <span class="absolute -top-3 left-1/2 -translate-x-1/2 text-xs font-600 px-3 py-1 rounded-full bg-gradient-to-r from-coral to-orange text-white">Most popular</span>
-            <h3 class="font-display font-600 text-white text-xl">Growth</h3>
-            <p class="text-slate-400 text-sm mt-1">Omni-channel for serious growth.</p>
-            <div class="mt-6 mb-1"><span class="font-display font-700 text-white text-4xl">₹34,999</span></div>
-            <p class="text-slate-500 text-sm">setup • then ₹9,999/mo</p>
-            <ul class="mt-6 space-y-3 text-sm text-slate-300 flex-1">
-              <li class="flex gap-2.5"><svg class="w-5 h-5 text-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>All 3 channels connected</li>
-              <li class="flex gap-2.5"><svg class="w-5 h-5 text-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Up to 10,000 chats/mo</li>
-              <li class="flex gap-2.5"><svg class="w-5 h-5 text-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>CRM + payment link integration</li>
-              <li class="flex gap-2.5"><svg class="w-5 h-5 text-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Monthly optimisation + priority support</li>
+          <div class="reveal relative rounded-2xl p-8 flex flex-col bg-white/[0.07] glow-card" style="border:1px solid rgba(34,211,238,.2)">
+            <span class="absolute -top-3.5 left-1/2 -translate-x-1/2 text-xs font-700 px-4 py-1.5 rounded-full bg-gradient-to-r from-coral to-orange text-white shadow-lg shadow-coral/30 whitespace-nowrap">Most popular</span>
+            <h3 class="font-display font-700 text-white text-xl">Growth</h3>
+            <p class="text-slate-400 text-sm mt-1.5">Omni-channel for serious growth.</p>
+            <div class="mt-7 mb-1"><span class="font-display font-700 grad-text text-5xl">₹34,999</span></div>
+            <p class="text-slate-500 text-sm">setup · then ₹9,999/mo</p>
+            <ul class="mt-7 space-y-3.5 text-sm text-slate-200 flex-1">
+              <li class="flex gap-3"><svg class="w-5 h-5 text-cyan shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>All 3 channels connected</li>
+              <li class="flex gap-3"><svg class="w-5 h-5 text-cyan shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Up to 10,000 chats/mo</li>
+              <li class="flex gap-3"><svg class="w-5 h-5 text-cyan shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>CRM + payment link integration</li>
+              <li class="flex gap-3"><svg class="w-5 h-5 text-cyan shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Monthly optimisation + priority support</li>
             </ul>
-            <a href="#book" class="cursor-pointer mt-7 inline-flex justify-center px-5 py-3 rounded-xl bg-gradient-to-r from-cyan to-blue text-white font-500 shadow-lg shadow-cyan/30 hover:shadow-blue/30 transition-shadow duration-200">Book a demo</a>
+            <a href="#book" class="cursor-pointer mt-8 inline-flex justify-center px-5 py-3.5 rounded-xl bg-gradient-to-r from-cyan to-blue text-white font-600 shadow-lg shadow-cyan/30 hover:shadow-blue/30 transition-shadow duration-200">Book a demo</a>
           </div>
 
           <!-- Enterprise -->
-          <div class="reveal glass rounded-2xl p-7 flex flex-col">
-            <h3 class="font-display font-600 text-white text-xl">Enterprise</h3>
-            <p class="text-slate-400 text-sm mt-1">Custom AI for high volume.</p>
-            <div class="mt-6 mb-1"><span class="font-display font-700 text-white text-4xl">Custom</span></div>
+          <div class="reveal glass rounded-2xl p-8 flex flex-col card-lift">
+            <h3 class="font-display font-700 text-white text-xl">Enterprise</h3>
+            <p class="text-slate-400 text-sm mt-1.5">Custom AI for high volume.</p>
+            <div class="mt-7 mb-1"><span class="font-display font-700 text-white text-5xl">Custom</span></div>
             <p class="text-slate-500 text-sm">tailored to your stack</p>
-            <ul class="mt-6 space-y-3 text-sm text-slate-300 flex-1">
-              <li class="flex gap-2.5"><svg class="w-5 h-5 text-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Unlimited chats & channels</li>
-              <li class="flex gap-2.5"><svg class="w-5 h-5 text-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Custom workflows & APIs</li>
-              <li class="flex gap-2.5"><svg class="w-5 h-5 text-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Dedicated success manager</li>
-              <li class="flex gap-2.5"><svg class="w-5 h-5 text-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>SLA + onboarding training</li>
+            <ul class="mt-7 space-y-3.5 text-sm text-slate-300 flex-1">
+              <li class="flex gap-3"><svg class="w-5 h-5 text-cyan shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Unlimited chats &amp; channels</li>
+              <li class="flex gap-3"><svg class="w-5 h-5 text-cyan shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Custom workflows &amp; APIs</li>
+              <li class="flex gap-3"><svg class="w-5 h-5 text-cyan shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Dedicated success manager</li>
+              <li class="flex gap-3"><svg class="w-5 h-5 text-cyan shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>SLA + onboarding training</li>
             </ul>
-            <a href="#book" class="cursor-pointer mt-7 inline-flex justify-center px-5 py-3 rounded-xl glass-strong text-white font-500 hover:bg-white/10 transition-colors duration-200">Talk to us</a>
+            <a href="#book" class="cursor-pointer mt-8 inline-flex justify-center px-5 py-3.5 rounded-xl glass-strong text-white font-500 hover:bg-white/10 transition-colors duration-200">Talk to us</a>
           </div>
         </div>
       </div>
@@ -792,14 +837,68 @@
   </main>
 
   <!-- FOOTER -->
-  <footer class="px-5 pb-10 pt-8 border-t border-white/5">
-    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-500">
-      <div class="flex items-center gap-2.5">
-        <span class="grid place-items-center w-7 h-7 rounded-lg bg-gradient-to-br from-coral to-orange text-white"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
-        <span class="text-slate-300 font-500">AgentIQ</span>
-        <span class="hidden sm:inline">· AI chatbots, made in India</span>
+  <footer class="px-5 pt-16 pb-10 border-t border-white/8">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-10 mb-12">
+        <!-- Brand -->
+        <div class="col-span-2 md:col-span-1">
+          <a href="#" class="flex items-center gap-2.5 mb-4">
+            <span class="grid place-items-center w-9 h-9 rounded-xl bg-gradient-to-br from-coral to-orange text-white shadow-lg shadow-coral/30">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </span>
+            <span class="font-display font-700 text-lg text-white tracking-tight">Agent<span class="grad-text">IQ</span></span>
+          </a>
+          <p class="text-slate-500 text-sm leading-relaxed max-w-[200px]">AI chatbots for Indian businesses — WhatsApp, Instagram &amp; Web.</p>
+          <div class="flex items-center gap-3 mt-5">
+            <a href="https://wa.me/919159775266" target="_blank" rel="noopener" class="grid place-items-center w-9 h-9 rounded-xl bg-white/5 hover:bg-emerald-500/20 border border-white/8 text-slate-400 hover:text-emerald-400 transition-colors duration-200">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
+            </a>
+            <a href="https://instagram.com/agentiq.co.in" target="_blank" rel="noopener" class="grid place-items-center w-9 h-9 rounded-xl bg-white/5 hover:bg-fuchsia-500/20 border border-white/8 text-slate-400 hover:text-fuchsia-400 transition-colors duration-200">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069M12 0C8.741 0 8.332.014 7.052.072 2.695.272.273 2.69.073 7.052.014 8.332 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.69.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0m0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324M12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8m6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Services -->
+        <div>
+          <p class="text-white font-600 text-sm mb-4">Services</p>
+          <ul class="space-y-3 text-sm text-slate-500">
+            <li><a href="#how" class="hover:text-white transition-colors">AI Chatbots</a></li>
+            <li><a href="#how" class="hover:text-white transition-colors">WhatsApp Bots</a></li>
+            <li><a href="#how" class="hover:text-white transition-colors">Instagram DM Bots</a></li>
+            <li><a href="#how" class="hover:text-white transition-colors">Website Widgets</a></li>
+            <li><a href="#industries" class="hover:text-white transition-colors">Industry Solutions</a></li>
+          </ul>
+        </div>
+
+        <!-- Company -->
+        <div>
+          <p class="text-white font-600 text-sm mb-4">Company</p>
+          <ul class="space-y-3 text-sm text-slate-500">
+            <li><a href="#results" class="hover:text-white transition-colors">Results</a></li>
+            <li><a href="#pricing" class="hover:text-white transition-colors">Pricing</a></li>
+            <li><a href="#faq" class="hover:text-white transition-colors">FAQ</a></li>
+            <li><a href="#demo" class="hover:text-white transition-colors">Live Demo</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div>
+          <p class="text-white font-600 text-sm mb-4">Contact</p>
+          <ul class="space-y-3 text-sm text-slate-500">
+            <li><a href="tel:+919159775266" class="hover:text-white transition-colors">+91 91597 75266</a></li>
+            <li><a href="https://wa.me/919159775266" target="_blank" rel="noopener" class="hover:text-white transition-colors">WhatsApp us</a></li>
+            <li><a href="#book" class="hover:text-white transition-colors">Book a demo</a></li>
+            <li class="text-slate-600">Mumbai, India 🇮🇳</li>
+          </ul>
+        </div>
       </div>
-      <p>© <span id="year"></span> AgentIQ. All rights reserved.</p>
+
+      <!-- Bottom bar -->
+      <div class="pt-8 border-t border-white/8 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-600">
+        <p>© <span id="year"></span> AgentIQ. All rights reserved.</p>
+        <p>Made with ❤️ in India · Powered by Claude AI</p>
+      </div>
     </div>
   </footer>
 
