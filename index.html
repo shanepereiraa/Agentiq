@@ -130,6 +130,14 @@
   <style>
     html { -webkit-font-smoothing: antialiased; }
     body { background: #07173a; }
+    /* Global high-contrast focus indicator (WCAG 2.2 SC 2.4.11/2.4.13).
+       Cyan ring with dark offset stays visible on the navy glass UI. */
+    a:focus-visible, button:focus-visible, summary:focus-visible,
+    [tabindex]:focus-visible, select:focus-visible {
+      outline: 3px solid #22D3EE;
+      outline-offset: 2px;
+      border-radius: 6px;
+    }
     .glass { background: rgba(255,255,255,0.05); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,0.10); }
     .glass-strong { background: rgba(255,255,255,0.08); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.14); }
     .grad-text { background: linear-gradient(100deg,#FFB36B 0%,#FF6B5C 45%,#22D3EE 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
@@ -146,6 +154,10 @@
     .glow-card { box-shadow: 0 0 0 1px rgba(34,211,238,.25), 0 0 60px rgba(34,211,238,.12), 0 0 30px rgba(255,107,92,.1); }
     .stat-num { background: linear-gradient(135deg,#fff 0%,rgba(255,255,255,.7) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
     .section-label { font-size: .7rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: #22D3EE; }
+    /* Partial contrast mitigation for white text on light coral/cyan gradients (SC 1.4.3).
+       A 1px dark shadow raises effective legibility; a full pass needs darker gradient stops. */
+    .bg-gradient-to-r.from-coral, .bg-gradient-to-r.from-cyan,
+    #aiq-toggle, #aiq-go { text-shadow: 0 1px 2px rgba(7,23,58,.55); }
 
     /* GPU promotion: blob and float animations use only transform+opacity — compositor-only,
        no layout or paint. will-change creates a separate layer per blob.
@@ -176,6 +188,7 @@
       position: relative;
     }
     #aiq-toggle:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(255,107,92,.6); }
+    #aiq-toggle:focus-visible { outline: 3px solid #22D3EE; outline-offset: 3px; }
     #aiq-toggle svg { width: 24px; height: 24px; }
 
     #aiq-notif {
@@ -216,7 +229,7 @@
       display: flex; align-items: center; justify-content: center; flex-shrink: 0;
     }
     #aiq-hdr .av svg { width: 17px; height: 17px; stroke: white; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-    #aiq-hdr .info h4 { font-size: 13px; font-weight: 600; color: #fff; line-height: 1.2; }
+    #aiq-hdr .info p.name { font-size: 13px; font-weight: 600; color: #fff; line-height: 1.2; }
     #aiq-hdr .info .st {
       font-size: 11px; color: #34d399;
       display: flex; align-items: center; gap: 4px;
@@ -227,11 +240,14 @@
     }
     #aiq-x {
       margin-left: auto; background: none; border: none;
-      color: rgba(255,255,255,.45); cursor: pointer;
-      font-size: 17px; line-height: 1; padding: 2px 4px;
-      transition: color .15s;
+      color: rgba(255,255,255,.7); cursor: pointer;
+      font-size: 17px; line-height: 1;
+      width: 32px; height: 32px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      transition: color .15s, background .15s;
     }
-    #aiq-x:hover { color: #fff; }
+    #aiq-x:hover { color: #fff; background: rgba(255,255,255,.08); }
+    #aiq-x:focus-visible { outline: 2px solid #22D3EE; outline-offset: 2px; }
 
     #aiq-log {
       flex: 1; overflow-y: auto; padding: 12px 11px;
@@ -274,7 +290,7 @@
       font-size: 13px; color: #fff; outline: none; font-family: inherit;
       transition: border-color .15s;
     }
-    #aiq-in::placeholder { color: rgba(255,255,255,.28); }
+    #aiq-in::placeholder { color: rgba(255,255,255,.55); }
     #aiq-in:focus { border-color: #22D3EE; }
     #aiq-go {
       width: 34px; height: 34px; border-radius: 50%;
@@ -284,6 +300,8 @@
       transition: opacity .15s;
     }
     #aiq-go:hover { opacity: .85; }
+    #aiq-go:focus-visible { outline: 2px solid #22D3EE; outline-offset: 2px; }
+    #aiq-in:focus-visible { outline: none; }
     #aiq-go:disabled { opacity: .4; cursor: default; }
     #aiq-go svg { width: 14px; height: 14px; fill: #fff; }
 
@@ -310,7 +328,7 @@
 
   <!-- NAVBAR -->
   <header class="fixed top-3 left-3 right-3 z-50">
-    <nav class="max-w-6xl mx-auto glass rounded-2xl px-4 sm:px-5 py-3 flex items-center justify-between">
+    <nav aria-label="Primary" class="max-w-6xl mx-auto glass rounded-2xl px-4 sm:px-5 py-3 flex items-center justify-between">
       <a href="/" class="flex items-center gap-2.5 group" aria-label="AgentIQ home">
         <span class="grid place-items-center w-9 h-9 rounded-xl bg-gradient-to-br from-coral to-orange text-white shadow-lg shadow-coral/30">
           <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
@@ -328,7 +346,7 @@
     </nav>
   </header>
 
-  <main id="main">
+  <main id="main" tabindex="-1" class="focus:outline-none">
 
     <!-- HERO -->
     <section class="relative pt-36 sm:pt-48 pb-24 px-5">
@@ -360,10 +378,10 @@
             </a>
           </div>
 
-          <div class="reveal mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 text-sm text-slate-500">
-            <div class="flex items-center gap-2"><svg class="w-4 h-4 text-cyan" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Live in 7 days</div>
-            <div class="flex items-center gap-2"><svg class="w-4 h-4 text-cyan" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>No code needed</div>
-            <div class="flex items-center gap-2"><svg class="w-4 h-4 text-cyan" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Hindi + English</div>
+          <div class="reveal mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 text-sm text-slate-400">
+            <div class="flex items-center gap-2"><svg class="w-4 h-4 text-cyan" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Live in 7 days</div>
+            <div class="flex items-center gap-2"><svg class="w-4 h-4 text-cyan" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>No code needed</div>
+            <div class="flex items-center gap-2"><svg class="w-4 h-4 text-cyan" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Hindi + English</div>
           </div>
         </div>
 
@@ -390,7 +408,7 @@
             </div>
             <!-- Platform badges -->
             <div class="mt-5 pt-4 border-t border-white/8 flex items-center justify-between">
-              <span class="text-xs text-slate-500">Also available on</span>
+              <span class="text-xs text-slate-400">Also available on</span>
               <div class="flex items-center gap-3">
                 <span class="text-xs px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-400">Instagram DM</span>
                 <span class="text-xs px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-400">Website</span>
@@ -403,7 +421,7 @@
 
     <!-- LOGO MARQUEE / INTEGRATIONS -->
     <section class="py-12 px-5">
-      <p class="reveal text-center text-xs uppercase tracking-[0.2em] text-slate-500 mb-7">Connects with the tools you already use</p>
+      <p class="reveal text-center text-xs uppercase tracking-[0.2em] text-slate-400 mb-7">Connects with the tools you already use</p>
       <div class="reveal relative max-w-5xl mx-auto overflow-hidden [mask-image:linear-gradient(90deg,transparent,#000_12%,#000_88%,transparent)]">
         <div class="flex gap-12 w-max animate-marquee text-slate-400">
           <div class="flex gap-12 items-center shrink-0" id="logoset"></div>
@@ -486,9 +504,9 @@
           <h2 class="font-display font-700 text-white text-3xl sm:text-4xl tracking-tight">See it think. Tap a question.</h2>
           <p class="mt-4 text-slate-400 max-w-md">This is a real-time preview of how your assistant feels to a customer — typing indicators, instant answers and natural conversation. Pick a prompt to watch it respond.</p>
           <ul class="mt-7 space-y-3 text-sm text-slate-300">
-            <li class="flex items-center gap-3"><svg class="w-5 h-5 text-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>Trained on your products, prices & policies</li>
-            <li class="flex items-center gap-3"><svg class="w-5 h-5 text-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>Smart hand-off to a human anytime</li>
-            <li class="flex items-center gap-3"><svg class="w-5 h-5 text-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>Captures name & number automatically</li>
+            <li class="flex items-center gap-3"><svg class="w-5 h-5 text-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>Trained on your products, prices & policies</li>
+            <li class="flex items-center gap-3"><svg class="w-5 h-5 text-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>Smart hand-off to a human anytime</li>
+            <li class="flex items-center gap-3"><svg class="w-5 h-5 text-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>Captures name & number automatically</li>
           </ul>
         </div>
 
@@ -497,10 +515,10 @@
           <div class="glass-strong rounded-[1.75rem] overflow-hidden shadow-2xl shadow-black/40">
             <div class="flex items-center gap-3 px-5 py-4 bg-white/5 border-b border-white/10">
               <span class="grid place-items-center w-9 h-9 rounded-full bg-gradient-to-br from-coral to-orange text-white">
-                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
               </span>
               <div class="flex-1">
-                <p class="text-white font-500 text-sm leading-tight">AgentIQ</p>
+                <p class="text-white font-600 text-sm leading-tight">AgentIQ</p>
                 <p class="text-emerald-300 text-xs flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>online</p>
               </div>
             </div>
@@ -508,8 +526,8 @@
             <div class="px-4 pb-4 pt-2 border-t border-white/10">
               <div id="chips" class="flex flex-wrap gap-2 mb-3"></div>
               <div class="flex gap-2">
-                <input id="demo-input" type="text" placeholder="Or ask anything…" maxlength="300" autocomplete="off"
-                  class="flex-1 px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan focus:border-transparent text-sm transition" />
+                <input id="demo-input" type="text" placeholder="Or ask anything…" aria-label="Ask the demo assistant a question" maxlength="300" autocomplete="off"
+                  class="flex-1 px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan focus:border-transparent text-sm transition" />
                 <button id="demo-send" type="button"
                   class="cursor-pointer px-4 py-2.5 rounded-xl bg-gradient-to-r from-cyan to-blue text-white text-sm font-500 shadow-md shadow-cyan/20 hover:shadow-blue/30 transition-shadow">
                   Send
@@ -554,57 +572,57 @@
           <article class="reveal grad-border glass rounded-2xl p-7 flex flex-col card-lift">
             <div class="flex items-start justify-between mb-5">
               <span class="text-xs font-600 px-3 py-1 rounded-full bg-emerald-400/15 text-emerald-300">D2C · Skincare</span>
-              <div class="flex gap-0.5">
-                <svg class="w-4 h-4 text-orange fill-orange" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                <svg class="w-4 h-4 text-orange fill-orange" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                <svg class="w-4 h-4 text-orange fill-orange" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                <svg class="w-4 h-4 text-orange fill-orange" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                <svg class="w-4 h-4 text-orange fill-orange" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <div class="flex gap-0.5" role="img" aria-label="Rated 5 out of 5 stars">
+                <svg class="w-4 h-4 text-orange fill-orange" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg class="w-4 h-4 text-orange fill-orange" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg class="w-4 h-4 text-orange fill-orange" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg class="w-4 h-4 text-orange fill-orange" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg class="w-4 h-4 text-orange fill-orange" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
               </div>
             </div>
-            <svg class="w-8 h-8 text-coral/40 mb-3" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+            <svg class="w-8 h-8 text-coral/40 mb-3" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
             <p class="text-slate-200 leading-relaxed flex-1 text-[15px]">WhatsApp orders went from a trickle to <span class="text-white font-600">40+ a day</span>. The bot handles sizing and shipping so my team only steps in to close.</p>
             <div class="mt-6 pt-5 border-t border-white/10 flex items-center gap-3">
               <span class="grid place-items-center w-10 h-10 rounded-full bg-gradient-to-br from-coral to-orange text-white text-sm font-700 shrink-0">A</span>
-              <div><p class="text-white text-sm font-600">Aarohi M.</p><p class="text-slate-500 text-xs mt-0.5">Founder, Glow Co. · Bengaluru</p></div>
+              <div><p class="text-white text-sm font-600">Aarohi M.</p><p class="text-slate-400 text-xs mt-0.5">Founder, Glow Co. · Bengaluru</p></div>
             </div>
           </article>
 
           <article class="reveal grad-border glass rounded-2xl p-7 flex flex-col card-lift">
             <div class="flex items-start justify-between mb-5">
               <span class="text-xs font-600 px-3 py-1 rounded-full bg-fuchsia-400/15 text-fuchsia-300">Real Estate</span>
-              <div class="flex gap-0.5">
-                <svg class="w-4 h-4 text-orange fill-orange" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                <svg class="w-4 h-4 text-orange fill-orange" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                <svg class="w-4 h-4 text-orange fill-orange" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                <svg class="w-4 h-4 text-orange fill-orange" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                <svg class="w-4 h-4 text-orange fill-orange" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <div class="flex gap-0.5" role="img" aria-label="Rated 5 out of 5 stars">
+                <svg class="w-4 h-4 text-orange fill-orange" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg class="w-4 h-4 text-orange fill-orange" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg class="w-4 h-4 text-orange fill-orange" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg class="w-4 h-4 text-orange fill-orange" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg class="w-4 h-4 text-orange fill-orange" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
               </div>
             </div>
-            <svg class="w-8 h-8 text-fuchsia-400/40 mb-3" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+            <svg class="w-8 h-8 text-fuchsia-400/40 mb-3" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
             <p class="text-slate-200 leading-relaxed flex-1 text-[15px]">Instagram DMs used to sit unread for hours. Now every enquiry gets a reply in seconds and books a site visit. <span class="text-white font-600">Conversions doubled.</span></p>
             <div class="mt-6 pt-5 border-t border-white/10 flex items-center gap-3">
               <span class="grid place-items-center w-10 h-10 rounded-full bg-gradient-to-br from-fuchsia-500 to-pink-500 text-white text-sm font-700 shrink-0">R</span>
-              <div><p class="text-white text-sm font-600">Rohan S.</p><p class="text-slate-500 text-xs mt-0.5">Sales Head, Skyline Realty · Pune</p></div>
+              <div><p class="text-white text-sm font-600">Rohan S.</p><p class="text-slate-400 text-xs mt-0.5">Sales Head, Skyline Realty · Pune</p></div>
             </div>
           </article>
 
           <article class="reveal grad-border glass rounded-2xl p-7 flex flex-col card-lift">
             <div class="flex items-start justify-between mb-5">
               <span class="text-xs font-600 px-3 py-1 rounded-full bg-cyan/15 text-cyan">Clinic · Healthcare</span>
-              <div class="flex gap-0.5">
-                <svg class="w-4 h-4 text-orange fill-orange" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                <svg class="w-4 h-4 text-orange fill-orange" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                <svg class="w-4 h-4 text-orange fill-orange" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                <svg class="w-4 h-4 text-orange fill-orange" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                <svg class="w-4 h-4 text-orange fill-orange" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <div class="flex gap-0.5" role="img" aria-label="Rated 5 out of 5 stars">
+                <svg class="w-4 h-4 text-orange fill-orange" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg class="w-4 h-4 text-orange fill-orange" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg class="w-4 h-4 text-orange fill-orange" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg class="w-4 h-4 text-orange fill-orange" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg class="w-4 h-4 text-orange fill-orange" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
               </div>
             </div>
-            <svg class="w-8 h-8 text-cyan/40 mb-3" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+            <svg class="w-8 h-8 text-cyan/40 mb-3" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
             <p class="text-slate-200 leading-relaxed flex-1 text-[15px]">Appointment booking is fully automated on our website now. We saved <span class="text-white font-600">~30 hours a week</span> at the front desk.</p>
             <div class="mt-6 pt-5 border-t border-white/10 flex items-center gap-3">
               <span class="grid place-items-center w-10 h-10 rounded-full bg-gradient-to-br from-cyan to-blue text-white text-sm font-700 shrink-0">P</span>
-              <div><p class="text-white text-sm font-600">Dr. Priya K.</p><p class="text-slate-500 text-xs mt-0.5">Smile Dental · Hyderabad</p></div>
+              <div><p class="text-white text-sm font-600">Dr. Priya K.</p><p class="text-slate-400 text-xs mt-0.5">Smile Dental · Hyderabad</p></div>
             </div>
           </article>
         </div>
@@ -710,12 +728,12 @@
             <h3 class="font-display font-700 text-white text-xl">Starter</h3>
             <p class="text-slate-400 text-sm mt-1.5">One channel to get going fast.</p>
             <div class="mt-7 mb-1"><span class="font-display font-700 text-white text-5xl">₹14,999</span></div>
-            <p class="text-slate-500 text-sm">setup · then ₹4,999/mo</p>
+            <p class="text-slate-400 text-sm">setup · then ₹4,999/mo</p>
             <ul class="mt-7 space-y-3.5 text-sm text-slate-300 flex-1">
-              <li class="flex gap-3"><svg class="w-5 h-5 text-cyan shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>1 channel (WhatsApp / IG / Web)</li>
-              <li class="flex gap-3"><svg class="w-5 h-5 text-cyan shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Up to 1,000 chats/mo</li>
-              <li class="flex gap-3"><svg class="w-5 h-5 text-cyan shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Lead capture + email alerts</li>
-              <li class="flex gap-3"><svg class="w-5 h-5 text-cyan shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Email support</li>
+              <li class="flex gap-3"><svg class="w-5 h-5 text-cyan shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>1 channel (WhatsApp / IG / Web)</li>
+              <li class="flex gap-3"><svg class="w-5 h-5 text-cyan shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Up to 1,000 chats/mo</li>
+              <li class="flex gap-3"><svg class="w-5 h-5 text-cyan shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Lead capture + email alerts</li>
+              <li class="flex gap-3"><svg class="w-5 h-5 text-cyan shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Email support</li>
             </ul>
             <a href="#book" class="cursor-pointer mt-8 inline-flex justify-center px-5 py-3.5 rounded-xl glass-strong text-white font-500 hover:bg-white/10 transition-colors duration-200">Get started</a>
           </div>
@@ -726,12 +744,12 @@
             <h3 class="font-display font-700 text-white text-xl">Growth</h3>
             <p class="text-slate-400 text-sm mt-1.5">Omni-channel for serious growth.</p>
             <div class="mt-7 mb-1"><span class="font-display font-700 grad-text text-5xl">₹34,999</span></div>
-            <p class="text-slate-500 text-sm">setup · then ₹9,999/mo</p>
+            <p class="text-slate-400 text-sm">setup · then ₹9,999/mo</p>
             <ul class="mt-7 space-y-3.5 text-sm text-slate-200 flex-1">
-              <li class="flex gap-3"><svg class="w-5 h-5 text-cyan shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>All 3 channels connected</li>
-              <li class="flex gap-3"><svg class="w-5 h-5 text-cyan shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Up to 10,000 chats/mo</li>
-              <li class="flex gap-3"><svg class="w-5 h-5 text-cyan shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>CRM + payment link integration</li>
-              <li class="flex gap-3"><svg class="w-5 h-5 text-cyan shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Monthly optimisation + priority support</li>
+              <li class="flex gap-3"><svg class="w-5 h-5 text-cyan shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>All 3 channels connected</li>
+              <li class="flex gap-3"><svg class="w-5 h-5 text-cyan shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Up to 10,000 chats/mo</li>
+              <li class="flex gap-3"><svg class="w-5 h-5 text-cyan shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>CRM + payment link integration</li>
+              <li class="flex gap-3"><svg class="w-5 h-5 text-cyan shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Monthly optimisation + priority support</li>
             </ul>
             <a href="#book" class="cursor-pointer mt-8 inline-flex justify-center px-5 py-3.5 rounded-xl bg-gradient-to-r from-cyan to-blue text-white font-600 shadow-lg shadow-cyan/30 hover:shadow-blue/30 transition-shadow duration-200">Book a demo</a>
           </div>
@@ -741,12 +759,12 @@
             <h3 class="font-display font-700 text-white text-xl">Enterprise</h3>
             <p class="text-slate-400 text-sm mt-1.5">Custom AI for high volume.</p>
             <div class="mt-7 mb-1"><span class="font-display font-700 text-white text-5xl">Custom</span></div>
-            <p class="text-slate-500 text-sm">tailored to your stack</p>
+            <p class="text-slate-400 text-sm">tailored to your stack</p>
             <ul class="mt-7 space-y-3.5 text-sm text-slate-300 flex-1">
-              <li class="flex gap-3"><svg class="w-5 h-5 text-cyan shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Unlimited chats &amp; channels</li>
-              <li class="flex gap-3"><svg class="w-5 h-5 text-cyan shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Custom workflows &amp; APIs</li>
-              <li class="flex gap-3"><svg class="w-5 h-5 text-cyan shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Dedicated success manager</li>
-              <li class="flex gap-3"><svg class="w-5 h-5 text-cyan shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>SLA + onboarding training</li>
+              <li class="flex gap-3"><svg class="w-5 h-5 text-cyan shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Unlimited chats &amp; channels</li>
+              <li class="flex gap-3"><svg class="w-5 h-5 text-cyan shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Custom workflows &amp; APIs</li>
+              <li class="flex gap-3"><svg class="w-5 h-5 text-cyan shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Dedicated success manager</li>
+              <li class="flex gap-3"><svg class="w-5 h-5 text-cyan shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>SLA + onboarding training</li>
             </ul>
             <a href="#book" class="cursor-pointer mt-8 inline-flex justify-center px-5 py-3.5 rounded-xl glass-strong text-white font-500 hover:bg-white/10 transition-colors duration-200">Talk to us</a>
           </div>
@@ -813,25 +831,27 @@
           <h2 class="font-display font-700 text-white text-3xl sm:text-4xl tracking-tight">Book your free demo</h2>
           <p class="mt-4 text-slate-300 max-w-md">See your own AI assistant in action in a 20-minute call. We'll map your channels, show a live mockup, and give you a launch plan — no obligation.</p>
           <div class="mt-7 space-y-3 text-sm text-slate-300">
-            <a href="tel:+919159775266" class="flex items-center gap-3 hover:text-white transition-colors cursor-pointer"><svg class="w-5 h-5 text-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>+91 91597 75266</a>
+            <a href="tel:+919159775266" class="flex items-center gap-3 hover:text-white transition-colors cursor-pointer"><svg class="w-5 h-5 text-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>+91 91597 75266</a>
             <a href="https://wa.me/919159775266?text=Hi%20AgentIQ%2C%20I%27d%20like%20to%20book%20a%20demo" target="_blank" rel="noopener" class="flex items-center gap-3 hover:text-white transition-colors cursor-pointer"><svg class="w-5 h-5 text-emerald-400 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>Chat on WhatsApp · +91 91597 75266</a>
-            <p class="flex items-center gap-3"><svg class="w-5 h-5 text-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Made in India · serving businesses nationwide</p>
+            <p class="flex items-center gap-3"><svg class="w-5 h-5 text-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Made in India · serving businesses nationwide</p>
           </div>
         </div>
 
         <form id="leadform" class="space-y-4" novalidate>
           <div>
-            <label for="name" class="block text-sm text-slate-300 mb-1.5">Your name</label>
-            <input id="name" name="name" type="text" required placeholder="Aarohi Mehta" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan focus:border-transparent transition" />
+            <label for="name" class="block text-sm text-slate-300 mb-1.5">Your name <span class="text-coral" aria-hidden="true">*</span></label>
+            <input id="name" name="name" type="text" required aria-required="true" aria-describedby="name-err" placeholder="Aarohi Mehta" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan focus:border-transparent transition" />
+            <p id="name-err" class="hidden mt-1.5 text-sm text-red-300">Please enter your name.</p>
           </div>
           <div class="grid sm:grid-cols-2 gap-4">
             <div>
-              <label for="phone" class="block text-sm text-slate-300 mb-1.5">WhatsApp number</label>
-              <input id="phone" name="phone" type="tel" required placeholder="+91 91597 75266" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan focus:border-transparent transition" />
+              <label for="phone" class="block text-sm text-slate-300 mb-1.5">WhatsApp number <span class="text-coral" aria-hidden="true">*</span></label>
+              <input id="phone" name="phone" type="tel" required aria-required="true" aria-describedby="phone-err" placeholder="+91 91597 75266" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan focus:border-transparent transition" />
+              <p id="phone-err" class="hidden mt-1.5 text-sm text-red-300">Please enter a valid WhatsApp number.</p>
             </div>
             <div>
               <label for="business" class="block text-sm text-slate-300 mb-1.5">Business name</label>
-              <input id="business" name="business" type="text" placeholder="Glow Co." class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan focus:border-transparent transition" />
+              <input id="business" name="business" type="text" placeholder="Glow Co." class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan focus:border-transparent transition" />
             </div>
           </div>
           <div>
@@ -845,7 +865,7 @@
           </div>
           <button type="submit" class="cursor-pointer w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-cyan to-blue text-white font-500 shadow-lg shadow-cyan/30 hover:shadow-blue/30 transition-shadow duration-200">
             Request my demo
-            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </button>
           <p id="formmsg" class="text-sm text-emerald-300 hidden" role="status">Thanks! We've opened our calendar in a new tab — pick a slot, or we'll WhatsApp you shortly. If the tab didn't open, <a href="https://wa.me/919159775266?text=Hi%20AgentIQ%2C%20I%27d%20like%20to%20book%20a%20demo" target="_blank" rel="noopener" class="underline hover:text-white">message us on WhatsApp</a>.</p>
         </form>
@@ -862,17 +882,17 @@
         <div class="col-span-2 md:col-span-1">
           <a href="/" class="flex items-center gap-2.5 mb-4">
             <span class="grid place-items-center w-9 h-9 rounded-xl bg-gradient-to-br from-coral to-orange text-white shadow-lg shadow-coral/30">
-              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
             </span>
             <span class="font-display font-700 text-lg text-white tracking-tight">Agent<span class="grad-text">IQ</span></span>
           </a>
-          <p class="text-slate-500 text-sm leading-relaxed max-w-[200px]">AI chatbots for Indian businesses — WhatsApp, Instagram &amp; Web.</p>
+          <p class="text-slate-400 text-sm leading-relaxed max-w-[200px]">AI chatbots for Indian businesses — WhatsApp, Instagram &amp; Web.</p>
           <div class="flex items-center gap-3 mt-5">
-            <a href="https://wa.me/919159775266" target="_blank" rel="noopener" class="grid place-items-center w-9 h-9 rounded-xl bg-white/5 hover:bg-emerald-500/20 border border-white/8 text-slate-400 hover:text-emerald-400 transition-colors duration-200">
-              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
+            <a href="https://wa.me/919159775266" target="_blank" rel="noopener" aria-label="AgentIQ on WhatsApp" class="grid place-items-center w-9 h-9 rounded-xl bg-white/5 hover:bg-emerald-500/20 border border-white/8 text-slate-400 hover:text-emerald-400 transition-colors duration-200">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
             </a>
-            <a href="https://instagram.com/agentiq.co.in" target="_blank" rel="noopener" class="grid place-items-center w-9 h-9 rounded-xl bg-white/5 hover:bg-fuchsia-500/20 border border-white/8 text-slate-400 hover:text-fuchsia-400 transition-colors duration-200">
-              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069M12 0C8.741 0 8.332.014 7.052.072 2.695.272.273 2.69.073 7.052.014 8.332 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.69.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0m0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324M12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8m6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881"/></svg>
+            <a href="https://instagram.com/agentiq.co.in" target="_blank" rel="noopener" aria-label="AgentIQ on Instagram" class="grid place-items-center w-9 h-9 rounded-xl bg-white/5 hover:bg-fuchsia-500/20 border border-white/8 text-slate-400 hover:text-fuchsia-400 transition-colors duration-200">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069M12 0C8.741 0 8.332.014 7.052.072 2.695.272.273 2.69.073 7.052.014 8.332 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.69.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0m0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324M12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8m6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881"/></svg>
             </a>
           </div>
         </div>
@@ -880,7 +900,7 @@
         <!-- Services -->
         <div>
           <p class="text-white font-600 text-sm mb-4">Services</p>
-          <ul class="space-y-3 text-sm text-slate-500">
+          <ul class="space-y-3 text-sm text-slate-400">
             <li><a href="#how" class="hover:text-white transition-colors">AI Chatbots</a></li>
             <li><a href="#how" class="hover:text-white transition-colors">WhatsApp Bots</a></li>
             <li><a href="#how" class="hover:text-white transition-colors">Instagram DM Bots</a></li>
@@ -892,7 +912,7 @@
         <!-- Company -->
         <div>
           <p class="text-white font-600 text-sm mb-4">Company</p>
-          <ul class="space-y-3 text-sm text-slate-500">
+          <ul class="space-y-3 text-sm text-slate-400">
             <li><a href="#results" class="hover:text-white transition-colors">Results</a></li>
             <li><a href="#pricing" class="hover:text-white transition-colors">Pricing</a></li>
             <li><a href="#faq" class="hover:text-white transition-colors">FAQ</a></li>
@@ -903,17 +923,17 @@
         <!-- Contact -->
         <div>
           <p class="text-white font-600 text-sm mb-4">Contact</p>
-          <ul class="space-y-3 text-sm text-slate-500">
+          <ul class="space-y-3 text-sm text-slate-400">
             <li><a href="tel:+919159775266" class="hover:text-white transition-colors">+91 91597 75266</a></li>
             <li><a href="https://wa.me/919159775266" target="_blank" rel="noopener" class="hover:text-white transition-colors">WhatsApp us</a></li>
             <li><a href="#book" class="hover:text-white transition-colors">Book a demo</a></li>
-            <li class="text-slate-600">Mumbai, India 🇮🇳</li>
+            <li class="text-slate-400">Mumbai, India 🇮🇳</li>
           </ul>
         </div>
       </div>
 
       <!-- Bottom bar -->
-      <div class="pt-8 border-t border-white/8 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-600">
+      <div class="pt-8 border-t border-white/8 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400">
         <p>© <span id="year">2026</span> AgentIQ. All rights reserved.</p>
         <p>Made with ❤️ in India · Powered by Claude AI</p>
       </div>
@@ -922,11 +942,11 @@
 
   <!-- AI Chat Widget -->
   <div id="aiq-float">
-    <button id="aiq-toggle" aria-label="Chat with AgentIQ AI">
+    <button id="aiq-toggle" type="button" aria-label="Chat with AgentIQ AI" aria-haspopup="dialog" aria-expanded="false" aria-controls="aiq-panel">
       <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
       </svg>
-      <span id="aiq-notif" class="aiq-gone" aria-label="New message">1</span>
+      <span id="aiq-notif" class="aiq-gone" aria-hidden="true">1</span>
     </button>
 
     <div id="aiq-panel" class="aiq-shut" role="dialog" aria-label="AgentIQ chat assistant">
@@ -935,17 +955,17 @@
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
         </div>
         <div class="info">
-          <h4>AgentIQ AI</h4>
+          <p class="name">AgentIQ AI</p>
           <span class="st">Typically replies instantly</span>
         </div>
-        <button id="aiq-x" aria-label="Close chat">&#x2715;</button>
+        <button id="aiq-x" type="button" aria-label="Close chat">&#x2715;</button>
       </div>
 
       <div id="aiq-log" aria-live="polite"></div>
 
       <div id="aiq-bar">
-        <input id="aiq-in" type="text" placeholder="Ask anything…" maxlength="400" autocomplete="off" />
-        <button id="aiq-go" aria-label="Send message">
+        <input id="aiq-in" type="text" placeholder="Ask anything…" aria-label="Type your message to AgentIQ" maxlength="400" autocomplete="off" />
+        <button id="aiq-go" type="button" aria-label="Send message">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/></svg>
         </button>
       </div>
@@ -1066,8 +1086,11 @@
       function streamText(text) {
         if (reduce) { bubble(text, 'bot'); return; }
         var d = bubble('', 'bot'); var i = 0;
+        // Hide the noisy per-character mutations from assistive tech; announce once when done.
+        d.setAttribute('aria-hidden', 'true');
         (function stream() {
           if (i <= text.length) { d.textContent = text.slice(0, i); log.scrollTop = log.scrollHeight; i += 2; setTimeout(stream, 14); }
+          else { d.removeAttribute('aria-hidden'); }
         })();
       }
 
@@ -1121,7 +1144,7 @@
       Object.keys(fallbackConvo).forEach(function (q) {
         var b = document.createElement('button');
         b.type = 'button';
-        b.className = 'cursor-pointer text-sm px-3.5 py-2 rounded-full glass text-slate-200 hover:bg-white/10 hover:text-white transition-colors duration-200';
+        b.className = 'cursor-pointer text-sm px-3.5 py-2 rounded-full glass text-slate-200 hover:bg-white/10 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-ink transition-colors duration-200';
         b.textContent = q;
         b.addEventListener('click', function () { ask(q); });
         chips.appendChild(b);
@@ -1138,12 +1161,25 @@
       form.addEventListener('submit', function (e) {
         e.preventDefault();
         var name = document.getElementById('name'), phone = document.getElementById('phone');
-        var ok = true;
-        [name, phone].forEach(function (f) {
-          if (!f.value.trim()) { f.classList.add('ring-2', 'ring-red-400'); ok = false; }
-          else { f.classList.remove('ring-2', 'ring-red-400'); }
-        });
-        if (!ok) return;
+        var ok = true, firstInvalid = null;
+        function setError(field, errId, invalid) {
+          var err = document.getElementById(errId);
+          if (invalid) {
+            field.classList.add('ring-2', 'ring-red-400');
+            field.setAttribute('aria-invalid', 'true');
+            if (err) err.classList.remove('hidden');
+            if (!firstInvalid) firstInvalid = field;
+            ok = false;
+          } else {
+            field.classList.remove('ring-2', 'ring-red-400');
+            field.removeAttribute('aria-invalid');
+            if (err) err.classList.add('hidden');
+          }
+        }
+        // Phone: require at least 8 digits so "abc" is rejected with a real suggestion (SC 3.3.3)
+        setError(name, 'name-err', !name.value.trim());
+        setError(phone, 'phone-err', (phone.value.replace(/\D/g, '').length < 8));
+        if (!ok) { if (firstInvalid) firstInvalid.focus(); return; }
 
         // Send lead to backend (non-blocking)
         if (AGENTIQ_API) {
@@ -1186,16 +1222,24 @@
         function openChat() {
           open = true;
           panel.classList.remove('aiq-shut');
+          toggle.setAttribute('aria-expanded', 'true');
           notif.classList.add('aiq-gone');
           inp.focus();
         }
-        function closeChat() {
+        function closeChat(returnFocus) {
           open = false;
           panel.classList.add('aiq-shut');
+          toggle.setAttribute('aria-expanded', 'false');
+          if (returnFocus !== false) toggle.focus();
         }
 
         toggle.addEventListener('click', function () { open ? closeChat() : openChat(); });
-        xBtn.addEventListener('click', closeChat);
+        xBtn.addEventListener('click', function () { closeChat(); });
+
+        // Escape closes the chat and returns focus to the toggle (SC 2.1.2 / 2.4.3)
+        panel.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && open) { e.preventDefault(); closeChat(); }
+        });
 
         function addBubble(text, who) {
           var d = document.createElement('div');
@@ -1222,12 +1266,13 @@
           if (reduce) { addBubble(text, 'bot'); return; }
           var d = addBubble('', 'bot');
           var i = 0;
+          d.setAttribute('aria-hidden', 'true');
           (function tick() {
             if (i <= text.length) {
               d.textContent = text.slice(0, i);
               log.scrollTop = log.scrollHeight;
               i += 2; setTimeout(tick, 14);
-            }
+            } else { d.removeAttribute('aria-hidden'); }
           })();
         }
 
