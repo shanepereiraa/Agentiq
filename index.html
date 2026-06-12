@@ -1588,12 +1588,15 @@
         setState('speaking');
         synth.cancel();
         var u = new SpeechSynthesisUtterance(clean(text));
-        u.rate = 1.05; u.pitch = 1; u.volume = 1;
-        // Prefer en-IN voice, fall back to any English
+        u.rate = 1.15; u.pitch = 1.05; u.volume = 1;
+        // Google voices sound natural in Chrome; fall back to named system voices
         var voices = synth.getVoices();
-        var v = voices.find(function(x) { return x.lang === 'en-IN'; })
-               || voices.find(function(x) { return /^en-/.test(x.lang) && /female/i.test(x.name); })
-               || voices.find(function(x) { return /^en-/.test(x.lang); });
+        var v = voices.find(function(x) { return x.name === 'Google UK English Female'; })
+               || voices.find(function(x) { return x.name === 'Google US English'; })
+               || voices.find(function(x) { return /Google/i.test(x.name) && /^en/.test(x.lang); })
+               || voices.find(function(x) { return /Samantha|Karen|Serena|Tessa|Moira/.test(x.name); })
+               || voices.find(function(x) { return /^en/.test(x.lang) && /female/i.test(x.name); })
+               || voices.find(function(x) { return /^en/.test(x.lang); });
         if (v) u.voice = v;
         u.onend = u.onerror = function() { setState('idle'); };
         synth.speak(u);
