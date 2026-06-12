@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AgentIQ — AI Chatbots for WhatsApp, Instagram & Website | India</title>
-  <meta name="description" content="AgentIQ builds done-for-you AI chatbots for WhatsApp, Instagram and your website. Restaurants, salons, healthcare & more — capture leads, take bookings and answer instantly, 24/7. Made in India." />
+  <title>AI Chatbot for WhatsApp & Instagram | AgentIQ India</title>
+  <meta name="description" content="Done-for-you AI chatbots for WhatsApp & Instagram — built for Indian restaurants, salons & clinics. Live in 7 days. No code needed." />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
   <meta name="theme-color" content="#07173a" />
   <link rel="canonical" href="https://agentiq.co.in/" />
 
@@ -75,11 +76,17 @@
   }
   </script>
 
-  <!-- Tailwind CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Fonts: preconnect first, then async non-blocking load with font-display:swap baked in via display=swap param -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Space+Grotesk:wght@500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Space+Grotesk:wght@500;600;700&display=swap" /></noscript>
+
+  <!-- Tailwind CDN (dev-only ~3 MB) -->
+  <!-- PRODUCTION UPGRADE: npx tailwindcss -i ./input.css -o ./tailwind.min.css --minify -->
+  <!-- Then swap this script tag for: <link rel="stylesheet" href="tailwind.min.css" /> -->
+  <!-- Estimated saving: ~2.9 MB eliminated, LCP improvement ~400-800ms on Indian 4G -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
   <script>
     tailwind.config = {
@@ -139,10 +146,21 @@
     .glow-card { box-shadow: 0 0 0 1px rgba(34,211,238,.25), 0 0 60px rgba(34,211,238,.12), 0 0 30px rgba(255,107,92,.1); }
     .stat-num { background: linear-gradient(135deg,#fff 0%,rgba(255,255,255,.7) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
     .section-label { font-size: .7rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: #22D3EE; }
+
+    /* GPU promotion: blob and float animations use only transform+opacity — compositor-only,
+       no layout or paint. will-change creates a separate layer per blob.
+       Capped at 4 blobs to avoid excess layer memory on low-RAM Android devices. */
+    .animate-blob { will-change: transform; }
+    .animate-float { will-change: transform; }
+    /* Marquee runs on transform only — safe to promote */
+    .animate-marquee { will-change: transform; }
+
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation: none !important; transition: none !important; }
       .reveal { opacity: 1 !important; transform: none !important; }
       html { scroll-behavior: auto; }
+      /* Release compositor layers when animations are disabled */
+      .animate-blob, .animate-float, .animate-marquee { will-change: auto; }
     }
 
     /* ── AI Chat Widget ─────────────────────────────── */
@@ -277,8 +295,8 @@
 
 <body class="font-sans text-slate-200 antialiased overflow-x-hidden">
 
-  <!-- Ambient background -->
-  <div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+  <!-- Ambient background: contain:strict isolates repaints from animated blobs to this layer only -->
+  <div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none" style="contain:strict">
     <div class="absolute inset-0" style="background:linear-gradient(165deg,#0c2a5e 0%,#08183a 45%,#060f28 100%)"></div>
     <div class="absolute -top-28 -left-20 w-[34rem] h-[34rem] rounded-full bg-coral/40 blur-[110px] animate-blob"></div>
     <div class="absolute top-1/4 -right-24 w-[32rem] h-[32rem] rounded-full bg-orange/30 blur-[120px] animate-blob" style="animation-delay:-6s"></div>
@@ -293,7 +311,7 @@
   <!-- NAVBAR -->
   <header class="fixed top-3 left-3 right-3 z-50">
     <nav class="max-w-6xl mx-auto glass rounded-2xl px-4 sm:px-5 py-3 flex items-center justify-between">
-      <a href="#" class="flex items-center gap-2.5 group" aria-label="AgentIQ home">
+      <a href="/" class="flex items-center gap-2.5 group" aria-label="AgentIQ home">
         <span class="grid place-items-center w-9 h-9 rounded-xl bg-gradient-to-br from-coral to-orange text-white shadow-lg shadow-coral/30">
           <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
         </span>
@@ -349,8 +367,8 @@
           </div>
         </div>
 
-        <!-- Hero chat mockup -->
-        <div class="reveal relative">
+        <!-- Hero chat mockup: min-height reserves layout space before fonts render, preventing CLS -->
+        <div class="reveal relative" style="min-height:340px">
           <div class="absolute -inset-8 bg-gradient-to-tr from-coral/20 to-cyan/15 blur-3xl rounded-[2rem]"></div>
           <div class="relative glass-strong rounded-[1.75rem] p-5 shadow-2xl shadow-black/50 animate-float">
             <!-- WhatsApp header -->
@@ -504,7 +522,7 @@
     </section>
 
     <!-- RESULTS / CASE STUDIES -->
-    <section id="results" class="py-20 px-5">
+    <section id="results" class="py-20 px-5" style="content-visibility:auto;contain-intrinsic-size:0 800px">
       <div class="max-w-6xl mx-auto">
         <div class="reveal text-center max-w-2xl mx-auto mb-12">
           <p class="text-cyan text-sm font-500 tracking-wide mb-3">RESULTS</p>
@@ -594,7 +612,7 @@
     </section>
 
     <!-- INDUSTRIES -->
-    <section id="industries" class="py-20 px-5">
+    <section id="industries" class="py-20 px-5" style="content-visibility:auto;contain-intrinsic-size:0 900px">
       <div class="max-w-6xl mx-auto">
         <div class="reveal text-center max-w-2xl mx-auto mb-12">
           <p class="text-cyan text-sm font-500 tracking-wide mb-3">SPECIALISTS, NOT GENERALISTS</p>
@@ -678,7 +696,7 @@
     </section>
 
     <!-- PRICING -->
-    <section id="pricing" class="py-20 px-5">
+    <section id="pricing" class="py-20 px-5" style="content-visibility:auto;contain-intrinsic-size:0 700px">
       <div class="max-w-6xl mx-auto">
         <div class="reveal text-center max-w-2xl mx-auto mb-12">
           <p class="text-cyan text-sm font-500 tracking-wide mb-3">PRICING</p>
@@ -737,7 +755,7 @@
     </section>
 
     <!-- FAQ -->
-    <section id="faq" class="py-20 px-5">
+    <section id="faq" class="py-20 px-5" style="content-visibility:auto;contain-intrinsic-size:0 600px">
       <div class="max-w-3xl mx-auto">
         <div class="reveal text-center mb-12">
           <p class="text-cyan text-sm font-500 tracking-wide mb-3">FAQ</p>
@@ -842,7 +860,7 @@
       <div class="grid grid-cols-2 md:grid-cols-4 gap-10 mb-12">
         <!-- Brand -->
         <div class="col-span-2 md:col-span-1">
-          <a href="#" class="flex items-center gap-2.5 mb-4">
+          <a href="/" class="flex items-center gap-2.5 mb-4">
             <span class="grid place-items-center w-9 h-9 rounded-xl bg-gradient-to-br from-coral to-orange text-white shadow-lg shadow-coral/30">
               <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
             </span>
@@ -896,7 +914,7 @@
 
       <!-- Bottom bar -->
       <div class="pt-8 border-t border-white/8 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-600">
-        <p>© <span id="year"></span> AgentIQ. All rights reserved.</p>
+        <p>© <span id="year">2026</span> AgentIQ. All rights reserved.</p>
         <p>Made with ❤️ in India · Powered by Claude AI</p>
       </div>
     </div>
@@ -1002,10 +1020,18 @@
       function svgFor(l) {
         return '<span class="flex items-center gap-2.5 shrink-0 hover:text-white transition-colors duration-200"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="' + l.p + '"/></svg><span class="text-sm font-500 whitespace-nowrap">' + l.n + '</span></span>';
       }
-      var html = logos.map(svgFor).join('');
-      var ls1 = document.getElementById('logoset'), ls2 = document.getElementById('logoset2');
-      if (ls1) ls1.innerHTML = html;
-      if (ls2) ls2.innerHTML = html;
+      // Defer marquee DOM injection until idle — it's below the fold and not LCP-critical
+      function injectLogos() {
+        var html = logos.map(svgFor).join('');
+        var ls1 = document.getElementById('logoset'), ls2 = document.getElementById('logoset2');
+        if (ls1) ls1.innerHTML = html;
+        if (ls2) ls2.innerHTML = html;
+      }
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(injectLogos, { timeout: 2000 });
+      } else {
+        injectLogos();
+      }
 
       // Interactive demo — real Claude API with static fallback
       var AGENTIQ_API = (window.AgentIQConfig || {}).apiBase || '';
@@ -1250,13 +1276,20 @@
           if (e.key === 'Enter') { e.preventDefault(); send(); }
         });
 
-        // Greet after 3 s and show notification badge
-        setTimeout(function () {
-          var greeting = 'Namaste! 👋 I\'m AgentIQ\'s AI assistant. Ask me about pricing, industries we serve, or how to get your bot live in 7 days.';
-          addBubble(greeting, 'bot');
-          msgs.push({ role: 'assistant', content: greeting });
-          if (!open) notif.classList.remove('aiq-gone');
-        }, 3000);
+        // Greet after 3 s — but wait for browser idle first so this never competes with LCP/FID
+        var greetFn = function () {
+          setTimeout(function () {
+            var greeting = 'Namaste! 👋 I\'m AgentIQ\'s AI assistant. Ask me about pricing, industries we serve, or how to get your bot live in 7 days.';
+            addBubble(greeting, 'bot');
+            msgs.push({ role: 'assistant', content: greeting });
+            if (!open) notif.classList.remove('aiq-gone');
+          }, 3000);
+        };
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(greetFn, { timeout: 5000 });
+        } else {
+          greetFn();
+        }
       })();
     })();
   </script>
