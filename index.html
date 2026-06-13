@@ -1549,66 +1549,57 @@
     </button>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/@vapi-ai/web/dist/vapi.iife.js" defer></script>
-  <script>
+  <script type="module">
+    import Vapi from 'https://esm.sh/@vapi-ai/web';
+
     (function () {
-      'use strict';
-      var floatEl = document.getElementById('vaq-float');
-      var btn     = document.getElementById('vaq-btn');
+      var floatEl  = document.getElementById('vaq-float');
+      var btn      = document.getElementById('vaq-btn');
       var statusEl = document.getElementById('vaq-status');
+      var VAPI_KEY = (window.AgentIQConfig && window.AgentIQConfig.vapiPublicKey) || '';
 
-      function init() {
-        var VAPI_KEY = (window.AgentIQConfig && window.AgentIQConfig.vapiPublicKey) || '';
-        if (!VAPI_KEY || VAPI_KEY === 'YOUR_VAPI_PUBLIC_KEY' || !window.Vapi) {
-          floatEl.style.display = 'none'; return;
-        }
+      if (!VAPI_KEY || VAPI_KEY === 'YOUR_VAPI_PUBLIC_KEY') {
+        floatEl.style.display = 'none'; return;
+      }
 
-        var vapi  = new window.Vapi(VAPI_KEY);
-        var state = 'idle';
+      var vapi  = new Vapi(VAPI_KEY);
+      var state = 'idle';
 
-        function setState(s) {
-          state = s;
-          btn.setAttribute('data-state', s);
-          var labels = { connecting: 'Connecting…', listening: 'Listening…', speaking: 'Speaking…' };
-          statusEl.textContent   = labels[s] || '';
-          statusEl.style.opacity = s === 'idle' ? '0' : '1';
-          btn.setAttribute('aria-label', s === 'idle'
-            ? 'Talk to AgentIQ voice assistant'
-            : (labels[s] || '') + ' — click to stop');
-        }
+      function setState(s) {
+        state = s;
+        btn.setAttribute('data-state', s);
+        var labels = { connecting: 'Connecting…', listening: 'Listening…', speaking: 'Speaking…' };
+        statusEl.textContent   = labels[s] || '';
+        statusEl.style.opacity = s === 'idle' ? '0' : '1';
+        btn.setAttribute('aria-label', s === 'idle'
+          ? 'Talk to AgentIQ voice assistant'
+          : (labels[s] || '') + ' — click to stop');
+      }
 
-        vapi.on('call-start',   function() { setState('listening'); });
-        vapi.on('call-end',     function() { setState('idle');      });
-        vapi.on('speech-start', function() { setState('speaking');  });
-        vapi.on('speech-end',   function() { setState('listening'); });
-        vapi.on('error',        function() { setState('idle');      });
+      vapi.on('call-start',   function() { setState('listening'); });
+      vapi.on('call-end',     function() { setState('idle');      });
+      vapi.on('speech-start', function() { setState('speaking');  });
+      vapi.on('speech-end',   function() { setState('listening'); });
+      vapi.on('error',        function() { setState('idle');      });
 
-        btn.addEventListener('click', function() {
-          if (state !== 'idle') { vapi.stop(); setState('idle'); return; }
-          setState('connecting');
-          vapi.start({
-            transcriber: { provider: 'deepgram', model: 'nova-2', language: 'en-IN' },
-            model: {
-              provider: 'anthropic',
-              model: 'claude-haiku-4-5',
-              messages: [{
-                role: 'system',
-                content: 'You are AgentIQ\'s friendly voice assistant. AgentIQ builds done-for-you AI chatbots for WhatsApp, Instagram, and websites — for Indian restaurants, salons, clinics, real estate, and D2C brands. Live in 7 days, no code needed. Chatbot pricing: Starter ₹14,999 setup + ₹4,999/month (1 channel). Growth ₹34,999 + ₹9,999/month (all 3 channels). Voice Agents beta: ₹25,000–₹1,50,000/month. Keep every reply under 40 words. Be warm and direct. To get started: book a demo at agentiq.co.in or WhatsApp +91 91597 75266.'
-              }],
-              maxTokens: 120
-            },
-            voice: { provider: 'azure', voiceId: 'en-IN-NeerjaNeural' },
-            firstMessage: 'Namaste! I\'m AgentIQ\'s assistant. Ask me about our AI chatbots or voice agents for your business.'
-          });
+      btn.addEventListener('click', function() {
+        if (state !== 'idle') { vapi.stop(); setState('idle'); return; }
+        setState('connecting');
+        vapi.start({
+          transcriber: { provider: 'deepgram', model: 'nova-2', language: 'en-IN' },
+          model: {
+            provider: 'anthropic',
+            model: 'claude-haiku-4-5',
+            messages: [{
+              role: 'system',
+              content: 'You are AgentIQ\'s friendly voice assistant. AgentIQ builds done-for-you AI chatbots for WhatsApp, Instagram, and websites — for Indian restaurants, salons, clinics, real estate, and D2C brands. Live in 7 days, no code needed. Chatbot pricing: Starter ₹14,999 setup + ₹4,999/month (1 channel). Growth ₹34,999 + ₹9,999/month (all 3 channels). Voice Agents beta: ₹25,000–₹1,50,000/month. Keep every reply under 40 words. Be warm and direct. To get started: book a demo at agentiq.co.in or WhatsApp +91 91597 75266.'
+            }],
+            maxTokens: 120
+          },
+          voice: { provider: 'azure', voiceId: 'en-IN-NeerjaNeural' },
+          firstMessage: 'Namaste! I\'m AgentIQ\'s assistant. Ask me about our AI chatbots or voice agents for your business.'
         });
-      }
-
-      // VAPI SDK loads async — wait for it before initialising
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
-      } else {
-        setTimeout(init, 0);
-      }
+      });
     })();
   </script>
 </body>
