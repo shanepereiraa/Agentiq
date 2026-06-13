@@ -1559,7 +1559,7 @@
 
       var msgs = [];
       var recognition = new SR();
-      var currentAudio = null;
+      var synth = window.speechSynthesis;
       var state = 'idle';
 
       recognition.continuous = false;
@@ -1586,25 +1586,19 @@
 
       function speak(text) {
         setState('speaking');
-        if (currentAudio) { currentAudio.pause(); currentAudio = null; }
-        fetch(AGENTIQ_API + '/api/tts', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ text: clean(text) })
-        })
-          .then(function(r) {
-            if (!r.ok) throw new Error('TTS failed');
-            return r.blob();
-          })
-          .then(function(blob) {
-            var url = URL.createObjectURL(blob);
-            var audio = new Audio(url);
-            currentAudio = audio;
-            audio.onended = function() { URL.revokeObjectURL(url); currentAudio = null; setState('idle'); };
-            audio.onerror = function() { URL.revokeObjectURL(url); currentAudio = null; setState('idle'); };
-            audio.play();
-          })
-          .catch(function() { setState('idle'); });
+        synth.cancel();
+        var u = new SpeechSynthesisUtterance(clean(text));
+        u.rate = 1.15; u.pitch = 1.05; u.volume = 1;
+        var voices = synth.getVoices();
+        var v = voices.find(function(x) { return x.name === 'Google UK English Female'; })
+               || voices.find(function(x) { return x.name === 'Google US English'; })
+               || voices.find(function(x) { return /Google/i.test(x.name) && /^en/.test(x.lang); })
+               || voices.find(function(x) { return /Samantha|Karen|Serena|Tessa|Moira/.test(x.name); })
+               || voices.find(function(x) { return /^en/.test(x.lang) && /female/i.test(x.name); })
+               || voices.find(function(x) { return /^en/.test(x.lang); });
+        if (v) u.voice = v;
+        u.onend = u.onerror = function() { setState('idle'); };
+        synth.speak(u);
       }
 
       function sendToAI(text) {
@@ -1636,13 +1630,16 @@
       };
 
       btn.addEventListener('click', function() {
-        if (state === 'speaking') { if (currentAudio) { currentAudio.pause(); currentAudio = null; } setState('idle'); return; }
+        if (state === 'speaking') { synth.cancel(); setState('idle'); return; }
         if (state === 'listening') { recognition.stop(); setState('idle'); return; }
         if (state === 'thinking') return;
         setState('listening');
         try { recognition.start(); } catch(e) { setState('idle'); }
       });
 
+      // Pre-warm voice list so first response speaks immediately
+      if (synth.onvoiceschanged !== undefined) synth.onvoiceschanged = function() {};
+      synth.getVoices();
     })();
   </script>
 </body>
