@@ -1576,20 +1576,24 @@
           : (labels[s] || '') + ' — click to stop');
       }
 
-      vapi.on('call-start',   function() { setState('listening'); });
-      vapi.on('call-end',     function() { setState('idle');      });
+      var connectTimer = null;
+
+      vapi.on('call-start',   function() { clearTimeout(connectTimer); setState('listening'); });
+      vapi.on('call-end',     function() { clearTimeout(connectTimer); setState('idle');      });
       vapi.on('speech-start', function() { setState('speaking');  });
       vapi.on('speech-end',   function() { setState('listening'); });
-      vapi.on('error',        function() { setState('idle');      });
+      vapi.on('error',        function(e) { clearTimeout(connectTimer); console.error('VAPI error:', e); setState('idle'); });
 
       btn.addEventListener('click', function() {
-        if (state !== 'idle') { vapi.stop(); setState('idle'); return; }
+        if (state !== 'idle') { vapi.stop(); clearTimeout(connectTimer); setState('idle'); return; }
         setState('connecting');
+        // Fallback: if call-start never fires within 12s, reset
+        connectTimer = setTimeout(function() { vapi.stop(); setState('idle'); }, 12000);
         vapi.start({
           transcriber: { provider: 'deepgram', model: 'nova-2', language: 'en-IN' },
           model: {
             provider: 'anthropic',
-            model: 'claude-haiku-4-5',
+            model: 'claude-3-5-haiku-20241022',
             messages: [{
               role: 'system',
               content: 'You are AgentIQ\'s friendly voice assistant. AgentIQ builds done-for-you AI chatbots for WhatsApp, Instagram, and websites — for Indian restaurants, salons, clinics, real estate, and D2C brands. Live in 7 days, no code needed. Chatbot pricing: Starter ₹14,999 setup + ₹4,999/month (1 channel). Growth ₹34,999 + ₹9,999/month (all 3 channels). Voice Agents beta: ₹25,000–₹1,50,000/month. Keep every reply under 40 words. Be warm and direct. To get started: book a demo at agentiq.co.in or WhatsApp +91 91597 75266.'
