@@ -10,7 +10,7 @@ AI-powered chatbots and voice agents for Indian businesses — live in 7 days, n
 
 ```
 agentiq/
-├── website/        Main website (agentiq.co.in) — includes Naina voice widget
+├── index.html      Main website (agentiq.co.in) — includes Naina voice widget
 ├── backend-api/    Chatbot API backend (Express + Claude Haiku 4.5)
 ```
 
@@ -33,7 +33,7 @@ Managed entirely in the Vapi dashboard (no local codebase).
 - **Avg cost:** ~$0.08/min | **Avg latency:** ~1,950ms
 - **Status:** Published
 
-The widget is embedded in `website/index.html` — Vapi public key and assistant ID are hardcoded there.
+The widget is embedded in `index.html` — Vapi public key and assistant ID are hardcoded there.
 
 ---
 
