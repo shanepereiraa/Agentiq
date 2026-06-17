@@ -305,6 +305,32 @@
     #aiq-go:disabled { opacity: .4; cursor: default; }
     #aiq-go svg { width: 14px; height: 14px; fill: #fff; }
 
+    #aiq-lead-form {
+      padding: 14px 13px 16px;
+      display: flex; flex-direction: column; gap: 9px;
+    }
+    #aiq-lead-form p {
+      font-size: 13px; color: #cbd5e1; margin: 0 0 2px;
+    }
+    #aiq-lead-form input {
+      background: rgba(255,255,255,.06);
+      border: 1.5px solid rgba(255,255,255,.1);
+      border-radius: 10px; padding: 8px 12px;
+      font-size: 13px; color: #fff; outline: none; font-family: inherit;
+      transition: border-color .15s;
+    }
+    #aiq-lead-form input::placeholder { color: rgba(255,255,255,.45); }
+    #aiq-lead-form input:focus { border-color: #22D3EE; }
+    #aiq-lead-start {
+      margin-top: 2px; padding: 9px;
+      background: linear-gradient(135deg,#FF9F45,#FF6B5C);
+      border: none; border-radius: 10px;
+      color: #fff; font-size: 13px; font-weight: 600;
+      cursor: pointer; transition: opacity .15s;
+    }
+    #aiq-lead-start:hover { opacity: .88; }
+    #aiq-lead-start:disabled { opacity: .5; cursor: default; }
+
     @media (max-width: 380px) {
       #aiq-panel { width: calc(100vw - 24px); right: 0; }
     }
@@ -1097,9 +1123,17 @@
         <button id="aiq-x" type="button" aria-label="Close chat">&#x2715;</button>
       </div>
 
-      <div id="aiq-log" aria-live="polite"></div>
+      <div id="aiq-lead-form">
+        <p>👋 Before we chat, tell us a bit about yourself:</p>
+        <input id="aiq-lname" type="text" placeholder="Your name" maxlength="60" autocomplete="name" />
+        <input id="aiq-lphone" type="tel" placeholder="WhatsApp / phone number" maxlength="15" autocomplete="tel" />
+        <input id="aiq-lbiz" type="text" placeholder="Business type (e.g. Restaurant)" maxlength="80" />
+        <button id="aiq-lead-start" type="button">Start Chat →</button>
+      </div>
 
-      <div id="aiq-bar">
+      <div id="aiq-log" aria-live="polite" style="display:none"></div>
+
+      <div id="aiq-bar" style="display:none">
         <input id="aiq-in" type="text" placeholder="Ask anything…" aria-label="Type your message to AgentIQ" maxlength="400" autocomplete="off" />
         <button id="aiq-go" type="button" aria-label="Send message">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/></svg>
@@ -1358,12 +1392,49 @@
         var goBtn  = document.getElementById('aiq-go');
         var notif  = document.getElementById('aiq-notif');
 
+        var leadCaptured = false;
+        var leadForm = document.getElementById('aiq-lead-form');
+        var leadNameInput = document.getElementById('aiq-lname');
+        var leadPhoneInput = document.getElementById('aiq-lphone');
+        var leadBizInput = document.getElementById('aiq-lbiz');
+        var leadStartBtn = document.getElementById('aiq-lead-start');
+        var aiqLog = document.getElementById('aiq-log');
+        var aiqBar = document.getElementById('aiq-bar');
+
+        leadStartBtn.addEventListener('click', function () {
+          var name = leadNameInput.value.trim();
+          var phone = leadPhoneInput.value.trim();
+          if (!name || phone.replace(/\D/g, '').length < 8) {
+            leadNameInput.style.borderColor = !name ? '#ef4444' : '';
+            leadPhoneInput.style.borderColor = phone.replace(/\D/g, '').length < 8 ? '#ef4444' : '';
+            return;
+          }
+          leadStartBtn.disabled = true;
+          leadStartBtn.textContent = 'Starting…';
+
+          if (AGENTIQ_API) {
+            fetch(AGENTIQ_API + '/lead', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ name: name, phone: phone, business: leadBizInput.value.trim() }),
+            }).catch(function () {});
+          }
+
+          leadCaptured = true;
+          leadForm.style.display = 'none';
+          aiqLog.style.display = 'flex';
+          aiqBar.style.display = 'flex';
+          streamBubble('Hi ' + name + '! 👋 Ask me anything about our AI chatbots, voice agents, pricing, or how we can automate your business.');
+          msgs.push({ role: 'assistant', content: 'Hi ' + name + '! 👋 Ask me anything about our AI chatbots, voice agents, pricing, or how we can automate your business.' });
+          inp.focus();
+        });
+
         function openChat() {
           open = true;
           panel.classList.remove('aiq-shut');
           toggle.setAttribute('aria-expanded', 'true');
           notif.classList.add('aiq-gone');
-          inp.focus();
+          if (leadCaptured) inp.focus(); else leadNameInput.focus();
         }
         function closeChat(returnFocus) {
           open = false;
@@ -1463,9 +1534,6 @@
         // Greet after 3 s — but wait for browser idle first so this never competes with LCP/FID
         var greetFn = function () {
           setTimeout(function () {
-            var greeting = 'Namaste! 👋 I\'m AgentIQ\'s AI assistant. Ask me about pricing, industries we serve, or how to get your bot live in 7 days.';
-            addBubble(greeting, 'bot');
-            msgs.push({ role: 'assistant', content: greeting });
             if (!open) notif.classList.remove('aiq-gone');
           }, 3000);
         };
