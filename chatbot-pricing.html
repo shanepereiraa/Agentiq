@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgentIQ — AI Chatbot Packages for Indian Businesses</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --accent: #7c3aed;
+            --accent-light: #8b5cf6;
+            --accent-glow: rgba(124, 58, 237, 0.3);
+            --bg: #050810;
+            --bg-surface: #131926;
+            --bg-card: #1a2035;
+            --border: rgba(255,255,255,0.08);
+            --border-accent: rgba(124,58,237,0.4);
+            --text: #ffffff;
+            --text-secondary: rgba(255,255,255,0.65);
+            --text-muted: rgba(255,255,255,0.4);
+            --success: #10b981;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* NAV */
+        nav {
+            position: sticky; top: 0; z-index: 100;
+            background: rgba(5,8,16,0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 2rem;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .nav-logo {
+            font-size: 1.25rem; font-weight: 800;
+            background: linear-gradient(135deg, #fff 0%, var(--accent-light) 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .nav-cta {
+            background: var(--accent); color: white;
+            padding: 0.5rem 1.25rem; border-radius: 8px;
+            font-weight: 600; font-size: 0.875rem;
+            text-decoration: none; transition: all 0.2s;
+        }
+        .nav-cta:hover { background: var(--accent-light); transform: translateY(-1px); }
+
+        /* HERO */
+        .hero {
+            padding: 5rem 2rem 4rem; text-align: center;
+            max-width: 900px; margin: 0 auto; position: relative;
+        }
+        .hero::before {
+            content: ''; position: absolute; top: 0; left: 50%;
+            transform: translateX(-50%); width: 600px; height: 400px;
+            background: radial-gradient(ellipse, rgba(124,58,237,0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .badge {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background: rgba(124,58,237,0.15); border: 1px solid var(--border-accent);
+            border-radius: 100px; padding: 0.4rem 1rem;
+            font-size: 0.8rem; font-weight: 600; color: var(--accent-light);
+            margin-bottom: 1.5rem; letter-spacing: 0.02em;
+        }
+        h1 {
+            font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 900;
+            line-height: 1.1; margin-bottom: 1.25rem; letter-spacing: -0.02em;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #a78bfa, #7c3aed, #4f46e5);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .hero-sub {
+            font-size: 1.1rem; color: var(--text-secondary);
+            max-width: 620px; margin: 0 auto 2.5rem;
+        }
+        .hero-actions {
+            display: flex; gap: 1rem; justify-content: center;
+            flex-wrap: wrap; margin-bottom: 3rem;
+        }
+        .btn-primary {
+            background: var(--accent); color: white;
+            padding: 0.85rem 2rem; border-radius: 10px;
+            font-weight: 700; font-size: 1rem;
+            text-decoration: none; transition: all 0.2s;
+        }
+        .btn-primary:hover { background: var(--accent-light); transform: translateY(-2px); box-shadow: 0 8px 30px var(--accent-glow); }
+        .btn-secondary {
+            background: transparent; color: white;
+            padding: 0.85rem 2rem; border-radius: 10px;
+            font-weight: 600; font-size: 1rem;
+            text-decoration: none; border: 1px solid var(--border); transition: all 0.2s;
+        }
+        .btn-secondary:hover { border-color: var(--accent-light); background: rgba(124,58,237,0.1); }
+        .hero-stats {
+            display: flex; gap: 2.5rem; justify-content: center; flex-wrap: wrap;
+        }
+        .stat { text-align: center; }
+        .stat-value { font-size: 1.75rem; font-weight: 800; color: var(--accent-light); }
+        .stat-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+
+        /* SECTIONS */
+        section { padding: 5rem 1.5rem; max-width: 1200px; margin: 0 auto; }
+        .section-label {
+            font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.1em; color: var(--accent-light);
+            text-align: center; margin-bottom: 0.75rem;
+        }
+        h2 {
+            font-size: clamp(1.75rem, 3vw, 2.4rem); font-weight: 800;
+            text-align: center; margin-bottom: 0.75rem; letter-spacing: -0.02em;
+        }
+        .section-sub {
+            text-align: center; color: var(--text-secondary);
+            font-size: 1rem; max-width: 600px; margin: 0 auto 3rem;
+        }
+        hr.section-divider {
+            border: none; border-top: 1px solid var(--border);
+            max-width: 1200px; margin: 0 auto;
+        }
+
+        /* LEVEL DIAGRAM */
+        .level-grid {
+            display: flex; flex-direction: column; gap: 0.75rem;
+            max-width: 720px; margin: 0 auto;
+        }
+        .level-row {
+            display: flex; align-items: center; gap: 1rem;
+            padding: 1rem 1.25rem; background: var(--bg-card);
+            border: 1px solid var(--border); border-radius: 12px; transition: all 0.2s;
+        }
+        .level-row.active {
+            border-color: var(--accent);
+            background: linear-gradient(135deg, var(--bg-card), rgba(124,58,237,0.08));
+            box-shadow: 0 0 0 1px var(--accent), 0 8px 30px rgba(124,58,237,0.15);
+        }
+        .level-num {
+            width: 36px; height: 36px; border-radius: 50%;
+            background: var(--bg-surface); border: 2px solid var(--border);
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 800; font-size: 0.85rem; flex-shrink: 0; color: var(--text-muted);
+        }
+        .level-row.active .level-num { background: var(--accent); border-color: var(--accent); color: white; }
+        .level-content { flex: 1; }
+        .level-title { font-weight: 700; font-size: 0.95rem; margin-bottom: 0.2rem; }
+        .level-desc { font-size: 0.8rem; color: var(--text-secondary); }
+        .level-badge {
+            font-size: 0.68rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.06em; background: var(--accent); color: white;
+            padding: 0.25rem 0.65rem; border-radius: 100px; flex-shrink: 0;
+        }
+
+        /* PRICING CARDS */
+        .pricing-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem; align-items: start;
+        }
+        .pricing-card {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 16px; padding: 2rem; position: relative; transition: all 0.3s;
+        }
+        .pricing-card:hover {
+            border-color: var(--border-accent); transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        .pricing-card.featured {
+            border-color: var(--accent);
+            background: linear-gradient(135deg, var(--bg-card), rgba(124,58,237,0.08));
+            box-shadow: 0 0 0 1px var(--accent), 0 20px 60px rgba(124,58,237,0.15);
+        }
+        .popular-badge {
+            position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+            background: var(--accent); color: white;
+            font-size: 0.68rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.08em; padding: 0.3rem 1rem; border-radius: 100px;
+            white-space: nowrap;
+        }
+        .plan-name {
+            font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.12em; color: var(--text-muted); margin-bottom: 0.4rem;
+        }
+        .plan-title { font-size: 1.5rem; font-weight: 800; margin-bottom: 0.25rem; }
+        .plan-tagline { font-size: 0.83rem; color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.5; }
+        .price-block {
+            background: var(--bg-surface); border-radius: 10px;
+            padding: 1rem 1.25rem; margin-bottom: 1.25rem;
+        }
+        .price-setup-label { font-size: 0.75rem; color: var(--text-muted); display: block; margin-bottom: 0.25rem; }
+        .price-setup { font-size: 1.9rem; font-weight: 800; color: white; }
+        .price-divider { border: none; border-top: 1px solid var(--border); margin: 0.75rem 0; }
+        .price-monthly { font-size: 1.1rem; font-weight: 700; color: var(--accent-light); }
+        .price-monthly-label { font-size: 0.8rem; color: var(--text-muted); font-weight: 400; }
+        .delivery-badge {
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.3);
+            color: #10b981; font-size: 0.75rem; font-weight: 600;
+            padding: 0.3rem 0.75rem; border-radius: 100px; margin-bottom: 1.25rem;
+        }
+        .feature-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1.75rem; }
+        .feature-list li { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.85rem; color: var(--text-secondary); }
+        .feature-list li .ck { color: var(--success); font-size: 0.9rem; flex-shrink: 0; margin-top: 0.1rem; }
+        .feature-list li .cx { color: var(--text-muted); opacity: 0.5; font-size: 0.9rem; flex-shrink: 0; margin-top: 0.1rem; }
+        .feature-list li strong { color: white; }
+        .card-cta {
+            display: block; width: 100%; text-align: center;
+            padding: 0.85rem; border-radius: 10px; font-weight: 700;
+            font-size: 0.95rem; text-decoration: none; transition: all 0.2s;
+        }
+        .card-cta.primary { background: var(--accent); color: white; }
+        .card-cta.primary:hover { background: var(--accent-light); box-shadow: 0 8px 20px var(--accent-glow); }
+        .card-cta.outline { background: transparent; color: white; border: 1px solid var(--border); }
+        .card-cta.outline:hover { border-color: var(--accent-light); background: rgba(124,58,237,0.1); }
+        .gst-note { text-align: center; font-size: 0.78rem; color: var(--text-muted); margin-top: 1.5rem; }
+
+        /* COMPARISON TABLE */
+        .table-wrap { overflow-x: auto; }
+        .comparison-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+        .comparison-table th {
+            padding: 0.9rem 1rem; font-weight: 700; font-size: 0.75rem;
+            text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted);
+            text-align: center; border-bottom: 1px solid var(--border);
+        }
+        .comparison-table th:first-child { text-align: left; }
+        .comparison-table td {
+            padding: 0.8rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.04);
+            text-align: center; color: var(--text-secondary);
+        }
+        .comparison-table td:first-child { text-align: left; color: var(--text); }
+        .comparison-table tr.group-header td {
+            background: rgba(124,58,237,0.07); padding: 0.55rem 1rem;
+            font-size: 0.68rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.1em; color: var(--accent-light); border-bottom: none; text-align: left;
+        }
+        .col-featured { background: rgba(124,58,237,0.06); }
+        .col-featured-head { color: var(--accent-light) !important; }
+        .ck-icon { color: #10b981; }
+        .cx-icon { color: var(--text-muted); opacity: 0.4; font-size: 0.85rem; }
+
+        /* COMPARE CARDS */
+        .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+        @media (max-width: 640px) { .compare-grid { grid-template-columns: 1fr; } }
+        .compare-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 1.75rem; }
+        .compare-card.them { border-top: 3px solid rgba(239,68,68,0.5); }
+        .compare-card.us { border-top: 3px solid var(--accent); }
+        .compare-title { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1.25rem; }
+        .compare-title.bad { color: #ef4444; }
+        .compare-title.good { color: var(--accent-light); }
+        .compare-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+        .compare-list li { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.85rem; color: var(--text-secondary); }
+
+        /* STEPS */
+        .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+        .step-card {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 14px; padding: 1.75rem; text-align: center; transition: all 0.2s;
+        }
+        .step-card:hover { border-color: var(--border-accent); transform: translateY(-2px); }
+        .step-num {
+            width: 48px; height: 48px; border-radius: 12px;
+            background: rgba(124,58,237,0.15); border: 1px solid var(--border-accent);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.3rem; font-weight: 800; color: var(--accent-light);
+            margin: 0 auto 1rem;
+        }
+        .step-title { font-weight: 700; margin-bottom: 0.5rem; }
+        .step-desc { font-size: 0.83rem; color: var(--text-secondary); }
+
+        /* FAQ */
+        .faq-list { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 0.75rem; }
+        .faq-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+        .faq-q {
+            width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+            padding: 1.1rem 1.25rem; background: none; border: none; color: white;
+            font-weight: 600; font-size: 0.9rem; text-align: left; cursor: pointer; transition: color 0.2s;
+        }
+        .faq-q:hover { color: var(--accent-light); }
+        .faq-icon { flex-shrink: 0; font-size: 1.1rem; color: var(--text-muted); transition: transform 0.2s; }
+        .faq-q.open .faq-icon { transform: rotate(45deg); color: var(--accent-light); }
+        .faq-a { display: none; padding: 0 1.25rem 1.25rem; font-size: 0.85rem; color: var(--text-secondary); line-height: 1.7; }
+        .faq-a.show { display: block; }
+
+        /* FINAL CTA */
+        .cta-section {
+            background: linear-gradient(135deg, rgba(124,58,237,0.15) 0%, rgba(79,70,229,0.05) 100%);
+            border: 1px solid var(--border-accent); border-radius: 20px;
+            padding: 4rem 2rem; text-align: center;
+            margin: 2rem auto; max-width: 1200px; position: relative; overflow: hidden;
+        }
+        .cta-section::before {
+            content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+            width: 400px; height: 300px;
+            background: radial-gradient(ellipse, rgba(124,58,237,0.2) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem; }
+        .btn-whatsapp {
+            background: #25d366; color: white;
+            padding: 0.85rem 2rem; border-radius: 10px;
+            font-weight: 700; font-size: 1rem; text-decoration: none;
+            transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.5rem;
+        }
+        .btn-whatsapp:hover { background: #22c35b; transform: translateY(-2px); }
+
+        /* FOOTER */
+        footer {
+            text-align: center; padding: 2rem;
+            color: var(--text-muted); font-size: 0.78rem;
+            border-top: 1px solid var(--border);
+        }
+
+        /* FLOATING WA */
+        .wa-float {
+            position: fixed; bottom: 1.75rem; right: 1.75rem;
+            width: 54px; height: 54px; background: #25d366; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            text-decoration: none; font-size: 1.4rem;
+            box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+            transition: all 0.2s; z-index: 99;
+        }
+        .wa-float:hover { transform: scale(1.1); box-shadow: 0 8px 30px rgba(37,211,102,0.5); }
+
+        @media (max-width: 768px) {
+            .pricing-grid { grid-template-columns: 1fr; }
+            .comparison-table { font-size: 0.78rem; }
+            .comparison-table th, .comparison-table td { padding: 0.6rem 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+    <div class="nav-logo">AgentIQ</div>
+    <a href="https://wa.me/919XXXXXXXXX?text=Hi%20AgentIQ%2C%20I%27m%20interested%20in%20the%20AI%20Chatbot%20packages" class="nav-cta" target="_blank">WhatsApp Us</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+    <div class="badge">🇮🇳 India-First · Claude AI Powered · WhatsApp Native</div>
+    <h1>AI Chatbots That Close Sales<br><span class="gradient-text">While You Sleep</span></h1>
+    <p class="hero-sub">Not a basic FAQ bot. A Level 4 AI with memory, order flows, bookings, payments, and customer profiling — built for how Indian businesses actually operate.</p>
+    <div class="hero-actions">
+        <a href="#packages" class="btn-primary">See Packages ↓</a>
+        <a href="https://wa.me/919XXXXXXXXX" class="btn-secondary" target="_blank">💬 WhatsApp Us</a>
+    </div>
+    <div class="hero-stats">
+        <div class="stat"><div class="stat-value">48hr</div><div class="stat-label">Go Live In</div></div>
+        <div class="stat"><div class="stat-value">24/7</div><div class="stat-label">Auto Replies</div></div>
+        <div class="stat"><div class="stat-value">3</div><div class="stat-label">Channels</div></div>
+        <div class="stat"><div class="stat-value">₹0</div><div class="stat-label">Platform Lock-in</div></div>
+    </div>
+</div>
+
+<!-- LEVEL POSITIONING -->
+<section>
+    <p class="section-label">What Kind of Chatbot Is This?</p>
+    <h2>Not a Basic Bot. A Level 4 AI.</h2>
+    <p class="section-sub">Most Fiverr sellers build Level 1–2 bots using no-code tools. AgentIQ builds Level 4 — stateful, knowledge-grounded, with real business logic baked in.</p>
+    <div class="level-grid">
+        <div class="level-row">
+            <div class="level-num">1</div>
+            <div class="level-content">
+                <div class="level-title">Rule-Based / Flow Bot</div>
+                <div class="level-desc">Decision trees. "Press 1 for menu." No AI. Breaks the moment a customer asks anything off-script.</div>
+            </div>
+        </div>
+        <div class="level-row">
+            <div class="level-num">2</div>
+            <div class="level-content">
+                <div class="level-title">Basic LLM Chatbot</div>
+                <div class="level-desc">LLM with a short system prompt. Answers general questions but hallucinates prices, hours, and details. No memory.</div>
+            </div>
+        </div>
+        <div class="level-row">
+            <div class="level-num">3</div>
+            <div class="level-content">
+                <div class="level-title">Knowledge-Grounded Chatbot</div>
+                <div class="level-desc">LLM + custom knowledge base. Can't hallucinate because it only knows what you fed it. But no memory between sessions.</div>
+            </div>
+        </div>
+        <div class="level-row active">
+            <div class="level-num">4</div>
+            <div class="level-content">
+                <div class="level-title">Stateful, Context-Aware AI Chatbot</div>
+                <div class="level-desc">Persistent customer memory · Order & booking flows · Payment links · Manager alerts · Customer profiling · Sentiment detection · WhatsApp interactive UI</div>
+            </div>
+            <div class="level-badge">Our Bots</div>
+        </div>
+        <div class="level-row">
+            <div class="level-num">5</div>
+            <div class="level-content">
+                <div class="level-title">RAG / Agentic Bot</div>
+                <div class="level-desc">Vector database, semantic retrieval, multi-step autonomous reasoning. Enterprise complexity. Not needed for most SMBs.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- PACKAGES -->
+<section id="packages">
+    <p class="section-label">Pricing</p>
+    <h2>Pick Your Package</h2>
+    <p class="section-sub">One-time setup fee + low monthly retainer. No per-message charges. No platform fees. You own the product.</p>
+
+    <div class="pricing-grid">
+
+        <!-- Starter -->
+        <div class="pricing-card">
+            <div class="plan-name">Package 01</div>
+            <div class="plan-title">Starter Bot</div>
+            <div class="plan-tagline">For small restaurants, cafes & cloud kitchens getting repeated WhatsApp enquiries they can't reply to fast enough</div>
+            <div class="price-block">
+                <span class="price-setup-label">One-time setup fee</span>
+                <div class="price-setup">₹24,999</div>
+                <hr class="price-divider">
+                <span class="price-monthly">₹6,999 <span class="price-monthly-label">/ month</span></span>
+            </div>
+            <div class="delivery-badge">⚡ Live in 2–3 days</div>
+            <ul class="feature-list">
+                <li><span class="ck">✓</span><span><strong>1 channel</strong> — WhatsApp OR website chat</span></li>
+                <li><span class="ck">✓</span><span>Up to 1,000 conversations/month</span></li>
+                <li><span class="ck">✓</span><span>FAQ answering (hours, menu, pricing, location)</span></li>
+                <li><span class="ck">✓</span><span>Auto lead capture (name + number)</span></li>
+                <li><span class="ck">✓</span><span>English + Hindi / Hinglish support</span></li>
+                <li><span class="ck">✓</span><span>Google Sheets lead logging</span></li>
+                <li><span class="ck">✓</span><span>30-day post-launch support</span></li>
+                <li><span class="cx">✗</span><span>Order / booking flows</span></li>
+                <li><span class="cx">✗</span><span>Payment links</span></li>
+                <li><span class="cx">✗</span><span>Customer memory across sessions</span></li>
+            </ul>
+            <a href="https://wa.me/919XXXXXXXXX?text=Hi%2C%20I'm%20interested%20in%20the%20Starter%20Bot%20%28%E2%82%B924%2C999%29" class="card-cta outline" target="_blank">Get Started →</a>
+        </div>
+
+        <!-- Growth -->
+        <div class="pricing-card featured">
+            <div class="popular-badge">⭐ Most Popular</div>
+            <div class="plan-name">Package 02</div>
+            <div class="plan-title">Growth Bot</div>
+            <div class="plan-tagline">For restaurants handling orders & bookings + D2C brands automating customer support on WhatsApp</div>
+            <div class="price-block">
+                <span class="price-setup-label">One-time setup fee</span>
+                <div class="price-setup">₹39,999</div>
+                <hr class="price-divider">
+                <span class="price-monthly">₹9,999 <span class="price-monthly-label">/ month</span></span>
+            </div>
+            <div class="delivery-badge">⚡ Live in 4–5 days</div>
+            <ul class="feature-list">
+                <li><span class="ck">✓</span><span><strong>2 channels</strong> — WhatsApp + website chat</span></li>
+                <li><span class="ck">✓</span><span>Up to 5,000 conversations/month</span></li>
+                <li><span class="ck">✓</span><span>Everything in Starter, plus:</span></li>
+                <li><span class="ck">✓</span><span>Order taking with live cart + price verification</span></li>
+                <li><span class="ck">✓</span><span>Appointment / table booking flow</span></li>
+                <li><span class="ck">✓</span><span>Razorpay / UPI payment link generation</span></li>
+                <li><span class="ck">✓</span><span>Manager WhatsApp alerts (orders + bookings)</span></li>
+                <li><span class="ck">✓</span><span>Customer memory across conversations</span></li>
+                <li><span class="ck">✓</span><span>Smart upselling suggestions</span></li>
+                <li><span class="ck">✓</span><span>Human handoff when needed</span></li>
+                <li><span class="ck">✓</span><span>60-day post-launch support</span></li>
+            </ul>
+            <a href="https://wa.me/919XXXXXXXXX?text=Hi%2C%20I'm%20interested%20in%20the%20Growth%20Bot%20%28%E2%82%B949%2C999%29" class="card-cta primary" target="_blank">Get Started →</a>
+        </div>
+
+        <!-- Pro -->
+        <div class="pricing-card">
+            <div class="plan-name">Package 03</div>
+            <div class="plan-title">Pro Bot</div>
+            <div class="plan-tagline">For multi-outlet restaurants & high-volume D2C brands that need CRM, customer profiling, and full code ownership</div>
+            <div class="price-block">
+                <span class="price-setup-label">One-time setup fee</span>
+                <div class="price-setup">₹79,999</div>
+                <hr class="price-divider">
+                <span class="price-monthly">₹19,999 <span class="price-monthly-label">/ month</span></span>
+            </div>
+            <div class="delivery-badge">⚡ Live in 7–10 days</div>
+            <ul class="feature-list">
+                <li><span class="ck">✓</span><span><strong>3 channels</strong> — WhatsApp + website + Instagram DM</span></li>
+                <li><span class="ck">✓</span><span>Unlimited conversations</span></li>
+                <li><span class="ck">✓</span><span>Everything in Growth, plus:</span></li>
+                <li><span class="ck">✓</span><span>Customer profiling (VIP tags, visit count, spend tracking)</span></li>
+                <li><span class="ck">✓</span><span>Returning customer recognition by name</span></li>
+                <li><span class="ck">✓</span><span>Sentiment detection + manager escalation</span></li>
+                <li><span class="ck">✓</span><span>CRM / database integration</span></li>
+                <li><span class="ck">✓</span><span>Multi-location support</span></li>
+                <li><span class="ck">✓</span><span>Source code ownership — you own it forever</span></li>
+                <li><span class="ck">✓</span><span>90-day SLA support</span></li>
+            </ul>
+            <a href="https://wa.me/919XXXXXXXXX?text=Hi%2C%20I'm%20interested%20in%20the%20Pro%20Bot%20%28%E2%82%B999%2C999%29" class="card-cta outline" target="_blank">Get Started →</a>
+        </div>
+
+    </div>
+    <p class="gst-note">All prices in INR. GST at 18% applicable. Monthly retainer covers hosting, API costs, maintenance and support.</p>
+</section>
+
+<hr class="section-divider">
+
+<!-- COMPARISON TABLE -->
+<section>
+    <p class="section-label">Full Comparison</p>
+    <h2>Everything Side by Side</h2>
+    <div class="table-wrap">
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th style="width:36%;text-align:left">Feature</th>
+                    <th>Starter</th>
+                    <th class="col-featured col-featured-head">Growth ⭐</th>
+                    <th>Pro</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="group-header"><td colspan="4">Core</td></tr>
+                <tr><td>Channels</td><td>1</td><td class="col-featured">2</td><td>3 (all)</td></tr>
+                <tr><td>Conversations / month</td><td>1,000</td><td class="col-featured">5,000</td><td>Unlimited</td></tr>
+                <tr><td>FAQ answering</td><td><span class="ck-icon">✓</span></td><td class="col-featured"><span class="ck-icon">✓</span></td><td><span class="ck-icon">✓</span></td></tr>
+                <tr><td>Auto lead capture</td><td><span class="ck-icon">✓</span></td><td class="col-featured"><span class="ck-icon">✓</span></td><td><span class="ck-icon">✓</span></td></tr>
+                <tr><td>Hindi / Hinglish / English</td><td><span class="ck-icon">✓</span></td><td class="col-featured"><span class="ck-icon">✓</span></td><td><span class="ck-icon">✓</span></td></tr>
+                <tr><td>Google Sheets logging</td><td><span class="ck-icon">✓</span></td><td class="col-featured"><span class="ck-icon">✓</span></td><td><span class="ck-icon">✓</span></td></tr>
+                <tr><td>WhatsApp interactive buttons</td><td><span class="cx-icon">✗</span></td><td class="col-featured"><span class="ck-icon">✓</span></td><td><span class="ck-icon">✓</span></td></tr>
+
+                <tr class="group-header"><td colspan="4">Flows & Transactions</td></tr>
+                <tr><td>Order taking with live cart</td><td><span class="cx-icon">✗</span></td><td class="col-featured"><span class="ck-icon">✓</span></td><td><span class="ck-icon">✓</span></td></tr>
+                <tr><td>Table / appointment booking</td><td><span class="cx-icon">✗</span></td><td class="col-featured"><span class="ck-icon">✓</span></td><td><span class="ck-icon">✓</span></td></tr>
+                <tr><td>Razorpay / UPI payment links</td><td><span class="cx-icon">✗</span></td><td class="col-featured"><span class="ck-icon">✓</span></td><td><span class="ck-icon">✓</span></td></tr>
+                <tr><td>Manager WhatsApp alerts</td><td><span class="cx-icon">✗</span></td><td class="col-featured"><span class="ck-icon">✓</span></td><td><span class="ck-icon">✓</span></td></tr>
+                <tr><td>Human handoff</td><td><span class="cx-icon">✗</span></td><td class="col-featured"><span class="ck-icon">✓</span></td><td><span class="ck-icon">✓</span></td></tr>
+                <tr><td>Smart upselling logic</td><td><span class="cx-icon">✗</span></td><td class="col-featured"><span class="ck-icon">✓</span></td><td><span class="ck-icon">✓</span></td></tr>
+
+                <tr class="group-header"><td colspan="4">Intelligence & Memory</td></tr>
+                <tr><td>Customer memory (cross-session)</td><td><span class="cx-icon">✗</span></td><td class="col-featured"><span class="ck-icon">✓</span></td><td><span class="ck-icon">✓</span></td></tr>
+                <tr><td>Preference learning (diet, spice, allergies)</td><td><span class="cx-icon">✗</span></td><td class="col-featured"><span class="ck-icon">✓</span></td><td><span class="ck-icon">✓</span></td></tr>
+                <tr><td>Customer profiling (VIP / Regular / New)</td><td><span class="cx-icon">✗</span></td><td class="col-featured"><span class="cx-icon">✗</span></td><td><span class="ck-icon">✓</span></td></tr>
+                <tr><td>Returning customer recognition</td><td><span class="cx-icon">✗</span></td><td class="col-featured"><span class="cx-icon">✗</span></td><td><span class="ck-icon">✓</span></td></tr>
+                <tr><td>Sentiment detection + escalation</td><td><span class="cx-icon">✗</span></td><td class="col-featured"><span class="cx-icon">✗</span></td><td><span class="ck-icon">✓</span></td></tr>
+                <tr><td>Multi-location support</td><td><span class="cx-icon">✗</span></td><td class="col-featured"><span class="cx-icon">✗</span></td><td><span class="ck-icon">✓</span></td></tr>
+
+                <tr class="group-header"><td colspan="4">Integrations & Ownership</td></tr>
+                <tr><td>Instagram DM channel</td><td><span class="cx-icon">✗</span></td><td class="col-featured"><span class="cx-icon">✗</span></td><td><span class="ck-icon">✓</span></td></tr>
+                <tr><td>CRM integration</td><td><span class="cx-icon">✗</span></td><td class="col-featured"><span class="cx-icon">✗</span></td><td><span class="ck-icon">✓</span></td></tr>
+                <tr><td>Source code handover</td><td><span class="cx-icon">✗</span></td><td class="col-featured"><span class="cx-icon">✗</span></td><td><span class="ck-icon">✓</span></td></tr>
+
+                <tr class="group-header"><td colspan="4">Delivery & Support</td></tr>
+                <tr><td>Delivery time</td><td>2–3 days</td><td class="col-featured">4–5 days</td><td>7–10 days</td></tr>
+                <tr><td>Post-launch support</td><td>30 days</td><td class="col-featured">60 days</td><td>90-day SLA</td></tr>
+                <tr><td>Revisions</td><td>1</td><td class="col-featured">2</td><td>3</td></tr>
+                <tr><td>Setup fee</td><td>₹24,999</td><td class="col-featured">₹39,999</td><td>₹79,999</td></tr>
+                <tr><td>Monthly retainer</td><td>₹6,999</td><td class="col-featured">₹9,999</td><td>₹19,999</td></tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- WHY NOT FIVERR -->
+<section>
+    <p class="section-label">Competitive Positioning</p>
+    <h2>Why Not Just Hire from Fiverr?</h2>
+    <p class="section-sub">We analysed what sellers on Fiverr charge ₹25,000–₹3,00,000 for — here's the honest comparison.</p>
+    <div class="compare-grid">
+        <div class="compare-card them">
+            <div class="compare-title bad">❌ Typical Fiverr Seller</div>
+            <ul class="compare-list">
+                <li><span style="color:#ef4444;flex-shrink:0">✗</span>Built on Botpress, Tidio, or ManyChat — platform lock-in forever</li>
+                <li><span style="color:#ef4444;flex-shrink:0">✗</span>One-time delivery with no ongoing support after handover</li>
+                <li><span style="color:#ef4444;flex-shrink:0">✗</span>No memory — every conversation starts from scratch</li>
+                <li><span style="color:#ef4444;flex-shrink:0">✗</span>No order flows, no payment links, no manager alerts</li>
+                <li><span style="color:#ef4444;flex-shrink:0">✗</span>14–30 day delivery for the same feature set</li>
+                <li><span style="color:#ef4444;flex-shrink:0">✗</span>Claims "RAG" but delivers a basic Q&A wrapper</li>
+                <li><span style="color:#ef4444;flex-shrink:0">✗</span>Not India-specific — no Hinglish, no UPI, no WhatsApp-native UX</li>
+            </ul>
+        </div>
+        <div class="compare-card us">
+            <div class="compare-title good">✅ AgentIQ</div>
+            <ul class="compare-list">
+                <li><span style="color:#10b981;flex-shrink:0">✓</span>Direct Claude AI API — no platform lock-in. You own the product.</li>
+                <li><span style="color:#10b981;flex-shrink:0">✓</span>Monthly retainer = ongoing support, updates, and tuning</li>
+                <li><span style="color:#10b981;flex-shrink:0">✓</span>Persistent memory — bot knows your customers across every session</li>
+                <li><span style="color:#10b981;flex-shrink:0">✓</span>Full order + booking flows with Razorpay / UPI payment links</li>
+                <li><span style="color:#10b981;flex-shrink:0">✓</span>Live in 2–5 days, not weeks</li>
+                <li><span style="color:#10b981;flex-shrink:0">✓</span>Genuinely Level 4 — not a glorified FAQ responder</li>
+                <li><span style="color:#10b981;flex-shrink:0">✓</span>India-first: Hinglish, UPI, WhatsApp buttons, IST timezone-aware</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- HOW IT WORKS -->
+<section>
+    <p class="section-label">The Process</p>
+    <h2>How It Works</h2>
+    <p class="section-sub">From first call to live chatbot in as little as 48 hours.</p>
+    <div class="steps-grid">
+        <div class="step-card">
+            <div class="step-num">1</div>
+            <div class="step-title">Discovery Call (45 min)</div>
+            <div class="step-desc">We understand your business, your customers, what questions they ask, what actions you need automated, and what tone fits your brand.</div>
+        </div>
+        <div class="step-card">
+            <div class="step-num">2</div>
+            <div class="step-title">We Build (2–7 days)</div>
+            <div class="step-desc">We build your knowledge base, configure the AI, set up flows, wire up integrations, deploy on Render + Vercel, and test everything end-to-end.</div>
+        </div>
+        <div class="step-card">
+            <div class="step-num">3</div>
+            <div class="step-title">You Review & Go Live</div>
+            <div class="step-desc">You test the bot on a real WhatsApp number. Once satisfied, we point it at your business number and you're live with customers.</div>
+        </div>
+        <div class="step-card">
+            <div class="step-num">4</div>
+            <div class="step-title">Ongoing Monthly Support</div>
+            <div class="step-desc">Menu changes, new offers, seasonal promos, new flows — WhatsApp us and we handle all updates as part of your monthly retainer.</div>
+        </div>
+    </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- FAQ -->
+<section>
+    <p class="section-label">FAQ</p>
+    <h2>Common Questions</h2>
+    <div class="faq-list">
+        <div class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)">What's the difference between the setup fee and the monthly retainer? <span class="faq-icon">+</span></button>
+            <div class="faq-a">The setup fee is a one-time charge for building and deploying your chatbot — knowledge base, AI configuration, conversation flows, integrations, and deployment. The monthly retainer covers hosting (Render, Vercel), API usage, ongoing support, and all updates you need (menu changes, new FAQs, seasonal promotions).</div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)">Do I need a WhatsApp Business API account? <span class="faq-icon">+</span></button>
+            <div class="faq-a">Yes. The bot runs on Meta's official WhatsApp Cloud API, which requires a Meta Business account and a dedicated phone number. If you don't have this, we'll guide you step by step. It typically takes 1–2 days. The number must not already be registered on personal WhatsApp or standard WhatsApp Business app.</div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)">Is this built on Botpress, Tidio, ManyChat, or any no-code platform? <span class="faq-icon">+</span></button>
+            <div class="faq-a">No. We use the direct Claude AI API from Anthropic combined with custom Node.js code, deployed on Render and Vercel. You are not locked into any third-party chatbot platform. Pro plan clients receive full source code ownership.</div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)">Can the bot speak Hindi or Hinglish? <span class="faq-icon">+</span></button>
+            <div class="faq-a">Yes. The bot automatically detects the language the customer writes in and replies in the same style — English, Hindi, or Hinglish. It uses natural Indian phrasing and keeps product and dish names in English for clarity.</div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)">What if I want to change my menu or add new offers after launch? <span class="faq-icon">+</span></button>
+            <div class="faq-a">That's exactly what the monthly retainer covers. Just WhatsApp us with the changes and we'll update the knowledge base and redeploy — usually within 24 hours.</div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)">What businesses is this best suited for? <span class="faq-icon">+</span></button>
+            <div class="faq-a">Restaurants, cafes, cloud kitchens, salons, clinics, real estate agencies, coaching classes, retail stores, and any service business that receives repeated WhatsApp enquiries. If you're manually answering the same questions 20+ times a day, this bot will handle all of it.</div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)">Is GST included in the prices? <span class="faq-icon">+</span></button>
+            <div class="faq-a">No, GST at 18% is applicable on all charges and will be added to your invoice. A proper GST invoice will be provided for all payments.</div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)">What happens if I want to cancel? <span class="faq-icon">+</span></button>
+            <div class="faq-a">You can cancel the monthly retainer anytime with 30 days' notice. The chatbot infrastructure remains deployed for 30 days post-cancellation. Pro plan clients keep the source code and can self-host independently after that.</div>
+        </div>
+    </div>
+</section>
+
+<!-- FINAL CTA -->
+<div class="cta-section">
+    <p class="section-label" style="text-align:center">Ready to Automate?</p>
+    <h2>Your First AI Agent Is Free</h2>
+    <p class="section-sub" style="margin-bottom:0">We build the first agent live on the discovery call — no charge. See it working before you commit to anything.</p>
+    <div class="cta-actions">
+        <a href="https://wa.me/919XXXXXXXXX?text=Hi%20AgentIQ%2C%20I'd%20like%20to%20book%20a%20free%20discovery%20call%20for%20an%20AI%20chatbot" class="btn-whatsapp" target="_blank">💬 WhatsApp to Book a Call</a>
+        <a href="mailto:shane.pereira1@gmail.com?subject=AI%20Chatbot%20Enquiry&body=Hi%20Shane%2C%20I'm%20interested%20in%20an%20AI%20chatbot%20for%20my%20business." class="btn-secondary">✉️ Email Us</a>
+    </div>
+</div>
+
+<footer>
+    <p>© 2026 AgentIQ · Mumbai, India · <a href="https://agentiq.co.in" style="color:var(--accent-light);text-decoration:none">agentiq.co.in</a></p>
+    <p style="margin-top:0.5rem">Powered by Claude AI (Anthropic) · Deployed on Render + Vercel · Built for Indian businesses that mean business</p>
+</footer>
+
+<a href="https://wa.me/919XXXXXXXXX?text=Hi%20AgentIQ%2C%20I'm%20interested%20in%20an%20AI%20chatbot%20for%20my%20business" class="wa-float" target="_blank" title="Chat on WhatsApp">💬</a>
+
+<script>
+    function toggleFaq(btn) {
+        const answer = btn.nextElementSibling;
+        const isOpen = btn.classList.contains('open');
+        document.querySelectorAll('.faq-q.open').forEach(q => {
+            q.classList.remove('open');
+            q.nextElementSibling.classList.remove('show');
+        });
+        if (!isOpen) {
+            btn.classList.add('open');
+            answer.classList.add('show');
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', e => {
+            e.preventDefault();
+            const t = document.querySelector(a.getAttribute('href'));
+            if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    });
+</script>
+
+</body>
+</html>
