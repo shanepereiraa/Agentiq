@@ -340,15 +340,8 @@
 
 <body class="font-sans text-slate-200 antialiased overflow-x-hidden">
 
-  <!-- Ambient background: contain:strict isolates repaints from animated blobs to this layer only -->
-  <div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none" style="contain:strict">
-    <div class="absolute inset-0" style="background:linear-gradient(165deg,#0c2a5e 0%,#08183a 45%,#060f28 100%)"></div>
-    <div class="absolute -top-28 -left-20 w-[34rem] h-[34rem] rounded-full bg-coral/40 blur-[110px] animate-blob"></div>
-    <div class="absolute top-1/4 -right-24 w-[32rem] h-[32rem] rounded-full bg-orange/30 blur-[120px] animate-blob" style="animation-delay:-6s"></div>
-    <div class="absolute bottom-0 left-1/3 w-[30rem] h-[30rem] rounded-full bg-red-500/25 blur-[120px] animate-blob" style="animation-delay:-12s"></div>
-    <div class="absolute top-1/2 left-0 w-[26rem] h-[26rem] rounded-full bg-blue/20 blur-[120px] animate-blob" style="animation-delay:-9s"></div>
-    <div class="absolute inset-0 noise"></div>
-  </div>
+  <!-- Base background -->
+  <div class="fixed inset-0 -z-10 pointer-events-none" style="background:#060f28"></div>
 
   <!-- Skip link -->
   <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-[60] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-primary focus:text-white">Skip to content</a>
@@ -377,8 +370,11 @@
   <main id="main" tabindex="-1" class="focus:outline-none">
 
     <!-- HERO -->
-    <section class="relative pt-36 sm:pt-48 pb-24 px-5">
-      <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+    <section class="relative pt-36 sm:pt-48 pb-24 px-5 overflow-hidden" style="background:linear-gradient(180deg,#060c1e 0%,#08183a 55%,#060f28 100%)">
+      <div aria-hidden="true" class="pointer-events-none absolute -top-32 -left-24 w-[40rem] h-[40rem] rounded-full" style="background:radial-gradient(circle,rgba(255,107,92,.22) 0%,transparent 70%);filter:blur(90px)"></div>
+      <div aria-hidden="true" class="pointer-events-none absolute top-1/3 -right-24 w-[36rem] h-[36rem] rounded-full" style="background:radial-gradient(circle,rgba(34,211,238,.16) 0%,transparent 70%);filter:blur(90px)"></div>
+      <div aria-hidden="true" class="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 w-[50rem] h-40 rounded-full" style="background:radial-gradient(ellipse,rgba(168,85,247,.08) 0%,transparent 70%);filter:blur(40px)"></div>
+      <div class="relative max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
         <div>
           <div class="reveal inline-flex items-center gap-2 glass rounded-full pl-2 pr-4 py-1.5 text-xs text-slate-300 mb-8">
             <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-400/15 text-emerald-300 font-600">
@@ -448,8 +444,8 @@
     </section>
 
     <!-- LOGO MARQUEE / INTEGRATIONS -->
-    <section class="py-12 px-5">
-      <p class="reveal text-center text-xs uppercase tracking-[0.2em] text-slate-400 mb-7">Connects with the tools you already use</p>
+    <section class="relative py-12 px-5 overflow-hidden" style="background:linear-gradient(180deg,#060f28 0%,#07102a 100%)">
+      <p class="reveal text-center text-xs uppercase tracking-[0.2em] text-slate-500 mb-7">Connects with the tools you already use</p>
       <div class="reveal relative max-w-5xl mx-auto overflow-hidden [mask-image:linear-gradient(90deg,transparent,#000_12%,#000_88%,transparent)]">
         <div class="flex gap-12 w-max animate-marquee text-slate-400">
           <div class="flex gap-12 items-center shrink-0" id="logoset"></div>
@@ -459,18 +455,20 @@
     </section>
 
     <!-- THREE PRODUCTS -->
-    <section id="how" class="py-20 px-5">
-      <div class="max-w-6xl mx-auto">
+    <section id="how" class="relative py-24 px-5 overflow-hidden" style="background:linear-gradient(180deg,#060f28 0%,#071528 50%,#060f28 100%)">
+      <div aria-hidden="true" class="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 w-96 h-96 rounded-full" style="background:radial-gradient(circle,rgba(34,211,238,.15) 0%,transparent 70%);filter:blur(70px)"></div>
+      <div aria-hidden="true" class="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 w-96 h-96 rounded-full" style="background:radial-gradient(circle,rgba(52,211,153,.12) 0%,transparent 70%);filter:blur(70px)"></div>
+      <div class="relative max-w-6xl mx-auto">
         <div class="reveal text-center max-w-2xl mx-auto mb-14">
-          <p class="text-cyan text-sm font-500 tracking-wide mb-3">THREE PRODUCTS, ONE BRAIN</p>
-          <h2 class="font-display font-700 text-white text-3xl sm:text-4xl tracking-tight">See our bots in action</h2>
-          <p class="mt-4 text-slate-400">A single AI assistant, deployed wherever your customers already are. Here's a real sample of each — trained for your industry.</p>
+          <p class="text-cyan text-sm font-500 tracking-widest uppercase mb-4">Three Products, One Brain</p>
+          <h2 class="font-display font-700 text-white text-4xl sm:text-5xl tracking-tight leading-tight">See our bots in action</h2>
+          <p class="mt-5 text-slate-400">A single AI assistant, deployed wherever your customers already are. Here's a real sample of each — trained for your industry.</p>
         </div>
 
         <div class="grid md:grid-cols-3 gap-5 items-start">
 
           <!-- WhatsApp · Restaurant -->
-          <article class="reveal grad-border glass rounded-2xl overflow-hidden flex flex-col card-lift">
+          <article class="reveal rounded-2xl overflow-hidden flex flex-col" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
             <div class="flex items-center gap-3 px-4 py-3.5 border-b border-white/10" style="background:linear-gradient(90deg,rgba(37,211,102,.16),transparent)">
               <span class="grid place-items-center w-9 h-9 rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 text-white shrink-0">
                 <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
@@ -487,7 +485,7 @@
           </article>
 
           <!-- Instagram · Salon -->
-          <article class="reveal grad-border glass rounded-2xl overflow-hidden flex flex-col card-lift">
+          <article class="reveal rounded-2xl overflow-hidden flex flex-col" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
             <div class="flex items-center gap-3 px-4 py-3.5 border-b border-white/10" style="background:linear-gradient(90deg,rgba(225,48,108,.16),transparent)">
               <span class="grid place-items-center w-9 h-9 rounded-full text-white shrink-0" style="background:linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7)">
                 <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069M12 0C8.741 0 8.332.014 7.052.072 2.695.272.273 2.69.073 7.052.014 8.332 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.69.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0m0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324M12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8m6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881"/></svg>
@@ -504,7 +502,7 @@
           </article>
 
           <!-- Website · Healthcare -->
-          <article class="reveal grad-border glass rounded-2xl overflow-hidden flex flex-col card-lift">
+          <article class="reveal rounded-2xl overflow-hidden flex flex-col" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
             <div class="flex items-center gap-3 px-4 py-3.5 border-b border-white/10" style="background:linear-gradient(90deg,rgba(34,211,232,.16),transparent)">
               <span class="grid place-items-center w-9 h-9 rounded-full bg-gradient-to-br from-cyan to-blue text-white shrink-0">
                 <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10"/></svg>
@@ -525,18 +523,23 @@
     </section>
 
     <!-- VOICE AGENTS -->
-    <section id="voice" class="py-20 px-5" style="content-visibility:auto;contain-intrinsic-size:0 700px">
-      <div class="max-w-6xl mx-auto">
+    <section id="voice" class="relative py-24 px-5 overflow-hidden" style="content-visibility:auto;contain-intrinsic-size:0 700px;background:linear-gradient(180deg,#060f28 0%,#080120 50%,#060f28 100%)">
+      <div aria-hidden="true" class="pointer-events-none absolute inset-0 flex items-center justify-center">
+        <div style="width:860px;height:240px;border-radius:50%;border:2px solid transparent;background:linear-gradient(#080120,#080120) padding-box,linear-gradient(90deg,#7c3aed,#a855f7,#ec4899,#7c3aed) border-box;filter:blur(2px);opacity:.4;transform:rotate(-3deg)"></div>
+      </div>
+      <div aria-hidden="true" class="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 w-80 h-80 rounded-full" style="background:radial-gradient(circle,rgba(124,58,237,.25) 0%,transparent 70%);filter:blur(60px)"></div>
+      <div aria-hidden="true" class="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 w-80 h-80 rounded-full" style="background:radial-gradient(circle,rgba(168,85,247,.2) 0%,transparent 70%);filter:blur(60px)"></div>
+      <div class="relative max-w-6xl mx-auto">
         <div class="reveal text-center max-w-2xl mx-auto mb-14">
-          <p class="text-violet-300 text-sm font-500 tracking-wide mb-3">VOICE AGENTS</p>
-          <h2 class="font-display font-700 text-white text-3xl sm:text-4xl tracking-tight">Automate your calls.<br>Make thousands while you sleep.</h2>
-          <p class="mt-4 text-slate-400">AI-powered voice agents that call your customers automatically — handling reservations, follow-ups, and lead qualification in natural Hindi, Hinglish, or English.</p>
+          <p class="text-violet-300 text-sm font-500 tracking-widest uppercase mb-4">Voice Agents</p>
+          <h2 class="font-display font-700 text-white text-4xl sm:text-5xl tracking-tight leading-tight">Automate your calls.<br>Make thousands while you sleep.</h2>
+          <p class="mt-5 text-slate-400">AI-powered voice agents that call your customers automatically — handling reservations, follow-ups, and lead qualification in natural Hindi, Hinglish, or English.</p>
         </div>
 
         <div class="grid md:grid-cols-3 gap-5 mb-12">
 
           <!-- Reservation Reminders -->
-          <article class="reveal grad-border glass rounded-2xl p-7 flex flex-col card-lift" style="--tw-border-opacity:1">
+          <article class="reveal rounded-2xl p-7 flex flex-col" style="background:rgba(255,255,255,0.04);border:1px solid rgba(139,92,246,0.18);backdrop-filter:blur(16px)">
             <div class="grid place-items-center w-12 h-12 rounded-xl mb-5" style="background:rgba(139,92,246,.15)">
               <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg>
             </div>
@@ -551,8 +554,8 @@
           </article>
 
           <!-- Order Follow-Up -->
-          <article class="reveal glass rounded-2xl p-7 flex flex-col card-lift" style="border:1px solid rgba(139,92,246,.25);box-shadow:0 0 0 1px rgba(139,92,246,.15),0 0 40px rgba(139,92,246,.1)">
-            <span class="absolute -top-3.5 left-1/2 -translate-x-1/2 text-xs font-700 px-4 py-1.5 rounded-full text-white shadow-lg whitespace-nowrap" style="background:linear-gradient(135deg,#7c3aed,#a855f7)">Most popular</span>
+          <article class="reveal relative rounded-2xl p-7 flex flex-col" style="background:rgba(124,58,237,0.08);border:1px solid rgba(168,85,247,0.35);backdrop-filter:blur(20px);box-shadow:0 0 60px rgba(124,58,237,0.12)">
+            <span class="absolute -top-4 left-1/2 -translate-x-1/2 text-sm font-700 px-5 py-1.5 rounded-full text-white whitespace-nowrap" style="background:linear-gradient(135deg,#7c3aed,#a855f7);box-shadow:0 4px 20px rgba(124,58,237,0.5)">Popular pick</span>
             <div class="grid place-items-center w-12 h-12 rounded-xl mb-5" style="background:rgba(139,92,246,.15)">
               <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
             </div>
@@ -567,7 +570,7 @@
           </article>
 
           <!-- Lead Qualification -->
-          <article class="reveal grad-border glass rounded-2xl p-7 flex flex-col card-lift">
+          <article class="reveal rounded-2xl p-7 flex flex-col" style="background:rgba(255,255,255,0.04);border:1px solid rgba(139,92,246,0.18);backdrop-filter:blur(16px)">
             <div class="grid place-items-center w-12 h-12 rounded-xl mb-5" style="background:rgba(139,92,246,.15)">
               <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             </div>
@@ -595,12 +598,14 @@
     </section>
 
     <!-- LIVE DEMO -->
-    <section id="demo" class="py-20 px-5">
-      <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+    <section id="demo" class="relative py-24 px-5 overflow-hidden" style="background:linear-gradient(180deg,#060f28 0%,#071520 50%,#060f28 100%)">
+      <div aria-hidden="true" class="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 w-96 h-96 rounded-full" style="background:radial-gradient(circle,rgba(255,107,92,.2) 0%,transparent 70%);filter:blur(70px)"></div>
+      <div aria-hidden="true" class="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 w-96 h-96 rounded-full" style="background:radial-gradient(circle,rgba(34,211,238,.18) 0%,transparent 70%);filter:blur(70px)"></div>
+      <div class="relative max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
         <div class="reveal">
-          <p class="text-cyan text-sm font-500 tracking-wide mb-3">LIVE DEMO</p>
-          <h2 class="font-display font-700 text-white text-3xl sm:text-4xl tracking-tight">See it think. Tap a question.</h2>
-          <p class="mt-4 text-slate-400 max-w-md">This is a real-time preview of how your assistant feels to a customer — typing indicators, instant answers and natural conversation. Pick a prompt to watch it respond.</p>
+          <p class="text-cyan text-sm font-500 tracking-widest uppercase mb-4">Live Demo</p>
+          <h2 class="font-display font-700 text-white text-4xl sm:text-5xl tracking-tight leading-tight">See it think. Tap a question.</h2>
+          <p class="mt-5 text-slate-400 max-w-md">This is a real-time preview of how your assistant feels to a customer — typing indicators, instant answers and natural conversation. Pick a prompt to watch it respond.</p>
           <ul class="mt-7 space-y-3 text-sm text-slate-300">
             <li class="flex items-center gap-3"><svg class="w-5 h-5 text-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>Trained on your products, prices & policies</li>
             <li class="flex items-center gap-3"><svg class="w-5 h-5 text-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>Smart hand-off to a human anytime</li>
@@ -638,28 +643,30 @@
     </section>
 
     <!-- RESULTS / CASE STUDIES -->
-    <section id="results" class="py-20 px-5" style="content-visibility:auto;contain-intrinsic-size:0 800px">
-      <div class="max-w-6xl mx-auto">
+    <section id="results" class="relative py-24 px-5 overflow-hidden" style="content-visibility:auto;contain-intrinsic-size:0 800px;background:linear-gradient(180deg,#060f28 0%,#08101e 50%,#060f28 100%)">
+      <div aria-hidden="true" class="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 w-96 h-96 rounded-full" style="background:radial-gradient(circle,rgba(255,159,69,.18) 0%,transparent 70%);filter:blur(70px)"></div>
+      <div aria-hidden="true" class="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 w-96 h-96 rounded-full" style="background:radial-gradient(circle,rgba(255,107,92,.15) 0%,transparent 70%);filter:blur(70px)"></div>
+      <div class="relative max-w-6xl mx-auto">
         <div class="reveal text-center max-w-2xl mx-auto mb-12">
-          <p class="text-cyan text-sm font-500 tracking-wide mb-3">RESULTS</p>
-          <h2 class="font-display font-700 text-white text-3xl sm:text-4xl tracking-tight">Numbers our clients actually feel</h2>
+          <p class="text-orange-400 text-sm font-500 tracking-widest uppercase mb-4">Results</p>
+          <h2 class="font-display font-700 text-white text-4xl sm:text-5xl tracking-tight leading-tight">Numbers our clients actually feel</h2>
         </div>
 
         <!-- stat counters -->
         <div class="grid grid-cols-2 lg:grid-cols-4 gap-5 mb-16">
-          <div class="reveal glass rounded-2xl p-7 text-center card-lift">
+          <div class="reveal rounded-2xl p-7 text-center" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(16px)">
             <p class="font-display font-700 stat-num text-6xl sm:text-7xl leading-none"><span class="count" data-to="92">0</span>%</p>
             <p class="text-slate-400 text-sm mt-3 leading-snug">queries auto-resolved</p>
           </div>
-          <div class="reveal glass rounded-2xl p-7 text-center card-lift">
+          <div class="reveal rounded-2xl p-7 text-center" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(16px)">
             <p class="font-display font-700 stat-num text-6xl sm:text-7xl leading-none"><span class="count" data-to="3">0</span>×</p>
             <p class="text-slate-400 text-sm mt-3 leading-snug">more leads captured</p>
           </div>
-          <div class="reveal glass rounded-2xl p-7 text-center card-lift">
+          <div class="reveal rounded-2xl p-7 text-center" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(16px)">
             <p class="font-display font-700 stat-num text-6xl sm:text-7xl leading-none">&lt;<span class="count" data-to="5">0</span>s</p>
             <p class="text-slate-400 text-sm mt-3 leading-snug">average reply time</p>
           </div>
-          <div class="reveal glass rounded-2xl p-7 text-center card-lift">
+          <div class="reveal rounded-2xl p-7 text-center" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(16px)">
             <p class="font-display font-700 stat-num text-6xl sm:text-7xl leading-none"><span class="count" data-to="24">0</span>/7</p>
             <p class="text-slate-400 text-sm mt-3 leading-snug">always responding</p>
           </div>
@@ -667,7 +674,7 @@
 
         <!-- testimonials -->
         <div class="grid md:grid-cols-3 gap-5">
-          <article class="reveal grad-border glass rounded-2xl p-7 flex flex-col card-lift">
+          <article class="reveal rounded-2xl p-7 flex flex-col" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
             <div class="flex items-start justify-between mb-5">
               <span class="text-xs font-600 px-3 py-1 rounded-full bg-emerald-400/15 text-emerald-300">D2C · Skincare</span>
               <div class="flex gap-0.5" role="img" aria-label="Rated 5 out of 5 stars">
@@ -686,7 +693,7 @@
             </div>
           </article>
 
-          <article class="reveal grad-border glass rounded-2xl p-7 flex flex-col card-lift">
+          <article class="reveal rounded-2xl p-7 flex flex-col" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
             <div class="flex items-start justify-between mb-5">
               <span class="text-xs font-600 px-3 py-1 rounded-full bg-fuchsia-400/15 text-fuchsia-300">Real Estate</span>
               <div class="flex gap-0.5" role="img" aria-label="Rated 5 out of 5 stars">
@@ -705,7 +712,7 @@
             </div>
           </article>
 
-          <article class="reveal grad-border glass rounded-2xl p-7 flex flex-col card-lift">
+          <article class="reveal rounded-2xl p-7 flex flex-col" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
             <div class="flex items-start justify-between mb-5">
               <span class="text-xs font-600 px-3 py-1 rounded-full bg-cyan/15 text-cyan">Clinic · Healthcare</span>
               <div class="flex gap-0.5" role="img" aria-label="Rated 5 out of 5 stars">
@@ -728,17 +735,19 @@
     </section>
 
     <!-- INDUSTRIES -->
-    <section id="industries" class="py-20 px-5" style="content-visibility:auto;contain-intrinsic-size:0 900px">
-      <div class="max-w-6xl mx-auto">
+    <section id="industries" class="relative py-24 px-5 overflow-hidden" style="content-visibility:auto;contain-intrinsic-size:0 900px;background:linear-gradient(180deg,#060f28 0%,#071020 50%,#060f28 100%)">
+      <div aria-hidden="true" class="pointer-events-none absolute left-0 top-1/3 w-96 h-96 rounded-full" style="background:radial-gradient(circle,rgba(34,211,238,.15) 0%,transparent 70%);filter:blur(70px)"></div>
+      <div aria-hidden="true" class="pointer-events-none absolute right-0 bottom-1/3 w-96 h-96 rounded-full" style="background:radial-gradient(circle,rgba(59,130,246,.15) 0%,transparent 70%);filter:blur(70px)"></div>
+      <div class="relative max-w-6xl mx-auto">
         <div class="reveal text-center max-w-2xl mx-auto mb-12">
-          <p class="text-cyan text-sm font-500 tracking-wide mb-3">SPECIALISTS, NOT GENERALISTS</p>
-          <h2 class="font-display font-700 text-white text-3xl sm:text-4xl tracking-tight">Built for the businesses India runs on</h2>
-          <p class="mt-4 text-slate-400">We've trained AI assistants for these industries again and again — so your bot launches with proven flows, not guesswork.</p>
+          <p class="text-cyan text-sm font-500 tracking-widest uppercase mb-4">Specialists, Not Generalists</p>
+          <h2 class="font-display font-700 text-white text-4xl sm:text-5xl tracking-tight leading-tight">Built for the businesses India runs on</h2>
+          <p class="mt-5 text-slate-400">We've trained AI assistants for these industries again and again — so your bot launches with proven flows, not guesswork.</p>
         </div>
 
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           <!-- Restaurants -->
-          <article class="reveal grad-border glass rounded-2xl p-6 card-lift">
+          <article class="reveal rounded-2xl p-6" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
             <span class="grid place-items-center w-12 h-12 rounded-xl bg-coral/15 text-coral mb-5">
               <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 2v7c0 1.1.9 2 2 2a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-3 4.5c0 2.5 3 2.5 3 4.5v4"/></svg>
             </span>
@@ -752,7 +761,7 @@
           </article>
 
           <!-- Salons -->
-          <article class="reveal grad-border glass rounded-2xl p-6 card-lift">
+          <article class="reveal rounded-2xl p-6" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
             <span class="grid place-items-center w-12 h-12 rounded-xl bg-orange/15 text-orange mb-5">
               <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
             </span>
@@ -766,7 +775,7 @@
           </article>
 
           <!-- Healthcare -->
-          <article class="reveal grad-border glass rounded-2xl p-6 card-lift">
+          <article class="reveal rounded-2xl p-6" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
             <span class="grid place-items-center w-12 h-12 rounded-xl bg-cyan/15 text-cyan mb-5">
               <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27"/></svg>
             </span>
@@ -780,7 +789,7 @@
           </article>
 
           <!-- Real estate -->
-          <article class="reveal grad-border glass rounded-2xl p-6 card-lift">
+          <article class="reveal rounded-2xl p-6" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
             <span class="grid place-items-center w-11 h-11 rounded-xl bg-white/5 text-slate-200 mb-4">
               <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01M16 6h.01M12 6h.01M12 10h.01M16 10h.01M8 10h.01M12 14h.01M16 14h.01M8 14h.01"/></svg>
             </span>
@@ -789,7 +798,7 @@
           </article>
 
           <!-- Retail / D2C -->
-          <article class="reveal grad-border glass rounded-2xl p-6 card-lift">
+          <article class="reveal rounded-2xl p-6" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
             <span class="grid place-items-center w-11 h-11 rounded-xl bg-white/5 text-slate-200 mb-4">
               <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
             </span>
@@ -798,7 +807,7 @@
           </article>
 
           <!-- Education -->
-          <article class="reveal grad-border glass rounded-2xl p-6 card-lift">
+          <article class="reveal rounded-2xl p-6" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
             <span class="grid place-items-center w-11 h-11 rounded-xl bg-white/5 text-slate-200 mb-4">
               <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1 2 3 6 3s6-2 6-3v-5"/></svg>
             </span>
@@ -812,139 +821,159 @@
     </section>
 
     <!-- PRICING -->
-    <section id="pricing" class="py-20 px-5" style="content-visibility:auto;contain-intrinsic-size:0 700px">
-      <div class="max-w-6xl mx-auto">
-        <div class="reveal text-center max-w-2xl mx-auto mb-12">
-          <p class="text-cyan text-sm font-500 tracking-wide mb-3">PRICING</p>
-          <h2 class="font-display font-700 text-white text-3xl sm:text-4xl tracking-tight">Simple plans. Built to pay for themselves.</h2>
-          <p class="mt-4 text-slate-400">One-time setup + monthly. All plans include design, training and launch. GST extra.</p>
+    <section id="pricing" class="relative py-24 px-5 overflow-hidden" style="content-visibility:auto;contain-intrinsic-size:0 700px;background:linear-gradient(180deg,#060f28 0%,#080518 50%,#060f28 100%)">
+      <!-- Neon ring ambient -->
+      <div aria-hidden="true" class="pointer-events-none absolute inset-0 flex items-center justify-center">
+        <div style="width:900px;height:260px;border-radius:50%;border:2px solid transparent;background:linear-gradient(#080518,#080518) padding-box,linear-gradient(90deg,#FF6B5C,#a855f7,#22D3EE,#FF9F45) border-box;filter:blur(2px);opacity:.55;transform:rotate(-4deg)"></div>
+      </div>
+      <div aria-hidden="true" class="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 w-80 h-80 rounded-full" style="background:radial-gradient(circle,rgba(255,107,92,.25) 0%,transparent 70%);filter:blur(60px)"></div>
+      <div aria-hidden="true" class="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 w-80 h-80 rounded-full" style="background:radial-gradient(circle,rgba(34,211,238,.2) 0%,transparent 70%);filter:blur(60px)"></div>
+
+      <div class="relative max-w-6xl mx-auto">
+        <div class="reveal text-center max-w-3xl mx-auto mb-14">
+          <h2 class="font-display font-700 text-white text-4xl sm:text-5xl tracking-tight leading-tight">Flexible, intelligent, and endlessly scalable</h2>
+          <p class="mt-5 text-slate-400">One-time setup + monthly retainer. All plans include design, training and launch. GST extra.</p>
         </div>
 
         <div class="grid md:grid-cols-3 gap-5 items-stretch">
           <!-- Starter -->
-          <div class="reveal glass rounded-2xl p-8 flex flex-col card-lift">
-            <h3 class="font-display font-700 text-white text-xl">Starter</h3>
-            <p class="text-slate-400 text-sm mt-1.5">One channel to get going fast.</p>
-            <div class="mt-7 mb-1"><span class="font-display font-700 text-white text-5xl">₹24,999</span></div>
-            <p class="text-slate-400 text-sm">setup · then ₹6,999/mo</p>
-            <ul class="mt-7 space-y-3.5 text-sm text-slate-300 flex-1">
-              <li class="flex gap-3"><svg class="w-5 h-5 text-cyan shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>1 channel (WhatsApp / IG / Web)</li>
-              <li class="flex gap-3"><svg class="w-5 h-5 text-cyan shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Up to 1,000 chats/mo</li>
-              <li class="flex gap-3"><svg class="w-5 h-5 text-cyan shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Lead capture + email alerts</li>
-              <li class="flex gap-3"><svg class="w-5 h-5 text-cyan shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Email support</li>
+          <div class="reveal flex flex-col rounded-2xl p-8" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
+            <h3 class="font-display font-700 text-white text-2xl">Starter</h3>
+            <div class="mt-3 mb-5 h-px w-full" style="background:linear-gradient(90deg,#FF9F45,#FF6B5C,transparent)"></div>
+            <p class="text-slate-400 text-sm mb-6">One channel to get going fast.</p>
+            <div class="mb-1"><span class="font-display font-700 text-white text-4xl">₹24,999</span></div>
+            <p class="text-slate-500 text-sm mb-7">setup · then <span class="text-slate-300">₹6,999/mo</span></p>
+            <ul class="space-y-3.5 text-sm text-slate-300 flex-1">
+              <li class="flex gap-3"><span class="text-orange-400 font-700 shrink-0">+</span>1 channel (WhatsApp / IG / Web)</li>
+              <li class="flex gap-3"><span class="text-orange-400 font-700 shrink-0">+</span>Up to 1,000 chats/mo</li>
+              <li class="flex gap-3"><span class="text-orange-400 font-700 shrink-0">+</span>Lead capture + email alerts</li>
+              <li class="flex gap-3"><span class="text-orange-400 font-700 shrink-0">+</span>Email support</li>
             </ul>
-            <a href="#book" class="cursor-pointer mt-8 inline-flex justify-center px-5 py-3.5 rounded-xl glass-strong text-white font-500 hover:bg-white/10 transition-colors duration-200">Get started</a>
+            <a href="#book" class="cursor-pointer mt-8 inline-flex justify-center px-5 py-3.5 rounded-xl text-white font-500 transition-colors duration-200" style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12)" onmouseover="this.style.background='rgba(255,255,255,0.12)'" onmouseout="this.style.background='rgba(255,255,255,0.07)'">Get started</a>
           </div>
 
           <!-- Growth (featured) -->
-          <div class="reveal relative rounded-2xl p-8 flex flex-col bg-white/[0.07] glow-card" style="border:1px solid rgba(34,211,238,.2)">
-            <span class="absolute -top-3.5 left-1/2 -translate-x-1/2 text-xs font-700 px-4 py-1.5 rounded-full bg-gradient-to-r from-coral to-orange text-white shadow-lg shadow-coral/30 whitespace-nowrap">Most popular</span>
-            <h3 class="font-display font-700 text-white text-xl">Growth</h3>
-            <p class="text-slate-400 text-sm mt-1.5">Omni-channel for serious growth.</p>
-            <div class="mt-7 mb-1"><span class="font-display font-700 grad-text text-5xl">₹39,999</span></div>
-            <p class="text-slate-400 text-sm">setup · then ₹9,999/mo</p>
-            <ul class="mt-7 space-y-3.5 text-sm text-slate-200 flex-1">
-              <li class="flex gap-3"><svg class="w-5 h-5 text-cyan shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>All 3 channels connected</li>
-              <li class="flex gap-3"><svg class="w-5 h-5 text-cyan shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Up to 10,000 chats/mo</li>
-              <li class="flex gap-3"><svg class="w-5 h-5 text-cyan shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>CRM + payment link integration</li>
-              <li class="flex gap-3"><svg class="w-5 h-5 text-cyan shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Monthly optimisation + priority support</li>
+          <div class="reveal relative flex flex-col rounded-2xl p-8" style="background:rgba(255,255,255,0.07);border:1px solid rgba(168,85,247,0.35);backdrop-filter:blur(20px);box-shadow:0 0 60px rgba(168,85,247,0.12)">
+            <span class="absolute -top-4 left-1/2 -translate-x-1/2 text-sm font-700 px-5 py-1.5 rounded-full text-white whitespace-nowrap" style="background:linear-gradient(135deg,#ec4899,#a855f7);box-shadow:0 4px 20px rgba(168,85,247,0.4)">Popular pick</span>
+            <h3 class="font-display font-700 text-white text-2xl mt-1">Growth</h3>
+            <div class="mt-3 mb-5 h-px w-full" style="background:linear-gradient(90deg,#ec4899,#a855f7,transparent)"></div>
+            <p class="text-slate-400 text-sm mb-6">Omni-channel for serious growth.</p>
+            <div class="mb-1"><span class="font-display font-700 text-4xl" style="background:linear-gradient(135deg,#FFB36B,#FF6B5C);-webkit-background-clip:text;background-clip:text;color:transparent">₹39,999</span></div>
+            <p class="text-slate-500 text-sm mb-7">setup · then <span class="text-slate-300">₹9,999/mo</span></p>
+            <ul class="space-y-3.5 text-sm text-slate-200 flex-1">
+              <li class="flex gap-3"><span class="text-pink-400 font-700 shrink-0">+</span>All 3 channels connected</li>
+              <li class="flex gap-3"><span class="text-pink-400 font-700 shrink-0">+</span>Up to 10,000 chats/mo</li>
+              <li class="flex gap-3"><span class="text-pink-400 font-700 shrink-0">+</span>CRM + payment link integration</li>
+              <li class="flex gap-3"><span class="text-pink-400 font-700 shrink-0">+</span>Monthly optimisation + priority support</li>
             </ul>
-            <a href="#book" class="cursor-pointer mt-8 inline-flex justify-center px-5 py-3.5 rounded-xl bg-gradient-to-r from-cyan to-blue text-white font-600 shadow-lg shadow-cyan/30 hover:shadow-blue/30 transition-shadow duration-200">Book a demo</a>
+            <a href="#book" class="cursor-pointer mt-8 inline-flex justify-center px-5 py-3.5 rounded-xl text-white font-600 transition-shadow duration-200" style="background:linear-gradient(135deg,#ec4899,#a855f7);box-shadow:0 4px 24px rgba(168,85,247,0.45)" onmouseover="this.style.boxShadow='0 4px 32px rgba(168,85,247,0.65)'" onmouseout="this.style.boxShadow='0 4px 24px rgba(168,85,247,0.45)'">Book a demo</a>
           </div>
 
           <!-- Pro -->
-          <div class="reveal glass rounded-2xl p-8 flex flex-col card-lift">
-            <h3 class="font-display font-700 text-white text-xl">Pro</h3>
-            <p class="text-slate-400 text-sm mt-1.5">Multi-outlet &amp; D2C brands.</p>
-            <div class="mt-7 mb-1"><span class="font-display font-700 text-white text-5xl">₹79,999</span></div>
-            <p class="text-slate-400 text-sm">setup · then ₹19,999/mo</p>
-            <ul class="mt-7 space-y-3.5 text-sm text-slate-300 flex-1">
-              <li class="flex gap-3"><svg class="w-5 h-5 text-cyan shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>All 3 channels + Instagram DM</li>
-              <li class="flex gap-3"><svg class="w-5 h-5 text-cyan shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Customer profiling + VIP tags</li>
-              <li class="flex gap-3"><svg class="w-5 h-5 text-cyan shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Multi-location support</li>
-              <li class="flex gap-3"><svg class="w-5 h-5 text-cyan shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Source code ownership</li>
+          <div class="reveal flex flex-col rounded-2xl p-8" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
+            <h3 class="font-display font-700 text-white text-2xl">Pro</h3>
+            <div class="mt-3 mb-5 h-px w-full" style="background:linear-gradient(90deg,#22D3EE,#3B82F6,transparent)"></div>
+            <p class="text-slate-400 text-sm mb-6">Multi-outlet &amp; D2C brands.</p>
+            <div class="mb-1"><span class="font-display font-700 text-white text-4xl">₹79,999</span></div>
+            <p class="text-slate-500 text-sm mb-7">setup · then <span class="text-slate-300">₹19,999/mo</span></p>
+            <ul class="space-y-3.5 text-sm text-slate-300 flex-1">
+              <li class="flex gap-3"><span class="text-cyan-400 font-700 shrink-0">+</span>All 3 channels + Instagram DM</li>
+              <li class="flex gap-3"><span class="text-cyan-400 font-700 shrink-0">+</span>Customer profiling + VIP tags</li>
+              <li class="flex gap-3"><span class="text-cyan-400 font-700 shrink-0">+</span>Multi-location support</li>
+              <li class="flex gap-3"><span class="text-cyan-400 font-700 shrink-0">+</span>Source code ownership</li>
             </ul>
-            <a href="#book" class="cursor-pointer mt-8 inline-flex justify-center px-5 py-3.5 rounded-xl glass-strong text-white font-500 hover:bg-white/10 transition-colors duration-200">Get started</a>
+            <a href="#book" class="cursor-pointer mt-8 inline-flex justify-center px-5 py-3.5 rounded-xl text-white font-500 transition-colors duration-200" style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12)" onmouseover="this.style.background='rgba(255,255,255,0.12)'" onmouseout="this.style.background='rgba(255,255,255,0.07)'">Get started</a>
           </div>
         </div>
       </div>
     </section>
 
     <!-- VOICE PRICING -->
-    <section class="py-12 px-5" style="content-visibility:auto;contain-intrinsic-size:0 600px">
-      <div class="max-w-6xl mx-auto">
-        <div class="reveal text-center max-w-2xl mx-auto mb-10">
-          <p class="text-violet-300 text-sm font-500 tracking-wide mb-3">VOICE AGENT PRICING</p>
-          <h2 class="font-display font-700 text-white text-3xl sm:text-4xl tracking-tight">Early access pricing</h2>
-          <p class="mt-3 text-slate-400 text-sm">All plans include setup, training, and launch support. GST extra.</p>
+    <section class="relative py-24 px-5 overflow-hidden" style="content-visibility:auto;contain-intrinsic-size:0 600px;background:linear-gradient(180deg,#060f28 0%,#080120 50%,#060f28 100%)">
+      <!-- Neon ring ambient (violet) -->
+      <div aria-hidden="true" class="pointer-events-none absolute inset-0 flex items-center justify-center">
+        <div style="width:900px;height:260px;border-radius:50%;border:2px solid transparent;background:linear-gradient(#080120,#080120) padding-box,linear-gradient(90deg,#7c3aed,#ec4899,#a78bfa,#7c3aed) border-box;filter:blur(2px);opacity:.5;transform:rotate(-4deg)"></div>
+      </div>
+      <div aria-hidden="true" class="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 w-80 h-80 rounded-full" style="background:radial-gradient(circle,rgba(124,58,237,.3) 0%,transparent 70%);filter:blur(60px)"></div>
+      <div aria-hidden="true" class="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 w-80 h-80 rounded-full" style="background:radial-gradient(circle,rgba(168,85,247,.25) 0%,transparent 70%);filter:blur(60px)"></div>
+
+      <div class="relative max-w-6xl mx-auto">
+        <div class="reveal text-center max-w-3xl mx-auto mb-14">
+          <p class="text-violet-300 text-sm font-500 tracking-widest uppercase mb-4">Voice Agents</p>
+          <h2 class="font-display font-700 text-white text-4xl sm:text-5xl tracking-tight leading-tight">Your brand voice, on every call</h2>
+          <p class="mt-5 text-slate-400 text-sm">All plans include setup, training, and launch support. GST extra.</p>
         </div>
 
         <div class="grid md:grid-cols-3 gap-5 items-stretch">
           <!-- Growth -->
-          <div class="reveal glass rounded-2xl p-8 flex flex-col card-lift" style="border:1px solid rgba(139,92,246,.2)">
-            <h3 class="font-display font-700 text-white text-xl">Growth</h3>
-            <p class="text-slate-400 text-sm mt-1.5">For restaurants &amp; single-outlet businesses.</p>
-            <div class="mt-7 mb-1"><span class="font-display font-700 text-white text-4xl">₹39,999</span></div>
+          <div class="reveal flex flex-col rounded-2xl p-8" style="background:rgba(255,255,255,0.04);border:1px solid rgba(139,92,246,0.18);backdrop-filter:blur(16px)">
+            <h3 class="font-display font-700 text-white text-2xl">Growth</h3>
+            <div class="mt-3 mb-5 h-px w-full" style="background:linear-gradient(90deg,#8b5cf6,#a78bfa,transparent)"></div>
+            <p class="text-slate-400 text-sm mb-6">For restaurants &amp; single-outlet businesses.</p>
+            <div class="mb-0.5"><span class="font-display font-700 text-white text-4xl">₹39,999</span></div>
             <p class="text-slate-500 text-sm">one-time setup</p>
-            <div class="mt-3 mb-1"><span class="font-display font-700 text-white text-3xl">₹14,999</span><span class="text-slate-400 text-sm"> / month</span></div>
-            <p class="text-slate-500 text-xs mt-1">Includes 250 minutes/month · ₹45/min after</p>
-            <ul class="mt-7 space-y-3.5 text-sm text-slate-300 flex-1">
-              <li class="flex gap-3"><svg class="w-5 h-5 shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>1 inbound voice agent</li>
-              <li class="flex gap-3"><svg class="w-5 h-5 shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Hindi + English</li>
-              <li class="flex gap-3"><svg class="w-5 h-5 shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>CRM / Sheets logging</li>
-              <li class="flex gap-3"><svg class="w-5 h-5 shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Monthly call report</li>
+            <div class="mt-3 mb-0.5"><span class="font-display font-700 text-white text-3xl">₹14,999</span><span class="text-slate-400 text-sm"> / month</span></div>
+            <p class="text-slate-500 text-xs mt-1 mb-7">Includes 250 min/mo · ₹45/min after</p>
+            <ul class="space-y-3.5 text-sm text-slate-300 flex-1">
+              <li class="flex gap-3"><span class="text-violet-400 font-700 shrink-0">+</span>1 inbound voice agent</li>
+              <li class="flex gap-3"><span class="text-violet-400 font-700 shrink-0">+</span>Hindi + English</li>
+              <li class="flex gap-3"><span class="text-violet-400 font-700 shrink-0">+</span>CRM / Sheets logging</li>
+              <li class="flex gap-3"><span class="text-violet-400 font-700 shrink-0">+</span>Monthly call report</li>
             </ul>
-            <a href="#book" class="cursor-pointer mt-8 inline-flex justify-center px-5 py-3.5 rounded-xl glass-strong text-white font-500 hover:bg-white/10 transition-colors duration-200">Get started</a>
+            <a href="#book" class="cursor-pointer mt-8 inline-flex justify-center px-5 py-3.5 rounded-xl text-white font-500 transition-colors duration-200" style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12)" onmouseover="this.style.background='rgba(255,255,255,0.12)'" onmouseout="this.style.background='rgba(255,255,255,0.07)'">Get started</a>
           </div>
 
           <!-- Professional (featured) -->
-          <div class="reveal relative rounded-2xl p-8 flex flex-col" style="background:rgba(139,92,246,.08);border:1px solid rgba(139,92,246,.35);box-shadow:0 0 0 1px rgba(139,92,246,.2),0 0 60px rgba(139,92,246,.12)">
-            <span class="absolute -top-3.5 left-1/2 -translate-x-1/2 text-xs font-700 px-4 py-1.5 rounded-full text-white shadow-lg whitespace-nowrap" style="background:linear-gradient(135deg,#7c3aed,#a855f7)">Most Popular</span>
-            <h3 class="font-display font-700 text-white text-xl">Professional</h3>
-            <p class="text-slate-400 text-sm mt-1.5">For D2C brands &amp; multi-outlet restaurants.</p>
-            <div class="mt-7 mb-1"><span class="font-display font-700 text-4xl" style="background:linear-gradient(135deg,#a78bfa,#c084fc);-webkit-background-clip:text;background-clip:text;color:transparent">₹69,999</span></div>
+          <div class="reveal relative flex flex-col rounded-2xl p-8" style="background:rgba(124,58,237,0.08);border:1px solid rgba(168,85,247,0.40);backdrop-filter:blur(20px);box-shadow:0 0 60px rgba(124,58,237,0.15)">
+            <span class="absolute -top-4 left-1/2 -translate-x-1/2 text-sm font-700 px-5 py-1.5 rounded-full text-white whitespace-nowrap" style="background:linear-gradient(135deg,#7c3aed,#a855f7);box-shadow:0 4px 20px rgba(124,58,237,0.5)">Popular pick</span>
+            <h3 class="font-display font-700 text-white text-2xl mt-1">Professional</h3>
+            <div class="mt-3 mb-5 h-px w-full" style="background:linear-gradient(90deg,#ec4899,#a855f7,transparent)"></div>
+            <p class="text-slate-400 text-sm mb-6">For D2C brands &amp; multi-outlet restaurants.</p>
+            <div class="mb-0.5"><span class="font-display font-700 text-4xl" style="background:linear-gradient(135deg,#a78bfa,#c084fc);-webkit-background-clip:text;background-clip:text;color:transparent">₹69,999</span></div>
             <p class="text-slate-500 text-sm">one-time setup</p>
-            <div class="mt-3 mb-1"><span class="font-display font-700 text-3xl" style="background:linear-gradient(135deg,#a78bfa,#c084fc);-webkit-background-clip:text;background-clip:text;color:transparent">₹24,999</span><span class="text-slate-400 text-sm"> / month</span></div>
-            <p class="text-slate-500 text-xs mt-1">Includes 500 minutes/month · ₹45/min after</p>
-            <ul class="mt-7 space-y-3.5 text-sm text-slate-200 flex-1">
-              <li class="flex gap-3"><svg class="w-5 h-5 shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Inbound + outbound agents</li>
-              <li class="flex gap-3"><svg class="w-5 h-5 shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Appointment booking + CRM</li>
-              <li class="flex gap-3"><svg class="w-5 h-5 shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Custom voice + multilingual</li>
-              <li class="flex gap-3"><svg class="w-5 h-5 shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Up to 3 outlets</li>
+            <div class="mt-3 mb-0.5"><span class="font-display font-700 text-3xl" style="background:linear-gradient(135deg,#a78bfa,#c084fc);-webkit-background-clip:text;background-clip:text;color:transparent">₹24,999</span><span class="text-slate-400 text-sm"> / month</span></div>
+            <p class="text-slate-500 text-xs mt-1 mb-7">Includes 500 min/mo · ₹45/min after</p>
+            <ul class="space-y-3.5 text-sm text-slate-200 flex-1">
+              <li class="flex gap-3"><span class="text-pink-400 font-700 shrink-0">+</span>Inbound + outbound agents</li>
+              <li class="flex gap-3"><span class="text-pink-400 font-700 shrink-0">+</span>Appointment booking + CRM</li>
+              <li class="flex gap-3"><span class="text-pink-400 font-700 shrink-0">+</span>Custom voice + multilingual</li>
+              <li class="flex gap-3"><span class="text-pink-400 font-700 shrink-0">+</span>Up to 3 outlets</li>
             </ul>
-            <a href="#book" class="cursor-pointer mt-8 inline-flex justify-center px-5 py-3.5 rounded-xl text-white font-600 transition-shadow duration-200" style="background:linear-gradient(135deg,#7c3aed,#a855f7);box-shadow:0 4px 20px rgba(139,92,246,.4)">Get started</a>
+            <a href="#book" class="cursor-pointer mt-8 inline-flex justify-center px-5 py-3.5 rounded-xl text-white font-600 transition-shadow duration-200" style="background:linear-gradient(135deg,#7c3aed,#a855f7);box-shadow:0 4px 24px rgba(124,58,237,0.5)" onmouseover="this.style.boxShadow='0 4px 32px rgba(124,58,237,0.7)'" onmouseout="this.style.boxShadow='0 4px 24px rgba(124,58,237,0.5)'">Get started</a>
           </div>
 
           <!-- Advanced -->
-          <div class="reveal glass rounded-2xl p-8 flex flex-col card-lift" style="border:1px solid rgba(139,92,246,.2)">
-            <h3 class="font-display font-700 text-white text-xl">Advanced</h3>
-            <p class="text-slate-400 text-sm mt-1.5">For chains, large D2C &amp; enterprise.</p>
-            <div class="mt-7 mb-1"><span class="font-display font-700 text-white text-4xl">₹1,29,999</span></div>
+          <div class="reveal flex flex-col rounded-2xl p-8" style="background:rgba(255,255,255,0.04);border:1px solid rgba(139,92,246,0.18);backdrop-filter:blur(16px)">
+            <h3 class="font-display font-700 text-white text-2xl">Advanced</h3>
+            <div class="mt-3 mb-5 h-px w-full" style="background:linear-gradient(90deg,#3B82F6,#a78bfa,transparent)"></div>
+            <p class="text-slate-400 text-sm mb-6">For chains, large D2C &amp; enterprise.</p>
+            <div class="mb-0.5"><span class="font-display font-700 text-white text-4xl">₹1,29,999</span></div>
             <p class="text-slate-500 text-sm">one-time setup</p>
-            <div class="mt-3 mb-1"><span class="font-display font-700 text-white text-3xl">₹34,999</span><span class="text-slate-400 text-sm"> / month</span></div>
-            <p class="text-slate-500 text-xs mt-1">Includes 800 minutes/month · ₹45/min after</p>
-            <ul class="mt-7 space-y-3.5 text-sm text-slate-300 flex-1">
-              <li class="flex gap-3"><svg class="w-5 h-5 shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Unlimited agents</li>
-              <li class="flex gap-3"><svg class="w-5 h-5 shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Voice cloning + custom integrations</li>
-              <li class="flex gap-3"><svg class="w-5 h-5 shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Multi-location support</li>
-              <li class="flex gap-3"><svg class="w-5 h-5 shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>24/7 priority support</li>
+            <div class="mt-3 mb-0.5"><span class="font-display font-700 text-white text-3xl">₹34,999</span><span class="text-slate-400 text-sm"> / month</span></div>
+            <p class="text-slate-500 text-xs mt-1 mb-7">Includes 800 min/mo · ₹45/min after</p>
+            <ul class="space-y-3.5 text-sm text-slate-300 flex-1">
+              <li class="flex gap-3"><span class="text-blue-400 font-700 shrink-0">+</span>Unlimited agents</li>
+              <li class="flex gap-3"><span class="text-blue-400 font-700 shrink-0">+</span>Voice cloning + custom integrations</li>
+              <li class="flex gap-3"><span class="text-blue-400 font-700 shrink-0">+</span>Multi-location support</li>
+              <li class="flex gap-3"><span class="text-blue-400 font-700 shrink-0">+</span>24/7 priority support</li>
             </ul>
-            <a href="#book" class="cursor-pointer mt-8 inline-flex justify-center px-5 py-3.5 rounded-xl glass-strong text-white font-500 hover:bg-white/10 transition-colors duration-200">Contact us</a>
+            <a href="#book" class="cursor-pointer mt-8 inline-flex justify-center px-5 py-3.5 rounded-xl text-white font-500 transition-colors duration-200" style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12)" onmouseover="this.style.background='rgba(255,255,255,0.12)'" onmouseout="this.style.background='rgba(255,255,255,0.07)'">Contact us</a>
           </div>
         </div>
       </div>
     </section>
 
     <!-- FAQ -->
-    <section id="faq" class="py-20 px-5" style="content-visibility:auto;contain-intrinsic-size:0 600px">
-      <div class="max-w-3xl mx-auto">
+    <section id="faq" class="relative py-24 px-5 overflow-hidden" style="content-visibility:auto;contain-intrinsic-size:0 600px;background:linear-gradient(180deg,#060f28 0%,#080518 50%,#060f28 100%)">
+      <div aria-hidden="true" class="pointer-events-none absolute left-1/2 -translate-x-1/2 top-0 w-[600px] h-64 rounded-full" style="background:radial-gradient(ellipse,rgba(168,85,247,.12) 0%,transparent 70%);filter:blur(60px)"></div>
+      <div class="relative max-w-3xl mx-auto">
         <div class="reveal text-center mb-12">
-          <p class="text-cyan text-sm font-500 tracking-wide mb-3">FAQ</p>
-          <h2 class="font-display font-700 text-white text-3xl sm:text-4xl tracking-tight">Questions, answered</h2>
+          <p class="text-violet-300 text-sm font-500 tracking-widest uppercase mb-4">FAQ</p>
+          <h2 class="font-display font-700 text-white text-4xl sm:text-5xl tracking-tight leading-tight">Questions, answered</h2>
         </div>
 
         <div class="space-y-3">
-          <details class="reveal group glass rounded-2xl px-5 sm:px-6 [&_summary::-webkit-details-marker]:hidden">
+          <details class="reveal group rounded-2xl px-5 sm:px-6 [&_summary::-webkit-details-marker]:hidden" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
             <summary class="cursor-pointer list-none flex items-center justify-between gap-4 py-5 text-white font-500">
               How much does it cost and what's included?
               <svg class="w-5 h-5 text-cyan shrink-0 transition-transform duration-200 group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
@@ -952,7 +981,7 @@
             <p class="text-slate-400 text-sm leading-relaxed pb-5 -mt-1">Plans start at a one-time setup of ₹24,999 plus ₹6,999/mo (single channel). The Growth plan is ₹39,999 setup + ₹9,999/mo, and the Pro plan is ₹79,999 setup + ₹19,999/mo. Every plan includes design, training on your content, launch and ongoing optimisation. GST is extra.</p>
           </details>
 
-          <details class="reveal group glass rounded-2xl px-5 sm:px-6 [&_summary::-webkit-details-marker]:hidden">
+          <details class="reveal group rounded-2xl px-5 sm:px-6 [&_summary::-webkit-details-marker]:hidden" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
             <summary class="cursor-pointer list-none flex items-center justify-between gap-4 py-5 text-white font-500">
               How fast can we go live?
               <svg class="w-5 h-5 text-cyan shrink-0 transition-transform duration-200 group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
@@ -960,7 +989,7 @@
             <p class="text-slate-400 text-sm leading-relaxed pb-5 -mt-1">Most bots are live within 7 days. After a quick kickoff call we collect your menu/services, FAQs and policies, build and train the assistant, test it with you, then deploy across your chosen channels. No coding required on your end.</p>
           </details>
 
-          <details class="reveal group glass rounded-2xl px-5 sm:px-6 [&_summary::-webkit-details-marker]:hidden">
+          <details class="reveal group rounded-2xl px-5 sm:px-6 [&_summary::-webkit-details-marker]:hidden" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
             <summary class="cursor-pointer list-none flex items-center justify-between gap-4 py-5 text-white font-500">
               Which channels and tools do you integrate with?
               <svg class="w-5 h-5 text-cyan shrink-0 transition-transform duration-200 group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
@@ -968,7 +997,7 @@
             <p class="text-slate-400 text-sm leading-relaxed pb-5 -mt-1">WhatsApp (official Business API), Instagram DMs, and a website chat widget — all powered by one assistant. We also connect to CRMs, Google Sheets, payment links (Razorpay/UPI), Shopify and booking calendars so leads and orders flow straight into your existing tools.</p>
           </details>
 
-          <details class="reveal group glass rounded-2xl px-5 sm:px-6 [&_summary::-webkit-details-marker]:hidden">
+          <details class="reveal group rounded-2xl px-5 sm:px-6 [&_summary::-webkit-details-marker]:hidden" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
             <summary class="cursor-pointer list-none flex items-center justify-between gap-4 py-5 text-white font-500">
               Does it support Hindi and a human takeover?
               <svg class="w-5 h-5 text-cyan shrink-0 transition-transform duration-200 group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
@@ -976,7 +1005,7 @@
             <p class="text-slate-400 text-sm leading-relaxed pb-5 -mt-1">Yes — your assistant replies fluently in English, Hindi and Hinglish, and we can add regional languages on request. Whenever a customer asks for a person or the query is sensitive, the bot does a smooth handoff to your team and notifies them instantly, so nothing falls through the cracks.</p>
           </details>
 
-          <details class="reveal group glass rounded-2xl px-5 sm:px-6 [&_summary::-webkit-details-marker]:hidden">
+          <details class="reveal group rounded-2xl px-5 sm:px-6 [&_summary::-webkit-details-marker]:hidden" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
             <summary class="cursor-pointer list-none flex items-center justify-between gap-4 py-5 text-white font-500">
               Where is our data stored, and who owns it?
               <svg class="w-5 h-5 text-cyan shrink-0 transition-transform duration-200 group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
@@ -988,10 +1017,11 @@
     </section>
 
     <!-- BOOK A DEMO -->
-    <section id="book" class="py-20 px-5">
-      <div class="max-w-5xl mx-auto reveal grad-border glass-strong rounded-[2rem] p-8 sm:p-12 grid lg:grid-cols-2 gap-10 items-center">
+    <section id="book" class="relative py-24 px-5 overflow-hidden" style="background:linear-gradient(180deg,#060f28 0%,#07142a 50%,#060f28 100%)">
+      <div aria-hidden="true" class="pointer-events-none absolute left-1/2 -translate-x-1/2 top-0 w-[700px] h-72 rounded-full" style="background:radial-gradient(ellipse,rgba(34,211,238,.12) 0%,transparent 70%);filter:blur(60px)"></div>
+      <div class="relative max-w-5xl mx-auto reveal rounded-[2rem] p-8 sm:p-12 grid lg:grid-cols-2 gap-10 items-center" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);backdrop-filter:blur(20px)">
         <div>
-          <h2 class="font-display font-700 text-white text-3xl sm:text-4xl tracking-tight">Book your free demo</h2>
+          <h2 class="font-display font-700 text-white text-4xl sm:text-5xl tracking-tight leading-tight">Book your free demo</h2>
           <p class="mt-4 text-slate-300 max-w-md">See your own AI assistant in action in a 20-minute call. We'll map your channels, show a live mockup, and give you a launch plan — no obligation.</p>
           <div class="mt-7 space-y-3 text-sm text-slate-300">
             <a href="tel:+919159665277" class="flex items-center gap-3 hover:text-white transition-colors cursor-pointer"><svg class="w-5 h-5 text-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>+91 91596 65277</a>
