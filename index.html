@@ -618,24 +618,16 @@
           <div class="glass-strong rounded-[1.75rem] overflow-hidden shadow-2xl shadow-black/40">
             <div class="flex items-center gap-3 px-5 py-4 bg-white/5 border-b border-white/10">
               <span class="grid place-items-center w-9 h-9 rounded-full bg-gradient-to-br from-coral to-orange text-white">
-                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
               </span>
               <div class="flex-1">
-                <p class="text-white font-600 text-sm leading-tight">AgentIQ</p>
+                <p class="text-white font-500 text-sm leading-tight">AgentIQ</p>
                 <p class="text-emerald-300 text-xs flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>online</p>
               </div>
             </div>
             <div id="chatlog" class="px-5 py-5 space-y-3 h-[22rem] overflow-y-auto text-sm" aria-live="polite"></div>
             <div class="px-4 pb-4 pt-2 border-t border-white/10">
-              <div id="chips" class="flex flex-wrap gap-2 mb-3"></div>
-              <div class="flex gap-2">
-                <input id="demo-input" type="text" placeholder="Or ask anything…" aria-label="Ask the demo assistant a question" maxlength="300" autocomplete="off"
-                  class="flex-1 px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan focus:border-transparent text-sm transition" />
-                <button id="demo-send" type="button"
-                  class="cursor-pointer px-4 py-2.5 rounded-xl bg-gradient-to-r from-cyan to-blue text-white text-sm font-500 shadow-md shadow-cyan/20 hover:shadow-blue/30 transition-shadow">
-                  Send
-                </button>
-              </div>
+              <div id="chips" class="flex flex-wrap gap-2"></div>
             </div>
           </div>
         </div>
@@ -1256,143 +1248,58 @@
         injectLogos();
       }
 
-      // Interactive demo — real Claude API with static fallback
-      var AGENTIQ_API = (window.AgentIQConfig || {}).apiBase || '';
-      var demoMessages = [];
-      var demoStreaming = false;
-
-      var fallbackConvo = {
-        'Book a table for tonight': "Sure! How many guests and what time? I can confirm your reservation instantly and even take pre-orders so your food's ready when you arrive. 🍽️",
-        'Schedule a salon visit': "I'd love to! Which service — haircut, hair spa or grooming? I'll pull up open slots with your favourite stylist and lock it in right now. 💇",
-        'Book a doctor appointment': "Of course. Tell me the department — General, Ortho, Derma? I'll show the next available slots, book it, and send your pre-visit form on WhatsApp. 🩺",
-        'Can it talk in Hindi?': "Bilkul baat kar sakta hoon! 🙌\n\nAap batao — kya chahiye? Table book karni hai, koi product dhundhna hai, ya bas koi sawaal hai? Main Hindi, English, aur Hinglish — teeno mein help kar sakta hoon. 😊\n\n(Translation: Of course! I speak Hindi, English and Hinglish. Just tell me what you need!)",
-        'Book a demo': "Love it! 🚀 Drop your name and WhatsApp number in the form below — our team will reach out within a few hours to lock a free 20-min slot. 📅",
+      // Interactive demo
+      var convo = {
+        'Book a table for tonight': "Sure! How many guests and what time? I can confirm instantly and even take pre-orders so your food's ready when you arrive. 🍽️",
+        'Schedule a salon visit': "I'd love to! Which service — haircut, hair spa or grooming? I'll show open slots with your favourite stylist and lock it in. 💇",
+        'Book a doctor appointment': "Of course. Tell me the department and I'll show the next available slots, book it, and send your pre-visit form on WhatsApp. 🩺",
+        'Can it talk in Hindi?': "Bilkul! 🙌 Main Hindi aur English dono mein baat kar sakta hoon — aur aap chaaho toh Hinglish mein bhi. Aapki language preference kya hai?",
+        'Book a demo': "Love it! Drop your name and WhatsApp number in the form below and our team will reach out within a few hours to lock a 20-min slot. 📅",
       };
-
       var log = document.getElementById('chatlog'), chips = document.getElementById('chips');
-      var demoInput = document.getElementById('demo-input'), demoSend = document.getElementById('demo-send');
-
       function bubble(text, who) {
         var d = document.createElement('div');
         d.className = who === 'me'
-          ? 'ml-auto max-w-[82%] bg-gradient-to-br from-cyan to-blue text-white rounded-2xl rounded-tr-md px-3.5 py-2.5 leading-relaxed'
-          : 'max-w-[82%] bg-white/10 text-slate-100 rounded-2xl rounded-tl-md px-3.5 py-2.5 leading-relaxed whitespace-pre-line';
+          ? 'ml-auto max-w-[82%] bg-gradient-to-br from-cyan to-blue text-white rounded-2xl rounded-tr-md px-3.5 py-2.5'
+          : 'max-w-[82%] bg-white/10 text-slate-100 rounded-2xl rounded-tl-md px-3.5 py-2.5';
         d.textContent = text;
         log.appendChild(d); log.scrollTop = log.scrollHeight; return d;
       }
-
-      function typingBubble() {
+      function typing() {
         var d = document.createElement('div');
         d.className = 'inline-flex items-center gap-1.5 bg-white/8 rounded-2xl rounded-tl-md px-4 py-3';
         d.innerHTML = '<span class="dot"></span><span class="dot"></span><span class="dot"></span>';
         log.appendChild(d); log.scrollTop = log.scrollHeight; return d;
       }
-
-      function streamText(text, onDone) {
-        if (reduce) { bubble(text, 'bot'); demoStreaming = false; if (onDone) onDone(); return; }
-        var d = bubble('', 'bot'); var i = 0;
-        d.setAttribute('aria-hidden', 'true');
-        (function stream() {
-          if (i <= text.length) {
-            d.textContent = text.slice(0, i);
-            log.scrollTop = log.scrollHeight;
-            i += 3;
-            setTimeout(stream, 12);
-          } else {
-            d.removeAttribute('aria-hidden');
-            demoStreaming = false;
-            if (onDone) onDone();
-          }
-        })();
+      function botReply(text) {
+        var t = typing();
+        var wait = reduce ? 250 : 850;
+        setTimeout(function () {
+          t.remove();
+          if (reduce) { bubble(text, 'bot'); return; }
+          // streaming text
+          var d = bubble('', 'bot'); var i = 0;
+          (function stream() {
+            if (i <= text.length) { d.textContent = text.slice(0, i); log.scrollTop = log.scrollHeight; i += 2; setTimeout(stream, 14); }
+          })();
+        }, wait);
       }
-
-      function setChipsDisabled(disabled) {
-        chips.querySelectorAll('button').forEach(function (b) {
-          b.disabled = disabled;
-          b.style.opacity = disabled ? '0.45' : '';
-          b.style.pointerEvents = disabled ? 'none' : '';
-        });
-        demoSend.disabled = disabled;
-        demoInput.disabled = disabled;
-      }
-
-      function callApi(question) {
-        demoStreaming = true;
-        setChipsDisabled(true);
-        demoMessages.push({ role: 'user', content: question });
-        var t = typingBubble();
-        var delay = reduce ? 250 : 700 + Math.random() * 400;
-
-        if (!AGENTIQ_API) {
-          var fb = fallbackConvo[question] || "I can help with bookings, pricing and more! Ask me anything. 😊";
-          setTimeout(function () {
-            t.remove();
-            demoMessages.push({ role: 'assistant', content: fb });
-            streamText(fb, function () { setChipsDisabled(false); });
-          }, delay);
-          return;
-        }
-
-        fetch(AGENTIQ_API + '/api/chat', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ messages: demoMessages }),
-        })
-          .then(function (res) { return res.json(); })
-          .then(function (data) {
-            t.remove();
-            var reply = data.reply || "I'm having a moment — please try again! 😅";
-            demoMessages.push({ role: 'assistant', content: reply });
-            streamText(reply, function () { setChipsDisabled(false); });
-          })
-          .catch(function () {
-            t.remove();
-            var fb = fallbackConvo[question] || "Network error — please try again!";
-            demoMessages.push({ role: 'assistant', content: fb });
-            streamText(fb, function () { setChipsDisabled(false); });
-          });
-      }
-
-      function ask(q, chipBtn) {
-        if (demoStreaming) return;
-        if (chipBtn) {
-          chipBtn.style.background = 'rgba(34,211,238,0.25)';
-          chipBtn.style.borderColor = 'rgba(34,211,238,0.6)';
-          chipBtn.style.color = '#fff';
-          setTimeout(function () {
-            chipBtn.style.background = '';
-            chipBtn.style.borderColor = '';
-            chipBtn.style.color = '';
-          }, 600);
-        }
+      var asked = {};
+      function ask(q) {
+        if (asked[q]) return; asked[q] = true;
         bubble(q, 'me');
-        callApi(q);
+        botReply(convo[q]);
       }
-
-      function sendDemoMessage() {
-        if (demoStreaming) return;
-        var q = demoInput.value.trim();
-        if (!q) return;
-        demoInput.value = '';
-        bubble(q, 'me');
-        callApi(q);
-      }
-
-      demoSend.addEventListener('click', sendDemoMessage);
-      demoInput.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); sendDemoMessage(); } });
-
-      Object.keys(fallbackConvo).forEach(function (q) {
+      Object.keys(convo).forEach(function (q) {
         var b = document.createElement('button');
         b.type = 'button';
-        b.className = 'cursor-pointer text-sm px-3.5 py-2 rounded-full text-slate-200 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan transition-all duration-200';
-        b.style.cssText = 'background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12)';
+        b.className = 'cursor-pointer text-sm px-3.5 py-2 rounded-full glass text-slate-200 hover:bg-white/10 hover:text-white transition-colors duration-200';
         b.textContent = q;
-        b.addEventListener('click', function () { ask(q, b); });
+        b.addEventListener('click', function () { ask(q); });
         chips.appendChild(b);
       });
-
       // seed greeting
-      bubble("Namaste! 👋 I'm AgentIQ. Pick a prompt or type your own question below.", 'bot');
+      bubble("Namaste! 👋 I'm AgentIQ. Pick a prompt below to see how I handle real bookings.", 'bot');
 
       // ==== BOOKING CALENDAR ====
       var BOOKING_URL = 'https://calendar.google.com/calendar/u/0?cid=c29ydGVkc3BlY2llc0BnbWFpbC5jb20';
