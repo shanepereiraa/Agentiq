@@ -87,6 +87,15 @@
   <!-- Fonts: preconnect first, then async non-blocking load with font-display:swap baked in via display=swap param -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Tailwind CDN is render-blocking; preconnect lets the TLS handshake happen
+       while earlier head elements are still being parsed (~100-300ms saved on 4G) -->
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" />
+  <!-- esm.sh hosts the VAPI web SDK (type=module, auto-deferred); crossorigin because
+       ES module fetches use CORS mode -->
+  <link rel="preconnect" href="https://esm.sh" crossorigin />
+  <!-- API origin — dns-prefetch (not full preconnect) is enough since the first call
+       is user-triggered, not page-load-critical -->
+  <link rel="dns-prefetch" href="https://agentiq-chatbot.vercel.app" />
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Space+Grotesk:wght@500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Space+Grotesk:wght@500;600;700&display=swap" /></noscript>
 
@@ -462,7 +471,7 @@
     </section>
 
     <!-- THREE PRODUCTS -->
-    <section id="how" class="relative py-24 px-5 overflow-hidden" style="background:linear-gradient(180deg,#060f28 0%,#071528 50%,#060f28 100%)">
+    <section id="how" class="relative py-24 px-5 overflow-hidden" style="content-visibility:auto;contain-intrinsic-size:0 800px;background:linear-gradient(180deg,#060f28 0%,#071528 50%,#060f28 100%)">
       <div aria-hidden="true" class="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 w-96 h-96 rounded-full" style="background:radial-gradient(circle,rgba(34,211,238,.15) 0%,transparent 70%);filter:blur(70px)"></div>
       <div aria-hidden="true" class="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 w-96 h-96 rounded-full" style="background:radial-gradient(circle,rgba(52,211,153,.12) 0%,transparent 70%);filter:blur(70px)"></div>
       <div class="relative max-w-6xl mx-auto">
@@ -605,7 +614,7 @@
     </section>
 
     <!-- LIVE DEMO -->
-    <section id="demo" class="relative py-24 px-5 overflow-hidden" style="background:linear-gradient(180deg,#060f28 0%,#071520 50%,#060f28 100%)">
+    <section id="demo" class="relative py-24 px-5 overflow-hidden" style="content-visibility:auto;contain-intrinsic-size:0 700px;background:linear-gradient(180deg,#060f28 0%,#071520 50%,#060f28 100%)">
       <div aria-hidden="true" class="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 w-96 h-96 rounded-full" style="background:radial-gradient(circle,rgba(255,107,92,.2) 0%,transparent 70%);filter:blur(70px)"></div>
       <div aria-hidden="true" class="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 w-96 h-96 rounded-full" style="background:radial-gradient(circle,rgba(34,211,238,.18) 0%,transparent 70%);filter:blur(70px)"></div>
       <div class="relative max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
@@ -1016,7 +1025,7 @@
     </section>
 
     <!-- BOOK A DEMO -->
-    <section id="book" class="relative py-24 px-5 overflow-hidden" style="background:linear-gradient(180deg,#060f28 0%,#07142a 50%,#060f28 100%)">
+    <section id="book" class="relative py-24 px-5 overflow-hidden" style="content-visibility:auto;contain-intrinsic-size:0 600px;background:linear-gradient(180deg,#060f28 0%,#07142a 50%,#060f28 100%)">
       <div aria-hidden="true" class="pointer-events-none absolute left-1/2 -translate-x-1/2 top-0 w-[700px] h-72 rounded-full" style="background:radial-gradient(ellipse,rgba(34,211,238,.12) 0%,transparent 70%);filter:blur(60px)"></div>
       <div class="relative max-w-5xl mx-auto reveal rounded-[2rem] p-8 sm:p-12 grid lg:grid-cols-2 gap-10 items-center" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);backdrop-filter:blur(20px)">
         <div>
@@ -1067,7 +1076,7 @@
   </main>
 
   <!-- FOOTER -->
-  <footer class="px-5 pt-16 pb-10 border-t border-white/8">
+  <footer class="px-5 pt-16 pb-10 border-t border-white/8" style="content-visibility:auto;contain-intrinsic-size:0 400px">
     <div class="max-w-6xl mx-auto">
       <div class="grid grid-cols-2 md:grid-cols-4 gap-10 mb-12">
         <!-- Brand -->
@@ -1188,6 +1197,12 @@
     (function () {
       'use strict';
       var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      // Resolve the API base once so all callers share a single variable.
+      // window.AgentIQConfig is set by the inline config block above this script.
+      // Previously `AGENTIQ_API` was referenced without being declared, which
+      // threw a ReferenceError in strict mode and silently broke form submission
+      // and the chat widget send path.
+      var AGENTIQ_API = (window.AgentIQConfig && window.AgentIQConfig.apiBase) || null;
       document.getElementById('year').textContent = new Date().getFullYear();
 
       // Scroll reveals
@@ -1195,9 +1210,18 @@
       if (reduce || !('IntersectionObserver' in window)) {
         revs.forEach(function (e) { e.classList.add('in'); });
       } else {
+        // Track pending targets so we can fully disconnect once every element
+        // has fired. Without this, `io` and its callback closure hold a circular
+        // reference indefinitely (io → callback → io), preventing GC.
+        var remaining = revs.length;
         var io = new IntersectionObserver(function (entries) {
           entries.forEach(function (en) {
-            if (en.isIntersecting) { en.target.style.transitionDelay = (en.target.dataset.delay || 0) + 'ms'; en.target.classList.add('in'); io.unobserve(en.target); }
+            if (en.isIntersecting) {
+              en.target.style.transitionDelay = (en.target.dataset.delay || 0) + 'ms';
+              en.target.classList.add('in');
+              io.unobserve(en.target);
+              if (--remaining === 0) { io.disconnect(); }
+            }
           });
         }, { threshold: 0.12 });
         // stagger siblings
