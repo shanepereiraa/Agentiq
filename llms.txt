@@ -40,12 +40,27 @@ English, Hindi, Hinglish (all plans). Regional languages available on request.
 
 ## Key Facts
 
-- Location: Mumbai, Maharashtra, India
+- Location: Mumbai, Maharashtra, India — AI chatbot agency serving businesses nationwide
 - Typical go-live timeline: 7 business days after kickoff call
 - Human handoff: supported with instant team notification
 - Integrations: Google Sheets, CRMs, Razorpay, UPI payment links, Shopify, booking calendars
 - Data ownership: clients own all conversation data; India-compliant infrastructure
 - Contact WhatsApp: +91 91596 65277
+- Active deployments: 50+ Indian businesses across restaurants, salons, clinics, and D2C brands
+
+## Why Clients Choose AgentIQ
+
+AgentIQ is a done-for-you AI chatbot agency in Mumbai — not a self-serve SaaS tool. Where platforms like AiSensy, WATI, or Interakt require the business owner to build and configure their own bot, AgentIQ's team handles design, content training, deployment, and ongoing optimisation. Clients receive a working assistant without writing a single line of code or logging into any dashboard.
+
+Outcomes across active deployments:
+- 92% of inbound queries resolved automatically without human intervention
+- Bot replies in under 5 seconds, 24 hours a day, 7 days a week
+- 3× more leads captured versus manual WhatsApp management
+- Restaurant clients automate table bookings and pre-orders via WhatsApp
+- Salon clients automate Instagram and WhatsApp appointment scheduling with reminders
+- Clinic clients schedule and confirm patient appointments without receptionist involvement
+
+WhatsApp integration uses the official Meta Cloud API — the same infrastructure Meta recommends for business messaging — ensuring reliability, message delivery, and compliance with WhatsApp Business Policy.
 
 ## Contact
 
