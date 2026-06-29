@@ -1,0 +1,54 @@
+# AgentIQ
+
+> Done-for-you AI chatbots and voice agents for Indian businesses — restaurants, salons, clinics, and D2C brands. Deployed on WhatsApp, Instagram, and your website. Live in 7 days, no coding required.
+
+## What AgentIQ Does
+
+AgentIQ builds and manages AI-powered customer communication assistants for small and mid-size Indian businesses. The service covers the full delivery lifecycle: discovery call, design, content training, deployment, and ongoing optimisation — clients need no technical knowledge.
+
+Assistants reply 24/7 in seconds, handle bookings and lead capture, answer product or menu FAQs, process enquiries, and perform a seamless handoff to a human team member when needed.
+
+## Who It Serves
+
+- Restaurants and cloud kitchens: menu queries, table reservations, order status, special offers
+- Salons and spas: appointment booking, service pricing, stylist availability
+- Clinics and healthcare providers: appointment scheduling, FAQ triage, doctor availability
+- D2C e-commerce brands: product queries, order tracking, returns and refunds via WhatsApp
+
+## Channels Supported
+
+- WhatsApp Business API (official Meta Cloud API integration)
+- Instagram Direct Messages
+- Website chat widget
+
+One unified assistant powers all three channels simultaneously.
+
+## Pricing
+
+| Plan       | One-Time Setup | Monthly Retainer | Scope                          |
+|------------|---------------|-----------------|--------------------------------|
+| Starter    | Rs. 24,999    | Rs. 6,999       | 1 channel, standard features   |
+| Growth     | Rs. 39,999    | Rs. 9,999       | 2 channels, CRM + integrations |
+| Pro        | Rs. 79,999    | Rs. 19,999      | All channels + AI voice agent  |
+| Enterprise | Custom        | Custom          | High-volume, custom build      |
+
+GST extra. Every plan includes design, content training, launch, and ongoing optimisation.
+
+## Languages
+
+English, Hindi, Hinglish (all plans). Regional languages available on request.
+
+## Key Facts
+
+- Location: Mumbai, Maharashtra, India
+- Typical go-live timeline: 7 business days after kickoff call
+- Human handoff: supported with instant team notification
+- Integrations: Google Sheets, CRMs, Razorpay, UPI payment links, Shopify, booking calendars
+- Data ownership: clients own all conversation data; India-compliant infrastructure
+- Contact WhatsApp: +91 91596 65277
+
+## Contact
+
+- Website: https://agentiq.co.in/
+- WhatsApp: https://wa.me/919159665277
+- Instagram: https://www.instagram.com/agentiq.co.in
