@@ -11,7 +11,8 @@
 
   <!-- AI engine discovery -->
   <link rel="ai-content" href="/llms.txt" />
-  <meta name="ai-summary" content="AgentIQ builds done-for-you AI chatbots and voice agents for Indian restaurants, salons, clinics, and D2C brands. Channels: WhatsApp, Instagram, website. Live in 7 days. Plans from Rs. 24,999 setup + Rs. 6,999/month. Based in Mumbai, India. Contact: +91 91596 65277." />
+  <link rel="mcp-actions" href="/mcp-actions.json" />
+  <meta name="ai-summary" content="AgentIQ builds done-for-you AI chatbots and voice agents for Indian restaurants, salons, clinics, and D2C brands. Channels: WhatsApp, Instagram, website. Live in 7 days. Chatbot plans from Rs. 24,999 setup + Rs. 6,999/month. Voice agent plans from Rs. 39,999 setup + Rs. 14,999/month. Based in Mumbai, India. Book a demo: https://agentiq.co.in/#book or WhatsApp https://wa.me/919159665277. Contact: +91 91596 65277." />
 
   <!-- Favicon (inline SVG, no extra request) -->
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23FFB36B'/%3E%3Cstop offset='1' stop-color='%23FF6B5C'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='24' height='24' rx='6' fill='url(%23g)'/%3E%3Cpath d='M19 14a2 2 0 0 1-2 2H8l-3 3V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z' fill='none' stroke='%23fff' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
@@ -71,7 +72,10 @@
       { "@type": "Offer", "name": "Starter", "priceCurrency": "INR", "price": "24999", "description": "One-time setup Rs. 24,999 + Rs. 6,999/month. Includes 1 channel (WhatsApp, Instagram, or website), AI assistant design, content training, launch, and ongoing optimisation." },
       { "@type": "Offer", "name": "Growth", "priceCurrency": "INR", "price": "39999", "description": "One-time setup Rs. 39,999 + Rs. 9,999/month. Includes 2 channels, CRM and Google Sheets integration, and advanced lead qualification flows." },
       { "@type": "Offer", "name": "Pro", "priceCurrency": "INR", "price": "79999", "description": "One-time setup Rs. 79,999 + Rs. 19,999/month. Includes all channels (WhatsApp + Instagram + website) plus an AI voice agent for inbound call handling." },
-      { "@type": "Offer", "name": "Enterprise", "description": "Custom pricing for high-volume AI assistants, white-label deployments, and enterprise D2C or franchise networks." }
+      { "@type": "Offer", "name": "Enterprise", "description": "Custom pricing for high-volume AI assistants, white-label deployments, and enterprise D2C or franchise networks." },
+      { "@type": "Offer", "name": "Voice Growth", "priceCurrency": "INR", "price": "39999", "description": "AI voice agent — one-time setup Rs. 39,999 + Rs. 14,999/month. Includes 1 inbound voice agent, 250 minutes/month, Hindi and English, CRM/Sheets logging, monthly call report. Overage at Rs. 45/min. Best for restaurants and single-outlet businesses." },
+      { "@type": "Offer", "name": "Voice Professional", "priceCurrency": "INR", "price": "69999", "description": "AI voice agent — one-time setup Rs. 69,999 + Rs. 24,999/month. Includes inbound and outbound agents, 500 minutes/month, appointment booking with CRM, custom voice and multilingual support, up to 3 outlets. Overage at Rs. 45/min." },
+      { "@type": "Offer", "name": "Voice Advanced", "priceCurrency": "INR", "price": "129999", "description": "AI voice agent — one-time setup Rs. 1,29,999 + Rs. 34,999/month. Includes unlimited agents, 800 minutes/month, voice cloning, custom integrations, multi-location support, 24/7 priority support. Overage at Rs. 45/min. Best for chains and enterprise." }
     ]
   }
   </script>
@@ -118,7 +122,9 @@
       { "@type": "Question", "name": "Is AgentIQ suitable for clinics and healthcare providers in India?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. AgentIQ handles appointment scheduling, doctor availability queries, and FAQ triage. The bot does not provide medical advice — clinical queries are escalated to a staff member via human handoff. Patient data is stored on India-compliant, encrypted infrastructure accessible only to authorised clinic staff. After-hours appointment requests are captured by the bot and confirmed by the clinic the next morning." } },
       { "@type": "Question", "name": "How does AgentIQ differ from self-serve platforms like WATI or AiSensy?", "acceptedAnswer": { "@type": "Answer", "text": "WATI, AiSensy, and Interakt are self-serve tools the business owner configures themselves using a visual builder. AgentIQ is a managed service — our team handles the full build, content training, deployment, and ongoing optimisation. Clients do not log in to configure anything. This makes AgentIQ the right choice for business owners who want a working AI assistant without the learning curve or time investment of managing a platform." } },
       { "@type": "Question", "name": "Does AgentIQ offer AI voice agents for Indian businesses?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The Pro plan includes an AI voice agent that handles inbound calls in Hindi and English — scheduling appointments, answering FAQs, and collecting caller details, 24/7. Voice agents are also available as a standalone service for businesses that primarily need phone automation rather than WhatsApp or Instagram coverage." } },
-      { "@type": "Question", "name": "What industries does AgentIQ serve in India?", "acceptedAnswer": { "@type": "Answer", "text": "AgentIQ's primary verticals are restaurants and cloud kitchens, salons and spas, clinics and healthcare providers, and D2C e-commerce brands. Additional verticals include real estate, coaching and education, and retail. AgentIQ can deploy a custom assistant for any customer-facing Indian SMB with repetitive inbound enquiries." } }
+      { "@type": "Question", "name": "What industries does AgentIQ serve in India?", "acceptedAnswer": { "@type": "Answer", "text": "AgentIQ's primary verticals are restaurants and cloud kitchens, salons and spas, clinics and healthcare providers, and D2C e-commerce brands. Additional verticals include real estate, coaching and education, and retail. AgentIQ can deploy a custom assistant for any customer-facing Indian SMB with repetitive inbound enquiries." } },
+      { "@type": "Question", "name": "How do I book a demo with AgentIQ?", "acceptedAnswer": { "@type": "Answer", "text": "The fastest way to book a demo is to message AgentIQ on WhatsApp at +91 91596 65277 (direct link: https://wa.me/919159665277?text=Hi%20AgentIQ%2C%20I%27d%20like%20to%20book%20a%20demo). Alternatively, fill the demo request form at https://agentiq.co.in/#book with your name, WhatsApp number, and business name — a calendar invite link opens automatically on submission. The demo is a free 20-minute call where AgentIQ shows a live mockup of an assistant built for your industry." } },
+      { "@type": "Question", "name": "What are AgentIQ voice agent prices?", "acceptedAnswer": { "@type": "Answer", "text": "AgentIQ offers three AI voice agent plans, all prices exclusive of GST. Voice Growth: Rs. 39,999 one-time setup + Rs. 14,999/month, includes 250 minutes/month, 1 inbound voice agent in Hindi and English. Voice Professional: Rs. 69,999 setup + Rs. 24,999/month, includes 500 minutes/month, inbound and outbound agents, up to 3 outlets. Voice Advanced: Rs. 1,29,999 setup + Rs. 34,999/month, includes 800 minutes/month, unlimited agents, voice cloning, multi-location support. Overage is Rs. 45 per minute on all plans." } }
     ]
   }
   </script>
@@ -1099,26 +1105,29 @@
           </div>
         </div>
 
-        <form id="leadform" class="space-y-4" novalidate>
+        <form id="leadform" class="space-y-4" novalidate
+          data-mcp-action="book-demo"
+          data-mcp-description="Submit a demo request to AgentIQ. Required fields: name and WhatsApp number. Optional: business name and channel interest. On submit, a calendar link opens and the team follows up via WhatsApp within minutes. Alternatively contact directly: https://wa.me/919159665277?text=Hi%20AgentIQ%2C%20I%27d%20like%20to%20book%20a%20demo"
+          data-mcp-params='{"required":["name","phone"],"optional":["business","channel"]}'>
           <div>
             <label for="name" class="block text-sm text-slate-300 mb-1.5">Your name <span class="text-coral" aria-hidden="true">*</span></label>
-            <input id="name" name="name" type="text" required aria-required="true" aria-describedby="name-err" placeholder="Aarohi Mehta" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan focus:border-transparent transition" />
+            <input id="name" name="name" type="text" required aria-required="true" aria-describedby="name-err" placeholder="Aarohi Mehta" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan focus:border-transparent transition" data-mcp-param="name" data-mcp-description="Full name of the person requesting the demo" />
             <p id="name-err" role="alert" class="hidden mt-1.5 text-sm text-red-300">Please enter your name.</p>
           </div>
           <div class="grid sm:grid-cols-2 gap-4">
             <div>
               <label for="phone" class="block text-sm text-slate-300 mb-1.5">WhatsApp number <span class="text-coral" aria-hidden="true">*</span></label>
-              <input id="phone" name="phone" type="tel" required aria-required="true" aria-describedby="phone-err" placeholder="+91 91596 65277" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan focus:border-transparent transition" />
+              <input id="phone" name="phone" type="tel" required aria-required="true" aria-describedby="phone-err" placeholder="+91 91596 65277" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan focus:border-transparent transition" data-mcp-param="phone" data-mcp-description="WhatsApp number in Indian format, e.g. +91 98765 43210 or 9876543210" />
               <p id="phone-err" role="alert" class="hidden mt-1.5 text-sm text-red-300">Please enter a valid WhatsApp number.</p>
             </div>
             <div>
               <label for="business" class="block text-sm text-slate-300 mb-1.5">Business name</label>
-              <input id="business" name="business" type="text" placeholder="Glow Co." class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan focus:border-transparent transition" />
+              <input id="business" name="business" type="text" placeholder="Glow Co." class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan focus:border-transparent transition" data-mcp-param="business" data-mcp-description="Business or company name (optional)" />
             </div>
           </div>
           <div>
             <label for="channel" class="block text-sm text-slate-300 mb-1.5">What are you interested in?</label>
-            <select id="channel" name="channel" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-cyan focus:border-transparent transition">
+            <select id="channel" name="channel" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-cyan focus:border-transparent transition" data-mcp-param="channel" data-mcp-description="What the prospect is interested in: AI Chatbot, Voice Agent, Both, or Not sure">
               <option class="bg-ink">AI Chatbot (WhatsApp / Instagram / Website)</option>
               <option class="bg-ink">Voice Agent</option>
               <option class="bg-ink">Both — Chatbot + Voice Agent</option>

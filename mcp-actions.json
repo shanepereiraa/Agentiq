@@ -1,0 +1,179 @@
+{
+  "version": "1.0",
+  "site": "https://agentiq.co.in",
+  "generated": "2026-06-29",
+  "description": "AgentIQ agentic action manifest — machine-readable actions for AI browsing agents",
+  "actions": [
+    {
+      "id": "book-demo",
+      "name": "Book a Free Demo",
+      "description": "Schedule a free 20-minute demo call with AgentIQ to see an AI assistant built for your industry. The fastest path is WhatsApp: message https://wa.me/919159665277?text=Hi%20AgentIQ%2C%20I%27d%20like%20to%20book%20a%20demo — the team confirms a slot within minutes. Alternatively, fill the on-page form at https://agentiq.co.in/#book with your name, WhatsApp number, and business name.",
+      "method": "declarative",
+      "page": "https://agentiq.co.in/#book",
+      "contact": {
+        "whatsapp_url": "https://wa.me/919159665277?text=Hi%20AgentIQ%2C%20I%27d%20like%20to%20book%20a%20demo",
+        "whatsapp_number": "+91-91596-65277",
+        "phone": "+91-91596-65277"
+      },
+      "form": {
+        "element_id": "leadform",
+        "parameters": {
+          "required": ["name", "phone"],
+          "optional": ["business", "channel"]
+        },
+        "channel_options": [
+          "AI Chatbot (WhatsApp / Instagram / Website)",
+          "Voice Agent",
+          "Both — Chatbot + Voice Agent",
+          "Not sure yet"
+        ]
+      }
+    },
+    {
+      "id": "contact-whatsapp",
+      "name": "Contact AgentIQ on WhatsApp",
+      "description": "Open a WhatsApp conversation with AgentIQ. Send any message to start a conversation.",
+      "method": "link",
+      "whatsapp_url": "https://wa.me/919159665277",
+      "phone": "+91-91596-65277"
+    },
+    {
+      "id": "get-chatbot-pricing",
+      "name": "Get AI Chatbot Pricing",
+      "description": "Structured pricing data for AgentIQ AI chatbot plans. All prices in INR, exclusive of GST. Every plan includes design, content training, launch, and ongoing optimisation.",
+      "method": "static",
+      "page": "https://agentiq.co.in/#pricing",
+      "data": {
+        "currency": "INR",
+        "gst_extra": true,
+        "money_back_guarantee_days": 30,
+        "plans": [
+          {
+            "name": "Starter",
+            "setup_fee": 24999,
+            "monthly_fee": 6999,
+            "channels": 1,
+            "chat_volume": "Up to 1,000 chats/month",
+            "includes": [
+              "1 channel (WhatsApp, Instagram, or website)",
+              "AI assistant design and content training",
+              "Launch support",
+              "Ongoing optimisation",
+              "Lead capture and email alerts",
+              "Email support"
+            ]
+          },
+          {
+            "name": "Growth",
+            "setup_fee": 39999,
+            "monthly_fee": 9999,
+            "channels": 3,
+            "chat_volume": "Up to 10,000 chats/month",
+            "includes": [
+              "All 3 channels (WhatsApp, Instagram, website)",
+              "CRM and payment link integration",
+              "Monthly optimisation",
+              "Priority support"
+            ]
+          },
+          {
+            "name": "Pro",
+            "setup_fee": 79999,
+            "monthly_fee": 19999,
+            "channels": 3,
+            "includes": [
+              "All 3 channels plus Instagram DM",
+              "Customer profiling and VIP tags",
+              "Multi-location support",
+              "Source code ownership"
+            ]
+          },
+          {
+            "name": "Enterprise",
+            "setup_fee": "custom",
+            "monthly_fee": "custom",
+            "includes": [
+              "High-volume deployments",
+              "Custom AI model fine-tuning",
+              "Dedicated account management",
+              "White-label options"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "get-voice-pricing",
+      "name": "Get AI Voice Agent Pricing",
+      "description": "Structured pricing data for AgentIQ AI voice agent plans. All prices in INR, exclusive of GST. Overage rate is Rs. 45 per minute beyond included allowance.",
+      "method": "static",
+      "page": "https://agentiq.co.in/#pricing",
+      "data": {
+        "currency": "INR",
+        "gst_extra": true,
+        "overage_rate_per_minute": 45,
+        "plans": [
+          {
+            "name": "Voice Growth",
+            "setup_fee": 39999,
+            "monthly_fee": 14999,
+            "minutes_included": 250,
+            "best_for": "Restaurants and single-outlet businesses",
+            "includes": [
+              "1 inbound voice agent",
+              "Hindi and English support",
+              "CRM and Google Sheets logging",
+              "Monthly call report"
+            ]
+          },
+          {
+            "name": "Voice Professional",
+            "setup_fee": 69999,
+            "monthly_fee": 24999,
+            "minutes_included": 500,
+            "best_for": "D2C brands and multi-outlet restaurants",
+            "includes": [
+              "Inbound and outbound agents",
+              "Appointment booking with CRM integration",
+              "Custom voice and multilingual support",
+              "Up to 3 outlets"
+            ]
+          },
+          {
+            "name": "Voice Advanced",
+            "setup_fee": 129999,
+            "monthly_fee": 34999,
+            "minutes_included": 800,
+            "best_for": "Chains, large D2C brands, and enterprise",
+            "includes": [
+              "Unlimited voice agents",
+              "Voice cloning and custom integrations",
+              "Multi-location support",
+              "24/7 priority support"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "get-industries",
+      "name": "Get Industries Served by AgentIQ",
+      "description": "List of industries and verticals AgentIQ serves with AI chatbots and voice agents",
+      "method": "static",
+      "data": {
+        "primary_verticals": [
+          "Restaurants and cloud kitchens",
+          "Salons and spas",
+          "Clinics and healthcare providers",
+          "D2C e-commerce brands"
+        ],
+        "additional_verticals": [
+          "Real estate",
+          "Coaching and education",
+          "Retail"
+        ],
+        "note": "AgentIQ can build a custom assistant for any customer-facing Indian SMB with repetitive inbound enquiries."
+      }
+    }
+  ]
+}

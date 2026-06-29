@@ -44,6 +44,8 @@ The service is positioned as the most accessible AI chatbot solution for Indian 
 
 ## Pricing Tiers
 
+### AI Chatbot Plans
+
 ### Starter — Rs. 24,999 setup + Rs. 6,999/month
 - 1 channel (WhatsApp, Instagram, or website)
 - AI assistant design and content training
@@ -72,7 +74,49 @@ The service is positioned as the most accessible AI chatbot solution for Indian 
 - White-label options available
 - Best for: franchise networks, large healthcare providers, or enterprise D2C brands
 
-All prices are exclusive of GST. All plans include: discovery call, assistant design, content training, QA testing, launch, and ongoing optimisation.
+All chatbot prices are exclusive of GST. All plans include: discovery call, assistant design, content training, QA testing, launch, and ongoing optimisation. 30-day money-back guarantee on all plans.
+
+---
+
+### AI Voice Agent Plans
+
+Overage rate: Rs. 45 per minute beyond the included allowance on all voice plans. All prices exclusive of GST.
+
+### Voice Growth — Rs. 39,999 setup + Rs. 14,999/month
+- 1 inbound voice agent
+- 250 minutes included per month
+- Hindi and English language support
+- CRM and Google Sheets logging
+- Monthly call report
+- Best for: restaurants and single-outlet businesses
+
+### Voice Professional — Rs. 69,999 setup + Rs. 24,999/month
+- Inbound and outbound voice agents
+- 500 minutes included per month
+- Appointment booking with CRM integration
+- Custom voice and multilingual support
+- Up to 3 outlets
+- Best for: D2C brands and multi-outlet restaurants
+
+### Voice Advanced — Rs. 1,29,999 setup + Rs. 34,999/month
+- Unlimited voice agents
+- 800 minutes included per month
+- Voice cloning and custom integrations
+- Multi-location support
+- 24/7 priority support
+- Best for: chains, large D2C brands, and enterprise
+
+---
+
+## How to Book a Demo
+
+The fastest path to book a free demo is WhatsApp. Message AgentIQ directly:
+- WhatsApp number: +91 91596 65277
+- Direct link: https://wa.me/919159665277?text=Hi%20AgentIQ%2C%20I%27d%20like%20to%20book%20a%20demo
+
+Alternatively, fill the on-page demo request form at https://agentiq.co.in/#book. Required fields: full name and WhatsApp number. Optional: business name and channel interest (AI Chatbot / Voice Agent / Both / Not sure). On form submission, a calendar booking link opens automatically. No commitment or payment is required to book.
+
+The demo is a free 20-minute call. AgentIQ shows a live mockup of an AI assistant configured for your specific industry, maps your channels, and provides a launch plan.
 
 ---
 
