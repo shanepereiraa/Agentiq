@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI WhatsApp Chatbot for Restaurants India | AgentIQ</title>
+  <meta name="description" content="Automate table bookings, takeaway orders, and customer queries on WhatsApp. Done-for-you AI chatbot for Indian restaurants. Live in 7 days. From ₹6,999/mo." />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#07173a" />
+  <link rel="canonical" href="https://agentiq.co.in/restaurants" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23FFB36B'/%3E%3Cstop offset='1' stop-color='%23FF6B5C'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='24' height='24' rx='6' fill='url(%23g)'/%3E%3Cpath d='M19 14a2 2 0 0 1-2 2H8l-3 3V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z' fill='none' stroke='%23fff' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://agentiq.co.in/restaurants" />
+  <meta property="og:title" content="AI WhatsApp Chatbot for Restaurants India | AgentIQ" />
+  <meta property="og:description" content="Automate table bookings, takeaway orders, and customer queries on WhatsApp. Done-for-you AI chatbot for Indian restaurants. Live in 7 days. From ₹6,999/mo." />
+  <meta property="og:image" content="https://agentiq.co.in/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta property="og:locale" content="en_IN" />
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"AgentIQ","item":"https://agentiq.co.in/"},{"@type":"ListItem","position":2,"name":"Restaurants","item":"https://agentiq.co.in/restaurants"}]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does an AI WhatsApp chatbot help my restaurant take bookings?","acceptedAnswer":{"@type":"Answer","text":"The bot handles table reservation requests 24/7 via WhatsApp. Customers send the date, time, and party size — the bot confirms instantly, updates the booking calendar, and sends a reminder the evening before. No staff involvement required during off-hours."}},{"@type":"Question","name":"Will the chatbot reply to customers in Hindi or Hinglish?","acceptedAnswer":{"@type":"Answer","text":"Yes. Your restaurant chatbot replies fluently in English, Hindi, and Hinglish depending on how the customer messages. Regional languages can be added on request."}},{"@type":"Question","name":"Can the bot take food orders and collect payments?","acceptedAnswer":{"@type":"Answer","text":"Yes. The bot can take pre-orders with item selection and share a Razorpay or UPI payment link directly in the WhatsApp conversation. Orders are logged to a Google Sheet or your CRM in real time."}},{"@type":"Question","name":"How quickly can AgentIQ set up a WhatsApp chatbot for my restaurant?","acceptedAnswer":{"@type":"Answer","text":"Most restaurant bots go live within 7 days. After a kickoff call we collect your menu, FAQs, and reservation policy, train the AI, test it, and deploy on WhatsApp Business API."}}]}
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Space+Grotesk:wght@500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Space+Grotesk:wght@500;600;700&display=swap" /></noscript>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        fontFamily: { sans:['DM Sans','system-ui','sans-serif'], display:['Space Grotesk','DM Sans','sans-serif'] },
+        colors: { ink:'#07173a', coral:'#FF6B5C', orange:'#FF9F45', cyan:'#22D3EE', blue:'#3B82F6' },
+        animation: { float:'float 6s ease-in-out infinite' },
+        keyframes: { float:{'0%,100%':{transform:'translateY(0)'},'50%':{transform:'translateY(-14px)'}}, dot:{'0%,80%,100%':{transform:'scale(0.6)',opacity:'0.4'},'40%':{transform:'scale(1)',opacity:'1'}} }
+      }}
+    };
+  </script>
+  <style>
+    html{-webkit-font-smoothing:antialiased}body{background:#060f28}
+    a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:3px solid #22D3EE;outline-offset:2px;border-radius:6px}
+    .glass{background:rgba(255,255,255,.05);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.10)}
+    .glass-strong{background:rgba(255,255,255,.08);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.14)}
+    .grad-text{background:linear-gradient(100deg,#FFB36B 0%,#FF6B5C 45%,#22D3EE 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+    .reveal.in{opacity:1;transform:none}
+    .card-lift{transition:transform .25s cubic-bezier(.16,1,.3,1),box-shadow .25s ease}
+    .card-lift:hover{transform:translateY(-4px);box-shadow:0 20px 50px rgba(0,0,0,.35)}
+    .dot{width:7px;height:7px;border-radius:9999px;background:#FF9F45;animation:dot 1.3s infinite ease-in-out}
+    .dot:nth-child(2){animation-delay:.18s}.dot:nth-child(3){animation-delay:.36s}
+    @keyframes dot{0%,80%,100%{transform:scale(0.6);opacity:.4}40%{transform:scale(1);opacity:1}}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+    ::selection{background:rgba(255,107,92,.45);color:#fff}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.reveal{opacity:1!important;transform:none!important}html{scroll-behavior:auto}}
+  </style>
+</head>
+
+<body class="font-sans text-slate-200 antialiased overflow-x-hidden">
+  <div class="fixed inset-0 -z-10 pointer-events-none" style="background:#060f28"></div>
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-[60] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-coral focus:text-white">Skip to content</a>
+
+  <header class="fixed top-3 left-3 right-3 z-50">
+    <nav aria-label="Primary" class="max-w-6xl mx-auto glass rounded-2xl px-4 sm:px-5 py-3 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2.5" aria-label="AgentIQ home">
+        <span class="grid place-items-center w-9 h-9 rounded-xl bg-gradient-to-br from-coral to-orange text-white shadow-lg shadow-coral/30">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </span>
+        <span class="font-display font-700 text-lg text-white tracking-tight">Agent<span class="grad-text">IQ</span></span>
+      </a>
+      <div class="hidden md:flex items-center gap-7 text-sm text-slate-300">
+        <a href="/#how" class="hover:text-white transition-colors">Chatbots</a>
+        <a href="/#voice" class="hover:text-white transition-colors">Voice Agents</a>
+        <a href="/#pricing" class="hover:text-white transition-colors">Pricing</a>
+        <a href="/#industries" class="hover:text-white transition-colors">Industries</a>
+      </div>
+      <a href="#book" class="text-sm font-500 px-4 py-2 rounded-xl bg-white text-ink hover:bg-cyan hover:text-white transition-colors duration-200">Book a demo</a>
+    </nav>
+  </header>
+
+  <main id="main" tabindex="-1" class="focus:outline-none">
+
+    <!-- HERO -->
+    <section class="relative pt-32 pb-24 px-5 overflow-hidden" style="background:linear-gradient(180deg,#060c1e 0%,#08183a 55%,#060f28 100%)">
+      <div aria-hidden="true" class="pointer-events-none absolute -top-32 -left-24 w-[38rem] h-[38rem] rounded-full" style="background:radial-gradient(circle,rgba(52,211,153,.18) 0%,transparent 70%);filter:blur(90px)"></div>
+      <div aria-hidden="true" class="pointer-events-none absolute top-1/3 -right-24 w-[34rem] h-[34rem] rounded-full" style="background:radial-gradient(circle,rgba(255,107,92,.14) 0%,transparent 70%);filter:blur(90px)"></div>
+      <div class="relative max-w-4xl mx-auto text-center">
+        <nav aria-label="Breadcrumb" class="reveal flex items-center justify-center gap-2 text-xs text-slate-500 mb-6">
+          <a href="/" class="hover:text-slate-300 transition-colors">AgentIQ</a>
+          <span aria-hidden="true">/</span>
+          <span class="text-slate-300">Restaurants</span>
+        </nav>
+        <div class="reveal inline-flex items-center gap-2 glass rounded-full pl-2 pr-4 py-1.5 text-xs text-slate-300 mb-8">
+          <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-400/15 text-emerald-300 font-600">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>WhatsApp Bot
+          </span>
+          Built for Indian restaurants
+        </div>
+        <h1 class="reveal font-display font-700 text-white text-5xl sm:text-6xl leading-[1.02] tracking-tight">
+          Your restaurant's WhatsApp<br>is a full-time job.<br><span class="grad-text">Let the bot do it.</span>
+        </h1>
+        <p class="reveal mt-7 text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">Missed bookings, DM floods, after-hours enquiries — AgentIQ handles it all on WhatsApp. Automatically.</p>
+        <div class="reveal mt-9 flex flex-col sm:flex-row items-center justify-center gap-3">
+          <a href="#book" class="group inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl bg-gradient-to-r from-coral to-orange text-white font-600 shadow-lg shadow-coral/30 hover:shadow-coral/50 transition-shadow duration-200 text-[15px]">
+            Get a Free Restaurant Demo
+            <svg class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        <div class="reveal mt-8 flex flex-wrap items-center justify-center gap-3 text-xs">
+          <span class="px-3 py-1.5 rounded-full glass text-slate-300">92% queries handled automatically</span>
+          <span class="px-3 py-1.5 rounded-full glass text-slate-300">3x more bookings</span>
+          <span class="px-3 py-1.5 rounded-full glass text-slate-300">Live in 7 days</span>
+        </div>
+        <p class="reveal mt-5 text-xs text-slate-500">Plans from <span class="text-slate-400">₹6,999/mo</span> · Free demo · No commitment</p>
+      </div>
+    </section>
+
+    <!-- PAIN POINTS -->
+    <section class="relative py-20 px-5 overflow-hidden" style="background:linear-gradient(180deg,#060f28 0%,#071020 50%,#060f28 100%)">
+      <div class="relative max-w-5xl mx-auto">
+        <div class="reveal text-center mb-12">
+          <p class="text-emerald-300 text-sm font-500 tracking-widest uppercase mb-3">Sound familiar?</p>
+          <h2 class="font-display font-700 text-white text-3xl sm:text-4xl tracking-tight">The problems your bot solves</h2>
+        </div>
+        <div class="grid md:grid-cols-3 gap-5">
+          <article class="reveal card-lift rounded-2xl p-7" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
+            <div class="grid place-items-center w-12 h-12 rounded-xl mb-5" style="background:rgba(52,211,153,.12)">
+              <svg class="w-6 h-6 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.17 12a19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 3.08 1h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <h3 class="font-display font-600 text-white text-lg mb-2">Missed bookings after 10 PM</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">Customers WhatsApp when you're closed. The bot books the table instantly, logs it, and sends a confirmation — no staff needed.</p>
+          </article>
+          <article class="reveal card-lift rounded-2xl p-7" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
+            <div class="grid place-items-center w-12 h-12 rounded-xl mb-5" style="background:rgba(255,107,92,.12)">
+              <svg class="w-6 h-6 text-coral" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <h3 class="font-display font-600 text-white text-lg mb-2">DM overload every weekend</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">Staff spending hours on repetitive booking messages. The bot handles 92% automatically so your team focuses on the guest experience.</p>
+          </article>
+          <article class="reveal card-lift rounded-2xl p-7" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
+            <div class="grid place-items-center w-12 h-12 rounded-xl mb-5" style="background:rgba(34,211,238,.12)">
+              <svg class="w-6 h-6 text-cyan" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+            </div>
+            <h3 class="font-display font-600 text-white text-lg mb-2">No-shows with no reminders</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">The bot sends a booking confirmation immediately and a WhatsApp reminder the evening before — reducing no-shows by up to 40%.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- DEMO WIDGET -->
+    <section class="relative py-20 px-5 overflow-hidden" style="background:linear-gradient(180deg,#060f28 0%,#071520 50%,#060f28 100%)">
+      <div aria-hidden="true" class="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 w-80 h-80 rounded-full" style="background:radial-gradient(circle,rgba(52,211,153,.15) 0%,transparent 70%);filter:blur(70px)"></div>
+      <div class="relative max-w-5xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+        <div class="reveal">
+          <p class="text-emerald-300 text-sm font-500 tracking-widest uppercase mb-4">Live Preview</p>
+          <h2 class="font-display font-700 text-white text-3xl sm:text-4xl tracking-tight leading-tight">See how it handles real restaurant queries</h2>
+          <p class="mt-5 text-slate-400 text-sm leading-relaxed">Tap any question below to see your bot's response — trained on your menu, timings, and booking policy from day one.</p>
+          <div class="mt-6 space-y-2 text-sm text-slate-300">
+            <div class="flex items-center gap-2"><svg class="w-4 h-4 text-emerald-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Instant replies, 24/7</div>
+            <div class="flex items-center gap-2"><svg class="w-4 h-4 text-emerald-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Hindi, English &amp; Hinglish</div>
+            <div class="flex items-center gap-2"><svg class="w-4 h-4 text-emerald-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Saves 3 hours/day on WhatsApp bookings</div>
+          </div>
+        </div>
+        <div class="reveal">
+          <div class="glass-strong rounded-[1.75rem] overflow-hidden shadow-2xl shadow-black/40">
+            <div class="flex items-center gap-3 px-5 py-4 border-b border-white/10" style="background:linear-gradient(90deg,rgba(37,211,102,.16),transparent)">
+              <span class="grid place-items-center w-9 h-9 rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 text-white shrink-0">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
+              </span>
+              <div><p class="text-white font-500 text-sm">Spice Route · WhatsApp</p><p class="text-emerald-300 text-xs flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>online</p></div>
+            </div>
+            <div id="chatlog" class="px-5 py-5 space-y-3 h-60 overflow-y-auto text-sm" aria-live="polite"></div>
+            <div class="px-4 pb-4 pt-2 border-t border-white/10"><div id="chips" class="flex flex-wrap gap-2"></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIAL -->
+    <section class="py-12 px-5" style="background:#060f28">
+      <div class="max-w-3xl mx-auto reveal rounded-2xl p-8" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
+        <div class="flex items-start justify-between mb-5">
+          <span class="text-xs font-600 px-3 py-1 rounded-full bg-emerald-400/15 text-emerald-300">Restaurant · Mumbai</span>
+          <div class="flex gap-0.5" role="img" aria-label="5 stars">
+            <svg class="w-4 h-4 fill-orange text-orange" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="w-4 h-4 fill-orange text-orange" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="w-4 h-4 fill-orange text-orange" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="w-4 h-4 fill-orange text-orange" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="w-4 h-4 fill-orange text-orange" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+        </div>
+        <p class="text-slate-200 text-base leading-relaxed mb-6">"We used to lose bookings every night after 10 PM. AgentIQ handles all of it now — reservations, menu queries, pre-orders. Saved us 3 hours a day on WhatsApp alone."</p>
+        <div class="flex items-center gap-3">
+          <span class="grid place-items-center w-10 h-10 rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 text-white text-sm font-700 shrink-0">V</span>
+          <div><p class="text-white text-sm font-600">Vikram N.</p><p class="text-slate-400 text-xs mt-0.5">Owner, Spice Route · Mumbai</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BOOK A DEMO -->
+    <section id="book" class="relative py-24 px-5 overflow-hidden" style="background:linear-gradient(180deg,#060f28 0%,#07142a 50%,#060f28 100%)">
+      <div aria-hidden="true" class="pointer-events-none absolute left-1/2 -translate-x-1/2 top-0 w-[600px] h-64 rounded-full" style="background:radial-gradient(ellipse,rgba(34,211,238,.12) 0%,transparent 70%);filter:blur(60px)"></div>
+      <div class="relative max-w-5xl mx-auto reveal rounded-[2rem] p-8 sm:p-12 grid lg:grid-cols-2 gap-10 items-center" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);backdrop-filter:blur(20px)">
+        <div>
+          <h2 class="font-display font-700 text-white text-4xl sm:text-5xl tracking-tight leading-tight">Book your free restaurant demo</h2>
+          <p class="mt-4 text-slate-300 max-w-md">See a live mockup of your restaurant's WhatsApp bot in a 20-minute call. No obligation.</p>
+          <div class="mt-7 space-y-3 text-sm text-slate-300">
+            <a href="tel:+919159665277" class="flex items-center gap-3 hover:text-white transition-colors"><svg class="w-5 h-5 text-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.17 12a19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 3.08 1h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>+91 91596 65277</a>
+            <a href="https://wa.me/919159665277?text=Hi%20AgentIQ%2C%20I%27d%20like%20a%20restaurant%20demo" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 hover:text-white transition-colors"><svg class="w-5 h-5 text-emerald-400 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>Chat on WhatsApp</a>
+            <p class="flex items-center gap-3"><svg class="w-5 h-5 text-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Made in India · serving businesses nationwide</p>
+          </div>
+        </div>
+        <form id="leadform" class="space-y-4" novalidate>
+          <div>
+            <label for="name" class="block text-sm text-slate-300 mb-1.5">Your name <span class="text-coral" aria-hidden="true">*</span></label>
+            <input id="name" name="name" type="text" required aria-required="true" aria-describedby="name-err" placeholder="Aarohi Mehta" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan focus:border-transparent transition" />
+            <p id="name-err" role="alert" class="hidden mt-1.5 text-sm text-red-300">Please enter your name.</p>
+          </div>
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label for="phone" class="block text-sm text-slate-300 mb-1.5">WhatsApp number <span class="text-coral" aria-hidden="true">*</span></label>
+              <input id="phone" name="phone" type="tel" required aria-required="true" aria-describedby="phone-err" placeholder="+91 98765 43210" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan focus:border-transparent transition" />
+              <p id="phone-err" role="alert" class="hidden mt-1.5 text-sm text-red-300">Please enter a valid WhatsApp number.</p>
+            </div>
+            <div>
+              <label for="business" class="block text-sm text-slate-300 mb-1.5">Restaurant name</label>
+              <input id="business" name="business" type="text" placeholder="Spice Route" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan focus:border-transparent transition" />
+            </div>
+          </div>
+          <div>
+            <label for="channel" class="block text-sm text-slate-300 mb-1.5">What are you interested in?</label>
+            <select id="channel" name="channel" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-cyan focus:border-transparent transition">
+              <option class="bg-ink">AI Chatbot (WhatsApp / Instagram / Website)</option>
+              <option class="bg-ink">Voice Agent</option>
+              <option class="bg-ink">Both — Chatbot + Voice Agent</option>
+              <option class="bg-ink">Not sure yet</option>
+            </select>
+          </div>
+          <button type="submit" class="cursor-pointer w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-cyan to-blue text-white font-600 shadow-lg shadow-cyan/30 hover:shadow-blue/30 transition-shadow duration-200">
+            Book My Free Demo
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+          <p class="text-center text-xs text-slate-500 mt-2">We'll WhatsApp you within 2 hours. Free, no commitment.</p>
+          <p id="formmsg" class="text-sm text-emerald-300 hidden" role="status">Thanks! We've opened our calendar in a new tab — pick a slot, or we'll WhatsApp you shortly. If the tab didn't open, <a href="https://wa.me/919159665277?text=Hi%20AgentIQ%2C%20I%27d%20like%20a%20restaurant%20demo" target="_blank" rel="noopener noreferrer" class="underline hover:text-white">message us on WhatsApp</a>.</p>
+        </form>
+      </div>
+    </section>
+
+    <!-- MORE INDUSTRIES -->
+    <section class="py-12 px-5 border-t border-white/8">
+      <div class="max-w-5xl mx-auto text-center">
+        <p class="text-slate-400 text-sm mb-5">AgentIQ also works for</p>
+        <div class="flex flex-wrap items-center justify-center gap-3">
+          <a href="/salons" class="px-4 py-2 rounded-full glass text-slate-300 text-sm hover:text-white hover:bg-white/10 transition-colors duration-200">Salons &amp; Spas</a>
+          <a href="/clinics" class="px-4 py-2 rounded-full glass text-slate-300 text-sm hover:text-white hover:bg-white/10 transition-colors duration-200">Clinics &amp; Hospitals</a>
+          <a href="/#industries" class="px-4 py-2 rounded-full glass text-slate-300 text-sm hover:text-white hover:bg-white/10 transition-colors duration-200">All Industries →</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="px-5 pt-16 pb-10 border-t border-white/8">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-10 mb-12">
+        <div class="col-span-2 md:col-span-1">
+          <a href="/" class="flex items-center gap-2.5 mb-4">
+            <span class="grid place-items-center w-9 h-9 rounded-xl bg-gradient-to-br from-coral to-orange text-white shadow-lg shadow-coral/30">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </span>
+            <span class="font-display font-700 text-lg text-white tracking-tight">Agent<span class="grad-text">IQ</span></span>
+          </a>
+          <p class="text-slate-400 text-sm leading-relaxed max-w-[200px]">AI chatbots for Indian businesses — WhatsApp, Instagram &amp; Web.</p>
+          <div class="flex items-center gap-3 mt-5">
+            <a href="https://wa.me/919159665277" target="_blank" rel="noopener noreferrer" aria-label="AgentIQ on WhatsApp" class="grid place-items-center w-9 h-9 rounded-xl bg-white/5 hover:bg-emerald-500/20 border border-white/8 text-slate-400 hover:text-emerald-400 transition-colors duration-200">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
+            </a>
+            <a href="https://instagram.com/agentiq.co.in" target="_blank" rel="noopener noreferrer" aria-label="AgentIQ on Instagram" class="grid place-items-center w-9 h-9 rounded-xl bg-white/5 hover:bg-fuchsia-500/20 border border-white/8 text-slate-400 hover:text-fuchsia-400 transition-colors duration-200">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069M12 0C8.741 0 8.332.014 7.052.072 2.695.272.273 2.69.073 7.052.014 8.332 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.69.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0m0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324M12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8m6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881"/></svg>
+            </a>
+            <a href="mailto:shane@agentiq.co.in" aria-label="Email AgentIQ" class="grid place-items-center w-9 h-9 rounded-xl bg-white/5 hover:bg-cyan-500/20 border border-white/8 text-slate-400 hover:text-cyan-400 transition-colors duration-200">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <p class="text-white font-600 text-sm mb-4">Services</p>
+          <ul class="space-y-3 text-sm text-slate-400">
+            <li><a href="/#how" class="hover:text-white transition-colors">AI Chatbots</a></li>
+            <li><a href="/#voice" class="hover:text-white transition-colors">Voice Agents</a></li>
+            <li><a href="/#pricing" class="hover:text-white transition-colors">Pricing</a></li>
+            <li><a href="/#faq" class="hover:text-white transition-colors">FAQ</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-white font-600 text-sm mb-4">Industries</p>
+          <ul class="space-y-3 text-sm text-slate-400">
+            <li><a href="/restaurants" class="text-white transition-colors">Restaurants</a></li>
+            <li><a href="/salons" class="hover:text-white transition-colors">Salons &amp; Spas</a></li>
+            <li><a href="/clinics" class="hover:text-white transition-colors">Clinics</a></li>
+            <li><a href="/#industries" class="hover:text-white transition-colors">All Industries</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-white font-600 text-sm mb-4">Contact</p>
+          <ul class="space-y-3 text-sm text-slate-400">
+            <li><a href="tel:+919159665277" class="hover:text-white transition-colors">+91 91596 65277</a></li>
+            <li><a href="https://wa.me/919159665277" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">WhatsApp us</a></li>
+            <li><a href="#book" class="hover:text-white transition-colors">Book a demo</a></li>
+            <li class="text-slate-400">Mumbai, India</li>
+          </ul>
+        </div>
+      </div>
+      <div class="pt-8 border-t border-white/8 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400">
+        <p>© <span id="year">2026</span> AgentIQ. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/919159665277?text=Hi%20AgentIQ%2C%20I%27d%20like%20a%20restaurant%20demo" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp" class="fixed bottom-5 right-5 z-50 grid place-items-center w-14 h-14 rounded-full bg-emerald-500 text-white shadow-xl shadow-emerald-500/30 hover:bg-emerald-400 transition-colors duration-200 animate-float">
+    <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
+  </a>
+
+  <script>window.AgentIQConfig={apiBase:'https://agentiq-chatbot.vercel.app'};</script>
+  <script>
+    (function(){
+      'use strict';
+      var AGENTIQ_API=(window.AgentIQConfig&&window.AgentIQConfig.apiBase)||null;
+      var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      document.getElementById('year').textContent=new Date().getFullYear();
+      var revs=document.querySelectorAll('.reveal');
+      if(reduce||!('IntersectionObserver' in window)){revs.forEach(function(e){e.classList.add('in')});}
+      else{
+        var rem=revs.length;
+        var io=new IntersectionObserver(function(entries){entries.forEach(function(en){if(en.isIntersecting){en.target.style.transitionDelay=(en.target.dataset.delay||0)+'ms';en.target.classList.add('in');io.unobserve(en.target);if(--rem===0)io.disconnect();}});},{threshold:0.12});
+        document.querySelectorAll('.grid').forEach(function(g){g.querySelectorAll(':scope > .reveal').forEach(function(el,i){el.dataset.delay=i*90;});});
+        revs.forEach(function(e){io.observe(e);});
+      }
+      var convo={
+        'Book a table for 4 tonight':"Booked! ✅ Table for 4 tonight confirmed. What time works — 7 PM or 8 PM? I'll send a WhatsApp confirmation right away. 🍽️",
+        'What time do you open?':"We're open 12 PM to 11 PM, Mon to Sun. Kitchen closes at 10:30 PM. Anything else I can help with? 😊",
+        'Do you have veg options?':"Yes! We have a full vegetarian menu — over 20 dishes including Paneer Tikka, Dal Makhani, and seasonal specials. Want me to share the menu? 🌿",
+        'Can I order for delivery?':"Bilkul! 🛵 Delivery available within 5 km. Bas bata do kya chahiye aur address — main order confirm kar deta hoon turant.",
+        'Cancel my reservation':"Sure, I can help. Share the name or number used for the booking and I'll cancel it instantly and send a confirmation. ✓"
+      };
+      var log=document.getElementById('chatlog'),chips=document.getElementById('chips');
+      function bubble(text,who){var d=document.createElement('div');d.className=who==='me'?'ml-auto max-w-[82%] bg-gradient-to-br from-emerald-500 to-emerald-600 text-white rounded-2xl rounded-tr-md px-3.5 py-2.5 text-sm':'max-w-[82%] bg-white/10 text-slate-100 rounded-2xl rounded-tl-md px-3.5 py-2.5 text-sm';d.textContent=text;log.appendChild(d);log.scrollTop=log.scrollHeight;}
+      function typing(){var d=document.createElement('div');d.className='inline-flex items-center gap-1.5 bg-white/8 rounded-2xl rounded-tl-md px-4 py-3';var sr=document.createElement('span');sr.className='sr-only';sr.textContent='AgentIQ is typing…';d.appendChild(sr);for(var i=0;i<3;i++){var dot=document.createElement('span');dot.setAttribute('aria-hidden','true');dot.className='dot';d.appendChild(dot);}log.appendChild(d);log.scrollTop=log.scrollHeight;return d;}
+      function botReply(text){var t=typing();setTimeout(function(){t.remove();if(reduce){bubble(text,'bot');return;}var d=document.createElement('div');d.className='max-w-[82%] bg-white/10 text-slate-100 rounded-2xl rounded-tl-md px-3.5 py-2.5 text-sm';d.setAttribute('aria-hidden','true');log.appendChild(d);log.scrollTop=log.scrollHeight;var i=0;(function stream(){if(i<=text.length){d.textContent=text.slice(0,i);log.scrollTop=log.scrollHeight;i+=2;setTimeout(stream,14);}else{d.removeAttribute('aria-hidden');d.textContent=text;}})();},reduce?250:850);}
+      var busy=false;
+      Object.keys(convo).forEach(function(q){var b=document.createElement('button');b.type='button';b.className='cursor-pointer text-xs px-3 py-1.5 rounded-full glass text-slate-200 hover:bg-white/10 hover:text-white transition-colors duration-200';b.textContent=q;b.addEventListener('click',function(){if(busy)return;busy=true;bubble(q,'me');botReply(convo[q]);setTimeout(function(){busy=false;},1200);});chips.appendChild(b);});
+      bubble("Namaste! 👋 I'm AgentIQ for Spice Route. Tap a question to see how I handle your restaurant's bookings!",'bot');
+      var BOOKING_URL='https://calendar.google.com/calendar/u/0?cid=c29ydGVkc3BlY2llc0BnbWFpbC5jb20';
+      var form=document.getElementById('leadform');
+      form.addEventListener('submit',function(e){
+        e.preventDefault();
+        var name=document.getElementById('name'),phone=document.getElementById('phone'),ok=true,first=null;
+        function setErr(f,id,invalid){var err=document.getElementById(id);if(invalid){f.classList.add('ring-2','ring-red-400');f.setAttribute('aria-invalid','true');if(err)err.classList.remove('hidden');if(!first)first=f;ok=false;}else{f.classList.remove('ring-2','ring-red-400');f.removeAttribute('aria-invalid');if(err)err.classList.add('hidden');}}
+        setErr(name,'name-err',!name.value.trim());
+        setErr(phone,'phone-err',phone.value.replace(/\D/g,'').length<8);
+        if(!ok){if(first)first.focus();return;}
+        if(AGENTIQ_API){fetch(AGENTIQ_API+'/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:name.value.trim(),phone:phone.value.trim(),business:document.getElementById('business').value.trim(),channel:document.getElementById('channel').value})}).catch(function(){});}
+        var btn=form.querySelector('button[type=submit]');btn.disabled=true;btn.textContent='Opening calendar… ✓';
+        document.getElementById('formmsg').classList.remove('hidden');
+        window.open(BOOKING_URL,'_blank','noopener,noreferrer');
+      });
+    })();
+  </script>
+</body>
+</html>
