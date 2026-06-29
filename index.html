@@ -98,9 +98,13 @@
   <!-- esm.sh hosts the VAPI web SDK (type=module, auto-deferred); crossorigin because
        ES module fetches use CORS mode -->
   <link rel="preconnect" href="https://esm.sh" crossorigin />
-  <!-- API origin — dns-prefetch (not full preconnect) is enough since the first call
+  <!-- GA4 tag script loads async at parse time — preconnect warms the TLS handshake
+       so the async fetch completes faster (~80-150ms on Indian 4G) -->
+  <link rel="preconnect" href="https://www.googletagmanager.com" />
+  <!-- API origins — dns-prefetch (not full preconnect) is enough since the first call
        is user-triggered, not page-load-critical -->
   <link rel="dns-prefetch" href="https://agentiq-chatbot.vercel.app" />
+  <link rel="dns-prefetch" href="https://api.vapi.ai" />
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Space+Grotesk:wght@500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Space+Grotesk:wght@500;600;700&display=swap" /></noscript>
 
