@@ -1487,11 +1487,17 @@
               business: document.getElementById('business').value.trim(),
               channel: document.getElementById('channel').value,
             }),
-          }).catch(function () {});
+          }).then(function (r) {
+            if (!r.ok) console.error('[AgentIQ] Lead POST failed:', r.status, r.statusText);
+          }).catch(function (err) {
+            console.error('[AgentIQ] Lead POST error:', err);
+          });
         }
 
+        var submitBtn = form.querySelector('button[type=submit]');
+        submitBtn.disabled = true;
         document.getElementById('formmsg').classList.remove('hidden');
-        form.querySelector('button[type=submit]').textContent = 'Opening calendar… ✓';
+        submitBtn.textContent = 'Opening calendar… ✓';
         window.open(BOOKING_URL, '_blank', 'noopener,noreferrer');
       });
 
@@ -1532,7 +1538,11 @@
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({ name: name, phone: phone, business: leadBizInput.value.trim() }),
-            }).catch(function () {});
+            }).then(function (r) {
+              if (!r.ok) console.error('[AgentIQ] Widget lead POST failed:', r.status, r.statusText);
+            }).catch(function (err) {
+              console.error('[AgentIQ] Widget lead POST error:', err);
+            });
           }
 
           leadCaptured = true;
@@ -1633,12 +1643,19 @@
             return;
           }
 
+          var ctrl = new AbortController();
+          var fetchTimer = setTimeout(function () { ctrl.abort(); }, 15000);
           fetch(AGENTIQ_API + '/api/chat', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ messages: msgs }),
+            signal: ctrl.signal,
           })
-            .then(function (r) { return r.json(); })
+            .then(function (r) {
+              clearTimeout(fetchTimer);
+              if (!r.ok) throw new Error('HTTP ' + r.status);
+              return r.json();
+            })
             .then(function (data) {
               t.remove();
               var reply = data.reply || 'Something went wrong — please try again!';
@@ -1646,9 +1663,14 @@
               streamBubble(reply);
               goBtn.disabled = false;
             })
-            .catch(function () {
+            .catch(function (err) {
+              clearTimeout(fetchTimer);
               t.remove();
-              addBubble('Network issue — please try again in a moment.', 'bot');
+              var msg = (err && err.name === 'AbortError')
+                ? 'Request timed out — please try again.'
+                : 'Network issue — please try again in a moment.';
+              console.error('[AgentIQ] Chat fetch error:', err);
+              addBubble(msg, 'bot');
               goBtn.disabled = false;
             });
         }
@@ -1767,53 +1789,75 @@
   </div>
 
   <script type="module">
-    import Vapi from 'https://esm.sh/@vapi-ai/web';
+    // Dynamic import so a CDN failure is catchable — static import would silently
+    // leave the button visible but non-functional with no user feedback.
+    import('https://esm.sh/@vapi-ai/web').then(function (mod) {
+      var Vapi = mod.default;
 
-    (function () {
-      var floatEl  = document.getElementById('vaq-float');
-      var btn      = document.getElementById('vaq-btn');
-      var statusEl = document.getElementById('vaq-status');
-      var VAPI_KEY = (window.AgentIQConfig && window.AgentIQConfig.vapiPublicKey) || '';
+      (function () {
+        var floatEl  = document.getElementById('vaq-float');
+        var btn      = document.getElementById('vaq-btn');
+        var statusEl = document.getElementById('vaq-status');
+        var VAPI_KEY = (window.AgentIQConfig && window.AgentIQConfig.vapiPublicKey) || '';
 
-      if (!VAPI_KEY || VAPI_KEY === 'YOUR_VAPI_PUBLIC_KEY') {
-        floatEl.style.display = 'none'; return;
-      }
-
-      var vapi  = new Vapi(VAPI_KEY);
-      var state = 'idle';
-
-      function setState(s) {
-        state = s;
-        btn.setAttribute('data-state', s);
-        var labels = { connecting: 'Connecting…', listening: 'Listening…', speaking: 'Speaking…' };
-        statusEl.textContent   = labels[s] || '';
-        statusEl.style.opacity = s === 'idle' ? '0' : '1';
-        btn.setAttribute('aria-label', s === 'idle'
-          ? 'Talk to AgentIQ voice assistant'
-          : (labels[s] || '') + ' — click to stop');
-      }
-
-      var connectTimer = null;
-
-      vapi.on('call-start',   function() { clearTimeout(connectTimer); setState('listening'); });
-      vapi.on('call-end',     function() { clearTimeout(connectTimer); setState('idle');      });
-      vapi.on('speech-start', function() { setState('speaking');  });
-      vapi.on('speech-end',   function() { setState('listening'); });
-      vapi.on('error',        function(e) { clearTimeout(connectTimer); console.error('VAPI error:', e); setState('idle'); });
-
-      btn.addEventListener('click', function() {
-        if (state !== 'idle') { vapi.stop(); clearTimeout(connectTimer); setState('idle'); return; }
-        setState('connecting');
-        // Fallback: if call-start never fires within 12s, reset
-        connectTimer = setTimeout(function() { vapi.stop(); setState('idle'); }, 12000);
-        // GA4: voice_agent_start — user tapped the mic and a call is initiating
-        if (typeof gtag === 'function') {
-          gtag('event', 'voice_agent_start', { event_category: 'voice_agent' });
+        if (!VAPI_KEY || VAPI_KEY === 'YOUR_VAPI_PUBLIC_KEY') {
+          floatEl.style.display = 'none'; return;
         }
-        // All config (voice, model, prompt) managed from VAPI dashboard
-        vapi.start('e699b5d0-7cf8-4809-ab19-ed8687ab830f');
-      });
-    })();
+
+        var vapi  = new Vapi(VAPI_KEY);
+        var state = 'idle';
+
+        function setState(s) {
+          state = s;
+          btn.setAttribute('data-state', s);
+          var labels = { connecting: 'Connecting…', listening: 'Listening…', speaking: 'Speaking…' };
+          statusEl.textContent   = labels[s] || '';
+          statusEl.style.opacity = s === 'idle' ? '0' : '1';
+          btn.setAttribute('aria-label', s === 'idle'
+            ? 'Talk to AgentIQ voice assistant'
+            : (labels[s] || '') + ' — click to stop');
+        }
+
+        var connectTimer = null;
+
+        vapi.on('call-start',   function() { clearTimeout(connectTimer); setState('listening'); });
+        vapi.on('call-end',     function() { clearTimeout(connectTimer); setState('idle');      });
+        vapi.on('speech-start', function() { setState('speaking');  });
+        vapi.on('speech-end',   function() { setState('listening'); });
+        vapi.on('error', function(e) {
+          clearTimeout(connectTimer);
+          console.error('[AgentIQ] VAPI error:', e);
+          setState('idle');
+          // Surface a brief visible status so the user knows why the call stopped
+          statusEl.textContent = 'Call failed — try again';
+          statusEl.style.opacity = '1';
+          setTimeout(function () { statusEl.style.opacity = '0'; statusEl.textContent = ''; }, 3000);
+        });
+
+        btn.addEventListener('click', function() {
+          if (state !== 'idle') { vapi.stop(); clearTimeout(connectTimer); setState('idle'); return; }
+          setState('connecting');
+          // Fallback: if call-start never fires within 12s, reset
+          connectTimer = setTimeout(function() { vapi.stop(); setState('idle'); }, 12000);
+          // GA4: voice_agent_start — user tapped the mic and a call is initiating
+          if (typeof gtag === 'function') {
+            gtag('event', 'voice_agent_start', { event_category: 'voice_agent' });
+          }
+          // All config (voice, model, prompt) managed from VAPI dashboard
+          try {
+            vapi.start('e699b5d0-7cf8-4809-ab19-ed8687ab830f');
+          } catch (err) {
+            clearTimeout(connectTimer);
+            console.error('[AgentIQ] VAPI start failed:', err);
+            setState('idle');
+          }
+        });
+      })();
+    }).catch(function (err) {
+      console.error('[AgentIQ] VAPI SDK failed to load:', err);
+      var floatEl = document.getElementById('vaq-float');
+      if (floatEl) floatEl.style.display = 'none';
+    });
   </script>
 </body>
 </html>
