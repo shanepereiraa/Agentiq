@@ -1281,7 +1281,7 @@
       // Previously `AGENTIQ_API` was referenced without being declared, which
       // threw a ReferenceError in strict mode and silently broke form submission
       // and the chat widget send path.
-      var AGENTIQ_API = (window.AgentIQConfig && window.AgentIQConfig.apiBase) || null;
+      var AGENTIQ_API = (window.AgentIQConfig && window.AgentIQConfig.apiBase) || 'https://agentiq-chatbot.vercel.app';
       document.getElementById('year').textContent = new Date().getFullYear();
 
       // Scroll reveals
