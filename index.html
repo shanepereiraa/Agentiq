@@ -1822,7 +1822,7 @@
           floatEl.style.display = 'none'; return;
         }
 
-        var vapi  = new Vapi(VAPI_KEY);
+        var vapi  = new Vapi(VAPI_KEY, undefined, { avoidEval: true });
         var state = 'idle';
 
         function setState(s) {
