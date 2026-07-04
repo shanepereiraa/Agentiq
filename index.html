@@ -1822,7 +1822,12 @@
           floatEl.style.display = 'none'; return;
         }
 
-        var vapi  = new Vapi(VAPI_KEY, undefined, { avoidEval: true });
+        // avoidEval was removed: Daily.co's non-eval fallback path (daily-js 0.85.0)
+        // has a bug where the customer's mic track never gets published to the
+        // peer connection — audio looks captured locally but never reaches the
+        // server (confirmed via Vapi transport metrics + call recordings). The
+        // default path requires 'unsafe-eval' in CSP (see vercel.json).
+        var vapi  = new Vapi(VAPI_KEY);
         var state = 'idle';
 
         function setState(s) {
