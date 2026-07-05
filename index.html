@@ -207,6 +207,22 @@
     }
     .glass { background: rgba(255,255,255,0.05); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,0.10); }
     .glass-strong { background: rgba(255,255,255,0.08); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.14); }
+    #aiq-mobile-nav {
+      position: absolute; top: calc(100% + 8px); left: 0; right: 0;
+      background: rgba(7,23,58,.97);
+      backdrop-filter: blur(22px); -webkit-backdrop-filter: blur(22px);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 18px;
+      box-shadow: 0 16px 60px rgba(0,0,0,.55);
+      transition: opacity .18s ease, transform .18s ease;
+    }
+    #aiq-mobile-nav.aiq-shut {
+      opacity: 0; transform: translateY(-6px) scale(.98);
+      pointer-events: none;
+    }
+    #aiq-nav-toggle .icon-close { display: none; }
+    #aiq-nav-toggle[aria-expanded="true"] .icon-open { display: none; }
+    #aiq-nav-toggle[aria-expanded="true"] .icon-close { display: block; }
     .grad-text { background: linear-gradient(100deg,#FFB36B 0%,#FF6B5C 45%,#22D3EE 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
     .grad-border { position: relative; }
     .grad-border::before { content:''; position:absolute; inset:0; border-radius:inherit; padding:1px; background: linear-gradient(135deg,rgba(255,159,69,.6),rgba(34,211,232,.5)); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events:none; }
@@ -427,7 +443,7 @@
 
   <!-- NAVBAR -->
   <header class="fixed top-3 left-3 right-3 z-50">
-    <nav aria-label="Primary" class="max-w-6xl mx-auto glass rounded-2xl px-4 sm:px-5 py-3 flex items-center justify-between">
+    <nav aria-label="Primary" class="relative max-w-6xl mx-auto glass rounded-2xl px-4 sm:px-5 py-3 flex items-center justify-between">
       <a href="/" class="flex items-center gap-2.5 group" aria-label="AgentIQ home">
         <span class="grid place-items-center w-9 h-9 rounded-xl bg-gradient-to-br from-coral to-orange text-white shadow-lg shadow-coral/30">
           <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
@@ -442,7 +458,21 @@
         <a href="#pricing" class="hover:text-white transition-colors">Pricing</a>
         <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
       </div>
-      <a href="#book" class="cursor-pointer text-sm font-500 px-4 py-2 rounded-xl bg-white text-ink hover:bg-cyan hover:text-white transition-colors duration-200">Book a demo</a>
+      <div class="flex items-center gap-2">
+        <a href="#book" class="cursor-pointer text-sm font-500 px-4 py-2 rounded-xl bg-white text-ink hover:bg-cyan hover:text-white transition-colors duration-200">Book a demo</a>
+        <button id="aiq-nav-toggle" type="button" class="md:hidden grid place-items-center w-9 h-9 rounded-xl text-slate-200 hover:text-white hover:bg-white/10 transition-colors" aria-label="Open menu" aria-haspopup="true" aria-expanded="false" aria-controls="aiq-mobile-nav">
+          <svg class="icon-open w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+          <svg class="icon-close w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+        </button>
+      </div>
+      <div id="aiq-mobile-nav" class="aiq-shut md:hidden flex flex-col gap-1 p-2 text-sm text-slate-300" inert>
+        <a href="#how" class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-white transition-colors">Chatbots</a>
+        <a href="#voice" class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-white transition-colors">Voice Agents</a>
+        <a href="#demo" class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-white transition-colors">Live demo</a>
+        <a href="#industries" class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-white transition-colors">Industries</a>
+        <a href="#pricing" class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-white transition-colors">Pricing</a>
+        <a href="#faq" class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-white transition-colors">FAQ</a>
+      </div>
     </nav>
   </header>
 
@@ -1284,6 +1314,37 @@
       // and the chat widget send path.
       var AGENTIQ_API = (window.AgentIQConfig && window.AgentIQConfig.apiBase) || 'https://agentiq-chatbot.vercel.app';
       document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Mobile nav
+      var navToggle = document.getElementById('aiq-nav-toggle');
+      var navPanel = document.getElementById('aiq-mobile-nav');
+      var navOpen = false;
+      function openNav() {
+        navOpen = true;
+        navPanel.removeAttribute('inert');
+        navPanel.classList.remove('aiq-shut');
+        navToggle.setAttribute('aria-expanded', 'true');
+      }
+      function closeNav(returnFocus) {
+        navOpen = false;
+        navPanel.classList.add('aiq-shut');
+        navToggle.setAttribute('aria-expanded', 'false');
+        if (returnFocus !== false) navToggle.focus();
+        navPanel.setAttribute('inert', '');
+      }
+      navToggle.addEventListener('click', function () { navOpen ? closeNav() : openNav(); });
+      navPanel.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () { closeNav(false); });
+      });
+      document.addEventListener('keydown', function (e) {
+        if (navOpen && e.key === 'Escape') closeNav();
+      });
+      document.addEventListener('click', function (e) {
+        if (navOpen && !navPanel.contains(e.target) && e.target !== navToggle && !navToggle.contains(e.target)) closeNav(false);
+      });
+      window.matchMedia('(min-width: 768px)').addEventListener('change', function (e) {
+        if (e.matches && navOpen) closeNav(false);
+      });
 
       // Scroll reveals
       var revs = document.querySelectorAll('.reveal');
