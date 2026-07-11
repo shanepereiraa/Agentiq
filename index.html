@@ -235,6 +235,43 @@
     ::selection { background: rgba(255,107,92,.45); color:#fff; }
     .card-lift { transition: transform .25s cubic-bezier(.16,1,.3,1), box-shadow .25s ease; }
     .card-lift:hover { transform: translateY(-4px); box-shadow: 0 20px 50px rgba(0,0,0,.35); }
+
+    /* Magnetic hero CTA — JS translates this element toward the cursor within ~40px; transition smooths the settle/reset. */
+    .magnetic-cta { transition: transform .15s ease-out; will-change: transform; }
+
+    /* Rotating conic-gradient border sweep for the recommended pricing tier (see @property below). */
+    @property --border-angle {
+      syntax: '<angle>';
+      inherits: false;
+      initial-value: 0deg;
+    }
+    .pricing-featured::after {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      padding: 2px;
+      background: conic-gradient(from var(--border-angle), #FF6B5C, #FF9F45, #22D3EE, #FF6B5C);
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      animation: border-spin 6s linear infinite;
+    }
+    @keyframes border-spin { to { --border-angle: 360deg; } }
+
+    /* FAQ accordion — JS animates height via the Web Animations API; these rules stagger the
+       answer's fade/slide-in ~80ms after the container starts expanding (transition-delay). */
+    .faq-details { overflow: hidden; }
+    .faq-content { opacity: 0; transform: translateY(-4px); transition: opacity .28s ease .08s, transform .28s ease .08s; }
+    .faq-details[open] .faq-content { opacity: 1; transform: none; }
+
+    /* Form success checkmark draw-in + soft scale-in on the whole confirmation block. */
+    #formmsg { opacity: 0; transform: scale(.95); transition: opacity .3s ease, transform .3s ease; }
+    #formmsg.form-success-show { opacity: 1; transform: scale(1); }
+    #formmsg .form-success-check path { stroke-dasharray: 26; stroke-dashoffset: 26; }
+    #formmsg.form-success-show .form-success-check path { animation: form-check-draw .4s ease forwards .05s; }
+    @keyframes form-check-draw { to { stroke-dashoffset: 0; } }
     .glow-card { box-shadow: 0 0 0 1px rgba(34,211,238,.25), 0 0 60px rgba(34,211,238,.12), 0 0 30px rgba(255,107,92,.1); }
     .stat-num { background: linear-gradient(135deg,#fff 0%,rgba(255,255,255,.7) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
     .section-label { font-size: .7rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: #22D3EE; }
@@ -256,7 +293,9 @@
       .reveal { opacity: 1 !important; transform: none !important; }
       html { scroll-behavior: auto; }
       /* Release compositor layers when animations are disabled */
-      .animate-blob, .animate-float, .animate-marquee { will-change: auto; }
+      .animate-blob, .animate-float, .animate-marquee, .magnetic-cta { will-change: auto; }
+      .faq-content { opacity: 1 !important; transform: none !important; }
+      #formmsg { opacity: 1 !important; transform: none !important; }
     }
 
     /* ── AI Chat Widget ─────────────────────────────── */
@@ -499,7 +538,7 @@
           </p>
 
           <div class="reveal mt-9 flex flex-col sm:flex-row gap-3">
-            <a href="#book" class="cursor-pointer group inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl bg-gradient-to-r from-coral to-orange text-white font-600 shadow-lg shadow-coral/30 hover:shadow-coral/50 transition-shadow duration-200 text-[15px]">
+            <a href="#book" class="magnetic-cta cursor-pointer group inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl bg-gradient-to-r from-coral to-orange text-white font-600 shadow-lg shadow-coral/30 hover:shadow-coral/50 transition-shadow duration-200 text-[15px]">
               Book a free demo
               <svg class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
@@ -958,7 +997,7 @@
           </div>
 
           <!-- Growth (featured) -->
-          <div class="reveal relative flex flex-col rounded-2xl p-8 mt-6 md:mt-0" style="background:rgba(255,255,255,0.07);border:1px solid rgba(168,85,247,0.35);backdrop-filter:blur(20px);box-shadow:0 0 60px rgba(168,85,247,0.12)">
+          <div class="reveal pricing-featured relative flex flex-col rounded-2xl p-8 mt-6 md:mt-0" style="background:rgba(255,255,255,0.07);border:1px solid rgba(168,85,247,0.35);backdrop-filter:blur(20px);box-shadow:0 0 60px rgba(168,85,247,0.12)">
             <span class="absolute -top-4 left-1/2 -translate-x-1/2 text-sm font-700 px-5 py-1.5 rounded-full text-white whitespace-nowrap" style="background:linear-gradient(135deg,#ec4899,#a855f7);box-shadow:0 4px 20px rgba(168,85,247,0.4);text-shadow:0 1px 3px rgba(0,0,0,.5)">Popular pick</span>
             <h3 class="font-display font-700 text-white text-2xl mt-1">Growth</h3>
             <div class="mt-3 mb-5 h-px w-full" style="background:linear-gradient(90deg,#ec4899,#a855f7,transparent)"></div>
@@ -1031,7 +1070,7 @@
           </div>
 
           <!-- Professional (featured) -->
-          <div class="reveal relative flex flex-col rounded-2xl p-8 mt-6 md:mt-0" style="background:rgba(124,58,237,0.08);border:1px solid rgba(168,85,247,0.40);backdrop-filter:blur(20px);box-shadow:0 0 60px rgba(124,58,237,0.15)">
+          <div class="reveal pricing-featured relative flex flex-col rounded-2xl p-8 mt-6 md:mt-0" style="background:rgba(124,58,237,0.08);border:1px solid rgba(168,85,247,0.40);backdrop-filter:blur(20px);box-shadow:0 0 60px rgba(124,58,237,0.15)">
             <span class="absolute -top-4 left-1/2 -translate-x-1/2 text-sm font-700 px-5 py-1.5 rounded-full text-white whitespace-nowrap" style="background:linear-gradient(135deg,#7c3aed,#a855f7);box-shadow:0 4px 20px rgba(124,58,237,0.5);text-shadow:0 1px 3px rgba(0,0,0,.5)">Popular pick</span>
             <h3 class="font-display font-700 text-white text-2xl mt-1">Professional</h3>
             <div class="mt-3 mb-5 h-px w-full" style="background:linear-gradient(90deg,#ec4899,#a855f7,transparent)"></div>
@@ -1080,44 +1119,44 @@
         </div>
 
         <div class="space-y-3">
-          <details class="reveal group rounded-2xl px-5 sm:px-6 [&_summary::-webkit-details-marker]:hidden" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
+          <details class="reveal group faq-details rounded-2xl px-5 sm:px-6 [&_summary::-webkit-details-marker]:hidden" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
             <summary class="cursor-pointer list-none flex items-center justify-between gap-4 py-5 text-white font-500">
               How much does it cost and what's included?
               <svg class="w-5 h-5 text-cyan shrink-0 transition-transform duration-200 group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </summary>
-            <p class="text-slate-400 text-sm leading-relaxed pb-5 -mt-1">Plans start at a one-time setup of ₹24,999 plus ₹6,999/mo (single channel). The Growth plan is ₹39,999 setup + ₹9,999/mo, and the Pro plan is ₹79,999 setup + ₹19,999/mo. Every plan includes design, training on your content, launch and ongoing optimisation. GST is extra.</p>
+            <p class="text-slate-400 text-sm leading-relaxed pb-5 -mt-1 faq-content">Plans start at a one-time setup of ₹24,999 plus ₹6,999/mo (single channel). The Growth plan is ₹39,999 setup + ₹9,999/mo, and the Pro plan is ₹79,999 setup + ₹19,999/mo. Every plan includes design, training on your content, launch and ongoing optimisation. GST is extra.</p>
           </details>
 
-          <details class="reveal group rounded-2xl px-5 sm:px-6 [&_summary::-webkit-details-marker]:hidden" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
+          <details class="reveal group faq-details rounded-2xl px-5 sm:px-6 [&_summary::-webkit-details-marker]:hidden" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
             <summary class="cursor-pointer list-none flex items-center justify-between gap-4 py-5 text-white font-500">
               How fast can we go live?
               <svg class="w-5 h-5 text-cyan shrink-0 transition-transform duration-200 group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </summary>
-            <p class="text-slate-400 text-sm leading-relaxed pb-5 -mt-1">Most bots are live within 7 days. After a quick kickoff call we collect your menu/services, FAQs and policies, build and train the assistant, test it with you, then deploy across your chosen channels. No coding required on your end.</p>
+            <p class="text-slate-400 text-sm leading-relaxed pb-5 -mt-1 faq-content">Most bots are live within 7 days. After a quick kickoff call we collect your menu/services, FAQs and policies, build and train the assistant, test it with you, then deploy across your chosen channels. No coding required on your end.</p>
           </details>
 
-          <details class="reveal group rounded-2xl px-5 sm:px-6 [&_summary::-webkit-details-marker]:hidden" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
+          <details class="reveal group faq-details rounded-2xl px-5 sm:px-6 [&_summary::-webkit-details-marker]:hidden" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
             <summary class="cursor-pointer list-none flex items-center justify-between gap-4 py-5 text-white font-500">
               Which channels and tools do you integrate with?
               <svg class="w-5 h-5 text-cyan shrink-0 transition-transform duration-200 group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </summary>
-            <p class="text-slate-400 text-sm leading-relaxed pb-5 -mt-1">WhatsApp (official Business API), Instagram DMs, and a website chat widget — all powered by one assistant. We also connect to CRMs, Google Sheets, payment links (Razorpay/UPI), Shopify and booking calendars so leads and orders flow straight into your existing tools.</p>
+            <p class="text-slate-400 text-sm leading-relaxed pb-5 -mt-1 faq-content">WhatsApp (official Business API), Instagram DMs, and a website chat widget — all powered by one assistant. We also connect to CRMs, Google Sheets, payment links (Razorpay/UPI), Shopify and booking calendars so leads and orders flow straight into your existing tools.</p>
           </details>
 
-          <details class="reveal group rounded-2xl px-5 sm:px-6 [&_summary::-webkit-details-marker]:hidden" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
+          <details class="reveal group faq-details rounded-2xl px-5 sm:px-6 [&_summary::-webkit-details-marker]:hidden" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
             <summary class="cursor-pointer list-none flex items-center justify-between gap-4 py-5 text-white font-500">
               Does it support Hindi and a human takeover?
               <svg class="w-5 h-5 text-cyan shrink-0 transition-transform duration-200 group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </summary>
-            <p class="text-slate-400 text-sm leading-relaxed pb-5 -mt-1">Yes — your assistant replies fluently in English, Hindi and Hinglish, and we can add regional languages on request. Whenever a customer asks for a person or the query is sensitive, the bot does a smooth handoff to your team and notifies them instantly, so nothing falls through the cracks.</p>
+            <p class="text-slate-400 text-sm leading-relaxed pb-5 -mt-1 faq-content">Yes — your assistant replies fluently in English, Hindi and Hinglish, and we can add regional languages on request. Whenever a customer asks for a person or the query is sensitive, the bot does a smooth handoff to your team and notifies them instantly, so nothing falls through the cracks.</p>
           </details>
 
-          <details class="reveal group rounded-2xl px-5 sm:px-6 [&_summary::-webkit-details-marker]:hidden" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
+          <details class="reveal group faq-details rounded-2xl px-5 sm:px-6 [&_summary::-webkit-details-marker]:hidden" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
             <summary class="cursor-pointer list-none flex items-center justify-between gap-4 py-5 text-white font-500">
               Where is our data stored, and who owns it?
               <svg class="w-5 h-5 text-cyan shrink-0 transition-transform duration-200 group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </summary>
-            <p class="text-slate-400 text-sm leading-relaxed pb-5 -mt-1">Your data and conversations belong to you. We use encrypted, India-compliant infrastructure, share access only with your authorised team, and never sell or reuse your data to train anyone else's bot. You can export your data or request deletion at any time.</p>
+            <p class="text-slate-400 text-sm leading-relaxed pb-5 -mt-1 faq-content">Your data and conversations belong to you. We use encrypted, India-compliant infrastructure, share access only with your authorised team, and never sell or reuse your data to train anyone else's bot. You can export your data or request deletion at any time.</p>
           </details>
         </div>
       </div>
@@ -1171,7 +1210,10 @@
             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </button>
           <p class="text-center text-xs text-slate-500 mt-2">We'll WhatsApp you within 2 hours to pick a time. Free, no commitment.</p>
-          <p id="formmsg" class="text-sm text-emerald-300 hidden" role="status">Thanks! We've opened our calendar in a new tab — pick a slot, or we'll WhatsApp you shortly. If the tab didn't open, <a href="https://wa.me/919159665277?text=Hi%20AgentIQ%2C%20I%27d%20like%20to%20book%20a%20demo" target="_blank" rel="noopener noreferrer" class="underline hover:text-white">message us on WhatsApp</a>.</p>
+          <p id="formmsg" class="hidden items-start gap-2 text-sm text-emerald-300" role="status">
+            <svg class="form-success-check w-[18px] h-[18px] shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5 9.5 18 20 6"/></svg>
+            <span>Thanks! We've opened our calendar in a new tab — pick a slot, or we'll WhatsApp you shortly. If the tab didn't open, <a href="https://wa.me/919159665277?text=Hi%20AgentIQ%2C%20I%27d%20like%20to%20book%20a%20demo" target="_blank" rel="noopener noreferrer" class="underline hover:text-white">message us on WhatsApp</a>.</span>
+          </p>
         </form>
       </div>
     </section>
@@ -1315,6 +1357,85 @@
       // and the chat widget send path.
       var AGENTIQ_API = (window.AgentIQConfig && window.AgentIQConfig.apiBase) || 'https://agentiq-chatbot.vercel.app';
       document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Magnetic hero CTA — pulls the button 4-6px toward the cursor within ~40px of its edge,
+      // resets on mouseleave. Scoped to a single element (.magnetic-cta) per page by design —
+      // do not widen this to every CTA on the page.
+      function initMagneticCta(el) {
+        if (!el || reduce) return;
+        var maxPull = 6, radius = 40;
+        function onMove(e) {
+          var r = el.getBoundingClientRect();
+          var cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+          var dx = e.clientX - cx, dy = e.clientY - cy;
+          var edgeDist = Math.max(Math.abs(dx) - r.width / 2, Math.abs(dy) - r.height / 2, 0);
+          if (edgeDist < radius) {
+            var pull = maxPull * (1 - edgeDist / radius);
+            var dist = Math.sqrt(dx * dx + dy * dy) || 1;
+            el.style.transform = 'translate(' + (dx / dist * pull) + 'px,' + (dy / dist * pull) + 'px)';
+          } else {
+            el.style.transform = 'translate(0,0)';
+          }
+        }
+        document.addEventListener('mousemove', onMove);
+        el.addEventListener('mouseleave', function () { el.style.transform = 'translate(0,0)'; });
+      }
+      initMagneticCta(document.querySelector('.magnetic-cta'));
+
+      // Form success reveal — swaps the confirmation block to flex display and (re)triggers the
+      // scale-in + checkmark draw-in animation via a forced reflow so it replays on repeat submits.
+      function showFormSuccess(msgEl) {
+        if (!msgEl) return;
+        msgEl.classList.remove('hidden', 'form-success-show');
+        msgEl.classList.add('flex');
+        void msgEl.offsetWidth;
+        msgEl.classList.add('form-success-show');
+      }
+
+      // FAQ accordion — smooth height animation via the Web Animations API, replacing the native
+      // instant snap. Skipped entirely under prefers-reduced-motion (native toggle still works).
+      if (!reduce) {
+        document.querySelectorAll('.faq-details').forEach(function (details) {
+          var summary = details.querySelector('summary');
+          var content = details.querySelector('.faq-content');
+          if (!summary || !content) return;
+          var anim = null, closing = false, expanding = false;
+          summary.addEventListener('click', function (e) {
+            e.preventDefault();
+            details.style.overflow = 'hidden';
+            if (closing || !details.open) { openFaq(); }
+            else if (expanding || details.open) { shrinkFaq(); }
+          });
+          function shrinkFaq() {
+            closing = true;
+            var startH = details.offsetHeight + 'px';
+            var endH = summary.offsetHeight + 'px';
+            if (anim) anim.cancel();
+            anim = details.animate({ height: [startH, endH] }, { duration: 280, easing: 'ease-out' });
+            anim.onfinish = function () { onFaqFinish(false); };
+            anim.oncancel = function () { closing = false; };
+          }
+          function openFaq() {
+            details.style.height = details.offsetHeight + 'px';
+            details.open = true;
+            window.requestAnimationFrame(function () { expandFaq(); });
+          }
+          function expandFaq() {
+            expanding = true;
+            var startH = details.offsetHeight + 'px';
+            var endH = (summary.offsetHeight + content.offsetHeight) + 'px';
+            if (anim) anim.cancel();
+            anim = details.animate({ height: [startH, endH] }, { duration: 280, easing: 'ease-out' });
+            anim.onfinish = function () { onFaqFinish(true); };
+            anim.oncancel = function () { expanding = false; };
+          }
+          function onFaqFinish(isOpen) {
+            details.open = isOpen;
+            anim = null; closing = false; expanding = false;
+            details.style.height = details.style.overflow = '';
+          }
+        });
+      }
 
       // Mobile nav
       var navToggle = document.getElementById('aiq-nav-toggle');
@@ -1576,7 +1697,7 @@
 
         var submitBtn = form.querySelector('button[type=submit]');
         submitBtn.disabled = true;
-        document.getElementById('formmsg').classList.remove('hidden');
+        showFormSuccess(document.getElementById('formmsg'));
         submitBtn.textContent = 'Opening calendar… ✓';
         window.open(BOOKING_URL, '_blank', 'noopener,noreferrer');
       });

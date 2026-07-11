@@ -60,7 +60,15 @@
     @keyframes dot{0%,80%,100%{transform:scale(0.6);opacity:.4}40%{transform:scale(1);opacity:1}}
     @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
     ::selection{background:rgba(255,107,92,.45);color:#fff}
-    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.reveal{opacity:1!important;transform:none!important}html{scroll-behavior:auto}}
+    /* Magnetic hero CTA — JS translates this element toward the cursor within ~40px; transition smooths the settle/reset. */
+    .magnetic-cta{transition:transform .15s ease-out;will-change:transform}
+    /* Form success checkmark draw-in + soft scale-in on the whole confirmation block. */
+    #formmsg{opacity:0;transform:scale(.95);transition:opacity .3s ease,transform .3s ease}
+    #formmsg.form-success-show{opacity:1;transform:scale(1)}
+    #formmsg .form-success-check path{stroke-dasharray:26;stroke-dashoffset:26}
+    #formmsg.form-success-show .form-success-check path{animation:form-check-draw .4s ease forwards .05s}
+    @keyframes form-check-draw{to{stroke-dashoffset:0}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.reveal{opacity:1!important;transform:none!important}html{scroll-behavior:auto}.magnetic-cta{will-change:auto}#formmsg{opacity:1!important;transform:none!important}}
   </style>
 </head>
 <body class="font-sans text-slate-200 antialiased overflow-x-hidden">
@@ -104,7 +112,7 @@
         </h1>
         <p class="reveal mt-7 text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">WhatsApp and Instagram DMs answered instantly — appointments booked, services explained, confirmations sent. All automated.</p>
         <div class="reveal mt-9 flex flex-col sm:flex-row items-center justify-center gap-3">
-          <a href="#book" class="group inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl bg-gradient-to-r from-fuchsia-500 to-pink-500 text-white font-600 shadow-lg shadow-fuchsia-500/30 hover:shadow-fuchsia-500/50 transition-shadow duration-200 text-[15px]">
+          <a href="#book" class="magnetic-cta group inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl bg-gradient-to-r from-fuchsia-500 to-pink-500 text-white font-600 shadow-lg shadow-fuchsia-500/30 hover:shadow-fuchsia-500/50 transition-shadow duration-200 text-[15px]">
             Get a Free Salon Demo
             <svg class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
@@ -245,7 +253,10 @@
             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </button>
           <p class="text-center text-xs text-slate-500 mt-2">We'll WhatsApp you within 2 hours. Free, no commitment.</p>
-          <p id="formmsg" class="text-sm text-emerald-300 hidden" role="status">Thanks! We've opened our calendar in a new tab — pick a slot, or we'll WhatsApp you shortly. If the tab didn't open, <a href="https://wa.me/919159665277?text=Hi%20AgentIQ%2C%20I%27d%20like%20a%20salon%20demo" target="_blank" rel="noopener noreferrer" class="underline hover:text-white">message us on WhatsApp</a>.</p>
+          <p id="formmsg" class="hidden items-start gap-2 text-sm text-emerald-300" role="status">
+            <svg class="form-success-check w-[18px] h-[18px] shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5 9.5 18 20 6"/></svg>
+            <span>Thanks! We've opened our calendar in a new tab — pick a slot, or we'll WhatsApp you shortly. If the tab didn't open, <a href="https://wa.me/919159665277?text=Hi%20AgentIQ%2C%20I%27d%20like%20a%20salon%20demo" target="_blank" rel="noopener noreferrer" class="underline hover:text-white">message us on WhatsApp</a>.</span>
+          </p>
         </form>
       </div>
     </section>
@@ -334,6 +345,40 @@
       var AGENTIQ_API=(window.AgentIQConfig&&window.AgentIQConfig.apiBase)||null;
       var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       document.getElementById('year').textContent=new Date().getFullYear();
+
+      // Magnetic hero CTA — pulls the button 4-6px toward the cursor within ~40px of its edge,
+      // resets on mouseleave. Scoped to a single element (.magnetic-cta) per page by design —
+      // do not widen this to every CTA on the page.
+      function initMagneticCta(el) {
+        if (!el || reduce) return;
+        var maxPull = 6, radius = 40;
+        function onMove(e) {
+          var r = el.getBoundingClientRect();
+          var cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+          var dx = e.clientX - cx, dy = e.clientY - cy;
+          var edgeDist = Math.max(Math.abs(dx) - r.width / 2, Math.abs(dy) - r.height / 2, 0);
+          if (edgeDist < radius) {
+            var pull = maxPull * (1 - edgeDist / radius);
+            var dist = Math.sqrt(dx * dx + dy * dy) || 1;
+            el.style.transform = 'translate(' + (dx / dist * pull) + 'px,' + (dy / dist * pull) + 'px)';
+          } else {
+            el.style.transform = 'translate(0,0)';
+          }
+        }
+        document.addEventListener('mousemove', onMove);
+        el.addEventListener('mouseleave', function () { el.style.transform = 'translate(0,0)'; });
+      }
+      initMagneticCta(document.querySelector('.magnetic-cta'));
+
+      // Form success reveal — swaps the confirmation block to flex display and (re)triggers the
+      // scale-in + checkmark draw-in animation via a forced reflow so it replays on repeat submits.
+      function showFormSuccess(msgEl) {
+        if (!msgEl) return;
+        msgEl.classList.remove('hidden', 'form-success-show');
+        msgEl.classList.add('flex');
+        void msgEl.offsetWidth;
+        msgEl.classList.add('form-success-show');
+      }
       var revs=document.querySelectorAll('.reveal');
       if(reduce||!('IntersectionObserver' in window)){revs.forEach(function(e){e.classList.add('in')});}
       else{
@@ -367,7 +412,7 @@
         if(!ok){if(first)first.focus();return;}
         if(AGENTIQ_API){fetch(AGENTIQ_API+'/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:name.value.trim(),phone:phone.value.trim(),business:document.getElementById('business').value.trim(),channel:document.getElementById('channel').value})}).catch(function(){});}
         var btn=form.querySelector('button[type=submit]');btn.disabled=true;btn.textContent='Opening calendar… ✓';
-        document.getElementById('formmsg').classList.remove('hidden');
+        showFormSuccess(document.getElementById('formmsg'));
         window.open(BOOKING_URL,'_blank','noopener,noreferrer');
       });
     })();
