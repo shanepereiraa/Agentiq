@@ -87,4 +87,4 @@ WhatsApp integration uses the official Meta Cloud API — the same infrastructur
 
 - Website: https://agentiq.co.in/
 - WhatsApp: https://wa.me/919159665277
-- Instagram: https://www.instagram.com/agentiq.co.in
+- Instagram: https://www.instagram.com/agentiqco
