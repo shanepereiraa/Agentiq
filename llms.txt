@@ -27,14 +27,14 @@ One unified assistant powers all three channels simultaneously.
 
 ### AI Chatbot Plans
 
-| Plan       | One-Time Setup | Monthly Retainer | Scope                                         |
-|------------|---------------|-----------------|-----------------------------------------------|
-| Starter    | Rs. 24,999    | Rs. 6,999       | 1 channel, up to 1,000 chats/month            |
-| Growth     | Rs. 39,999    | Rs. 9,999       | All 3 channels, up to 10,000 chats/month      |
-| Pro        | Rs. 79,999    | Rs. 19,999      | All 3 channels + multi-location + source code |
+| Plan       | One-Time Setup | Monthly Retainer | Scope                                                    |
+|------------|---------------|-----------------|-------------------------------------------------------------|
+| Starter    | Rs. 24,999    | Rs. 6,999       | Up to 5,000 chats/month, WhatsApp chatbot, product catalog   |
+| Growth     | Rs. 39,999    | Rs. 9,999       | Everything in Starter, up to 10,000 chats/month, CRM + payments |
+| Pro        | Rs. 79,999    | Rs. 19,999      | Everything in Starter & Growth, up to 30,000 chats/month, dedicated infrastructure |
 | Enterprise | Custom        | Custom          | High-volume, custom build, white-label         |
 
-GST extra. Every plan includes design, content training, launch, and ongoing optimisation. 30-day money-back guarantee.
+GST extra. Every plan includes design, content training, launch, and ongoing optimisation. 30-day money-back guarantee. For chat volumes exceeding 30,000 chats per month, custom enterprise plans are available — contact Shane@agentiq.co.in.
 
 ### AI Voice Agent Plans
 

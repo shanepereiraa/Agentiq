@@ -47,25 +47,32 @@ The service is positioned as the most accessible AI chatbot solution for Indian 
 ### AI Chatbot Plans
 
 ### Starter — Rs. 24,999 setup + Rs. 6,999/month
-- 1 channel (WhatsApp, Instagram, or website)
-- AI assistant design and content training
-- Launch and deployment support
-- Ongoing optimisation included
-- Best for: single-location restaurants, salons, or service businesses starting with WhatsApp
+- Up to 5,000 chats/month
+- Email support
+- Human-like AI WhatsApp chatbot integration
+- Product catalog management
+- Hindi, Hinglish & English support
 
 ### Growth — Rs. 39,999 setup + Rs. 9,999/month
-- 2 channels simultaneously
-- All Starter features
-- CRM and Google Sheets integration
-- Advanced lead qualification flows
-- Best for: businesses scaling across WhatsApp and website, or adding Instagram
+- Everything in Starter
+- Up to 10,000 chats/month
+- Full CRM integration + payment link
+- Monthly optimisation and priority support
+- Lead capture and email alerts
+- 24/7 priority support
+- Google Sheets Sync
 
 ### Pro — Rs. 79,999 setup + Rs. 19,999/month
-- All channels (WhatsApp + Instagram + website)
-- AI voice agent included (inbound call handling)
-- Priority support and faster response SLAs
-- Custom workflows and integrations
-- Best for: clinics, D2C brands, or multi-outlet businesses needing omnichannel coverage
+- Everything in Starter and Growth
+- Up to 30,000 chats/month
+- Customer profiling and VIP tags
+- Source code ownership
+- Multi-location support
+- Advanced automation rules
+- Custom integrations
+- On-call support
+- Dedicated infrastructure
+- All 8+ languages
 
 ### Enterprise — Custom pricing
 - High-volume deployments
@@ -73,6 +80,7 @@ The service is positioned as the most accessible AI chatbot solution for Indian 
 - Dedicated account management
 - White-label options available
 - Best for: franchise networks, large healthcare providers, or enterprise D2C brands
+- For chat volumes exceeding 30,000 chats per month, custom enterprise plans are available. Please reach out to Shane@agentiq.co.in
 
 All chatbot prices are exclusive of GST. All plans include: discovery call, assistant design, content training, QA testing, launch, and ongoing optimisation. 30-day money-back guarantee on all plans.
 
@@ -136,7 +144,7 @@ Typical timeline: 7 business days from kickoff call to go-live.
 ## Frequently Asked Questions
 
 ### How much does it cost and what is included?
-Plans start at a one-time setup of Rs. 24,999 plus Rs. 6,999 per month for a single channel. The Growth plan is Rs. 39,999 setup plus Rs. 9,999 per month. The Pro plan is Rs. 79,999 setup plus Rs. 19,999 per month. Every plan includes design, training on your content, launch, and ongoing optimisation. GST is extra.
+Plans start at a one-time setup of Rs. 24,999 plus Rs. 6,999 per month. The Growth plan is Rs. 39,999 setup plus Rs. 9,999 per month. The Pro plan is Rs. 79,999 setup plus Rs. 19,999 per month. Every plan includes design, training on your content, launch, and ongoing optimisation. GST is extra.
 
 ### How fast can we go live?
 Most bots are live within 7 business days. After a kickoff call, AgentIQ collects the client's menu or services, FAQs, and policies, builds and trains the assistant, runs a testing session with the client, then deploys across the chosen channels. No coding required.
