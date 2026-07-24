@@ -133,9 +133,6 @@
   <!-- Fonts: preconnect first, then async non-blocking load with font-display:swap baked in via display=swap param -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <!-- Tailwind CDN is render-blocking; preconnect lets the TLS handshake happen
-       while earlier head elements are still being parsed (~100-300ms saved on 4G) -->
-  <link rel="preconnect" href="https://cdn.tailwindcss.com" />
   <!-- esm.sh hosts the VAPI web SDK (type=module, auto-deferred); crossorigin because
        ES module fetches use CORS mode -->
   <link rel="preconnect" href="https://esm.sh" crossorigin />
