@@ -141,7 +141,7 @@
   <link rel="preconnect" href="https://www.googletagmanager.com" />
   <!-- API origins — dns-prefetch (not full preconnect) is enough since the first call
        is user-triggered, not page-load-critical -->
-  <link rel="dns-prefetch" href="https://agentiq-chatbot.vercel.app" />
+  <link rel="dns-prefetch" href="https://agentiq-chatbot.onrender.com" />
   <link rel="dns-prefetch" href="https://api.vapi.ai" />
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Space+Grotesk:wght@500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Space+Grotesk:wght@500;600;700&display=swap" /></noscript>
@@ -161,11 +161,11 @@
       border-radius: 6px;
     }
     .glass { background: rgba(255,255,255,0.05); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,0.10); }
-    .glass-strong { background: rgba(255,255,255,0.08); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.14); }
+    .glass-strong { background: rgba(255,255,255,0.08); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.14); }
     #aiq-mobile-nav {
       position: absolute; top: calc(100% + 8px); left: 0; right: 0;
       background: rgba(7,23,58,.97);
-      backdrop-filter: blur(22px); -webkit-backdrop-filter: blur(22px);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
       border: 1px solid rgba(255,255,255,.12);
       border-radius: 18px;
       box-shadow: 0 16px 60px rgba(0,0,0,.55);
@@ -284,7 +284,7 @@
       position: absolute; bottom: 60px; right: 0;
       width: 340px;
       background: rgba(7,23,58,.96);
-      backdrop-filter: blur(22px); -webkit-backdrop-filter: blur(22px);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
       border: 1px solid rgba(255,255,255,.12);
       border-radius: 20px;
       box-shadow: 0 16px 60px rgba(0,0,0,.55);
@@ -653,7 +653,7 @@
           </article>
 
           <!-- Order Follow-Up -->
-          <article class="reveal relative rounded-2xl p-7 flex flex-col mt-6 md:mt-0" style="background:rgba(124,58,237,0.08);border:1px solid rgba(168,85,247,0.35);backdrop-filter:blur(20px);box-shadow:0 0 60px rgba(124,58,237,0.12)">
+          <article class="reveal relative rounded-2xl p-7 flex flex-col mt-6 md:mt-0" style="background:rgba(124,58,237,0.08);border:1px solid rgba(168,85,247,0.35);backdrop-filter:blur(16px);box-shadow:0 0 60px rgba(124,58,237,0.12)">
             <span class="absolute -top-4 left-1/2 -translate-x-1/2 text-sm font-700 px-5 py-1.5 rounded-full text-white whitespace-nowrap" style="background:linear-gradient(135deg,#7c3aed,#a855f7);box-shadow:0 4px 20px rgba(124,58,237,0.5);text-shadow:0 1px 3px rgba(0,0,0,.5)">Popular pick</span>
             <div class="grid place-items-center w-12 h-12 rounded-xl mb-5" style="background:rgba(139,92,246,.15)">
               <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
@@ -746,19 +746,19 @@
         <!-- stat counters -->
         <div class="grid grid-cols-2 lg:grid-cols-4 gap-5 mb-16">
           <div class="reveal rounded-2xl p-7 text-center" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(16px)">
-            <p class="font-display font-700 stat-num text-6xl sm:text-7xl leading-none"><span class="count" data-to="92">0</span>%</p>
+            <p class="font-display font-700 stat-num text-6xl sm:text-7xl leading-none"><span class="count" data-to="92">92</span>%</p>
             <p class="text-slate-400 text-sm mt-3 leading-snug">queries auto-resolved</p>
           </div>
           <div class="reveal rounded-2xl p-7 text-center" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(16px)">
-            <p class="font-display font-700 stat-num text-6xl sm:text-7xl leading-none"><span class="count" data-to="3">0</span>×</p>
+            <p class="font-display font-700 stat-num text-6xl sm:text-7xl leading-none"><span class="count" data-to="3">3</span>×</p>
             <p class="text-slate-400 text-sm mt-3 leading-snug">more leads captured</p>
           </div>
           <div class="reveal rounded-2xl p-7 text-center" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(16px)">
-            <p class="font-display font-700 stat-num text-6xl sm:text-7xl leading-none">&lt;<span class="count" data-to="5">0</span>s</p>
+            <p class="font-display font-700 stat-num text-6xl sm:text-7xl leading-none">&lt;<span class="count" data-to="5">5</span>s</p>
             <p class="text-slate-400 text-sm mt-3 leading-snug">average reply time</p>
           </div>
           <div class="reveal rounded-2xl p-7 text-center" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(16px)">
-            <p class="font-display font-700 stat-num text-6xl sm:text-7xl leading-none"><span class="count" data-to="24">0</span>/7</p>
+            <p class="font-display font-700 stat-num text-6xl sm:text-7xl leading-none"><span class="count" data-to="24">24</span>/7</p>
             <p class="text-slate-400 text-sm mt-3 leading-snug">always responding</p>
           </div>
         </div>
@@ -922,7 +922,7 @@
           </div>
 
           <!-- Growth (featured) -->
-          <div class="reveal pricing-featured relative flex flex-col rounded-2xl p-8 mt-6 md:mt-0" style="background:rgba(255,255,255,0.07);border:1px solid rgba(168,85,247,0.35);backdrop-filter:blur(20px);box-shadow:0 0 60px rgba(168,85,247,0.12)">
+          <div class="reveal pricing-featured relative flex flex-col rounded-2xl p-8 mt-6 md:mt-0" style="background:rgba(255,255,255,0.07);border:1px solid rgba(168,85,247,0.35);backdrop-filter:blur(16px);box-shadow:0 0 60px rgba(168,85,247,0.12)">
             <span class="absolute -top-4 left-1/2 -translate-x-1/2 text-sm font-700 px-5 py-1.5 rounded-full text-white whitespace-nowrap" style="background:linear-gradient(135deg,#ec4899,#a855f7);box-shadow:0 4px 20px rgba(168,85,247,0.4);text-shadow:0 1px 3px rgba(0,0,0,.5)">Popular pick</span>
             <h3 class="font-display font-700 text-white text-2xl mt-1">Growth</h3>
             <div class="mt-3 mb-5 h-px w-full" style="background:linear-gradient(90deg,#ec4899,#a855f7,transparent)"></div>
@@ -1005,7 +1005,7 @@
           </div>
 
           <!-- Professional (featured) -->
-          <div class="reveal pricing-featured relative flex flex-col rounded-2xl p-8 mt-6 md:mt-0" style="background:rgba(124,58,237,0.08);border:1px solid rgba(168,85,247,0.40);backdrop-filter:blur(20px);box-shadow:0 0 60px rgba(124,58,237,0.15)">
+          <div class="reveal pricing-featured relative flex flex-col rounded-2xl p-8 mt-6 md:mt-0" style="background:rgba(124,58,237,0.08);border:1px solid rgba(168,85,247,0.40);backdrop-filter:blur(16px);box-shadow:0 0 60px rgba(124,58,237,0.15)">
             <span class="absolute -top-4 left-1/2 -translate-x-1/2 text-sm font-700 px-5 py-1.5 rounded-full text-white whitespace-nowrap" style="background:linear-gradient(135deg,#7c3aed,#a855f7);box-shadow:0 4px 20px rgba(124,58,237,0.5);text-shadow:0 1px 3px rgba(0,0,0,.5)">Popular pick</span>
             <h3 class="font-display font-700 text-white text-2xl mt-1">Professional</h3>
             <div class="mt-3 mb-5 h-px w-full" style="background:linear-gradient(90deg,#ec4899,#a855f7,transparent)"></div>
@@ -1164,7 +1164,7 @@
     <!-- BOOK A DEMO -->
     <section id="book" class="relative py-24 px-5 overflow-hidden" style="content-visibility:auto;contain-intrinsic-size:0 600px;background:linear-gradient(180deg,#060f28 0%,#07142a 50%,#060f28 100%)">
       <div aria-hidden="true" class="pointer-events-none absolute left-1/2 -translate-x-1/2 top-0 w-[700px] h-72 rounded-full" style="background:radial-gradient(ellipse,rgba(34,211,238,.12) 0%,transparent 70%);filter:blur(60px)"></div>
-      <div class="relative max-w-5xl mx-auto reveal rounded-[2rem] p-8 sm:p-12 grid lg:grid-cols-2 gap-10 items-center" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);backdrop-filter:blur(20px)">
+      <div class="relative max-w-5xl mx-auto reveal rounded-[2rem] p-8 sm:p-12 grid lg:grid-cols-2 gap-10 items-center" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);backdrop-filter:blur(16px)">
         <div>
           <h2 class="font-display font-700 text-white text-4xl sm:text-5xl tracking-tight leading-tight">Book your free demo</h2>
           <p class="mt-4 text-slate-300 max-w-md">See your own AI assistant in action in a 20-minute call. We'll map your channels, show a live mockup, and give you a launch plan — no obligation.</p>

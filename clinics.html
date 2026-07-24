@@ -41,8 +41,8 @@
     html{-webkit-font-smoothing:antialiased}body{background:#060f28}
     a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:3px solid #22D3EE;outline-offset:2px;border-radius:6px}
     .glass{background:rgba(255,255,255,.05);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.10)}
-    .glass-strong{background:rgba(255,255,255,.08);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.14)}
-    #aiq-mobile-nav{position:absolute;top:calc(100% + 8px);left:0;right:0;background:rgba(7,23,58,.97);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);border:1px solid rgba(255,255,255,.12);border-radius:18px;box-shadow:0 16px 60px rgba(0,0,0,.55);transition:opacity .18s ease,transform .18s ease}
+    .glass-strong{background:rgba(255,255,255,.08);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.14)}
+    #aiq-mobile-nav{position:absolute;top:calc(100% + 8px);left:0;right:0;background:rgba(7,23,58,.97);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.12);border-radius:18px;box-shadow:0 16px 60px rgba(0,0,0,.55);transition:opacity .18s ease,transform .18s ease}
     #aiq-mobile-nav.aiq-shut{opacity:0;transform:translateY(-6px) scale(.98);pointer-events:none}
     #aiq-nav-toggle .icon-close{display:none}
     #aiq-nav-toggle[aria-expanded="true"] .icon-open{display:none}
@@ -128,6 +128,10 @@
             Get a Free Clinic Demo
             <svg class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
+          <a href="#demo" class="cursor-pointer inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl glass-strong text-white font-500 hover:bg-white/10 transition-colors duration-200 text-[15px]">
+            <svg class="w-4 h-4 text-cyan" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+            Try live demo
+          </a>
         </div>
         <div class="reveal mt-8 flex flex-wrap items-center justify-center gap-3 text-xs">
           <span class="px-3 py-1.5 rounded-full glass text-slate-300">Answers every call, 24/7</span>
@@ -175,7 +179,7 @@
     </section>
 
     <!-- DEMO WIDGET -->
-    <section class="relative py-20 px-5 overflow-hidden" style="background:linear-gradient(180deg,#060f28 0%,#071520 50%,#060f28 100%)">
+    <section id="demo" class="relative py-20 px-5 overflow-hidden" style="background:linear-gradient(180deg,#060f28 0%,#071520 50%,#060f28 100%)">
       <div aria-hidden="true" class="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 w-80 h-80 rounded-full" style="background:radial-gradient(circle,rgba(34,211,238,.12) 0%,transparent 70%);filter:blur(70px)"></div>
       <div class="relative max-w-5xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
         <div class="reveal">
@@ -198,6 +202,13 @@
             </div>
             <div id="chatlog" class="px-5 py-5 space-y-3 h-60 overflow-y-auto text-sm" aria-live="polite"></div>
             <div class="px-4 pb-4 pt-2 border-t border-white/10"><div id="chips" class="flex flex-wrap gap-2"></div></div>
+            <div class="px-5 py-3 border-t border-white/8 flex items-center justify-between">
+              <span class="text-xs text-slate-400">Also available on</span>
+              <div class="flex items-center gap-3">
+                <span class="text-xs px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-400">Voice Call</span>
+                <span class="text-xs px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-400">Website</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -212,19 +223,19 @@
         </div>
         <div class="grid grid-cols-2 lg:grid-cols-4 gap-5">
           <div class="reveal rounded-2xl p-6 text-center" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(16px)">
-            <p class="font-display font-700 stat-num text-5xl sm:text-6xl leading-none"><span class="count" data-to="92">0</span>%</p>
+            <p class="font-display font-700 stat-num text-5xl sm:text-6xl leading-none"><span class="count" data-to="92">92</span>%</p>
             <p class="text-slate-400 text-sm mt-3 leading-snug">queries auto-resolved</p>
           </div>
           <div class="reveal rounded-2xl p-6 text-center" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(16px)">
-            <p class="font-display font-700 stat-num text-5xl sm:text-6xl leading-none"><span class="count" data-to="3">0</span>×</p>
+            <p class="font-display font-700 stat-num text-5xl sm:text-6xl leading-none"><span class="count" data-to="3">3</span>×</p>
             <p class="text-slate-400 text-sm mt-3 leading-snug">more leads captured</p>
           </div>
           <div class="reveal rounded-2xl p-6 text-center" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(16px)">
-            <p class="font-display font-700 stat-num text-5xl sm:text-6xl leading-none">&lt;<span class="count" data-to="5">0</span>s</p>
+            <p class="font-display font-700 stat-num text-5xl sm:text-6xl leading-none">&lt;<span class="count" data-to="5">5</span>s</p>
             <p class="text-slate-400 text-sm mt-3 leading-snug">average reply time</p>
           </div>
           <div class="reveal rounded-2xl p-6 text-center" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(16px)">
-            <p class="font-display font-700 stat-num text-5xl sm:text-6xl leading-none"><span class="count" data-to="24">0</span>/7</p>
+            <p class="font-display font-700 stat-num text-5xl sm:text-6xl leading-none"><span class="count" data-to="24">24</span>/7</p>
             <p class="text-slate-400 text-sm mt-3 leading-snug">always responding</p>
           </div>
         </div>
@@ -255,7 +266,7 @@
     <!-- BOOK A DEMO -->
     <section id="book" class="relative py-24 px-5 overflow-hidden" style="background:linear-gradient(180deg,#060f28 0%,#07142a 50%,#060f28 100%)">
       <div aria-hidden="true" class="pointer-events-none absolute left-1/2 -translate-x-1/2 top-0 w-[600px] h-64 rounded-full" style="background:radial-gradient(ellipse,rgba(34,211,238,.09) 0%,transparent 70%);filter:blur(60px)"></div>
-      <div class="relative max-w-5xl mx-auto reveal rounded-[2rem] p-8 sm:p-12 grid lg:grid-cols-2 gap-10 items-center" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);backdrop-filter:blur(20px)">
+      <div class="relative max-w-5xl mx-auto reveal rounded-[2rem] p-8 sm:p-12 grid lg:grid-cols-2 gap-10 items-center" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);backdrop-filter:blur(16px)">
         <div>
           <h2 class="font-display font-700 text-white text-4xl sm:text-5xl tracking-tight leading-tight">Book your free clinic demo</h2>
           <p class="mt-4 text-slate-300 max-w-md">See a live demo of the voice agent and chatbot handling real clinic calls and queries — 20-minute call, no obligation.</p>
@@ -376,7 +387,7 @@
             <li><a href="tel:+919159665277" class="hover:text-white transition-colors">+91 91596 65277</a></li>
             <li><a href="https://wa.me/919159665277" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">WhatsApp us</a></li>
             <li><a href="#book" class="hover:text-white transition-colors">Book a demo</a></li>
-            <li class="text-slate-400">Mumbai, India</li>
+            <li class="text-slate-400">Mumbai, India 🇮🇳</li>
           </ul>
         </div>
       </div>

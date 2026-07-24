@@ -15,9 +15,9 @@ agentiq/
 ```
 
 ### Related repos
-- **agentiq-chatbot** (`~/Projects/agentiq-chatbot/`) — deployed chatbot backend on Vercel
+- **agentiq-chatbot** (`~/Projects/agentiq-chatbot/`) — deployed chatbot backend on Render
   - GitHub: https://github.com/shanepereiraa/agentiq-backend
-  - Vercel project: agentiq-chatbot
+  - Render Web Service: agentiq-chatbot (https://agentiq-chatbot.onrender.com)
 
 ---
 
@@ -43,7 +43,7 @@ Two versions exist:
 
 | Version | Location | Status |
 |---|---|---|
-| v1 (deployed) | `~/Projects/agentiq-chatbot/` | Live on Vercel |
+| v1 (deployed) | `~/Projects/agentiq-chatbot/` | Live on Render (https://agentiq-chatbot.onrender.com) |
 | v2 (updated) | `backend-api/` | Not yet deployed |
 
 `backend-api/` has helmet, rate limiting, and a more detailed system prompt.
