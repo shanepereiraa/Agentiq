@@ -33,20 +33,10 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preconnect" href="https://cdn.tailwindcss.com" />
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Space+Grotesk:wght@500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Space+Grotesk:wght@500;600;700&display=swap" /></noscript>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: { extend: {
-        fontFamily: { sans:['DM Sans','system-ui','sans-serif'], display:['Space Grotesk','DM Sans','sans-serif'] },
-        colors: { ink:'#07173a', coral:'#FF6B5C', orange:'#FF9F45', cyan:'#22D3EE', blue:'#3B82F6' },
-        animation: { float:'float 6s ease-in-out infinite' },
-        keyframes: { float:{'0%,100%':{transform:'translateY(0)'},'50%':{transform:'translateY(-14px)'}}, dot:{'0%,80%,100%':{transform:'scale(0.6)',opacity:'0.4'},'40%':{transform:'scale(1)',opacity:'1'}} }
-      }}
-    };
-  </script>
+  <!-- Tailwind: compiled at build time via `npm run build:css` (tailwind.config.js), not the CDN JIT compiler. -->
+  <link rel="stylesheet" href="/tailwind.min.css" />
   <style>
     html{-webkit-font-smoothing:antialiased}body{background:#060f28}
     a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:3px solid #22D3EE;outline-offset:2px;border-radius:6px}
@@ -59,6 +49,7 @@
     #aiq-nav-toggle[aria-expanded="true"] .icon-close{display:block}
     .grad-text{background:linear-gradient(100deg,#FFB36B 0%,#FF6B5C 45%,#22D3EE 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
     .logo-grad-text{background:linear-gradient(135deg,#FF8A5B 0%,#FF5C8A 55%,#C74AFF 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+    @media (forced-colors: active) { .grad-text, .logo-grad-text { background: none; -webkit-background-clip: initial; background-clip: initial; color: CanvasText; } }
     .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
     .reveal.in{opacity:1;transform:none}
     .card-lift{transition:transform .25s cubic-bezier(.16,1,.3,1),box-shadow .25s ease}
@@ -313,7 +304,7 @@
           <a href="/" class="flex items-center gap-2.5 mb-4" aria-label="AgentIQ home">
             <span class="font-display font-700 text-lg text-white tracking-tight inline-flex items-baseline gap-0.5">Agent<span class="logo-grad-text">IQ</span><svg class="w-2.5 h-2.5 shrink-0" viewBox="0 0 16 14" fill="none" aria-hidden="true" focusable="false"><defs><linearGradient id="iq-wave-cli-ftr" x1="0" y1="14" x2="16" y2="0"><stop offset="0" stop-color="#FF8A5B"/><stop offset="0.5" stop-color="#FF5C8A"/><stop offset="1" stop-color="#C74AFF"/></linearGradient></defs><rect x="0" y="9" width="3" height="5" rx="1.2" fill="url(#iq-wave-cli-ftr)"/><rect x="4.5" y="6" width="3" height="8" rx="1.2" fill="url(#iq-wave-cli-ftr)"/><rect x="9" y="3" width="3" height="11" rx="1.2" fill="url(#iq-wave-cli-ftr)"/><rect x="13" y="0" width="3" height="14" rx="1.2" fill="url(#iq-wave-cli-ftr)"/></svg></span>
           </a>
-          <p class="text-slate-400 text-sm leading-relaxed max-w-[200px]">AI chatbots and voice agents for Indian businesses.</p>
+          <p class="text-slate-400 text-sm leading-relaxed max-w-[200px]">AI chatbots for Indian businesses — WhatsApp, Instagram &amp; Web.</p>
           <div class="flex items-center gap-3 mt-5">
             <a href="https://wa.me/919159665277" target="_blank" rel="noopener noreferrer" aria-label="AgentIQ on WhatsApp" class="grid place-items-center w-9 h-9 rounded-xl bg-white/5 hover:bg-emerald-500/20 border border-white/8 text-slate-400 hover:text-emerald-400 transition-colors duration-200">
               <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
