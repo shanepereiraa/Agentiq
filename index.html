@@ -143,7 +143,8 @@
        is user-triggered, not page-load-critical -->
   <link rel="dns-prefetch" href="https://agentiq-chatbot.onrender.com" />
   <link rel="dns-prefetch" href="https://api.vapi.ai" />
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Space+Grotesk:wght@500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+  <link id="font-preload" rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Space+Grotesk:wght@500;600;700&display=swap" />
+  <script>document.getElementById('font-preload').onload=function(){this.onload=null;this.rel='stylesheet';};</script>
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Space+Grotesk:wght@500;600;700&display=swap" /></noscript>
 
   <!-- Tailwind: compiled at build time via `npm run build:css` (tailwind.config.js), not the CDN JIT compiler. -->
@@ -190,6 +191,13 @@
     .noise { background-image: radial-gradient(rgba(255,255,255,.03) 1px, transparent 1px); background-size: 22px 22px; }
     ::selection { background: rgba(255,107,92,.45); color:#fff; }
     .card-lift { transition: transform .25s cubic-bezier(.16,1,.3,1), box-shadow .25s ease; }
+    /* Pricing card CTA hover states — CSS instead of onmouseover/onmouseout so they don't need CSP script-src allowance. */
+    .cta-outline { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); transition: background-color .2s ease; }
+    .cta-outline:hover { background: rgba(255,255,255,0.12); }
+    .cta-glow-pink { background: linear-gradient(135deg,#ec4899,#a855f7); box-shadow: 0 4px 24px rgba(168,85,247,0.45); transition: box-shadow .2s ease; }
+    .cta-glow-pink:hover { box-shadow: 0 4px 32px rgba(168,85,247,0.65); }
+    .cta-glow-purple { background: linear-gradient(135deg,#7c3aed,#a855f7); box-shadow: 0 4px 24px rgba(124,58,237,0.5); transition: box-shadow .2s ease; }
+    .cta-glow-purple:hover { box-shadow: 0 4px 32px rgba(124,58,237,0.7); }
     .card-lift:hover { transform: translateY(-4px); box-shadow: 0 20px 50px rgba(0,0,0,.35); }
 
     /* Magnetic hero CTA — JS translates this element toward the cursor within ~40px; transition smooths the settle/reset. */
@@ -917,7 +925,7 @@
               <li class="flex gap-3"><span class="text-orange-400 font-700 shrink-0">+</span>Product catalog management</li>
               <li class="flex gap-3"><span class="text-orange-400 font-700 shrink-0">+</span>Hindi, Hinglish &amp; English support</li>
             </ul>
-            <a href="#book" data-plan="Chatbot Starter" data-value="24999" class="cursor-pointer mt-8 inline-flex justify-center px-5 py-3.5 rounded-xl text-white font-500 transition-colors duration-200" style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12)" onmouseover="this.style.background='rgba(255,255,255,0.12)'" onmouseout="this.style.background='rgba(255,255,255,0.07)'">Get started</a>
+            <a href="#book" data-plan="Chatbot Starter" data-value="24999" class="cursor-pointer mt-8 inline-flex justify-center px-5 py-3.5 rounded-xl text-white font-500 cta-outline">Get started</a>
             <p class="mt-3 text-center text-xs text-slate-400">30-day money-back guarantee</p>
           </div>
 
@@ -938,7 +946,7 @@
               <li class="flex gap-3"><span class="text-pink-400 font-700 shrink-0">+</span>24/7 priority support</li>
               <li class="flex gap-3"><span class="text-pink-400 font-700 shrink-0">+</span>Google Sheets Sync</li>
             </ul>
-            <a href="#book" data-plan="Chatbot Growth" data-value="39999" class="cursor-pointer mt-8 inline-flex justify-center px-5 py-3.5 rounded-xl text-white font-600 transition-shadow duration-200" style="background:linear-gradient(135deg,#ec4899,#a855f7);box-shadow:0 4px 24px rgba(168,85,247,0.45)" onmouseover="this.style.boxShadow='0 4px 32px rgba(168,85,247,0.65)'" onmouseout="this.style.boxShadow='0 4px 24px rgba(168,85,247,0.45)'">Book a demo</a>
+            <a href="#book" data-plan="Chatbot Growth" data-value="39999" class="cursor-pointer mt-8 inline-flex justify-center px-5 py-3.5 rounded-xl text-white font-600 cta-glow-pink">Book a demo</a>
             <p class="mt-3 text-center text-xs text-slate-400">30-day money-back guarantee</p>
           </div>
 
@@ -961,7 +969,7 @@
               <li class="flex gap-3"><span class="text-cyan-400 font-700 shrink-0">+</span>Dedicated infrastructure</li>
               <li class="flex gap-3"><span class="text-cyan-400 font-700 shrink-0">+</span>All 8+ languages</li>
             </ul>
-            <a href="#book" data-plan="Chatbot Pro" data-value="79999" class="cursor-pointer mt-8 inline-flex justify-center px-5 py-3.5 rounded-xl text-white font-500 transition-colors duration-200" style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12)" onmouseover="this.style.background='rgba(255,255,255,0.12)'" onmouseout="this.style.background='rgba(255,255,255,0.07)'">Get started</a>
+            <a href="#book" data-plan="Chatbot Pro" data-value="79999" class="cursor-pointer mt-8 inline-flex justify-center px-5 py-3.5 rounded-xl text-white font-500 cta-outline">Get started</a>
             <p class="mt-3 text-center text-xs text-slate-400">30-day money-back guarantee</p>
           </div>
         </div>
@@ -1001,7 +1009,7 @@
               <li class="flex gap-3"><span class="text-violet-400 font-700 shrink-0">+</span>CRM / Sheets logging</li>
               <li class="flex gap-3"><span class="text-violet-400 font-700 shrink-0">+</span>Monthly call report</li>
             </ul>
-            <a href="#book" data-plan="Voice Growth" data-value="39999" class="cursor-pointer mt-8 inline-flex justify-center px-5 py-3.5 rounded-xl text-white font-500 transition-colors duration-200" style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12)" onmouseover="this.style.background='rgba(255,255,255,0.12)'" onmouseout="this.style.background='rgba(255,255,255,0.07)'">Get started</a>
+            <a href="#book" data-plan="Voice Growth" data-value="39999" class="cursor-pointer mt-8 inline-flex justify-center px-5 py-3.5 rounded-xl text-white font-500 cta-outline">Get started</a>
           </div>
 
           <!-- Professional (featured) -->
@@ -1020,7 +1028,7 @@
               <li class="flex gap-3"><span class="text-pink-400 font-700 shrink-0">+</span>Custom voice + multilingual</li>
               <li class="flex gap-3"><span class="text-pink-400 font-700 shrink-0">+</span>Up to 3 outlets</li>
             </ul>
-            <a href="#book" data-plan="Voice Professional" data-value="69999" class="cursor-pointer mt-8 inline-flex justify-center px-5 py-3.5 rounded-xl text-white font-600 transition-shadow duration-200" style="background:linear-gradient(135deg,#7c3aed,#a855f7);box-shadow:0 4px 24px rgba(124,58,237,0.5)" onmouseover="this.style.boxShadow='0 4px 32px rgba(124,58,237,0.7)'" onmouseout="this.style.boxShadow='0 4px 24px rgba(124,58,237,0.5)'">Get started</a>
+            <a href="#book" data-plan="Voice Professional" data-value="69999" class="cursor-pointer mt-8 inline-flex justify-center px-5 py-3.5 rounded-xl text-white font-600 cta-glow-purple">Get started</a>
           </div>
 
           <!-- Advanced -->
@@ -1038,7 +1046,7 @@
               <li class="flex gap-3"><span class="text-blue-400 font-700 shrink-0">+</span>Multi-location support</li>
               <li class="flex gap-3"><span class="text-blue-400 font-700 shrink-0">+</span>24/7 priority support</li>
             </ul>
-            <a href="#book" data-plan="Voice Advanced" data-value="129999" class="cursor-pointer mt-8 inline-flex justify-center px-5 py-3.5 rounded-xl text-white font-500 transition-colors duration-200" style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12)" onmouseover="this.style.background='rgba(255,255,255,0.12)'" onmouseout="this.style.background='rgba(255,255,255,0.07)'">Contact us</a>
+            <a href="#book" data-plan="Voice Advanced" data-value="129999" class="cursor-pointer mt-8 inline-flex justify-center px-5 py-3.5 rounded-xl text-white font-500 cta-outline">Contact us</a>
           </div>
         </div>
       </div>

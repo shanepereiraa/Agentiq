@@ -6,7 +6,9 @@
   "scripts": {
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
-    "build:css": "tailwindcss -i ./tailwind-input.css -o ./tailwind.min.css --minify"
+    "build:css": "tailwindcss -i ./tailwind-input.css -o ./tailwind.min.css --minify",
+    "build:csp": "node scripts/build-csp.js",
+    "build": "npm run build:css && npm run build:csp"
   },
   "devDependencies": {
     "@playwright/test": "^1.61.1",
