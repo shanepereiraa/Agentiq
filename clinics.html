@@ -48,6 +48,7 @@
     #aiq-nav-toggle[aria-expanded="true"] .icon-open{display:none}
     #aiq-nav-toggle[aria-expanded="true"] .icon-close{display:block}
     .grad-text{background:linear-gradient(100deg,#FFB36B 0%,#FF6B5C 45%,#22D3EE 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .stat-num{background:linear-gradient(135deg,#fff 0%,rgba(255,255,255,.7) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
     .logo-grad-text{background:linear-gradient(135deg,#FF8A5B 0%,#FF5C8A 55%,#C74AFF 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
     @media (forced-colors: active) { .grad-text, .logo-grad-text { background: none; -webkit-background-clip: initial; background-clip: initial; color: CanvasText; } }
     .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
@@ -197,6 +198,34 @@
             </div>
             <div id="chatlog" class="px-5 py-5 space-y-3 h-60 overflow-y-auto text-sm" aria-live="polite"></div>
             <div class="px-4 pb-4 pt-2 border-t border-white/10"><div id="chips" class="flex flex-wrap gap-2"></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESULTS -->
+    <section id="results" class="relative py-20 px-5 overflow-hidden" style="background:linear-gradient(180deg,#060f28 0%,#08101e 50%,#060f28 100%)">
+      <div class="relative max-w-5xl mx-auto">
+        <div class="reveal text-center max-w-2xl mx-auto mb-10">
+          <p class="text-cyan text-sm font-500 tracking-widest uppercase mb-3">Results</p>
+          <h2 class="font-display font-700 text-white text-3xl sm:text-4xl tracking-tight leading-tight">Numbers our clients actually feel</h2>
+        </div>
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-5">
+          <div class="reveal rounded-2xl p-6 text-center" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(16px)">
+            <p class="font-display font-700 stat-num text-5xl sm:text-6xl leading-none"><span class="count" data-to="92">0</span>%</p>
+            <p class="text-slate-400 text-sm mt-3 leading-snug">queries auto-resolved</p>
+          </div>
+          <div class="reveal rounded-2xl p-6 text-center" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(16px)">
+            <p class="font-display font-700 stat-num text-5xl sm:text-6xl leading-none"><span class="count" data-to="3">0</span>×</p>
+            <p class="text-slate-400 text-sm mt-3 leading-snug">more leads captured</p>
+          </div>
+          <div class="reveal rounded-2xl p-6 text-center" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(16px)">
+            <p class="font-display font-700 stat-num text-5xl sm:text-6xl leading-none">&lt;<span class="count" data-to="5">0</span>s</p>
+            <p class="text-slate-400 text-sm mt-3 leading-snug">average reply time</p>
+          </div>
+          <div class="reveal rounded-2xl p-6 text-center" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(16px)">
+            <p class="font-display font-700 stat-num text-5xl sm:text-6xl leading-none"><span class="count" data-to="24">0</span>/7</p>
+            <p class="text-slate-400 text-sm mt-3 leading-snug">always responding</p>
           </div>
         </div>
       </div>
@@ -441,6 +470,10 @@
         document.querySelectorAll('.grid').forEach(function(g){g.querySelectorAll(':scope > .reveal').forEach(function(el,i){el.dataset.delay=i*90;});});
         revs.forEach(function(e){io.observe(e);});
       }
+      var counted=false;
+      function runCount(){if(counted)return;counted=true;document.querySelectorAll('.count').forEach(function(el){var to=parseInt(el.dataset.to,10),dur=1400,t0=null;if(reduce){el.textContent=to;return;}function step(ts){if(!t0)t0=ts;var p=Math.min((ts-t0)/dur,1);el.textContent=Math.round((1-Math.pow(1-p,3))*to);if(p<1)requestAnimationFrame(step);}requestAnimationFrame(step);});}
+      var res=document.getElementById('results');
+      if(res&&'IntersectionObserver' in window){new IntersectionObserver(function(e,o){if(e[0].isIntersecting){runCount();o.disconnect();}},{threshold:0.3}).observe(res);}else{runCount();}
       var convo={
         'Book an appointment with Dr. Sharma':"Dr. Sharma (Orthopaedics) has slots on Mon 10 AM, Tue 3 PM, and Wed 11 AM. Which works for you? I'll confirm and send a WhatsApp reminder. 🏥",
         'What are your clinic timings?':"We're open Mon–Sat, 9 AM to 8 PM. Emergency OPD is available 24/7. Shall I book an appointment for you? 📅",
