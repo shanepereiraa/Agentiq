@@ -28,6 +28,9 @@ const PAGES = [
   'blog/whatsapp-business-api-vs-chatbot-restaurants.html',
   'blog/ai-chatbot-pricing-india-2026-guide.html',
   'blog/ai-voice-agents-reduce-missed-calls-no-shows.html',
+  'blog/d2c-whatsapp-order-support-automation.html',
+  'blog/instagram-dm-automation-salons-guide.html',
+  'blog/ai-chatbot-vs-hiring-staff-cost-comparison.html',
 ];
 const VERCEL_JSON = path.join(ROOT, 'vercel.json');
 
