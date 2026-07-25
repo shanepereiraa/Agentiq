@@ -22,7 +22,13 @@ const path = require('path');
 const crypto = require('crypto');
 
 const ROOT = path.resolve(__dirname, '..');
-const PAGES = ['index.html', 'clinics.html', 'restaurants.html', 'salons.html'];
+const PAGES = [
+  'index.html', 'clinics.html', 'restaurants.html', 'salons.html',
+  'blog/index.html',
+  'blog/whatsapp-business-api-vs-chatbot-restaurants.html',
+  'blog/ai-chatbot-pricing-india-2026-guide.html',
+  'blog/ai-voice-agents-reduce-missed-calls-no-shows.html',
+];
 const VERCEL_JSON = path.join(ROOT, 'vercel.json');
 
 function extractInlineScripts(html) {
