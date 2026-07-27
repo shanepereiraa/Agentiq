@@ -164,8 +164,12 @@
   <!-- Tailwind: compiled at build time via `npm run build:css` (tailwind.config.js), not the CDN JIT compiler. -->
   <link rel="stylesheet" href="/tailwind.min.css" />
 
-  <!-- React island bundle (react-widgets/): built via `npm run build` in that folder. -->
-  <link rel="stylesheet" href="/react-widgets/dist/agentiq-widgets.css" />
+  <!-- React island bundle (react-widgets/): built via `npm run build` in that folder.
+       Preloaded non-blocking (same pattern as the font preload above) since none of
+       its components render above the fold. -->
+  <link id="widgets-css-preload" rel="preload" as="style" href="/react-widgets/dist/agentiq-widgets.css" />
+  <script>document.getElementById('widgets-css-preload').onload=function(){this.onload=null;this.rel='stylesheet';};</script>
+  <noscript><link rel="stylesheet" href="/react-widgets/dist/agentiq-widgets.css" /></noscript>
 
   <style>
     html { -webkit-font-smoothing: antialiased; }
@@ -365,7 +369,7 @@
       background: rgba(139,92,246,0.18); color: #c4b5fd;
     }
     .vs-play {
-      flex-shrink: 0; width: 2.75rem; height: 2.75rem; border-radius: 9999px;
+      flex-shrink: 0; width: 3rem; height: 3rem; border-radius: 9999px;
       display: flex; align-items: center; justify-content: center;
       background: linear-gradient(135deg,#7c3aed,#a855f7);
       box-shadow: 0 4px 20px rgba(124,58,237,0.4);
@@ -716,6 +720,10 @@
             <div class="flex items-center gap-2"><svg class="w-4 h-4 text-cyan" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Hindi + English</div>
           </div>
           <p class="reveal mt-5 text-xs text-slate-400">Plans from <span class="text-slate-400">₹6,999/mo</span> · Free demo · No commitment</p>
+          <p class="reveal mt-3 flex items-center gap-1.5 text-xs text-slate-400/80">
+            <svg class="w-3.5 h-3.5 text-slate-400/80 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            DPDP-compliant · AES-256 encrypted · Data hosted in India
+          </p>
         </div>
 
         <!-- Hero chat mockup: min-height reserves layout space before fonts render, preventing CLS -->
@@ -1170,9 +1178,8 @@
 
           <div class="relative rounded-2xl overflow-hidden" style="background:rgba(255,255,255,0.05);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.10);box-shadow:0 30px 80px -20px rgba(0,0,0,.6)">
 
-            <span class="absolute top-3 right-4 z-10 inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-semibold uppercase tracking-wider text-slate-400" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.14)">
+            <span class="absolute top-3 right-4 z-10 inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-semibold uppercase tracking-wider text-slate-400" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.14)">
               This Month
-              <svg class="w-2.5 h-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </span>
 
             <!-- title bar -->
@@ -1193,7 +1200,7 @@
               <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-4">
 
                 <div class="reveal rounded-xl p-5" style="background:rgba(255,255,255,0.04);border:1px solid rgba(34,211,238,0.18)">
-                  <p class="text-xs text-slate-400 uppercase tracking-wide">Total Calls Handled <span class="text-slate-500">/ Month</span></p>
+                  <p class="text-xs text-slate-400 uppercase tracking-wide">Total Calls Handled <span class="text-slate-400/80">/ Month</span></p>
                   <div class="flex items-end justify-between mt-2">
                     <p class="font-display font-bold text-white text-3xl">1,240</p>
                     <span class="text-xs font-semibold text-cyan">+18%</span>
@@ -1204,7 +1211,7 @@
                 </div>
 
                 <div class="reveal rounded-xl p-5" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,107,92,0.2)">
-                  <p class="text-xs text-slate-400 uppercase tracking-wide">Leads Qualified <span class="text-slate-500">/ Month</span></p>
+                  <p class="text-xs text-slate-400 uppercase tracking-wide">Leads Qualified <span class="text-slate-400/80">/ Month</span></p>
                   <div class="flex items-end justify-between mt-2">
                     <p class="font-display font-bold text-white text-3xl">312</p>
                     <span class="text-xs font-semibold text-coral">+24%</span>
@@ -1215,7 +1222,7 @@
                 </div>
 
                 <div class="reveal rounded-xl p-5" style="background:rgba(255,255,255,0.04);border:1px solid rgba(52,211,153,0.22)">
-                  <p class="text-xs text-slate-400 uppercase tracking-wide">Revenue Recovered <span class="text-slate-500">/ Month</span></p>
+                  <p class="text-xs text-slate-400 uppercase tracking-wide">Revenue Recovered <span class="text-slate-400/80">/ Month</span></p>
                   <div class="flex items-end justify-between mt-2">
                     <p class="font-display font-bold text-white text-3xl">₹4,50,000</p>
                     <span class="text-xs font-semibold text-emerald-400">+31%</span>
@@ -1621,11 +1628,11 @@
               </span>
             </div>
             <div class="flex items-center justify-between px-3 py-1.5 text-sm">
-              <span class="text-slate-500 text-xs">In-House Staff</span>
+              <span class="text-slate-400/80 text-xs">In-House Staff</span>
               <span class="text-slate-400">2–10 minutes</span>
             </div>
             <div class="flex items-center justify-between px-3 py-1.5 text-sm">
-              <span class="text-slate-500 text-xs">Traditional BPO</span>
+              <span class="text-slate-400/80 text-xs">Traditional BPO</span>
               <span class="text-slate-400">5–15 minutes</span>
             </div>
           </div>
@@ -1641,11 +1648,11 @@
               </span>
             </div>
             <div class="flex items-center justify-between px-3 py-1.5 text-sm">
-              <span class="text-slate-500 text-xs">In-House Staff</span>
+              <span class="text-slate-400/80 text-xs">In-House Staff</span>
               <span class="text-slate-400">Business hours only</span>
             </div>
             <div class="flex items-center justify-between px-3 py-1.5 text-sm">
-              <span class="text-slate-500 text-xs">Traditional BPO</span>
+              <span class="text-slate-400/80 text-xs">Traditional BPO</span>
               <span class="text-slate-400">Shift-dependent</span>
             </div>
           </div>
@@ -1661,11 +1668,11 @@
               </span>
             </div>
             <div class="flex items-center justify-between px-3 py-1.5 text-sm">
-              <span class="text-slate-500 text-xs">In-House Staff</span>
+              <span class="text-slate-400/80 text-xs">In-House Staff</span>
               <span class="text-slate-400">₹150–300 + overhead</span>
             </div>
             <div class="flex items-center justify-between px-3 py-1.5 text-sm">
-              <span class="text-slate-500 text-xs">Traditional BPO</span>
+              <span class="text-slate-400/80 text-xs">Traditional BPO</span>
               <span class="text-slate-400">₹200–450</span>
             </div>
           </div>
@@ -1681,11 +1688,11 @@
               </span>
             </div>
             <div class="flex items-center justify-between px-3 py-1.5 text-sm">
-              <span class="text-slate-500 text-xs">In-House Staff</span>
+              <span class="text-slate-400/80 text-xs">In-House Staff</span>
               <span class="text-slate-400">Hiring &amp; training lag</span>
             </div>
             <div class="flex items-center justify-between px-3 py-1.5 text-sm">
-              <span class="text-slate-500 text-xs">Traditional BPO</span>
+              <span class="text-slate-400/80 text-xs">Traditional BPO</span>
               <span class="text-slate-400">Contract renegotiation</span>
             </div>
           </div>
@@ -1701,11 +1708,11 @@
               </span>
             </div>
             <div class="flex items-center justify-between px-3 py-1.5 text-sm">
-              <span class="text-slate-500 text-xs">In-House Staff</span>
+              <span class="text-slate-400/80 text-xs">In-House Staff</span>
               <span class="text-slate-400">Depends on hire</span>
             </div>
             <div class="flex items-center justify-between px-3 py-1.5 text-sm">
-              <span class="text-slate-500 text-xs">Traditional BPO</span>
+              <span class="text-slate-400/80 text-xs">Traditional BPO</span>
               <span class="text-slate-400">Limited, extra cost</span>
             </div>
           </div>
@@ -2543,7 +2550,7 @@
       Object.keys(convo).forEach(function (q) {
         var b = document.createElement('button');
         b.type = 'button';
-        b.className = 'cursor-pointer text-sm px-3.5 py-2 rounded-full glass text-slate-200 hover:bg-white/10 hover:text-white transition-colors duration-200';
+        b.className = 'cursor-pointer text-sm px-3.5 py-2.5 min-h-[44px] flex items-center rounded-full glass text-slate-200 hover:bg-white/10 hover:text-white transition-colors duration-200';
         b.textContent = q;
         b.addEventListener('click', function () {
           ask(q);

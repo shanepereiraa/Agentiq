@@ -87,7 +87,7 @@ export default function MobileSwipeTabs() {
               key={industry.id}
               ref={(el) => (tabRefs.current[industry.id] = el)}
               onClick={() => selectTab(industry.id)}
-              className="shrink-0 px-4 py-2 rounded-full text-sm font-semibold whitespace-nowrap"
+              className="shrink-0 px-4 py-2.5 min-h-[44px] flex items-center rounded-full text-sm font-semibold whitespace-nowrap"
               style={{
                 scrollSnapAlign: 'center',
                 background: isActive ? industry.accent : 'rgba(255,255,255,0.06)',
