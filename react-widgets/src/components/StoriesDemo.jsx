@@ -196,7 +196,7 @@ export default function StoriesDemo() {
 
   return (
     <div className="w-full">
-      <div className="flex gap-4 overflow-x-auto px-1 py-1" style={{ scrollbarWidth: 'none' }}>
+      <div className="flex justify-center items-center gap-4 sm:gap-6 mx-auto overflow-x-auto px-1 py-1" style={{ scrollbarWidth: 'none' }}>
         {STORIES.map((story) => (
           <button
             key={story.id}

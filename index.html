@@ -390,42 +390,6 @@
     @keyframes vs-bounce { 0%, 100% { transform: scaleY(0.4); } 50% { transform: scaleY(1); } }
 
     /* ── Workflow diagram ───────────────────────────────────────── */
-    .wf-canvas { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); overflow: hidden; }
-    .wf-grid {
-      position: absolute; inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
-      background-size: 36px 36px;
-      mask-image: radial-gradient(ellipse at center, #000 40%, transparent 80%);
-    }
-    .wf-node {
-      position: relative; z-index: 1;
-      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.10);
-      border-radius: 1.25rem; padding: 1.5rem; backdrop-filter: blur(12px);
-    }
-    .wf-node-featured { border-color: rgba(255,107,92,0.4); box-shadow: 0 0 40px rgba(255,107,92,0.15); }
-    .wf-node-icon { width: 3rem; height: 3rem; border-radius: 0.85rem; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
-    .wf-chip { font-size: 0.75rem; font-weight: 500; padding: 0.3rem 0.7rem; border-radius: 9999px; background: rgba(34,211,238,0.12); border: 1px solid rgba(34,211,238,0.25); color: #67e8f9; }
-    .wf-connector {
-      position: relative; z-index: 1; width: 64px; height: 2px; flex-shrink: 0; align-self: center;
-      background: repeating-linear-gradient(90deg, rgba(255,255,255,0.25) 0 6px, transparent 6px 12px);
-      margin: 0 -4px;
-    }
-    .wf-dot {
-      position: absolute; top: 50%; left: 0; width: 8px; height: 8px; border-radius: 9999px;
-      background: #FF6B5C; box-shadow: 0 0 12px rgba(255,107,92,0.9);
-      transform: translateY(-50%);
-      animation: wf-travel 1.8s linear infinite;
-    }
-    @keyframes wf-travel { 0% { left: 0; opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { left: 100%; opacity: 0; } }
-    @media (max-width: 767px) {
-      .wf-connector { width: 2px; height: 40px; margin: -4px 0; align-self: center; }
-      .wf-connector-line { display: none; }
-      .wf-dot { top: 0; left: 50%; transform: translateX(-50%); animation-name: wf-travel-vertical; }
-      @keyframes wf-travel-vertical { 0% { top: 0; opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { top: 100%; opacity: 0; } }
-    }
-
     /* ── Mobile quick bar ───────────────────────────────────────── */
     .mqb-bar {
       display: none;
@@ -477,7 +441,6 @@
       #formmsg { opacity: 1 !important; transform: none !important; }
       .fs-track { transition: none !important; }
       .vs-card.is-playing .vs-wave span { animation: none; }
-      .wf-dot { animation: none; opacity: 0.9; }
       .btn-pop:hover, .btn-pop:focus-visible { transform: none; }
       .tilt-card { transform: none !important; }
     }
@@ -808,73 +771,6 @@
       </div>
     </section>
 
-    <!-- ============================================================
-      WORKFLOW DIAGRAM
-      Swap content: edit node titles/icons directly in the markup below.
-      Add/remove "action" chips inside the third node's .wf-chip-list.
-    ============================================================= -->
-    <section id="workflow-diagram" class="relative py-14 sm:py-20 px-5 overflow-hidden" style="background:linear-gradient(180deg,#060f28 0%,#050b1c 50%,#060f28 100%)">
-      <div class="max-w-5xl mx-auto">
-        <div class="reveal text-center mb-14">
-          <p class="text-cyan text-sm font-semibold tracking-widest uppercase mb-3">Under The Hood</p>
-          <h2 class="font-display font-bold text-white text-3xl sm:text-4xl tracking-tight text-balance">One pipeline, every channel</h2>
-          <p class="mt-4 text-slate-400 text-pretty">Here's exactly how a message becomes a booked order.</p>
-        </div>
-
-        <div class="reveal wf-canvas relative rounded-3xl p-8 md:p-14">
-          <div class="wf-grid" aria-hidden="true"></div>
-
-          <div class="relative flex flex-col md:flex-row items-stretch md:items-center gap-6 md:gap-0">
-
-            <!-- Node 1: Customer Channel -->
-            <div class="wf-node flex-1">
-              <div class="wf-node-icon" style="background:rgba(34,197,94,.15);color:#4ade80">
-                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
-              </div>
-              <h3 class="font-display font-semibold text-white text-lg mb-1">Customer Channel</h3>
-              <p class="text-slate-400 text-sm">WhatsApp, Instagram DM, or a phone call — wherever they already are.</p>
-            </div>
-
-            <!-- Connector 1 -->
-            <div class="wf-connector" aria-hidden="true">
-              <div class="wf-connector-line"></div>
-              <span class="wf-dot"></span>
-            </div>
-
-            <!-- Node 2: AI Engine -->
-            <div class="wf-node flex-1 wf-node-featured">
-              <div class="wf-node-icon" style="background:rgba(255,107,92,.15);color:#FF6B5C">
-                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 6v6l4 2"/></svg>
-              </div>
-              <h3 class="font-display font-semibold text-white text-lg mb-1">AgentIQ AI Engine</h3>
-              <p class="text-slate-400 text-sm">Claude for language + reasoning, Vapi for real-time voice.</p>
-            </div>
-
-            <!-- Connector 2 -->
-            <div class="wf-connector" aria-hidden="true">
-              <div class="wf-connector-line"></div>
-              <span class="wf-dot" style="animation-delay:0.9s"></span>
-            </div>
-
-            <!-- Node 3: Actions -->
-            <div class="wf-node flex-1">
-              <div class="wf-node-icon" style="background:rgba(34,211,238,.15);color:#22D3EE">
-                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M18 17V9M13 17V5M8 17v-4"/></svg>
-              </div>
-              <h3 class="font-display font-semibold text-white text-lg mb-2">Actions</h3>
-              <div class="wf-chip-list flex flex-wrap gap-2">
-                <span class="wf-chip">POS</span>
-                <span class="wf-chip">Shopify</span>
-                <span class="wf-chip">Google Sheets</span>
-                <span class="wf-chip">CRM</span>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- LANGUAGE TOGGLE (React island: react-widgets/src/components/LanguageToggle.jsx) -->
     <section id="language-demo" class="relative py-16 sm:py-20 px-5 overflow-hidden" style="background:linear-gradient(180deg,#060f28 0%,#071528 50%,#060f28 100%)">
       <div class="relative max-w-2xl mx-auto">
@@ -907,6 +803,43 @@
           <button id="fs-prev" class="fs-arrow -left-3 md:-left-6" aria-label="Previous product">‹</button>
           <button id="fs-next" class="fs-arrow -right-3 md:-right-6" aria-label="Next product">›</button>
           <div id="fs-dots" class="flex justify-center gap-2 mt-6"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LIVE DEMO -->
+    <section id="demo" class="relative py-16 sm:py-24 px-5 overflow-hidden" style="content-visibility:auto;contain-intrinsic-size:0 700px;background:linear-gradient(180deg,#060f28 0%,#071520 50%,#060f28 100%)">
+      <div aria-hidden="true" class="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 w-96 h-96 rounded-full" style="background:radial-gradient(circle,rgba(255,107,92,.2) 0%,transparent 70%);filter:blur(70px)"></div>
+      <div aria-hidden="true" class="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 w-96 h-96 rounded-full" style="background:radial-gradient(circle,rgba(34,211,238,.18) 0%,transparent 70%);filter:blur(70px)"></div>
+      <div class="relative max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+        <div class="reveal">
+          <p class="text-cyan text-sm font-500 tracking-widest uppercase mb-4">Live Demo</p>
+          <h2 class="font-display font-700 text-white text-4xl sm:text-5xl tracking-tighter leading-tight text-balance">See it think. Tap a question.</h2>
+          <p class="mt-5 text-slate-400 max-w-md">This is a real-time preview of how your assistant feels to a customer — typing indicators, instant answers and natural conversation. Pick a prompt to watch it respond.</p>
+          <ul class="mt-7 space-y-3 text-sm text-slate-300">
+            <li class="flex items-center gap-3"><svg class="w-5 h-5 text-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>Trained on your products, prices & policies</li>
+            <li class="flex items-center gap-3"><svg class="w-5 h-5 text-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>Smart hand-off to a human anytime</li>
+            <li class="flex items-center gap-3"><svg class="w-5 h-5 text-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>Captures name & number automatically</li>
+          </ul>
+        </div>
+
+        <!-- Demo widget -->
+        <div class="reveal">
+          <div class="glass-strong rounded-[1.75rem] overflow-hidden shadow-2xl shadow-black/40">
+            <div class="flex items-center gap-3 px-5 py-4 bg-white/5 border-b border-white/10">
+              <span class="grid place-items-center w-9 h-9 rounded-full bg-gradient-to-br from-coral to-orange text-white">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              </span>
+              <div class="flex-1">
+                <p class="text-white font-500 text-sm leading-tight">AgentIQ</p>
+                <p class="text-emerald-300 text-xs flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>online</p>
+              </div>
+            </div>
+            <div id="chatlog" class="px-5 py-5 space-y-3 h-[22rem] overflow-y-auto text-sm" aria-live="polite"></div>
+            <div class="px-4 pb-4 pt-2 border-t border-white/10">
+              <div id="chips" class="flex flex-wrap gap-2"></div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -976,9 +909,9 @@
         </div>
 
         <!-- Voice CTA -->
-        <div class="reveal text-center">
+        <div class="reveal text-center mt-12">
           <p class="text-slate-400 text-sm mb-5">Powered by VAPI + Claude AI · Speaks Hindi, Hinglish &amp; English natively</p>
-          <a href="#book" class="btn-pop cursor-pointer inline-flex items-center gap-2 px-7 py-4 rounded-xl text-white font-600 text-[15px] shadow-lg transition-shadow duration-200" style="background:linear-gradient(135deg,#7c3aed,#a855f7);box-shadow:0 8px 30px rgba(139,92,246,.35)">
+          <a href="#pricing" class="btn-pop cursor-pointer inline-flex items-center gap-2 px-7 py-4 rounded-xl text-white font-600 text-[15px] shadow-lg transition-shadow duration-200" style="background:linear-gradient(135deg,#7c3aed,#a855f7);box-shadow:0 8px 30px rgba(139,92,246,.35)">
             Get started with Voice AI
             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
@@ -992,7 +925,7 @@
       clip (mp3), and update the title/lang badge text. Duration shows
       automatically once metadata loads.
     ============================================================= -->
-    <section id="voice-samples" class="relative py-14 sm:py-20 px-5 overflow-hidden" style="background:linear-gradient(180deg,#060f28 0%,#080120 50%,#060f28 100%)">
+    <section id="voice-samples" class="relative py-20 md:py-24 px-5 overflow-hidden" style="background:linear-gradient(180deg,#060f28 0%,#080120 50%,#060f28 100%)">
       <div class="max-w-5xl mx-auto">
         <div class="reveal text-center mb-10">
           <p class="text-violet-300 text-sm font-semibold tracking-widest uppercase mb-3">Hear It Yourself</p>
@@ -1037,7 +970,7 @@
               </div>
               <span class="vs-time text-slate-400 text-xs tabular-nums ml-auto">0:00</span>
             </div>
-            <p class="text-slate-400 text-sm mt-4">"Kal 3:30 slot free hai" — stylist selection + reminder call.</p>
+            <p class="text-slate-400 text-sm mt-4">"Good Evening, kaise ho?" — stylist selection + reminder call.</p>
           </article>
 
           <article class="reveal vs-card">
@@ -1122,43 +1055,6 @@
           <h2 class="font-display font-bold text-white text-3xl sm:text-4xl tracking-tight text-balance">Tap a business, watch the bot work</h2>
         </div>
         <div class="reveal" id="stories-demo-root"></div>
-      </div>
-    </section>
-
-    <!-- LIVE DEMO -->
-    <section id="demo" class="relative py-16 sm:py-24 px-5 overflow-hidden" style="content-visibility:auto;contain-intrinsic-size:0 700px;background:linear-gradient(180deg,#060f28 0%,#071520 50%,#060f28 100%)">
-      <div aria-hidden="true" class="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 w-96 h-96 rounded-full" style="background:radial-gradient(circle,rgba(255,107,92,.2) 0%,transparent 70%);filter:blur(70px)"></div>
-      <div aria-hidden="true" class="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 w-96 h-96 rounded-full" style="background:radial-gradient(circle,rgba(34,211,238,.18) 0%,transparent 70%);filter:blur(70px)"></div>
-      <div class="relative max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
-        <div class="reveal">
-          <p class="text-cyan text-sm font-500 tracking-widest uppercase mb-4">Live Demo</p>
-          <h2 class="font-display font-700 text-white text-4xl sm:text-5xl tracking-tighter leading-tight text-balance">See it think. Tap a question.</h2>
-          <p class="mt-5 text-slate-400 max-w-md">This is a real-time preview of how your assistant feels to a customer — typing indicators, instant answers and natural conversation. Pick a prompt to watch it respond.</p>
-          <ul class="mt-7 space-y-3 text-sm text-slate-300">
-            <li class="flex items-center gap-3"><svg class="w-5 h-5 text-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>Trained on your products, prices & policies</li>
-            <li class="flex items-center gap-3"><svg class="w-5 h-5 text-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>Smart hand-off to a human anytime</li>
-            <li class="flex items-center gap-3"><svg class="w-5 h-5 text-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>Captures name & number automatically</li>
-          </ul>
-        </div>
-
-        <!-- Demo widget -->
-        <div class="reveal">
-          <div class="glass-strong rounded-[1.75rem] overflow-hidden shadow-2xl shadow-black/40">
-            <div class="flex items-center gap-3 px-5 py-4 bg-white/5 border-b border-white/10">
-              <span class="grid place-items-center w-9 h-9 rounded-full bg-gradient-to-br from-coral to-orange text-white">
-                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-              </span>
-              <div class="flex-1">
-                <p class="text-white font-500 text-sm leading-tight">AgentIQ</p>
-                <p class="text-emerald-300 text-xs flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>online</p>
-              </div>
-            </div>
-            <div id="chatlog" class="px-5 py-5 space-y-3 h-[22rem] overflow-y-auto text-sm" aria-live="polite"></div>
-            <div class="px-4 pb-4 pt-2 border-t border-white/10">
-              <div id="chips" class="flex flex-wrap gap-2"></div>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -1274,6 +1170,11 @@
 
           <div class="relative rounded-2xl overflow-hidden" style="background:rgba(255,255,255,0.05);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.10);box-shadow:0 30px 80px -20px rgba(0,0,0,.6)">
 
+            <span class="absolute top-3 right-4 z-10 inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-semibold uppercase tracking-wider text-slate-400" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.14)">
+              This Month
+              <svg class="w-2.5 h-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </span>
+
             <!-- title bar -->
             <div class="flex items-center gap-2 px-4 py-3 border-b border-white/8" style="background:rgba(255,255,255,0.03)">
               <span class="traffic-dot" style="background:#ff5f56"></span>
@@ -1292,7 +1193,7 @@
               <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-4">
 
                 <div class="reveal rounded-xl p-5" style="background:rgba(255,255,255,0.04);border:1px solid rgba(34,211,238,0.18)">
-                  <p class="text-xs text-slate-400 uppercase tracking-wide">Total Calls Handled</p>
+                  <p class="text-xs text-slate-400 uppercase tracking-wide">Total Calls Handled <span class="text-slate-500">/ Month</span></p>
                   <div class="flex items-end justify-between mt-2">
                     <p class="font-display font-bold text-white text-3xl">1,240</p>
                     <span class="text-xs font-semibold text-cyan">+18%</span>
@@ -1303,7 +1204,7 @@
                 </div>
 
                 <div class="reveal rounded-xl p-5" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,107,92,0.2)">
-                  <p class="text-xs text-slate-400 uppercase tracking-wide">Leads Qualified</p>
+                  <p class="text-xs text-slate-400 uppercase tracking-wide">Leads Qualified <span class="text-slate-500">/ Month</span></p>
                   <div class="flex items-end justify-between mt-2">
                     <p class="font-display font-bold text-white text-3xl">312</p>
                     <span class="text-xs font-semibold text-coral">+24%</span>
@@ -1314,7 +1215,7 @@
                 </div>
 
                 <div class="reveal rounded-xl p-5" style="background:rgba(255,255,255,0.04);border:1px solid rgba(52,211,153,0.22)">
-                  <p class="text-xs text-slate-400 uppercase tracking-wide">Revenue Recovered</p>
+                  <p class="text-xs text-slate-400 uppercase tracking-wide">Revenue Recovered <span class="text-slate-500">/ Month</span></p>
                   <div class="flex items-end justify-between mt-2">
                     <p class="font-display font-bold text-white text-3xl">₹4,50,000</p>
                     <span class="text-xs font-semibold text-emerald-400">+31%</span>
@@ -1811,17 +1712,6 @@
 
         </div>
 
-      </div>
-    </section>
-
-    <!-- LOCALIZED INTEGRATIONS BENTO (React island: react-widgets/src/components/LocalizedIntegrationsBento.jsx) -->
-    <section id="integrations-bento" class="relative py-16 sm:py-24 px-5 overflow-hidden" style="background:linear-gradient(180deg,#060f28 0%,#08101e 50%,#060f28 100%)">
-      <div class="relative max-w-5xl mx-auto">
-        <div class="reveal text-center max-w-2xl mx-auto mb-14">
-          <p class="text-orange-400 text-sm font-semibold tracking-widest uppercase mb-4">Plays Well With Your Stack</p>
-          <h2 class="font-display font-bold text-white text-4xl sm:text-5xl tracking-tighter leading-tight text-balance">Built for tools Indian businesses already use</h2>
-        </div>
-        <div class="reveal" id="integrations-bento-root"></div>
       </div>
     </section>
 
