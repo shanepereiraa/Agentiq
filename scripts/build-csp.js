@@ -34,15 +34,36 @@ const PAGES = [
 ];
 const VERCEL_JSON = path.join(ROOT, 'vercel.json');
 
-function extractInlineScripts(html) {
+function extractInlineScripts(html, page) {
+  // Strip HTML comments first — the tag regex below doesn't know about markup
+  // comments, so a documentation comment that merely mentions the text
+  // "<script>" (e.g. "edit the main <script> block") gets misread as a real
+  // opening tag. That previously made the regex capture everything from the
+  // comment through the next real </script>, hash that bogus oversized blob,
+  // and never produce a hash for the real (smaller) script — which the
+  // browser then silently blocked since its real hash matched nothing in the
+  // CSP allow-list. Comment content is never executed, so stripping it first
+  // is safe.
+  const withoutComments = html.replace(/<!--[\s\S]*?-->/g, '');
   const scripts = [];
   const re = /<script(\s[^>]*)?>([\s\S]*?)<\/script>/gi;
   let m;
-  while ((m = re.exec(html))) {
+  while ((m = re.exec(withoutComments))) {
     const attrs = m[1] || '';
     if (/\bsrc\s*=/i.test(attrs)) continue; // external script, no hash needed
     if (/type\s*=\s*["']application\/ld\+json["']/i.test(attrs)) continue; // inert data
-    scripts.push(m[2]);
+    const content = m[2];
+    // Belt-and-suspenders: a correctly-scoped script body should never itself
+    // contain another tag opener/closer — if it does, the scan above still
+    // went wrong somehow, so fail loudly instead of silently shipping a
+    // hash that won't match what the browser computes.
+    if (/<script[\s>]|<\/script>/i.test(content)) {
+      throw new Error(
+        `extractInlineScripts: suspicious script content in ${page} (contains a nested ` +
+        `"<script" or "</script>") — likely a mis-scan. First 80 chars: ${JSON.stringify(content.slice(0, 80))}`
+      );
+    }
+    scripts.push(content);
   }
   return scripts;
 }
@@ -54,7 +75,7 @@ function sha256Base64(content) {
 const hashes = new Set();
 for (const page of PAGES) {
   const html = fs.readFileSync(path.join(ROOT, page), 'utf8');
-  for (const script of extractInlineScripts(html)) {
+  for (const script of extractInlineScripts(html, page)) {
     hashes.add(`'sha256-${sha256Base64(script)}'`);
   }
 }

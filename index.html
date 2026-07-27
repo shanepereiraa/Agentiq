@@ -833,7 +833,7 @@
 
     <!-- THREE PRODUCTS: interactive feature slider
          Swap content: edit the FS_SLIDES array near the bottom of the main
-         <script> block. ctaHref already points at the real live pages
+         inline JS block (the classic, non-module script). ctaHref already points at the real live pages
          (restaurants.html / salons.html / clinics.html). -->
     <section id="how" class="relative py-24 px-5 overflow-hidden" style="content-visibility:auto;contain-intrinsic-size:0 800px;background:linear-gradient(180deg,#060f28 0%,#071528 50%,#060f28 100%)">
       <div aria-hidden="true" class="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 w-96 h-96 rounded-full" style="background:radial-gradient(circle,rgba(34,211,238,.15) 0%,transparent 70%);filter:blur(70px)"></div>
@@ -1166,7 +1166,7 @@
              Swap content: each .vt-card's poster placeholder (the gradient div with
              initials) should become <img class="vt-poster" src="/media/xyz-poster.jpg">,
              and data-video should point at a real clip. Wire vt-play's click handler
-             (near the bottom of the main <script> block) to your actual lightbox/player. -->
+             (near the bottom of this section's own inline JS block) to your actual lightbox/player. -->
         <div class="mt-16">
           <div class="reveal flex items-end justify-between mb-6">
             <h3 class="font-display font-700 text-white text-2xl sm:text-3xl">Hear it from them</h3>
