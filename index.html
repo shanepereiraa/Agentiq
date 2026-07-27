@@ -1217,68 +1217,110 @@
           <p class="mt-5 text-slate-400">We've trained AI assistants for these industries again and again — so your bot launches with proven flows, not guesswork.</p>
         </div>
 
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-fr">
           <!-- Restaurants -->
-          <article class="reveal rounded-2xl p-6" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
-            <span class="grid place-items-center w-12 h-12 rounded-xl bg-coral/15 text-coral mb-5">
-              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 2v7c0 1.1.9 2 2 2a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-3 4.5c0 2.5 3 2.5 3 4.5v4"/></svg>
-            </span>
-            <h3 class="font-display font-600 text-white text-lg mb-2">Restaurants &amp; Cafés</h3>
-            <p class="text-slate-400 text-sm leading-relaxed mb-4">WhatsApp food ordering, table reservations, menu sharing and payment links — no missed orders at peak hours.</p>
-            <div class="flex flex-wrap gap-2 text-xs mb-4">
-              <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300">Food ordering</span>
-              <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300">Reservations</span>
-              <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300">Payments</span>
+          <article class="reveal h-full flex flex-col justify-between rounded-2xl p-6" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
+            <div>
+              <span class="grid place-items-center w-12 h-12 rounded-xl bg-coral/15 text-coral mb-5">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 2v7c0 1.1.9 2 2 2a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-3 4.5c0 2.5 3 2.5 3 4.5v4"/></svg>
+              </span>
+              <h3 class="font-display font-600 text-white text-lg mb-2">Restaurants &amp; Cafés</h3>
+              <p class="text-slate-400 text-sm leading-relaxed mb-4">WhatsApp food ordering, table reservations, menu sharing and payment links — no missed orders at peak hours.</p>
+              <div class="flex flex-wrap gap-2 text-xs mb-4">
+                <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300">Food ordering</span>
+                <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300">Reservations</span>
+                <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300">Payments</span>
+              </div>
             </div>
             <a href="/restaurants" class="text-xs text-cyan hover:text-white transition-colors font-500">See restaurant solution →</a>
           </article>
 
+          <!-- Retail / D2C -->
+          <article class="reveal h-full flex flex-col justify-between rounded-2xl p-6" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
+            <div>
+              <span class="grid place-items-center w-12 h-12 rounded-xl bg-blue/15 text-blue mb-5">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+              </span>
+              <h3 class="font-display font-600 text-white text-lg mb-2">Retail &amp; D2C</h3>
+              <p class="text-slate-400 text-sm leading-relaxed mb-4">Product discovery, order tracking and cart recovery across WhatsApp &amp; Instagram.</p>
+              <div class="flex flex-wrap gap-2 text-xs mb-4">
+                <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300">Product discovery</span>
+                <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300">Order tracking</span>
+                <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300">Cart recovery</span>
+              </div>
+            </div>
+            <!-- REPLACE: no dedicated /retail page exists yet — points at the booking form as a fallback CTA -->
+            <a href="#book" class="text-xs text-cyan hover:text-white transition-colors font-500">See D2C solution →</a>
+          </article>
+
           <!-- Salons -->
-          <article class="reveal rounded-2xl p-6" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
-            <span class="grid place-items-center w-12 h-12 rounded-xl bg-orange/15 text-orange mb-5">
-              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
-            </span>
-            <h3 class="font-display font-600 text-white text-lg mb-2">Salons &amp; Spas</h3>
-            <p class="text-slate-400 text-sm leading-relaxed mb-4">Appointment booking from Instagram &amp; WhatsApp, stylist selection, reminders and rebooking nudges that cut no-shows.</p>
-            <div class="flex flex-wrap gap-2 text-xs mb-4">
-              <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300">Bookings</span>
-              <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300">Reminders</span>
-              <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300">Rebooking</span>
+          <article class="reveal h-full flex flex-col justify-between rounded-2xl p-6" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
+            <div>
+              <span class="grid place-items-center w-12 h-12 rounded-xl bg-orange/15 text-orange mb-5">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
+              </span>
+              <h3 class="font-display font-600 text-white text-lg mb-2">Salons &amp; Spas</h3>
+              <p class="text-slate-400 text-sm leading-relaxed mb-4">Appointment booking from Instagram &amp; WhatsApp, stylist selection, reminders and rebooking nudges that cut no-shows.</p>
+              <div class="flex flex-wrap gap-2 text-xs mb-4">
+                <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300">Bookings</span>
+                <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300">Reminders</span>
+                <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300">Rebooking</span>
+              </div>
             </div>
             <a href="/salons" class="text-xs text-cyan hover:text-white transition-colors font-500">See salon solution →</a>
           </article>
 
           <!-- Healthcare -->
-          <article class="reveal rounded-2xl p-6" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
-            <span class="grid place-items-center w-12 h-12 rounded-xl bg-cyan/15 text-cyan mb-5">
-              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27"/></svg>
-            </span>
-            <h3 class="font-display font-600 text-white text-lg mb-2">Clinics &amp; Hospitals</h3>
-            <p class="text-slate-400 text-sm leading-relaxed mb-4">Appointment scheduling by department, doctor availability, pre-visit forms and report follow-ups — on web &amp; WhatsApp.</p>
-            <div class="flex flex-wrap gap-2 text-xs mb-4">
-              <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300">Appointments</span>
-              <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300">Triage</span>
-              <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300">Forms</span>
+          <article class="reveal h-full flex flex-col justify-between rounded-2xl p-6" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
+            <div>
+              <span class="grid place-items-center w-12 h-12 rounded-xl bg-cyan/15 text-cyan mb-5">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27"/></svg>
+              </span>
+              <h3 class="font-display font-600 text-white text-lg mb-2">Clinics &amp; Hospitals</h3>
+              <p class="text-slate-400 text-sm leading-relaxed mb-4">Appointment scheduling by department, doctor availability, pre-visit forms and report follow-ups — on web &amp; WhatsApp.</p>
+              <div class="flex flex-wrap gap-2 text-xs mb-4">
+                <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300">Appointments</span>
+                <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300">Triage</span>
+                <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300">Forms</span>
+              </div>
             </div>
             <a href="/clinics" class="text-xs text-cyan hover:text-white transition-colors font-500">See clinic solution →</a>
           </article>
 
-          <!-- Retail / D2C -->
-          <article class="reveal rounded-2xl p-6" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
-            <span class="grid place-items-center w-11 h-11 rounded-xl bg-white/5 text-slate-200 mb-4">
-              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-            </span>
-            <h3 class="font-display font-600 text-white text-base mb-1.5">Retail &amp; D2C</h3>
-            <p class="text-slate-400 text-sm leading-relaxed">Product discovery, order tracking and cart recovery across WhatsApp &amp; Instagram.</p>
+          <!-- Coaching & Education -->
+          <article class="reveal h-full flex flex-col justify-between rounded-2xl p-6" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
+            <div>
+              <span class="grid place-items-center w-12 h-12 rounded-xl bg-violet-400/15 text-violet-300 mb-5">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1 2 3 6 3s6-2 6-3v-5"/></svg>
+              </span>
+              <h3 class="font-display font-600 text-white text-lg mb-2">Coaching &amp; Education</h3>
+              <p class="text-slate-400 text-sm leading-relaxed mb-4">Answer course queries, capture admission leads and schedule counselling calls.</p>
+              <div class="flex flex-wrap gap-2 text-xs mb-4">
+                <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300">Course FAQs</span>
+                <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300">Admissions</span>
+                <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300">Counselling calls</span>
+              </div>
+            </div>
+            <!-- REPLACE: no dedicated /education page exists yet — points at the booking form as a fallback CTA -->
+            <a href="#book" class="text-xs text-cyan hover:text-white transition-colors font-500">See education solution →</a>
           </article>
 
-          <!-- Education -->
-          <article class="reveal rounded-2xl p-6" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
-            <span class="grid place-items-center w-11 h-11 rounded-xl bg-white/5 text-slate-200 mb-4">
-              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1 2 3 6 3s6-2 6-3v-5"/></svg>
-            </span>
-            <h3 class="font-display font-600 text-white text-base mb-1.5">Coaching &amp; Education</h3>
-            <p class="text-slate-400 text-sm leading-relaxed">Answer course queries, capture admission leads and schedule counselling calls.</p>
+          <!-- Hotels, Resorts & Travel -->
+          <article class="reveal h-full flex flex-col justify-between rounded-2xl p-6" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
+            <div>
+              <span class="grid place-items-center w-12 h-12 rounded-xl bg-emerald-400/15 text-emerald-300 mb-5">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 18v-6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v6"/><path d="M2 18h20"/><path d="M4 10V6a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v4"/><path d="M4 18v3"/><path d="M20 18v3"/></svg>
+              </span>
+              <h3 class="font-display font-600 text-white text-lg mb-2">Hotels, Resorts &amp; Travel</h3>
+              <p class="text-slate-400 text-sm leading-relaxed mb-4">Handle room bookings, answer guest FAQs, collect advance payments, and automate check-in details over WhatsApp &amp; voice calls.</p>
+              <div class="flex flex-wrap gap-2 text-xs mb-4">
+                <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300">Direct Bookings</span>
+                <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300">Guest FAQs</span>
+                <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300">Check-in</span>
+              </div>
+            </div>
+            <!-- REPLACE: no dedicated /hotels page exists yet — points at the booking form as a fallback CTA -->
+            <a href="#book" class="text-xs text-cyan hover:text-white transition-colors font-500">See hotel solution →</a>
           </article>
         </div>
 
