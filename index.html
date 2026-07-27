@@ -421,6 +421,33 @@
     .mqb-btn-whatsapp { background: #25D366; color: #fff; box-shadow: 0 4px 16px rgba(37,211,102,0.35); }
     .mqb-btn-demo { background: linear-gradient(135deg,#FF6B5C,#FF9F45); color: #0b1222; box-shadow: 0 4px 16px rgba(255,107,92,0.4); }
 
+    /* ── Shared button micro-interaction ────────────────────────
+       Applied alongside each button's own background/shadow classes —
+       adds a uniform, subtle "pop" (scale + slightly stronger glow)
+       on hover/focus without duplicating each button's existing
+       color-specific shadow definitions. */
+    .btn-pop { transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease, filter 0.2s ease; }
+    .btn-pop:hover, .btn-pop:focus-visible { transform: scale(1.02); filter: brightness(1.03); }
+    .btn-pop:active { transform: scale(0.98); }
+
+    /* ── Card tilt-on-hover ──────────────────────────────────────
+       --tilt-x/--tilt-y are set by pointermove JS (see main script);
+       fall back to 0deg so cards sit flat until first hovered. Only
+       transform (GPU-cheap) changes, so this is safe to apply broadly. */
+    .tilt-card {
+      transform: perspective(900px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) translateZ(0);
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+      will-change: transform;
+    }
+    .tilt-card:hover {
+      border-color: rgba(255,107,92,0.35) !important;
+      box-shadow: 0 20px 50px -20px rgba(0,0,0,0.5), 0 0 40px rgba(255,107,92,0.08);
+    }
+
+    /* ── Navbar: subtle lift once the page has scrolled past the top ── */
+    #site-nav { transition: background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; }
+    #site-nav.is-scrolled { background: rgba(7,23,58,0.75); box-shadow: 0 8px 32px rgba(0,0,0,0.35); border-color: rgba(255,255,255,0.14); }
+
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation: none !important; transition: none !important; }
       .reveal { opacity: 1 !important; transform: none !important; }
@@ -432,6 +459,8 @@
       .fs-track { transition: none !important; }
       .vs-card.is-playing .vs-wave span { animation: none; }
       .wf-dot { animation: none; opacity: 0.9; }
+      .btn-pop:hover, .btn-pop:focus-visible { transform: none; }
+      .tilt-card { transform: none !important; }
     }
 
     /* ── AI Chat Widget ─────────────────────────────── */
@@ -615,7 +644,7 @@
 
   <!-- NAVBAR -->
   <header class="fixed top-3 left-3 right-3 z-50">
-    <nav aria-label="Primary" class="relative max-w-6xl mx-auto glass rounded-2xl px-4 sm:px-5 py-3 flex items-center justify-between">
+    <nav id="site-nav" aria-label="Primary" class="relative max-w-6xl mx-auto glass rounded-2xl px-4 sm:px-5 py-3 flex items-center justify-between">
       <a href="/" class="flex items-center gap-2.5 group" aria-label="AgentIQ home">
         <span class="font-display font-700 text-lg text-white tracking-tight inline-flex items-baseline gap-0.5">Agent<span class="logo-grad-text">IQ</span><svg class="w-2.5 h-2.5 shrink-0" viewBox="0 0 16 14" fill="none" aria-hidden="true" focusable="false"><defs><linearGradient id="iq-wave-idx-nav" x1="0" y1="14" x2="16" y2="0"><stop offset="0" stop-color="#FF8A5B"/><stop offset="0.5" stop-color="#FF5C8A"/><stop offset="1" stop-color="#C74AFF"/></linearGradient></defs><rect x="0" y="9" width="3" height="5" rx="1.2" fill="url(#iq-wave-idx-nav)"/><rect x="4.5" y="6" width="3" height="8" rx="1.2" fill="url(#iq-wave-idx-nav)"/><rect x="9" y="3" width="3" height="11" rx="1.2" fill="url(#iq-wave-idx-nav)"/><rect x="13" y="0" width="3" height="14" rx="1.2" fill="url(#iq-wave-idx-nav)"/></svg></span>
       </a>
@@ -661,7 +690,7 @@
             Trusted by 50+ businesses across India
           </div>
 
-          <h1 class="reveal font-display font-700 text-white text-5xl sm:text-6xl lg:text-[4.2rem] leading-[1.02] tracking-tight">
+          <h1 class="reveal font-display font-700 text-white text-5xl sm:text-6xl lg:text-[4.2rem] leading-[1.02] tracking-tighter">
             AI chatbots that<br><span class="grad-text">work while you sleep</span><br>and close more sales
           </h1>
 
@@ -670,7 +699,7 @@
           </p>
 
           <div class="reveal mt-9 flex flex-col sm:flex-row gap-3">
-            <a href="#book" class="magnetic-cta cursor-pointer group inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl bg-gradient-to-r from-coral to-orange text-white font-600 shadow-lg shadow-coral/30 hover:shadow-coral/50 transition-shadow duration-200 text-[15px]">
+            <a href="#book" class="magnetic-cta btn-pop cursor-pointer group inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl bg-gradient-to-r from-coral to-orange text-white font-600 shadow-lg shadow-coral/30 hover:shadow-coral/50 transition-shadow duration-200 text-[15px]">
               Book a free demo
               <svg class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
@@ -723,7 +752,7 @@
     </section>
 
     <!-- LOGO MARQUEE / INTEGRATIONS -->
-    <section class="relative py-12 px-5 overflow-hidden" style="background:linear-gradient(180deg,#060f28 0%,#07102a 100%)">
+    <section class="relative py-10 sm:py-12 px-5 overflow-hidden" style="background:linear-gradient(180deg,#060f28 0%,#07102a 100%)">
       <p class="reveal text-center text-xs uppercase tracking-[0.2em] text-slate-400 mb-8">Works with WhatsApp, Instagram, your menu PDF, Google Sheets & more</p>
       <div class="reveal relative max-w-5xl mx-auto overflow-hidden [mask-image:linear-gradient(90deg,transparent,#000_12%,#000_88%,transparent)]">
         <!-- Row 1: default direction -->
@@ -744,7 +773,7 @@
       Swap content: edit node titles/icons directly in the markup below.
       Add/remove "action" chips inside the third node's .wf-chip-list.
     ============================================================= -->
-    <section id="workflow-diagram" class="relative py-20 px-5 overflow-hidden" style="background:linear-gradient(180deg,#060f28 0%,#050b1c 50%,#060f28 100%)">
+    <section id="workflow-diagram" class="relative py-14 sm:py-20 px-5 overflow-hidden" style="background:linear-gradient(180deg,#060f28 0%,#050b1c 50%,#060f28 100%)">
       <div class="max-w-5xl mx-auto">
         <div class="reveal text-center mb-14">
           <p class="text-cyan text-sm font-semibold tracking-widest uppercase mb-3">Under The Hood</p>
@@ -810,13 +839,13 @@
          Swap content: edit the FS_SLIDES array near the bottom of the main
          inline JS block (the classic, non-module script). ctaHref already points at the real live pages
          (restaurants.html / salons.html / clinics.html). -->
-    <section id="how" class="relative py-24 px-5 overflow-hidden" style="content-visibility:auto;contain-intrinsic-size:0 800px;background:linear-gradient(180deg,#060f28 0%,#071528 50%,#060f28 100%)">
+    <section id="how" class="relative py-16 sm:py-24 px-5 overflow-hidden" style="content-visibility:auto;contain-intrinsic-size:0 800px;background:linear-gradient(180deg,#060f28 0%,#071528 50%,#060f28 100%)">
       <div aria-hidden="true" class="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 w-96 h-96 rounded-full" style="background:radial-gradient(circle,rgba(34,211,238,.15) 0%,transparent 70%);filter:blur(70px)"></div>
       <div aria-hidden="true" class="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 w-96 h-96 rounded-full" style="background:radial-gradient(circle,rgba(52,211,153,.12) 0%,transparent 70%);filter:blur(70px)"></div>
       <div class="relative max-w-5xl mx-auto">
         <div class="reveal text-center max-w-2xl mx-auto mb-14">
           <p class="text-cyan text-sm font-500 tracking-widest uppercase mb-4">Three Products, One Brain</p>
-          <h2 class="font-display font-700 text-white text-4xl sm:text-5xl tracking-tight leading-tight">See our bots in action</h2>
+          <h2 class="font-display font-700 text-white text-4xl sm:text-5xl tracking-tighter leading-tight">See our bots in action</h2>
           <p class="mt-5 text-slate-400">A single AI assistant, deployed wherever your customers already are. Here's a real sample of each — trained for your industry.</p>
         </div>
 
@@ -832,7 +861,7 @@
     </section>
 
     <!-- VOICE AGENTS -->
-    <section id="voice" class="relative py-24 px-5 overflow-hidden" style="content-visibility:auto;contain-intrinsic-size:0 700px;background:linear-gradient(180deg,#060f28 0%,#080120 50%,#060f28 100%)">
+    <section id="voice" class="relative py-16 sm:py-24 px-5 overflow-hidden" style="content-visibility:auto;contain-intrinsic-size:0 700px;background:linear-gradient(180deg,#060f28 0%,#080120 50%,#060f28 100%)">
       <div aria-hidden="true" class="pointer-events-none absolute inset-0 flex items-center justify-center">
         <div style="width:860px;height:240px;border-radius:50%;border:2px solid transparent;background:linear-gradient(#080120,#080120) padding-box,linear-gradient(90deg,#7c3aed,#a855f7,#ec4899,#7c3aed) border-box;filter:blur(2px);opacity:.4;transform:rotate(-3deg)"></div>
       </div>
@@ -841,7 +870,7 @@
       <div class="relative max-w-6xl mx-auto">
         <div class="reveal text-center max-w-2xl mx-auto mb-14">
           <p class="text-violet-300 text-sm font-500 tracking-widest uppercase mb-4">Voice Agents</p>
-          <h2 class="font-display font-700 text-white text-4xl sm:text-5xl tracking-tight leading-tight">Missed a call at 8 PM?<br>The bot picks up. Books the table.<br><span class="grad-text">Sends a confirmation.</span></h2>
+          <h2 class="font-display font-700 text-white text-4xl sm:text-5xl tracking-tighter leading-tight">Missed a call at 8 PM?<br>The bot picks up. Books the table.<br><span class="grad-text">Sends a confirmation.</span></h2>
           <p class="mt-5 text-slate-400">AI voice agents that handle reservations, follow-ups, and lead qualification in natural Hindi, Hinglish, or English — while you're busy running your business.</p>
         </div>
 
@@ -898,7 +927,7 @@
         <!-- Voice CTA -->
         <div class="reveal text-center">
           <p class="text-slate-400 text-sm mb-5">Powered by VAPI + Claude AI · Speaks Hindi, Hinglish &amp; English natively</p>
-          <a href="#book" class="cursor-pointer inline-flex items-center gap-2 px-7 py-4 rounded-xl text-white font-600 text-[15px] shadow-lg transition-shadow duration-200" style="background:linear-gradient(135deg,#7c3aed,#a855f7);box-shadow:0 8px 30px rgba(139,92,246,.35)">
+          <a href="#book" class="btn-pop cursor-pointer inline-flex items-center gap-2 px-7 py-4 rounded-xl text-white font-600 text-[15px] shadow-lg transition-shadow duration-200" style="background:linear-gradient(135deg,#7c3aed,#a855f7);box-shadow:0 8px 30px rgba(139,92,246,.35)">
             Get started with Voice AI
             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
@@ -912,7 +941,7 @@
       clip (mp3), and update the title/lang badge text. Duration shows
       automatically once metadata loads.
     ============================================================= -->
-    <section id="voice-samples" class="relative py-20 px-5 overflow-hidden" style="background:linear-gradient(180deg,#060f28 0%,#080120 50%,#060f28 100%)">
+    <section id="voice-samples" class="relative py-14 sm:py-20 px-5 overflow-hidden" style="background:linear-gradient(180deg,#060f28 0%,#080120 50%,#060f28 100%)">
       <div class="max-w-5xl mx-auto">
         <div class="reveal text-center mb-10">
           <p class="text-violet-300 text-sm font-semibold tracking-widest uppercase mb-3">Hear It Yourself</p>
@@ -1030,13 +1059,13 @@
     </script>
 
     <!-- LIVE DEMO -->
-    <section id="demo" class="relative py-24 px-5 overflow-hidden" style="content-visibility:auto;contain-intrinsic-size:0 700px;background:linear-gradient(180deg,#060f28 0%,#071520 50%,#060f28 100%)">
+    <section id="demo" class="relative py-16 sm:py-24 px-5 overflow-hidden" style="content-visibility:auto;contain-intrinsic-size:0 700px;background:linear-gradient(180deg,#060f28 0%,#071520 50%,#060f28 100%)">
       <div aria-hidden="true" class="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 w-96 h-96 rounded-full" style="background:radial-gradient(circle,rgba(255,107,92,.2) 0%,transparent 70%);filter:blur(70px)"></div>
       <div aria-hidden="true" class="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 w-96 h-96 rounded-full" style="background:radial-gradient(circle,rgba(34,211,238,.18) 0%,transparent 70%);filter:blur(70px)"></div>
       <div class="relative max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
         <div class="reveal">
           <p class="text-cyan text-sm font-500 tracking-widest uppercase mb-4">Live Demo</p>
-          <h2 class="font-display font-700 text-white text-4xl sm:text-5xl tracking-tight leading-tight">See it think. Tap a question.</h2>
+          <h2 class="font-display font-700 text-white text-4xl sm:text-5xl tracking-tighter leading-tight">See it think. Tap a question.</h2>
           <p class="mt-5 text-slate-400 max-w-md">This is a real-time preview of how your assistant feels to a customer — typing indicators, instant answers and natural conversation. Pick a prompt to watch it respond.</p>
           <ul class="mt-7 space-y-3 text-sm text-slate-300">
             <li class="flex items-center gap-3"><svg class="w-5 h-5 text-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>Trained on your products, prices & policies</li>
@@ -1067,13 +1096,13 @@
     </section>
 
     <!-- RESULTS / CASE STUDIES -->
-    <section id="results" class="relative py-24 px-5 overflow-hidden" style="content-visibility:auto;contain-intrinsic-size:0 800px;background:linear-gradient(180deg,#060f28 0%,#08101e 50%,#060f28 100%)">
+    <section id="results" class="relative py-16 sm:py-24 px-5 overflow-hidden" style="content-visibility:auto;contain-intrinsic-size:0 800px;background:linear-gradient(180deg,#060f28 0%,#08101e 50%,#060f28 100%)">
       <div aria-hidden="true" class="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 w-96 h-96 rounded-full" style="background:radial-gradient(circle,rgba(255,159,69,.18) 0%,transparent 70%);filter:blur(70px)"></div>
       <div aria-hidden="true" class="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 w-96 h-96 rounded-full" style="background:radial-gradient(circle,rgba(255,107,92,.15) 0%,transparent 70%);filter:blur(70px)"></div>
       <div class="relative max-w-6xl mx-auto">
         <div class="reveal text-center max-w-2xl mx-auto mb-12">
           <p class="text-orange-400 text-sm font-500 tracking-widest uppercase mb-4">Results</p>
-          <h2 class="font-display font-700 text-white text-4xl sm:text-5xl tracking-tight leading-tight">Numbers our clients actually feel</h2>
+          <h2 class="font-display font-700 text-white text-4xl sm:text-5xl tracking-tighter leading-tight">Numbers our clients actually feel</h2>
         </div>
 
         <!-- stat counters -->
@@ -1140,19 +1169,19 @@
     </section>
 
     <!-- INDUSTRIES -->
-    <section id="industries" class="relative py-24 px-5 overflow-hidden" style="content-visibility:auto;contain-intrinsic-size:0 900px;background:linear-gradient(180deg,#060f28 0%,#071020 50%,#060f28 100%)">
+    <section id="industries" class="relative py-16 sm:py-24 px-5 overflow-hidden" style="content-visibility:auto;contain-intrinsic-size:0 900px;background:linear-gradient(180deg,#060f28 0%,#071020 50%,#060f28 100%)">
       <div aria-hidden="true" class="pointer-events-none absolute left-0 top-1/3 w-96 h-96 rounded-full" style="background:radial-gradient(circle,rgba(34,211,238,.15) 0%,transparent 70%);filter:blur(70px)"></div>
       <div aria-hidden="true" class="pointer-events-none absolute right-0 bottom-1/3 w-96 h-96 rounded-full" style="background:radial-gradient(circle,rgba(59,130,246,.15) 0%,transparent 70%);filter:blur(70px)"></div>
       <div class="relative max-w-6xl mx-auto">
         <div class="reveal text-center max-w-2xl mx-auto mb-12">
           <p class="text-cyan text-sm font-500 tracking-widest uppercase mb-4">Specialists, Not Generalists</p>
-          <h2 class="font-display font-700 text-white text-4xl sm:text-5xl tracking-tight leading-tight">Built for the businesses India runs on</h2>
+          <h2 class="font-display font-700 text-white text-4xl sm:text-5xl tracking-tighter leading-tight">Built for the businesses India runs on</h2>
           <p class="mt-5 text-slate-400">We've trained AI assistants for these industries again and again — so your bot launches with proven flows, not guesswork.</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-fr">
           <!-- Restaurants -->
-          <article class="reveal h-full flex flex-col justify-between rounded-2xl p-6" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
+          <article class="reveal tilt-card h-full flex flex-col justify-between rounded-2xl p-6" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
             <div>
               <span class="grid place-items-center w-12 h-12 rounded-xl bg-coral/15 text-coral mb-5">
                 <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 2v7c0 1.1.9 2 2 2a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-3 4.5c0 2.5 3 2.5 3 4.5v4"/></svg>
@@ -1169,7 +1198,7 @@
           </article>
 
           <!-- Retail / D2C -->
-          <article class="reveal h-full flex flex-col justify-between rounded-2xl p-6" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
+          <article class="reveal tilt-card h-full flex flex-col justify-between rounded-2xl p-6" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
             <div>
               <span class="grid place-items-center w-12 h-12 rounded-xl bg-blue/15 text-blue mb-5">
                 <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
@@ -1187,7 +1216,7 @@
           </article>
 
           <!-- Salons -->
-          <article class="reveal h-full flex flex-col justify-between rounded-2xl p-6" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
+          <article class="reveal tilt-card h-full flex flex-col justify-between rounded-2xl p-6" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
             <div>
               <span class="grid place-items-center w-12 h-12 rounded-xl bg-orange/15 text-orange mb-5">
                 <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
@@ -1204,7 +1233,7 @@
           </article>
 
           <!-- Healthcare -->
-          <article class="reveal h-full flex flex-col justify-between rounded-2xl p-6" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
+          <article class="reveal tilt-card h-full flex flex-col justify-between rounded-2xl p-6" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
             <div>
               <span class="grid place-items-center w-12 h-12 rounded-xl bg-cyan/15 text-cyan mb-5">
                 <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27"/></svg>
@@ -1221,7 +1250,7 @@
           </article>
 
           <!-- Coaching & Education -->
-          <article class="reveal h-full flex flex-col justify-between rounded-2xl p-6" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
+          <article class="reveal tilt-card h-full flex flex-col justify-between rounded-2xl p-6" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
             <div>
               <span class="grid place-items-center w-12 h-12 rounded-xl bg-violet-400/15 text-violet-300 mb-5">
                 <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1 2 3 6 3s6-2 6-3v-5"/></svg>
@@ -1239,7 +1268,7 @@
           </article>
 
           <!-- Hotels, Resorts & Travel -->
-          <article class="reveal h-full flex flex-col justify-between rounded-2xl p-6" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
+          <article class="reveal tilt-card h-full flex flex-col justify-between rounded-2xl p-6" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
             <div>
               <span class="grid place-items-center w-12 h-12 rounded-xl bg-emerald-400/15 text-emerald-300 mb-5">
                 <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 18v-6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v6"/><path d="M2 18h20"/><path d="M4 10V6a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v4"/><path d="M4 18v3"/><path d="M20 18v3"/></svg>
@@ -1268,7 +1297,7 @@
       driving the estimate and are surfaced in the disclaimer text so
       the number reads as illustrative, not a guarantee.
     ============================================================= -->
-    <section id="roi-calculator" class="relative py-20 px-5 overflow-hidden" style="background:linear-gradient(180deg,#060f28 0%,#071528 50%,#060f28 100%)">
+    <section id="roi-calculator" class="relative py-14 sm:py-20 px-5 overflow-hidden" style="background:linear-gradient(180deg,#060f28 0%,#071528 50%,#060f28 100%)">
       <div class="max-w-2xl mx-auto">
         <div class="reveal text-center mb-10">
           <p class="text-orange-400 text-sm font-semibold tracking-widest uppercase mb-3">Free Calculator</p>
@@ -1301,7 +1330,7 @@
             <p class="text-slate-500 text-xs mt-3">Based on ~30% of inbound traffic landing after hours, and roughly 1 in 4 of those going unanswered and lost to a competitor.</p>
           </div>
 
-          <a href="#book" class="roi-cta group flex items-center justify-center gap-2 w-full rounded-xl px-6 py-4 font-semibold text-slate-950 text-[15px]">
+          <a href="#book" class="roi-cta btn-pop group flex items-center justify-center gap-2 w-full rounded-xl px-6 py-4 font-semibold text-slate-950 text-[15px]">
             Stop Losing Revenue — Book A Free Setup Call
             <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
@@ -1347,7 +1376,7 @@
     </script>
 
     <!-- PRICING -->
-    <section id="pricing" class="relative py-24 px-5 overflow-hidden" style="content-visibility:auto;contain-intrinsic-size:0 700px;background:linear-gradient(180deg,#060f28 0%,#080518 50%,#060f28 100%)">
+    <section id="pricing" class="relative py-16 sm:py-24 px-5 overflow-hidden" style="content-visibility:auto;contain-intrinsic-size:0 700px;background:linear-gradient(180deg,#060f28 0%,#080518 50%,#060f28 100%)">
       <!-- Neon ring ambient -->
       <div aria-hidden="true" class="pointer-events-none absolute inset-0 flex items-center justify-center">
         <div style="width:900px;height:260px;border-radius:50%;border:2px solid transparent;background:linear-gradient(#080518,#080518) padding-box,linear-gradient(90deg,#FF6B5C,#a855f7,#22D3EE,#FF9F45) border-box;filter:blur(2px);opacity:.55;transform:rotate(-4deg)"></div>
@@ -1358,13 +1387,13 @@
       <div class="relative max-w-6xl mx-auto">
         <div class="reveal text-center max-w-3xl mx-auto mb-14">
           <p class="text-pink-400 text-sm font-500 tracking-widest uppercase mb-4">Chatbot Pricing</p>
-          <h2 class="font-display font-700 text-white text-4xl sm:text-5xl tracking-tight leading-tight">Flexible, intelligent, and endlessly scalable</h2>
+          <h2 class="font-display font-700 text-white text-4xl sm:text-5xl tracking-tighter leading-tight">Flexible, intelligent, and endlessly scalable</h2>
           <p class="mt-5 text-slate-400">One-time setup + monthly retainer. All plans include design, training and launch. GST extra.</p>
         </div>
 
         <div class="grid md:grid-cols-3 gap-5 items-stretch">
           <!-- Starter -->
-          <div class="reveal flex flex-col rounded-2xl p-8" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
+          <div class="reveal tilt-card flex flex-col rounded-2xl p-8" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
             <h3 class="font-display font-700 text-white text-2xl">Starter</h3>
             <div class="mt-3 mb-5 h-px w-full" style="background:linear-gradient(90deg,#FF9F45,#FF6B5C,transparent)"></div>
             <p class="text-slate-400 text-sm mb-6">One channel to get going fast.</p>
@@ -1377,7 +1406,7 @@
               <li class="flex gap-3"><span class="text-orange-400 font-700 shrink-0">+</span>Product catalog management</li>
               <li class="flex gap-3"><span class="text-orange-400 font-700 shrink-0">+</span>Hindi, Hinglish &amp; English support</li>
             </ul>
-            <a href="#book" data-plan="Chatbot Starter" data-value="24999" class="cursor-pointer mt-8 inline-flex justify-center px-5 py-3.5 rounded-xl text-white font-500 cta-outline">Get started</a>
+            <a href="#book" data-plan="Chatbot Starter" data-value="24999" class="cursor-pointer mt-8 inline-flex justify-center px-5 py-3.5 rounded-xl text-white font-500 cta-outline btn-pop">Get started</a>
             <p class="mt-3 text-center text-xs text-slate-400">30-day money-back guarantee</p>
           </div>
 
@@ -1398,12 +1427,12 @@
               <li class="flex gap-3"><span class="text-pink-400 font-700 shrink-0">+</span>24/7 priority support</li>
               <li class="flex gap-3"><span class="text-pink-400 font-700 shrink-0">+</span>Google Sheets Sync</li>
             </ul>
-            <a href="#book" data-plan="Chatbot Growth" data-value="39999" class="cursor-pointer mt-8 inline-flex justify-center px-5 py-3.5 rounded-xl text-white font-600 cta-glow-pink">Book a demo</a>
+            <a href="#book" data-plan="Chatbot Growth" data-value="39999" class="cursor-pointer mt-8 inline-flex justify-center px-5 py-3.5 rounded-xl text-white font-600 cta-glow-pink btn-pop">Book a demo</a>
             <p class="mt-3 text-center text-xs text-slate-400">30-day money-back guarantee</p>
           </div>
 
           <!-- Pro -->
-          <div class="reveal flex flex-col rounded-2xl p-8" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
+          <div class="reveal tilt-card flex flex-col rounded-2xl p-8" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
             <h3 class="font-display font-700 text-white text-2xl">Pro</h3>
             <div class="mt-3 mb-5 h-px w-full" style="background:linear-gradient(90deg,#22D3EE,#3B82F6,transparent)"></div>
             <p class="text-slate-400 text-sm mb-6">Multi-outlet &amp; D2C brands.</p>
@@ -1421,7 +1450,7 @@
               <li class="flex gap-3"><span class="text-cyan-400 font-700 shrink-0">+</span>Dedicated infrastructure</li>
               <li class="flex gap-3"><span class="text-cyan-400 font-700 shrink-0">+</span>All 8+ languages</li>
             </ul>
-            <a href="#book" data-plan="Chatbot Pro" data-value="79999" class="cursor-pointer mt-8 inline-flex justify-center px-5 py-3.5 rounded-xl text-white font-500 cta-outline">Get started</a>
+            <a href="#book" data-plan="Chatbot Pro" data-value="79999" class="cursor-pointer mt-8 inline-flex justify-center px-5 py-3.5 rounded-xl text-white font-500 cta-outline btn-pop">Get started</a>
             <p class="mt-3 text-center text-xs text-slate-400">30-day money-back guarantee</p>
           </div>
         </div>
@@ -1430,7 +1459,7 @@
     </section>
 
     <!-- VOICE PRICING -->
-    <section class="relative py-24 px-5 overflow-hidden" style="content-visibility:auto;contain-intrinsic-size:0 600px;background:linear-gradient(180deg,#060f28 0%,#080120 50%,#060f28 100%)">
+    <section class="relative py-16 sm:py-24 px-5 overflow-hidden" style="content-visibility:auto;contain-intrinsic-size:0 600px;background:linear-gradient(180deg,#060f28 0%,#080120 50%,#060f28 100%)">
       <!-- Neon ring ambient (violet) -->
       <div aria-hidden="true" class="pointer-events-none absolute inset-0 flex items-center justify-center">
         <div style="width:900px;height:260px;border-radius:50%;border:2px solid transparent;background:linear-gradient(#080120,#080120) padding-box,linear-gradient(90deg,#7c3aed,#ec4899,#a78bfa,#7c3aed) border-box;filter:blur(2px);opacity:.5;transform:rotate(-4deg)"></div>
@@ -1441,13 +1470,13 @@
       <div class="relative max-w-6xl mx-auto">
         <div class="reveal text-center max-w-3xl mx-auto mb-14">
           <p class="text-violet-300 text-sm font-500 tracking-widest uppercase mb-4">Voice Agents</p>
-          <h2 class="font-display font-700 text-white text-4xl sm:text-5xl tracking-tight leading-tight">Your brand voice, on every call</h2>
+          <h2 class="font-display font-700 text-white text-4xl sm:text-5xl tracking-tighter leading-tight">Your brand voice, on every call</h2>
           <p class="mt-5 text-slate-400 text-sm">All plans include setup, training, and launch support. GST extra.</p>
         </div>
 
         <div class="grid md:grid-cols-3 gap-5 items-stretch">
           <!-- Growth -->
-          <div class="reveal flex flex-col rounded-2xl p-8" style="background:rgba(255,255,255,0.04);border:1px solid rgba(139,92,246,0.18);backdrop-filter:blur(16px)">
+          <div class="reveal tilt-card flex flex-col rounded-2xl p-8" style="background:rgba(255,255,255,0.04);border:1px solid rgba(139,92,246,0.18);backdrop-filter:blur(16px)">
             <h3 class="font-display font-700 text-white text-2xl">Growth</h3>
             <div class="mt-3 mb-5 h-px w-full" style="background:linear-gradient(90deg,#8b5cf6,#a78bfa,transparent)"></div>
             <p class="text-slate-400 text-sm mb-6">For restaurants &amp; single-outlet businesses.</p>
@@ -1461,7 +1490,7 @@
               <li class="flex gap-3"><span class="text-violet-400 font-700 shrink-0">+</span>CRM / Sheets logging</li>
               <li class="flex gap-3"><span class="text-violet-400 font-700 shrink-0">+</span>Monthly call report</li>
             </ul>
-            <a href="#book" data-plan="Voice Growth" data-value="39999" class="cursor-pointer mt-8 inline-flex justify-center px-5 py-3.5 rounded-xl text-white font-500 cta-outline">Get started</a>
+            <a href="#book" data-plan="Voice Growth" data-value="39999" class="cursor-pointer mt-8 inline-flex justify-center px-5 py-3.5 rounded-xl text-white font-500 cta-outline btn-pop">Get started</a>
           </div>
 
           <!-- Professional (featured) -->
@@ -1480,11 +1509,11 @@
               <li class="flex gap-3"><span class="text-pink-400 font-700 shrink-0">+</span>Custom voice + multilingual</li>
               <li class="flex gap-3"><span class="text-pink-400 font-700 shrink-0">+</span>Up to 3 outlets</li>
             </ul>
-            <a href="#book" data-plan="Voice Professional" data-value="69999" class="cursor-pointer mt-8 inline-flex justify-center px-5 py-3.5 rounded-xl text-white font-600 cta-glow-purple">Get started</a>
+            <a href="#book" data-plan="Voice Professional" data-value="69999" class="cursor-pointer mt-8 inline-flex justify-center px-5 py-3.5 rounded-xl text-white font-600 cta-glow-purple btn-pop">Get started</a>
           </div>
 
           <!-- Advanced -->
-          <div class="reveal flex flex-col rounded-2xl p-8" style="background:rgba(255,255,255,0.04);border:1px solid rgba(139,92,246,0.18);backdrop-filter:blur(16px)">
+          <div class="reveal tilt-card flex flex-col rounded-2xl p-8" style="background:rgba(255,255,255,0.04);border:1px solid rgba(139,92,246,0.18);backdrop-filter:blur(16px)">
             <h3 class="font-display font-700 text-white text-2xl">Advanced</h3>
             <div class="mt-3 mb-5 h-px w-full" style="background:linear-gradient(90deg,#3B82F6,#a78bfa,transparent)"></div>
             <p class="text-slate-400 text-sm mb-6">For chains, large D2C &amp; enterprise.</p>
@@ -1498,19 +1527,19 @@
               <li class="flex gap-3"><span class="text-blue-400 font-700 shrink-0">+</span>Multi-location support</li>
               <li class="flex gap-3"><span class="text-blue-400 font-700 shrink-0">+</span>24/7 priority support</li>
             </ul>
-            <a href="#book" data-plan="Voice Advanced" data-value="129999" class="cursor-pointer mt-8 inline-flex justify-center px-5 py-3.5 rounded-xl text-white font-500 cta-outline">Contact us</a>
+            <a href="#book" data-plan="Voice Advanced" data-value="129999" class="cursor-pointer mt-8 inline-flex justify-center px-5 py-3.5 rounded-xl text-white font-500 cta-outline btn-pop">Contact us</a>
           </div>
         </div>
       </div>
     </section>
 
     <!-- FAQ -->
-    <section id="faq" class="relative py-24 px-5 overflow-hidden" style="content-visibility:auto;contain-intrinsic-size:0 600px;background:linear-gradient(180deg,#060f28 0%,#080518 50%,#060f28 100%)">
+    <section id="faq" class="relative py-16 sm:py-24 px-5 overflow-hidden" style="content-visibility:auto;contain-intrinsic-size:0 600px;background:linear-gradient(180deg,#060f28 0%,#080518 50%,#060f28 100%)">
       <div aria-hidden="true" class="pointer-events-none absolute left-1/2 -translate-x-1/2 top-0 w-[600px] h-64 rounded-full" style="background:radial-gradient(ellipse,rgba(168,85,247,.12) 0%,transparent 70%);filter:blur(60px)"></div>
       <div class="relative max-w-3xl mx-auto">
         <div class="reveal text-center mb-12">
           <p class="text-violet-300 text-sm font-500 tracking-widest uppercase mb-4">FAQ</p>
-          <h2 class="font-display font-700 text-white text-4xl sm:text-5xl tracking-tight leading-tight">Questions, answered</h2>
+          <h2 class="font-display font-700 text-white text-4xl sm:text-5xl tracking-tighter leading-tight">Questions, answered</h2>
         </div>
 
         <div class="space-y-3">
@@ -1622,11 +1651,11 @@
     </section>
 
     <!-- BOOK A DEMO -->
-    <section id="book" class="relative py-24 px-5 overflow-hidden" style="content-visibility:auto;contain-intrinsic-size:0 600px;background:linear-gradient(180deg,#060f28 0%,#07142a 50%,#060f28 100%)">
+    <section id="book" class="relative py-16 sm:py-24 px-5 overflow-hidden" style="content-visibility:auto;contain-intrinsic-size:0 600px;background:linear-gradient(180deg,#060f28 0%,#07142a 50%,#060f28 100%)">
       <div aria-hidden="true" class="pointer-events-none absolute left-1/2 -translate-x-1/2 top-0 w-[700px] h-72 rounded-full" style="background:radial-gradient(ellipse,rgba(34,211,238,.12) 0%,transparent 70%);filter:blur(60px)"></div>
       <div class="relative max-w-5xl mx-auto reveal rounded-[2rem] p-8 sm:p-12 grid lg:grid-cols-2 gap-10 items-center" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);backdrop-filter:blur(16px)">
         <div>
-          <h2 class="font-display font-700 text-white text-4xl sm:text-5xl tracking-tight leading-tight">Book your free demo</h2>
+          <h2 class="font-display font-700 text-white text-4xl sm:text-5xl tracking-tighter leading-tight">Book your free demo</h2>
           <p class="mt-4 text-slate-300 max-w-md">See your own AI assistant in action in a 20-minute call. We'll map your channels, show a live mockup, and give you a launch plan — no obligation.</p>
           <div class="mt-7 space-y-3 text-sm text-slate-300">
             <a href="tel:+919159665277" class="flex items-center gap-3 hover:text-white transition-colors cursor-pointer"><svg class="w-5 h-5 text-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>+91 91596 65277</a>
@@ -1664,7 +1693,7 @@
               <option class="bg-ink">Not sure yet</option>
             </select>
           </div>
-          <button type="submit" class="cursor-pointer w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-cyan to-blue text-white font-600 shadow-lg shadow-cyan/30 hover:shadow-blue/30 transition-shadow duration-200">
+          <button type="submit" class="btn-pop cursor-pointer w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-cyan to-blue text-white font-600 shadow-lg shadow-cyan/30 hover:shadow-blue/30 transition-shadow duration-200">
             Book My Free Demo
             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </button>
@@ -1811,11 +1840,11 @@
   <div id="mobile-quickbar" class="mqb-bar fixed bottom-0 left-0 right-0 z-50 gap-3 px-4 py-3">
     <a href="https://wa.me/919159665277?text=Hi%20AgentIQ%2C%20I%27d%20like%20to%20know%20more"
        target="_blank" rel="noopener noreferrer"
-       class="mqb-btn mqb-btn-whatsapp flex-1">
+       class="mqb-btn mqb-btn-whatsapp btn-pop flex-1">
       <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
       WhatsApp Us
     </a>
-    <a href="#book" class="mqb-btn mqb-btn-demo flex-1">
+    <a href="#book" class="mqb-btn mqb-btn-demo btn-pop flex-1">
       Book Free Demo
     </a>
   </div>
@@ -2475,6 +2504,39 @@
         });
       });
 
+      // ── Navbar: lift/intensify glass once scrolled past the top ──────
+      var siteNav = document.getElementById('site-nav');
+      if (siteNav && !reduce) {
+        var onNavScroll = function () {
+          siteNav.classList.toggle('is-scrolled', window.scrollY > 20);
+        };
+        window.addEventListener('scroll', onNavScroll, { passive: true });
+        onNavScroll();
+      }
+
+      // ── Card tilt-on-hover ─────────────────────────────────────────────
+      // Sets --tilt-x/--tilt-y (read by the .tilt-card CSS transform) from
+      // pointer position relative to each card's center. Capped at a small
+      // angle so it reads as "tangible", not gimmicky.
+      if (!reduce) {
+        var TILT_MAX_DEG = 6;
+        document.querySelectorAll('.tilt-card').forEach(function (card) {
+          card.addEventListener('mousemove', function (e) {
+            var r = card.getBoundingClientRect();
+            var px = (e.clientX - r.left) / r.width;  // 0 (left) → 1 (right)
+            var py = (e.clientY - r.top) / r.height;  // 0 (top) → 1 (bottom)
+            var tiltY = (px - 0.5) * 2 * TILT_MAX_DEG;       // left/right tilt
+            var tiltX = (0.5 - py) * 2 * TILT_MAX_DEG;       // up/down tilt
+            card.style.setProperty('--tilt-x', tiltX.toFixed(2) + 'deg');
+            card.style.setProperty('--tilt-y', tiltY.toFixed(2) + 'deg');
+          });
+          card.addEventListener('mouseleave', function () {
+            card.style.setProperty('--tilt-x', '0deg');
+            card.style.setProperty('--tilt-y', '0deg');
+          });
+        });
+      }
+
       // ── Shipped products feature slider ───────────────────────────────
       var FS_SLIDES = [
         {
@@ -2551,7 +2613,7 @@
           p.textContent = s.desc;
           var cta = document.createElement('a');
           cta.href = s.ctaHref;
-          cta.className = 'inline-flex items-center gap-2 rounded-full px-5 py-2.5 font-600 text-slate-950 bg-gradient-to-r from-coral to-orange hover:brightness-110 transition';
+          cta.className = 'btn-pop inline-flex items-center gap-2 rounded-full px-5 py-2.5 font-600 text-slate-950 bg-gradient-to-r from-coral to-orange hover:brightness-110 transition';
           cta.textContent = s.ctaLabel + ' →';
           left.appendChild(badge); left.appendChild(h3); left.appendChild(p); left.appendChild(cta);
 
