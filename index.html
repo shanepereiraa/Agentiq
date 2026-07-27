@@ -195,6 +195,9 @@
     .grad-border::before { content:''; position:absolute; inset:0; border-radius:inherit; padding:1px; background: linear-gradient(135deg,rgba(255,159,69,.6),rgba(34,211,232,.5)); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events:none; }
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); }
     .reveal.in { opacity: 1; transform: none; }
+    #dashboard-preview .sparkline path { stroke-dasharray: 120; stroke-dashoffset: 120; transition: stroke-dashoffset 1.1s cubic-bezier(.16,1,.3,1) .25s; }
+    #dashboard-preview .reveal.in .sparkline path { stroke-dashoffset: 0; }
+    #dashboard-preview .traffic-dot { width: 11px; height: 11px; border-radius: 9999px; }
     .dot { width:7px; height:7px; border-radius:9999px; background:#FF9F45; animation: dot 1.3s infinite ease-in-out; }
     .dot:nth-child(2){ animation-delay:.18s } .dot:nth-child(3){ animation-delay:.36s }
     .noise { background-image: radial-gradient(rgba(255,255,255,.03) 1px, transparent 1px); background-size: 22px 22px; }
@@ -1221,6 +1224,143 @@
       </div>
     </section>
 
+    <!-- DASHBOARD PREVIEW -->
+    <section id="dashboard-preview" class="relative py-16 sm:py-24 px-5 overflow-hidden" style="background:linear-gradient(180deg,#08101e 0%,#060f28 50%,#08101e 100%)">
+
+      <div aria-hidden="true" class="pointer-events-none absolute left-0 top-1/3 w-96 h-96 rounded-full" style="background:radial-gradient(circle,rgba(34,211,238,.16) 0%,transparent 70%);filter:blur(70px)"></div>
+      <div aria-hidden="true" class="pointer-events-none absolute right-0 bottom-0 w-96 h-96 rounded-full" style="background:radial-gradient(circle,rgba(255,107,92,.14) 0%,transparent 70%);filter:blur(70px)"></div>
+
+      <div class="relative max-w-6xl mx-auto">
+
+        <div class="reveal text-center max-w-2xl mx-auto mb-12">
+          <p class="text-cyan text-sm font-semibold tracking-widest uppercase mb-4">Behind the Bots</p>
+          <h2 class="font-display font-bold text-white text-4xl sm:text-5xl tracking-tighter leading-tight text-balance">What you'll actually see<br>after we go live</h2>
+          <p class="mt-5 text-slate-400 text-pretty">Every call, lead, and rupee recovered — in one dashboard you check in ten seconds a day.</p>
+        </div>
+
+        <!-- macOS-style browser window -->
+        <div class="reveal relative">
+          <div aria-hidden="true" class="pointer-events-none absolute -inset-6 rounded-[2rem]" style="background:radial-gradient(60% 60% at 50% 40%,rgba(34,211,238,.18) 0%,transparent 70%);filter:blur(30px)"></div>
+
+          <div class="relative rounded-2xl overflow-hidden" style="background:rgba(255,255,255,0.05);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.10);box-shadow:0 30px 80px -20px rgba(0,0,0,.6)">
+
+            <!-- title bar -->
+            <div class="flex items-center gap-2 px-4 py-3 border-b border-white/8" style="background:rgba(255,255,255,0.03)">
+              <span class="traffic-dot" style="background:#ff5f56"></span>
+              <span class="traffic-dot" style="background:#ffbd2e"></span>
+              <span class="traffic-dot" style="background:#27c93f"></span>
+              <div class="mx-auto flex items-center gap-1.5 px-3 py-1 rounded-md text-[11px] text-slate-400" style="background:rgba(255,255,255,0.04)">
+                <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                app.agentiq.co.in/dashboard
+              </div>
+            </div>
+
+            <!-- bento grid -->
+            <div class="p-4 sm:p-6">
+
+              <!-- top row: metric cards -->
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-4">
+
+                <div class="reveal rounded-xl p-5" style="background:rgba(255,255,255,0.04);border:1px solid rgba(34,211,238,0.18)">
+                  <p class="text-xs text-slate-400 uppercase tracking-wide">Total Calls Handled</p>
+                  <div class="flex items-end justify-between mt-2">
+                    <p class="font-display font-bold text-white text-3xl">1,240</p>
+                    <span class="text-xs font-semibold text-cyan">+18%</span>
+                  </div>
+                  <svg class="sparkline w-full h-8 mt-3" viewBox="0 0 100 30" preserveAspectRatio="none" aria-hidden="true">
+                    <path d="M0 24 L15 22 L30 25 L45 16 L60 18 L75 8 L100 4" fill="none" stroke="#22D3EE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+
+                <div class="reveal rounded-xl p-5" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,107,92,0.2)">
+                  <p class="text-xs text-slate-400 uppercase tracking-wide">Leads Qualified</p>
+                  <div class="flex items-end justify-between mt-2">
+                    <p class="font-display font-bold text-white text-3xl">312</p>
+                    <span class="text-xs font-semibold text-coral">+24%</span>
+                  </div>
+                  <svg class="sparkline w-full h-8 mt-3" viewBox="0 0 100 30" preserveAspectRatio="none" aria-hidden="true">
+                    <path d="M0 26 L15 24 L30 20 L45 21 L60 12 L75 14 L100 3" fill="none" stroke="#FF6B5C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+
+                <div class="reveal rounded-xl p-5" style="background:rgba(255,255,255,0.04);border:1px solid rgba(52,211,153,0.22)">
+                  <p class="text-xs text-slate-400 uppercase tracking-wide">Revenue Recovered</p>
+                  <div class="flex items-end justify-between mt-2">
+                    <p class="font-display font-bold text-white text-3xl">₹4,50,000</p>
+                    <span class="text-xs font-semibold text-emerald-400">+31%</span>
+                  </div>
+                  <svg class="sparkline w-full h-8 mt-3" viewBox="0 0 100 30" preserveAspectRatio="none" aria-hidden="true">
+                    <path d="M0 27 L15 23 L30 24 L45 15 L60 17 L75 9 L100 2" fill="none" stroke="#34D399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              </div>
+
+              <!-- bottom row: recent calls + transcript -->
+              <div class="grid grid-cols-1 lg:grid-cols-5 gap-4">
+
+                <!-- recent calls table -->
+                <div class="reveal lg:col-span-3 rounded-xl p-5" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08)">
+                  <p class="text-xs text-slate-400 uppercase tracking-wide mb-3">Recent Calls</p>
+                  <div class="space-y-2.5">
+
+                    <div class="flex items-center justify-between text-sm">
+                      <div>
+                        <p class="text-white font-medium">Priya Sharma</p>
+                        <p class="text-slate-500 text-xs">2 min ago · 0:48</p>
+                      </div>
+                      <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-emerald-400/15 text-emerald-300">Hot Lead</span>
+                    </div>
+
+                    <div class="flex items-center justify-between text-sm border-t border-white/5 pt-2.5">
+                      <div>
+                        <p class="text-white font-medium">Rahul Mehta</p>
+                        <p class="text-slate-500 text-xs">14 min ago · 1:12</p>
+                      </div>
+                      <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-amber-400/15 text-amber-300">Follow-up</span>
+                    </div>
+
+                    <div class="flex items-center justify-between text-sm border-t border-white/5 pt-2.5">
+                      <div>
+                        <p class="text-white font-medium">Ananya Iyer</p>
+                        <p class="text-slate-500 text-xs">31 min ago · 0:35</p>
+                      </div>
+                      <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-emerald-400/15 text-emerald-300">Hot Lead</span>
+                    </div>
+
+                    <div class="flex items-center justify-between text-sm border-t border-white/5 pt-2.5">
+                      <div>
+                        <p class="text-white font-medium">Karthik Reddy</p>
+                        <p class="text-slate-500 text-xs">1 hr ago · 2:03</p>
+                      </div>
+                      <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-slate-400/15 text-slate-400">Booked</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- AI transcript snippet -->
+                <div class="reveal lg:col-span-2 rounded-xl p-5" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08)">
+                  <p class="text-xs text-slate-400 uppercase tracking-wide mb-3">AI Call Transcript</p>
+                  <div class="rounded-lg p-3 text-xs font-mono leading-relaxed" style="background:rgba(0,0,0,0.25)">
+                    <p class="text-slate-500">Customer</p>
+                    <p class="text-slate-300 mb-2">"Hi, I saw your ad — do you have slots this Saturday evening for two people?"</p>
+                    <p class="text-cyan">Agent IQ</p>
+                    <p class="text-slate-300">"Yes! I can hold a 7:30 PM table for two this Saturday — shall I confirm it?"</p>
+                  </div>
+                  <div class="flex flex-wrap gap-1.5 mt-3">
+                    <span class="text-[11px] font-semibold px-2 py-1 rounded-full bg-cyan/15 text-cyan">Intent: Booking</span>
+                    <span class="text-[11px] font-semibold px-2 py-1 rounded-full bg-emerald-400/15 text-emerald-300">Sentiment: Positive</span>
+                    <span class="text-[11px] font-semibold px-2 py-1 rounded-full bg-coral/15 text-coral">Urgency: High</span>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
     <!-- INDUSTRIES -->
     <section id="industries" class="relative py-16 sm:py-24 px-5 overflow-hidden" style="content-visibility:auto;contain-intrinsic-size:0 900px;background:linear-gradient(180deg,#060f28 0%,#071020 50%,#060f28 100%)">
       <div aria-hidden="true" class="pointer-events-none absolute left-0 top-1/3 w-96 h-96 rounded-full" style="background:radial-gradient(circle,rgba(34,211,238,.15) 0%,transparent 70%);filter:blur(70px)"></div>
@@ -1428,6 +1568,206 @@
       roiRecalc();
     </script>
 
+    <!-- COMPARISON -->
+    <section id="comparison" class="relative py-16 sm:py-24 px-5 overflow-hidden" style="background:linear-gradient(180deg,#08101e 0%,#060f28 50%,#08101e 100%)">
+
+      <div aria-hidden="true" class="pointer-events-none absolute right-0 top-0 w-96 h-96 rounded-full" style="background:radial-gradient(circle,rgba(255,159,69,.14) 0%,transparent 70%);filter:blur(70px)"></div>
+
+      <div class="relative max-w-5xl mx-auto">
+
+        <div class="reveal text-center max-w-2xl mx-auto mb-14">
+          <p class="text-orange-400 text-sm font-semibold tracking-widest uppercase mb-4">Why Agent IQ</p>
+          <h2 class="font-display font-bold text-white text-4xl sm:text-5xl tracking-tighter leading-tight text-balance">Agent IQ vs. traditional support</h2>
+          <p class="mt-5 text-slate-400 text-pretty">The math your accountant will like more than your current setup.</p>
+        </div>
+
+        <!-- desktop / tablet: real table -->
+        <div class="reveal hidden md:block rounded-2xl overflow-hidden" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08)">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr>
+                <th class="p-5 text-xs text-slate-400 uppercase tracking-wide font-semibold">Feature</th>
+                <th class="p-5 text-xs uppercase tracking-wide font-semibold relative" style="background:rgba(255,255,255,0.06)">
+                  <span class="grad-text">Agent IQ</span>
+                </th>
+                <th class="p-5 text-xs text-slate-400 uppercase tracking-wide font-semibold">In-House Staff</th>
+                <th class="p-5 text-xs text-slate-400 uppercase tracking-wide font-semibold">Traditional BPO</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <tr class="border-t border-white/5">
+                <td class="p-5 text-white font-medium text-sm">Response Time</td>
+                <td class="p-5" style="background:rgba(255,255,255,0.06)">
+                  <span class="inline-flex items-center gap-2 text-sm font-semibold text-white">
+                    <svg class="w-4 h-4 text-emerald-400" style="filter:drop-shadow(0 0 6px rgba(52,211,153,.6))" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg>
+                    &lt; 5 seconds
+                  </span>
+                </td>
+                <td class="p-5 text-slate-400 text-sm">2–10 minutes</td>
+                <td class="p-5 text-slate-400 text-sm">5–15 minutes</td>
+              </tr>
+
+              <tr class="border-t border-white/5">
+                <td class="p-5 text-white font-medium text-sm">Availability</td>
+                <td class="p-5" style="background:rgba(255,255,255,0.06)">
+                  <span class="inline-flex items-center gap-2 text-sm font-semibold text-white">
+                    <svg class="w-4 h-4 text-emerald-400" style="filter:drop-shadow(0 0 6px rgba(52,211,153,.6))" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg>
+                    24/7/365
+                  </span>
+                </td>
+                <td class="p-5 text-slate-400 text-sm">Business hours only</td>
+                <td class="p-5 text-slate-400 text-sm">Shift-dependent</td>
+              </tr>
+
+              <tr class="border-t border-white/5">
+                <td class="p-5 text-white font-medium text-sm">Cost per Lead</td>
+                <td class="p-5" style="background:rgba(255,255,255,0.06)">
+                  <span class="inline-flex items-center gap-2 text-sm font-semibold text-white">
+                    <svg class="w-4 h-4 text-emerald-400" style="filter:drop-shadow(0 0 6px rgba(52,211,153,.6))" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg>
+                    ₹15–40
+                  </span>
+                </td>
+                <td class="p-5 text-slate-400 text-sm">₹150–300 + salary overhead</td>
+                <td class="p-5 text-slate-400 text-sm">₹200–450</td>
+              </tr>
+
+              <tr class="border-t border-white/5">
+                <td class="p-5 text-white font-medium text-sm">Scalability</td>
+                <td class="p-5" style="background:rgba(255,255,255,0.06)">
+                  <span class="inline-flex items-center gap-2 text-sm font-semibold text-white">
+                    <svg class="w-4 h-4 text-emerald-400" style="filter:drop-shadow(0 0 6px rgba(52,211,153,.6))" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg>
+                    Instant, unlimited
+                  </span>
+                </td>
+                <td class="p-5 text-slate-400 text-sm">Hiring &amp; training lag</td>
+                <td class="p-5 text-slate-400 text-sm">Contract renegotiation</td>
+              </tr>
+
+              <tr class="border-t border-white/5">
+                <td class="p-5 text-white font-medium text-sm">Hindi / Hinglish Support</td>
+                <td class="p-5 rounded-b-2xl" style="background:rgba(255,255,255,0.06)">
+                  <span class="inline-flex items-center gap-2 text-sm font-semibold text-white">
+                    <svg class="w-4 h-4 text-emerald-400" style="filter:drop-shadow(0 0 6px rgba(52,211,153,.6))" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg>
+                    Native, day one
+                  </span>
+                </td>
+                <td class="p-5 text-slate-400 text-sm">Depends on hire</td>
+                <td class="p-5 text-slate-400 text-sm">Limited, extra cost</td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+
+        <!-- mobile: stacked cards -->
+        <div class="md:hidden space-y-4">
+
+          <!-- Response Time -->
+          <div class="reveal rounded-xl p-5" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08)">
+            <p class="text-xs text-slate-400 uppercase tracking-wide mb-3">Response Time</p>
+            <div class="flex items-center justify-between py-2 rounded-lg px-3 mb-2" style="background:rgba(255,255,255,0.06);border:1px solid rgba(52,211,153,.25)">
+              <span class="text-xs font-semibold grad-text">Agent IQ</span>
+              <span class="inline-flex items-center gap-1.5 text-sm font-semibold text-white">
+                <svg class="w-3.5 h-3.5 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg>
+                &lt; 5 seconds
+              </span>
+            </div>
+            <div class="flex items-center justify-between px-3 py-1.5 text-sm">
+              <span class="text-slate-500 text-xs">In-House Staff</span>
+              <span class="text-slate-400">2–10 minutes</span>
+            </div>
+            <div class="flex items-center justify-between px-3 py-1.5 text-sm">
+              <span class="text-slate-500 text-xs">Traditional BPO</span>
+              <span class="text-slate-400">5–15 minutes</span>
+            </div>
+          </div>
+
+          <!-- Availability -->
+          <div class="reveal rounded-xl p-5" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08)">
+            <p class="text-xs text-slate-400 uppercase tracking-wide mb-3">Availability</p>
+            <div class="flex items-center justify-between py-2 rounded-lg px-3 mb-2" style="background:rgba(255,255,255,0.06);border:1px solid rgba(52,211,153,.25)">
+              <span class="text-xs font-semibold grad-text">Agent IQ</span>
+              <span class="inline-flex items-center gap-1.5 text-sm font-semibold text-white">
+                <svg class="w-3.5 h-3.5 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg>
+                24/7/365
+              </span>
+            </div>
+            <div class="flex items-center justify-between px-3 py-1.5 text-sm">
+              <span class="text-slate-500 text-xs">In-House Staff</span>
+              <span class="text-slate-400">Business hours only</span>
+            </div>
+            <div class="flex items-center justify-between px-3 py-1.5 text-sm">
+              <span class="text-slate-500 text-xs">Traditional BPO</span>
+              <span class="text-slate-400">Shift-dependent</span>
+            </div>
+          </div>
+
+          <!-- Cost per Lead -->
+          <div class="reveal rounded-xl p-5" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08)">
+            <p class="text-xs text-slate-400 uppercase tracking-wide mb-3">Cost per Lead</p>
+            <div class="flex items-center justify-between py-2 rounded-lg px-3 mb-2" style="background:rgba(255,255,255,0.06);border:1px solid rgba(52,211,153,.25)">
+              <span class="text-xs font-semibold grad-text">Agent IQ</span>
+              <span class="inline-flex items-center gap-1.5 text-sm font-semibold text-white">
+                <svg class="w-3.5 h-3.5 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg>
+                ₹15–40
+              </span>
+            </div>
+            <div class="flex items-center justify-between px-3 py-1.5 text-sm">
+              <span class="text-slate-500 text-xs">In-House Staff</span>
+              <span class="text-slate-400">₹150–300 + overhead</span>
+            </div>
+            <div class="flex items-center justify-between px-3 py-1.5 text-sm">
+              <span class="text-slate-500 text-xs">Traditional BPO</span>
+              <span class="text-slate-400">₹200–450</span>
+            </div>
+          </div>
+
+          <!-- Scalability -->
+          <div class="reveal rounded-xl p-5" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08)">
+            <p class="text-xs text-slate-400 uppercase tracking-wide mb-3">Scalability</p>
+            <div class="flex items-center justify-between py-2 rounded-lg px-3 mb-2" style="background:rgba(255,255,255,0.06);border:1px solid rgba(52,211,153,.25)">
+              <span class="text-xs font-semibold grad-text">Agent IQ</span>
+              <span class="inline-flex items-center gap-1.5 text-sm font-semibold text-white">
+                <svg class="w-3.5 h-3.5 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg>
+                Instant, unlimited
+              </span>
+            </div>
+            <div class="flex items-center justify-between px-3 py-1.5 text-sm">
+              <span class="text-slate-500 text-xs">In-House Staff</span>
+              <span class="text-slate-400">Hiring &amp; training lag</span>
+            </div>
+            <div class="flex items-center justify-between px-3 py-1.5 text-sm">
+              <span class="text-slate-500 text-xs">Traditional BPO</span>
+              <span class="text-slate-400">Contract renegotiation</span>
+            </div>
+          </div>
+
+          <!-- Hindi / Hinglish -->
+          <div class="reveal rounded-xl p-5" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08)">
+            <p class="text-xs text-slate-400 uppercase tracking-wide mb-3">Hindi / Hinglish Support</p>
+            <div class="flex items-center justify-between py-2 rounded-lg px-3 mb-2" style="background:rgba(255,255,255,0.06);border:1px solid rgba(52,211,153,.25)">
+              <span class="text-xs font-semibold grad-text">Agent IQ</span>
+              <span class="inline-flex items-center gap-1.5 text-sm font-semibold text-white">
+                <svg class="w-3.5 h-3.5 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg>
+                Native, day one
+              </span>
+            </div>
+            <div class="flex items-center justify-between px-3 py-1.5 text-sm">
+              <span class="text-slate-500 text-xs">In-House Staff</span>
+              <span class="text-slate-400">Depends on hire</span>
+            </div>
+            <div class="flex items-center justify-between px-3 py-1.5 text-sm">
+              <span class="text-slate-500 text-xs">Traditional BPO</span>
+              <span class="text-slate-400">Limited, extra cost</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
     <!-- PRICING -->
     <section id="pricing" class="relative py-16 sm:py-24 px-5 overflow-hidden" style="content-visibility:auto;contain-intrinsic-size:0 700px;background:linear-gradient(180deg,#060f28 0%,#080518 50%,#060f28 100%)">
       <!-- Neon ring ambient -->
@@ -1583,6 +1923,66 @@
             <a href="#book" data-plan="Voice Advanced" data-value="129999" class="cursor-pointer mt-8 inline-flex justify-center px-5 py-3.5 rounded-xl text-white font-500 cta-outline btn-pop">Contact us</a>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- SECURITY -->
+    <section id="security" class="relative py-16 sm:py-24 px-5 overflow-hidden" style="background:linear-gradient(180deg,#060f28 0%,#08101e 50%,#060f28 100%)">
+
+      <div aria-hidden="true" class="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2 w-[36rem] h-96 rounded-full" style="background:radial-gradient(circle,rgba(59,130,246,.14) 0%,transparent 70%);filter:blur(80px)"></div>
+
+      <div class="relative max-w-6xl mx-auto">
+
+        <div class="reveal text-center max-w-2xl mx-auto mb-14">
+          <p class="text-blue text-sm font-semibold tracking-widest uppercase mb-4">Enterprise-Grade Trust</p>
+          <h2 class="font-display font-bold text-white text-4xl sm:text-5xl tracking-tighter leading-tight text-balance">Built for regulated, high-trust industries</h2>
+          <p class="mt-5 text-slate-400 text-pretty">Clinics, real estate, and D2C brands hand us their customers' data. Here's exactly how we protect it.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-5">
+
+          <!-- DPDP Act Compliant -->
+          <article class="reveal rounded-2xl p-7 flex flex-col" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
+            <div class="grid place-items-center w-12 h-12 rounded-xl mb-5" style="background:rgba(59,130,246,.14);box-shadow:0 0 24px rgba(59,130,246,.25)">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="#7cb3ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 2 4 5v6c0 5.25 3.5 9.74 8 11 4.5-1.26 8-5.75 8-11V5l-8-3z"/>
+                <path d="m9 12 2 2 4-4"/>
+              </svg>
+            </div>
+            <h3 class="font-display font-semibold text-white text-lg mb-3">DPDP Act Compliant</h3>
+            <p class="text-slate-300 text-sm leading-relaxed flex-1">Every conversation is processed under India's Digital Personal Data Protection Act, 2023. Consent, purpose limitation, and data minimisation are enforced by design — not bolted on after the fact.</p>
+          </article>
+
+          <!-- Bank-Grade Encryption -->
+          <article class="reveal rounded-2xl p-7 flex flex-col" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
+            <div class="grid place-items-center w-12 h-12 rounded-xl mb-5" style="background:rgba(59,130,246,.14);box-shadow:0 0 24px rgba(59,130,246,.25)">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="#7cb3ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="11" width="18" height="11" rx="2"/>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+              </svg>
+            </div>
+            <h3 class="font-display font-semibold text-white text-lg mb-3">Bank-Grade Encryption</h3>
+            <p class="text-slate-300 text-sm leading-relaxed flex-1">Data is encrypted in transit (TLS 1.3) and at rest (AES-256), hosted on AWS Mumbai (ap-south-1) — your customers' data never leaves Indian borders.</p>
+          </article>
+
+          <!-- Zero Data Training -->
+          <article class="reveal rounded-2xl p-7 flex flex-col" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
+            <div class="grid place-items-center w-12 h-12 rounded-xl mb-5" style="background:rgba(59,130,246,.14);box-shadow:0 0 24px rgba(59,130,246,.25)">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="#7cb3ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <ellipse cx="12" cy="5" rx="9" ry="3"/>
+                <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
+                <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+                <path d="m4 4 16 16"/>
+              </svg>
+            </div>
+            <h3 class="font-display font-semibold text-white text-lg mb-3">Zero Data Training</h3>
+            <p class="text-slate-300 text-sm leading-relaxed flex-1">Your customer data is siloed and never used to train public AI models. Full stop. What your customers tell your bot stays inside your business.</p>
+          </article>
+
+        </div>
+
+        <p class="reveal text-center text-xs text-slate-500 mt-10">Data Processing Agreement available on request · GDPR-ready architecture</p>
+
       </div>
     </section>
 

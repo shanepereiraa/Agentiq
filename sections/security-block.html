@@ -1,0 +1,64 @@
+<!--
+  Enterprise Security & Compliance Block
+  Integration: paste this <section> into index.html (e.g. before #faq or #book).
+  Uses the existing .reveal fade+slide-up (global IntersectionObserver already handles it).
+  Run `npm run build:css` after pasting so Tailwind picks up any new classes.
+-->
+<section id="security" class="relative py-16 sm:py-24 px-5 overflow-hidden" style="background:linear-gradient(180deg,#060f28 0%,#08101e 50%,#060f28 100%)">
+
+  <div aria-hidden="true" class="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2 w-[36rem] h-96 rounded-full" style="background:radial-gradient(circle,rgba(59,130,246,.14) 0%,transparent 70%);filter:blur(80px)"></div>
+
+  <div class="relative max-w-6xl mx-auto">
+
+    <div class="reveal text-center max-w-2xl mx-auto mb-14">
+      <p class="text-blue text-sm font-semibold tracking-widest uppercase mb-4">Enterprise-Grade Trust</p>
+      <h2 class="font-display font-bold text-white text-4xl sm:text-5xl tracking-tighter leading-tight text-balance">Built for regulated, high-trust industries</h2>
+      <p class="mt-5 text-slate-400 text-pretty">Clinics, real estate, and D2C brands hand us their customers' data. Here's exactly how we protect it.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-5">
+
+      <!-- DPDP Act Compliant -->
+      <article class="reveal rounded-2xl p-7 flex flex-col" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
+        <div class="grid place-items-center w-12 h-12 rounded-xl mb-5" style="background:rgba(59,130,246,.14);box-shadow:0 0 24px rgba(59,130,246,.25)">
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="#7cb3ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 2 4 5v6c0 5.25 3.5 9.74 8 11 4.5-1.26 8-5.75 8-11V5l-8-3z"/>
+            <path d="m9 12 2 2 4-4"/>
+          </svg>
+        </div>
+        <h3 class="font-display font-semibold text-white text-lg mb-3">DPDP Act Compliant</h3>
+        <p class="text-slate-300 text-sm leading-relaxed flex-1">Every conversation is processed under India's Digital Personal Data Protection Act, 2023. Consent, purpose limitation, and data minimisation are enforced by design — not bolted on after the fact.</p>
+      </article>
+
+      <!-- Bank-Grade Encryption -->
+      <article class="reveal rounded-2xl p-7 flex flex-col" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
+        <div class="grid place-items-center w-12 h-12 rounded-xl mb-5" style="background:rgba(59,130,246,.14);box-shadow:0 0 24px rgba(59,130,246,.25)">
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="#7cb3ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="11" width="18" height="11" rx="2"/>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+          </svg>
+        </div>
+        <h3 class="font-display font-semibold text-white text-lg mb-3">Bank-Grade Encryption</h3>
+        <p class="text-slate-300 text-sm leading-relaxed flex-1">Data is encrypted in transit (TLS 1.3) and at rest (AES-256), hosted on AWS Mumbai (ap-south-1) — your customers' data never leaves Indian borders.</p>
+      </article>
+
+      <!-- Zero Data Training -->
+      <article class="reveal rounded-2xl p-7 flex flex-col" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
+        <div class="grid place-items-center w-12 h-12 rounded-xl mb-5" style="background:rgba(59,130,246,.14);box-shadow:0 0 24px rgba(59,130,246,.25)">
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="#7cb3ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <ellipse cx="12" cy="5" rx="9" ry="3"/>
+            <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
+            <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+            <path d="m4 4 16 16"/>
+          </svg>
+        </div>
+        <h3 class="font-display font-semibold text-white text-lg mb-3">Zero Data Training</h3>
+        <p class="text-slate-300 text-sm leading-relaxed flex-1">Your customer data is siloed and never used to train public AI models. Full stop. What your customers tell your bot stays inside your business.</p>
+      </article>
+
+    </div>
+
+    <p class="reveal text-center text-xs text-slate-500 mt-10">Data Processing Agreement available on request · GDPR-ready architecture</p>
+
+  </div>
+</section>
