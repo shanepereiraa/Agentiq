@@ -177,22 +177,17 @@
     }
     .glass { background: rgba(255,255,255,0.05); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,0.10); }
     .glass-strong { background: rgba(255,255,255,0.08); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.14); }
+    /* Full-screen slide-up mobile nav sheet — slides in from the bottom
+       (app-modal style) rather than fading in as a small dropdown. */
     #aiq-mobile-nav {
-      position: absolute; top: calc(100% + 8px); left: 0; right: 0;
-      background: rgba(7,23,58,.97);
-      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255,255,255,.12);
-      border-radius: 18px;
-      box-shadow: 0 16px 60px rgba(0,0,0,.55);
-      transition: opacity .18s ease, transform .18s ease;
+      transition: opacity .3s cubic-bezier(.16,1,.3,1), transform .35s cubic-bezier(.16,1,.3,1);
+      transform: translateY(100%);
     }
+    #aiq-mobile-nav:not(.aiq-shut) { transform: translateY(0); }
     #aiq-mobile-nav.aiq-shut {
-      opacity: 0; transform: translateY(-6px) scale(.98);
+      opacity: 0;
       pointer-events: none;
     }
-    #aiq-nav-toggle .icon-close { display: none; }
-    #aiq-nav-toggle[aria-expanded="true"] .icon-open { display: none; }
-    #aiq-nav-toggle[aria-expanded="true"] .icon-close { display: block; }
     .grad-text { background: linear-gradient(100deg,#FFB36B 0%,#FF6B5C 45%,#22D3EE 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
     .logo-grad-text { background: linear-gradient(135deg,#FF8A5B 0%,#FF5C8A 55%,#C74AFF 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
     @media (forced-colors: active) { .grad-text, .logo-grad-text { background: none; -webkit-background-clip: initial; background-clip: initial; color: CanvasText; } }
@@ -266,6 +261,14 @@
     /* Marquee runs on transform only — safe to promote */
     .animate-marquee { will-change: transform; }
 
+    /* Freeze the continuous float bob on small screens — one less running
+       animation on mid-range Android, replaced by its already-static glow
+       backdrop. The floating WhatsApp button also uses .animate-float but
+       is separately hidden below md, so this has no other effect there. */
+    @media (max-width: 767px) {
+      .animate-float { animation: none; will-change: auto; }
+    }
+
     /* ── Integrations marquee: glassmorphism cards ─────────────── */
     .integ-card {
       display: flex; align-items: center; gap: 0.6rem; width: 172px; padding: 0.85rem 1.05rem;
@@ -288,8 +291,18 @@
       transition: background .2s ease, transform .2s ease; z-index: 10;
     }
     .fs-arrow:hover { background: #FF6B5C; transform: translateY(-50%) scale(1.08); }
-    .fs-dot { width: .5rem; height: .5rem; border-radius: 9999px; background: #334155; transition: width .3s ease, background .3s ease; }
-    .fs-dot.is-active { width: 1.5rem; background: #FF6B5C; }
+    /* Visual dot stays small; the actual button hit area is 44x44 (Apple HIG
+       minimum touch target) via a centered pseudo-element for the dot itself. */
+    .fs-dot {
+      width: 2.75rem; height: 2.75rem; min-width: 44px; min-height: 44px;
+      display: flex; align-items: center; justify-content: center;
+      background: transparent; border-radius: 9999px;
+    }
+    .fs-dot::before {
+      content: ''; width: .5rem; height: .5rem; border-radius: 9999px; background: #334155;
+      transition: width .3s ease, background .3s ease;
+    }
+    .fs-dot.is-active::before { width: 1.5rem; background: #FF6B5C; }
 
     /* ── ROI calculator ─────────────────────────────────────────── */
     .roi-card {
@@ -410,13 +423,13 @@
     /* ── Mobile quick bar ───────────────────────────────────────── */
     .mqb-bar {
       display: none;
-      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
-      background: rgba(15,23,42,0.82);
-      border-top: 1px solid rgba(30,41,59,0.9);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      background: rgba(10,10,10,0.8);
+      border-top: 1px solid rgba(255,255,255,0.10);
       padding-bottom: calc(0.75rem + env(safe-area-inset-bottom));
     }
     @media (max-width: 767px) { .mqb-bar { display: flex; } body { padding-bottom: calc(4.25rem + env(safe-area-inset-bottom)); } }
-    .mqb-btn { display: flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.7rem 1rem; border-radius: 0.85rem; font-weight: 600; font-size: 0.875rem; transition: transform 0.15s ease, box-shadow 0.2s ease; }
+    .mqb-btn { display: flex; align-items: center; justify-content: center; gap: 0.5rem; min-height: 44px; padding: 0.7rem 1rem; border-radius: 0.85rem; font-weight: 600; font-size: 0.875rem; transition: transform 0.15s ease, box-shadow 0.2s ease; }
     .mqb-btn:active { transform: scale(0.97); }
     .mqb-btn-whatsapp { background: #25D366; color: #fff; box-shadow: 0 4px 16px rgba(37,211,102,0.35); }
     .mqb-btn-demo { background: linear-gradient(135deg,#FF6B5C,#FF9F45); color: #0b1222; box-shadow: 0 4px 16px rgba(255,107,92,0.4); }
@@ -609,6 +622,12 @@
     }
     #aiq-lead-form input::placeholder { color: rgba(255,255,255,.45); }
     #aiq-lead-form input:focus { border-color: #22D3EE; }
+    /* iOS Safari auto-zooms the whole viewport on focus for any input under
+       16px — jarring for a chat widget users type into repeatedly. Desktop
+       keeps the tighter 13px compact look; mobile gets bumped to 16px. */
+    @media (max-width: 767px) {
+      #aiq-in, #aiq-lead-form input { font-size: 16px; }
+    }
     #aiq-lead-start {
       margin-top: 2px; padding: 9px;
       background: linear-gradient(135deg,#FF9F45,#FF6B5C);
@@ -657,22 +676,35 @@
         <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
       </div>
       <div class="flex items-center gap-2">
-        <a href="#book" class="cursor-pointer text-sm font-500 px-4 py-2 rounded-xl bg-white text-ink hover:bg-cyan hover:text-white transition-colors duration-200">Book a demo</a>
-        <button id="aiq-nav-toggle" type="button" class="md:hidden grid place-items-center w-9 h-9 rounded-xl text-slate-200 hover:text-white hover:bg-white/10 transition-colors" aria-label="Open menu" aria-haspopup="true" aria-expanded="false" aria-controls="aiq-mobile-nav">
-          <svg class="icon-open w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
-          <svg class="icon-close w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+        <a href="#book" class="cursor-pointer min-h-[44px] inline-flex items-center text-sm font-500 px-4 py-2 rounded-xl bg-white text-ink hover:bg-cyan hover:text-white transition-colors duration-200">Book a demo</a>
+        <button id="aiq-nav-toggle" type="button" class="md:hidden grid place-items-center min-w-[44px] min-h-[44px] rounded-xl text-slate-200 hover:text-white hover:bg-white/10 transition-colors" aria-label="Open menu" aria-haspopup="true" aria-expanded="false" aria-controls="aiq-mobile-nav">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
         </button>
-      </div>
-      <div id="aiq-mobile-nav" class="aiq-shut md:hidden flex flex-col gap-1 p-2 text-sm text-slate-300" inert>
-        <a href="#how" class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-white transition-colors">Chatbots</a>
-        <a href="#voice" class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-white transition-colors">Voice Agents</a>
-        <a href="#demo" class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-white transition-colors">Live demo</a>
-        <a href="#industries" class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-white transition-colors">Industries</a>
-        <a href="#pricing" class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-white transition-colors">Pricing</a>
-        <a href="#faq" class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-white transition-colors">FAQ</a>
       </div>
     </nav>
   </header>
+
+  <!-- MOBILE NAV: full-screen slide-up sheet (app-modal style). Close via the
+       X button, Escape, tapping a link, or resizing past the md breakpoint. -->
+  <div id="aiq-mobile-nav" class="aiq-shut md:hidden fixed inset-0 z-[60] flex flex-col" style="background:rgba(6,15,40,0.98);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)" inert>
+    <div class="flex items-center justify-between px-5 pt-5">
+      <span class="font-display font-700 text-lg text-white tracking-tight">Agent<span class="logo-grad-text">IQ</span></span>
+      <button id="aiq-nav-close" type="button" class="grid place-items-center min-w-[44px] min-h-[44px] rounded-xl text-slate-200 hover:text-white hover:bg-white/10 transition-colors" aria-label="Close menu">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+      </button>
+    </div>
+    <!-- Spacer pushes the actual nav links down into the thumb-reachable zone -->
+    <div class="flex-1" aria-hidden="true"></div>
+    <nav aria-label="Mobile" class="flex flex-col gap-1 px-5 pb-[calc(2rem+env(safe-area-inset-bottom))] text-lg text-slate-200">
+      <a href="#how" class="min-h-[44px] flex items-center px-3 py-3 rounded-xl hover:bg-white/10 hover:text-white transition-colors">Chatbots</a>
+      <a href="#voice" class="min-h-[44px] flex items-center px-3 py-3 rounded-xl hover:bg-white/10 hover:text-white transition-colors">Voice Agents</a>
+      <a href="#demo" class="min-h-[44px] flex items-center px-3 py-3 rounded-xl hover:bg-white/10 hover:text-white transition-colors">Live demo</a>
+      <a href="#industries" class="min-h-[44px] flex items-center px-3 py-3 rounded-xl hover:bg-white/10 hover:text-white transition-colors">Industries</a>
+      <a href="#pricing" class="min-h-[44px] flex items-center px-3 py-3 rounded-xl hover:bg-white/10 hover:text-white transition-colors">Pricing</a>
+      <a href="#faq" class="min-h-[44px] flex items-center px-3 py-3 rounded-xl hover:bg-white/10 hover:text-white transition-colors">FAQ</a>
+      <a href="#book" class="btn-pop min-h-[44px] flex items-center justify-center mt-3 px-3 py-3 rounded-xl bg-gradient-to-r from-coral to-orange text-white font-600">Book a free demo</a>
+    </nav>
+  </div>
 
   <main id="main" tabindex="-1" class="focus:outline-none">
 
@@ -690,11 +722,11 @@
             Trusted by 50+ businesses across India
           </div>
 
-          <h1 class="reveal font-display font-700 text-white text-5xl sm:text-6xl lg:text-[4.2rem] leading-[1.02] tracking-tighter">
+          <h1 class="reveal font-display font-700 text-white text-5xl sm:text-6xl lg:text-[4.2rem] leading-[1.02] tracking-tighter text-balance">
             AI chatbots that<br><span class="grad-text">work while you sleep</span><br>and close more sales
           </h1>
 
-          <p class="reveal mt-7 text-xl text-slate-400 max-w-lg leading-relaxed">
+          <p class="reveal mt-7 text-xl text-slate-400 max-w-lg leading-relaxed text-pretty">
             Done-for-you <span class="text-white font-500">AI chatbots and voice agents</span> for Indian businesses — live in 7 days, no code needed.
           </p>
 
@@ -760,8 +792,10 @@
           <div class="flex gap-5 items-center shrink-0 animate-marquee" id="logoset-r1a"></div>
           <div class="flex gap-5 items-center shrink-0 animate-marquee" aria-hidden="true" id="logoset-r1b"></div>
         </div>
-        <!-- Row 2: reverse direction, slower, for a parallax feel -->
-        <div class="marquee-row flex gap-5 w-max">
+        <!-- Row 2: reverse direction, slower, for a parallax feel.
+             Hidden below md — halves the simultaneously-animating DOM on
+             small/mid-range phones where every bit of paint/battery counts. -->
+        <div class="marquee-row hidden md:flex gap-5 w-max">
           <div class="flex gap-5 items-center shrink-0 animate-marquee [animation-direction:reverse] [animation-duration:34s]" id="logoset-r2a"></div>
           <div class="flex gap-5 items-center shrink-0 animate-marquee [animation-direction:reverse] [animation-duration:34s]" aria-hidden="true" id="logoset-r2b"></div>
         </div>
@@ -777,8 +811,8 @@
       <div class="max-w-5xl mx-auto">
         <div class="reveal text-center mb-14">
           <p class="text-cyan text-sm font-semibold tracking-widest uppercase mb-3">Under The Hood</p>
-          <h2 class="font-display font-bold text-white text-3xl sm:text-4xl tracking-tight">One pipeline, every channel</h2>
-          <p class="mt-4 text-slate-400">Here's exactly how a message becomes a booked order.</p>
+          <h2 class="font-display font-bold text-white text-3xl sm:text-4xl tracking-tight text-balance">One pipeline, every channel</h2>
+          <p class="mt-4 text-slate-400 text-pretty">Here's exactly how a message becomes a booked order.</p>
         </div>
 
         <div class="reveal wf-canvas relative rounded-3xl p-8 md:p-14">
@@ -845,8 +879,8 @@
       <div class="relative max-w-5xl mx-auto">
         <div class="reveal text-center max-w-2xl mx-auto mb-14">
           <p class="text-cyan text-sm font-500 tracking-widest uppercase mb-4">Three Products, One Brain</p>
-          <h2 class="font-display font-700 text-white text-4xl sm:text-5xl tracking-tighter leading-tight">See our bots in action</h2>
-          <p class="mt-5 text-slate-400">A single AI assistant, deployed wherever your customers already are. Here's a real sample of each — trained for your industry.</p>
+          <h2 class="font-display font-700 text-white text-4xl sm:text-5xl tracking-tighter leading-tight text-balance">See our bots in action</h2>
+          <p class="mt-5 text-slate-400 text-pretty">A single AI assistant, deployed wherever your customers already are. Here's a real sample of each — trained for your industry.</p>
         </div>
 
         <div class="reveal relative">
@@ -870,8 +904,8 @@
       <div class="relative max-w-6xl mx-auto">
         <div class="reveal text-center max-w-2xl mx-auto mb-14">
           <p class="text-violet-300 text-sm font-500 tracking-widest uppercase mb-4">Voice Agents</p>
-          <h2 class="font-display font-700 text-white text-4xl sm:text-5xl tracking-tighter leading-tight">Missed a call at 8 PM?<br>The bot picks up. Books the table.<br><span class="grad-text">Sends a confirmation.</span></h2>
-          <p class="mt-5 text-slate-400">AI voice agents that handle reservations, follow-ups, and lead qualification in natural Hindi, Hinglish, or English — while you're busy running your business.</p>
+          <h2 class="font-display font-700 text-white text-4xl sm:text-5xl tracking-tighter leading-tight text-balance">Missed a call at 8 PM?<br>The bot picks up. Books the table.<br><span class="grad-text">Sends a confirmation.</span></h2>
+          <p class="mt-5 text-slate-400 text-pretty">AI voice agents that handle reservations, follow-ups, and lead qualification in natural Hindi, Hinglish, or English — while you're busy running your business.</p>
         </div>
 
         <div class="grid md:grid-cols-3 gap-5 mb-12">
@@ -945,8 +979,8 @@
       <div class="max-w-5xl mx-auto">
         <div class="reveal text-center mb-10">
           <p class="text-violet-300 text-sm font-semibold tracking-widest uppercase mb-3">Hear It Yourself</p>
-          <h2 class="font-display font-bold text-white text-3xl sm:text-4xl tracking-tight">Real voice agent samples</h2>
-          <p class="mt-4 text-slate-400">Same brain, different accents — tap play on any card.</p>
+          <h2 class="font-display font-bold text-white text-3xl sm:text-4xl tracking-tight text-balance">Real voice agent samples</h2>
+          <p class="mt-4 text-slate-400 text-pretty">Same brain, different accents — tap play on any card.</p>
         </div>
 
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -1065,7 +1099,7 @@
       <div class="relative max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
         <div class="reveal">
           <p class="text-cyan text-sm font-500 tracking-widest uppercase mb-4">Live Demo</p>
-          <h2 class="font-display font-700 text-white text-4xl sm:text-5xl tracking-tighter leading-tight">See it think. Tap a question.</h2>
+          <h2 class="font-display font-700 text-white text-4xl sm:text-5xl tracking-tighter leading-tight text-balance">See it think. Tap a question.</h2>
           <p class="mt-5 text-slate-400 max-w-md">This is a real-time preview of how your assistant feels to a customer — typing indicators, instant answers and natural conversation. Pick a prompt to watch it respond.</p>
           <ul class="mt-7 space-y-3 text-sm text-slate-300">
             <li class="flex items-center gap-3"><svg class="w-5 h-5 text-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>Trained on your products, prices & policies</li>
@@ -1102,7 +1136,7 @@
       <div class="relative max-w-6xl mx-auto">
         <div class="reveal text-center max-w-2xl mx-auto mb-12">
           <p class="text-orange-400 text-sm font-500 tracking-widest uppercase mb-4">Results</p>
-          <h2 class="font-display font-700 text-white text-4xl sm:text-5xl tracking-tighter leading-tight">Numbers our clients actually feel</h2>
+          <h2 class="font-display font-700 text-white text-4xl sm:text-5xl tracking-tighter leading-tight text-balance">Numbers our clients actually feel</h2>
         </div>
 
         <!-- stat counters -->
@@ -1175,8 +1209,8 @@
       <div class="relative max-w-6xl mx-auto">
         <div class="reveal text-center max-w-2xl mx-auto mb-12">
           <p class="text-cyan text-sm font-500 tracking-widest uppercase mb-4">Specialists, Not Generalists</p>
-          <h2 class="font-display font-700 text-white text-4xl sm:text-5xl tracking-tighter leading-tight">Built for the businesses India runs on</h2>
-          <p class="mt-5 text-slate-400">We've trained AI assistants for these industries again and again — so your bot launches with proven flows, not guesswork.</p>
+          <h2 class="font-display font-700 text-white text-4xl sm:text-5xl tracking-tighter leading-tight text-balance">Built for the businesses India runs on</h2>
+          <p class="mt-5 text-slate-400 text-pretty">We've trained AI assistants for these industries again and again — so your bot launches with proven flows, not guesswork.</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-fr">
@@ -1301,8 +1335,8 @@
       <div class="max-w-2xl mx-auto">
         <div class="reveal text-center mb-10">
           <p class="text-orange-400 text-sm font-semibold tracking-widest uppercase mb-3">Free Calculator</p>
-          <h2 class="font-display font-bold text-white text-3xl sm:text-4xl tracking-tight">How much are missed messages costing you?</h2>
-          <p class="mt-4 text-slate-400">Slide to match your business — the estimate updates live.</p>
+          <h2 class="font-display font-bold text-white text-3xl sm:text-4xl tracking-tight text-balance">How much are missed messages costing you?</h2>
+          <p class="mt-4 text-slate-400 text-pretty">Slide to match your business — the estimate updates live.</p>
         </div>
 
         <div class="reveal roi-card rounded-3xl p-7 sm:p-9">
@@ -1387,8 +1421,8 @@
       <div class="relative max-w-6xl mx-auto">
         <div class="reveal text-center max-w-3xl mx-auto mb-14">
           <p class="text-pink-400 text-sm font-500 tracking-widest uppercase mb-4">Chatbot Pricing</p>
-          <h2 class="font-display font-700 text-white text-4xl sm:text-5xl tracking-tighter leading-tight">Flexible, intelligent, and endlessly scalable</h2>
-          <p class="mt-5 text-slate-400">One-time setup + monthly retainer. All plans include design, training and launch. GST extra.</p>
+          <h2 class="font-display font-700 text-white text-4xl sm:text-5xl tracking-tighter leading-tight text-balance">Flexible, intelligent, and endlessly scalable</h2>
+          <p class="mt-5 text-slate-400 text-pretty">One-time setup + monthly retainer. All plans include design, training and launch. GST extra.</p>
         </div>
 
         <div class="grid md:grid-cols-3 gap-5 items-stretch">
@@ -1470,7 +1504,7 @@
       <div class="relative max-w-6xl mx-auto">
         <div class="reveal text-center max-w-3xl mx-auto mb-14">
           <p class="text-violet-300 text-sm font-500 tracking-widest uppercase mb-4">Voice Agents</p>
-          <h2 class="font-display font-700 text-white text-4xl sm:text-5xl tracking-tighter leading-tight">Your brand voice, on every call</h2>
+          <h2 class="font-display font-700 text-white text-4xl sm:text-5xl tracking-tighter leading-tight text-balance">Your brand voice, on every call</h2>
           <p class="mt-5 text-slate-400 text-sm">All plans include setup, training, and launch support. GST extra.</p>
         </div>
 
@@ -1539,7 +1573,7 @@
       <div class="relative max-w-3xl mx-auto">
         <div class="reveal text-center mb-12">
           <p class="text-violet-300 text-sm font-500 tracking-widest uppercase mb-4">FAQ</p>
-          <h2 class="font-display font-700 text-white text-4xl sm:text-5xl tracking-tighter leading-tight">Questions, answered</h2>
+          <h2 class="font-display font-700 text-white text-4xl sm:text-5xl tracking-tighter leading-tight text-balance">Questions, answered</h2>
         </div>
 
         <div class="space-y-3">
@@ -1655,7 +1689,7 @@
       <div aria-hidden="true" class="pointer-events-none absolute left-1/2 -translate-x-1/2 top-0 w-[700px] h-72 rounded-full" style="background:radial-gradient(ellipse,rgba(34,211,238,.12) 0%,transparent 70%);filter:blur(60px)"></div>
       <div class="relative max-w-5xl mx-auto reveal rounded-[2rem] p-8 sm:p-12 grid lg:grid-cols-2 gap-10 items-center" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);backdrop-filter:blur(16px)">
         <div>
-          <h2 class="font-display font-700 text-white text-4xl sm:text-5xl tracking-tighter leading-tight">Book your free demo</h2>
+          <h2 class="font-display font-700 text-white text-4xl sm:text-5xl tracking-tighter leading-tight text-balance">Book your free demo</h2>
           <p class="mt-4 text-slate-300 max-w-md">See your own AI assistant in action in a 20-minute call. We'll map your channels, show a live mockup, and give you a launch plan — no obligation.</p>
           <div class="mt-7 space-y-3 text-sm text-slate-300">
             <a href="tel:+919159665277" class="flex items-center gap-3 hover:text-white transition-colors cursor-pointer"><svg class="w-5 h-5 text-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>+91 91596 65277</a>
@@ -1670,18 +1704,18 @@
           data-mcp-params='{"required":["name","phone"],"optional":["business","channel"]}'>
           <div>
             <label for="name" class="block text-sm text-slate-300 mb-1.5">Your name <span class="text-coral" aria-hidden="true">*</span></label>
-            <input id="name" name="name" type="text" required aria-required="true" aria-describedby="name-err" placeholder="Aarohi Mehta" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan focus:border-transparent transition" data-mcp-param="name" data-mcp-description="Full name of the person requesting the demo" />
+            <input id="name" name="name" type="text" required aria-required="true" aria-describedby="name-err" placeholder="Aarohi Mehta" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white text-base placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan focus:border-transparent transition" data-mcp-param="name" data-mcp-description="Full name of the person requesting the demo" />
             <p id="name-err" role="alert" class="hidden mt-1.5 text-sm text-red-300">Please enter your name.</p>
           </div>
           <div class="grid sm:grid-cols-2 gap-4">
             <div>
               <label for="phone" class="block text-sm text-slate-300 mb-1.5">WhatsApp number <span class="text-coral" aria-hidden="true">*</span></label>
-              <input id="phone" name="phone" type="tel" required aria-required="true" aria-describedby="phone-err" placeholder="+91 91596 65277" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan focus:border-transparent transition" data-mcp-param="phone" data-mcp-description="WhatsApp number in Indian format, e.g. +91 98765 43210 or 9876543210" />
+              <input id="phone" name="phone" type="tel" required aria-required="true" aria-describedby="phone-err" placeholder="+91 91596 65277" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white text-base placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan focus:border-transparent transition" data-mcp-param="phone" data-mcp-description="WhatsApp number in Indian format, e.g. +91 98765 43210 or 9876543210" />
               <p id="phone-err" role="alert" class="hidden mt-1.5 text-sm text-red-300">Please enter a valid WhatsApp number.</p>
             </div>
             <div>
               <label for="business" class="block text-sm text-slate-300 mb-1.5">Business name</label>
-              <input id="business" name="business" type="text" placeholder="Glow Co." class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan focus:border-transparent transition" data-mcp-param="business" data-mcp-description="Business or company name (optional)" />
+              <input id="business" name="business" type="text" placeholder="Glow Co." class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white text-base placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan focus:border-transparent transition" data-mcp-param="business" data-mcp-description="Business or company name (optional)" />
             </div>
           </div>
           <div>
@@ -1948,8 +1982,13 @@
         });
       }
 
-      // Mobile nav
+      // Mobile nav — full-screen slide-up sheet, closed via the X button,
+      // Escape, tapping a link, or resizing past the md breakpoint. There's
+      // no meaningful "click outside" surface once the sheet covers the
+      // whole viewport, so that listener (present in the old dropdown
+      // version) is intentionally gone.
       var navToggle = document.getElementById('aiq-nav-toggle');
+      var navClose = document.getElementById('aiq-nav-close');
       var navPanel = document.getElementById('aiq-mobile-nav');
       var navOpen = false;
       function openNav() {
@@ -1957,6 +1996,7 @@
         navPanel.removeAttribute('inert');
         navPanel.classList.remove('aiq-shut');
         navToggle.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden'; // lock background scroll while the sheet is open
       }
       function closeNav(returnFocus) {
         navOpen = false;
@@ -1964,16 +2004,15 @@
         navToggle.setAttribute('aria-expanded', 'false');
         if (returnFocus !== false) navToggle.focus();
         navPanel.setAttribute('inert', '');
+        document.body.style.overflow = '';
       }
       navToggle.addEventListener('click', function () { navOpen ? closeNav() : openNav(); });
+      if (navClose) navClose.addEventListener('click', function () { closeNav(); });
       navPanel.querySelectorAll('a').forEach(function (a) {
         a.addEventListener('click', function () { closeNav(false); });
       });
       document.addEventListener('keydown', function (e) {
         if (navOpen && e.key === 'Escape') closeNav();
-      });
-      document.addEventListener('click', function (e) {
-        if (navOpen && !navPanel.contains(e.target) && e.target !== navToggle && !navToggle.contains(e.target)) closeNav(false);
       });
       window.matchMedia('(min-width: 768px)').addEventListener('change', function (e) {
         if (e.matches && navOpen) closeNav(false);
