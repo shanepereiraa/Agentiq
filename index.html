@@ -278,31 +278,6 @@
     /* Pauses one row's scroll on hover without stopping the other row */
     .marquee-row:hover .animate-marquee { animation-play-state: paused; }
 
-    /* ── Video testimonial carousel ────────────────────────────── */
-    .vt-track { scroll-snap-type: x mandatory; scrollbar-width: none; }
-    .vt-track::-webkit-scrollbar { display: none; }
-    .vt-card {
-      position: relative; flex: 0 0 auto; width: 210px; aspect-ratio: 9/16; border-radius: 1.25rem;
-      overflow: hidden; background: #0f172a; border: 1px solid #1e293b; scroll-snap-align: center;
-      transition: border-color .3s ease, box-shadow .3s ease, transform .3s ease;
-    }
-    @media (min-width: 768px) { .vt-card { width: 240px; } }
-    .vt-card:hover, .vt-card:focus-within {
-      transform: translateY(-4px); border-color: transparent;
-      box-shadow: 0 0 0 2px rgba(255,107,92,.6), 0 0 30px rgba(34,211,238,.25);
-    }
-    .vt-poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-    .vt-play {
-      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%) scale(1);
-      width: 3.25rem; height: 3.25rem; border-radius: 9999px; display: flex; align-items: center; justify-content: center;
-      background: rgba(15,23,42,.55); backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,.25);
-      transition: transform .25s ease, background .25s ease;
-    }
-    .vt-card:hover .vt-play { transform: translate(-50%,-50%) scale(1.15); background: rgba(255,107,92,.35); }
-    .vt-caption { position: absolute; left: .75rem; bottom: .75rem; right: .75rem; color: #e2e8f0; font-size: .8rem; font-weight: 500; text-shadow: 0 1px 4px rgba(0,0,0,.6); }
-    .vt-nav-btn { width: 2.5rem; height: 2.5rem; border-radius: 9999px; background: #1e293b; color: #e2e8f0; font-size: 1.25rem; display: flex; align-items: center; justify-content: center; transition: background .2s ease; }
-    .vt-nav-btn:hover { background: #FF6B5C; }
-
     /* ── Shipped products feature slider ───────────────────────── */
     .fs-track { transition: transform .7s cubic-bezier(.34,1.56,.64,1); } /* spring-like overshoot */
     .fs-slide { flex: 0 0 100%; }
@@ -1160,48 +1135,6 @@
               <div><p class="text-white text-sm font-600">Vikram N.</p><p class="text-slate-400 text-xs mt-0.5">Owner, Spice Route · Mumbai</p></div>
             </div>
           </article>
-        </div>
-
-        <!-- VIDEO TESTIMONIALS
-             Swap content: each .vt-card's poster placeholder (the gradient div with
-             initials) should become <img class="vt-poster" src="/media/xyz-poster.jpg">,
-             and data-video should point at a real clip. Wire vt-play's click handler
-             (near the bottom of this section's own inline JS block) to your actual lightbox/player. -->
-        <div class="mt-16">
-          <div class="reveal flex items-end justify-between mb-6">
-            <h3 class="font-display font-700 text-white text-2xl sm:text-3xl">Hear it from them</h3>
-            <div class="hidden md:flex gap-2">
-              <button id="vt-prev" class="vt-nav-btn" aria-label="Previous testimonial">‹</button>
-              <button id="vt-next" class="vt-nav-btn" aria-label="Next testimonial">›</button>
-            </div>
-          </div>
-          <div id="vt-track" class="vt-track reveal flex gap-5 overflow-x-auto pb-4 -mx-1 px-1 cursor-grab select-none">
-            <div class="vt-card" data-video="" tabindex="0">
-              <div class="vt-poster bg-gradient-to-br from-coral to-orange grid place-items-center text-white text-3xl font-700">A</div>
-              <button class="vt-play" aria-label="Play testimonial from Aarohi"><svg viewBox="0 0 24 24" class="w-6 h-6 fill-white"><path d="M8 5v14l11-7z"/></svg></button>
-              <div class="vt-caption">Aarohi M. · Glow Co.</div>
-            </div>
-            <div class="vt-card" data-video="" tabindex="0">
-              <div class="vt-poster bg-gradient-to-br from-cyan to-blue grid place-items-center text-white text-3xl font-700">V</div>
-              <button class="vt-play" aria-label="Play testimonial from Vikram"><svg viewBox="0 0 24 24" class="w-6 h-6 fill-white"><path d="M8 5v14l11-7z"/></svg></button>
-              <div class="vt-caption">Vikram N. · Spice Route</div>
-            </div>
-            <div class="vt-card" data-video="" tabindex="0">
-              <div class="vt-poster grid place-items-center text-white text-3xl font-700" style="background:linear-gradient(135deg,#f9ce34,#ee2a7b)">Z</div>
-              <button class="vt-play" aria-label="Play testimonial from Zara"><svg viewBox="0 0 24 24" class="w-6 h-6 fill-white"><path d="M8 5v14l11-7z"/></svg></button>
-              <div class="vt-caption">Zara K. · Luxe Salon</div>
-            </div>
-            <div class="vt-card" data-video="" tabindex="0">
-              <div class="vt-poster grid place-items-center text-white text-3xl font-700" style="background:linear-gradient(135deg,#7c3aed,#a855f7)">R</div>
-              <button class="vt-play" aria-label="Play testimonial from Dr. Rao"><svg viewBox="0 0 24 24" class="w-6 h-6 fill-white"><path d="M8 5v14l11-7z"/></svg></button>
-              <div class="vt-caption">Dr. Rao · City Care</div>
-            </div>
-            <div class="vt-card" data-video="" tabindex="0">
-              <div class="vt-poster bg-gradient-to-br from-emerald-400 to-emerald-600 grid place-items-center text-white text-3xl font-700">M</div>
-              <button class="vt-play" aria-label="Play testimonial from Mira"><svg viewBox="0 0 24 24" class="w-6 h-6 fill-white"><path d="M8 5v14l11-7z"/></svg></button>
-              <div class="vt-caption">Mira S. · Boutique Owner</div>
-            </div>
-          </div>
         </div>
       </div>
     </section>
@@ -2541,42 +2474,6 @@
           gtag('event', 'click', { event_category: 'whatsapp_cta', event_label: 'WhatsApp' });
         });
       });
-
-      // ── Video testimonial carousel: drag-to-scroll + prev/next ───────
-      // Snap-to-center is handled natively via scroll-snap-type on .vt-track;
-      // mobile just uses native touch scroll, this only adds desktop drag.
-      var vtTrack = document.getElementById('vt-track');
-      if (vtTrack) {
-        var vtDown = false, vtStartX = 0, vtStartScroll = 0;
-        var vtCardStep = function () {
-          var c = vtTrack.querySelector('.vt-card');
-          return c ? c.offsetWidth + 20 : 260; // card width + gap
-        };
-        vtTrack.addEventListener('pointerdown', function (e) {
-          vtDown = true; vtStartX = e.clientX; vtStartScroll = vtTrack.scrollLeft;
-          vtTrack.setPointerCapture(e.pointerId);
-        });
-        vtTrack.addEventListener('pointermove', function (e) {
-          if (!vtDown) return;
-          vtTrack.scrollLeft = vtStartScroll - (e.clientX - vtStartX);
-        });
-        vtTrack.addEventListener('pointerup', function () { vtDown = false; });
-        vtTrack.addEventListener('pointercancel', function () { vtDown = false; });
-
-        var vtPrev = document.getElementById('vt-prev'), vtNext = document.getElementById('vt-next');
-        if (vtPrev) vtPrev.addEventListener('click', function () { vtTrack.scrollBy({ left: -vtCardStep(), behavior: 'smooth' }); });
-        if (vtNext) vtNext.addEventListener('click', function () { vtTrack.scrollBy({ left: vtCardStep(), behavior: 'smooth' }); });
-
-        // Placeholder handler — wire this to your real video lightbox/player.
-        vtTrack.querySelectorAll('.vt-play').forEach(function (btn) {
-          btn.addEventListener('click', function (e) {
-            var card = e.currentTarget.closest('.vt-card');
-            var src = card && card.dataset.video;
-            if (!src) return; // no real clip wired up yet for this placeholder card
-            // openVideoLightbox(src);
-          });
-        });
-      }
 
       // ── Shipped products feature slider ───────────────────────────────
       var FS_SLIDES = [
