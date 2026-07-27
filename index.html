@@ -266,6 +266,56 @@
     /* Marquee runs on transform only — safe to promote */
     .animate-marquee { will-change: transform; }
 
+    /* ── Integrations marquee: glassmorphism cards ─────────────── */
+    .integ-card {
+      display: flex; align-items: center; gap: 0.6rem; width: 172px; padding: 0.85rem 1.05rem;
+      border-radius: 1rem; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.10);
+      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); color: #e2e8f0;
+      font-size: 0.9rem; font-weight: 500; transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+    }
+    .integ-card:hover { transform: scale(1.08); border-color: rgba(255,107,92,.4); box-shadow: 0 0 28px rgba(255,107,92,.25); }
+    .integ-card svg { flex-shrink: 0; }
+    /* Pauses one row's scroll on hover without stopping the other row */
+    .marquee-row:hover .animate-marquee { animation-play-state: paused; }
+
+    /* ── Video testimonial carousel ────────────────────────────── */
+    .vt-track { scroll-snap-type: x mandatory; scrollbar-width: none; }
+    .vt-track::-webkit-scrollbar { display: none; }
+    .vt-card {
+      position: relative; flex: 0 0 auto; width: 210px; aspect-ratio: 9/16; border-radius: 1.25rem;
+      overflow: hidden; background: #0f172a; border: 1px solid #1e293b; scroll-snap-align: center;
+      transition: border-color .3s ease, box-shadow .3s ease, transform .3s ease;
+    }
+    @media (min-width: 768px) { .vt-card { width: 240px; } }
+    .vt-card:hover, .vt-card:focus-within {
+      transform: translateY(-4px); border-color: transparent;
+      box-shadow: 0 0 0 2px rgba(255,107,92,.6), 0 0 30px rgba(34,211,238,.25);
+    }
+    .vt-poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .vt-play {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%) scale(1);
+      width: 3.25rem; height: 3.25rem; border-radius: 9999px; display: flex; align-items: center; justify-content: center;
+      background: rgba(15,23,42,.55); backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,.25);
+      transition: transform .25s ease, background .25s ease;
+    }
+    .vt-card:hover .vt-play { transform: translate(-50%,-50%) scale(1.15); background: rgba(255,107,92,.35); }
+    .vt-caption { position: absolute; left: .75rem; bottom: .75rem; right: .75rem; color: #e2e8f0; font-size: .8rem; font-weight: 500; text-shadow: 0 1px 4px rgba(0,0,0,.6); }
+    .vt-nav-btn { width: 2.5rem; height: 2.5rem; border-radius: 9999px; background: #1e293b; color: #e2e8f0; font-size: 1.25rem; display: flex; align-items: center; justify-content: center; transition: background .2s ease; }
+    .vt-nav-btn:hover { background: #FF6B5C; }
+
+    /* ── Shipped products feature slider ───────────────────────── */
+    .fs-track { transition: transform .7s cubic-bezier(.34,1.56,.64,1); } /* spring-like overshoot */
+    .fs-slide { flex: 0 0 100%; }
+    .fs-arrow {
+      position: absolute; top: 50%; transform: translateY(-50%); width: 2.75rem; height: 2.75rem;
+      border-radius: 9999px; background: rgba(30,41,59,.85); border: 1px solid rgba(255,255,255,.08);
+      color: #f1f5f9; font-size: 1.5rem; display: flex; align-items: center; justify-content: center;
+      transition: background .2s ease, transform .2s ease; z-index: 10;
+    }
+    .fs-arrow:hover { background: #FF6B5C; transform: translateY(-50%) scale(1.08); }
+    .fs-dot { width: .5rem; height: .5rem; border-radius: 9999px; background: #334155; transition: width .3s ease, background .3s ease; }
+    .fs-dot.is-active { width: 1.5rem; background: #FF6B5C; }
+
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation: none !important; transition: none !important; }
       .reveal { opacity: 1 !important; transform: none !important; }
@@ -274,6 +324,7 @@
       .animate-blob, .animate-float, .animate-marquee, .magnetic-cta { will-change: auto; }
       .faq-content { opacity: 1 !important; transform: none !important; }
       #formmsg { opacity: 1 !important; transform: none !important; }
+      .fs-track { transition: none !important; }
     }
 
     /* ── AI Chat Widget ─────────────────────────────── */
@@ -566,79 +617,42 @@
 
     <!-- LOGO MARQUEE / INTEGRATIONS -->
     <section class="relative py-12 px-5 overflow-hidden" style="background:linear-gradient(180deg,#060f28 0%,#07102a 100%)">
-      <p class="reveal text-center text-xs uppercase tracking-[0.2em] text-slate-400 mb-7">Works with WhatsApp, Instagram, your menu PDF, Google Sheets & more</p>
+      <p class="reveal text-center text-xs uppercase tracking-[0.2em] text-slate-400 mb-8">Works with WhatsApp, Instagram, your menu PDF, Google Sheets & more</p>
       <div class="reveal relative max-w-5xl mx-auto overflow-hidden [mask-image:linear-gradient(90deg,transparent,#000_12%,#000_88%,transparent)]">
-        <div class="flex gap-12 w-max animate-marquee text-slate-400">
-          <div class="flex gap-12 items-center shrink-0" id="logoset"></div>
-          <div class="flex gap-12 items-center shrink-0" aria-hidden="true" id="logoset2"></div>
+        <!-- Row 1: default direction -->
+        <div class="marquee-row flex gap-5 w-max mb-5">
+          <div class="flex gap-5 items-center shrink-0 animate-marquee" id="logoset-r1a"></div>
+          <div class="flex gap-5 items-center shrink-0 animate-marquee" aria-hidden="true" id="logoset-r1b"></div>
+        </div>
+        <!-- Row 2: reverse direction, slower, for a parallax feel -->
+        <div class="marquee-row flex gap-5 w-max">
+          <div class="flex gap-5 items-center shrink-0 animate-marquee [animation-direction:reverse] [animation-duration:34s]" id="logoset-r2a"></div>
+          <div class="flex gap-5 items-center shrink-0 animate-marquee [animation-direction:reverse] [animation-duration:34s]" aria-hidden="true" id="logoset-r2b"></div>
         </div>
       </div>
     </section>
 
-    <!-- THREE PRODUCTS -->
+    <!-- THREE PRODUCTS: interactive feature slider
+         Swap content: edit the FS_SLIDES array near the bottom of the main
+         <script> block. ctaHref already points at the real live pages
+         (restaurants.html / salons.html / clinics.html). -->
     <section id="how" class="relative py-24 px-5 overflow-hidden" style="content-visibility:auto;contain-intrinsic-size:0 800px;background:linear-gradient(180deg,#060f28 0%,#071528 50%,#060f28 100%)">
       <div aria-hidden="true" class="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 w-96 h-96 rounded-full" style="background:radial-gradient(circle,rgba(34,211,238,.15) 0%,transparent 70%);filter:blur(70px)"></div>
       <div aria-hidden="true" class="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 w-96 h-96 rounded-full" style="background:radial-gradient(circle,rgba(52,211,153,.12) 0%,transparent 70%);filter:blur(70px)"></div>
-      <div class="relative max-w-6xl mx-auto">
+      <div class="relative max-w-5xl mx-auto">
         <div class="reveal text-center max-w-2xl mx-auto mb-14">
           <p class="text-cyan text-sm font-500 tracking-widest uppercase mb-4">Three Products, One Brain</p>
           <h2 class="font-display font-700 text-white text-4xl sm:text-5xl tracking-tight leading-tight">See our bots in action</h2>
           <p class="mt-5 text-slate-400">A single AI assistant, deployed wherever your customers already are. Here's a real sample of each — trained for your industry.</p>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-5 items-start">
-
-          <!-- WhatsApp · Restaurant -->
-          <article class="reveal rounded-2xl overflow-hidden flex flex-col" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
-            <div class="flex items-center gap-3 px-4 py-3.5 border-b border-white/10" style="background:linear-gradient(90deg,rgba(37,211,102,.16),transparent)">
-              <span class="grid place-items-center w-9 h-9 rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 text-white shrink-0">
-                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
-              </span>
-              <div class="min-w-0"><p class="text-white font-500 text-sm leading-tight truncate">Spice Route · WhatsApp</p><p class="text-emerald-300 text-xs">Restaurant ordering</p></div>
-            </div>
-            <div class="px-4 py-4 space-y-2.5 text-[13px] flex-1">
-              <div class="max-w-[85%] bg-white/10 rounded-2xl rounded-tl-md px-3 py-2 text-slate-100">Table for 4 tonight at 8? 🍽️</div>
-              <div class="ml-auto max-w-[88%] bg-gradient-to-br from-emerald-500 to-emerald-600 text-white rounded-2xl rounded-tr-md px-3 py-2">Booked! ✅ Table for 4 at 8:00 PM. Want to pre-order starters so they're ready?</div>
-              <div class="max-w-[85%] bg-white/10 rounded-2xl rounded-tl-md px-3 py-2 text-slate-100">Yes — 2 Paneer Tikka 🍢</div>
-              <div class="ml-auto max-w-[88%] bg-gradient-to-br from-emerald-500 to-emerald-600 text-white rounded-2xl rounded-tr-md px-3 py-2">Added 2× Paneer Tikka (₹520). Pay now via link or at the table?</div>
-            </div>
-            <div class="px-5 pb-5 pt-1"><p class="text-slate-400 text-sm">Food ordering, table reservations &amp; payment links — fully automated on WhatsApp.</p></div>
-          </article>
-
-          <!-- Instagram · Salon -->
-          <article class="reveal rounded-2xl overflow-hidden flex flex-col" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
-            <div class="flex items-center gap-3 px-4 py-3.5 border-b border-white/10" style="background:linear-gradient(90deg,rgba(225,48,108,.16),transparent)">
-              <span class="grid place-items-center w-9 h-9 rounded-full text-white shrink-0" style="background:linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7)">
-                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069M12 0C8.741 0 8.332.014 7.052.072 2.695.272.273 2.69.073 7.052.014 8.332 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.69.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0m0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324M12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8m6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881"/></svg>
-              </span>
-              <div class="min-w-0"><p class="text-white font-500 text-sm leading-tight truncate">Luxe Salon · Instagram</p><p class="text-fuchsia-300 text-xs">DM booking</p></div>
-            </div>
-            <div class="px-4 py-4 space-y-2.5 text-[13px] flex-1">
-              <div class="max-w-[85%] bg-white/10 rounded-2xl rounded-tl-md px-3 py-2 text-slate-100">Any slot for hair spa this Saturday? 💆‍♀️</div>
-              <div class="ml-auto max-w-[88%] bg-gradient-to-br from-fuchsia-500 to-pink-500 text-white rounded-2xl rounded-tr-md px-3 py-2">Yes! Sat 11:30 AM or 4:00 PM with our senior stylist. Which works?</div>
-              <div class="max-w-[85%] bg-white/10 rounded-2xl rounded-tl-md px-3 py-2 text-slate-100">11:30 please</div>
-              <div class="ml-auto max-w-[88%] bg-gradient-to-br from-fuchsia-500 to-pink-500 text-white rounded-2xl rounded-tr-md px-3 py-2">Booked for Sat 11:30 AM 🎉 Reminder + location sent. See you soon!</div>
-            </div>
-            <div class="px-5 pb-5 pt-1"><p class="text-slate-400 text-sm">Turn story replies &amp; DMs into confirmed salon and spa appointments in seconds.</p></div>
-          </article>
-
-          <!-- Website · Healthcare -->
-          <article class="reveal rounded-2xl overflow-hidden flex flex-col" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
-            <div class="flex items-center gap-3 px-4 py-3.5 border-b border-white/10" style="background:linear-gradient(90deg,rgba(34,211,232,.16),transparent)">
-              <span class="grid place-items-center w-9 h-9 rounded-full bg-gradient-to-br from-cyan to-blue text-white shrink-0">
-                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10"/></svg>
-              </span>
-              <div class="min-w-0"><p class="text-white font-500 text-sm leading-tight truncate">City Care · Website</p><p class="text-cyan text-xs">Appointment widget</p></div>
-            </div>
-            <div class="px-4 py-4 space-y-2.5 text-[13px] flex-1">
-              <div class="max-w-[85%] bg-white/10 rounded-2xl rounded-tl-md px-3 py-2 text-slate-100">I need a dermatologist appointment.</div>
-              <div class="ml-auto max-w-[88%] bg-gradient-to-br from-cyan to-blue text-white rounded-2xl rounded-tr-md px-3 py-2">Sure! Dr. Rao has Mon 10:15 AM &amp; Tue 6:00 PM open. Shall I book one?</div>
-              <div class="max-w-[85%] bg-white/10 rounded-2xl rounded-tl-md px-3 py-2 text-slate-100">Tuesday 6 PM works.</div>
-              <div class="ml-auto max-w-[88%] bg-gradient-to-br from-cyan to-blue text-white rounded-2xl rounded-tr-md px-3 py-2">Confirmed for Tue 6:00 PM with Dr. Rao 📋 Pre-visit form sent on WhatsApp.</div>
-            </div>
-            <div class="px-5 pb-5 pt-1"><p class="text-slate-400 text-sm">Qualify patients, book appointments and share forms — right from your website.</p></div>
-          </article>
-
+        <div class="reveal relative">
+          <div class="overflow-hidden rounded-3xl">
+            <div id="fs-track" class="fs-track flex"></div>
+          </div>
+          <button id="fs-prev" class="fs-arrow -left-3 md:-left-6" aria-label="Previous product">‹</button>
+          <button id="fs-next" class="fs-arrow -right-3 md:-right-6" aria-label="Next product">›</button>
+          <div id="fs-dots" class="flex justify-center gap-2 mt-6"></div>
         </div>
       </div>
     </section>
@@ -824,6 +838,48 @@
               <div><p class="text-white text-sm font-600">Vikram N.</p><p class="text-slate-400 text-xs mt-0.5">Owner, Spice Route · Mumbai</p></div>
             </div>
           </article>
+        </div>
+
+        <!-- VIDEO TESTIMONIALS
+             Swap content: each .vt-card's poster placeholder (the gradient div with
+             initials) should become <img class="vt-poster" src="/media/xyz-poster.jpg">,
+             and data-video should point at a real clip. Wire vt-play's click handler
+             (near the bottom of the main <script> block) to your actual lightbox/player. -->
+        <div class="mt-16">
+          <div class="reveal flex items-end justify-between mb-6">
+            <h3 class="font-display font-700 text-white text-2xl sm:text-3xl">Hear it from them</h3>
+            <div class="hidden md:flex gap-2">
+              <button id="vt-prev" class="vt-nav-btn" aria-label="Previous testimonial">‹</button>
+              <button id="vt-next" class="vt-nav-btn" aria-label="Next testimonial">›</button>
+            </div>
+          </div>
+          <div id="vt-track" class="vt-track reveal flex gap-5 overflow-x-auto pb-4 -mx-1 px-1 cursor-grab select-none">
+            <div class="vt-card" data-video="" tabindex="0">
+              <div class="vt-poster bg-gradient-to-br from-coral to-orange grid place-items-center text-white text-3xl font-700">A</div>
+              <button class="vt-play" aria-label="Play testimonial from Aarohi"><svg viewBox="0 0 24 24" class="w-6 h-6 fill-white"><path d="M8 5v14l11-7z"/></svg></button>
+              <div class="vt-caption">Aarohi M. · Glow Co.</div>
+            </div>
+            <div class="vt-card" data-video="" tabindex="0">
+              <div class="vt-poster bg-gradient-to-br from-cyan to-blue grid place-items-center text-white text-3xl font-700">V</div>
+              <button class="vt-play" aria-label="Play testimonial from Vikram"><svg viewBox="0 0 24 24" class="w-6 h-6 fill-white"><path d="M8 5v14l11-7z"/></svg></button>
+              <div class="vt-caption">Vikram N. · Spice Route</div>
+            </div>
+            <div class="vt-card" data-video="" tabindex="0">
+              <div class="vt-poster grid place-items-center text-white text-3xl font-700" style="background:linear-gradient(135deg,#f9ce34,#ee2a7b)">Z</div>
+              <button class="vt-play" aria-label="Play testimonial from Zara"><svg viewBox="0 0 24 24" class="w-6 h-6 fill-white"><path d="M8 5v14l11-7z"/></svg></button>
+              <div class="vt-caption">Zara K. · Luxe Salon</div>
+            </div>
+            <div class="vt-card" data-video="" tabindex="0">
+              <div class="vt-poster grid place-items-center text-white text-3xl font-700" style="background:linear-gradient(135deg,#7c3aed,#a855f7)">R</div>
+              <button class="vt-play" aria-label="Play testimonial from Dr. Rao"><svg viewBox="0 0 24 24" class="w-6 h-6 fill-white"><path d="M8 5v14l11-7z"/></svg></button>
+              <div class="vt-caption">Dr. Rao · City Care</div>
+            </div>
+            <div class="vt-card" data-video="" tabindex="0">
+              <div class="vt-poster bg-gradient-to-br from-emerald-400 to-emerald-600 grid place-items-center text-white text-3xl font-700">M</div>
+              <button class="vt-play" aria-label="Play testimonial from Mira"><svg viewBox="0 0 24 24" class="w-6 h-6 fill-white"><path d="M8 5v14l11-7z"/></svg></button>
+              <div class="vt-caption">Mira S. · Boutique Owner</div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -1555,7 +1611,7 @@
       // Uses DOM construction (no innerHTML) so logo path data never touches an HTML parser
       function buildLogoEl(l) {
         var outer = document.createElement('span');
-        outer.className = 'flex items-center gap-2.5 shrink-0 hover:text-white transition-colors duration-200';
+        outer.className = 'integ-card';
         var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
         svg.setAttribute('class', 'w-6 h-6');
         svg.setAttribute('viewBox', '0 0 24 24');
@@ -1565,17 +1621,25 @@
         pathEl.setAttribute('d', l.p);
         svg.appendChild(pathEl);
         var label = document.createElement('span');
-        label.className = 'text-sm font-500 whitespace-nowrap';
+        label.className = 'whitespace-nowrap';
         label.textContent = l.n;
         outer.appendChild(svg);
         outer.appendChild(label);
         return outer;
       }
       function injectLogos() {
-        var ls1 = document.getElementById('logoset'), ls2 = document.getElementById('logoset2');
-        logos.forEach(function (l) {
-          if (ls1) ls1.appendChild(buildLogoEl(l));
-          if (ls2) ls2.appendChild(buildLogoEl(l));
+        // Row 1 gets the list forward, row 2 gets it reversed — keeps both rows
+        // visually distinct instead of showing the same order moving oppositely.
+        var row1 = logos, row2 = logos.slice().reverse();
+        var r1a = document.getElementById('logoset-r1a'), r1b = document.getElementById('logoset-r1b');
+        var r2a = document.getElementById('logoset-r2a'), r2b = document.getElementById('logoset-r2b');
+        row1.forEach(function (l) {
+          if (r1a) r1a.appendChild(buildLogoEl(l));
+          if (r1b) r1b.appendChild(buildLogoEl(l));
+        });
+        row2.forEach(function (l) {
+          if (r2a) r2a.appendChild(buildLogoEl(l));
+          if (r2b) r2b.appendChild(buildLogoEl(l));
         });
       }
       if ('requestIdleCallback' in window) {
@@ -2009,6 +2073,178 @@
           gtag('event', 'click', { event_category: 'whatsapp_cta', event_label: 'WhatsApp' });
         });
       });
+
+      // ── Video testimonial carousel: drag-to-scroll + prev/next ───────
+      // Snap-to-center is handled natively via scroll-snap-type on .vt-track;
+      // mobile just uses native touch scroll, this only adds desktop drag.
+      var vtTrack = document.getElementById('vt-track');
+      if (vtTrack) {
+        var vtDown = false, vtStartX = 0, vtStartScroll = 0;
+        var vtCardStep = function () {
+          var c = vtTrack.querySelector('.vt-card');
+          return c ? c.offsetWidth + 20 : 260; // card width + gap
+        };
+        vtTrack.addEventListener('pointerdown', function (e) {
+          vtDown = true; vtStartX = e.clientX; vtStartScroll = vtTrack.scrollLeft;
+          vtTrack.setPointerCapture(e.pointerId);
+        });
+        vtTrack.addEventListener('pointermove', function (e) {
+          if (!vtDown) return;
+          vtTrack.scrollLeft = vtStartScroll - (e.clientX - vtStartX);
+        });
+        vtTrack.addEventListener('pointerup', function () { vtDown = false; });
+        vtTrack.addEventListener('pointercancel', function () { vtDown = false; });
+
+        var vtPrev = document.getElementById('vt-prev'), vtNext = document.getElementById('vt-next');
+        if (vtPrev) vtPrev.addEventListener('click', function () { vtTrack.scrollBy({ left: -vtCardStep(), behavior: 'smooth' }); });
+        if (vtNext) vtNext.addEventListener('click', function () { vtTrack.scrollBy({ left: vtCardStep(), behavior: 'smooth' }); });
+
+        // Placeholder handler — wire this to your real video lightbox/player.
+        vtTrack.querySelectorAll('.vt-play').forEach(function (btn) {
+          btn.addEventListener('click', function (e) {
+            var card = e.currentTarget.closest('.vt-card');
+            var src = card && card.dataset.video;
+            if (!src) return; // no real clip wired up yet for this placeholder card
+            // openVideoLightbox(src);
+          });
+        });
+      }
+
+      // ── Shipped products feature slider ───────────────────────────────
+      var FS_SLIDES = [
+        {
+          badge: 'WhatsApp · Restaurant ordering', badgeColor: 'emerald',
+          title: 'Restaurants that never miss an order',
+          desc: "From table bookings to WhatsApp ordering, our AI concierge handles the full guest journey — no app, no hold music.",
+          ctaHref: 'restaurants.html', ctaLabel: 'View Live Demo',
+          chatName: 'Spice Route · WhatsApp',
+          chat: [
+            { from: 'them', text: 'Table for 4 tonight at 8? 🍽️' },
+            { from: 'me', text: "Booked! ✅ Table for 4 at 8:00 PM. Want to pre-order starters so they're ready?" },
+            { from: 'them', text: 'Yes — 2 Paneer Tikka 🍢' },
+            { from: 'me', text: 'Added 2× Paneer Tikka (₹520). Pay now via link or at the table?' },
+          ],
+        },
+        {
+          badge: 'Instagram · DM booking', badgeColor: 'fuchsia',
+          title: 'Salons that book themselves',
+          desc: 'Clients pick a slot, pay a deposit, and get reminders — all inside Instagram DMs and WhatsApp, all automatic.',
+          ctaHref: 'salons.html', ctaLabel: 'View Live Demo',
+          chatName: 'Luxe Salon · Instagram',
+          chat: [
+            { from: 'them', text: 'Any slot for hair spa this Saturday? 💆‍♀️' },
+            { from: 'me', text: 'Yes! Sat 11:30 AM or 4:00 PM with our senior stylist. Which works?' },
+            { from: 'them', text: '11:30 please' },
+            { from: 'me', text: 'Booked for Sat 11:30 AM 🎉 Reminder + location sent. See you soon!' },
+          ],
+        },
+        {
+          badge: 'Website · Appointment widget', badgeColor: 'cyan',
+          title: 'Clinics that qualify patients automatically',
+          desc: 'Department routing, doctor availability, pre-visit forms and report follow-ups — right from your website chat.',
+          ctaHref: 'clinics.html', ctaLabel: 'View Live Demo',
+          chatName: 'City Care · Website',
+          chat: [
+            { from: 'them', text: 'I need a dermatologist appointment.' },
+            { from: 'me', text: 'Sure! Dr. Rao has Mon 10:15 AM & Tue 6:00 PM open. Shall I book one?' },
+            { from: 'them', text: 'Tuesday 6 PM works.' },
+            { from: 'me', text: 'Confirmed for Tue 6:00 PM with Dr. Rao 📋 Pre-visit form sent on WhatsApp.' },
+          ],
+        },
+      ];
+
+      var fsTrack = document.getElementById('fs-track'), fsDots = document.getElementById('fs-dots');
+      var fsIndex = 0;
+
+      function fsBadgeClasses(color) {
+        var map = {
+          emerald: 'bg-emerald-400/15 text-emerald-300',
+          fuchsia: 'bg-fuchsia-400/15 text-fuchsia-300',
+          cyan: 'bg-cyan/15 text-cyan',
+        };
+        return map[color] || map.cyan;
+      }
+
+      function fsRenderSlides() {
+        if (!fsTrack) return;
+        FS_SLIDES.forEach(function (s) {
+          var slide = document.createElement('div');
+          slide.className = 'fs-slide grid md:grid-cols-2 gap-8 items-center rounded-3xl p-8 md:p-12';
+          slide.style.background = 'linear-gradient(180deg,#0f172a 0%,#0b1222 100%)';
+          slide.style.border = '1px solid #1e293b';
+          slide.style.boxShadow = 'inset 0 1px 0 rgba(255,255,255,0.04), inset 0 -20px 40px -20px rgba(0,0,0,0.6)';
+
+          var left = document.createElement('div');
+          var badge = document.createElement('span');
+          badge.className = 'inline-block text-xs font-600 px-3 py-1 rounded-full mb-4 ' + fsBadgeClasses(s.badgeColor);
+          badge.textContent = s.badge;
+          var h3 = document.createElement('h3');
+          h3.className = 'font-display font-700 text-white text-2xl md:text-3xl mb-3';
+          h3.textContent = s.title;
+          var p = document.createElement('p');
+          p.className = 'text-slate-400 mb-6 leading-relaxed';
+          p.textContent = s.desc;
+          var cta = document.createElement('a');
+          cta.href = s.ctaHref;
+          cta.className = 'inline-flex items-center gap-2 rounded-full px-5 py-2.5 font-600 text-slate-950 bg-gradient-to-r from-coral to-orange hover:brightness-110 transition';
+          cta.textContent = s.ctaLabel + ' →';
+          left.appendChild(badge); left.appendChild(h3); left.appendChild(p); left.appendChild(cta);
+
+          var right = document.createElement('div');
+          right.className = 'rounded-2xl overflow-hidden';
+          right.style.background = 'rgba(255,255,255,0.04)';
+          right.style.border = '1px solid rgba(255,255,255,0.10)';
+          right.style.backdropFilter = 'blur(16px)';
+          var chatHead = document.createElement('div');
+          chatHead.className = 'px-4 py-3.5 border-b border-white/10 text-white font-500 text-sm';
+          chatHead.textContent = s.chatName;
+          var chatBody = document.createElement('div');
+          chatBody.className = 'px-4 py-4 space-y-2.5 text-[13px]';
+          s.chat.forEach(function (m) {
+            var bubble = document.createElement('div');
+            bubble.className = m.from === 'me'
+              ? 'ml-auto max-w-[88%] bg-gradient-to-br from-coral to-orange text-white rounded-2xl rounded-tr-md px-3 py-2'
+              : 'max-w-[85%] bg-white/10 text-slate-100 rounded-2xl rounded-tl-md px-3 py-2';
+            bubble.textContent = m.text;
+            chatBody.appendChild(bubble);
+          });
+          right.appendChild(chatHead); right.appendChild(chatBody);
+
+          slide.appendChild(left); slide.appendChild(right);
+          fsTrack.appendChild(slide);
+        });
+      }
+
+      function fsRenderDots() {
+        if (!fsDots) return;
+        FS_SLIDES.forEach(function (_, i) {
+          var dot = document.createElement('button');
+          dot.className = 'fs-dot' + (i === fsIndex ? ' is-active' : '');
+          dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+          dot.addEventListener('click', function () { fsGoTo(i); });
+          fsDots.appendChild(dot);
+        });
+      }
+
+      function fsGoTo(i) {
+        if (!fsTrack) return;
+        fsIndex = (i + FS_SLIDES.length) % FS_SLIDES.length;
+        fsTrack.style.transform = 'translateX(-' + (fsIndex * 100) + '%)';
+        if (fsDots) {
+          Array.prototype.forEach.call(fsDots.children, function (d, di) {
+            d.classList.toggle('is-active', di === fsIndex);
+          });
+        }
+      }
+
+      if (fsTrack) {
+        fsRenderSlides();
+        fsRenderDots();
+        fsGoTo(0);
+        var fsPrev = document.getElementById('fs-prev'), fsNext = document.getElementById('fs-next');
+        if (fsPrev) fsPrev.addEventListener('click', function () { fsGoTo(fsIndex - 1); });
+        if (fsNext) fsNext.addEventListener('click', function () { fsGoTo(fsIndex + 1); });
+      }
     })();
   </script>
 
