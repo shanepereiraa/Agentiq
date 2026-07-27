@@ -316,6 +316,136 @@
     .fs-dot { width: .5rem; height: .5rem; border-radius: 9999px; background: #334155; transition: width .3s ease, background .3s ease; }
     .fs-dot.is-active { width: 1.5rem; background: #FF6B5C; }
 
+    /* ── ROI calculator ─────────────────────────────────────────── */
+    .roi-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,107,92,0.25);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.03), 0 0 60px rgba(255,107,92,0.10);
+    }
+    .roi-result { background: rgba(255,107,92,0.06); border: 1px solid rgba(255,107,92,0.2); }
+    .grad-text-roi {
+      background: linear-gradient(100deg,#FFB36B 0%,#FF6B5C 50%,#FF9F45 100%);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    @media (forced-colors: active) { .grad-text-roi { background: none; -webkit-background-clip: initial; background-clip: initial; color: CanvasText; } }
+    /* Custom range slider — native inputs ignore most Tailwind classes,
+       so track/thumb are styled directly per browser engine. */
+    .roi-range {
+      -webkit-appearance: none; appearance: none;
+      width: 100%; height: 6px; border-radius: 9999px;
+      background: linear-gradient(90deg, #FF6B5C var(--fill, 30%), rgba(255,255,255,0.10) var(--fill, 30%));
+      outline: none;
+    }
+    .roi-range::-webkit-slider-thumb {
+      -webkit-appearance: none; appearance: none;
+      width: 20px; height: 20px; border-radius: 9999px;
+      background: #fff;
+      box-shadow: 0 0 0 4px rgba(255,107,92,0.35), 0 2px 8px rgba(0,0,0,0.4);
+      cursor: pointer;
+      transition: transform 0.15s ease;
+    }
+    .roi-range::-webkit-slider-thumb:hover { transform: scale(1.15); }
+    .roi-range::-moz-range-thumb {
+      width: 20px; height: 20px; border-radius: 9999px; border: none;
+      background: #fff; box-shadow: 0 0 0 4px rgba(255,107,92,0.35);
+      cursor: pointer;
+    }
+    .roi-range::-moz-range-track { height: 6px; border-radius: 9999px; background: rgba(255,255,255,0.10); }
+    .roi-range::-moz-range-progress { height: 6px; border-radius: 9999px; background: #FF6B5C; }
+    .roi-cta {
+      background: linear-gradient(135deg,#FF6B5C,#FF9F45);
+      box-shadow: 0 8px 30px rgba(255,107,92,.35);
+      transition: box-shadow .2s ease, transform .2s ease;
+    }
+    .roi-cta:hover { box-shadow: 0 10px 40px rgba(255,107,92,.5); transform: translateY(-1px); }
+
+    /* ── Voice samples soundboard ───────────────────────────────── */
+    .vs-card {
+      border-radius: 1.25rem; padding: 1.5rem;
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(139,92,246,0.18);
+      backdrop-filter: blur(16px);
+    }
+    .vs-badge {
+      font-size: 0.7rem; font-weight: 600; padding: 0.25rem 0.65rem; border-radius: 9999px;
+      background: rgba(139,92,246,0.18); color: #c4b5fd;
+    }
+    .vs-play {
+      flex-shrink: 0; width: 2.75rem; height: 2.75rem; border-radius: 9999px;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg,#7c3aed,#a855f7);
+      box-shadow: 0 4px 20px rgba(124,58,237,0.4);
+      transition: transform 0.15s ease, box-shadow 0.2s ease;
+    }
+    .vs-play:hover { transform: scale(1.08); box-shadow: 0 4px 28px rgba(124,58,237,0.6); }
+    .vs-play svg { margin-left: 1px; } /* optical centering of the play triangle */
+    .vs-wave { display: flex; align-items: center; gap: 3px; height: 22px; }
+    .vs-wave span { width: 3px; height: 6px; border-radius: 9999px; background: #a78bfa; transition: background 0.2s ease; }
+    .vs-wave span:nth-child(1) { height: 8px; }
+    .vs-wave span:nth-child(2) { height: 16px; }
+    .vs-wave span:nth-child(3) { height: 22px; }
+    .vs-wave span:nth-child(4) { height: 14px; }
+    .vs-wave span:nth-child(5) { height: 9px; }
+    /* Animate only while the card carries .is-playing — avoids a permanently
+       running animation on every card (cheaper, and reads as "at rest" otherwise). */
+    .vs-card.is-playing .vs-wave span { animation: vs-bounce 0.9s ease-in-out infinite; background: #FF6B5C; }
+    .vs-card.is-playing .vs-wave span:nth-child(2) { animation-delay: 0.1s; }
+    .vs-card.is-playing .vs-wave span:nth-child(3) { animation-delay: 0.2s; }
+    .vs-card.is-playing .vs-wave span:nth-child(4) { animation-delay: 0.3s; }
+    .vs-card.is-playing .vs-wave span:nth-child(5) { animation-delay: 0.4s; }
+    @keyframes vs-bounce { 0%, 100% { transform: scaleY(0.4); } 50% { transform: scaleY(1); } }
+
+    /* ── Workflow diagram ───────────────────────────────────────── */
+    .wf-canvas { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); overflow: hidden; }
+    .wf-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+      background-size: 36px 36px;
+      mask-image: radial-gradient(ellipse at center, #000 40%, transparent 80%);
+    }
+    .wf-node {
+      position: relative; z-index: 1;
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 1.25rem; padding: 1.5rem; backdrop-filter: blur(12px);
+    }
+    .wf-node-featured { border-color: rgba(255,107,92,0.4); box-shadow: 0 0 40px rgba(255,107,92,0.15); }
+    .wf-node-icon { width: 3rem; height: 3rem; border-radius: 0.85rem; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
+    .wf-chip { font-size: 0.75rem; font-weight: 500; padding: 0.3rem 0.7rem; border-radius: 9999px; background: rgba(34,211,238,0.12); border: 1px solid rgba(34,211,238,0.25); color: #67e8f9; }
+    .wf-connector {
+      position: relative; z-index: 1; width: 64px; height: 2px; flex-shrink: 0; align-self: center;
+      background: repeating-linear-gradient(90deg, rgba(255,255,255,0.25) 0 6px, transparent 6px 12px);
+      margin: 0 -4px;
+    }
+    .wf-dot {
+      position: absolute; top: 50%; left: 0; width: 8px; height: 8px; border-radius: 9999px;
+      background: #FF6B5C; box-shadow: 0 0 12px rgba(255,107,92,0.9);
+      transform: translateY(-50%);
+      animation: wf-travel 1.8s linear infinite;
+    }
+    @keyframes wf-travel { 0% { left: 0; opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { left: 100%; opacity: 0; } }
+    @media (max-width: 767px) {
+      .wf-connector { width: 2px; height: 40px; margin: -4px 0; align-self: center; }
+      .wf-connector-line { display: none; }
+      .wf-dot { top: 0; left: 50%; transform: translateX(-50%); animation-name: wf-travel-vertical; }
+      @keyframes wf-travel-vertical { 0% { top: 0; opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { top: 100%; opacity: 0; } }
+    }
+
+    /* ── Mobile quick bar ───────────────────────────────────────── */
+    .mqb-bar {
+      display: none;
+      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      background: rgba(15,23,42,0.82);
+      border-top: 1px solid rgba(30,41,59,0.9);
+      padding-bottom: calc(0.75rem + env(safe-area-inset-bottom));
+    }
+    @media (max-width: 767px) { .mqb-bar { display: flex; } body { padding-bottom: calc(4.25rem + env(safe-area-inset-bottom)); } }
+    .mqb-btn { display: flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.7rem 1rem; border-radius: 0.85rem; font-weight: 600; font-size: 0.875rem; transition: transform 0.15s ease, box-shadow 0.2s ease; }
+    .mqb-btn:active { transform: scale(0.97); }
+    .mqb-btn-whatsapp { background: #25D366; color: #fff; box-shadow: 0 4px 16px rgba(37,211,102,0.35); }
+    .mqb-btn-demo { background: linear-gradient(135deg,#FF6B5C,#FF9F45); color: #0b1222; box-shadow: 0 4px 16px rgba(255,107,92,0.4); }
+
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation: none !important; transition: none !important; }
       .reveal { opacity: 1 !important; transform: none !important; }
@@ -325,6 +455,8 @@
       .faq-content { opacity: 1 !important; transform: none !important; }
       #formmsg { opacity: 1 !important; transform: none !important; }
       .fs-track { transition: none !important; }
+      .vs-card.is-playing .vs-wave span { animation: none; }
+      .wf-dot { animation: none; opacity: 0.9; }
     }
 
     /* ── AI Chat Widget ─────────────────────────────── */
@@ -632,6 +764,73 @@
       </div>
     </section>
 
+    <!-- ============================================================
+      WORKFLOW DIAGRAM
+      Swap content: edit node titles/icons directly in the markup below.
+      Add/remove "action" chips inside the third node's .wf-chip-list.
+    ============================================================= -->
+    <section id="workflow-diagram" class="relative py-20 px-5 overflow-hidden" style="background:linear-gradient(180deg,#060f28 0%,#050b1c 50%,#060f28 100%)">
+      <div class="max-w-5xl mx-auto">
+        <div class="reveal text-center mb-14">
+          <p class="text-cyan text-sm font-semibold tracking-widest uppercase mb-3">Under The Hood</p>
+          <h2 class="font-display font-bold text-white text-3xl sm:text-4xl tracking-tight">One pipeline, every channel</h2>
+          <p class="mt-4 text-slate-400">Here's exactly how a message becomes a booked order.</p>
+        </div>
+
+        <div class="reveal wf-canvas relative rounded-3xl p-8 md:p-14">
+          <div class="wf-grid" aria-hidden="true"></div>
+
+          <div class="relative flex flex-col md:flex-row items-stretch md:items-center gap-6 md:gap-0">
+
+            <!-- Node 1: Customer Channel -->
+            <div class="wf-node flex-1">
+              <div class="wf-node-icon" style="background:rgba(34,197,94,.15);color:#4ade80">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+              </div>
+              <h3 class="font-display font-semibold text-white text-lg mb-1">Customer Channel</h3>
+              <p class="text-slate-400 text-sm">WhatsApp, Instagram DM, or a phone call — wherever they already are.</p>
+            </div>
+
+            <!-- Connector 1 -->
+            <div class="wf-connector" aria-hidden="true">
+              <div class="wf-connector-line"></div>
+              <span class="wf-dot"></span>
+            </div>
+
+            <!-- Node 2: AI Engine -->
+            <div class="wf-node flex-1 wf-node-featured">
+              <div class="wf-node-icon" style="background:rgba(255,107,92,.15);color:#FF6B5C">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 6v6l4 2"/></svg>
+              </div>
+              <h3 class="font-display font-semibold text-white text-lg mb-1">AgentIQ AI Engine</h3>
+              <p class="text-slate-400 text-sm">Claude for language + reasoning, Vapi for real-time voice.</p>
+            </div>
+
+            <!-- Connector 2 -->
+            <div class="wf-connector" aria-hidden="true">
+              <div class="wf-connector-line"></div>
+              <span class="wf-dot" style="animation-delay:0.9s"></span>
+            </div>
+
+            <!-- Node 3: Actions -->
+            <div class="wf-node flex-1">
+              <div class="wf-node-icon" style="background:rgba(34,211,238,.15);color:#22D3EE">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M18 17V9M13 17V5M8 17v-4"/></svg>
+              </div>
+              <h3 class="font-display font-semibold text-white text-lg mb-2">Actions</h3>
+              <div class="wf-chip-list flex flex-wrap gap-2">
+                <span class="wf-chip">POS</span>
+                <span class="wf-chip">Shopify</span>
+                <span class="wf-chip">Google Sheets</span>
+                <span class="wf-chip">CRM</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- THREE PRODUCTS: interactive feature slider
          Swap content: edit the FS_SLIDES array near the bottom of the main
          <script> block. ctaHref already points at the real live pages
@@ -731,6 +930,129 @@
         </div>
       </div>
     </section>
+
+    <!-- ============================================================
+      VOICE SAMPLES SOUNDBOARD
+      Swap content: point each .vs-card's <audio src> at a real hosted
+      clip (mp3), and update the title/lang badge text. Duration shows
+      automatically once metadata loads.
+    ============================================================= -->
+    <section id="voice-samples" class="relative py-20 px-5 overflow-hidden" style="background:linear-gradient(180deg,#060f28 0%,#080120 50%,#060f28 100%)">
+      <div class="max-w-5xl mx-auto">
+        <div class="reveal text-center mb-10">
+          <p class="text-violet-300 text-sm font-semibold tracking-widest uppercase mb-3">Hear It Yourself</p>
+          <h2 class="font-display font-bold text-white text-3xl sm:text-4xl tracking-tight">Real voice agent samples</h2>
+          <p class="mt-4 text-slate-400">Same brain, different accents — tap play on any card.</p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <!-- REPLACE: each card's audio src + labels -->
+          <article class="reveal vs-card">
+            <audio class="vs-audio" preload="none" src="/media/voice-restaurant-hindi.mp3"></audio>
+            <div class="flex items-start justify-between mb-4">
+              <span class="vs-badge">Hindi</span>
+              <span class="text-slate-500 text-xs">Restaurant · Takeout</span>
+            </div>
+            <div class="flex items-center gap-4">
+              <button class="vs-play" aria-label="Play sample">
+                <svg class="vs-icon-play w-5 h-5 fill-white" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                <svg class="vs-icon-pause w-5 h-5 fill-white hidden" viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+              </button>
+              <div class="vs-wave" aria-hidden="true">
+                <span></span><span></span><span></span><span></span><span></span>
+              </div>
+              <span class="vs-time text-slate-400 text-xs tabular-nums ml-auto">0:00</span>
+            </div>
+            <p class="text-slate-400 text-sm mt-4">"Table for 4 tonight at 8? 🍽️" — full booking + upsell flow in Hindi.</p>
+          </article>
+
+          <article class="reveal vs-card">
+            <audio class="vs-audio" preload="none" src="/media/voice-salon-hinglish.mp3"></audio>
+            <div class="flex items-start justify-between mb-4">
+              <span class="vs-badge">Hinglish</span>
+              <span class="text-slate-500 text-xs">Salon · Booking</span>
+            </div>
+            <div class="flex items-center gap-4">
+              <button class="vs-play" aria-label="Play sample">
+                <svg class="vs-icon-play w-5 h-5 fill-white" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                <svg class="vs-icon-pause w-5 h-5 fill-white hidden" viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+              </button>
+              <div class="vs-wave" aria-hidden="true">
+                <span></span><span></span><span></span><span></span><span></span>
+              </div>
+              <span class="vs-time text-slate-400 text-xs tabular-nums ml-auto">0:00</span>
+            </div>
+            <p class="text-slate-400 text-sm mt-4">"Kal 3:30 slot free hai" — stylist selection + reminder call.</p>
+          </article>
+
+          <article class="reveal vs-card">
+            <audio class="vs-audio" preload="none" src="/media/voice-d2c-english.mp3"></audio>
+            <div class="flex items-start justify-between mb-4">
+              <span class="vs-badge">English</span>
+              <span class="text-slate-500 text-xs">D2C · Cart Recovery</span>
+            </div>
+            <div class="flex items-center gap-4">
+              <button class="vs-play" aria-label="Play sample">
+                <svg class="vs-icon-play w-5 h-5 fill-white" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                <svg class="vs-icon-pause w-5 h-5 fill-white hidden" viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+              </button>
+              <div class="vs-wave" aria-hidden="true">
+                <span></span><span></span><span></span><span></span><span></span>
+              </div>
+              <span class="vs-time text-slate-400 text-xs tabular-nums ml-auto">0:00</span>
+            </div>
+            <p class="text-slate-400 text-sm mt-4">"Noticed you left something in your cart" — friendly nudge + discount offer.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <script type="module">
+      let currentlyPlayingAudio = null;
+
+      function vsFmtTime(sec) {
+        if (!isFinite(sec)) return '0:00';
+        const m = Math.floor(sec / 60);
+        const s = Math.floor(sec % 60).toString().padStart(2, '0');
+        return `${m}:${s}`;
+      }
+
+      document.querySelectorAll('#voice-samples .vs-card').forEach((card) => {
+        const audio = card.querySelector('.vs-audio');
+        const btn = card.querySelector('.vs-play');
+        const playIcon = card.querySelector('.vs-icon-play');
+        const pauseIcon = card.querySelector('.vs-icon-pause');
+        const timeEl = card.querySelector('.vs-time');
+
+        function setPlayingUI(isPlaying) {
+          card.classList.toggle('is-playing', isPlaying);
+          playIcon.classList.toggle('hidden', isPlaying);
+          pauseIcon.classList.toggle('hidden', !isPlaying);
+        }
+
+        btn.addEventListener('click', () => {
+          if (audio.paused) {
+            // HTML5 Audio has no built-in "only one at a time" behavior —
+            // pause whatever else is playing before starting this one.
+            if (currentlyPlayingAudio && currentlyPlayingAudio !== audio) {
+              currentlyPlayingAudio.pause();
+            }
+            audio.play();
+            currentlyPlayingAudio = audio;
+          } else {
+            audio.pause();
+          }
+        });
+
+        audio.addEventListener('play', () => setPlayingUI(true));
+        audio.addEventListener('pause', () => setPlayingUI(false));
+        audio.addEventListener('ended', () => { setPlayingUI(false); timeEl.textContent = vsFmtTime(0); });
+        audio.addEventListener('loadedmetadata', () => { timeEl.textContent = vsFmtTime(audio.duration); });
+        audio.addEventListener('timeupdate', () => {
+          timeEl.textContent = vsFmtTime(audio.duration - audio.currentTime);
+        });
+      });
+    </script>
 
     <!-- LIVE DEMO -->
     <section id="demo" class="relative py-24 px-5 overflow-hidden" style="content-visibility:auto;contain-intrinsic-size:0 700px;background:linear-gradient(180deg,#060f28 0%,#071520 50%,#060f28 100%)">
@@ -963,6 +1285,91 @@
         <p class="reveal text-center text-slate-400 text-sm mt-9">Don't see your industry? <a href="#book" class="text-cyan hover:text-white transition-colors cursor-pointer font-500">We build custom bots too →</a></p>
       </div>
     </section>
+
+    <!-- ============================================================
+      ROI CALCULATOR
+      Swap content: adjust AFTER_HOURS_SHARE and MISS_RATE in the script
+      below if you have real client data — they're the two assumptions
+      driving the estimate and are surfaced in the disclaimer text so
+      the number reads as illustrative, not a guarantee.
+    ============================================================= -->
+    <section id="roi-calculator" class="relative py-20 px-5 overflow-hidden" style="background:linear-gradient(180deg,#060f28 0%,#071528 50%,#060f28 100%)">
+      <div class="max-w-2xl mx-auto">
+        <div class="reveal text-center mb-10">
+          <p class="text-orange-400 text-sm font-semibold tracking-widest uppercase mb-3">Free Calculator</p>
+          <h2 class="font-display font-bold text-white text-3xl sm:text-4xl tracking-tight">How much are missed messages costing you?</h2>
+          <p class="mt-4 text-slate-400">Slide to match your business — the estimate updates live.</p>
+        </div>
+
+        <div class="reveal roi-card rounded-3xl p-7 sm:p-9">
+          <div class="mb-8">
+            <div class="flex items-baseline justify-between mb-2">
+              <label for="roi-volume" class="text-slate-300 text-sm font-medium">Daily inbound calls / messages</label>
+              <span id="roi-volume-val" class="text-white font-display font-bold text-lg">45</span>
+            </div>
+            <input id="roi-volume" type="range" min="10" max="200" value="45" step="1" class="roi-range" />
+            <div class="flex justify-between text-xs text-slate-500 mt-1"><span>10</span><span>200</span></div>
+          </div>
+
+          <div class="mb-9">
+            <div class="flex items-baseline justify-between mb-2">
+              <label for="roi-value" class="text-slate-300 text-sm font-medium">Average order / booking value</label>
+              <span id="roi-value-val" class="text-white font-display font-bold text-lg">₹1,500</span>
+            </div>
+            <input id="roi-value" type="range" min="500" max="10000" value="1500" step="100" class="roi-range" />
+            <div class="flex justify-between text-xs text-slate-500 mt-1"><span>₹500</span><span>₹10,000</span></div>
+          </div>
+
+          <div class="roi-result rounded-2xl p-6 text-center mb-7">
+            <p class="text-slate-400 text-sm mb-1">Estimated Monthly Lost Revenue</p>
+            <p id="roi-output" class="font-display font-bold text-4xl sm:text-5xl grad-text-roi">₹0</p>
+            <p class="text-slate-500 text-xs mt-3">Based on ~30% of inbound traffic landing after hours, and roughly 1 in 4 of those going unanswered and lost to a competitor.</p>
+          </div>
+
+          <a href="#book" class="roi-cta group flex items-center justify-center gap-2 w-full rounded-xl px-6 py-4 font-semibold text-slate-950 text-[15px]">
+            Stop Losing Revenue — Book A Free Setup Call
+            <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <script type="module">
+      const ROI_AFTER_HOURS_SHARE = 0.30; // % of daily inbound volume assumed after-hours
+      const ROI_MISS_RATE = 0.25;         // % of after-hours traffic assumed unanswered/lost
+
+      const roiVolumeInput = document.getElementById('roi-volume');
+      const roiValueInput = document.getElementById('roi-value');
+      const roiVolumeVal = document.getElementById('roi-volume-val');
+      const roiValueVal = document.getElementById('roi-value-val');
+      const roiOutput = document.getElementById('roi-output');
+
+      function roiFmtINR(n) {
+        return '₹' + Math.round(n).toLocaleString('en-IN');
+      }
+
+      function roiUpdateSliderFill(el) {
+        const pct = ((el.value - el.min) / (el.max - el.min)) * 100;
+        el.style.setProperty('--fill', pct + '%');
+      }
+
+      function roiRecalc() {
+        const volume = Number(roiVolumeInput.value);
+        const orderValue = Number(roiValueInput.value);
+        const missedLeadsPerDay = volume * ROI_AFTER_HOURS_SHARE * ROI_MISS_RATE;
+        const monthlyLostRevenue = missedLeadsPerDay * 30 * orderValue;
+
+        roiVolumeVal.textContent = volume;
+        roiValueVal.textContent = roiFmtINR(orderValue);
+        roiOutput.textContent = roiFmtINR(monthlyLostRevenue);
+        roiUpdateSliderFill(roiVolumeInput);
+        roiUpdateSliderFill(roiValueInput);
+      }
+
+      roiVolumeInput.addEventListener('input', roiRecalc);
+      roiValueInput.addEventListener('input', roiRecalc);
+      roiRecalc();
+    </script>
 
     <!-- PRICING -->
     <section id="pricing" class="relative py-24 px-5 overflow-hidden" style="content-visibility:auto;contain-intrinsic-size:0 700px;background:linear-gradient(180deg,#060f28 0%,#080518 50%,#060f28 100%)">
@@ -1414,10 +1821,29 @@
     </div>
   </div>
 
-  <!-- Floating WhatsApp button -->
-  <a href="https://wa.me/919159665277?text=Hi%20AgentIQ%2C%20I%27d%20like%20to%20book%20a%20demo" target="_blank" rel="noopener noreferrer" aria-label="Chat with AgentIQ on WhatsApp" class="cursor-pointer fixed bottom-5 right-5 z-50 grid place-items-center w-14 h-14 rounded-full bg-emerald-500 text-white shadow-xl shadow-emerald-500/30 hover:bg-emerald-400 transition-colors duration-200 animate-float">
+  <!-- Floating WhatsApp button (desktop only — mobile gets the quick bar below,
+       so the two don't visually stack/duplicate on small screens) -->
+  <a href="https://wa.me/919159665277?text=Hi%20AgentIQ%2C%20I%27d%20like%20to%20book%20a%20demo" target="_blank" rel="noopener noreferrer" aria-label="Chat with AgentIQ on WhatsApp" class="cursor-pointer fixed bottom-5 right-5 z-50 hidden md:grid place-items-center w-14 h-14 rounded-full bg-emerald-500 text-white shadow-xl shadow-emerald-500/30 hover:bg-emerald-400 transition-colors duration-200 animate-float">
     <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
   </a>
+
+  <!-- ============================================================
+    MOBILE QUICK BAR
+    Swap content: update the WhatsApp number/prefilled text if it
+    ever changes. Hidden entirely at md+ (desktop keeps the round
+    floating WhatsApp button above instead).
+  ============================================================= -->
+  <div id="mobile-quickbar" class="mqb-bar fixed bottom-0 left-0 right-0 z-50 gap-3 px-4 py-3">
+    <a href="https://wa.me/919159665277?text=Hi%20AgentIQ%2C%20I%27d%20like%20to%20know%20more"
+       target="_blank" rel="noopener noreferrer"
+       class="mqb-btn mqb-btn-whatsapp flex-1">
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
+      WhatsApp Us
+    </a>
+    <a href="#book" class="mqb-btn mqb-btn-demo flex-1">
+      Book Free Demo
+    </a>
+  </div>
 
   <!-- AgentIQ chatbot backend -->
   <script>
