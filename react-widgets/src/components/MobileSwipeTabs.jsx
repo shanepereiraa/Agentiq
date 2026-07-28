@@ -71,9 +71,8 @@ export default function MobileSwipeTabs() {
   return (
     <div className="block md:hidden w-full">
       <div
-        className="sticky top-16 z-10 flex gap-2 overflow-x-auto px-4 py-3 -mx-4"
+        className="sticky top-16 z-10 flex gap-2 overflow-x-auto scrollbar-hide px-4 py-3 -mx-4"
         style={{
-          scrollbarWidth: 'none',
           scrollSnapType: 'x mandatory',
           background: 'rgba(6,15,40,0.85)',
           backdropFilter: 'blur(12px)',

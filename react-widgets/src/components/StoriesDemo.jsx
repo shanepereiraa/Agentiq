@@ -56,8 +56,12 @@ const STORIES = [
 
 const LINE_DURATION = 3000;
 
+const THINKING_DELAY = 500;
+
 function StoryModal({ story, onClose }) {
   const [lineIndex, setLineIndex] = useState(0);
+  const [visibleCount, setVisibleCount] = useState(1);
+  const [thinking, setThinking] = useState(false);
   const [paused, setPaused] = useState(false);
   const [elapsed, setElapsed] = useState(0);
   const rafRef = useRef();
@@ -92,6 +96,24 @@ function StoryModal({ story, onClose }) {
     return () => cancelAnimationFrame(rafRef.current);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [paused, lineIndex]);
+
+  // "AI is thinking…" beat before every bot bubble — first line reveals instantly,
+  // later lines only pause-then-think when the upcoming line is the bot's turn.
+  useEffect(() => {
+    const targetCount = lineIndex + 1;
+    if (targetCount <= visibleCount) return;
+    const nextLine = story.lines[targetCount - 1];
+    if (nextLine.from === 'bot') {
+      setThinking(true);
+      const t = setTimeout(() => {
+        setThinking(false);
+        setVisibleCount(targetCount);
+      }, THINKING_DELAY);
+      return () => clearTimeout(t);
+    }
+    setVisibleCount(targetCount);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [lineIndex]);
 
   const waHref = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(
     `Hi Agent IQ, I just watched the ${story.name} demo — can you show me more?`
@@ -157,11 +179,12 @@ function StoryModal({ story, onClose }) {
         </div>
 
         <div className="flex-1 flex flex-col justify-center gap-3 px-6 pt-16 pb-28">
-          {story.lines.slice(0, lineIndex + 1).map((line, i) => (
+          {story.lines.slice(0, visibleCount).map((line, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 10 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
+              transition={{ type: 'spring', stiffness: 200, damping: 20 }}
               className={`max-w-[80%] rounded-2xl px-4 py-2.5 text-sm ${
                 line.from === 'bot' ? 'ml-auto text-white rounded-tr-md' : 'text-slate-100 rounded-tl-md'
               }`}
@@ -172,6 +195,28 @@ function StoryModal({ story, onClose }) {
               {line.text}
             </motion.div>
           ))}
+
+          <AnimatePresence>
+            {thinking && (
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -6 }}
+                transition={{ type: 'spring', stiffness: 200, damping: 20 }}
+                className="ml-auto inline-flex items-center gap-1.5 rounded-2xl rounded-tr-md px-4 py-3"
+                style={{ background: `linear-gradient(135deg,${story.accent},#00000030)` }}
+              >
+                {[0, 1, 2].map((i) => (
+                  <motion.span
+                    key={i}
+                    className="w-1.5 h-1.5 rounded-full bg-white/80"
+                    animate={{ opacity: [0.3, 1, 0.3] }}
+                    transition={{ duration: 0.9, repeat: Infinity, delay: i * 0.15 }}
+                  />
+                ))}
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
 
         <div className="absolute bottom-0 left-0 right-0 p-4" style={{ background: 'linear-gradient(0deg,rgba(0,0,0,.6),transparent)' }}>
@@ -195,8 +240,14 @@ export default function StoriesDemo() {
   const [activeStory, setActiveStory] = useState(null);
 
   return (
-    <div className="w-full">
-      <div className="flex justify-center items-center gap-4 sm:gap-6 mx-auto overflow-x-auto px-1 py-1" style={{ scrollbarWidth: 'none' }}>
+    <motion.div
+      className="w-full"
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-80px' }}
+      transition={{ type: 'spring', stiffness: 200, damping: 20 }}
+    >
+      <div className="flex justify-center items-center gap-4 sm:gap-6 mx-auto overflow-x-auto scrollbar-hide px-1 py-1">
         {STORIES.map((story) => (
           <button
             key={story.id}
@@ -219,6 +270,6 @@ export default function StoriesDemo() {
       <AnimatePresence>
         {activeStory && <StoryModal story={activeStory} onClose={() => setActiveStory(null)} />}
       </AnimatePresence>
-    </div>
+    </motion.div>
   );
 }

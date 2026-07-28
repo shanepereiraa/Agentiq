@@ -175,9 +175,15 @@
     html { -webkit-font-smoothing: antialiased; }
     body { background: #07173a; }
     /* Global high-contrast focus indicator (WCAG 2.2 SC 2.4.11/2.4.13).
-       Cyan ring with dark offset stays visible on the navy glass UI. */
+       Cyan ring with dark offset stays visible on the navy glass UI.
+       Kept cyan (not the emerald used elsewhere in this polish pass) since
+       this rule is already the established, WCAG-cited site-wide standard —
+       swapping it would make focus state inconsistent with every element
+       that isn't touched by this change. Extended to inputs/textareas,
+       which the original rule didn't cover. */
     a:focus-visible, button:focus-visible, summary:focus-visible,
-    [tabindex]:focus-visible, select:focus-visible {
+    [tabindex]:focus-visible, select:focus-visible,
+    input:focus-visible, textarea:focus-visible {
       outline: 3px solid #22D3EE;
       outline-offset: 2px;
       border-radius: 6px;
@@ -207,8 +213,26 @@
     #dashboard-preview .traffic-dot { width: 11px; height: 11px; border-radius: 9999px; }
     .dot { width:7px; height:7px; border-radius:9999px; background:#FF9F45; animation: dot 1.3s infinite ease-in-out; }
     .dot:nth-child(2){ animation-delay:.18s } .dot:nth-child(3){ animation-delay:.36s }
-    .noise { background-image: radial-gradient(rgba(255,255,255,.03) 1px, transparent 1px); background-size: 22px 22px; }
-    ::selection { background: rgba(255,107,92,.45); color:#fff; }
+    /* Matte grain overlay: fixed full-page <div class="noise"> (added near the end of
+       body) sits above everything at near-zero opacity. feTurbulence SVG data-URI —
+       genuine film-grain texture, not the dot-grid this class held before (that grid
+       was defined but never actually applied to any element on the page). */
+    .noise {
+      position: fixed; inset: 0; z-index: 9999; pointer-events: none;
+      opacity: 0.035; mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+    ::selection { background: rgba(16,185,129,.35); color:#fff; }
+    /* Global custom scrollbar (Linear/Vercel-tier chrome, not the OS default) */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #1e293b; }
+    ::-webkit-scrollbar-thumb { background: #475569; border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #64748b; }
+    html { scrollbar-width: thin; scrollbar-color: #475569 #1e293b; }
+    /* Opt-in: hides the scrollbar entirely on horizontal carousels (marquee, story
+       avatars, mobile industry tabs) while keeping them scrollable. */
+    .scrollbar-hide { scrollbar-width: none; -ms-overflow-style: none; }
+    .scrollbar-hide::-webkit-scrollbar { display: none; }
     .card-lift { transition: transform .25s cubic-bezier(.16,1,.3,1), box-shadow .25s ease; }
     /* Pricing card CTA hover states — CSS instead of onmouseover/onmouseout so they don't need CSP script-src allowance. */
     .cta-outline { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); transition: background-color .2s ease; }
@@ -631,6 +655,10 @@
   <!-- Base background -->
   <div class="fixed inset-0 -z-10 pointer-events-none" style="background:#060f28"></div>
 
+  <!-- Matte grain overlay — see .noise in <style>. Fixed + pointer-events:none so it
+       never blocks clicks on anything beneath it, including other fixed widgets. -->
+  <div class="noise" aria-hidden="true"></div>
+
   <!-- Skip link -->
   <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-[60] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-primary focus:text-white">Skip to content</a>
 
@@ -949,7 +977,8 @@
               <span class="vs-badge">Hindi</span>
               <span class="text-slate-500 text-xs">Restaurant · Takeout</span>
             </div>
-            <div class="flex items-center gap-4">
+            <div class="relative flex items-center gap-4 min-h-[3rem]">
+              <div class="vs-skeleton hidden absolute inset-0 animate-pulse bg-slate-800 rounded-xl" aria-hidden="true"></div>
               <button class="vs-play" aria-label="Play sample">
                 <svg class="vs-icon-play w-5 h-5 fill-white" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                 <svg class="vs-icon-pause w-5 h-5 fill-white hidden" viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
@@ -968,7 +997,8 @@
               <span class="vs-badge">Hinglish</span>
               <span class="text-slate-500 text-xs">Salon · Booking</span>
             </div>
-            <div class="flex items-center gap-4">
+            <div class="relative flex items-center gap-4 min-h-[3rem]">
+              <div class="vs-skeleton hidden absolute inset-0 animate-pulse bg-slate-800 rounded-xl" aria-hidden="true"></div>
               <button class="vs-play" aria-label="Play sample">
                 <svg class="vs-icon-play w-5 h-5 fill-white" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                 <svg class="vs-icon-pause w-5 h-5 fill-white hidden" viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
@@ -987,7 +1017,8 @@
               <span class="vs-badge">English</span>
               <span class="text-slate-500 text-xs">D2C · Cart Recovery</span>
             </div>
-            <div class="flex items-center gap-4">
+            <div class="relative flex items-center gap-4 min-h-[3rem]">
+              <div class="vs-skeleton hidden absolute inset-0 animate-pulse bg-slate-800 rounded-xl" aria-hidden="true"></div>
               <button class="vs-play" aria-label="Play sample">
                 <svg class="vs-icon-play w-5 h-5 fill-white" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                 <svg class="vs-icon-pause w-5 h-5 fill-white hidden" viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
@@ -1021,6 +1052,7 @@
         const timeEl = card.querySelector('.vs-time');
         const badgeEl = card.querySelector('.vs-badge');
         const descEl = card.querySelector('.text-slate-500');
+        const skeleton = card.querySelector('.vs-skeleton');
         // e.g. "Hindi Voice Demo - Restaurant" — feeds the mobile mini audio bar (MobileAudioBar.jsx)
         const label = `${badgeEl.textContent} Voice Demo - ${descEl.textContent.split(' · ')[0]}`;
 
@@ -1052,6 +1084,12 @@
         audio.addEventListener('timeupdate', () => {
           timeEl.textContent = vsFmtTime(audio.duration - audio.currentTime);
         });
+
+        // Skeleton loader: preload="none" means the very first play on each card
+        // triggers a real network fetch — cover that real gap, not a fake timer.
+        audio.addEventListener('loadstart', () => skeleton.classList.remove('hidden'));
+        audio.addEventListener('canplay', () => skeleton.classList.add('hidden'));
+        audio.addEventListener('error', () => skeleton.classList.add('hidden'));
       });
     </script>
 
@@ -1062,7 +1100,7 @@
           <p class="text-violet-300 text-sm font-semibold tracking-widest uppercase mb-3">Watch It In 15 Seconds</p>
           <h2 class="font-display font-bold text-white text-3xl sm:text-4xl tracking-tight text-balance">Tap a business, watch the bot work</h2>
         </div>
-        <div class="reveal" id="stories-demo-root"></div>
+        <div id="stories-demo-root"></div>
       </div>
     </section>
 
@@ -2100,9 +2138,10 @@
               <option class="bg-ink">Not sure yet</option>
             </select>
           </div>
-          <button type="submit" class="btn-pop cursor-pointer w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-cyan to-blue text-white font-600 shadow-lg shadow-cyan/30 hover:shadow-blue/30 transition-shadow duration-200">
-            Book My Free Demo
-            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <button type="submit" class="btn-pop cursor-pointer w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-cyan to-blue text-white font-600 shadow-lg shadow-cyan/30 hover:shadow-blue/30 transition-shadow duration-200 disabled:opacity-90 disabled:cursor-not-allowed">
+            <svg class="btn-spinner hidden w-4 h-4 animate-spin" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 0 1 8-8V0C5.37 0 0 5.37 0 12h4z"></path></svg>
+            <span class="btn-label">Book My Free Demo</span>
+            <svg class="btn-arrow w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </button>
           <p class="text-center text-xs text-slate-400 mt-2">We'll WhatsApp you within 2 hours to pick a time. Free, no commitment.</p>
           <p id="formmsg" class="hidden items-start gap-2 text-sm text-emerald-300" role="status">
@@ -2547,21 +2586,58 @@
         botReply(convo[q]);
         setTimeout(function () { isTyping = false; }, 1200);
       }
-      Object.keys(convo).forEach(function (q) {
-        var b = document.createElement('button');
-        b.type = 'button';
-        b.className = 'cursor-pointer text-sm px-3.5 py-2.5 min-h-[44px] flex items-center rounded-full glass text-slate-200 hover:bg-white/10 hover:text-white transition-colors duration-200';
-        b.textContent = q;
-        b.addEventListener('click', function () {
-          ask(q);
-          if (typeof gtag === 'function') {
-            gtag('event', 'select_content', { content_type: 'demo_chip', item_id: q });
-          }
+      function activateChat() {
+        Object.keys(convo).forEach(function (q) {
+          var b = document.createElement('button');
+          b.type = 'button';
+          b.className = 'cursor-pointer text-sm px-3.5 py-2.5 min-h-[44px] flex items-center rounded-full glass text-slate-200 hover:bg-white/10 hover:text-white transition-colors duration-200';
+          b.textContent = q;
+          b.addEventListener('click', function () {
+            ask(q);
+            if (typeof gtag === 'function') {
+              gtag('event', 'select_content', { content_type: 'demo_chip', item_id: q });
+            }
+          });
+          chips.appendChild(b);
         });
-        chips.appendChild(b);
-      });
-      // seed greeting
-      bubble("Namaste! 👋 I'm AgentIQ. Pick a prompt below to see how I handle real bookings.", 'bot');
+        // seed greeting
+        bubble("Namaste! 👋 I'm AgentIQ. Pick a prompt below to see how I handle real bookings.", 'bot');
+      }
+
+      // Boot sequence: "Connecting…" -> "Loading knowledge base…" -> "Agent Online"
+      // (~1.2s total), then the chips/input become interactive. Reduced-motion
+      // visitors skip straight to the active chat, same as the typing indicator does.
+      function renderBootLine(text, isOnline) {
+        log.innerHTML = '';
+        var d = document.createElement('div');
+        d.className = 'flex items-center gap-2 px-1 text-xs ' + (isOnline ? 'text-emerald-300' : 'text-slate-500');
+        if (isOnline) {
+          var dot = document.createElement('span');
+          dot.className = 'w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0';
+          dot.style.boxShadow = '0 0 6px rgba(52,211,153,.9)';
+          d.appendChild(dot);
+        }
+        var span = document.createElement('span');
+        span.textContent = isOnline ? 'Agent Online' : text;
+        d.appendChild(span);
+        log.appendChild(d);
+      }
+      function bootSequence(done) {
+        if (reduce) { done(); return; }
+        var steps = ['Connecting to Agent IQ server…', 'Loading knowledge base…'];
+        var i = 0;
+        (function next() {
+          if (i < steps.length) {
+            renderBootLine(steps[i]);
+            i++;
+            setTimeout(next, 500);
+          } else {
+            renderBootLine(null, true);
+            setTimeout(function () { log.innerHTML = ''; done(); }, 200);
+          }
+        })();
+      }
+      bootSequence(activateChat);
 
       // ==== BOOKING CALENDAR ====
       var BOOKING_URL = 'https://calendar.google.com/calendar/u/0?cid=c29ydGVkc3BlY2llc0BnbWFpbC5jb20';
@@ -2628,8 +2704,10 @@
 
         var submitBtn = form.querySelector('button[type=submit]');
         submitBtn.disabled = true;
+        submitBtn.querySelector('.btn-spinner').classList.remove('hidden');
+        submitBtn.querySelector('.btn-arrow').classList.add('hidden');
+        submitBtn.querySelector('.btn-label').textContent = 'Opening calendar…';
         showFormSuccess(document.getElementById('formmsg'));
-        submitBtn.textContent = 'Opening calendar… ✓';
         window.open(BOOKING_URL, '_blank', 'noopener,noreferrer');
       });
 
