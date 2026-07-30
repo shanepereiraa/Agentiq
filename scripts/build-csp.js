@@ -24,6 +24,7 @@ const crypto = require('crypto');
 const ROOT = path.resolve(__dirname, '..');
 const PAGES = [
   'index.html', 'clinics.html', 'restaurants.html', 'salons.html', 'demo.html',
+  'tools/whatsapp-link-generator.html',
   'blog/index.html',
   'blog/whatsapp-business-api-vs-chatbot-restaurants.html',
   'blog/ai-chatbot-pricing-india-2026-guide.html',

@@ -35,10 +35,12 @@
     .glass{background:rgba(255,255,255,.05);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.10)}
     .logo-grad-text{background:linear-gradient(135deg,#FF8A5B 0%,#FF5C8A 55%,#C74AFF 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
     
-    /* WhatsApp Device Mockup Styling */
-    .phone-frame{width:100%;max-width:380px;height:660px;max-height:80vh;background:#0f172a;border-radius:44px;border:10px solid #1e293b;box-shadow:0 25px 60px -15px rgba(0,0,0,0.7), 0 0 30px rgba(34,211,238,0.15);position:relative;overflow:hidden;display:flex;flex-direction:column}
-    .phone-notch{width:130px;height:22px;background:#1e293b;position:absolute;top:0;left:50%;transform:translateX(-50%);border-bottom-left-radius:14px;border-bottom-right-radius:14px;z-index:30}
-    .wa-header{background:#075e54;color:#fff;padding:32px 14px 12px 14px;display:flex;align-items:center;gap:10px;z-index:20;box-shadow:0 2px 8px rgba(0,0,0,0.2)}
+    /* Ultra-Premium iPhone 17 Pro Mockup Styling */
+    .phone-frame{width:100%;max-width:380px;height:660px;max-height:80vh;background:#0f172a;border-radius:48px;border:8px solid #2e3545;box-shadow:0 30px 70px -15px rgba(0,0,0,0.85), inset 0 0 0 1.5px rgba(255,255,255,0.2), 0 0 40px rgba(34,211,238,0.18);position:relative;overflow:hidden;display:flex;flex-direction:column}
+    /* Dynamic Island Pill Cutout */
+    .phone-notch{width:96px;height:24px;background:#000;position:absolute;top:10px;left:50%;transform:translateX(-50%);border-radius:20px;z-index:40;box-shadow:0 2px 8px rgba(0,0,0,0.6);display:flex;align-items:center;justify-content:flex-end;padding-right:8px}
+    .phone-notch::after{content:'';width:10px;height:10px;border-radius:50%;background:#0d1b2a;border:2px solid #1a2636}
+    .wa-header{background:#075e54;color:#fff;padding:42px 14px 12px 14px;display:flex;align-items:center;gap:10px;z-index:20;box-shadow:0 2px 8px rgba(0,0,0,0.2)}
     .wa-body{flex:1;background:#0b141a;background-image:radial-gradient(rgba(255,255,255,0.03) 1px, transparent 0);background-size:16px 16px;padding:14px;overflow-y:auto;display:flex;flex-direction:column;gap:10px;scroll-behavior:smooth}
     .msg-bubble{max-width:82%;padding:8px 12px;border-radius:10px;font-size:13px;line-height:1.45;position:relative;word-break:break-word}
     .msg-in{background:#202c33;color:#e9edef;align-self:flex-start;border-top-left-radius:2px}
