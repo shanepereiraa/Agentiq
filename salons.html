@@ -718,9 +718,6 @@
       document.addEventListener('keydown', function (e) {
         if (navOpen && e.key === 'Escape') closeNav();
       });
-      document.addEventListener('click', function (e) {
-        if (navOpen && !navPanel.contains(e.target) && e.target !== navToggle && !navToggle.contains(e.target)) closeNav(false);
-      });
       window.matchMedia('(min-width: 768px)').addEventListener('change', function (e) {
         if (e.matches && navOpen) closeNav(false);
       });
@@ -798,6 +795,9 @@
         showFormSuccess(document.getElementById('formmsg'));
         window.open(BOOKING_URL,'_blank','noopener,noreferrer');
       });
+    })();
+  </script>
+
   <!-- Vapi Voice Assistant Script -->
   <script type="module">
     import('https://esm.sh/@vapi-ai/web').then(function (mod) {
