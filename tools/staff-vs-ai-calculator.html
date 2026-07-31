@@ -111,6 +111,7 @@
 
         <!-- Calculator Form Column -->
         <div class="lg:col-span-6 glass rounded-3xl p-6 sm:p-8 border border-white/10 space-y-6">
+          <h2 class="font-display font-700 text-white text-xl">Calculate Your Annual Payroll Savings</h2>
           
           <div>
             <div class="flex justify-between items-center mb-2">
@@ -249,27 +250,30 @@
       calculate();
 
       // Lead capture
-      document.getElementById('btn-claim-savings').addEventListener('click', function() {
+      document.getElementById('btn-claim-savings').addEventListener('click', async function() {
         var name = document.getElementById('lead-name').value.trim();
         var phone = document.getElementById('lead-phone').value.trim();
-        if (!phone) {
-          alert('Please enter your WhatsApp number.');
+        var cleanPhone = phone.replace(/\D/g, '');
+        if (!cleanPhone) {
+          alert('Please enter a valid WhatsApp number.');
           document.getElementById('lead-phone').focus();
           return;
         }
 
-        fetch('https://agentiq-chatbot.onrender.com/lead', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            name: name || 'Staff Calculator User',
-            email: 'staff-calc@agentiq.co.in',
-            phone: phone,
-            businessName: 'Staff vs AI Tool Lead',
-            industry: 'ROI Tool',
-            notes: 'Calculated annual savings: ' + outSavings.textContent
-          })
-        }).catch(function(e) { console.log(e); });
+        try {
+          await fetch('https://agentiq-chatbot.onrender.com/lead', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              name: name || 'Staff Calculator User',
+              email: 'staff-calc@agentiq.co.in',
+              phone: cleanPhone,
+              businessName: 'Staff vs AI Tool Lead',
+              industry: 'ROI Tool',
+              notes: 'Calculated annual savings: ' + outSavings.textContent
+            })
+          });
+        } catch(e) { console.log(e); }
 
         alert('Thank you! Our agency team will send your custom Staff vs. AI breakdown via WhatsApp shortly.');
       });

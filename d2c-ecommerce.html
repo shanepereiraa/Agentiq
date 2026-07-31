@@ -170,29 +170,32 @@
     (function() {
       'use strict';
       var btn = document.getElementById('btn-submit-d2c');
-      btn.addEventListener('click', function() {
+      btn.addEventListener('click', async function() {
         var name = document.getElementById('d2c-name').value.trim();
         var brand = document.getElementById('d2c-brand').value.trim();
         var phone = document.getElementById('d2c-phone').value.trim();
+        var cleanPhone = phone.replace(/\D/g, '');
 
-        if (!phone) {
-          alert('Please enter your WhatsApp number.');
+        if (!cleanPhone) {
+          alert('Please enter a valid WhatsApp number.');
           document.getElementById('d2c-phone').focus();
           return;
         }
 
-        fetch('https://agentiq-chatbot.onrender.com/lead', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            name: name || 'D2C Lead',
-            email: 'd2c@agentiq.co.in',
-            phone: phone,
-            businessName: brand || 'D2C Brand',
-            industry: 'D2C E-Commerce',
-            notes: 'Requested D2C WhatsApp Cart Recovery & COD audit'
-          })
-        }).catch(function(e) { console.log(e); });
+        try {
+          await fetch('https://agentiq-chatbot.onrender.com/lead', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              name: name || 'D2C Lead',
+              email: 'd2c@agentiq.co.in',
+              phone: cleanPhone,
+              businessName: brand || 'D2C Brand',
+              industry: 'D2C E-Commerce',
+              notes: 'Requested D2C WhatsApp Cart Recovery & COD audit'
+            })
+          });
+        } catch(e) { console.log(e); }
 
         alert('Thank you! Our agency team will contact you on WhatsApp shortly.');
       });

@@ -207,7 +207,7 @@
 
   <!-- Vapi Voice Floating Assistant Widget -->
   <div id="vaq-float">
-    <div id="vaq-status">Click to test Vapi Voice Agent</div>
+    <div id="vaq-status" role="status" aria-live="polite">Click to test Vapi Voice Agent</div>
     <button id="vaq-btn" type="button" aria-label="Test AI Voice Assistant">
       <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/></svg>
     </button>
@@ -358,11 +358,16 @@
         try {
           if (!AGENTIQ_API) throw new Error('API not configured');
 
+          var controller = new AbortController();
+          var fetchTimer = setTimeout(function() { controller.abort(); }, 15000);
+
           var res = await fetch(AGENTIQ_API + '/api/chat', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ messages: conversationHistory })
+            body: JSON.stringify({ messages: conversationHistory }),
+            signal: controller.signal
           });
+          clearTimeout(fetchTimer);
 
           if (!res.ok) throw new Error('API request failed');
 
