@@ -2547,7 +2547,7 @@
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
               name: nameVal,
-              phone: phoneVal,
+              phone: phoneVal.replace(/[\s\-\(\)]/g, ''),
               business: bizVal,
               channel: channelVal,
             }),
