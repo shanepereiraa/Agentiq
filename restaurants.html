@@ -544,7 +544,7 @@
           <p class="text-center text-xs text-slate-400 mt-2">We'll WhatsApp you within 2 hours. Free, no commitment.</p>
           <p id="formmsg" class="hidden items-start gap-2 text-sm text-emerald-300" role="status">
             <svg class="form-success-check w-[18px] h-[18px] shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5 9.5 18 20 6"/></svg>
-            <span>Thanks! We've opened our calendar in a new tab — pick a slot, or we'll WhatsApp you shortly. If the tab didn't open, <a href="https://wa.me/919159665277?text=Hi%20AgentIQ%2C%20I%27d%20like%20a%20restaurant%20demo" target="_blank" rel="noopener noreferrer" class="underline hover:text-white">message us on WhatsApp</a>.</span>
+            <span>Thanks! We've opened WhatsApp in a new tab to confirm your restaurant demo. If it didn't open, <a id="wa-fallback-link" href="https://wa.me/919159665277?text=Hi%20AgentIQ%2C%20I%27d%20like%20a%20restaurant%20demo" target="_blank" rel="noopener noreferrer" class="underline hover:text-white">click here to message us on WhatsApp</a>.</span>
           </p>
         </form>
       </div>
@@ -784,7 +784,6 @@
       var busy=false;
       Object.keys(convo).forEach(function(q){var b=document.createElement('button');b.type='button';b.className='cursor-pointer text-xs px-3 py-1.5 rounded-full glass text-slate-200 hover:bg-white/10 hover:text-white transition-colors duration-200';b.textContent=q;b.addEventListener('click',function(){if(busy)return;busy=true;bubble(q,'me');botReply(convo[q]);setTimeout(function(){busy=false;},1200);});chips.appendChild(b);});
       bubble("Namaste! 👋 I'm AgentIQ for Spice Route. Tap a question to see how I handle your restaurant's bookings!",'bot');
-      var BOOKING_URL='https://calendar.google.com/calendar/u/0?cid=c29ydGVkc3BlY2llc0BnbWFpbC5jb20';
       var form=document.getElementById('leadform');
       form.addEventListener('submit',function(e){
         e.preventDefault();
@@ -793,10 +792,17 @@
         setErr(name,'name-err',!name.value.trim());
         setErr(phone,'phone-err',phone.value.replace(/\D/g,'').length<8);
         if(!ok){if(first)first.focus();return;}
-        if(AGENTIQ_API){fetch(AGENTIQ_API+'/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:name.value.trim(),phone:phone.value.trim(),business:document.getElementById('business').value.trim(),channel:document.getElementById('channel').value})}).catch(function(){});}
-        var btn=form.querySelector('button[type=submit]');btn.disabled=true;btn.textContent='Opening calendar… ✓';
+        var nameVal=name.value.trim(),phoneVal=phone.value.trim(),bizVal=document.getElementById('business').value.trim(),channelVal=document.getElementById('channel').value;
+        if(AGENTIQ_API){fetch(AGENTIQ_API+'/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:nameVal,phone:phoneVal,business:bizVal,channel:channelVal})}).catch(function(){});}
+        var waMessage="Hi AgentIQ, I'd like to book a restaurant demo.\nName: "+nameVal+"\nWhatsApp: "+phoneVal;
+        if(bizVal)waMessage+="\nRestaurant: "+bizVal;
+        if(channelVal)waMessage+="\nInterested in: "+channelVal;
+        var waUrl='https://wa.me/919159665277?text='+encodeURIComponent(waMessage);
+        var fallbackLink=document.getElementById('wa-fallback-link');
+        if(fallbackLink)fallbackLink.href=waUrl;
+        var btn=form.querySelector('button[type=submit]');btn.disabled=true;btn.textContent='Opening WhatsApp… ✓';
         showFormSuccess(document.getElementById('formmsg'));
-        window.open(BOOKING_URL,'_blank','noopener,noreferrer');
+        window.open(waUrl,'_blank','noopener,noreferrer');
       });
     })();
   </script>

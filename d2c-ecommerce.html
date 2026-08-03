@@ -192,7 +192,10 @@
           });
         } catch(e) { console.log(e); }
 
-        alert('Thank you! Our agency team will contact you on WhatsApp shortly.');
+        var waMessage = "Hi AgentIQ, I'd like to book a free D2C WhatsApp audit.\nName: " + (name || 'D2C Lead') + "\nWhatsApp: " + cleanPhone;
+        if (brand) waMessage += "\nBrand: " + brand;
+        var waUrl = 'https://wa.me/919159665277?text=' + encodeURIComponent(waMessage);
+        window.open(waUrl, '_blank', 'noopener,noreferrer');
       });
 
       // Mobile nav
