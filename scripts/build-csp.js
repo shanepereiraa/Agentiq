@@ -78,7 +78,9 @@ function sha256Base64(content) {
 
 const hashes = new Set();
 for (const page of PAGES) {
-  const html = fs.readFileSync(path.join(ROOT, page), 'utf8');
+  const filePath = path.join(ROOT, page);
+  if (!fs.existsSync(filePath)) continue;
+  const html = fs.readFileSync(filePath, 'utf8');
   for (const script of extractInlineScripts(html, page)) {
     hashes.add(`'sha256-${sha256Base64(script)}'`);
   }
