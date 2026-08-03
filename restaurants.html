@@ -490,7 +490,7 @@
     </section>
 
     <!-- BOOK A DEMO -->
-    <section id="book-section" class="relative min-h-[calc(100vh-4rem)] flex items-center justify-center py-16 sm:py-24 px-5 overflow-hidden" style="background:linear-gradient(180deg,#060f28 0%,#07142a 50%,#060f28 100%)">
+    <section id="book-section" class="relative min-h-[calc(100vh-4rem)] flex items-center justify-center py-16 sm:py-24 px-5 scroll-mt-16 overflow-hidden" style="background:linear-gradient(180deg,#060f28 0%,#07142a 50%,#060f28 100%)">
       <div aria-hidden="true" class="pointer-events-none absolute left-1/2 -translate-x-1/2 top-0 w-[600px] h-64 rounded-full" style="background:radial-gradient(ellipse,rgba(34,211,238,.12) 0%,transparent 70%);filter:blur(60px)"></div>
       <div id="book" class="relative w-full max-w-5xl mx-auto reveal rounded-[2rem] p-8 sm:p-12 grid lg:grid-cols-2 gap-10 items-center scroll-mt-24 sm:scroll-mt-28" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);backdrop-filter:blur(16px)">
         <div>
@@ -806,10 +806,15 @@
       });
 
       function scrollToBookCard(e) {
-        var target = document.getElementById('book');
-        if (target) {
+        var targetSection = document.getElementById('book-section');
+        var targetCard = document.getElementById('book');
+        if (targetSection || targetCard) {
           if (e) e.preventDefault();
-          target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          if (targetSection) {
+            targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          } else {
+            targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
           if (history.pushState) { history.pushState(null, null, '#book'); }
         }
       }
