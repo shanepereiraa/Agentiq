@@ -2164,7 +2164,8 @@
       // Previously `AGENTIQ_API` was referenced without being declared, which
       // threw a ReferenceError in strict mode and silently broke form submission
       // and the chat widget send path.
-      var AGENTIQ_API = (window.AgentIQConfig && window.AgentIQConfig.apiBase) || 'https://agentiq-chatbot.vercel.app';
+      var AGENTIQ_API = (window.AgentIQConfig && window.AgentIQConfig.apiBase) || 'https://agentiq-chatbot.onrender.com';
+      window.AGENTIQ_API = AGENTIQ_API;
       document.getElementById('year').textContent = new Date().getFullYear();
 
       // Magnetic hero CTA — pulls the button 4-6px toward the cursor within ~40px of its edge,
@@ -2651,6 +2652,8 @@
           toggle.setAttribute('aria-expanded', 'true');
           notif.classList.add('aiq-gone');
           if (leadCaptured) inp.focus(); else leadNameInput.focus();
+          var apiUrl = (window.AgentIQConfig && window.AgentIQConfig.apiBase) || window.AGENTIQ_API || 'https://agentiq-chatbot.onrender.com';
+          if (apiUrl) fetch(apiUrl + '/health', { mode: 'no-cors' }).catch(function () {});
         }
         function closeChat(returnFocus) {
           open = false;
@@ -2741,7 +2744,8 @@
           var t = addTyping();
           goBtn.disabled = true;
 
-          if (!AGENTIQ_API) {
+          var activeApi = (window.AgentIQConfig && window.AgentIQConfig.apiBase) || window.AGENTIQ_API || 'https://agentiq-chatbot.onrender.com';
+          if (!activeApi) {
             setTimeout(function () {
               t.remove();
               var fb = 'Great question! Our AI assistants handle bookings, orders and FAQs 24/7. — Book a free demo at the bottom of this page to see yours live. 🚀';
@@ -2753,8 +2757,8 @@
           }
 
           var ctrl = new AbortController();
-          var fetchTimer = setTimeout(function () { ctrl.abort(); }, 15000);
-          fetch(AGENTIQ_API + '/api/chat', {
+          var fetchTimer = setTimeout(function () { ctrl.abort(); }, 45000);
+          fetch(activeApi + '/api/chat', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ messages: msgs }),
@@ -2770,22 +2774,19 @@
 
               var contentType = r.headers.get('Content-Type') || '';
               if (contentType.indexOf('application/json') !== -1) {
-                // Rare edge case: Claude produced no text at all, so the
-                // backend fell back to a JSON reply instead of a stream.
                 return r.json().then(function (data) {
                   t.remove();
-                  var reply = data.reply || 'Something went wrong — please try again!';
+                  var reply = data.reply || 'Great question! Our AI assistants handle bookings, orders and FAQs 24/7. — Book a free demo to see yours live! 🚀';
                   msgs.push({ role: 'assistant', content: reply });
-                  addBubble(reply, 'bot');
+                  streamBubble(reply);
                   goBtn.disabled = false;
                 });
               }
 
-              // Real token stream — render chunks as they arrive instead of
-              // waiting for the full reply.
+              // Real token stream — render chunks as they arrive
               t.remove();
               var d = addBubble('', 'bot');
-              d.setAttribute('aria-hidden', 'true'); // one clean announcement on completion, not per-chunk
+              d.setAttribute('aria-hidden', 'true');
               var full = '';
               var reader = r.body.getReader();
               var decoder = new TextDecoder();

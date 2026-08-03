@@ -980,9 +980,10 @@
         var t = addTyping();
         goBtn.disabled = true;
 
+        var activeApi = (window.AgentIQConfig && window.AgentIQConfig.apiBase) || window.AGENTIQ_API || 'https://agentiq-chatbot.onrender.com';
         var ctrl = new AbortController();
-        var fetchTimer = setTimeout(function () { ctrl.abort(); }, 15000);
-        fetch(AGENTIQ_API + '/api/chat', {
+        var fetchTimer = setTimeout(function () { ctrl.abort(); }, 45000);
+        fetch(activeApi + '/api/chat', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ messages: msgs }),
