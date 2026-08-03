@@ -1949,9 +1949,9 @@
     </section>
 
     <!-- BOOK A DEMO -->
-    <section id="book" class="relative py-12 sm:py-20 px-5 overflow-hidden min-h-[calc(100vh-4rem)] flex items-center justify-center scroll-mt-16" style="content-visibility:auto;contain-intrinsic-size:0 600px;background:linear-gradient(180deg,#060f28 0%,#07142a 50%,#060f28 100%)">
+    <section id="book-section" class="relative py-16 sm:py-24 px-5 overflow-hidden" style="content-visibility:auto;contain-intrinsic-size:0 600px;background:linear-gradient(180deg,#060f28 0%,#07142a 50%,#060f28 100%)">
       <div aria-hidden="true" class="pointer-events-none absolute left-1/2 -translate-x-1/2 top-0 w-[700px] h-72 rounded-full" style="background:radial-gradient(ellipse,rgba(34,211,238,.12) 0%,transparent 70%);filter:blur(60px)"></div>
-      <div class="relative max-w-5xl mx-auto reveal rounded-[2rem] p-8 sm:p-12 grid lg:grid-cols-2 gap-10 items-center" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);backdrop-filter:blur(16px)">
+      <div id="book" class="relative max-w-5xl mx-auto reveal rounded-[2rem] p-8 sm:p-12 grid lg:grid-cols-2 gap-10 items-center scroll-mt-24 sm:scroll-mt-28" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);backdrop-filter:blur(16px)">
         <div>
           <h2 class="font-display font-700 text-white text-4xl sm:text-5xl tracking-tighter leading-tight text-balance">Book your free demo</h2>
           <p class="mt-4 text-slate-300 max-w-md">See your own AI assistant in action in a 20-minute call. We'll map your channels, show a live mockup, and give you a launch plan — no obligation.</p>
@@ -2847,19 +2847,6 @@
           value: parseInt(el.dataset.value || '0', 10),
           items: [{ item_name: el.dataset.plan, price: parseInt(el.dataset.value || '0', 10) }]
         });
-      });
-
-      // Smooth scroll & vertical centering for #book anchor links
-      document.addEventListener('click', function (e) {
-        var link = e.target.closest('a[href="#book"]');
-        if (!link) return;
-        var bookSec = document.getElementById('book');
-        if (bookSec) {
-          e.preventDefault();
-          var card = bookSec.querySelector('.max-w-5xl') || bookSec;
-          card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          if (history.pushState) history.pushState(null, '', '#book');
-        }
       });
 
       // WhatsApp CTA clicks (floating button, in-form link, footer links)
