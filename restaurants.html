@@ -490,9 +490,9 @@
     </section>
 
     <!-- BOOK A DEMO -->
-    <section id="book-section" class="relative py-16 sm:py-24 px-5 overflow-hidden" style="background:linear-gradient(180deg,#060f28 0%,#07142a 50%,#060f28 100%)">
+    <section id="book-section" class="relative min-h-[calc(100vh-4rem)] flex items-center justify-center py-16 sm:py-24 px-5 overflow-hidden" style="background:linear-gradient(180deg,#060f28 0%,#07142a 50%,#060f28 100%)">
       <div aria-hidden="true" class="pointer-events-none absolute left-1/2 -translate-x-1/2 top-0 w-[600px] h-64 rounded-full" style="background:radial-gradient(ellipse,rgba(34,211,238,.12) 0%,transparent 70%);filter:blur(60px)"></div>
-      <div id="book" class="relative max-w-5xl mx-auto reveal rounded-[2rem] p-8 sm:p-12 grid lg:grid-cols-2 gap-10 items-center scroll-mt-24 sm:scroll-mt-28" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);backdrop-filter:blur(16px)">
+      <div id="book" class="relative w-full max-w-5xl mx-auto reveal rounded-[2rem] p-8 sm:p-12 grid lg:grid-cols-2 gap-10 items-center scroll-mt-24 sm:scroll-mt-28" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);backdrop-filter:blur(16px)">
         <div>
           <h2 class="font-display font-700 text-white text-4xl sm:text-5xl tracking-tight leading-tight">Book your free restaurant demo</h2>
           <p class="mt-4 text-slate-300 max-w-md">See a live mockup of your restaurant's WhatsApp bot in a 20-minute call. No obligation.</p>
@@ -804,6 +804,21 @@
         showFormSuccess(document.getElementById('formmsg'));
         window.open(waUrl,'_blank','noopener,noreferrer');
       });
+
+      function scrollToBookCard(e) {
+        var target = document.getElementById('book');
+        if (target) {
+          if (e) e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          if (history.pushState) { history.pushState(null, null, '#book'); }
+        }
+      }
+      document.querySelectorAll('a[href="#book"], a[href="/#book"]').forEach(function (link) {
+        link.addEventListener('click', scrollToBookCard);
+      });
+      if (window.location.hash === '#book') {
+        setTimeout(function () { scrollToBookCard(); }, 150);
+      }
     })();
   </script>
 

@@ -205,6 +205,21 @@
       function openNav() { navOpen = true; navPanel.removeAttribute('inert'); navPanel.classList.remove('aiq-shut'); }
       function closeNav() { navOpen = false; navPanel.classList.add('aiq-shut'); navPanel.setAttribute('inert', ''); }
       if (navToggle) navToggle.addEventListener('click', function () { navOpen ? closeNav() : openNav(); });
+
+      function scrollToBookCard(e) {
+        var target = document.getElementById('book');
+        if (target) {
+          if (e) e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          if (history.pushState) { history.pushState(null, null, '#book'); }
+        }
+      }
+      document.querySelectorAll('a[href="#book"], a[href="/#book"]').forEach(function (link) {
+        link.addEventListener('click', scrollToBookCard);
+      });
+      if (window.location.hash === '#book') {
+        setTimeout(function () { scrollToBookCard(); }, 150);
+      }
     })();
   </script>
 </body>
