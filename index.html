@@ -3029,15 +3029,12 @@
 
       // ── Smooth scroll centering for #book links ─────────────────────────
       function scrollToBookCard(e) {
-        var targetSection = document.getElementById('book-section');
         var targetCard = document.getElementById('book');
-        if (targetSection || targetCard) {
+        var targetSection = document.getElementById('book-section');
+        var target = targetCard || targetSection;
+        if (target) {
           if (e) e.preventDefault();
-          if (targetSection) {
-            targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          } else {
-            targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          }
+          target.scrollIntoView({ behavior: 'smooth', block: 'center' });
           if (history.pushState) {
             history.pushState(null, null, '#book');
           }
