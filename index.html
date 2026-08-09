@@ -922,7 +922,7 @@
             </div>
             <div class="relative flex items-center gap-4 min-h-[3rem]">
               <div class="vs-skeleton hidden absolute inset-0 animate-pulse bg-slate-800 rounded-xl" aria-hidden="true"></div>
-              <button class="vs-play" aria-label="Play sample">
+              <button class="vs-play" aria-label="Play Hindi voice sample — Restaurant" aria-pressed="false">
                 <svg class="vs-icon-play w-5 h-5 fill-white" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                 <svg class="vs-icon-pause w-5 h-5 fill-white hidden" viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
               </button>
@@ -941,7 +941,7 @@
             </div>
             <div class="relative flex items-center gap-4 min-h-[3rem]">
               <div class="vs-skeleton hidden absolute inset-0 animate-pulse bg-slate-800 rounded-xl" aria-hidden="true"></div>
-              <button class="vs-play" aria-label="Play sample">
+              <button class="vs-play" aria-label="Play Hinglish voice sample — Salon" aria-pressed="false">
                 <svg class="vs-icon-play w-5 h-5 fill-white" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                 <svg class="vs-icon-pause w-5 h-5 fill-white hidden" viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
               </button>
@@ -960,7 +960,7 @@
             </div>
             <div class="relative flex items-center gap-4 min-h-[3rem]">
               <div class="vs-skeleton hidden absolute inset-0 animate-pulse bg-slate-800 rounded-xl" aria-hidden="true"></div>
-              <button class="vs-play" aria-label="Play sample">
+              <button class="vs-play" aria-label="Play English voice sample — D2C" aria-pressed="false">
                 <svg class="vs-icon-play w-5 h-5 fill-white" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                 <svg class="vs-icon-pause w-5 h-5 fill-white hidden" viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
               </button>
@@ -997,6 +997,8 @@
           card.classList.toggle('is-playing', isPlaying);
           playIcon.classList.toggle('hidden', isPlaying);
           pauseIcon.classList.toggle('hidden', !isPlaying);
+          btn.setAttribute('aria-pressed', String(isPlaying));
+          btn.setAttribute('aria-label', `${isPlaying ? 'Pause' : 'Play'} ${label}`);
           window.dispatchEvent(new CustomEvent('agentiq:audio-state', { detail: { label, playing: isPlaying, audio } }));
         }
         btn.addEventListener('click', () => {
@@ -2943,31 +2945,38 @@
     </button>
   </div>
   <script type="module">
-    // Dynamic import so a CDN failure is catchable — static import would silently
-    // leave the button visible but non-functional with no user feedback.
-    import('https://esm.sh/@vapi-ai/web').then(function (mod) {
-      var Vapi = mod.default;
-      (function () {
-        var floatEl  = document.getElementById('vaq-float');
-        var btn      = document.getElementById('vaq-btn');
-        var statusEl = document.getElementById('vaq-status');
-        var VAPI_KEY = (window.AgentIQConfig && window.AgentIQConfig.vapiPublicKey) || '';
-        if (!VAPI_KEY || VAPI_KEY === 'YOUR_VAPI_PUBLIC_KEY') {
-          floatEl.style.display = 'none'; return;
-        }
-        var vapi  = new Vapi(VAPI_KEY, undefined, { avoidEval: true });
-        var state = 'idle';
-        function setState(s) {
-          state = s;
-          btn.setAttribute('data-state', s);
-          var labels = { connecting: 'Connecting…', listening: 'Listening…', speaking: 'Speaking…' };
-          statusEl.textContent   = labels[s] || '';
-          statusEl.style.opacity = s === 'idle' ? '0' : '1';
-          btn.setAttribute('aria-label', s === 'idle'
-            ? 'Talk to AgentIQ voice assistant'
-            : (labels[s] || '') + ' — click to stop');
-        }
-        var connectTimer = null;
+    // Vapi SDK is only fetched on first interaction with the mic button —
+    // not eagerly on page load — since most visitors never use voice and
+    // the fetch/parse cost was previously paid unconditionally on every load.
+    (function () {
+      var floatEl  = document.getElementById('vaq-float');
+      var btn      = document.getElementById('vaq-btn');
+      var statusEl = document.getElementById('vaq-status');
+      var VAPI_KEY = (window.AgentIQConfig && window.AgentIQConfig.vapiPublicKey) || '';
+
+      if (!VAPI_KEY || VAPI_KEY === 'YOUR_VAPI_PUBLIC_KEY') {
+        floatEl.style.display = 'none'; return;
+      }
+
+      var vapi = null;
+      var state = 'idle';
+      var connectTimer = null;
+      var sdkLoading = false;
+
+      function setState(s) {
+        state = s;
+        btn.setAttribute('data-state', s);
+        var labels = { connecting: 'Connecting…', listening: 'Listening…', speaking: 'Speaking…' };
+        statusEl.textContent   = labels[s] || '';
+        statusEl.style.opacity = s === 'idle' ? '0' : '1';
+        btn.setAttribute('aria-label', s === 'idle'
+          ? 'Talk to AgentIQ voice assistant'
+          : (labels[s] || '') + ' — click to stop');
+      }
+
+      function wireVapi(mod) {
+        var Vapi = mod.default;
+        vapi = new Vapi(VAPI_KEY, undefined, { avoidEval: true });
         vapi.on('call-start',   function() { clearTimeout(connectTimer); setState('listening'); });
         vapi.on('call-end',     function() { clearTimeout(connectTimer); setState('idle');      });
         vapi.on('speech-start', function() { setState('speaking');  });
@@ -2976,35 +2985,50 @@
           clearTimeout(connectTimer);
           console.error('[AgentIQ] VAPI error:', e);
           setState('idle');
-          // Surface a brief visible status so the user knows why the call stopped
           statusEl.textContent = 'Call failed — try again';
           statusEl.style.opacity = '1';
           setTimeout(function () { statusEl.style.opacity = '0'; statusEl.textContent = ''; }, 3000);
         });
-        btn.addEventListener('click', function() {
+      }
+
+      function startCall() {
+        setState('connecting');
+        connectTimer = setTimeout(function() { vapi.stop(); setState('idle'); }, 12000);
+        if (typeof gtag === 'function') {
+          gtag('event', 'voice_agent_start', { event_category: 'voice_agent' });
+        }
+        try {
+          vapi.start('e699b5d0-7cf8-4809-ab19-ed8687ab830f');
+        } catch (err) {
+          clearTimeout(connectTimer);
+          console.error('[AgentIQ] VAPI start failed:', err);
+          setState('idle');
+        }
+      }
+
+      btn.addEventListener('click', function() {
+        if (vapi) {
           if (state !== 'idle') { vapi.stop(); clearTimeout(connectTimer); setState('idle'); return; }
-          setState('connecting');
-          // Fallback: if call-start never fires within 12s, reset
-          connectTimer = setTimeout(function() { vapi.stop(); setState('idle'); }, 12000);
-          // GA4: voice_agent_start — user tapped the mic and a call is initiating
-          if (typeof gtag === 'function') {
-            gtag('event', 'voice_agent_start', { event_category: 'voice_agent' });
-          }
-          // All config (voice, model, prompt) managed from VAPI dashboard
-          try {
-            vapi.start('e699b5d0-7cf8-4809-ab19-ed8687ab830f');
-          } catch (err) {
-            clearTimeout(connectTimer);
-            console.error('[AgentIQ] VAPI start failed:', err);
-            setState('idle');
-          }
+          startCall();
+          return;
+        }
+        if (sdkLoading) return;
+        sdkLoading = true;
+        // Immediate feedback while the SDK (fetched only now) loads
+        setState('connecting');
+        import('https://esm.sh/@vapi-ai/web').then(function (mod) {
+          wireVapi(mod);
+          startCall();
+        }).catch(function (err) {
+          console.error('[AgentIQ] VAPI SDK failed to load:', err);
+          sdkLoading = false;
+          setState('idle');
+          statusEl.textContent = 'Call failed — try again';
+          statusEl.style.opacity = '1';
+          setTimeout(function () { statusEl.style.opacity = '0'; statusEl.textContent = ''; }, 3000);
         });
-      })();
-    }).catch(function (err) {
-      console.error('[AgentIQ] VAPI SDK failed to load:', err);
-      var floatEl = document.getElementById('vaq-float');
-      if (floatEl) floatEl.style.display = 'none';
-    });
+      });
+    })();
   </script>
   <!-- Global React mounts: mirrors the real #voice-samples audio player state
        (see the custom-event dispatch added to that section's script above). -->

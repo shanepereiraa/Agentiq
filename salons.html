@@ -49,6 +49,7 @@
   <style>
     html{-webkit-font-smoothing:antialiased}body{background:#060f28}
     a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:3px solid #22D3EE;outline-offset:2px;border-radius:6px}
+    .bg-gradient-to-r.from-fuchsia-500 { text-shadow: 0 1px 2px rgba(7,23,58,.55); }
     .glass{background:rgba(255,255,255,.05);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.10)}
     .glass-strong{background:rgba(255,255,255,.08);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.14)}
     #aiq-mobile-nav{position:absolute;top:calc(100% + 8px);left:0;right:0;background:rgba(7,23,58,.97);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.12);border-radius:18px;box-shadow:0 16px 60px rgba(0,0,0,.55);transition:opacity .18s ease,transform .18s ease}
@@ -835,33 +836,38 @@
 
   <!-- Vapi Voice Assistant Script -->
   <script type="module">
-    import('https://esm.sh/@vapi-ai/web').then(function (mod) {
-      var Vapi = mod.default;
-      (function () {
-        var floatEl  = document.getElementById('vaq-float');
-        var btn      = document.getElementById('vaq-btn');
-        var statusEl = document.getElementById('vaq-status');
-        var VAPI_KEY = (window.AgentIQConfig && window.AgentIQConfig.vapiPublicKey) || '';
+    // Vapi SDK is only fetched on first interaction with the mic button —
+    // not eagerly on page load — since most visitors never use voice and
+    // the fetch/parse cost was previously paid unconditionally on every load.
+    (function () {
+      var floatEl  = document.getElementById('vaq-float');
+      var btn      = document.getElementById('vaq-btn');
+      var statusEl = document.getElementById('vaq-status');
+      var VAPI_KEY = (window.AgentIQConfig && window.AgentIQConfig.vapiPublicKey) || '';
 
-        if (!VAPI_KEY || VAPI_KEY === 'YOUR_VAPI_PUBLIC_KEY') {
-          floatEl.style.display = 'none'; return;
-        }
+      if (!VAPI_KEY || VAPI_KEY === 'YOUR_VAPI_PUBLIC_KEY') {
+        floatEl.style.display = 'none'; return;
+      }
 
-        var vapi  = new Vapi(VAPI_KEY, undefined, { avoidEval: true });
-        var state = 'idle';
+      var vapi = null;
+      var state = 'idle';
+      var connectTimer = null;
+      var sdkLoading = false;
 
-        function setState(s) {
-          state = s;
-          btn.setAttribute('data-state', s);
-          var labels = { connecting: 'Connecting…', listening: 'Listening…', speaking: 'Speaking…' };
-          statusEl.textContent   = labels[s] || '';
-          statusEl.style.opacity = s === 'idle' ? '0' : '1';
-          btn.setAttribute('aria-label', s === 'idle'
-            ? 'Talk to AgentIQ voice assistant'
-            : (labels[s] || '') + ' — click to stop');
-        }
+      function setState(s) {
+        state = s;
+        btn.setAttribute('data-state', s);
+        var labels = { connecting: 'Connecting…', listening: 'Listening…', speaking: 'Speaking…' };
+        statusEl.textContent   = labels[s] || '';
+        statusEl.style.opacity = s === 'idle' ? '0' : '1';
+        btn.setAttribute('aria-label', s === 'idle'
+          ? 'Talk to AgentIQ voice assistant'
+          : (labels[s] || '') + ' — click to stop');
+      }
 
-        var connectTimer = null;
+      function wireVapi(mod) {
+        var Vapi = mod.default;
+        vapi = new Vapi(VAPI_KEY, undefined, { avoidEval: true });
         vapi.on('call-start',   function() { clearTimeout(connectTimer); setState('listening'); });
         vapi.on('call-end',     function() { clearTimeout(connectTimer); setState('idle');      });
         vapi.on('speech-start', function() { setState('speaking');  });
@@ -874,28 +880,46 @@
           statusEl.style.opacity = '1';
           setTimeout(function () { statusEl.style.opacity = '0'; statusEl.textContent = ''; }, 3000);
         });
+      }
 
-        btn.addEventListener('click', function() {
+      function startCall() {
+        setState('connecting');
+        connectTimer = setTimeout(function() { vapi.stop(); setState('idle'); }, 12000);
+        if (typeof gtag === 'function') {
+          gtag('event', 'voice_agent_start', { event_category: 'voice_agent' });
+        }
+        try {
+          vapi.start('e699b5d0-7cf8-4809-ab19-ed8687ab830f');
+        } catch (err) {
+          clearTimeout(connectTimer);
+          console.error('[AgentIQ] VAPI start failed:', err);
+          setState('idle');
+        }
+      }
+
+      btn.addEventListener('click', function() {
+        if (vapi) {
           if (state !== 'idle') { vapi.stop(); clearTimeout(connectTimer); setState('idle'); return; }
-          setState('connecting');
-          connectTimer = setTimeout(function() { vapi.stop(); setState('idle'); }, 12000);
-          if (typeof gtag === 'function') {
-            gtag('event', 'voice_agent_start', { event_category: 'voice_agent' });
-          }
-          try {
-            vapi.start('e699b5d0-7cf8-4809-ab19-ed8687ab830f');
-          } catch (err) {
-            clearTimeout(connectTimer);
-            console.error('[AgentIQ] VAPI start failed:', err);
-            setState('idle');
-          }
+          startCall();
+          return;
+        }
+        if (sdkLoading) return;
+        sdkLoading = true;
+        // Immediate feedback while the SDK (fetched only now) loads
+        setState('connecting');
+        import('https://esm.sh/@vapi-ai/web').then(function (mod) {
+          wireVapi(mod);
+          startCall();
+        }).catch(function (err) {
+          console.error('[AgentIQ] VAPI SDK failed to load:', err);
+          sdkLoading = false;
+          setState('idle');
+          statusEl.textContent = 'Call failed — try again';
+          statusEl.style.opacity = '1';
+          setTimeout(function () { statusEl.style.opacity = '0'; statusEl.textContent = ''; }, 3000);
         });
-      })();
-    }).catch(function (err) {
-      console.error('[AgentIQ] VAPI SDK failed to load:', err);
-      var floatEl = document.getElementById('vaq-float');
-      if (floatEl) floatEl.style.display = 'none';
-    });
+      });
+    })();
   </script>
 
   <!-- AI Chatbot Widget Script -->
