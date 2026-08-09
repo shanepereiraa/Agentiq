@@ -216,9 +216,52 @@
     </div>
   </main>
 
+  <footer class="px-5 pt-16 pb-10 border-t border-white/8">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-10 mb-12">
+        <div class="col-span-2 md:col-span-1">
+          <a href="/" class="flex items-center gap-2.5 mb-4">
+            <span class="font-display font-700 text-lg text-white tracking-tight inline-flex items-baseline gap-0.5">Agent<span class="logo-grad-text">IQ</span></span>
+          </a>
+          <p class="text-slate-400 text-sm leading-relaxed max-w-[200px]">AI chatbots for Indian businesses — WhatsApp, Instagram &amp; Web.</p>
+        </div>
+        <div>
+          <p class="text-white font-600 text-sm mb-4">Industries</p>
+          <ul class="space-y-3 text-sm text-slate-400">
+            <li><a href="/restaurants" class="hover:text-white transition-colors">Restaurants</a></li>
+            <li><a href="/salons" class="hover:text-white transition-colors">Salons &amp; Spas</a></li>
+            <li><a href="/clinics" class="hover:text-white transition-colors">Clinics</a></li>
+            <li><a href="/d2c-ecommerce" class="text-white">D2C E-Commerce</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-white font-600 text-sm mb-4">Solutions in India</p>
+          <ul class="space-y-3 text-sm text-slate-400">
+            <li><a href="/ai-chatbot-india" class="hover:text-white transition-colors">AI Chatbot India</a></li>
+            <li><a href="/ai-voice-agents-india" class="hover:text-white transition-colors">AI Voice Agents India</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-white font-600 text-sm mb-4">Contact</p>
+          <ul class="space-y-3 text-sm text-slate-400">
+            <li><a href="tel:+919159665277" class="hover:text-white transition-colors">+91 91596 65277</a></li>
+            <li><a href="https://wa.me/919159665277" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">WhatsApp us</a></li>
+            <li><a href="#book" class="hover:text-white transition-colors">Book a demo</a></li>
+            <li class="text-slate-400">Mumbai, India 🇮🇳</li>
+          </ul>
+        </div>
+      </div>
+      <div class="pt-8 border-t border-white/8 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400">
+        <p>© <span id="year-d2c">2026</span> AgentIQ. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
   <script>
     (function() {
       'use strict';
+      var yearEl = document.getElementById('year-d2c');
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
       var btn = document.getElementById('btn-submit-d2c');
       btn.addEventListener('click', async function() {
         var name = document.getElementById('d2c-name').value.trim();
