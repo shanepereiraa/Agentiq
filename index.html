@@ -3016,7 +3016,7 @@
         sdkLoading = true;
         // Immediate feedback while the SDK (fetched only now) loads
         setState('connecting');
-        import('https://esm.sh/@vapi-ai/web').then(function (mod) {
+        import('https://esm.sh/@vapi-ai/web@2.6.1').then(function (mod) {
           wireVapi(mod);
           startCall();
         }).catch(function (err) {
