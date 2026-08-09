@@ -9,16 +9,20 @@
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
   <meta name="theme-color" content="#07173a" />
   <link rel="canonical" href="https://agentiq.co.in/" />
-
   <!-- AI engine discovery -->
   <link rel="ai-content" href="/llms.txt" />
   <link rel="ai-content" href="/llms-full.txt" />
   <link rel="mcp-actions" href="/mcp-actions.json" />
   <meta name="ai-summary" content="AgentIQ builds done-for-you AI chatbots and voice agents for Indian restaurants, salons, clinics, and D2C brands. Channels: WhatsApp, Instagram, website. Live in 7 days. Chatbot plans from Rs. 24,999 setup + Rs. 6,999/month. Voice agent plans from Rs. 39,999 setup + Rs. 14,999/month. Based in Mumbai, India. Book a demo: https://agentiq.co.in/#book or WhatsApp https://wa.me/919159665277. Contact: +91 91596 65277." />
-
-  <!-- Favicon (inline SVG, no extra request) -->
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%230B1220'/%3E%3Ctext x='3.3' y='16.8' font-family='Arial,Helvetica,sans-serif' font-weight='800' font-size='12' fill='%23FF4FA3'%3EI%3C/text%3E%3Ctext x='9.8' y='16.8' font-family='Arial,Helvetica,sans-serif' font-weight='800' font-size='12' fill='%23FF4FA3'%3EQ%3C/text%3E%3Ccircle cx='19.6' cy='15.6' r='1' fill='%23FF4FA3'/%3E%3C/svg%3E" />
-  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%230B1220'/%3E%3Ctext x='3.3' y='16.8' font-family='Arial,Helvetica,sans-serif' font-weight='800' font-size='12' fill='%23FF4FA3'%3EI%3C/text%3E%3Ctext x='9.8' y='16.8' font-family='Arial,Helvetica,sans-serif' font-weight='800' font-size='12' fill='%23FF4FA3'%3EQ%3C/text%3E%3Ccircle cx='19.6' cy='15.6' r='1' fill='%23FF4FA3'/%3E%3C/svg%3E" />
+  <!-- Favicon: real files at a stable URL (not inline data URIs) so Google's
+       favicon crawler — which fetches the icon as its own network request —
+       can actually retrieve it. Data URIs render fine in-browser but aren't
+       a fetchable resource, which is why Search showed a generic globe. -->
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png" />
+  <link rel="icon" href="/favicon-16x16.png" sizes="16x16" type="image/png" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
   <!-- Open Graph / social preview -->
   <meta property="og:type" content="website" />
@@ -35,7 +39,6 @@
   <meta name="twitter:description" content="Done-for-you AI chatbots for restaurants, salons, healthcare & more. Reply in seconds, 24/7. Made in India." />
   <meta name="twitter:image" content="https://agentiq.co.in/og-image.png" />
   <meta property="og:locale" content="en_IN" />
-
   <!-- Structured data (JSON-LD) -->
   <script type="application/ld+json">
   {
@@ -161,7 +164,6 @@
     ]
   }
   </script>
-
   <!-- Fonts: preconnect first, then async non-blocking load with font-display:swap baked in via display=swap param -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -178,17 +180,14 @@
   <link id="font-preload" rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Space+Grotesk:wght@500;600;700&display=swap" />
   <script>document.getElementById('font-preload').onload=function(){this.onload=null;this.rel='stylesheet';};</script>
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Space+Grotesk:wght@500;600;700&display=swap" /></noscript>
-
   <!-- Tailwind: compiled at build time via `npm run build:css` (tailwind.config.js), not the CDN JIT compiler. -->
   <link rel="stylesheet" href="/tailwind.min.css" />
-
   <!-- React island bundle (react-widgets/): built via `npm run build` in that folder.
        Preloaded non-blocking (same pattern as the font preload above) since none of
        its components render above the fold. -->
   <link id="widgets-css-preload" rel="preload" as="style" href="/react-widgets/dist/agentiq-widgets.css" />
   <script>document.getElementById('widgets-css-preload').onload=function(){this.onload=null;this.rel='stylesheet';};</script>
   <noscript><link rel="stylesheet" href="/react-widgets/dist/agentiq-widgets.css" /></noscript>
-
   <style>
     html { -webkit-font-smoothing: antialiased; }
     body { background: #07173a; }
@@ -257,10 +256,8 @@
     .cta-glow-purple { background: linear-gradient(135deg,#7c3aed,#a855f7); box-shadow: 0 4px 24px rgba(124,58,237,0.5); transition: box-shadow .2s ease; }
     .cta-glow-purple:hover { box-shadow: 0 4px 32px rgba(124,58,237,0.7); }
     .card-lift:hover { transform: translateY(-4px); box-shadow: 0 20px 50px rgba(0,0,0,.35); }
-
     /* Magnetic hero CTA — JS translates this element toward the cursor within ~40px; transition smooths the settle/reset. */
     .magnetic-cta { transition: transform .15s ease-out; will-change: transform; }
-
     /* Rotating conic-gradient border sweep for the recommended pricing tier (see @property below). */
     @property --border-angle {
       syntax: '<angle>';
@@ -281,13 +278,11 @@
       animation: border-spin 6s linear infinite;
     }
     @keyframes border-spin { to { --border-angle: 360deg; } }
-
     /* FAQ accordion — JS animates height via the Web Animations API; these rules stagger the
        answer's fade/slide-in ~80ms after the container starts expanding (transition-delay). */
     .faq-details { overflow: hidden; }
     .faq-content { opacity: 0; transform: translateY(-4px); transition: opacity .28s ease .08s, transform .28s ease .08s; }
     .faq-details[open] .faq-content { opacity: 1; transform: none; }
-
     /* Form success checkmark draw-in + soft scale-in on the whole confirmation block. */
     #formmsg { opacity: 0; transform: scale(.95); transition: opacity .3s ease, transform .3s ease; }
     #formmsg.form-success-show { opacity: 1; transform: scale(1); }
@@ -301,7 +296,6 @@
        A 1px dark shadow raises effective legibility; a full pass needs darker gradient stops. */
     .bg-gradient-to-r.from-coral, .bg-gradient-to-r.from-cyan,
     #aiq-toggle, #aiq-go { text-shadow: 0 1px 2px rgba(7,23,58,.55); }
-
     /* GPU promotion: blob and float animations use only transform+opacity — compositor-only,
        no layout or paint. will-change creates a separate layer per blob.
        Capped at 4 blobs to avoid excess layer memory on low-RAM Android devices. */
@@ -309,7 +303,6 @@
     .animate-float { will-change: transform; }
     /* Marquee runs on transform only — safe to promote */
     .animate-marquee { will-change: transform; }
-
     /* Freeze the continuous float bob on small screens — one less running
        animation on mid-range Android, replaced by its already-static glow
        backdrop. The floating WhatsApp button also uses .animate-float but
@@ -317,7 +310,6 @@
     @media (max-width: 767px) {
       .animate-float { animation: none; will-change: auto; }
     }
-
     /* ── Integrations marquee: glassmorphism cards ─────────────── */
     .integ-card {
       display: flex; align-items: center; gap: 0.6rem; width: 172px; padding: 0.85rem 1.05rem;
@@ -329,7 +321,6 @@
     .integ-card svg { flex-shrink: 0; }
     /* Pauses one row's scroll on hover without stopping the other row */
     .marquee-row:hover .animate-marquee { animation-play-state: paused; }
-
     /* ── Shipped products feature slider ───────────────────────── */
     .fs-track { transition: transform .7s cubic-bezier(.34,1.56,.64,1); } /* spring-like overshoot */
     .fs-slide { flex: 0 0 100%; }
@@ -352,7 +343,6 @@
       transition: width .3s ease, background .3s ease;
     }
     .fs-dot.is-active::before { width: 1.5rem; background: #FF6B5C; }
-
     /* ── ROI calculator ─────────────────────────────────────────── */
     .roi-card {
       background: rgba(255,255,255,0.04);
@@ -396,7 +386,6 @@
       transition: box-shadow .2s ease, transform .2s ease;
     }
     .roi-cta:hover { box-shadow: 0 10px 40px rgba(255,107,92,.5); transform: translateY(-1px); }
-
     /* ── Voice samples soundboard ───────────────────────────────── */
     .vs-card {
       border-radius: 1.25rem; padding: 1.5rem;
@@ -431,7 +420,6 @@
     .vs-card.is-playing .vs-wave span:nth-child(4) { animation-delay: 0.3s; }
     .vs-card.is-playing .vs-wave span:nth-child(5) { animation-delay: 0.4s; }
     @keyframes vs-bounce { 0%, 100% { transform: scaleY(0.4); } 50% { transform: scaleY(1); } }
-
     /* ── Workflow diagram ───────────────────────────────────────── */
     /* ── Mobile quick bar ───────────────────────────────────────── */
     .mqb-bar {
@@ -446,7 +434,6 @@
     .mqb-btn:active { transform: scale(0.97); }
     .mqb-btn-whatsapp { background: #25D366; color: #fff; box-shadow: 0 4px 16px rgba(37,211,102,0.35); }
     .mqb-btn-demo { background: linear-gradient(135deg,#FF6B5C,#FF9F45); color: #0b1222; box-shadow: 0 4px 16px rgba(255,107,92,0.4); }
-
     /* ── Shared button micro-interaction ────────────────────────
        Applied alongside each button's own background/shadow classes —
        adds a uniform, subtle "pop" (scale + slightly stronger glow)
@@ -455,7 +442,6 @@
     .btn-pop { transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease, filter 0.2s ease; }
     .btn-pop:hover, .btn-pop:focus-visible { transform: scale(1.02); filter: brightness(1.03); }
     .btn-pop:active { transform: scale(0.98); }
-
     /* ── Card tilt-on-hover ──────────────────────────────────────
        --tilt-x/--tilt-y are set by pointermove JS (see main script);
        fall back to 0deg so cards sit flat until first hovered. Only
@@ -469,11 +455,9 @@
       border-color: rgba(255,107,92,0.35) !important;
       box-shadow: 0 20px 50px -20px rgba(0,0,0,0.5), 0 0 40px rgba(255,107,92,0.08);
     }
-
     /* ── Navbar: subtle lift once the page has scrolled past the top ── */
     #site-nav { transition: background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; }
     #site-nav.is-scrolled { background: rgba(7,23,58,0.75); box-shadow: 0 8px 32px rgba(0,0,0,0.35); border-color: rgba(255,255,255,0.14); }
-
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation: none !important; transition: none !important; }
       .reveal { opacity: 1 !important; transform: none !important; }
@@ -487,10 +471,8 @@
       .btn-pop:hover, .btn-pop:focus-visible { transform: none; }
       .tilt-card { transform: none !important; }
     }
-
     /* ── AI Chat Widget ─────────────────────────────── */
     #aiq-float { position: fixed; bottom: 24px; right: 20px; z-index: 9999; }
-
     #aiq-toggle {
       width: 52px; height: 52px; border-radius: 50%;
       background: linear-gradient(135deg, #FF9F45, #FF6B5C);
@@ -503,7 +485,6 @@
     #aiq-toggle:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(255,107,92,.6); }
     #aiq-toggle:focus-visible { outline: 3px solid #22D3EE; outline-offset: 3px; }
     #aiq-toggle svg { width: 24px; height: 24px; }
-
     #aiq-notif {
       position: absolute; top: -3px; right: -3px;
       width: 18px; height: 18px; border-radius: 50%;
@@ -513,7 +494,6 @@
       border: 2px solid #07173a;
     }
     #aiq-notif.aiq-gone { display: none; }
-
     #aiq-panel {
       position: absolute; bottom: 60px; right: 0;
       width: 340px;
@@ -529,7 +509,6 @@
       opacity: 0; transform: translateY(10px) scale(.97);
       pointer-events: none;
     }
-
     #aiq-hdr {
       padding: 13px 15px;
       background: linear-gradient(135deg, rgba(255,159,69,.18), rgba(255,107,92,.14));
@@ -561,7 +540,6 @@
     }
     #aiq-x:hover { color: #fff; background: rgba(255,255,255,.08); }
     #aiq-x:focus-visible { outline: 2px solid #22D3EE; outline-offset: 2px; }
-
     #aiq-log {
       flex: 1; overflow-y: auto; padding: 12px 11px;
       display: flex; flex-direction: column; gap: 9px;
@@ -569,7 +547,6 @@
     }
     #aiq-log::-webkit-scrollbar { width: 3px; }
     #aiq-log::-webkit-scrollbar-thumb { background: rgba(255,255,255,.1); border-radius: 3px; }
-
     .ab {
       max-width: 85%; padding: 9px 13px;
       border-radius: 15px; font-size: 13px; line-height: 1.55;
@@ -590,7 +567,6 @@
       0%,80%,100% { transform: translateY(0); opacity: .4; }
       40%          { transform: translateY(-5px); opacity: 1; }
     }
-
     #aiq-bar {
       display: flex; align-items: center; gap: 7px;
       padding: 9px 11px;
@@ -617,7 +593,6 @@
     #aiq-in:focus-visible { outline: none; }
     #aiq-go:disabled { opacity: .4; cursor: default; }
     #aiq-go svg { width: 14px; height: 14px; fill: #fff; }
-
     #aiq-lead-form {
       padding: 14px 13px 16px;
       display: flex; flex-direction: column; gap: 9px;
@@ -649,12 +624,10 @@
     }
     #aiq-lead-start:hover { opacity: .88; }
     #aiq-lead-start:disabled { opacity: .5; cursor: default; }
-
     @media (max-width: 380px) {
       #aiq-panel { width: calc(100vw - 24px); right: 0; }
     }
   </style>
-
   <!-- Google Analytics 4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-RD3SW71LDT"></script>
   <script>
@@ -664,19 +637,14 @@
     gtag('config', 'G-RD3SW71LDT');
   </script>
 </head>
-
 <body class="font-sans text-slate-200 antialiased overflow-x-hidden">
-
   <!-- Base background -->
   <div class="fixed inset-0 -z-10 pointer-events-none" style="background:#060f28"></div>
-
   <!-- Matte grain overlay — see .noise in <style>. Fixed + pointer-events:none so it
        never blocks clicks on anything beneath it, including other fixed widgets. -->
   <div class="noise" aria-hidden="true"></div>
-
   <!-- Skip link -->
   <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-[60] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-primary focus:text-white">Skip to content</a>
-
   <!-- NAVBAR -->
   <header class="fixed top-3 left-3 right-3 z-50">
     <nav id="site-nav" aria-label="Primary" class="relative max-w-6xl mx-auto glass rounded-2xl px-4 sm:px-5 py-3 flex items-center justify-between">
@@ -699,7 +667,6 @@
       </div>
     </nav>
   </header>
-
   <!-- MOBILE NAV: full-screen slide-up sheet (app-modal style). Close via the
        X button, Escape, tapping a link, or resizing past the md breakpoint. -->
   <div id="aiq-mobile-nav" class="aiq-shut md:hidden fixed inset-0 z-[60] flex flex-col" style="background:rgba(6,15,40,0.98);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)" inert>
@@ -721,9 +688,7 @@
       <a href="#book" class="btn-pop min-h-[44px] flex items-center justify-center mt-3 px-3 py-3 rounded-xl bg-gradient-to-r from-coral to-orange text-white font-600">Book a free demo</a>
     </nav>
   </div>
-
   <main id="main" tabindex="-1" class="focus:outline-none">
-
     <!-- HERO -->
     <section class="relative pt-24 sm:pt-32 pb-24 px-5 overflow-hidden" style="background:linear-gradient(180deg,#060c1e 0%,#08183a 55%,#060f28 100%)">
       <div aria-hidden="true" class="pointer-events-none absolute -top-32 -left-24 w-[40rem] h-[40rem] rounded-full" style="background:radial-gradient(circle,rgba(255,107,92,.22) 0%,transparent 70%);filter:blur(90px)"></div>
@@ -737,22 +702,18 @@
             </span>
             Trusted by 50+ businesses across India
           </div>
-
           <h1 class="reveal font-display font-700 text-white text-5xl sm:text-6xl lg:text-[4.2rem] leading-[1.02] tracking-tighter text-balance">
             <span class="sr-only">AI Chatbots &amp; Voice Agents for Businesses in India - </span>AI chatbots that<br><span class="grad-text">work while you sleep</span><br>and close more sales
           </h1>
-
           <p class="reveal mt-7 text-xl text-slate-400 max-w-lg leading-relaxed text-pretty">
             Done-for-you <span class="text-white font-500">AI chatbots and voice agents</span> for Indian businesses — live in 7 days, no code needed.
           </p>
-
           <div class="reveal mt-9 flex flex-col sm:flex-row gap-3">
             <a href="#book" class="magnetic-cta btn-pop cursor-pointer group inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl bg-gradient-to-r from-coral to-orange text-white font-600 shadow-lg shadow-coral/30 hover:shadow-coral/50 transition-shadow duration-200 text-[15px]">
               Book a free demo
               <svg class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
           </div>
-
           <div class="reveal mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 text-sm text-slate-400">
             <div class="flex items-center gap-2"><svg class="w-4 h-4 text-cyan" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Live in 7 days</div>
             <div class="flex items-center gap-2"><svg class="w-4 h-4 text-cyan" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>No code needed</div>
@@ -764,7 +725,6 @@
             DPDP-compliant · AES-256 encrypted · Data hosted in India
           </p>
         </div>
-
         <!-- Hero chat mockup: min-height reserves layout space before fonts render, preventing CLS -->
         <div class="reveal relative" style="min-height:340px">
           <div class="absolute -inset-8 bg-gradient-to-tr from-coral/20 to-cyan/15 blur-3xl rounded-[2rem]"></div>
@@ -798,7 +758,6 @@
         </div>
       </div>
     </section>
-
     <!-- LOGO MARQUEE / INTEGRATIONS -->
     <section class="relative py-10 sm:py-12 px-5 overflow-hidden" style="background:linear-gradient(180deg,#060f28 0%,#07102a 100%)">
       <h2 class="sr-only">Integrations and channels AgentIQ works with</h2>
@@ -818,7 +777,6 @@
         </div>
       </div>
     </section>
-
     <!-- LANGUAGE TOGGLE (React island: react-widgets/src/components/LanguageToggle.jsx) -->
     <section id="language-demo" class="relative py-16 sm:py-20 px-5 overflow-hidden" style="background:linear-gradient(180deg,#060f28 0%,#071528 50%,#060f28 100%)">
       <div class="relative max-w-2xl mx-auto">
@@ -829,7 +787,6 @@
         <div class="reveal" id="language-toggle-root"></div>
       </div>
     </section>
-
     <!-- THREE PRODUCTS: interactive feature slider
          Swap content: edit the FS_SLIDES array near the bottom of the main
          inline JS block (the classic, non-module script). ctaHref already points at the real live pages
@@ -843,7 +800,6 @@
           <h2 class="font-display font-700 text-white text-4xl sm:text-5xl tracking-tighter leading-tight text-balance">See our bots in action</h2>
           <p class="mt-5 text-slate-400 text-pretty">A single AI assistant, deployed wherever your customers already are. Here's a real sample of each — trained for your industry.</p>
         </div>
-
         <div class="reveal relative">
           <div class="overflow-hidden rounded-3xl">
             <div id="fs-track" class="fs-track flex"></div>
@@ -854,7 +810,6 @@
         </div>
       </div>
     </section>
-
     <!-- LIVE DEMO -->
     <section id="demo" class="relative py-16 sm:py-24 px-5 overflow-hidden" style="background:linear-gradient(180deg,#060f28 0%,#071520 50%,#060f28 100%)">
       <div aria-hidden="true" class="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 w-96 h-96 rounded-full" style="background:radial-gradient(circle,rgba(255,107,92,.2) 0%,transparent 70%);filter:blur(70px)"></div>
@@ -870,7 +825,6 @@
             <li class="flex items-center gap-3"><svg class="w-5 h-5 text-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>Captures name & number automatically</li>
           </ul>
         </div>
-
         <!-- Demo widget -->
         <div class="reveal">
           <div class="glass-strong rounded-[1.75rem] overflow-hidden shadow-2xl shadow-black/40">
@@ -891,7 +845,6 @@
         </div>
       </div>
     </section>
-
     <!-- VOICE AGENTS -->
     <section id="voice" class="relative py-16 sm:py-24 px-5 overflow-hidden" style="background:linear-gradient(180deg,#060f28 0%,#080120 50%,#060f28 100%)">
       <div aria-hidden="true" class="pointer-events-none absolute inset-0 flex items-center justify-center">
@@ -905,9 +858,7 @@
           <h2 class="font-display font-700 text-white text-4xl sm:text-5xl tracking-tighter leading-tight text-balance">Missed a call at 8 PM?<br>The bot picks up. Books the table.<br><span class="grad-text">Sends a confirmation.</span></h2>
           <p class="mt-5 text-slate-400 text-pretty">AI voice agents that handle reservations, follow-ups, and lead qualification in natural Hindi, Hinglish, or English — while you're busy running your business.</p>
         </div>
-
         <div class="grid md:grid-cols-3 gap-5 mb-12">
-
           <!-- Reservation Reminders -->
           <article class="reveal rounded-2xl p-7 flex flex-col" style="background:rgba(255,255,255,0.04);border:1px solid rgba(139,92,246,0.18);backdrop-filter:blur(16px)">
             <div class="grid place-items-center w-12 h-12 rounded-xl mb-5" style="background:rgba(139,92,246,.15)">
@@ -922,7 +873,6 @@
               <p class="text-slate-400 text-xs mt-1">Best for: Restaurants, salons, clinics</p>
             </div>
           </article>
-
           <!-- Order Follow-Up -->
           <article class="reveal relative rounded-2xl p-7 flex flex-col mt-6 md:mt-0" style="background:rgba(124,58,237,0.08);border:1px solid rgba(168,85,247,0.35);backdrop-filter:blur(16px);box-shadow:0 0 60px rgba(124,58,237,0.12)">
             <span class="absolute -top-4 left-1/2 -translate-x-1/2 text-sm font-700 px-5 py-1.5 rounded-full text-white whitespace-nowrap" style="background:linear-gradient(135deg,#7c3aed,#a855f7);box-shadow:0 4px 20px rgba(124,58,237,0.5);text-shadow:0 1px 3px rgba(0,0,0,.5)">Popular pick</span>
@@ -938,7 +888,6 @@
               <p class="text-slate-400 text-xs mt-1">Best for: D2C brands, restaurants, retail</p>
             </div>
           </article>
-
           <!-- Lead Qualification -->
           <article class="reveal rounded-2xl p-7 flex flex-col" style="background:rgba(255,255,255,0.04);border:1px solid rgba(139,92,246,0.18);backdrop-filter:blur(16px)">
             <div class="grid place-items-center w-12 h-12 rounded-xl mb-5" style="background:rgba(139,92,246,.15)">
@@ -953,9 +902,7 @@
               <p class="text-slate-400 text-xs mt-1">Best for: Clinics, D2C, B2B</p>
             </div>
           </article>
-
         </div>
-
         <!-- Voice CTA -->
         <div class="reveal text-center mt-12">
           <p class="text-slate-400 text-sm mb-5">Powered by VAPI + Claude AI · Speaks Hindi, Hinglish &amp; English natively</p>
@@ -966,7 +913,6 @@
         </div>
       </div>
     </section>
-
     <!-- ============================================================
       VOICE SAMPLES SOUNDBOARD
       Swap content: point each .vs-card's <audio src> at a real hosted
@@ -980,7 +926,6 @@
           <h2 class="font-display font-bold text-white text-3xl sm:text-4xl tracking-tight text-balance">Real voice agent samples</h2>
           <p class="mt-4 text-slate-400 text-pretty">Same brain, different accents — tap play on any card.</p>
         </div>
-
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           <!-- REPLACE: each card's audio src + labels -->
           <article class="reveal vs-card">
@@ -1002,7 +947,6 @@
             </div>
             <p class="text-slate-400 text-sm mt-4">"Table for 4 tonight at 8? 🍽️" — full booking + upsell flow in Hindi.</p>
           </article>
-
           <article class="reveal vs-card">
             <audio class="vs-audio" preload="none" src="/media/voice-salon-hinglish.mp3"></audio>
             <div class="flex items-start justify-between mb-4">
@@ -1022,7 +966,6 @@
             </div>
             <p class="text-slate-400 text-sm mt-4">"Good Evening, kaise ho?" — stylist selection + reminder call.</p>
           </article>
-
           <article class="reveal vs-card">
             <audio class="vs-audio" preload="none" src="/media/voice-d2c-english.mp3"></audio>
             <div class="flex items-start justify-between mb-4">
@@ -1045,17 +988,14 @@
         </div>
       </div>
     </section>
-
     <script type="module">
       let currentlyPlayingAudio = null;
-
       function vsFmtTime(sec) {
         if (!isFinite(sec)) return '0:00';
         const m = Math.floor(sec / 60);
         const s = Math.floor(sec % 60).toString().padStart(2, '0');
         return `${m}:${s}`;
       }
-
       document.querySelectorAll('#voice-samples .vs-card').forEach((card) => {
         const audio = card.querySelector('.vs-audio');
         const btn = card.querySelector('.vs-play');
@@ -1067,14 +1007,12 @@
         const skeleton = card.querySelector('.vs-skeleton');
         // e.g. "Hindi Voice Demo - Restaurant" — feeds the mobile mini audio bar (MobileAudioBar.jsx)
         const label = `${badgeEl.textContent} Voice Demo - ${descEl.textContent.split(' · ')[0]}`;
-
         function setPlayingUI(isPlaying) {
           card.classList.toggle('is-playing', isPlaying);
           playIcon.classList.toggle('hidden', isPlaying);
           pauseIcon.classList.toggle('hidden', !isPlaying);
           window.dispatchEvent(new CustomEvent('agentiq:audio-state', { detail: { label, playing: isPlaying, audio } }));
         }
-
         btn.addEventListener('click', () => {
           if (audio.paused) {
             // HTML5 Audio has no built-in "only one at a time" behavior —
@@ -1088,7 +1026,6 @@
             audio.pause();
           }
         });
-
         audio.addEventListener('play', () => setPlayingUI(true));
         audio.addEventListener('pause', () => setPlayingUI(false));
         audio.addEventListener('ended', () => { setPlayingUI(false); timeEl.textContent = vsFmtTime(0); });
@@ -1096,7 +1033,6 @@
         audio.addEventListener('timeupdate', () => {
           timeEl.textContent = vsFmtTime(audio.duration - audio.currentTime);
         });
-
         // Skeleton loader: preload="none" means the very first play on each card
         // triggers a real network fetch — cover that real gap, not a fake timer.
         audio.addEventListener('loadstart', () => skeleton.classList.remove('hidden'));
@@ -1104,7 +1040,6 @@
         audio.addEventListener('error', () => skeleton.classList.add('hidden'));
       });
     </script>
-
     <!-- STORIES DEMO (React island: react-widgets/src/components/StoriesDemo.jsx) -->
     <section id="stories-demo" class="relative py-14 sm:py-20 px-5 overflow-hidden" style="background:linear-gradient(180deg,#060f28 0%,#071520 50%,#060f28 100%)">
       <div class="relative max-w-3xl mx-auto">
@@ -1115,7 +1050,6 @@
         <div id="stories-demo-root"></div>
       </div>
     </section>
-
     <!-- RESULTS / CASE STUDIES -->
     <section id="results" class="relative py-16 sm:py-24 px-5 overflow-hidden" style="background:linear-gradient(180deg,#060f28 0%,#08101e 50%,#060f28 100%)">
       <div aria-hidden="true" class="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 w-96 h-96 rounded-full" style="background:radial-gradient(circle,rgba(255,159,69,.18) 0%,transparent 70%);filter:blur(70px)"></div>
@@ -1125,7 +1059,6 @@
           <p class="text-orange-400 text-sm font-500 tracking-widest uppercase mb-4">Results</p>
           <h2 class="font-display font-700 text-white text-4xl sm:text-5xl tracking-tighter leading-tight text-balance">Numbers our clients actually feel</h2>
         </div>
-
         <!-- stat counters -->
         <div class="grid grid-cols-2 lg:grid-cols-4 gap-5 mb-16">
           <div class="reveal rounded-2xl p-7 text-center" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(16px)">
@@ -1145,7 +1078,6 @@
             <p class="text-slate-400 text-sm mt-3 leading-snug">always responding</p>
           </div>
         </div>
-
         <!-- testimonials -->
         <div class="grid md:grid-cols-3 gap-5">
           <article class="reveal rounded-2xl p-7 flex flex-col" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
@@ -1166,7 +1098,6 @@
               <div><p class="text-white text-sm font-600">Aarohi M.</p><p class="text-slate-400 text-xs mt-0.5">Founder, Glow Co. · Bengaluru</p></div>
             </div>
           </article>
-
           <article class="reveal rounded-2xl p-7 flex flex-col" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
             <div class="flex items-start justify-between mb-5">
               <span class="text-xs font-600 px-3 py-1 rounded-full bg-cyan/15 text-cyan">Restaurant · F&amp;B</span>
@@ -1185,7 +1116,6 @@
               <div><p class="text-white text-sm font-600">Vikram N.</p><p class="text-slate-400 text-xs mt-0.5">Owner, Spice Route · Mumbai</p></div>
             </div>
           </article>
-
           <article class="reveal rounded-2xl p-7 flex flex-col" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
             <div class="flex items-start justify-between mb-5">
               <span class="text-xs font-600 px-3 py-1 rounded-full bg-fuchsia-400/15 text-fuchsia-300">D2C · Clothing</span>
@@ -1207,7 +1137,6 @@
         </div>
       </div>
     </section>
-
     <!-- CHAOS VS ORDER SLIDER (React island: react-widgets/src/components/InboxComparisonSlider.jsx) -->
     <section id="inbox-comparison" class="relative py-16 sm:py-24 px-5 overflow-hidden" style="background:linear-gradient(180deg,#08101e 0%,#060f28 50%,#08101e 100%)">
       <div class="relative max-w-3xl mx-auto">
@@ -1219,7 +1148,6 @@
         <div class="reveal" id="inbox-slider-root"></div>
       </div>
     </section>
-
     <!-- INDUSTRIES -->
     <section id="industries" class="relative py-16 sm:py-24 px-5 overflow-hidden" style="background:linear-gradient(180deg,#060f28 0%,#071020 50%,#060f28 100%)">
       <div aria-hidden="true" class="pointer-events-none absolute left-0 top-1/3 w-96 h-96 rounded-full" style="background:radial-gradient(circle,rgba(34,211,238,.15) 0%,transparent 70%);filter:blur(70px)"></div>
@@ -1230,11 +1158,9 @@
           <h2 class="font-display font-700 text-white text-4xl sm:text-5xl tracking-tighter leading-tight text-balance">Built for the businesses India runs on</h2>
           <p class="mt-5 text-slate-400 text-pretty">We've trained AI assistants for these industries again and again — so your bot launches with proven flows, not guesswork.</p>
         </div>
-
         <!-- Mobile-only swipeable tabs (React island: react-widgets/src/components/MobileSwipeTabs.jsx).
              The desktop grid below is hidden on mobile so the two don't duplicate. -->
         <div id="mobile-swipe-tabs-root" class="reveal"></div>
-
         <div class="hidden md:grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-fr">
           <!-- Restaurants -->
           <article class="reveal tilt-card h-full flex flex-col justify-between rounded-2xl p-6" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
@@ -1252,7 +1178,6 @@
             </div>
             <a href="/restaurants" class="text-xs text-cyan hover:text-white transition-colors font-500">See restaurant WhatsApp bot solution →</a>
           </article>
-
           <!-- Retail / D2C -->
           <article class="reveal tilt-card h-full flex flex-col justify-between rounded-2xl p-6" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
             <div>
@@ -1270,7 +1195,6 @@
             <!-- REPLACE: no dedicated /retail page exists yet — points at the booking form as a fallback CTA -->
             <a href="#book" class="text-xs text-cyan hover:text-white transition-colors font-500">See D2C solution →</a>
           </article>
-
           <!-- Salons -->
           <article class="reveal tilt-card h-full flex flex-col justify-between rounded-2xl p-6" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
             <div>
@@ -1287,7 +1211,6 @@
             </div>
             <a href="/salons" class="text-xs text-cyan hover:text-white transition-colors font-500">See salon AI receptionist solution →</a>
           </article>
-
           <!-- Healthcare -->
           <article class="reveal tilt-card h-full flex flex-col justify-between rounded-2xl p-6" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
             <div>
@@ -1304,7 +1227,6 @@
             </div>
             <a href="/clinics" class="text-xs text-cyan hover:text-white transition-colors font-500">See clinic AI voice agent solution →</a>
           </article>
-
           <!-- Coaching & Education -->
           <article class="reveal tilt-card h-full flex flex-col justify-between rounded-2xl p-6" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
             <div>
@@ -1322,7 +1244,6 @@
             <!-- REPLACE: no dedicated /education page exists yet — points at the booking form as a fallback CTA -->
             <a href="#book" class="text-xs text-cyan hover:text-white transition-colors font-500">See education solution →</a>
           </article>
-
           <!-- Hotels, Resorts & Travel -->
           <article class="reveal tilt-card h-full flex flex-col justify-between rounded-2xl p-6" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
             <div>
@@ -1341,11 +1262,9 @@
             <a href="#book" class="text-xs text-cyan hover:text-white transition-colors font-500">See hotel solution →</a>
           </article>
         </div>
-
         <p class="reveal text-center text-slate-400 text-sm mt-9">Don't see your industry? <a href="#book" class="text-cyan hover:text-white transition-colors cursor-pointer font-500">We build custom bots too →</a></p>
       </div>
     </section>
-
     <!-- ============================================================
       ROI CALCULATOR
       Swap content: adjust AFTER_HOURS_SHARE and MISS_RATE in the script
@@ -1360,7 +1279,6 @@
           <h2 class="font-display font-bold text-white text-3xl sm:text-4xl tracking-tight text-balance">How much are missed messages costing you?</h2>
           <p class="mt-4 text-slate-400 text-pretty">Slide to match your business — the estimate updates live.</p>
         </div>
-
         <div class="reveal roi-card rounded-3xl p-7 sm:p-9">
           <div class="mb-8">
             <div class="flex items-baseline justify-between mb-2">
@@ -1370,7 +1288,6 @@
             <input id="roi-volume" type="range" min="10" max="200" value="45" step="1" class="roi-range" />
             <div class="flex justify-between text-xs text-slate-500 mt-1"><span>10</span><span>200</span></div>
           </div>
-
           <div class="mb-9">
             <div class="flex items-baseline justify-between mb-2">
               <label for="roi-value" class="text-slate-300 text-sm font-medium">Average order / booking value</label>
@@ -1379,13 +1296,11 @@
             <input id="roi-value" type="range" min="500" max="10000" value="1500" step="100" class="roi-range" />
             <div class="flex justify-between text-xs text-slate-500 mt-1"><span>₹500</span><span>₹10,000</span></div>
           </div>
-
           <div class="roi-result rounded-2xl p-6 text-center mb-7">
             <p class="text-slate-400 text-sm mb-1">Estimated Monthly Lost Revenue</p>
             <p id="roi-output" class="font-display font-bold text-4xl sm:text-5xl grad-text-roi">₹0</p>
             <p class="text-slate-500 text-xs mt-3">Based on ~30% of inbound traffic landing after hours, and roughly 1 in 4 of those going unanswered and lost to a competitor.</p>
           </div>
-
           <a href="#book" class="roi-cta btn-pop group flex items-center justify-center gap-2 w-full rounded-xl px-6 py-4 font-semibold text-slate-950 text-[15px]">
             Stop Losing Revenue — Book A Free Setup Call
             <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -1393,57 +1308,45 @@
         </div>
       </div>
     </section>
-
     <script type="module">
       const ROI_AFTER_HOURS_SHARE = 0.30; // % of daily inbound volume assumed after-hours
       const ROI_MISS_RATE = 0.25;         // % of after-hours traffic assumed unanswered/lost
-
       const roiVolumeInput = document.getElementById('roi-volume');
       const roiValueInput = document.getElementById('roi-value');
       const roiVolumeVal = document.getElementById('roi-volume-val');
       const roiValueVal = document.getElementById('roi-value-val');
       const roiOutput = document.getElementById('roi-output');
-
       function roiFmtINR(n) {
         return '₹' + Math.round(n).toLocaleString('en-IN');
       }
-
       function roiUpdateSliderFill(el) {
         const pct = ((el.value - el.min) / (el.max - el.min)) * 100;
         el.style.setProperty('--fill', pct + '%');
       }
-
       function roiRecalc() {
         const volume = Number(roiVolumeInput.value);
         const orderValue = Number(roiValueInput.value);
         const missedLeadsPerDay = volume * ROI_AFTER_HOURS_SHARE * ROI_MISS_RATE;
         const monthlyLostRevenue = missedLeadsPerDay * 30 * orderValue;
-
         roiVolumeVal.textContent = volume;
         roiValueVal.textContent = roiFmtINR(orderValue);
         roiOutput.textContent = roiFmtINR(monthlyLostRevenue);
         roiUpdateSliderFill(roiVolumeInput);
         roiUpdateSliderFill(roiValueInput);
       }
-
       roiVolumeInput.addEventListener('input', roiRecalc);
       roiValueInput.addEventListener('input', roiRecalc);
       roiRecalc();
     </script>
-
     <!-- COMPARISON -->
     <section id="comparison" class="relative py-16 sm:py-24 px-5 overflow-hidden" style="background:linear-gradient(180deg,#08101e 0%,#060f28 50%,#08101e 100%)">
-
       <div aria-hidden="true" class="pointer-events-none absolute right-0 top-0 w-96 h-96 rounded-full" style="background:radial-gradient(circle,rgba(255,159,69,.14) 0%,transparent 70%);filter:blur(70px)"></div>
-
       <div class="relative max-w-5xl mx-auto">
-
         <div class="reveal text-center max-w-2xl mx-auto mb-14">
           <p class="text-orange-400 text-sm font-semibold tracking-widest uppercase mb-4">Why Agent IQ</p>
           <h2 class="font-display font-bold text-white text-4xl sm:text-5xl tracking-tighter leading-tight text-balance">Agent IQ vs. traditional support</h2>
           <p class="mt-5 text-slate-400 text-pretty">The math your accountant will like more than your current setup.</p>
         </div>
-
         <!-- desktop / tablet: real table -->
         <div class="reveal hidden md:block rounded-2xl overflow-hidden" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08)">
           <table class="w-full text-left border-collapse">
@@ -1458,7 +1361,6 @@
               </tr>
             </thead>
             <tbody>
-
               <tr class="border-t border-white/5">
                 <td class="p-5 text-white font-medium text-sm">Response Time</td>
                 <td class="p-5" style="background:rgba(255,255,255,0.06)">
@@ -1470,7 +1372,6 @@
                 <td class="p-5 text-slate-400 text-sm">2–10 minutes</td>
                 <td class="p-5 text-slate-400 text-sm">5–15 minutes</td>
               </tr>
-
               <tr class="border-t border-white/5">
                 <td class="p-5 text-white font-medium text-sm">Availability</td>
                 <td class="p-5" style="background:rgba(255,255,255,0.06)">
@@ -1482,7 +1383,6 @@
                 <td class="p-5 text-slate-400 text-sm">Business hours only</td>
                 <td class="p-5 text-slate-400 text-sm">Shift-dependent</td>
               </tr>
-
               <tr class="border-t border-white/5">
                 <td class="p-5 text-white font-medium text-sm">Cost per Lead</td>
                 <td class="p-5" style="background:rgba(255,255,255,0.06)">
@@ -1494,7 +1394,6 @@
                 <td class="p-5 text-slate-400 text-sm">₹150–300 + salary overhead</td>
                 <td class="p-5 text-slate-400 text-sm">₹200–450</td>
               </tr>
-
               <tr class="border-t border-white/5">
                 <td class="p-5 text-white font-medium text-sm">Scalability</td>
                 <td class="p-5" style="background:rgba(255,255,255,0.06)">
@@ -1506,7 +1405,6 @@
                 <td class="p-5 text-slate-400 text-sm">Hiring &amp; training lag</td>
                 <td class="p-5 text-slate-400 text-sm">Contract renegotiation</td>
               </tr>
-
               <tr class="border-t border-white/5">
                 <td class="p-5 text-white font-medium text-sm">Hindi / Hinglish Support</td>
                 <td class="p-5 rounded-b-2xl" style="background:rgba(255,255,255,0.06)">
@@ -1518,14 +1416,11 @@
                 <td class="p-5 text-slate-400 text-sm">Depends on hire</td>
                 <td class="p-5 text-slate-400 text-sm">Limited, extra cost</td>
               </tr>
-
             </tbody>
           </table>
         </div>
-
         <!-- mobile: stacked cards -->
         <div class="md:hidden space-y-4">
-
           <!-- Response Time -->
           <div class="reveal rounded-xl p-5" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08)">
             <p class="text-xs text-slate-400 uppercase tracking-wide mb-3">Response Time</p>
@@ -1545,7 +1440,6 @@
               <span class="text-slate-400">5–15 minutes</span>
             </div>
           </div>
-
           <!-- Availability -->
           <div class="reveal rounded-xl p-5" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08)">
             <p class="text-xs text-slate-400 uppercase tracking-wide mb-3">Availability</p>
@@ -1565,7 +1459,6 @@
               <span class="text-slate-400">Shift-dependent</span>
             </div>
           </div>
-
           <!-- Cost per Lead -->
           <div class="reveal rounded-xl p-5" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08)">
             <p class="text-xs text-slate-400 uppercase tracking-wide mb-3">Cost per Lead</p>
@@ -1585,7 +1478,6 @@
               <span class="text-slate-400">₹200–450</span>
             </div>
           </div>
-
           <!-- Scalability -->
           <div class="reveal rounded-xl p-5" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08)">
             <p class="text-xs text-slate-400 uppercase tracking-wide mb-3">Scalability</p>
@@ -1605,7 +1497,6 @@
               <span class="text-slate-400">Contract renegotiation</span>
             </div>
           </div>
-
           <!-- Hindi / Hinglish -->
           <div class="reveal rounded-xl p-5" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08)">
             <p class="text-xs text-slate-400 uppercase tracking-wide mb-3">Hindi / Hinglish Support</p>
@@ -1625,12 +1516,9 @@
               <span class="text-slate-400">Limited, extra cost</span>
             </div>
           </div>
-
         </div>
-
       </div>
     </section>
-
     <!-- PRICING -->
     <section id="pricing" class="relative py-16 sm:py-24 px-5 overflow-hidden" style="background:linear-gradient(180deg,#060f28 0%,#080518 50%,#060f28 100%)">
       <!-- Neon ring ambient -->
@@ -1639,14 +1527,12 @@
       </div>
       <div aria-hidden="true" class="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 w-80 h-80 rounded-full" style="background:radial-gradient(circle,rgba(255,107,92,.25) 0%,transparent 70%);filter:blur(60px)"></div>
       <div aria-hidden="true" class="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 w-80 h-80 rounded-full" style="background:radial-gradient(circle,rgba(34,211,238,.2) 0%,transparent 70%);filter:blur(60px)"></div>
-
       <div class="relative max-w-6xl mx-auto">
         <div class="reveal text-center max-w-3xl mx-auto mb-14">
           <p class="text-pink-400 text-sm font-500 tracking-widest uppercase mb-4">Chatbot Pricing</p>
           <h2 class="font-display font-700 text-white text-4xl sm:text-5xl tracking-tighter leading-tight text-balance">Flexible, intelligent, and endlessly scalable</h2>
           <p class="mt-5 text-slate-400 text-pretty">One-time setup + monthly retainer. All plans include design, training and launch. GST extra.</p>
         </div>
-
         <div class="grid md:grid-cols-3 gap-5 items-stretch">
           <!-- Starter -->
           <div class="reveal tilt-card flex flex-col rounded-2xl p-8" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
@@ -1665,7 +1551,6 @@
             <a href="#book" data-plan="Chatbot Starter" data-value="24999" class="cursor-pointer mt-8 inline-flex justify-center px-5 py-3.5 rounded-xl text-white font-500 cta-outline btn-pop">Get started</a>
             <p class="mt-3 text-center text-xs text-slate-400">30-day money-back guarantee</p>
           </div>
-
           <!-- Growth (featured) -->
           <div class="reveal pricing-featured relative flex flex-col rounded-2xl p-8 mt-6 md:mt-0" style="background:rgba(255,255,255,0.07);border:1px solid rgba(168,85,247,0.35);backdrop-filter:blur(16px);box-shadow:0 0 60px rgba(168,85,247,0.12)">
             <span class="absolute -top-4 left-1/2 -translate-x-1/2 text-sm font-700 px-5 py-1.5 rounded-full text-white whitespace-nowrap" style="background:linear-gradient(135deg,#ec4899,#a855f7);box-shadow:0 4px 20px rgba(168,85,247,0.4);text-shadow:0 1px 3px rgba(0,0,0,.5)">Popular pick</span>
@@ -1686,7 +1571,6 @@
             <a href="#book" data-plan="Chatbot Growth" data-value="39999" class="cursor-pointer mt-8 inline-flex justify-center px-5 py-3.5 rounded-xl text-white font-600 cta-glow-pink btn-pop">Book a demo</a>
             <p class="mt-3 text-center text-xs text-slate-400">30-day money-back guarantee</p>
           </div>
-
           <!-- Pro -->
           <div class="reveal tilt-card flex flex-col rounded-2xl p-8" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
             <h3 class="font-display font-700 text-white text-2xl">Pro</h3>
@@ -1713,7 +1597,6 @@
         <p class="reveal text-center text-sm text-slate-400 mt-10">For chat volumes exceeding 30,000 chats per month, custom enterprise plans are available. Please reach out to <a href="mailto:Shane@agentiq.co.in" class="text-cyan hover:underline">Shane@agentiq.co.in</a>.</p>
       </div>
     </section>
-
     <!-- VOICE PRICING -->
     <section class="relative py-16 sm:py-24 px-5 overflow-hidden" style="background:linear-gradient(180deg,#060f28 0%,#080120 50%,#060f28 100%)">
       <!-- Neon ring ambient (violet) -->
@@ -1722,14 +1605,12 @@
       </div>
       <div aria-hidden="true" class="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 w-80 h-80 rounded-full" style="background:radial-gradient(circle,rgba(124,58,237,.3) 0%,transparent 70%);filter:blur(60px)"></div>
       <div aria-hidden="true" class="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 w-80 h-80 rounded-full" style="background:radial-gradient(circle,rgba(168,85,247,.25) 0%,transparent 70%);filter:blur(60px)"></div>
-
       <div class="relative max-w-6xl mx-auto">
         <div class="reveal text-center max-w-3xl mx-auto mb-14">
           <p class="text-violet-300 text-sm font-500 tracking-widest uppercase mb-4">Voice Agents</p>
           <h2 class="font-display font-700 text-white text-4xl sm:text-5xl tracking-tighter leading-tight text-balance">Your brand voice, on every call</h2>
           <p class="mt-5 text-slate-400 text-sm">All plans include setup, training, and launch support. GST extra.</p>
         </div>
-
         <div class="grid md:grid-cols-3 gap-5 items-stretch">
           <!-- Growth -->
           <div class="reveal tilt-card flex flex-col rounded-2xl p-8" style="background:rgba(255,255,255,0.04);border:1px solid rgba(139,92,246,0.18);backdrop-filter:blur(16px)">
@@ -1748,7 +1629,6 @@
             </ul>
             <a href="#book" data-plan="Voice Growth" data-value="39999" class="cursor-pointer mt-8 inline-flex justify-center px-5 py-3.5 rounded-xl text-white font-500 cta-outline btn-pop">Get started</a>
           </div>
-
           <!-- Professional (featured) -->
           <div class="reveal pricing-featured relative flex flex-col rounded-2xl p-8 mt-6 md:mt-0" style="background:rgba(124,58,237,0.08);border:1px solid rgba(168,85,247,0.40);backdrop-filter:blur(16px);box-shadow:0 0 60px rgba(124,58,237,0.15)">
             <span class="absolute -top-4 left-1/2 -translate-x-1/2 text-sm font-700 px-5 py-1.5 rounded-full text-white whitespace-nowrap" style="background:linear-gradient(135deg,#7c3aed,#a855f7);box-shadow:0 4px 20px rgba(124,58,237,0.5);text-shadow:0 1px 3px rgba(0,0,0,.5)">Popular pick</span>
@@ -1767,7 +1647,6 @@
             </ul>
             <a href="#book" data-plan="Voice Professional" data-value="69999" class="cursor-pointer mt-8 inline-flex justify-center px-5 py-3.5 rounded-xl text-white font-600 cta-glow-purple btn-pop">Get started</a>
           </div>
-
           <!-- Advanced -->
           <div class="reveal tilt-card flex flex-col rounded-2xl p-8" style="background:rgba(255,255,255,0.04);border:1px solid rgba(139,92,246,0.18);backdrop-filter:blur(16px)">
             <h3 class="font-display font-700 text-white text-2xl">Advanced</h3>
@@ -1788,22 +1667,16 @@
         </div>
       </div>
     </section>
-
     <!-- SECURITY -->
     <section id="security" class="relative py-16 sm:py-24 px-5 overflow-hidden" style="background:linear-gradient(180deg,#060f28 0%,#08101e 50%,#060f28 100%)">
-
       <div aria-hidden="true" class="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2 w-[36rem] h-96 rounded-full" style="background:radial-gradient(circle,rgba(59,130,246,.14) 0%,transparent 70%);filter:blur(80px)"></div>
-
       <div class="relative max-w-6xl mx-auto">
-
         <div class="reveal text-center max-w-2xl mx-auto mb-14">
           <p class="text-blue text-sm font-semibold tracking-widest uppercase mb-4">Enterprise-Grade Trust</p>
           <h2 class="font-display font-bold text-white text-4xl sm:text-5xl tracking-tighter leading-tight text-balance">Built for regulated, high-trust industries</h2>
           <p class="mt-5 text-slate-400 text-pretty">Clinics, real estate, and D2C brands hand us their customers' data. Here's exactly how we protect it.</p>
         </div>
-
         <div class="grid md:grid-cols-3 gap-5">
-
           <!-- DPDP Act Compliant -->
           <article class="reveal rounded-2xl p-7 flex flex-col" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
             <div class="grid place-items-center w-12 h-12 rounded-xl mb-5" style="background:rgba(59,130,246,.14);box-shadow:0 0 24px rgba(59,130,246,.25)">
@@ -1815,7 +1688,6 @@
             <h3 class="font-display font-semibold text-white text-lg mb-3">DPDP Act Compliant</h3>
             <p class="text-slate-300 text-sm leading-relaxed flex-1">Every conversation is processed under India's Digital Personal Data Protection Act, 2023. Consent, purpose limitation, and data minimisation are enforced by design — not bolted on after the fact.</p>
           </article>
-
           <!-- Bank-Grade Encryption -->
           <article class="reveal rounded-2xl p-7 flex flex-col" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
             <div class="grid place-items-center w-12 h-12 rounded-xl mb-5" style="background:rgba(59,130,246,.14);box-shadow:0 0 24px rgba(59,130,246,.25)">
@@ -1827,7 +1699,6 @@
             <h3 class="font-display font-semibold text-white text-lg mb-3">Bank-Grade Encryption</h3>
             <p class="text-slate-300 text-sm leading-relaxed flex-1">Data is encrypted in transit (TLS 1.3) and at rest (AES-256), hosted on AWS Mumbai (ap-south-1) — your customers' data never leaves Indian borders.</p>
           </article>
-
           <!-- Zero Data Training -->
           <article class="reveal rounded-2xl p-7 flex flex-col" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
             <div class="grid place-items-center w-12 h-12 rounded-xl mb-5" style="background:rgba(59,130,246,.14);box-shadow:0 0 24px rgba(59,130,246,.25)">
@@ -1841,14 +1712,10 @@
             <h3 class="font-display font-semibold text-white text-lg mb-3">Zero Data Training</h3>
             <p class="text-slate-300 text-sm leading-relaxed flex-1">Your customer data is siloed and never used to train public AI models. Full stop. What your customers tell your bot stays inside your business.</p>
           </article>
-
         </div>
-
         <p class="reveal text-center text-xs text-slate-500 mt-10">Data Processing Agreement available on request · GDPR-ready architecture</p>
-
       </div>
     </section>
-
     <!-- FAQ -->
     <section id="faq" class="relative py-16 sm:py-24 px-5 overflow-hidden" style="background:linear-gradient(180deg,#060f28 0%,#080518 50%,#060f28 100%)">
       <div aria-hidden="true" class="pointer-events-none absolute left-1/2 -translate-x-1/2 top-0 w-[600px] h-64 rounded-full" style="background:radial-gradient(ellipse,rgba(168,85,247,.12) 0%,transparent 70%);filter:blur(60px)"></div>
@@ -1857,7 +1724,6 @@
           <p class="text-violet-300 text-sm font-500 tracking-widest uppercase mb-4">FAQ</p>
           <h2 class="font-display font-700 text-white text-4xl sm:text-5xl tracking-tighter leading-tight text-balance">Questions, answered</h2>
         </div>
-
         <div class="space-y-3">
           <details class="reveal group faq-details rounded-2xl px-5 sm:px-6 [&_summary::-webkit-details-marker]:hidden" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
             <summary class="cursor-pointer list-none flex items-center justify-between gap-4 py-5 text-white font-500">
@@ -1866,7 +1732,6 @@
             </summary>
             <p class="text-slate-400 text-sm leading-relaxed pb-5 -mt-1 faq-content">Plans start at a one-time setup of ₹24,999 plus ₹6,999/mo. The Growth plan is ₹39,999 setup + ₹9,999/mo, and the Pro plan is ₹79,999 setup + ₹19,999/mo. Every plan includes design, training on your content, launch and ongoing optimisation. GST is extra.</p>
           </details>
-
           <details class="reveal group faq-details rounded-2xl px-5 sm:px-6 [&_summary::-webkit-details-marker]:hidden" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
             <summary class="cursor-pointer list-none flex items-center justify-between gap-4 py-5 text-white font-500">
               How fast can we go live?
@@ -1874,7 +1739,6 @@
             </summary>
             <p class="text-slate-400 text-sm leading-relaxed pb-5 -mt-1 faq-content">Most bots are live within 7 days. After a quick kickoff call we collect your menu/services, FAQs and policies, build and train the assistant, test it with you, then deploy across your chosen channels. No coding required on your end.</p>
           </details>
-
           <details class="reveal group faq-details rounded-2xl px-5 sm:px-6 [&_summary::-webkit-details-marker]:hidden" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
             <summary class="cursor-pointer list-none flex items-center justify-between gap-4 py-5 text-white font-500">
               Which channels and tools do you integrate with?
@@ -1882,7 +1746,6 @@
             </summary>
             <p class="text-slate-400 text-sm leading-relaxed pb-5 -mt-1 faq-content">WhatsApp (official Business API), Instagram DMs, and a website chat widget — all powered by one assistant. We also connect to CRMs, Google Sheets, payment links (Razorpay/UPI), Shopify and booking calendars so leads and orders flow straight into your existing tools.</p>
           </details>
-
           <details class="reveal group faq-details rounded-2xl px-5 sm:px-6 [&_summary::-webkit-details-marker]:hidden" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
             <summary class="cursor-pointer list-none flex items-center justify-between gap-4 py-5 text-white font-500">
               Does it support Hindi and a human takeover?
@@ -1890,7 +1753,6 @@
             </summary>
             <p class="text-slate-400 text-sm leading-relaxed pb-5 -mt-1 faq-content">Yes — your assistant replies fluently in English, Hindi and Hinglish, and we can add regional languages on request. Whenever a customer asks for a person or the query is sensitive, the bot does a smooth handoff to your team and notifies them instantly, so nothing falls through the cracks.</p>
           </details>
-
           <details class="reveal group faq-details rounded-2xl px-5 sm:px-6 [&_summary::-webkit-details-marker]:hidden" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
             <summary class="cursor-pointer list-none flex items-center justify-between gap-4 py-5 text-white font-500">
               Where is our data stored, and who owns it?
@@ -1898,7 +1760,6 @@
             </summary>
             <p class="text-slate-400 text-sm leading-relaxed pb-5 -mt-1 faq-content">Your data and conversations belong to you. We use encrypted, India-compliant infrastructure, share access only with your authorised team, and never sell or reuse your data to train anyone else's bot. You can export your data or request deletion at any time.</p>
           </details>
-
           <details class="reveal group faq-details rounded-2xl px-5 sm:px-6 [&_summary::-webkit-details-marker]:hidden" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
             <summary class="cursor-pointer list-none flex items-center justify-between gap-4 py-5 text-white font-500">
               How does a WhatsApp chatbot help a restaurant take bookings?
@@ -1906,7 +1767,6 @@
             </summary>
             <p class="text-slate-400 text-sm leading-relaxed pb-5 -mt-1 faq-content">The bot handles table reservation requests 24/7 via WhatsApp. Customers send the date, time, and party size; the bot confirms instantly, updates the booking calendar, and sends a reminder the evening before. It also handles menu queries, takes pre-orders, and collects payment via UPI or Razorpay — all without staff involvement. Restaurant owners typically reclaim 2–3 hours per day previously spent managing WhatsApp messages manually.</p>
           </details>
-
           <details class="reveal group faq-details rounded-2xl px-5 sm:px-6 [&_summary::-webkit-details-marker]:hidden" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
             <summary class="cursor-pointer list-none flex items-center justify-between gap-4 py-5 text-white font-500">
               How does a salon chatbot handle Instagram DM bookings?
@@ -1914,7 +1774,6 @@
             </summary>
             <p class="text-slate-400 text-sm leading-relaxed pb-5 -mt-1 faq-content">When a customer replies to a story or sends an Instagram DM asking about availability, the bot responds within seconds with open slots, stylist options, and service pricing. It confirms the booking, sends a location pin, and follows up with a reminder — eliminating the need for staff to monitor Instagram during busy hours. Salons report a significant drop in no-shows after automated reminders are enabled.</p>
           </details>
-
           <details class="reveal group faq-details rounded-2xl px-5 sm:px-6 [&_summary::-webkit-details-marker]:hidden" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
             <summary class="cursor-pointer list-none flex items-center justify-between gap-4 py-5 text-white font-500">
               Is AgentIQ suitable for clinics and healthcare providers in India?
@@ -1922,7 +1781,6 @@
             </summary>
             <p class="text-slate-400 text-sm leading-relaxed pb-5 -mt-1 faq-content">Yes. AgentIQ handles appointment scheduling, doctor availability queries, and FAQ triage. The bot does not provide medical advice — clinical queries are escalated to a staff member via human handoff. Patient data is stored on India-compliant, encrypted infrastructure accessible only to authorised clinic staff. After-hours appointment requests are captured by the bot and confirmed by the clinic the next morning.</p>
           </details>
-
           <details class="reveal group faq-details rounded-2xl px-5 sm:px-6 [&_summary::-webkit-details-marker]:hidden" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
             <summary class="cursor-pointer list-none flex items-center justify-between gap-4 py-5 text-white font-500">
               How does AgentIQ differ from self-serve platforms like WATI or AiSensy?
@@ -1930,7 +1788,6 @@
             </summary>
             <p class="text-slate-400 text-sm leading-relaxed pb-5 -mt-1 faq-content">WATI, AiSensy, and Interakt are self-serve tools the business owner configures themselves using a visual builder. AgentIQ is a managed service — our team handles the full build, content training, deployment, and ongoing optimisation. Clients do not log in to configure anything. This makes AgentIQ the right choice for business owners who want a working AI assistant without the learning curve or time investment of managing a platform.</p>
           </details>
-
           <details class="reveal group faq-details rounded-2xl px-5 sm:px-6 [&_summary::-webkit-details-marker]:hidden" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
             <summary class="cursor-pointer list-none flex items-center justify-between gap-4 py-5 text-white font-500">
               Does AgentIQ offer AI voice agents for Indian businesses?
@@ -1938,7 +1795,6 @@
             </summary>
             <p class="text-slate-400 text-sm leading-relaxed pb-5 -mt-1 faq-content">Yes. Our AI voice agent handles inbound calls in Hindi and English — scheduling appointments, answering FAQs, and collecting caller details, 24/7. It's a separate product line from the chatbot plans (including Pro), sold under standalone Voice Growth, Professional, and Advanced plans.</p>
           </details>
-
           <details class="reveal group faq-details rounded-2xl px-5 sm:px-6 [&_summary::-webkit-details-marker]:hidden" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
             <summary class="cursor-pointer list-none flex items-center justify-between gap-4 py-5 text-white font-500">
               What industries does AgentIQ serve in India?
@@ -1946,7 +1802,6 @@
             </summary>
             <p class="text-slate-400 text-sm leading-relaxed pb-5 -mt-1 faq-content">AgentIQ's primary verticals are restaurants and cloud kitchens, salons and spas, clinics and healthcare providers, and D2C e-commerce brands. AgentIQ can deploy a custom assistant for any customer-facing Indian SMB with repetitive inbound enquiries.</p>
           </details>
-
           <details class="reveal group faq-details rounded-2xl px-5 sm:px-6 [&_summary::-webkit-details-marker]:hidden" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
             <summary class="cursor-pointer list-none flex items-center justify-between gap-4 py-5 text-white font-500">
               How do I book a demo with AgentIQ?
@@ -1954,7 +1809,6 @@
             </summary>
             <p class="text-slate-400 text-sm leading-relaxed pb-5 -mt-1 faq-content">The fastest way to book a demo is to message AgentIQ on WhatsApp at <a href="https://wa.me/919159665277?text=Hi%20AgentIQ%2C%20I%27d%20like%20to%20book%20a%20demo" target="_blank" rel="noopener noreferrer" class="text-cyan hover:underline">+91 91596 65277</a>. Alternatively, fill the demo request form below with your name, WhatsApp number, and business name — WhatsApp opens automatically with your details on submission. The demo is a free 20-minute call where AgentIQ shows a live mockup of an assistant built for your industry.</p>
           </details>
-
           <details class="reveal group faq-details rounded-2xl px-5 sm:px-6 [&_summary::-webkit-details-marker]:hidden" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
             <summary class="cursor-pointer list-none flex items-center justify-between gap-4 py-5 text-white font-500">
               What are AgentIQ voice agent prices?
@@ -1965,7 +1819,6 @@
         </div>
       </div>
     </section>
-
     <!-- BOOK A DEMO -->
     <section id="book-section" class="relative min-h-[calc(100vh-4rem)] flex items-center justify-center py-16 sm:py-24 px-5 scroll-mt-16 overflow-hidden" style="background:linear-gradient(180deg,#060f28 0%,#07142a 50%,#060f28 100%)">
       <div aria-hidden="true" class="pointer-events-none absolute left-1/2 -translate-x-1/2 top-0 w-[700px] h-72 rounded-full" style="background:radial-gradient(ellipse,rgba(34,211,238,.12) 0%,transparent 70%);filter:blur(60px)"></div>
@@ -1979,7 +1832,6 @@
             <p class="flex items-center gap-3"><svg class="w-5 h-5 text-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Made in India · serving businesses nationwide</p>
           </div>
         </div>
-
         <form id="leadform" class="space-y-4" novalidate
           data-mcp-action="book-demo"
           data-mcp-description="Submit a demo request to AgentIQ. Required fields: name and WhatsApp number. Optional: business name and channel interest. On submit, WhatsApp opens automatically with a pre-filled demo request message. Alternatively contact directly: https://wa.me/919159665277?text=Hi%20AgentIQ%2C%20I%27d%20like%20to%20book%20a%20demo"
@@ -2022,9 +1874,7 @@
         </form>
       </div>
     </section>
-
   </main>
-
   <!-- FOOTER -->
   <footer class="px-5 pt-16 pb-10 border-t border-white/8">
     <div class="max-w-6xl mx-auto">
@@ -2053,7 +1903,6 @@
             </a>
           </div>
         </div>
-
         <!-- Services -->
         <div>
           <p class="text-white font-600 text-sm mb-4">Services</p>
@@ -2067,7 +1916,6 @@
             <li><a href="/clinics" class="hover:text-white transition-colors">Clinics</a></li>
           </ul>
         </div>
-
         <!-- Company -->
         <div>
           <p class="text-white font-600 text-sm mb-4">Company</p>
@@ -2078,7 +1926,6 @@
             <li><a href="/blog" class="hover:text-white transition-colors">Blog</a></li>
           </ul>
         </div>
-
         <!-- Solutions in India -->
         <div>
           <p class="text-white font-600 text-sm mb-4">Solutions in India</p>
@@ -2087,7 +1934,6 @@
             <li><a href="/ai-voice-agents-india" class="hover:text-white transition-colors">AI Voice Agents India</a></li>
           </ul>
         </div>
-
         <!-- Contact -->
         <div>
           <p class="text-white font-600 text-sm mb-4">Contact</p>
@@ -2099,14 +1945,12 @@
           </ul>
         </div>
       </div>
-
       <!-- Bottom bar -->
       <div class="pt-8 border-t border-white/8 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400">
         <p>© <span id="year">2026</span> AgentIQ. All rights reserved.</p>
       </div>
     </div>
   </footer>
-
   <!-- AI Chat Widget -->
   <div id="aiq-float">
     <button id="aiq-toggle" type="button" aria-label="Chat with AgentIQ AI" aria-haspopup="dialog" aria-expanded="false" aria-controls="aiq-panel">
@@ -2115,7 +1959,6 @@
       </svg>
       <span id="aiq-notif" class="aiq-gone" aria-hidden="true">1</span>
     </button>
-
     <div id="aiq-panel" class="aiq-shut" role="dialog" aria-label="AgentIQ chat assistant" inert>
       <div id="aiq-hdr">
         <div class="av">
@@ -2127,7 +1970,6 @@
         </div>
         <button id="aiq-x" type="button" aria-label="Close chat">&#x2715;</button>
       </div>
-
       <div id="aiq-lead-form">
         <p>👋 Before we chat, tell us a bit about yourself:</p>
         <label for="aiq-lname" class="sr-only">Your name</label>
@@ -2138,9 +1980,7 @@
         <input id="aiq-lbiz" type="text" placeholder="Business type (e.g. Restaurant)" maxlength="80" />
         <button id="aiq-lead-start" type="button">Start Chat →</button>
       </div>
-
       <div id="aiq-log" aria-live="polite" style="display:none"></div>
-
       <div id="aiq-bar" style="display:none">
         <input id="aiq-in" type="text" placeholder="Ask anything…" aria-label="Type your message to AgentIQ" maxlength="400" autocomplete="off" />
         <button id="aiq-go" type="button" aria-label="Send message">
@@ -2149,13 +1989,11 @@
       </div>
     </div>
   </div>
-
   <!-- Floating WhatsApp button (desktop only — mobile gets the quick bar below,
        so the two don't visually stack/duplicate on small screens) -->
   <a href="https://wa.me/919159665277?text=Hi%20AgentIQ%2C%20I%27d%20like%20to%20book%20a%20demo" target="_blank" rel="noopener noreferrer" aria-label="Chat with AgentIQ on WhatsApp" class="cursor-pointer fixed bottom-5 right-5 z-50 hidden md:grid place-items-center w-14 h-14 rounded-full bg-emerald-500 text-white shadow-xl shadow-emerald-500/30 hover:bg-emerald-400 transition-colors duration-200 animate-float">
     <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
   </a>
-
   <!-- ============================================================
     MOBILE QUICK BAR
     Swap content: update the WhatsApp number/prefilled text if it
@@ -2173,7 +2011,6 @@
       Book Free Demo
     </a>
   </div>
-
   <!-- AgentIQ chatbot backend -->
   <script>
     window.AgentIQConfig = {
@@ -2181,7 +2018,6 @@
       vapiPublicKey: 'b430edb7-0dc0-4c14-9e56-5445fdba2912'
     };
   </script>
-
   <script>
     (function () {
       'use strict';
@@ -2194,7 +2030,6 @@
       var AGENTIQ_API = (window.AgentIQConfig && window.AgentIQConfig.apiBase) || 'https://agentiq-chatbot.onrender.com';
       window.AGENTIQ_API = AGENTIQ_API;
       document.getElementById('year').textContent = new Date().getFullYear();
-
       // Magnetic hero CTA — pulls the button 4-6px toward the cursor within ~40px of its edge,
       // resets on mouseleave. Scoped to a single element (.magnetic-cta) per page by design —
       // do not widen this to every CTA on the page.
@@ -2218,7 +2053,6 @@
         el.addEventListener('mouseleave', function () { el.style.transform = 'translate(0,0)'; });
       }
       initMagneticCta(document.querySelector('.magnetic-cta'));
-
       // Form success reveal — swaps the confirmation block to flex display and (re)triggers the
       // scale-in + checkmark draw-in animation via a forced reflow so it replays on repeat submits.
       function showFormSuccess(msgEl) {
@@ -2228,7 +2062,6 @@
         void msgEl.offsetWidth;
         msgEl.classList.add('form-success-show');
       }
-
       // FAQ accordion — smooth height animation via the Web Animations API, replacing the native
       // instant snap. Skipped entirely under prefers-reduced-motion (native toggle still works).
       if (!reduce) {
@@ -2273,7 +2106,6 @@
           }
         });
       }
-
       // Mobile nav — full-screen slide-up sheet, closed via the X button,
       // Escape, tapping a link, or resizing past the md breakpoint. There's
       // no meaningful "click outside" surface once the sheet covers the
@@ -2309,7 +2141,6 @@
       window.matchMedia('(min-width: 768px)').addEventListener('change', function (e) {
         if (e.matches && navOpen) closeNav(false);
       });
-
       // Scroll reveals
       var revs = document.querySelectorAll('.reveal');
       if (reduce || !('IntersectionObserver' in window)) {
@@ -2335,7 +2166,6 @@
         });
         revs.forEach(function (e) { io.observe(e); });
       }
-
       // Count-up
       var counted = false;
       function runCount() {
@@ -2356,7 +2186,6 @@
       if (res && 'IntersectionObserver' in window) {
         new IntersectionObserver(function (e, o) { if (e[0].isIntersecting) { runCount(); o.disconnect(); } }, { threshold: 0.3 }).observe(res);
       } else { runCount(); }
-
       // Integration logos (Simple Icons paths)
       var logos = [
         { n: 'WhatsApp', p: 'M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884' },
@@ -2408,7 +2237,6 @@
       } else {
         injectLogos();
       }
-
       // Interactive demo
       var convo = {
         'Book a table for tonight': "Sure! How many guests and what time? I can confirm instantly and even take pre-orders so your food's ready when you arrive. 🍽️",
@@ -2483,7 +2311,6 @@
         // seed greeting
         bubble("Namaste! 👋 I'm AgentIQ. Pick a prompt below to see how I handle real bookings.", 'bot');
       }
-
       // Boot sequence: "Connecting…" -> "Loading knowledge base…" -> "Agent Online"
       // (~1.2s total), then the chips/input become interactive. Reduced-motion
       // visitors skip straight to the active chat, same as the typing indicator does.
@@ -2518,7 +2345,6 @@
         })();
       }
       bootSequence(activateChat);
-
       // ==== BOOKING DEMO (WHATSAPP REDIRECT) ====
       // Lead form
       var form = document.getElementById('leadform');
@@ -2544,7 +2370,6 @@
         setError(name, 'name-err', !name.value.trim());
         setError(phone, 'phone-err', (phone.value.replace(/\D/g, '').length < 8));
         if (!ok) { if (firstInvalid) firstInvalid.focus(); return; }
-
         // GA4: generate_lead — fire after validation passes, before the network call
         if (typeof gtag === 'function') {
           var channelValueMap = {
@@ -2561,12 +2386,10 @@
             channel_interest: selectedChannel
           });
         }
-
         var nameVal = name.value.trim();
         var phoneVal = phone.value.trim();
         var bizVal = document.getElementById('business').value.trim();
         var channelVal = document.getElementById('channel').value;
-
         // Send lead to backend (non-blocking)
         if (AGENTIQ_API) {
           fetch(AGENTIQ_API + '/lead', {
@@ -2584,15 +2407,12 @@
             console.error('[AgentIQ] Lead POST error:', err);
           });
         }
-
         var waMessage = "Hi AgentIQ, I'd like to book a demo.\nName: " + nameVal + "\nWhatsApp: " + phoneVal;
         if (bizVal) waMessage += "\nBusiness: " + bizVal;
         if (channelVal) waMessage += "\nInterested in: " + channelVal;
         var waUrl = 'https://wa.me/919159665277?text=' + encodeURIComponent(waMessage);
-
         var fallbackLink = document.getElementById('wa-fallback-link');
         if (fallbackLink) fallbackLink.href = waUrl;
-
         var submitBtn = form.querySelector('button[type=submit]');
         submitBtn.disabled = true;
         submitBtn.querySelector('.btn-spinner').classList.remove('hidden');
@@ -2601,12 +2421,10 @@
         showFormSuccess(document.getElementById('formmsg'));
         window.open(waUrl, '_blank', 'noopener,noreferrer');
       });
-
       // ── AI Chat Widget ───────────────────────────────
       (function () {
         var msgs = [];
         var open = false;
-
         var toggle = document.getElementById('aiq-toggle');
         var panel  = document.getElementById('aiq-panel');
         var xBtn   = document.getElementById('aiq-x');
@@ -2614,7 +2432,6 @@
         var inp    = document.getElementById('aiq-in');
         var goBtn  = document.getElementById('aiq-go');
         var notif  = document.getElementById('aiq-notif');
-
         var leadCaptured = false;
         var leadForm = document.getElementById('aiq-lead-form');
         var leadNameInput = document.getElementById('aiq-lname');
@@ -2622,7 +2439,6 @@
         var leadBizInput = document.getElementById('aiq-lbiz');
         var leadStartBtn = document.getElementById('aiq-lead-start');
         var aiqBar = document.getElementById('aiq-bar');
-
         leadStartBtn.addEventListener('click', function () {
           var name = leadNameInput.value.trim();
           var phone = leadPhoneInput.value.trim();
@@ -2633,9 +2449,7 @@
           }
           leadStartBtn.disabled = true;
           leadStartBtn.textContent = 'Starting…';
-
           var business = leadBizInput.value.trim();
-
           if (AGENTIQ_API) {
             fetch(AGENTIQ_API + '/lead', {
               method: 'POST',
@@ -2647,7 +2461,6 @@
               console.error('[AgentIQ] Widget lead POST error:', err);
             });
           }
-
           leadCaptured = true;
           // GA4: generate_lead (chat widget path)
           if (typeof gtag === 'function') {
@@ -2656,9 +2469,7 @@
           leadForm.style.display = 'none';
           log.style.display = 'flex';
           aiqBar.style.display = 'flex';
-
           var greeting = 'Hi ' + name + '! 👋 Ask me anything about our AI chatbots, voice agents, pricing, or how we can automate your business.';
-
           // Feed the lead-form details into the conversation so Claude already
           // knows them — otherwise it has no way to see this info (it's only
           // otherwise sent to /lead for the Sheet) and will re-ask for name,
@@ -2671,7 +2482,6 @@
           streamBubble(greeting);
           inp.focus();
         });
-
         function openChat() {
           open = true;
           panel.removeAttribute('inert');
@@ -2690,10 +2500,8 @@
           if (returnFocus !== false) toggle.focus();
           panel.setAttribute('inert', '');
         }
-
         toggle.addEventListener('click', function () { open ? closeChat() : openChat(); });
         xBtn.addEventListener('click', function () { closeChat(); });
-
         // Escape closes the chat and returns focus to the toggle (SC 2.1.2 / 2.4.3)
         // Tab/Shift+Tab is trapped inside the panel while open (SC 2.4.3) so keyboard
         // and screen-reader users can't tab out into the background page.
@@ -2716,7 +2524,6 @@
             first.focus();
           }
         });
-
         function addBubble(text, who) {
           var d = document.createElement('div');
           d.className = 'ab ' + who;
@@ -2725,7 +2532,6 @@
           log.scrollTop = log.scrollHeight;
           return d;
         }
-
         function addTyping() {
           var d = document.createElement('div');
           d.className = 'ab tdot';
@@ -2742,7 +2548,6 @@
           log.scrollTop = log.scrollHeight;
           return d;
         }
-
         function streamBubble(text) {
           if (reduce || !text) { addBubble(text, 'bot'); return; }
           var d = addBubble('', 'bot');
@@ -2761,7 +2566,6 @@
             } else { d.removeAttribute('aria-hidden'); d.textContent = text; }
           })();
         }
-
         function send() {
           var text = inp.value.trim();
           if (!text) return;
@@ -2770,7 +2574,6 @@
           msgs.push({ role: 'user', content: text });
           var t = addTyping();
           goBtn.disabled = true;
-
           var activeApi = (window.AgentIQConfig && window.AgentIQConfig.apiBase) || window.AGENTIQ_API || 'https://agentiq-chatbot.onrender.com';
           if (!activeApi) {
             setTimeout(function () {
@@ -2782,7 +2585,6 @@
             }, reduce ? 200 : 850);
             return;
           }
-
           var ctrl = new AbortController();
           var fetchTimer = setTimeout(function () { ctrl.abort(); }, 45000);
           fetch(activeApi + '/api/chat', {
@@ -2798,7 +2600,6 @@
                   throw new Error(data.error || ('HTTP ' + r.status));
                 });
               }
-
               var contentType = r.headers.get('Content-Type') || '';
               if (contentType.indexOf('application/json') !== -1) {
                 return r.json().then(function (data) {
@@ -2809,7 +2610,6 @@
                   goBtn.disabled = false;
                 });
               }
-
               // Real token stream — render chunks as they arrive
               t.remove();
               var d = addBubble('', 'bot');
@@ -2817,7 +2617,6 @@
               var full = '';
               var reader = r.body.getReader();
               var decoder = new TextDecoder();
-
               return (function pump() {
                 return reader.read().then(function (result) {
                   if (result.done) {
@@ -2844,12 +2643,10 @@
               goBtn.disabled = false;
             });
         }
-
         goBtn.addEventListener('click', send);
         inp.addEventListener('keydown', function (e) {
           if (e.key === 'Enter') { e.preventDefault(); send(); }
         });
-
         // Greet after 3 s — but wait for browser idle first so this never competes with LCP/FID
         var greetFn = function () {
           setTimeout(function () {
@@ -2862,7 +2659,6 @@
           greetFn();
         }
       })();
-
       // ── GA4 Tracking — delegated listeners ───────────────────────────
       // Pricing CTA clicks → begin_checkout
       // Works for all 6 plan cards via the data-plan / data-value attributes
@@ -2876,7 +2672,6 @@
           items: [{ item_name: el.dataset.plan, price: parseInt(el.dataset.value || '0', 10) }]
         });
       });
-
       // WhatsApp CTA clicks (floating button, in-form link, footer links)
       document.querySelectorAll('a[href*="wa.me"]').forEach(function (el) {
         el.addEventListener('click', function () {
@@ -2884,7 +2679,6 @@
           gtag('event', 'click', { event_category: 'whatsapp_cta', event_label: 'WhatsApp' });
         });
       });
-
       // ── Navbar: lift/intensify glass once scrolled past the top ──────
       var siteNav = document.getElementById('site-nav');
       if (siteNav && !reduce) {
@@ -2894,7 +2688,6 @@
         window.addEventListener('scroll', onNavScroll, { passive: true });
         onNavScroll();
       }
-
       // ── Card tilt-on-hover ─────────────────────────────────────────────
       // Sets --tilt-x/--tilt-y (read by the .tilt-card CSS transform) from
       // pointer position relative to each card's center. Capped at a small
@@ -2917,7 +2710,6 @@
           });
         });
       }
-
       // ── Shipped products feature slider ───────────────────────────────
       var FS_SLIDES = [
         {
@@ -2960,10 +2752,8 @@
           ],
         },
       ];
-
       var fsTrack = document.getElementById('fs-track'), fsDots = document.getElementById('fs-dots');
       var fsIndex = 0;
-
       function fsBadgeClasses(color) {
         var map = {
           emerald: 'bg-emerald-400/15 text-emerald-300',
@@ -2972,7 +2762,6 @@
         };
         return map[color] || map.cyan;
       }
-
       function fsRenderSlides() {
         if (!fsTrack) return;
         FS_SLIDES.forEach(function (s) {
@@ -2981,7 +2770,6 @@
           slide.style.background = 'linear-gradient(180deg,#0f172a 0%,#0b1222 100%)';
           slide.style.border = '1px solid #1e293b';
           slide.style.boxShadow = 'inset 0 1px 0 rgba(255,255,255,0.04), inset 0 -20px 40px -20px rgba(0,0,0,0.6)';
-
           var left = document.createElement('div');
           var badge = document.createElement('span');
           badge.className = 'inline-block text-xs font-600 px-3 py-1 rounded-full mb-4 ' + fsBadgeClasses(s.badgeColor);
@@ -2997,7 +2785,6 @@
           cta.className = 'btn-pop inline-flex items-center gap-2 rounded-full px-5 py-2.5 font-600 text-slate-950 bg-gradient-to-r from-coral to-orange hover:brightness-110 transition';
           cta.textContent = s.ctaLabel + ' →';
           left.appendChild(badge); left.appendChild(h3); left.appendChild(p); left.appendChild(cta);
-
           var right = document.createElement('div');
           right.className = 'rounded-2xl overflow-hidden';
           right.style.background = 'rgba(255,255,255,0.04)';
@@ -3017,12 +2804,10 @@
             chatBody.appendChild(bubble);
           });
           right.appendChild(chatHead); right.appendChild(chatBody);
-
           slide.appendChild(left); slide.appendChild(right);
           fsTrack.appendChild(slide);
         });
       }
-
       function fsRenderDots() {
         if (!fsDots) return;
         FS_SLIDES.forEach(function (_, i) {
@@ -3033,7 +2818,6 @@
           fsDots.appendChild(dot);
         });
       }
-
       function fsGoTo(i) {
         if (!fsTrack) return;
         fsIndex = (i + FS_SLIDES.length) % FS_SLIDES.length;
@@ -3044,7 +2828,6 @@
           });
         }
       }
-
       if (fsTrack) {
         fsRenderSlides();
         fsRenderDots();
@@ -3053,7 +2836,6 @@
         if (fsPrev) fsPrev.addEventListener('click', function () { fsGoTo(fsIndex - 1); });
         if (fsNext) fsNext.addEventListener('click', function () { fsGoTo(fsIndex + 1); });
       }
-
       // ── Smooth scroll centering for #book links ─────────────────────────
       function scrollToBookCard(e) {
         var targetCard = document.getElementById('book');
@@ -3075,7 +2857,6 @@
       }
     })();
   </script>
-
   <!-- ── Voice Agent Widget ──────────────────────────────────────────────── -->
   <!-- Re-skinned to match VoiceOrbWidget.jsx's cyan/blue glowing-orb + waveform
        design (react-widgets/src/components/VoiceOrbWidget.jsx). All Vapi call
@@ -3161,7 +2942,6 @@
       50%      { height: 100%; }
     }
   </style>
-
   <div id="vaq-float">
     <span id="vaq-status" role="status" aria-live="polite"></span>
     <button id="vaq-btn" data-state="idle" aria-label="Talk to AgentIQ voice assistant" title="Voice assistant — click to speak">
@@ -3176,26 +2956,21 @@
       <div class="vaq-waveform" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
     </button>
   </div>
-
   <script type="module">
     // Dynamic import so a CDN failure is catchable — static import would silently
     // leave the button visible but non-functional with no user feedback.
     import('https://esm.sh/@vapi-ai/web').then(function (mod) {
       var Vapi = mod.default;
-
       (function () {
         var floatEl  = document.getElementById('vaq-float');
         var btn      = document.getElementById('vaq-btn');
         var statusEl = document.getElementById('vaq-status');
         var VAPI_KEY = (window.AgentIQConfig && window.AgentIQConfig.vapiPublicKey) || '';
-
         if (!VAPI_KEY || VAPI_KEY === 'YOUR_VAPI_PUBLIC_KEY') {
           floatEl.style.display = 'none'; return;
         }
-
         var vapi  = new Vapi(VAPI_KEY, undefined, { avoidEval: true });
         var state = 'idle';
-
         function setState(s) {
           state = s;
           btn.setAttribute('data-state', s);
@@ -3206,9 +2981,7 @@
             ? 'Talk to AgentIQ voice assistant'
             : (labels[s] || '') + ' — click to stop');
         }
-
         var connectTimer = null;
-
         vapi.on('call-start',   function() { clearTimeout(connectTimer); setState('listening'); });
         vapi.on('call-end',     function() { clearTimeout(connectTimer); setState('idle');      });
         vapi.on('speech-start', function() { setState('speaking');  });
@@ -3222,7 +2995,6 @@
           statusEl.style.opacity = '1';
           setTimeout(function () { statusEl.style.opacity = '0'; statusEl.textContent = ''; }, 3000);
         });
-
         btn.addEventListener('click', function() {
           if (state !== 'idle') { vapi.stop(); clearTimeout(connectTimer); setState('idle'); return; }
           setState('connecting');
@@ -3248,11 +3020,9 @@
       if (floatEl) floatEl.style.display = 'none';
     });
   </script>
-
   <!-- Global React mounts: mirrors the real #voice-samples audio player state
        (see the custom-event dispatch added to that section's script above). -->
   <div id="mobile-audio-bar-root"></div>
-
   <!-- React island bundle (react-widgets/): mounts into every #*-root container
        present on the page (see react-widgets/src/main.jsx for the full list). -->
   <script type="module" src="/react-widgets/dist/agentiq-widgets.js"></script>
