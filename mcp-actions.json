@@ -1,7 +1,7 @@
 {
   "version": "1.0",
   "site": "https://agentiq.co.in",
-  "generated": "2026-06-29",
+  "generated": "2026-08-09",
   "description": "AgentIQ agentic action manifest — machine-readable actions for AI browsing agents",
   "actions": [
     {
@@ -169,16 +169,117 @@
       "method": "static",
       "data": {
         "primary_verticals": [
-          "Restaurants and cloud kitchens",
-          "Salons and spas",
-          "Clinics and healthcare providers",
-          "D2C e-commerce brands"
+          {
+            "name": "Restaurants and cloud kitchens",
+            "page": "https://agentiq.co.in/restaurants"
+          },
+          {
+            "name": "Salons and spas",
+            "page": "https://agentiq.co.in/salons"
+          },
+          {
+            "name": "Clinics and healthcare providers",
+            "page": "https://agentiq.co.in/clinics"
+          },
+          {
+            "name": "D2C e-commerce brands",
+            "page": "https://agentiq.co.in/d2c-ecommerce"
+          }
         ],
         "additional_verticals": [
           "Coaching and education",
           "Retail"
         ],
         "note": "AgentIQ can build a custom assistant for any customer-facing Indian SMB with repetitive inbound enquiries."
+      }
+    },
+    {
+      "id": "get-site-pages",
+      "name": "Get AgentIQ Site Pages",
+      "description": "Structured directory of AgentIQ's core pages, industry pages, free tools, and blog articles for agent navigation and citation.",
+      "method": "static",
+      "data": {
+        "core_pages": [
+          {
+            "name": "Homepage",
+            "url": "https://agentiq.co.in/"
+          },
+          {
+            "name": "AI Chatbot India",
+            "url": "https://agentiq.co.in/ai-chatbot-india",
+            "description": "Done-for-you WhatsApp/Instagram/website AI chatbot service, pricing, and comparison to self-serve platforms (WATI, AiSensy, Interakt)"
+          },
+          {
+            "name": "AI Voice Agents India",
+            "url": "https://agentiq.co.in/ai-voice-agents-india",
+            "description": "Hindi & English inbound AI voice agents — 24/7 call answering, appointment booking, department routing"
+          }
+        ],
+        "industry_pages": [
+          {
+            "name": "Restaurants",
+            "url": "https://agentiq.co.in/restaurants"
+          },
+          {
+            "name": "Salons & Spas",
+            "url": "https://agentiq.co.in/salons"
+          },
+          {
+            "name": "Clinics & Healthcare",
+            "url": "https://agentiq.co.in/clinics"
+          },
+          {
+            "name": "D2C E-commerce",
+            "url": "https://agentiq.co.in/d2c-ecommerce"
+          }
+        ],
+        "free_tools": [
+          {
+            "name": "WhatsApp Link & QR Code Generator",
+            "url": "https://agentiq.co.in/tools/whatsapp-link-generator"
+          },
+          {
+            "name": "Human Staff vs. AI Cost Comparison Calculator",
+            "url": "https://agentiq.co.in/tools/staff-vs-ai-calculator"
+          }
+        ],
+        "blog": {
+          "index": "https://agentiq.co.in/blog",
+          "articles": [
+            {
+              "title": "AI Chatbot Pricing in India: 2026 Cost Guide",
+              "url": "https://agentiq.co.in/blog/ai-chatbot-pricing-india-2026-guide"
+            },
+            {
+              "title": "How Much Does an AI Voice Agent Cost in India? (2026 Pricing Guide)",
+              "url": "https://agentiq.co.in/blog/ai-voice-agent-cost-india-pricing-guide"
+            },
+            {
+              "title": "AI Chatbot vs. Hiring Staff: A Cost Comparison",
+              "url": "https://agentiq.co.in/blog/ai-chatbot-vs-hiring-staff-cost-comparison"
+            },
+            {
+              "title": "5 Ways AI Voice Agents Cut No-Shows for Clinics",
+              "url": "https://agentiq.co.in/blog/ai-voice-agents-reduce-missed-calls-no-shows"
+            },
+            {
+              "title": "WhatsApp API vs Chatbot: What Restaurants Need",
+              "url": "https://agentiq.co.in/blog/whatsapp-business-api-vs-chatbot-restaurants"
+            },
+            {
+              "title": "Instagram DM Automation for Salons: A Practical Guide",
+              "url": "https://agentiq.co.in/blog/instagram-dm-automation-salons-guide"
+            },
+            {
+              "title": "How Mumbai Clinics Automate Patient Appointments on WhatsApp & Phone",
+              "url": "https://agentiq.co.in/blog/mumbai-clinics-whatsapp-phone-appointment-automation"
+            },
+            {
+              "title": "D2C WhatsApp Order Support: Automate Without Losing Touch",
+              "url": "https://agentiq.co.in/blog/d2c-whatsapp-order-support-automation"
+            }
+          ]
+        }
       }
     }
   ]

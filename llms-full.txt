@@ -273,6 +273,36 @@ AgentIQ is a done-for-you managed AI chatbot agency based in Mumbai, India. It c
 
 ---
 
+## Site Pages
+
+### Core Pages
+- Homepage: https://agentiq.co.in/
+- AI Chatbot India: https://agentiq.co.in/ai-chatbot-india — done-for-you WhatsApp/Instagram/website chatbot service, pricing, and comparison to self-serve platforms (WATI, AiSensy, Interakt)
+- AI Voice Agents India: https://agentiq.co.in/ai-voice-agents-india — Hindi & English inbound AI voice agents, 24/7 call answering, appointment booking, department routing
+
+### Industry Pages
+- Restaurants: https://agentiq.co.in/restaurants
+- Salons & Spas: https://agentiq.co.in/salons
+- Clinics & Healthcare: https://agentiq.co.in/clinics
+- D2C E-commerce: https://agentiq.co.in/d2c-ecommerce
+
+### Free Tools
+- WhatsApp Link & QR Code Generator: https://agentiq.co.in/tools/whatsapp-link-generator
+- Human Staff vs. AI Cost Comparison Calculator: https://agentiq.co.in/tools/staff-vs-ai-calculator
+
+### Blog
+- Blog index: https://agentiq.co.in/blog
+- AI Chatbot Pricing in India: 2026 Cost Guide — https://agentiq.co.in/blog/ai-chatbot-pricing-india-2026-guide
+- How Much Does an AI Voice Agent Cost in India? (2026 Pricing Guide) — https://agentiq.co.in/blog/ai-voice-agent-cost-india-pricing-guide
+- AI Chatbot vs. Hiring Staff: A Cost Comparison — https://agentiq.co.in/blog/ai-chatbot-vs-hiring-staff-cost-comparison
+- 5 Ways AI Voice Agents Cut No-Shows for Clinics — https://agentiq.co.in/blog/ai-voice-agents-reduce-missed-calls-no-shows
+- WhatsApp API vs Chatbot: What Restaurants Need — https://agentiq.co.in/blog/whatsapp-business-api-vs-chatbot-restaurants
+- Instagram DM Automation for Salons: A Practical Guide — https://agentiq.co.in/blog/instagram-dm-automation-salons-guide
+- How Mumbai Clinics Automate Patient Appointments on WhatsApp & Phone — https://agentiq.co.in/blog/mumbai-clinics-whatsapp-phone-appointment-automation
+- D2C WhatsApp Order Support: Automate Without Losing Touch — https://agentiq.co.in/blog/d2c-whatsapp-order-support-automation
+
+---
+
 ## Contact
 
 - Website: https://agentiq.co.in/

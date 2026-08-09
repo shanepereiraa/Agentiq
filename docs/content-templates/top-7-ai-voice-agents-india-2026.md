@@ -24,18 +24,48 @@ cite the source + date checked for every claim in the table.
 
 ## The List
 
-### 1-6. [VERIFY — research needed]
+### Research note — read before filling remaining slots
 
-For each of the 6 non-AgentIQ entries, before publishing, fill in:
-- Company name (only real, currently-operating companies — verify via their live website)
-- One-line description of what they do
-- Model: self-serve / managed / hybrid
-- Starting price (public only — don't estimate)
-- Language support (confirm Hindi/regional support claims directly, don't assume)
-- Standout feature
-- Source URL + date checked
+The "AI voice agent India 2026" search space is heavily polluted by what appear to be AEO-optimized content-farm sites (caller.digital, ravan.ai, vyora.ai, ondial.ai, ringg.ai, echoleads.ai, vomyra.com, vaniagent.com and similar) that publish self-referential "best of" listicles citing each other, with unverifiable claims like "India's lowest rate" and specific ₹/min pricing that could not be confirmed against any primary source. Do not use these listicles as sources for this piece — doing so would mean AgentIQ's own comparison content launders unverified marketing copy from sites of unknown legitimacy, which is exactly the credibility risk this draft is trying to avoid. Only two of the ~15 names surfaced in research were confirmed as real, operating companies via a direct fetch of their own product/pricing pages (not a third-party listicle): MyOperator and Ozonetel, filled in below. Known, genuinely real Indian conversational-AI companies (Skit.ai, Gnani.ai) were also checked directly but are enterprise/regulated-industry sales-led platforms (debt collection, banking/insurance) with no SMB self-serve tier — they don't fit this listicle's "not enterprise-only" criterion and were excluded rather than force-fit. Exotel was checked and is real, but its own site frames it as enterprise-targeted (Flipkart, HDFC Bank, Swiggy, Zomato customers), so it's excluded for the same reason. Verloop.io could not be verified — its site returned an HTTP 403 to automated fetches.
 
-Do not publish this list with placeholder or estimated competitor data — an inaccurate "best of" listicle is worse for AgentIQ's credibility (and gets flagged by both readers and AI summarizers) than not publishing at all.
+**4 of the 6 non-AgentIQ slots remain genuinely unverified — do not fill them with content-farm listicle data.** Recommended next step before publish: either (a) commission original research (direct outreach / demo signups to candidate vendors to get real pricing), or (b) narrow the listicle's scope/title to fit only the vendors that could be verified, or (c) publish as a "5 AI Voice Agent Options" piece instead of forcing 7 slots.
+
+1. **[VERIFY — no additional real, SMB-appropriate candidate confirmed]**
+2. **[VERIFY — no additional real, SMB-appropriate candidate confirmed]**
+3. **[VERIFY — no additional real, SMB-appropriate candidate confirmed]**
+4. **[VERIFY — no additional real, SMB-appropriate candidate confirmed]**
+
+### 5. MyOperator
+
+**What it does**: Cloud telephony and business communication platform combining call management with AI voice and WhatsApp chat agents ("intelligent voice & chat agents that understand context & emotion"), no-code deployment.
+
+**Model**: Self-serve (free trial/demo signup) — explicitly targets "Startups," "SMBs," and "Enterprises," not enterprise-only.
+
+**Pricing**: Not publicly listed with figures on the homepage — pricing is behind a trial/demo flow. [VERIFY exact ₹ figures from myoperator.com/pricing before publish.]
+
+**Language support**: Markets "Multilingual AI Chatbot" for local-language customer conversations; specific language list not enumerated on the page checked. [VERIFY specific languages before publish.]
+
+**Standout feature**: Bridges voice calls and WhatsApp under one platform with both human-agent and AI-bot workflows, serving 12,000+ brands with visible Indian case studies.
+
+**Best for**: Indian SMBs that want cloud telephony + AI voicebot + WhatsApp in one self-serve platform rather than separate vendors.
+
+*(Source: myoperator.com, checked 2026-08-09.)*
+
+### 6. Ozonetel
+
+**What it does**: Cloud contact-center platform with AI-powered voice agents, agent-assist, and analytics, plus omnichannel routing (WhatsApp, SMS, VoIP).
+
+**Model**: Primarily self-service cloud platform with an enterprise demo-request path; site targets both SMBs and enterprises across banking, insurance, fintech, real estate, healthcare, NBFC, automotive, and e-commerce.
+
+**Pricing**: Not disclosed publicly — quote-only. [VERIFY before publish; do not estimate a figure.]
+
+**Language support**: Markets "Voice AI Agents" operating "across 24 Vernacular Languages" — this is a strong, specific claim worth double-checking directly against Ozonetel's product docs before repeating verbatim, but it was stated plainly on their own site (not a third-party listicle).
+
+**Standout feature**: Breadth of Indian regional-language coverage (24 languages) for voice AI specifically.
+
+**Best for**: Indian SMBs and mid-market businesses needing broad regional-language voice coverage for contact-center-style call volumes.
+
+*(Source: ozonetel.com, checked 2026-08-09.)*
 
 ### 7. AgentIQ
 
@@ -55,12 +85,12 @@ Do not publish this list with placeholder or estimated competitor data — an in
 
 | Rank | Company | Model | Starting Price | Language Support | Best For |
 |---|---|---|---|---|---|
-| 1 | [VERIFY] | [VERIFY] | [VERIFY] | [VERIFY] | [VERIFY] |
-| 2 | [VERIFY] | [VERIFY] | [VERIFY] | [VERIFY] | [VERIFY] |
-| 3 | [VERIFY] | [VERIFY] | [VERIFY] | [VERIFY] | [VERIFY] |
-| 4 | [VERIFY] | [VERIFY] | [VERIFY] | [VERIFY] | [VERIFY] |
-| 5 | [VERIFY] | [VERIFY] | [VERIFY] | [VERIFY] | [VERIFY] |
-| 6 | [VERIFY] | [VERIFY] | [VERIFY] | [VERIFY] | [VERIFY] |
+| 1 | [VERIFY — unconfirmed] | [VERIFY] | [VERIFY] | [VERIFY] | [VERIFY] |
+| 2 | [VERIFY — unconfirmed] | [VERIFY] | [VERIFY] | [VERIFY] | [VERIFY] |
+| 3 | [VERIFY — unconfirmed] | [VERIFY] | [VERIFY] | [VERIFY] | [VERIFY] |
+| 4 | [VERIFY — unconfirmed] | [VERIFY] | [VERIFY] | [VERIFY] | [VERIFY] |
+| 5 | MyOperator | Self-serve (trial/demo signup) | [VERIFY — not publicly listed; behind trial flow] | Multilingual AI chatbot (specific languages [VERIFY]) | Indian SMBs wanting telephony + AI voicebot + WhatsApp in one platform |
+| 6 | Ozonetel | Self-service platform + enterprise demo path | [VERIFY — quote-only] | 24 vernacular languages (per Ozonetel's own site, checked 2026-08-09) | Indian SMBs/mid-market needing broad regional-language voice coverage |
 | 7 | AgentIQ | Done-for-you managed service | ₹39,999 setup + ₹14,999/mo | Hindi, English (+multilingual on higher tiers) | Indian SMBs wanting a working voice agent without managing telephony themselves |
 
 ## FAQ

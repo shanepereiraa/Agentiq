@@ -2,6 +2,21 @@
 
 > Done-for-you AI chatbots and voice agents for Indian businesses — restaurants, salons, clinics, and D2C brands. Deployed on WhatsApp, Instagram, and your website. Live in 7 days, no coding required.
 
+For the full reference — detailed plan features, FAQs, onboarding process, performance metrics, industry-specific Q&A, and competitive positioning — see [llms-full.txt](https://agentiq.co.in/llms-full.txt).
+
+## Key Pages
+
+- [Homepage](https://agentiq.co.in/): Overview of AgentIQ's chatbot and voice agent services, pricing, and industries served
+- [AI Chatbot India](https://agentiq.co.in/ai-chatbot-india): Done-for-you WhatsApp/Instagram/website AI chatbot service, pricing, and comparison to self-serve platforms (WATI, AiSensy, Interakt)
+- [AI Voice Agents India](https://agentiq.co.in/ai-voice-agents-india): Hindi & English inbound AI voice agents — 24/7 call answering, appointment booking, department routing
+- [Restaurants](https://agentiq.co.in/restaurants): AI chatbot for table reservations, menu FAQs, and order status for restaurants and cloud kitchens
+- [Salons & Spas](https://agentiq.co.in/salons): AI chatbot for appointment booking, service pricing, and stylist availability
+- [Clinics & Healthcare](https://agentiq.co.in/clinics): AI chatbot for appointment scheduling, FAQ triage, and doctor availability
+- [D2C E-commerce](https://agentiq.co.in/d2c-ecommerce): AI chatbot for product queries, order tracking, and returns/refunds via WhatsApp
+- [WhatsApp Link & QR Code Generator](https://agentiq.co.in/tools/whatsapp-link-generator): Free tool to create a WhatsApp click-to-chat link and QR code for a business
+- [Human Staff vs. AI Cost Calculator](https://agentiq.co.in/tools/staff-vs-ai-calculator): Free tool comparing the cost of hiring staff versus an AI chatbot/voice agent
+- [Blog](https://agentiq.co.in/blog): Guides on AI chatbot/voice agent pricing, ROI, and automation for Indian SMBs
+
 ## What AgentIQ Does
 
 AgentIQ builds and manages AI-powered customer communication assistants for small and mid-size Indian businesses. The service covers the full delivery lifecycle: discovery call, design, content training, deployment, and ongoing optimisation — clients need no technical knowledge.
