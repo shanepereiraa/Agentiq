@@ -79,6 +79,7 @@
     @keyframes form-check-draw{to{stroke-dashoffset:0}}
     /* ── AI Chat & Voice Widgets ─────────────────────────────── */
     #aiq-float { position: fixed; bottom: 24px; right: 20px; z-index: 9999; }
+    @media (max-width: 767px) { #aiq-float { bottom: 80px; } }
     #aiq-toggle {
       width: 52px; height: 52px; border-radius: 50%;
       background: linear-gradient(135deg, #FF9F45, #FF6B5C);
@@ -230,6 +231,7 @@
     }
 
     #vaq-float { position: fixed; bottom: 24px; left: 20px; z-index: 9999; }
+    @media (max-width: 767px) { #vaq-float { bottom: 80px; } }
     #vaq-status {
       position: absolute; bottom: calc(100% + 8px); left: 0;
       background: rgba(10,14,28,.92);
@@ -310,7 +312,8 @@
       padding-bottom: calc(0.75rem + env(safe-area-inset-bottom));
     }
     @media (max-width: 767px) { .mqb-bar { display: flex; } body { padding-bottom: calc(4.25rem + env(safe-area-inset-bottom)); } }
-    .mqb-btn { display: flex; align-items: center; justify-content: center; gap: 0.5rem; min-height: 48px; padding: 0.7rem 1rem; border-radius: 0.85rem; font-weight: 600; font-size: 0.875rem; transition: transform 0.15s ease, box-shadow 0.2s ease; }
+    body.aiq-nav-open .mqb-bar, body.aiq-nav-open #aiq-float, body.aiq-nav-open #vaq-float { display: none !important; }
+    .mqb-btn { display: flex; align-items: center; justify-content: center; gap: 0.4rem; min-height: 48px; padding: 0.7rem 0.75rem; border-radius: 0.85rem; font-weight: 600; font-size: 0.75rem; white-space: nowrap; transition: transform 0.15s ease, box-shadow 0.2s ease; } @media (min-width: 640px) { .mqb-btn { font-size: 0.875rem; padding: 0.7rem 1rem; } }
     .mqb-btn:active { transform: scale(0.97); }
     .mqb-btn-whatsapp { background: #15803D; color: #fff; box-shadow: 0 4px 16px rgba(21,128,61,0.35); }
     .mqb-btn-demo { background: linear-gradient(135deg,#FF6B5C,#FF9F45); color: #0b1222; box-shadow: 0 4px 16px rgba(255,107,92,0.4); }
@@ -343,7 +346,7 @@
         <a href="/#faq" class="hover:text-white transition-colors">FAQ</a>
       </div>
       <div class="flex items-center gap-2">
-        <a href="#book" class="cursor-pointer text-sm font-500 px-4 py-2 rounded-xl bg-white text-ink hover:bg-cyan hover:text-white transition-colors duration-200">Book a demo</a>
+        <a href="#book" class="hidden md:inline-flex cursor-pointer text-sm font-500 px-4 py-2 rounded-xl bg-white text-ink hover:bg-cyan hover:text-white transition-colors duration-200">Book a demo</a>
         <button id="aiq-nav-toggle" type="button" class="md:hidden grid place-items-center w-9 h-9 rounded-xl text-slate-200 hover:text-white hover:bg-white/10 transition-colors" aria-label="Open menu" aria-haspopup="true" aria-expanded="false" aria-controls="aiq-mobile-nav">
           <svg class="icon-open w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
           <svg class="icon-close w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
@@ -1138,6 +1141,18 @@
           gtag('event', 'generate_lead', { currency: 'INR', value: 0, method: 'lead_form' });
         }
       });
+    })();
+  </script>
+  <script>
+    (function(){
+      "use strict";
+      var navPanel = document.getElementById("aiq-mobile-nav");
+      if (!navPanel) return;
+      function syncNavState() {
+        document.body.classList.toggle("aiq-nav-open", !navPanel.classList.contains("aiq-shut"));
+      }
+      new MutationObserver(syncNavState).observe(navPanel, { attributes: true, attributeFilter: ["class"] });
+      syncNavState();
     })();
   </script>
 </body>

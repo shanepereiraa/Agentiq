@@ -88,7 +88,8 @@
       padding-bottom: calc(0.75rem + env(safe-area-inset-bottom));
     }
     @media (max-width: 767px) { .mqb-bar { display: flex; } body { padding-bottom: calc(4.25rem + env(safe-area-inset-bottom)); } }
-    .mqb-btn { display: flex; align-items: center; justify-content: center; gap: 0.5rem; min-height: 48px; padding: 0.7rem 1rem; border-radius: 0.85rem; font-weight: 600; font-size: 0.875rem; transition: transform 0.15s ease, box-shadow 0.2s ease; }
+    body.aiq-nav-open .mqb-bar, body.aiq-nav-open #aiq-float, body.aiq-nav-open #vaq-float { display: none !important; }
+    .mqb-btn { display: flex; align-items: center; justify-content: center; gap: 0.4rem; min-height: 48px; padding: 0.7rem 0.75rem; border-radius: 0.85rem; font-weight: 600; font-size: 0.75rem; white-space: nowrap; transition: transform 0.15s ease, box-shadow 0.2s ease; } @media (min-width: 640px) { .mqb-btn { font-size: 0.875rem; padding: 0.7rem 1rem; } }
     .mqb-btn:active { transform: scale(0.97); }
     .mqb-btn-whatsapp { background: #15803D; color: #fff; box-shadow: 0 4px 16px rgba(21,128,61,0.35); }
     .mqb-btn-demo { background: linear-gradient(135deg,#FF6B5C,#FF9F45); color: #0b1222; box-shadow: 0 4px 16px rgba(255,107,92,0.4); }
@@ -524,6 +525,18 @@
           gtag('event', 'generate_lead', { currency: 'INR', value: 0, method: 'lead_form' });
         }
       });
+    })();
+  </script>
+  <script>
+    (function(){
+      "use strict";
+      var navPanel = document.getElementById("aiq-mobile-nav");
+      if (!navPanel) return;
+      function syncNavState() {
+        document.body.classList.toggle("aiq-nav-open", !navPanel.classList.contains("aiq-shut"));
+      }
+      new MutationObserver(syncNavState).observe(navPanel, { attributes: true, attributeFilter: ["class"] });
+      syncNavState();
     })();
   </script>
 </body>
