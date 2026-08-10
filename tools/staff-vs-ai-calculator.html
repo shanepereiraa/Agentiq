@@ -173,21 +173,21 @@
 
             <p class="text-xs font-600 uppercase tracking-wider text-slate-400 mb-1">Total Annual Savings with AgentIQ</p>
             <div id="out-savings" class="font-display font-700 text-emerald-400 text-4xl sm:text-5xl my-2">
-              ₹3,96,000
+              ₹6,20,013
             </div>
             <p class="text-xs text-slate-400 mb-6">Calculated vs. human overheads, training, and night shifts.</p>
 
             <div class="grid grid-cols-2 gap-4 border-t border-white/10 pt-6 text-left">
               <div class="bg-slate-900/60 rounded-2xl p-4 border border-white/5">
                 <p class="text-[11px] text-slate-400 uppercase font-600">Human Staff Cost</p>
-                <div id="out-human-cost" class="font-display font-700 text-red-400 text-xl mt-1">₹5,28,000/yr</div>
+                <div id="out-human-cost" class="font-display font-700 text-red-400 text-xl mt-1">₹8,40,000/yr</div>
                 <p class="text-[10px] text-slate-500 mt-1">Salary + EPF + Sick Leaves</p>
               </div>
 
               <div class="bg-slate-900/60 rounded-2xl p-4 border border-cyan/20">
                 <p class="text-[11px] text-cyan uppercase font-600">AgentIQ AI Cost</p>
-                <div id="out-ai-cost" class="font-display font-700 text-white text-xl mt-1">₹1,32,000/yr</div>
-                <p class="text-[10px] text-slate-400 mt-1">24/7 Unlimited Calls &amp; DMs</p>
+                <div id="out-ai-cost" class="font-display font-700 text-white text-xl mt-1">₹2,19,987/yr</div>
+                <p class="text-[10px] text-slate-400 mt-1">24/7 coverage, 250 min/mo included (₹45/min beyond that)</p>
               </div>
             </div>
 
@@ -321,7 +321,12 @@
         var monthlyHuman = (count * salary * (mult >= 2 ? 1.5 : 1)) + (count * 2000); // Including overheads
         var annualHuman = monthlyHuman * 12;
 
-        var annualAi = 39999 + (12 * 7999); // Typical setup + monthly retainer
+        // Anchored to AgentIQ's real, published Voice Growth plan (Rs. 39,999
+        // setup + Rs. 14,999/month) — this tool models telecaller/receptionist
+        // phone coverage, which is the voice product line, not chatbot pricing.
+        // Must stay in sync with the Voice Growth figures quoted elsewhere on
+        // the site (index.html, ai-voice-agents-india.html, llms.txt).
+        var annualAi = 39999 + (12 * 14999);
         var savings = annualHuman - annualAi;
         if (savings < 0) savings = 45000;
 
