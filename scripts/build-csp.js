@@ -95,7 +95,7 @@ for (const page of PAGES) {
 const sortedHashes = Array.from(hashes).sort();
 
 const vercelConfig = JSON.parse(fs.readFileSync(VERCEL_JSON, 'utf8'));
-const headerRule = vercelConfig.headers.find((h) => h.source === '/(.*)');
+const headerRule = vercelConfig.headers.find((h) => h.headers && h.headers.some((hdr) => hdr.key === 'Content-Security-Policy'));
 const cspHeader = headerRule.headers.find((h) => h.key === 'Content-Security-Policy');
 
 const scriptSrcRe = /script-src [^;]*;/;
