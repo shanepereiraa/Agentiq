@@ -47,6 +47,11 @@
     .logo-grad-text{background:linear-gradient(135deg,#FF8A5B 0%,#FF5C8A 55%,#C74AFF 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
     @media (forced-colors: active) { .logo-grad-text { background: none; -webkit-background-clip: initial; background-clip: initial; color: CanvasText; } }
     .prose-dark{color:#94a3b8}.prose-dark h2{color:#f8fafc;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.5rem;margin-top:2.5rem;margin-bottom:1rem;scroll-margin-top:6rem}.prose-dark p{margin-bottom:1.25rem;line-height:1.75}.prose-dark ul{list-style-type:disc;padding-left:1.25rem;margin-bottom:1.25rem}.prose-dark li{margin-bottom:.5rem}.prose-dark a{color:#22d3ee;text-decoration:underline}.prose-dark a:hover{color:#fff}.prose-dark strong{color:#f1f5f9}
+    #aiq-mobile-nav{position:absolute;top:calc(100% + 8px);left:0;right:0;background:rgba(7,23,58,.97);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.12);border-radius:18px;box-shadow:0 16px 60px rgba(0,0,0,.55);transition:opacity .18s ease,transform .18s ease}
+    #aiq-mobile-nav.aiq-shut{opacity:0;transform:translateY(-6px) scale(.98);pointer-events:none}
+    #aiq-nav-toggle .icon-close{display:none}
+    #aiq-nav-toggle[aria-expanded="true"] .icon-open{display:none}
+    #aiq-nav-toggle[aria-expanded="true"] .icon-close{display:block}
   </style>
 </head>
 <body class="font-sans text-slate-300 bg-[#060f28] min-h-screen selection:bg-cyan-500/30 selection:text-cyan-200">
@@ -68,7 +73,23 @@
         <a href="/blog" class="text-cyan font-600">Blog</a>
         <a href="/#faq" class="hover:text-white transition-colors">FAQ</a>
       </div>
-      <a href="/#book" class="hidden md:inline-flex items-center justify-center cursor-pointer min-h-[44px] text-sm font-500 px-4 py-2 rounded-xl bg-white text-ink hover:bg-cyan hover:text-white transition-colors duration-200">Book a demo</a>
+      <div class="flex items-center gap-2">
+        <a href="/#book" class="hidden md:inline-flex items-center justify-center cursor-pointer min-h-[48px] text-sm font-500 px-4 py-2 rounded-xl bg-white text-ink hover:bg-cyan hover:text-white transition-colors duration-200">Book a demo</a>
+        <button id="aiq-nav-toggle" type="button" class="md:hidden grid place-items-center min-w-[48px] min-h-[48px] rounded-xl text-slate-200 hover:text-white hover:bg-white/10 transition-colors" aria-label="Open menu" aria-haspopup="true" aria-expanded="false" aria-controls="aiq-mobile-nav">
+          <svg class="icon-open w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+          <svg class="icon-close w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+        </button>
+      </div>
+      <div id="aiq-mobile-nav" class="aiq-shut md:hidden flex flex-col gap-1 p-2 text-sm text-slate-300" inert>
+        <a href="/ai-chatbot-india" class="min-h-[48px] flex items-center px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-white transition-colors">Chatbots</a>
+        <a href="/ai-voice-agents-india" class="min-h-[48px] flex items-center px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-white transition-colors">Voice Agents</a>
+        <a href="/try-your-bot" class="min-h-[48px] flex items-center px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-white transition-colors">Try Bot</a>
+        <a href="/#industries" class="min-h-[48px] flex items-center px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-white transition-colors">Industries</a>
+        <a href="/#pricing" class="min-h-[48px] flex items-center px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-white transition-colors">Pricing</a>
+        <a href="/blog" class="min-h-[48px] flex items-center px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-white transition-colors">Blog</a>
+        <a href="/#faq" class="min-h-[48px] flex items-center px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-white transition-colors">FAQ</a>
+        <a href="/#book" class="mt-2 cursor-pointer text-center min-h-[48px] flex items-center justify-center py-2.5 px-4 rounded-xl bg-white text-ink hover:bg-cyan hover:text-white text-sm font-500 transition-colors duration-200">Book a demo</a>
+      </div>
     </nav>
   </header>
 
@@ -245,5 +266,43 @@
     </div>
   </footer>
 
+  <a href="https://wa.me/919159665277?text=Hi%20AgentIQ%2C%20I%27d%20like%20a%20clinic%20demo" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp" class="fixed bottom-5 right-5 z-50 grid place-items-center w-14 h-14 rounded-full bg-emerald-500 text-white shadow-xl shadow-emerald-500/30 hover:bg-emerald-400 transition-colors duration-200 animate-float">
+    <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
+  </a>
+
+  <script>
+    (function(){
+      'use strict';
+      var navToggle = document.getElementById('aiq-nav-toggle');
+      var navPanel = document.getElementById('aiq-mobile-nav');
+      var navOpen = false;
+      function openNav() {
+        navOpen = true;
+        navPanel.removeAttribute('inert');
+        navPanel.classList.remove('aiq-shut');
+        navToggle.setAttribute('aria-expanded', 'true');
+      }
+      function closeNav(returnFocus) {
+        navOpen = false;
+        navPanel.classList.add('aiq-shut');
+        navToggle.setAttribute('aria-expanded', 'false');
+        if (returnFocus !== false) navToggle.focus();
+        navPanel.setAttribute('inert', '');
+      }
+      navToggle.addEventListener('click', function () { navOpen ? closeNav() : openNav(); });
+      navPanel.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () { closeNav(false); });
+      });
+      document.addEventListener('keydown', function (e) {
+        if (navOpen && e.key === 'Escape') closeNav();
+      });
+      document.addEventListener('click', function (e) {
+        if (navOpen && !navPanel.contains(e.target) && e.target !== navToggle && !navToggle.contains(e.target)) closeNav(false);
+      });
+      window.matchMedia('(min-width: 768px)').addEventListener('change', function (e) {
+        if (e.matches && navOpen) closeNav(false);
+      });
+    })();
+  </script>
 </body>
 </html>

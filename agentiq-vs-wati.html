@@ -75,6 +75,19 @@
     .prose-cmp table{width:100%;border-collapse:collapse;margin-bottom:1.5rem;font-size:.9rem}
     .prose-cmp th{color:#fff;text-align:left;padding:.75rem 1rem;border-bottom:2px solid rgba(255,255,255,.14);font-weight:600}
     .prose-cmp td{color:#cbd5e1;padding:.75rem 1rem;border-bottom:1px solid rgba(255,255,255,.08);vertical-align:top}
+      /* ── Mobile quick bar ───────────────────────────────────────── */
+    .mqb-bar {
+      display: none;
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      background: rgba(10,10,10,0.8);
+      border-top: 1px solid rgba(255,255,255,0.10);
+      padding-bottom: calc(0.75rem + env(safe-area-inset-bottom));
+    }
+    @media (max-width: 767px) { .mqb-bar { display: flex; } body { padding-bottom: calc(4.25rem + env(safe-area-inset-bottom)); } }
+    .mqb-btn { display: flex; align-items: center; justify-content: center; gap: 0.5rem; min-height: 48px; padding: 0.7rem 1rem; border-radius: 0.85rem; font-weight: 600; font-size: 0.875rem; transition: transform 0.15s ease, box-shadow 0.2s ease; }
+    .mqb-btn:active { transform: scale(0.97); }
+    .mqb-btn-whatsapp { background: #15803D; color: #fff; box-shadow: 0 4px 16px rgba(21,128,61,0.35); }
+    .mqb-btn-demo { background: linear-gradient(135deg,#FF6B5C,#FF9F45); color: #0b1222; box-shadow: 0 4px 16px rgba(255,107,92,0.4); }
   </style>
 </head>
 <body class="font-sans text-slate-300 bg-[#060f28] min-h-screen selection:bg-cyan-500/30 selection:text-cyan-200">
@@ -97,7 +110,7 @@
         <a href="/#faq" class="hover:text-white transition-colors">FAQ</a>
       </div>
       <div class="flex items-center gap-2">
-        <a href="#book" class="hidden md:inline-flex items-center justify-center cursor-pointer min-h-[44px] text-sm font-500 px-4 py-2 rounded-xl bg-white text-ink hover:bg-cyan hover:text-white transition-colors duration-200">Book a demo</a>
+        <a href="#book" class="hidden md:inline-flex items-center justify-center cursor-pointer min-h-[48px] text-sm font-500 px-4 py-2 rounded-xl bg-white text-ink hover:bg-cyan hover:text-white transition-colors duration-200">Book a demo</a>
         <button id="aiq-nav-toggle" type="button" class="md:hidden grid place-items-center w-9 h-9 rounded-xl text-slate-200 hover:text-white hover:bg-white/10 transition-colors" aria-label="Open menu" aria-haspopup="true" aria-expanded="false" aria-controls="aiq-mobile-nav">
           <svg class="icon-open w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
           <svg class="icon-close w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
@@ -228,15 +241,15 @@
           <div class="space-y-4 text-left">
             <div>
               <label for="vw-name" class="block text-xs text-slate-300 mb-1">Your Name</label>
-              <input id="vw-name" type="text" class="w-full bg-slate-900/80 border border-white/15 rounded-xl p-3 text-white text-sm focus:border-cyan focus:outline-none" placeholder="Aarohi Mehta" data-mcp-param="name" data-mcp-description="Full name of the person requesting the demo (optional)" />
+              <input id="vw-name" type="text" class="w-full bg-slate-900/80 border border-white/15 rounded-xl p-3 text-white text-base focus:border-cyan focus:outline-none" placeholder="Aarohi Mehta" data-mcp-param="name" data-mcp-description="Full name of the person requesting the demo (optional)" />
             </div>
             <div>
               <label for="vw-business" class="block text-xs text-slate-300 mb-1">Business Name</label>
-              <input id="vw-business" type="text" class="w-full bg-slate-900/80 border border-white/15 rounded-xl p-3 text-white text-sm focus:border-cyan focus:outline-none" placeholder="Your business" data-mcp-param="business" data-mcp-description="Business name (optional)" />
+              <input id="vw-business" type="text" class="w-full bg-slate-900/80 border border-white/15 rounded-xl p-3 text-white text-base focus:border-cyan focus:outline-none" placeholder="Your business" data-mcp-param="business" data-mcp-description="Business name (optional)" />
             </div>
             <div>
               <label for="vw-phone" class="block text-xs text-slate-300 mb-1">WhatsApp Number</label>
-              <input id="vw-phone" type="tel" class="w-full bg-slate-900/80 border border-white/15 rounded-xl p-3 text-white text-sm focus:border-cyan focus:outline-none" placeholder="+91 98765 43210" required data-mcp-param="phone" data-mcp-description="WhatsApp number in Indian format, e.g. +91 98765 43210 or 9876543210" />
+              <input id="vw-phone" type="tel" class="w-full bg-slate-900/80 border border-white/15 rounded-xl p-3 text-white text-base focus:border-cyan focus:outline-none" placeholder="+91 98765 43210" required data-mcp-param="phone" data-mcp-description="WhatsApp number in Indian format, e.g. +91 98765 43210 or 9876543210" />
             </div>
             <button id="btn-submit-vw" type="button" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-coral-deep to-orange-deep text-white font-600 text-sm shadow-lg shadow-coral/20 hover:shadow-coral/40 transition-all">
               Book My Free Demo →
@@ -419,5 +432,19 @@
       }
     })();
   </script>
+  <!-- ============================================================
+    MOBILE QUICK BAR — persistent bottom conversion bar, mobile only.
+  ============================================================= -->
+  <div id="mobile-quickbar" class="mqb-bar fixed bottom-0 left-0 right-0 z-50 gap-3 px-4 py-3">
+    <a href="https://wa.me/919159665277?text=Hi%20AgentIQ%2C%20I%27d%20like%20to%20know%20more"
+       target="_blank" rel="noopener noreferrer"
+       class="mqb-btn mqb-btn-whatsapp flex-1">
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
+      WhatsApp Us
+    </a>
+    <a href="#book" class="mqb-btn mqb-btn-demo flex-1">
+      Book Free Demo
+    </a>
+  </div>
 </body>
 </html>
