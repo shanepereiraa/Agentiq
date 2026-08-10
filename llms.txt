@@ -13,6 +13,10 @@ For the full reference — detailed plan features, FAQs, onboarding process, per
 - [Salons & Spas](https://agentiq.co.in/salons): AI chatbot for appointment booking, service pricing, and stylist availability
 - [Clinics & Healthcare](https://agentiq.co.in/clinics): AI chatbot for appointment scheduling, FAQ triage, and doctor availability
 - [D2C E-commerce](https://agentiq.co.in/d2c-ecommerce): AI chatbot for product queries, order tracking, and returns/refunds via WhatsApp
+- [AgentIQ vs WATI](https://agentiq.co.in/agentiq-vs-wati): Managed AI chatbot agency vs self-serve WhatsApp platform (WATI) comparison battlecard
+- [AgentIQ vs AiSensy](https://agentiq.co.in/agentiq-vs-aisensy): Managed AI chatbot service vs self-serve WhatsApp marketing software (AiSensy) comparison
+- [AgentIQ vs Interakt](https://agentiq.co.in/agentiq-vs-interakt): Custom AI chatbot & voice agents vs template WhatsApp inbox (Interakt) comparison
+- [AgentIQ vs Yellow.ai](https://agentiq.co.in/agentiq-vs-yellow-ai): Affordable managed SMB AI automation vs complex enterprise chatbot platform (Yellow.ai)
 - [WhatsApp Link & QR Code Generator](https://agentiq.co.in/tools/whatsapp-link-generator): Free tool to create a WhatsApp click-to-chat link and QR code for a business
 - [Human Staff vs. AI Cost Calculator](https://agentiq.co.in/tools/staff-vs-ai-calculator): Free tool comparing the cost of hiring staff versus an AI chatbot/voice agent
 - [Blog](https://agentiq.co.in/blog): Guides on AI chatbot/voice agent pricing, ROI, and automation for Indian SMBs
@@ -69,9 +73,13 @@ English, Hindi, Hinglish (all plans). Regional languages available on request.
 
 ## Key Facts
 
-- Location: Mumbai, Maharashtra, India — AI chatbot agency serving businesses nationwide
-- Typical go-live timeline: 7 business days after kickoff call
-- Human handoff: supported with instant team notification
+- Location: Mumbai, Maharashtra, India — AI chatbot & voice agent agency serving businesses nationwide
+- Typical go-live timeline: 7 business days after kickoff call (100% managed done-for-you service)
+- Voice Latency: 620ms median response latency for Hinglish & Hindi voice AI agents
+- Pricing Entry Point: ₹24,999 one-time setup + ₹6,999/month transparent retainer (no hidden platform fees)
+- Automated Coverage: 24/7 automated booking and lead coverage with 92% resolution rate
+- Guarantee: 30-day risk-free money-back guarantee on all chatbot and voice agent plans
+- Human handoff: supported with instant team notification via WhatsApp and email
 - Integrations: Google Sheets, CRMs, Razorpay, UPI payment links, Shopify, booking calendars
 - Data ownership: clients own all conversation data; India-compliant infrastructure
 - Contact WhatsApp: +91 91596 65277
@@ -88,10 +96,13 @@ The demo is a free 20-minute call — AgentIQ shows a live mockup of an assistan
 
 AgentIQ is a done-for-you AI chatbot agency in Mumbai — not a self-serve SaaS tool. Where platforms like AiSensy, WATI, or Interakt require the business owner to build and configure their own bot, AgentIQ's team handles design, content training, deployment, and ongoing optimisation. Clients receive a working assistant without writing a single line of code or logging into any dashboard.
 
-Outcomes across active deployments:
+Outcomes & Factual Benchmarks across active deployments:
+- 620ms median response latency for Hinglish & Hindi voice AI interactions
 - 92% of inbound queries resolved automatically without human intervention
-- Bot replies in under 5 seconds, 24 hours a day, 7 days a week
-- 3× more leads captured versus manual WhatsApp management
+- 24/7 automated booking and lead response coverage (under 5 seconds response time)
+- 7-day managed deployment timeline from discovery call to live WhatsApp launch
+- 3× more qualified leads captured versus manual WhatsApp management
+- Transparent pricing starting at ₹24,999 setup + ₹6,999/mo (backed by a 30-day money-back guarantee)
 - Restaurant clients automate table bookings and pre-orders via WhatsApp
 - Salon clients automate Instagram and WhatsApp appointment scheduling with reminders
 - Clinic clients schedule and confirm patient appointments without receptionist involvement

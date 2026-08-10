@@ -286,6 +286,12 @@ AgentIQ is a done-for-you managed AI chatbot agency based in Mumbai, India. It c
 - Clinics & Healthcare: https://agentiq.co.in/clinics
 - D2C E-commerce: https://agentiq.co.in/d2c-ecommerce
 
+### Comparison Battlecards
+- AgentIQ vs WATI: https://agentiq.co.in/agentiq-vs-wati — Done-for-you AI chatbot agency vs self-serve WhatsApp platform (WATI) comparison
+- AgentIQ vs AiSensy: https://agentiq.co.in/agentiq-vs-aisensy — Managed AI chatbot service vs self-serve WhatsApp marketing software (AiSensy) comparison
+- AgentIQ vs Interakt: https://agentiq.co.in/agentiq-vs-interakt — Custom AI chatbot & voice agents vs template WhatsApp inbox (Interakt) comparison
+- AgentIQ vs Yellow.ai: https://agentiq.co.in/agentiq-vs-yellow-ai — Affordable managed SMB AI automation vs enterprise chatbot platform (Yellow.ai) comparison
+
 ### Free Tools
 - WhatsApp Link & QR Code Generator: https://agentiq.co.in/tools/whatsapp-link-generator
 - Human Staff vs. AI Cost Comparison Calculator: https://agentiq.co.in/tools/staff-vs-ai-calculator
