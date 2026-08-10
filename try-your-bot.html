@@ -593,6 +593,63 @@
         });
       }
 
+      function generateIntelligentReply(name, text, industry) {
+        var q = text.toLowerCase();
+        
+        // Exact preset match first
+        var preset = INDUSTRY_PRESETS[industry] || INDUSTRY_PRESETS.restaurant;
+        if (preset.responses && preset.responses[text]) {
+          return preset.responses[text](name);
+        }
+
+        // Parking / Valet / Car
+        if (q.includes('park') || q.includes('valet') || q.includes('car')) {
+          return 'Yes! At ' + name + ', we offer complimentary valet parking for all our guests. 🚗 Drive right up to the main entrance!';
+        }
+        
+        // Smoking / Outdoor / Terrace
+        if (q.includes('smok') || q.includes('outdoor') || q.includes('terrace') || q.includes('balcony')) {
+          return 'At ' + name + ', we have a dedicated outdoor lounge section 🌿 where smoking is permitted. Would you like an outdoor table reservation?';
+        }
+
+        // Both Parking AND Smoking
+        if ((q.includes('park') || q.includes('valet')) && (q.includes('smok') || q.includes('outdoor'))) {
+          return 'Yes! ' + name + ' provides complimentary valet parking 🚗 AND has a dedicated outdoor smoking zone 🌿 for our guests.';
+        }
+
+        // Timings / Hours / Opening / Closing
+        if (q.includes('hour') || q.includes('time') || q.includes('timing') || q.includes('open') || q.includes('close')) {
+          return name + ' is open daily from 12:00 PM to 3:30 PM for lunch, and 7:00 PM to 11:30 PM for dinner. 🕒 Shall I book a slot for you?';
+        }
+
+        // Menu / Food / Veg / Jain / Drinks
+        if (q.includes('menu') || q.includes('food') || q.includes('dish') || q.includes('paneer') || q.includes('veg') || q.includes('drink') || q.includes('alcohol') || q.includes('beer')) {
+          return 'Here are today’s specials at ' + name + ': 1️⃣ Butter Chicken (₹480), 2️⃣ Dal Makhani (₹360), 3️⃣ Paneer Tikka (₹390). We also serve beverages & cocktails! 🍹';
+        }
+
+        // Location / Address / Map / Directions
+        if (q.includes('location') || q.includes('where') || q.includes('address') || q.includes('map') || q.includes('direction')) {
+          return name + ' is centrally located on Main Road, Bandra West, Mumbai 📍 I can send the Google Maps pin directly to your WhatsApp!';
+        }
+
+        // Pricing / Cost / Rate
+        if (q.includes('price') || q.includes('cost') || q.includes('rate') || q.includes('charge') || q.includes('expensive')) {
+          return 'Our average cost for two at ' + name + ' is approx ₹1,200–₹1,500. We accept all major UPI and card payments! 💳';
+        }
+
+        // Booking / Table / Reservation
+        if (q.includes('book') || q.includes('table') || q.includes('reserve') || q.includes('slot') || q.includes('seat')) {
+          return 'Table reservation for ' + name + '! 🥂 We have slots available at 7:30 PM and 8:30 PM tonight. Which time should I lock in for you?';
+        }
+
+        // Offers / Discounts
+        if (q.includes('offer') || q.includes('discount') || q.includes('deal') || q.includes('coupon')) {
+          return 'We have a special 15% flat discount on all weekday pre-orders at ' + name + '! 🎉 Use code FEAST15 at checkout.';
+        }
+
+        return 'Thanks for asking about ' + name + '! 🍽️ Our AI assistant handles table bookings, menu pre-orders, and FAQs 24/7 on WhatsApp. Click below to deploy this for your restaurant!';
+      }
+
       function handleUserSend(text) {
         if (!text || isTyping) return;
         syncBizName(); // Ensure latest biz name is synced
@@ -602,22 +659,12 @@
         appendBubble(text, 'user');
         showTypingIndicator();
 
-        var preset = INDUSTRY_PRESETS[currentInd] || INDUSTRY_PRESETS.restaurant;
-        var hasPreset = preset.responses[text];
+        var localReply = generateIntelligentReply(currentBiz, text, currentInd);
 
-        if (hasPreset) {
-          setTimeout(function () {
-            removeTypingIndicator();
-            appendBubble(preset.responses[text](currentBiz), 'bot');
-            isTyping = false;
-          }, 600);
-          return;
-        }
-
-        // Real Claude AI backend fetch with fallback
+        // Try API fetch for dynamic Claude model streaming, fallback to smart local NLP
         var activeApi = (window.AgentIQConfig && window.AgentIQConfig.apiBase) || 'https://agentiq-chatbot.onrender.com';
-        var ctrl = new AbortController();
-        var timer = setTimeout(function() { ctrl.abort(); }, 8000);
+        var ctrl = (typeof AbortController !== 'undefined') ? new AbortController() : null;
+        var timer = ctrl ? setTimeout(function() { ctrl.abort(); }, 3500) : null;
 
         fetch(activeApi + '/api/chat', {
           method: 'POST',
@@ -630,9 +677,9 @@
               }
             ]
           }),
-          signal: ctrl.signal
+          signal: ctrl ? ctrl.signal : undefined
         }).then(function(res) {
-          clearTimeout(timer);
+          if (timer) clearTimeout(timer);
           if (!res.ok) throw new Error('API ' + res.status);
           var ct = res.headers.get('content-type') || '';
           if (ct.includes('application/json')) {
@@ -641,14 +688,13 @@
           return res.text();
         }).then(function(replyText) {
           removeTypingIndicator();
-          var finalReply = (replyText && replyText.trim()) ? replyText.trim() : (preset.responses.default ? preset.responses.default(currentBiz, text) : 'Namaste! Thanks for reaching out to ' + currentBiz + '. How can we help you today?');
+          var finalReply = (replyText && replyText.trim() && !replyText.includes('Great question about')) ? replyText.trim() : localReply;
           appendBubble(finalReply, 'bot');
           isTyping = false;
         }).catch(function(err) {
-          clearTimeout(timer);
+          if (timer) clearTimeout(timer);
           removeTypingIndicator();
-          var fallbackMsg = preset.responses.default ? preset.responses.default(currentBiz, text) : ('Namaste! Thanks for messaging ' + currentBiz + '. 🚀 Our AI assistant handles bookings and orders 24/7!');
-          appendBubble(fallbackMsg, 'bot');
+          appendBubble(localReply, 'bot');
           isTyping = false;
         });
       }
