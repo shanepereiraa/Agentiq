@@ -25,6 +25,7 @@ const ROOT = path.resolve(__dirname, '..');
 const PAGES = [
   'index.html', 'clinics.html', 'restaurants.html', 'salons.html', 'demo.html', 'd2c-ecommerce.html',
   'ai-chatbot-india.html', 'ai-voice-agents-india.html', 'agentiq-vs-wati.html',
+  'agentiq-vs-aisensy.html', 'agentiq-vs-interakt.html', 'agentiq-vs-yellow-ai.html',
   'tools/whatsapp-link-generator.html',
   'tools/staff-vs-ai-calculator.html',
   'blog/index.html',
