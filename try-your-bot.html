@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Try Your Business Bot | Interactive AI Simulator | AgentIQ</title>
+  <meta name="description" content="Test a customized AI WhatsApp & Voice assistant for your business in 30 seconds. Try AgentIQ's interactive business bot simulator live." />
+  <meta name="ai-summary" content="AgentIQ Interactive Business Bot Simulator: Test how a custom AI chatbot and voice assistant handles customer bookings, orders, and inquiries for your specific business name and industry in real-time." />
+  <link rel="canonical" href="https://agentiq.co.in/try-your-bot" />
+  <link rel="ai-content" href="/llms-full.txt" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://agentiq.co.in/try-your-bot" />
+  <meta property="og:title" content="Try Your Business Bot | Interactive AI Simulator | AgentIQ" />
+  <meta property="og:description" content="See how AgentIQ AI handles real customer bookings & inquiries for your business in 30 seconds." />
+  <meta property="og:image" content="https://agentiq.co.in/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS -->
+  <link rel="stylesheet" href="/tailwind.min.css" />
+
+  <style>
+    .glass {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .glass-card {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .logo-grad-text {
+      background: linear-gradient(135deg, #FF8A5B 0%, #FF5C8A 50%, #C74AFF 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-grad-text {
+      background: linear-gradient(135deg, #FFFFFF 30%, #34D399 70%, #22D3EE 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .aiq-shut { display: none !important; }
+    
+    /* WhatsApp Simulator Phone Frame */
+    .phone-mockup {
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.7), 0 0 40px rgba(34, 211, 238, 0.15);
+    }
+    .chat-bubble-user {
+      background: linear-gradient(135deg, #059669 0%, #10B981 100%);
+      border-top-right-radius: 4px;
+    }
+    .chat-bubble-bot {
+      background: rgba(255, 255, 255, 0.08);
+      border-top-left-radius: 4px;
+    }
+    @keyframes typingPulse {
+      0%, 100% { opacity: 0.3; transform: scale(0.8); }
+      50% { opacity: 1; transform: scale(1.1); }
+    }
+    .typing-dot {
+      animation: typingPulse 1.2s infinite ease-in-out;
+    }
+    .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+    .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+  </style>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://agentiq.co.in/" },
+          { "@type": "ListItem", "position": 2, "name": "Try Your Business Bot", "item": "https://agentiq.co.in/try-your-bot" }
+        ]
+      },
+      {
+        "@type": "WebApplication",
+        "name": "AgentIQ Business Bot Live Simulator",
+        "url": "https://agentiq.co.in/try-your-bot",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" }
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="font-sans text-slate-300 bg-[#060f28] min-h-screen selection:bg-cyan-500/30 selection:text-cyan-200">
+
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-cyan-500 focus:text-slate-950 focus:font-bold focus:rounded-lg">Skip to main content</a>
+
+  <!-- Header -->
+  <header class="fixed top-3 left-3 right-3 z-50">
+    <nav aria-label="Primary" class="relative max-w-6xl mx-auto glass rounded-2xl px-4 sm:px-5 py-3 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2.5" aria-label="AgentIQ home">
+        <span class="font-display font-700 text-lg text-white tracking-tight inline-flex items-baseline gap-0.5">Agent<span class="logo-grad-text">IQ</span><svg class="w-2.5 h-2.5 shrink-0" viewBox="0 0 16 14" fill="none" aria-hidden="true" focusable="false"><defs><linearGradient id="iq-wave-sim-hdr" x1="0" y1="14" x2="16" y2="0"><stop offset="0" stop-color="#FF8A5B"/><stop offset="0.5" stop-color="#FF5C8A"/><stop offset="1" stop-color="#C74AFF"/></linearGradient></defs><rect x="0" y="9" width="3" height="5" rx="1.2" fill="url(#iq-wave-sim-hdr)"/><rect x="4.5" y="6" width="3" height="8" rx="1.2" fill="url(#iq-wave-sim-hdr)"/><rect x="9" y="3" width="3" height="11" rx="1.2" fill="url(#iq-wave-sim-hdr)"/><rect x="13" y="0" width="3" height="14" rx="1.2" fill="url(#iq-wave-sim-hdr)"/></svg></span>
+      </a>
+      <div class="hidden md:flex items-center gap-6 text-sm font-500 text-slate-300">
+        <a href="/ai-chatbot-india" class="hover:text-white transition-colors">Chatbots</a>
+        <a href="/ai-voice-agents-india" class="hover:text-white transition-colors">Voice Agents</a>
+        <a href="/#industries" class="hover:text-white transition-colors">Industries</a>
+        <a href="/#pricing" class="hover:text-white transition-colors">Pricing</a>
+        <a href="/blog" class="hover:text-white transition-colors">Blog</a>
+        <a href="/#faq" class="hover:text-white transition-colors">FAQ</a>
+      </div>
+      <div class="flex items-center gap-2">
+        <a href="/#book" class="hidden md:inline-flex items-center justify-center cursor-pointer min-h-[44px] text-sm font-500 px-4 py-2 rounded-xl bg-white text-ink hover:bg-cyan hover:text-white transition-colors duration-200">Book a demo</a>
+        <button id="aiq-nav-toggle" type="button" class="md:hidden grid place-items-center w-9 h-9 rounded-xl text-slate-200 hover:text-white hover:bg-white/10 transition-colors" aria-label="Open menu" aria-haspopup="true" aria-expanded="false" aria-controls="aiq-mobile-nav">
+          <svg class="icon-open w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+          <svg class="icon-close w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+        </button>
+      </div>
+      <div id="aiq-mobile-nav" class="aiq-shut md:hidden flex flex-col gap-1 p-2 text-sm text-slate-300" inert>
+        <a href="/ai-chatbot-india" class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-white transition-colors">Chatbots</a>
+        <a href="/ai-voice-agents-india" class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-white transition-colors">Voice Agents</a>
+        <a href="/#industries" class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-white transition-colors">Industries</a>
+        <a href="/#pricing" class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-white transition-colors">Pricing</a>
+        <a href="/blog" class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-white transition-colors">Blog</a>
+        <a href="/#faq" class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-white transition-colors">FAQ</a>
+        <a href="/#book" class="mt-2 cursor-pointer text-center py-2.5 px-4 rounded-xl bg-white text-ink hover:bg-cyan hover:text-white text-sm font-500 transition-colors duration-200">Book a demo</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main" tabindex="-1" class="focus:outline-none pt-28 pb-20 px-5">
+    <div class="max-w-6xl mx-auto">
+
+      <!-- Breadcrumb -->
+      <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-xs text-slate-400 mb-8">
+        <a href="/" class="hover:text-slate-200 transition-colors">Home</a>
+        <span>/</span>
+        <span class="text-slate-200">Try Your Business Bot</span>
+      </nav>
+
+      <!-- Hero Header -->
+      <section class="text-center max-w-3xl mx-auto mb-12">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-600 mb-6">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          Instant 30-Second Interactive Playground
+        </div>
+        <h1 class="font-display font-800 text-white text-3xl sm:text-4xl md:text-5xl leading-tight tracking-tight mb-4">
+          Try Your <span class="hero-grad-text">Business Bot</span>
+        </h1>
+        <p class="text-slate-300 text-base sm:text-lg leading-relaxed">
+          Type your business name below to instantly test how AgentIQ AI handles bookings, orders, and customer FAQs for your brand.
+        </p>
+      </section>
+
+      <!-- Interactive Generator Grid -->
+      <div class="grid lg:grid-cols-12 gap-8 items-start">
+
+        <!-- Controls Column -->
+        <div class="lg:col-span-5 space-y-6">
+          <div class="glass-card rounded-3xl p-6 sm:p-8 border border-white/10 relative overflow-hidden">
+            <div class="absolute -top-10 -left-10 w-32 h-32 bg-cyan/10 rounded-full blur-2xl pointer-events-none"></div>
+
+            <h2 class="font-display font-700 text-white text-xl mb-4 flex items-center gap-2">
+              <svg class="w-5 h-5 text-cyan" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+              Configure Your Business
+            </h2>
+
+            <form id="sim-form" class="space-y-4">
+              <!-- Business Name -->
+              <div>
+                <label for="biz-name" class="block text-xs font-600 text-slate-300 uppercase tracking-wider mb-2">Business Name</label>
+                <input id="biz-name" type="text" value="Spice Garden Restaurant" placeholder="e.g. Royal Dental Clinic" class="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-white/15 text-white placeholder:text-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-cyan transition-all" required />
+              </div>
+
+              <!-- Industry Selector -->
+              <div>
+                <label for="biz-industry" class="block text-xs font-600 text-slate-300 uppercase tracking-wider mb-2">Industry Category</label>
+                <select id="biz-industry" class="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-white/15 text-white text-sm focus:outline-none focus:ring-2 focus:ring-cyan transition-all cursor-pointer">
+                  <option value="restaurant">Restaurant &amp; Dining 🍽️</option>
+                  <option value="salon">Salon, Spa &amp; Beauty 💇‍♀️</option>
+                  <option value="clinic">Clinic &amp; Healthcare 🩺</option>
+                  <option value="ecommerce">D2C &amp; E-Commerce 🛍️</option>
+                  <option value="realestate">Real Estate &amp; Property 🏢</option>
+                </select>
+              </div>
+
+              <!-- Primary AI Goal -->
+              <div>
+                <label for="biz-goal" class="block text-xs font-600 text-slate-300 uppercase tracking-wider mb-2">Primary AI Capability</label>
+                <select id="biz-goal" class="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-white/15 text-white text-sm focus:outline-none focus:ring-2 focus:ring-cyan transition-all cursor-pointer">
+                  <option value="booking">Instant Table / Slot Booking</option>
+                  <option value="preorder">Order Taking &amp; Pre-ordering</option>
+                  <option value="lead">Lead Qualification &amp; Form Capture</option>
+                  <option value="support">24/7 FAQ &amp; Support Assistance</option>
+                </select>
+              </div>
+
+              <!-- Submit Button -->
+              <button type="submit" id="btn-update-sim" class="w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-emerald-500 to-cyan text-slate-950 font-700 text-sm hover:brightness-110 transition-all duration-200 shadow-lg shadow-emerald-500/20 flex items-center justify-center gap-2 cursor-pointer">
+                <span>Generate Customized AI Bot</span>
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </form>
+
+            <div class="mt-6 pt-6 border-t border-white/10 text-xs text-slate-400 space-y-2">
+              <div class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-emerald-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Handles Hindi, Hinglish, &amp; English automatically</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-emerald-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Connected directly to Meta Cloud API</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Deploy Callout Card -->
+          <div class="glass-card rounded-3xl p-6 border border-emerald-500/30 text-center">
+            <h3 class="font-display font-700 text-white text-base mb-2">Impressed by the response speed?</h3>
+            <p class="text-xs text-slate-300 leading-relaxed mb-4">
+              We can deploy this exact AI assistant for your business on WhatsApp &amp; Phone within 24 hours.
+            </p>
+            <a href="/#book" id="btn-deploy-custom" class="inline-flex items-center justify-center gap-2 w-full py-3 px-4 rounded-xl bg-white text-slate-950 hover:bg-cyan hover:text-white font-600 text-sm transition-colors duration-200">
+              Deploy for <span id="deploy-biz-name">Spice Garden Restaurant</span> →
+            </a>
+          </div>
+        </div>
+
+        <!-- Phone Simulator Column -->
+        <div class="lg:col-span-7">
+          <div class="phone-mockup rounded-[36px] bg-[#0b141a] border-4 border-slate-700/60 overflow-hidden relative">
+
+            <!-- Phone Top Bar -->
+            <div class="bg-[#1f2c34] px-4 py-3 border-b border-slate-700/50 flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-400 to-cyan flex items-center justify-center text-slate-950 font-700 text-sm uppercase shrink-0 shadow-md" id="avatar-initials">
+                  SG
+                </div>
+                <div>
+                  <div class="flex items-center gap-1.5">
+                    <h3 id="sim-biz-header" class="font-600 text-white text-sm truncate max-w-[200px]">Spice Garden Restaurant</h3>
+                    <svg class="w-4 h-4 text-emerald-400 shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                  </div>
+                  <p id="sim-status" class="text-[11px] text-emerald-400 flex items-center gap-1">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span>AgentIQ AI Assistant · Online</span>
+                  </p>
+                </div>
+              </div>
+
+              <!-- Channel Badge -->
+              <span class="text-[10px] font-600 px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                WhatsApp Live
+              </span>
+            </div>
+
+            <!-- Chat Message Log -->
+            <div id="sim-chat-log" class="p-4 sm:p-6 space-y-4 min-h-[380px] max-h-[440px] overflow-y-auto bg-[radial-gradient(#1f2c34_1px,transparent_1px)] [background-size:16px_16px]">
+              <!-- Dynamic bubbles injected via script -->
+            </div>
+
+            <!-- Pre-filled Industry Prompt Chips -->
+            <div class="px-4 py-2 bg-[#111b21] border-t border-slate-800">
+              <p class="text-[10px] uppercase font-600 text-slate-400 mb-2">Test Instant Prompt Chips:</p>
+              <div id="sim-chips-container" class="flex flex-wrap gap-2">
+                <!-- Dynamic prompt chips injected via script -->
+              </div>
+            </div>
+
+            <!-- Interactive Chat Input -->
+            <div class="p-3 bg-[#1f2c34] flex items-center gap-2 border-t border-slate-700/50">
+              <input id="sim-user-input" type="text" placeholder="Type a message to test your AI..." class="flex-1 px-4 py-2.5 rounded-full bg-[#2a3942] text-white text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-400" />
+              <button id="sim-btn-send" type="button" class="w-10 h-10 rounded-full bg-emerald-500 text-slate-950 flex items-center justify-center hover:bg-emerald-400 transition-colors shrink-0 cursor-pointer" aria-label="Send message">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="px-5 pt-16 pb-10 border-t border-white/8">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-10 mb-12">
+        <!-- Brand -->
+        <div class="col-span-2 md:col-span-1">
+          <a href="/" class="flex items-center gap-2.5 mb-4" aria-label="AgentIQ home">
+            <span class="font-display font-700 text-lg text-white tracking-tight inline-flex items-baseline gap-0.5">Agent<span class="logo-grad-text">IQ</span><svg class="w-2.5 h-2.5 shrink-0" viewBox="0 0 16 14" fill="none" aria-hidden="true" focusable="false"><defs><linearGradient id="iq-wave-ftr" x1="0" y1="14" x2="16" y2="0"><stop offset="0" stop-color="#FF8A5B"/><stop offset="0.5" stop-color="#FF5C8A"/><stop offset="1" stop-color="#C74AFF"/></linearGradient></defs><rect x="0" y="9" width="3" height="5" rx="1.2" fill="url(#iq-wave-ftr)"/><rect x="4.5" y="6" width="3" height="8" rx="1.2" fill="url(#iq-wave-ftr)"/><rect x="9" y="3" width="3" height="11" rx="1.2" fill="url(#iq-wave-ftr)"/><rect x="13" y="0" width="3" height="14" rx="1.2" fill="url(#iq-wave-ftr)"/></svg></span>
+          </a>
+          <p class="text-slate-400 text-sm leading-relaxed max-w-[200px]">AI chatbots for Indian businesses — WhatsApp, Instagram &amp; Web.</p>
+          <div class="flex items-center gap-3 mt-5">
+            <a href="https://wa.me/919159665277" target="_blank" rel="noopener noreferrer" aria-label="AgentIQ on WhatsApp" class="grid place-items-center w-9 h-9 rounded-xl bg-white/5 hover:bg-emerald-500/20 border border-white/8 text-slate-400 hover:text-emerald-400 transition-colors duration-200">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
+            </a>
+            <a href="https://instagram.com/agentiqco" target="_blank" rel="noopener noreferrer" aria-label="AgentIQ on Instagram" class="grid place-items-center w-9 h-9 rounded-xl bg-white/5 hover:bg-fuchsia-500/20 border border-white/8 text-slate-400 hover:text-fuchsia-400 transition-colors duration-200">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069M12 0C8.741 0 8.332.014 7.052.072 2.695.272.273 2.69.073 7.052.014 8.332 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.69.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0m0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324M12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8m6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881"/></svg>
+            </a>
+            <a href="https://www.facebook.com/people/Agentiq/61590432627451" target="_blank" rel="noopener noreferrer" aria-label="AgentIQ on Facebook" class="grid place-items-center w-9 h-9 rounded-xl bg-white/5 hover:bg-blue-500/20 border border-white/8 text-slate-400 hover:text-blue-400 transition-colors duration-200">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/shanepereiraa/" target="_blank" rel="noopener noreferrer" aria-label="Shane Pereira on LinkedIn" class="grid place-items-center w-9 h-9 rounded-xl bg-white/5 hover:bg-blue-500/20 border border-white/8 text-slate-400 hover:text-blue-400 transition-colors duration-200">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="mailto:shane@agentiq.co.in" aria-label="Email AgentIQ" class="grid place-items-center w-9 h-9 rounded-xl bg-white/5 hover:bg-cyan-500/20 border border-white/8 text-slate-400 hover:text-cyan-400 transition-colors duration-200">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            </a>
+          </div>
+        </div>
+        <!-- Services -->
+        <div>
+          <p class="text-white font-600 text-sm mb-4">Services</p>
+          <ul class="space-y-3 text-sm text-slate-400">
+            <li><a href="/ai-chatbot-india" class="hover:text-white transition-colors">AI Chatbots</a></li>
+            <li><a href="/ai-voice-agents-india" class="hover:text-white transition-colors">Voice Agents</a></li>
+            <li><a href="/#chatbots" class="hover:text-white transition-colors">WhatsApp Bots</a></li>
+            <li><a href="/#chatbots" class="hover:text-white transition-colors">Instagram DM Bots</a></li>
+            <li><a href="/restaurants" class="hover:text-white transition-colors">Restaurants</a></li>
+            <li><a href="/salons" class="hover:text-white transition-colors">Salons &amp; Spas</a></li>
+            <li><a href="/clinics" class="hover:text-white transition-colors">Clinics</a></li>
+          </ul>
+        </div>
+        <!-- Company -->
+        <div>
+          <p class="text-white font-600 text-sm mb-4">Company</p>
+          <ul class="space-y-3 text-sm text-slate-400">
+            <li><a href="/#results" class="hover:text-white transition-colors">Results</a></li>
+            <li><a href="/#pricing" class="hover:text-white transition-colors">Pricing</a></li>
+            <li><a href="/#faq" class="hover:text-white transition-colors">FAQ</a></li>
+            <li><a href="/blog" class="hover:text-white transition-colors">Blog</a></li>
+            <li><a href="/privacy-security" class="hover:text-white transition-colors">Security &amp; Privacy</a></li>
+          </ul>
+        </div>
+        <!-- Solutions in India -->
+        <div>
+          <p class="text-white font-600 text-sm mb-4">Solutions in India</p>
+          <ul class="space-y-3 text-sm text-slate-400">
+            <li><a href="/ai-chatbot-india" class="hover:text-white transition-colors">AI Chatbot India</a></li>
+            <li><a href="/ai-voice-agents-india" class="hover:text-white transition-colors">AI Voice Agents India</a></li>
+            <li><a href="/agentiq-vs-wati" class="hover:text-white transition-colors">AgentIQ vs WATI</a></li>
+            <li><a href="/agentiq-vs-aisensy" class="hover:text-white transition-colors">AgentIQ vs AiSensy</a></li>
+            <li><a href="/agentiq-vs-interakt" class="hover:text-white transition-colors">AgentIQ vs Interakt</a></li>
+            <li><a href="/agentiq-vs-yellow-ai" class="hover:text-white transition-colors">AgentIQ vs Yellow.ai</a></li>
+          </ul>
+        </div>
+        <!-- Contact -->
+        <div>
+          <p class="text-white font-600 text-sm mb-4">Contact</p>
+          <ul class="space-y-3 text-sm text-slate-400">
+            <li><a href="tel:+919159665277" class="hover:text-white transition-colors">+91 91596 65277</a></li>
+            <li><a href="https://wa.me/919159665277" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">WhatsApp us</a></li>
+            <li><a href="/#book" class="hover:text-white transition-colors">Book a demo</a></li>
+            <li class="text-slate-400">Mumbai, India 🇮🇳</li>
+          </ul>
+        </div>
+      </div>
+      <!-- Bottom bar -->
+      <div class="pt-8 border-t border-white/8 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400">
+        <p>© 2026 AgentIQ. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Simulator Logic Script -->
+  <script>
+    (function () {
+      'use strict';
+
+      // Elements
+      var form = document.getElementById('sim-form');
+      var inputBizName = document.getElementById('biz-name');
+      var selectIndustry = document.getElementById('biz-industry');
+      var selectGoal = document.getElementById('biz-goal');
+      
+      var headerBiz = document.getElementById('sim-biz-header');
+      var avatarInitials = document.getElementById('avatar-initials');
+      var chatLog = document.getElementById('sim-chat-log');
+      var chipsContainer = document.getElementById('sim-chips-container');
+      var userInput = document.getElementById('sim-user-input');
+      var btnSend = document.getElementById('sim-btn-send');
+      var deployBizName = document.getElementById('deploy-biz-name');
+
+      // State
+      var currentBiz = 'Spice Garden Restaurant';
+      var currentInd = 'restaurant';
+      var isTyping = false;
+
+      // Knowledge & Responses Preset Library
+      var INDUSTRY_PRESETS = {
+        restaurant: {
+          chips: ['Book a table for 4', 'View today menu 📜', 'Pre-order Paneer Tikka 🍢', 'Valet parking available?'],
+          greetings: function(name) {
+            return 'Namaste! Welcome to ' + name + ' 🍽️ I can help you book a table, view our live menu, or pre-order starters. What would you like to do?';
+          },
+          responses: {
+            'Book a table for 4': function(name) {
+              return 'Table for 4 tonight! 🥂 We have slots open at 7:30 PM and 8:30 PM. Should I reserve a table for you at ' + name + '?';
+            },
+            'View today menu 📜': function(name) {
+              return 'Here is today’s chef specials at ' + name + ': 1️⃣ Butter Chicken (₹480), 2️⃣ Dal Makhani (₹360), 3️⃣ Paneer Tikka (₹390). Would you like to pre-order any?';
+            },
+            'Pre-order Paneer Tikka 🍢': function(name) {
+              return 'Added 1× Paneer Tikka (₹390) to your pre-order for ' + name + '! 🍢 Pay now via UPI link or at the table when you arrive?';
+            },
+            'Valet parking available?': function(name) {
+              return 'Yes! Complimentary valet parking is available right at the entrance of ' + name + '. 🚗';
+            },
+            default: function(name, q) {
+              return 'Great question about ' + name + '! 🍽️ Our AI handles bookings, menus, and orders 24/7 on WhatsApp. Click below to deploy this for your restaurant!';
+            }
+          }
+        },
+        salon: {
+          chips: ['Book haircut slot 💇‍♀️', 'Hair spa pricing? 💆', 'Senior stylist available?', 'Location & Directions 📍'],
+          greetings: function(name) {
+            return 'Hi there! Welcome to ' + name + ' 💇‍♀️ Would you like to book a slot, check prices, or select a senior stylist?';
+          },
+          responses: {
+            'Book haircut slot 💇‍♀️': function(name) {
+              return 'We have Saturday open slots at 11:30 AM and 4:00 PM with our lead stylist at ' + name + '. Which slot works best?';
+            },
+            'Hair spa pricing? 💆': function(name) {
+              return 'Our Luxe Keratin Hair Spa at ' + name + ' is ₹1,800 (includes scalp massage + blowdry). Want to lock in a slot?';
+            },
+            'Senior stylist available?': function(name) {
+              return 'Yes! Senior Stylist Priya is available Saturday afternoon at ' + name + '. Shall I reserve that for you?';
+            },
+            'Location & Directions 📍': function(name) {
+              return 'We are located at Plot 42, Main Road, Bandra West. 📍 Google Maps link sent to your WhatsApp!';
+            },
+            default: function(name, q) {
+              return 'Thanks for asking ' + name + '! 💇‍♀️ AgentIQ books client slots and takes deposit payments automatically. Click below to deploy yours!';
+            }
+          }
+        },
+        clinic: {
+          chips: ['Book doctor appointment 🩺', 'Dermatologist available?', 'Pre-visit form 📋', 'Consultation fee?'],
+          greetings: function(name) {
+            return 'Welcome to ' + name + ' 🩺 I am your automated clinic assistant. How can I help you with appointment scheduling today?';
+          },
+          responses: {
+            'Book doctor appointment 🩺': function(name) {
+              return 'Dr. Rao has open slots tomorrow at 10:15 AM and 6:00 PM at ' + name + '. Which time works for you?';
+            },
+            'Dermatologist available?': function(name) {
+              return 'Yes, Dr. Ananya (Senior Dermatologist) visits ' + name + ' on Tuesday & Thursday evenings. Shall I book a slot?';
+            },
+            'Pre-visit form 📋': function(name) {
+              return 'Confirmed! Once booked, your pre-visit intake form will be sent to your WhatsApp automatically to save time at the clinic. 📋';
+            },
+            'Consultation fee?': function(name) {
+              return 'The initial consultation fee with Dr. Rao at ' + name + ' is ₹800. Report follow-ups within 7 days are free.';
+            },
+            default: function(name, q) {
+              return 'Thank you for reaching out to ' + name + '. 🩺 AgentIQ qualifies patients and schedules slots automatically. Book a demo to deploy!';
+            }
+          }
+        },
+        ecommerce: {
+          chips: ['Track my order 📦', 'Return & Exchange policy', 'Size guide query 📏', 'Discount code? 🏷️'],
+          greetings: function(name) {
+            return 'Hey! 👋 Welcome to ' + name + '. Looking for order tracking, size advice, or exclusive discount offers?';
+          },
+          responses: {
+            'Track my order 📦': function(name) {
+              return 'Please reply with your 5-digit Order ID (e.g. #10482) and I will pull real-time BlueDart tracking for ' + name + '! 🚚';
+            },
+            'Return & Exchange policy': function(name) {
+              return 'At ' + name + ', we offer a hassle-free 7-day doorstep pickup & exchange policy! 📦';
+            },
+            'Size guide query 📏': function(name) {
+              return 'Our apparel runs true to size. For a relaxed fit, we recommend sizing up one step! 📏';
+            },
+            'Discount code? 🏷️': function(name) {
+              return 'Use code FIRST15 at checkout for 15% OFF your order at ' + name + '! 🎉';
+            },
+            default: function(name, q) {
+              return 'Great question! 🛍️ AgentIQ handles Shopify tracking, return requests, and cart recovery for ' + name + '. Deploy yours today!';
+            }
+          }
+        },
+        realestate: {
+          chips: ['Schedule site visit 🏢', 'Download PDF brochure 📄', '2 BHK pricing & specs', 'Possession date? 📅'],
+          greetings: function(name) {
+            return 'Welcome to ' + name + ' 🏢 Looking to schedule a site visit, view floor plans, or check unit availability?';
+          },
+          responses: {
+            'Schedule site visit 🏢': function(name) {
+              return 'We have site visit slots this weekend at 11:00 AM & 3:30 PM for ' + name + '. Our sales manager will meet you on-site!';
+            },
+            'Download PDF brochure 📄': function(name) {
+              return 'PDF Brochure & Floor Plans for ' + name + ' sent directly to your WhatsApp! 📄';
+            },
+            '2 BHK pricing & specs': function(name) {
+              return '2 BHK luxury apartments at ' + name + ' start at ₹1.45 Cr (all inclusive). 780 sq.ft. carpet area.';
+            },
+            'Possession date? 📅': function(name) {
+              return 'Ready possession phase 1 is active! Phase 2 possession is December 2026. 📅';
+            },
+            default: function(name, q) {
+              return 'Thanks for inquiring about ' + name + '! 🏢 AgentIQ qualifies buyers and books site visits 24/7. Deploy yours in 24 hours!';
+            }
+          }
+        }
+      };
+
+      function getInitials(name) {
+        var parts = name.trim().split(' ');
+        if (parts.length >= 2) return (parts[0][0] + parts[1][0]).toUpperCase();
+        return name.slice(0, 2).toUpperCase();
+      }
+
+      function appendBubble(text, sender) {
+        var bubble = document.createElement('div');
+        bubble.className = 'flex ' + (sender === 'user' ? 'justify-end' : 'justify-start');
+        
+        var inner = document.createElement('div');
+        inner.className = 'max-w-[85%] px-4 py-2.5 rounded-2xl text-sm leading-relaxed text-white shadow-sm ' +
+          (sender === 'user' ? 'chat-bubble-user font-500' : 'chat-bubble-bot border border-white/10');
+        inner.textContent = text;
+
+        bubble.appendChild(inner);
+        chatLog.appendChild(bubble);
+        chatLog.scrollTop = chatLog.scrollHeight;
+      }
+
+      function showTypingIndicator() {
+        var typing = document.createElement('div');
+        typing.id = 'typing-indicator';
+        typing.className = 'flex justify-start';
+        typing.innerHTML = '<div class="chat-bubble-bot px-4 py-3 rounded-2xl border border-white/10 flex items-center gap-1.5">' +
+          '<span class="w-2 h-2 rounded-full bg-emerald-400 typing-dot"></span>' +
+          '<span class="w-2 h-2 rounded-full bg-emerald-400 typing-dot"></span>' +
+          '<span class="w-2 h-2 rounded-full bg-emerald-400 typing-dot"></span>' +
+          '</div>';
+        chatLog.appendChild(typing);
+        chatLog.scrollTop = chatLog.scrollHeight;
+      }
+
+      function removeTypingIndicator() {
+        var el = document.getElementById('typing-indicator');
+        if (el) el.remove();
+      }
+
+      function updateSimulator(bizName, industry) {
+        currentBiz = bizName;
+        currentInd = industry || 'restaurant';
+
+        headerBiz.textContent = currentBiz;
+        deployBizName.textContent = currentBiz;
+        avatarInitials.textContent = getInitials(currentBiz);
+        chatLog.innerHTML = '';
+
+        var preset = INDUSTRY_PRESETS[currentInd] || INDUSTRY_PRESETS.restaurant;
+        
+        // Initial Greeting
+        appendBubble(preset.greetings(currentBiz), 'bot');
+
+        // Render Prompt Chips
+        chipsContainer.innerHTML = '';
+        preset.chips.forEach(function (chipText) {
+          var btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'text-xs px-3 py-1.5 rounded-full bg-[#2a3942] text-slate-200 hover:bg-emerald-500/20 hover:text-emerald-300 border border-slate-700/60 transition-colors cursor-pointer';
+          btn.textContent = chipText;
+          btn.addEventListener('click', function () {
+            handleUserSend(chipText);
+          });
+          chipsContainer.appendChild(btn);
+        });
+      }
+
+      function handleUserSend(text) {
+        if (!text || isTyping) return;
+        isTyping = true;
+        userInput.value = '';
+
+        appendBubble(text, 'user');
+        showTypingIndicator();
+
+        var preset = INDUSTRY_PRESETS[currentInd] || INDUSTRY_PRESETS.restaurant;
+        var responseFn = preset.responses[text] || preset.responses.default;
+        var replyText = responseFn(currentBiz, text);
+
+        setTimeout(function () {
+          removeTypingIndicator();
+          appendBubble(replyText, 'bot');
+          isTyping = false;
+        }, 750);
+      }
+
+      // Event Listeners
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var bizName = inputBizName.value.trim() || 'My Business';
+        var industry = selectIndustry.value;
+        updateSimulator(bizName, industry);
+      });
+
+      btnSend.addEventListener('click', function () {
+        handleUserSend(userInput.value.trim());
+      });
+
+      userInput.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          handleUserSend(userInput.value.trim());
+        }
+      });
+
+      // Mobile Nav Toggle
+      var navToggle = document.getElementById('aiq-nav-toggle');
+      var navPanel = document.getElementById('aiq-mobile-nav');
+      var navOpen = false;
+      function openNav() {
+        navOpen = true;
+        navPanel.removeAttribute('inert');
+        navPanel.classList.remove('aiq-shut');
+        if (navToggle) navToggle.setAttribute('aria-expanded', 'true');
+      }
+      function closeNav(returnFocus) {
+        navOpen = false;
+        navPanel.classList.add('aiq-shut');
+        if (navToggle) {
+          navToggle.setAttribute('aria-expanded', 'false');
+          if (returnFocus !== false) navToggle.focus();
+        }
+        navPanel.setAttribute('inert', '');
+      }
+      if (navToggle) navToggle.addEventListener('click', function () { navOpen ? closeNav() : openNav(); });
+
+      // Initialize default simulator
+      updateSimulator('Spice Garden Restaurant', 'restaurant');
+
+    })();
+  </script>
+</body>
+</html>
