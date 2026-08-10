@@ -1307,7 +1307,41 @@
           <h2 class="font-display font-bold text-white text-4xl sm:text-5xl tracking-tighter leading-tight text-balance">From chaos to order</h2>
           <p class="mt-5 text-slate-400 text-pretty">Every unread message, missed call, and "sir order kab aayega" — sorted automatically.</p>
         </div>
-        <div class="reveal" id="inbox-slider-root"></div>
+        <div id="inbox-slider-root" class="min-h-[380px]">
+          <!-- Static HTML Fallback (Hydrated by React island) -->
+          <div class="w-full max-w-2xl mx-auto">
+            <div class="relative w-full aspect-[4/3] sm:aspect-[16/10] rounded-2xl overflow-hidden p-6 flex flex-col justify-between border border-white/10" style="background: linear-gradient(160deg,#08101e,#0a1520); box-shadow: 0 30px 80px -20px rgba(0,0,0,.6);">
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-xs font-semibold uppercase tracking-wide text-emerald-400">After AgentIQ</span>
+                <span class="text-xs text-slate-400">0 unread · 100% automated</span>
+              </div>
+              <div class="space-y-2.5">
+                <div class="flex items-center justify-between gap-3 rounded-xl px-3 py-2.5 bg-white/5 border border-white/10">
+                  <div class="min-w-0">
+                    <p class="text-sm text-white font-500 truncate">Priya Sharma</p>
+                    <p class="text-xs text-slate-400 truncate">Table for 2, Saturday 7:30 PM</p>
+                  </div>
+                  <span class="text-[11px] font-semibold px-2.5 py-1 rounded-full bg-emerald-400/15 text-emerald-300">Booking Confirmed</span>
+                </div>
+                <div class="flex items-center justify-between gap-3 rounded-xl px-3 py-2.5 bg-white/5 border border-white/10">
+                  <div class="min-w-0">
+                    <p class="text-sm text-white font-500 truncate">Rahul Mehta</p>
+                    <p class="text-xs text-slate-400 truncate">Refund processed — order #4821</p>
+                  </div>
+                  <span class="text-[11px] font-semibold px-2.5 py-1 rounded-full bg-emerald-400/15 text-emerald-300">Resolved</span>
+                </div>
+                <div class="flex items-center justify-between gap-3 rounded-xl px-3 py-2.5 bg-white/5 border border-white/10">
+                  <div class="min-w-0">
+                    <p class="text-sm text-white font-500 truncate">Ananya Iyer</p>
+                    <p class="text-xs text-slate-400 truncate">Will call back tomorrow re: pricing</p>
+                  </div>
+                  <span class="text-[11px] font-semibold px-2.5 py-1 rounded-full bg-amber-400/15 text-amber-300">Follow-up</span>
+                </div>
+              </div>
+            </div>
+            <p class="text-center text-xs text-slate-400 mt-4">Drag to compare — chaos vs. Agent IQ order</p>
+          </div>
+        </div>
       </div>
     </section>
     <!-- INDUSTRIES -->
