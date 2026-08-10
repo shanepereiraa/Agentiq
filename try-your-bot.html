@@ -552,9 +552,17 @@
         if (el) el.remove();
       }
 
+      function syncBizName() {
+        var val = inputBizName.value.trim();
+        currentBiz = val || 'My Business';
+        headerBiz.textContent = currentBiz;
+        deployBizName.textContent = currentBiz;
+        avatarInitials.textContent = getInitials(currentBiz);
+      }
+
       function updateSimulator(bizName, industry) {
-        currentBiz = bizName;
-        currentInd = industry || 'restaurant';
+        currentBiz = bizName || inputBizName.value.trim() || 'My Business';
+        currentInd = industry || selectIndustry.value || 'restaurant';
 
         headerBiz.textContent = currentBiz;
         deployBizName.textContent = currentBiz;
@@ -582,6 +590,7 @@
 
       function handleUserSend(text) {
         if (!text || isTyping) return;
+        syncBizName(); // Ensure latest biz name is synced
         isTyping = true;
         userInput.value = '';
 
@@ -589,17 +598,67 @@
         showTypingIndicator();
 
         var preset = INDUSTRY_PRESETS[currentInd] || INDUSTRY_PRESETS.restaurant;
-        var responseFn = preset.responses[text] || preset.responses.default;
-        var replyText = responseFn(currentBiz, text);
+        var hasPreset = preset.responses[text];
 
-        setTimeout(function () {
+        if (hasPreset) {
+          setTimeout(function () {
+            removeTypingIndicator();
+            appendBubble(preset.responses[text](currentBiz), 'bot');
+            isTyping = false;
+          }, 600);
+          return;
+        }
+
+        // Real Claude AI backend fetch with fallback
+        var activeApi = (window.AgentIQConfig && window.AgentIQConfig.apiBase) || 'https://agentiq-chatbot.onrender.com';
+        var ctrl = new AbortController();
+        var timer = setTimeout(function() { ctrl.abort(); }, 8000);
+
+        fetch(activeApi + '/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            messages: [
+              {
+                role: 'user',
+                content: '[Context: You are the official 24/7 WhatsApp AI concierge for "' + currentBiz + '", a business in the ' + currentInd + ' industry in India. Provide a helpful, friendly 1-2 sentence response to the customer. Use appropriate emojis.]'
+              },
+              { role: 'user', content: text }
+            ]
+          }),
+          signal: ctrl.signal
+        }).then(function(res) {
+          clearTimeout(timer);
+          if (!res.ok) throw new Error('API ' + res.status);
+          return res.json();
+        }).then(function(data) {
           removeTypingIndicator();
-          appendBubble(replyText, 'bot');
+          var reply = data.reply || (preset.responses.default ? preset.responses.default(currentBiz, text) : 'Namaste! Thanks for reaching out to ' + currentBiz + '. How can we help you today?');
+          appendBubble(reply, 'bot');
           isTyping = false;
-        }, 750);
+        }).catch(function(err) {
+          clearTimeout(timer);
+          removeTypingIndicator();
+          var fallbackMsg = preset.responses.default ? preset.responses.default(currentBiz, text) : ('Namaste! Thanks for messaging ' + currentBiz + '. 🚀 Our AI assistant handles bookings and orders 24/7!');
+          appendBubble(fallbackMsg, 'bot');
+          isTyping = false;
+        });
       }
 
-      // Event Listeners
+      // Live inputs synchronization (typing business name updates simulator immediately)
+      inputBizName.addEventListener('input', function() {
+        syncBizName();
+      });
+
+      selectIndustry.addEventListener('change', function() {
+        updateSimulator(inputBizName.value.trim(), selectIndustry.value);
+      });
+
+      selectGoal.addEventListener('change', function() {
+        updateSimulator(inputBizName.value.trim(), selectIndustry.value);
+      });
+
+      // Form Submit
       form.addEventListener('submit', function (e) {
         e.preventDefault();
         var bizName = inputBizName.value.trim() || 'My Business';
