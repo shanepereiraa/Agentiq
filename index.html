@@ -714,30 +714,45 @@
         <!-- Hero chat mockup: min-height reserves layout space before fonts render, preventing CLS -->
         <div class="reveal relative" style="min-height:340px">
           <div class="absolute -inset-8 bg-gradient-to-tr from-coral/20 to-cyan/15 blur-3xl rounded-[2rem]"></div>
-          <div class="relative glass-strong rounded-[1.75rem] p-5 shadow-2xl shadow-black/50 animate-float">
-            <!-- WhatsApp header -->
-            <div class="flex items-center gap-3 pb-4 border-b border-white/10">
-              <span class="grid place-items-center w-10 h-10 rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 text-white shrink-0">
-                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
-              </span>
-              <div>
-                <p class="text-white font-600 text-sm">Spice Route · WhatsApp</p>
-                <p class="text-emerald-300 text-xs flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>online · replies instantly</p>
+          
+          <!-- 3D Glassmorphic Neural Hub Image Backdrop Card -->
+          <div class="relative glass-strong rounded-[1.75rem] p-5 shadow-2xl shadow-black/50 animate-float overflow-hidden border border-white/10">
+            <!-- Background 3D Neural Network Image -->
+            <img src="assets/images/hero-network-3d.jpg" alt="AgentIQ 3D AI Neural Network Diagram" class="absolute inset-0 w-full h-full object-cover opacity-25 mix-blend-luminosity blur-[1px] pointer-events-none" />
+            <div class="absolute inset-0 bg-gradient-to-b from-slate-950/70 via-slate-950/85 to-slate-950/95 pointer-events-none"></div>
+
+            <!-- Content relative to sit on top of background -->
+            <div class="relative z-10">
+              <!-- WhatsApp header -->
+              <div class="flex items-center gap-3 pb-4 border-b border-white/10">
+                <span class="grid place-items-center w-10 h-10 rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 text-white shrink-0">
+                  <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
+                </span>
+                <div>
+                  <p class="text-white font-600 text-sm">Spice Route · WhatsApp</p>
+                  <p class="text-emerald-300 text-xs flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>online · replies instantly</p>
+                </div>
               </div>
-            </div>
-            <div class="space-y-3 pt-4 text-[13px]">
-              <div class="max-w-[78%] bg-white/10 rounded-2xl rounded-tl-md px-4 py-2.5 text-slate-100">Table for 4 tonight at 8? 🍽️</div>
-              <div class="ml-auto max-w-[80%] bg-gradient-to-br from-emerald-500 to-emerald-600 text-white rounded-2xl rounded-tr-md px-4 py-2.5">Booked! ✅ Table for 4 at 8 PM confirmed. Want to pre-order starters so they're ready when you arrive?</div>
-              <div class="max-w-[78%] bg-white/10 rounded-2xl rounded-tl-md px-4 py-2.5 text-slate-100">Yes — 2 Paneer Tikka 🍢</div>
-              <div class="ml-auto max-w-[80%] bg-gradient-to-br from-emerald-500 to-emerald-600 text-white rounded-2xl rounded-tr-md px-4 py-2.5">Added 2× Paneer Tikka (₹520). Pay now via link or at the table? 🙌</div>
-              <div class="inline-flex items-center gap-1.5 bg-white/8 rounded-2xl rounded-tl-md px-4 py-3"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
-            </div>
-            <!-- Platform badges -->
-            <div class="mt-5 pt-4 border-t border-white/8 flex items-center justify-between">
-              <span class="text-xs text-slate-400">Also available on</span>
-              <div class="flex items-center gap-3">
-                <span class="text-xs px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-400">Instagram DM</span>
-                <span class="text-xs px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-400">Website</span>
+              <div class="space-y-3 pt-4 text-[13px]">
+                <div class="max-w-[78%] bg-white/10 rounded-2xl rounded-tl-md px-4 py-2.5 text-slate-100">Table for 4 tonight at 8? 🍽️</div>
+                <div class="ml-auto max-w-[80%] bg-gradient-to-br from-emerald-500 to-emerald-600 text-white rounded-2xl rounded-tr-md px-4 py-2.5">Booked! ✅ Table for 4 at 8 PM confirmed. Want to pre-order starters so they're ready when you arrive?</div>
+                <div class="max-w-[78%] bg-white/10 rounded-2xl rounded-tl-md px-4 py-2.5 text-slate-100">Yes — 2 Paneer Tikka 🍢</div>
+                <div class="ml-auto max-w-[80%] bg-gradient-to-br from-emerald-500 to-emerald-600 text-white rounded-2xl rounded-tr-md px-4 py-2.5">Added 2× Paneer Tikka (₹520). Pay now via link or at the table? 🙌</div>
+                <div class="inline-flex items-center gap-1.5 bg-white/8 rounded-2xl rounded-tl-md px-4 py-3"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+              </div>
+              <!-- Platform badges -->
+              <div class="mt-5 pt-4 border-t border-white/8 flex items-center justify-between">
+                <span class="text-xs text-slate-400 flex items-center gap-2">
+                  <span class="relative flex h-2 w-2">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-cyan"></span>
+                  </span>
+                  3D AI Neural Router
+                </span>
+                <div class="flex items-center gap-3">
+                  <span class="text-xs px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-400">Instagram DM</span>
+                  <span class="text-xs px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-400">Website</span>
+                </div>
               </div>
             </div>
           </div>
@@ -760,6 +775,165 @@
         <div class="marquee-row hidden md:flex gap-5 w-max">
           <div class="flex gap-5 items-center shrink-0 animate-marquee [animation-direction:reverse] [animation-duration:34s]" id="logoset-r2a"></div>
           <div class="flex gap-5 items-center shrink-0 animate-marquee [animation-direction:reverse] [animation-duration:34s]" aria-hidden="true" id="logoset-r2b"></div>
+        </div>
+      </div>
+    </section>
+    <!-- CASE STUDIES & SOCIAL PROOF CAROUSEL -->
+    <section id="case-studies" class="relative py-20 sm:py-28 px-5 overflow-hidden" style="background:linear-gradient(180deg,#060f28 0%,#081738 50%,#060f28 100%)">
+      <div aria-hidden="true" class="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[55rem] h-[30rem] rounded-full" style="background:radial-gradient(circle,rgba(34,211,238,.12) 0%,transparent 70%);filter:blur(100px)"></div>
+      
+      <div class="relative max-w-6xl mx-auto">
+        <div class="reveal text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+          <div class="inline-flex items-center gap-2 glass rounded-full px-4 py-1.5 text-xs text-cyan font-600 tracking-wider uppercase mb-4 border border-cyan/20">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            Proven Business ROI
+          </div>
+          <h2 class="font-display font-bold text-white text-4xl sm:text-5xl tracking-tighter leading-tight text-balance">
+            Real Indian Brands.<br><span class="grad-text">Measurable Revenue Growth.</span>
+          </h2>
+          <p class="mt-4 text-slate-300 text-lg text-pretty">
+            See how Indian businesses automate customer support, lock in 24/7 bookings, and slash response latency down to sub-seconds.
+          </p>
+        </div>
+
+        <!-- Case Study Selector Tabs -->
+        <div class="reveal flex items-center justify-start sm:justify-center gap-2.5 overflow-x-auto pb-4 mb-10 no-scrollbar">
+          <button type="button" data-case="0" class="cs-tab px-5 py-2.5 rounded-xl font-600 text-sm whitespace-nowrap transition-all cursor-pointer bg-gradient-to-r from-coral-deep to-orange-deep text-white shadow-lg shadow-coral/25">
+            🍽️ Restaurant &amp; Dining
+          </button>
+          <button type="button" data-case="1" class="cs-tab px-5 py-2.5 rounded-xl font-500 text-sm whitespace-nowrap transition-all cursor-pointer text-slate-400 hover:text-white glass border border-white/5">
+            💆 Salons &amp; Wellness
+          </button>
+          <button type="button" data-case="2" class="cs-tab px-5 py-2.5 rounded-xl font-500 text-sm whitespace-nowrap transition-all cursor-pointer text-slate-400 hover:text-white glass border border-white/5">
+            🩺 Healthcare &amp; Clinics
+          </button>
+          <button type="button" data-case="3" class="cs-tab px-5 py-2.5 rounded-xl font-500 text-sm whitespace-nowrap transition-all cursor-pointer text-slate-400 hover:text-white glass border border-white/5">
+            📦 D2C E-commerce
+          </button>
+          <button type="button" data-case="4" class="cs-tab px-5 py-2.5 rounded-xl font-500 text-sm whitespace-nowrap transition-all cursor-pointer text-slate-400 hover:text-white glass border border-white/5">
+            🏢 Real Estate
+          </button>
+        </div>
+
+        <!-- Carousel Container -->
+        <div class="reveal relative max-w-5xl mx-auto">
+          <!-- Main Active Card -->
+          <div id="cs-card-container" class="glass-strong rounded-[2rem] p-6 sm:p-10 border border-white/10 shadow-2xl shadow-black/60 relative overflow-hidden transition-all duration-300">
+            <!-- Background glow decoration -->
+            <div class="absolute -top-24 -right-24 w-72 h-72 bg-cyan/15 rounded-full blur-3xl pointer-events-none"></div>
+            
+            <div class="grid lg:grid-cols-12 gap-8 items-center relative z-10">
+              <!-- Left side: Metrics & Case Info (7 cols) -->
+              <div class="lg:col-span-7 space-y-6">
+                <div class="flex flex-wrap items-center gap-3">
+                  <span id="cs-badge" class="px-3.5 py-1 rounded-full text-xs font-600 bg-emerald-400/15 text-emerald-300 border border-emerald-400/30">
+                    Verified Meta Cloud API Case Study
+                  </span>
+                  <span id="cs-location" class="text-xs text-slate-400">Mumbai · Hospitality</span>
+                </div>
+                
+                <h3 id="cs-title" class="font-display font-700 text-white text-2xl sm:text-3xl tracking-tight leading-snug">
+                  Spice Route Gourmet: +310% Table Pre-orders &amp; Zero Missed Inquiries
+                </h3>
+                
+                <!-- Metrics Grid -->
+                <div class="grid grid-cols-3 gap-3 pt-2">
+                  <div class="glass rounded-xl p-3.5 border border-white/10 text-center">
+                    <p id="cs-m1-val" class="font-display font-700 text-cyan text-2xl sm:text-3xl">+310%</p>
+                    <p id="cs-m1-lbl" class="text-xs text-slate-400 mt-1">Pre-Orders Locked</p>
+                  </div>
+                  <div class="glass rounded-xl p-3.5 border border-white/10 text-center">
+                    <p id="cs-m2-val" class="font-display font-700 text-coral text-2xl sm:text-3xl">0.2s</p>
+                    <p id="cs-m2-lbl" class="text-xs text-slate-400 mt-1">WhatsApp Response</p>
+                  </div>
+                  <div class="glass rounded-xl p-3.5 border border-white/10 text-center">
+                    <p id="cs-m3-val" class="font-display font-700 text-emerald-400 text-2xl sm:text-3xl">₹3.8L</p>
+                    <p id="cs-m3-lbl" class="text-xs text-slate-400 mt-1">Saved Monthly</p>
+                  </div>
+                </div>
+
+                <!-- Testimonial Quote -->
+                <div class="glass rounded-2xl p-5 border border-white/10 bg-white/5 relative">
+                  <svg class="w-8 h-8 text-cyan/20 absolute top-3 right-3 pointer-events-none" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+                  <p id="cs-quote" class="text-slate-200 text-sm sm:text-base italic leading-relaxed">
+                    "Before AgentIQ, our staff missed over 40% of peak-hour weekend call inquiries. Now, our WhatsApp AI concierge books tables, collects pre-orders, and auto-syncs with our POS instantly."
+                  </p>
+                  <div class="mt-4 flex items-center gap-3">
+                    <div id="cs-avatar" class="w-10 h-10 rounded-full bg-gradient-to-br from-coral to-orange-deep flex items-center justify-center font-bold text-white text-sm shrink-0">
+                      RK
+                    </div>
+                    <div>
+                      <p id="cs-author" class="text-white font-600 text-sm">Rahul Kapoor</p>
+                      <p id="cs-role" class="text-xs text-slate-400">Founder &amp; Managing Director · Spice Route Group</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right side: Visual Interactive Flow Mockup (5 cols) -->
+              <div class="lg:col-span-5 flex flex-col justify-center">
+                <div class="glass rounded-2xl p-5 border border-white/10 space-y-3.5 bg-slate-900/60">
+                  <div class="flex items-center justify-between pb-3 border-b border-white/10">
+                    <span class="text-xs font-600 text-slate-300 flex items-center gap-2">
+                      <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Live Automation Flow
+                    </span>
+                    <span id="cs-flow-tag" class="text-xs text-cyan bg-cyan/10 px-2.5 py-0.5 rounded-full border border-cyan/20">WhatsApp + POS Sync</span>
+                  </div>
+
+                  <!-- Flow steps -->
+                  <div id="cs-flow-steps" class="space-y-3 text-xs">
+                    <div class="flex items-start gap-3 p-2.5 rounded-xl bg-white/5 border border-white/5">
+                      <span class="w-6 h-6 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-xs shrink-0">1</span>
+                      <div>
+                        <p id="cs-s1-title" class="text-white font-500">Customer Inquires via WhatsApp</p>
+                        <p id="cs-s1-sub" class="text-slate-400 text-[11px] mt-0.5">"Table for 4 tonight at 8 PM?"</p>
+                      </div>
+                    </div>
+
+                    <div class="flex items-start gap-3 p-2.5 rounded-xl bg-white/5 border border-white/5">
+                      <span class="w-6 h-6 rounded-lg bg-cyan/20 text-cyan flex items-center justify-center font-bold text-xs shrink-0">2</span>
+                      <div>
+                        <p id="cs-s2-title" class="text-white font-500">AgentIQ AI Concierge Responds (0.2s)</p>
+                        <p id="cs-s2-sub" class="text-slate-400 text-[11px] mt-0.5">"Confirmed! Want to pre-order starters?"</p>
+                      </div>
+                    </div>
+
+                    <div class="flex items-start gap-3 p-2.5 rounded-xl bg-white/5 border border-white/5">
+                      <span class="w-6 h-6 rounded-lg bg-purple-500/20 text-purple-300 flex items-center justify-center font-bold text-xs shrink-0">3</span>
+                      <div>
+                        <p id="cs-s3-title" class="text-white font-500">Automated POS &amp; Sheets Sync</p>
+                        <p id="cs-s3-sub" class="text-slate-400 text-[11px] mt-0.5">Reservation logged &amp; kitchen notified.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <a href="/try-your-bot" class="w-full mt-2 cursor-pointer inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-white/10 hover:bg-white/15 text-white text-xs font-600 transition-colors border border-white/10">
+                    Test This Flow in Simulator →
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Controls (Prev / Next & Dots) -->
+            <div class="mt-8 pt-6 border-t border-white/10 flex items-center justify-between">
+              <div class="flex items-center gap-2" id="cs-dots">
+                <button type="button" data-case="0" class="cs-dot w-3 h-3 rounded-full bg-cyan transition-all cursor-pointer" aria-label="Go to case study 1"></button>
+                <button type="button" data-case="1" class="cs-dot w-2.5 h-2.5 rounded-full bg-white/20 hover:bg-white/40 transition-all cursor-pointer" aria-label="Go to case study 2"></button>
+                <button type="button" data-case="2" class="cs-dot w-2.5 h-2.5 rounded-full bg-white/20 hover:bg-white/40 transition-all cursor-pointer" aria-label="Go to case study 3"></button>
+                <button type="button" data-case="3" class="cs-dot w-2.5 h-2.5 rounded-full bg-white/20 hover:bg-white/40 transition-all cursor-pointer" aria-label="Go to case study 4"></button>
+                <button type="button" data-case="4" class="cs-dot w-2.5 h-2.5 rounded-full bg-white/20 hover:bg-white/40 transition-all cursor-pointer" aria-label="Go to case study 5"></button>
+              </div>
+
+              <div class="flex items-center gap-3">
+                <button id="cs-prev" type="button" class="w-10 h-10 rounded-xl glass border border-white/10 flex items-center justify-center text-slate-300 hover:text-white hover:bg-white/10 transition-colors cursor-pointer" aria-label="Previous case study">
+                  <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                </button>
+                <button id="cs-next" type="button" class="w-10 h-10 rounded-xl glass border border-white/10 flex items-center justify-center text-slate-300 hover:text-white hover:bg-white/10 transition-colors cursor-pointer" aria-label="Next case study">
+                  <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -2834,6 +3008,215 @@
         if (fsPrev) fsPrev.addEventListener('click', function () { fsGoTo(fsIndex - 1); });
         if (fsNext) fsNext.addEventListener('click', function () { fsGoTo(fsIndex + 1); });
       }
+      // ── Case Study & Social Proof Carousel Logic ─────────────────────
+      (function() {
+        var csTabs = document.querySelectorAll('.cs-tab');
+        var csDots = document.querySelectorAll('.cs-dot');
+        var csPrev = document.getElementById('cs-prev');
+        var csNext = document.getElementById('cs-next');
+        
+        var csBadge = document.getElementById('cs-badge');
+        var csLocation = document.getElementById('cs-location');
+        var csTitle = document.getElementById('cs-title');
+        var csM1Val = document.getElementById('cs-m1-val');
+        var csM1Lbl = document.getElementById('cs-m1-lbl');
+        var csM2Val = document.getElementById('cs-m2-val');
+        var csM2Lbl = document.getElementById('cs-m2-lbl');
+        var csM3Val = document.getElementById('cs-m3-val');
+        var csM3Lbl = document.getElementById('cs-m3-lbl');
+        var csQuote = document.getElementById('cs-quote');
+        var csAvatar = document.getElementById('cs-avatar');
+        var csAuthor = document.getElementById('cs-author');
+        var csRole = document.getElementById('cs-role');
+        var csFlowTag = document.getElementById('cs-flow-tag');
+        var csS1Title = document.getElementById('cs-s1-title');
+        var csS1Sub = document.getElementById('cs-s1-sub');
+        var csS2Title = document.getElementById('cs-s2-title');
+        var csS2Sub = document.getElementById('cs-s2-sub');
+        var csS3Title = document.getElementById('cs-s3-title');
+        var csS3Sub = document.getElementById('cs-s3-sub');
+        var csCardContainer = document.getElementById('cs-card-container');
+
+        if (!csTitle) return;
+
+        var csData = [
+          {
+            badge: 'Verified Meta Cloud API Case Study', location: 'Mumbai · Hospitality',
+            title: 'Spice Route Gourmet: +310% Table Pre-orders & Zero Missed Inquiries',
+            m1Val: '+310%', m1Lbl: 'Pre-Orders Locked',
+            m2Val: '0.2s', m2Lbl: 'WhatsApp Response',
+            m3Val: '₹3.8L', m3Lbl: 'Saved Monthly',
+            quote: '"Before AgentIQ, our staff missed over 40% of peak-hour weekend call inquiries. Now, our WhatsApp AI concierge books tables, collects pre-orders, and auto-syncs with our POS instantly."',
+            avatar: 'RK', author: 'Rahul Kapoor', role: 'Founder & Managing Director · Spice Route Group',
+            flowTag: 'WhatsApp + POS Sync',
+            s1Title: 'Customer Inquires via WhatsApp', s1Sub: '"Table for 4 tonight at 8 PM?"',
+            s2Title: 'AgentIQ AI Concierge Responds (0.2s)', s2Sub: '"Confirmed! Want to pre-order starters?"',
+            s3Title: 'Automated POS & Sheets Sync', s3Sub: 'Reservation logged & kitchen notified.'
+          },
+          {
+            badge: 'Salon Slot Booking Case Study', location: 'Bengaluru · Beauty & Wellness',
+            title: 'Luxe Hair & Spa: +240% Slot Locking & ₹1.8L Extra Monthly Revenue',
+            m1Val: '+240%', m1Lbl: 'Slot Lockings',
+            m2Val: '88%', m2Lbl: 'No-Show Drop',
+            m3Val: '₹1.8L', m3Lbl: 'Extra Rev / Mo',
+            quote: '"Clients love booking their haircut & spa slots at midnight over WhatsApp. AgentIQ collects advance deposits so zero-show cancellations dropped by 88%!"',
+            avatar: 'PS', author: 'Priya Sharma', role: 'Chief Operations Officer · Luxe Spa Chain',
+            flowTag: 'WhatsApp + Razorpay',
+            s1Title: 'Client Requests Haircut Slot', s1Sub: '"Any opening Saturday at 11 AM?"',
+            s2Title: 'AgentIQ Checks Stylist Schedule', s2Sub: '"Senior Stylist Priya open! Lock with ₹300 deposit?"',
+            s3Title: 'Instant Payment & Confirmation', s3Sub: 'Slot locked on Google Calendar.'
+          },
+          {
+            badge: 'Clinic Patient Triage Case Study', location: 'Delhi NCR · Healthcare',
+            title: 'Apex Dermatology: 88% No-Show Reduction & Instant Patient Intake',
+            m1Val: '88%', m1Lbl: 'No-Show Drop',
+            m2Val: '100%', m2Lbl: 'Intake Forms Sync',
+            m3Val: '15 Hrs', m3Lbl: 'Saved / Week',
+            quote: '"Our reception desk was overwhelmed with appointment calls. AgentIQ handles patient intake, qualifies medical queries, and sends pre-visit intake forms automatically."',
+            avatar: 'DR', author: 'Dr. Ananya Rao', role: 'Lead Dermatologist · Apex Skin Clinic',
+            flowTag: 'WhatsApp + Google Sheets',
+            s1Title: 'Patient Queries Consultation', s1Sub: '"Need dermatologist slot for Thursday."',
+            s2Title: 'AgentIQ Qualifies & Schedules', s2Sub: '"Dr. Ananya available at 4:30 PM. Form link sent!"',
+            s3Title: 'Pre-Visit Intake Logged', s3Sub: 'Patient medical notes synced to Sheets.'
+          },
+          {
+            badge: 'D2C E-commerce Case Study', location: 'Surat · Fashion & Retail',
+            title: 'Velvet Apparel: +185% Abandoned Cart Recovery via WhatsApp DM',
+            m1Val: '+185%', m1Lbl: 'Cart Recoveries',
+            m2Val: '3.2s', m2Lbl: 'Order Track Speed',
+            m3Val: '₹5.4L', m3Lbl: 'Recovered Sales',
+            quote: '"Integrating AgentIQ with our Shopify store turned abandoned carts into completed orders. Customers get instant WhatsApp tracking without emailing support."',
+            avatar: 'VM', author: 'Vikram Mehta', role: 'Head of Growth · Velvet Fashion D2C',
+            flowTag: 'Shopify + WhatsApp',
+            s1Title: 'Cart Abandoned on Checkout', s1Sub: 'Customer left ₹3,400 cart.',
+            s2Title: 'AgentIQ Triggers WhatsApp Offer', s2Sub: '"Hi Vikram! Lock 10% off your cart now 🎉"',
+            s3Title: '1-Click Checkout Complete', s3Sub: 'Order confirmed & tracking link generated.'
+          },
+          {
+            badge: 'Real Estate Lead Qualification', location: 'Pune · Property & Construction',
+            title: 'Skyline Developers: +420% Qualified Site Visit Bookings',
+            m1Val: '+420%', m1Lbl: 'Site Visits',
+            m2Val: '< 1 min', m2Lbl: 'Lead Response',
+            m3Val: '₹14.5L', m3Lbl: 'Ad Spend ROI',
+            quote: '"High-intent buyers want floor plans and site visits immediately. AgentIQ filters tire-kickers and schedules serious buyers directly with our sales team."',
+            avatar: 'SD', author: 'Sameer Deshmukh', role: 'VP Sales · Skyline Infra Projects',
+            flowTag: 'Meta Ads + WhatsApp',
+            s1Title: 'Ad Click to WhatsApp DM', s1Sub: '"Send 2 BHK price & floor plan."',
+            s2Title: 'AgentIQ Delivers PDF & Qualifies', s2Sub: '"Brochure sent! Book site visit for Sunday?"',
+            s3Title: 'Site Visit Confirmed', s3Sub: 'Lead assigned to sales rep on CRM.'
+          }
+        ];
+
+        var csCurrentIndex = 0;
+        var csAutoTimer = null;
+
+        function renderCaseStudy(idx) {
+          csCurrentIndex = (idx + csData.length) % csData.length;
+          var item = csData[csCurrentIndex];
+
+          if (csCardContainer) {
+            csCardContainer.style.opacity = '0.5';
+            csCardContainer.style.transform = 'translateY(4px)';
+          }
+
+          setTimeout(function() {
+            if (csBadge) csBadge.textContent = item.badge;
+            if (csLocation) csLocation.textContent = item.location;
+            if (csTitle) csTitle.textContent = item.title;
+            if (csM1Val) csM1Val.textContent = item.m1Val;
+            if (csM1Lbl) csM1Lbl.textContent = item.m1Lbl;
+            if (csM2Val) csM2Val.textContent = item.m2Val;
+            if (csM2Lbl) csM2Lbl.textContent = item.m2Lbl;
+            if (csM3Val) csM3Val.textContent = item.m3Val;
+            if (csM3Lbl) csM3Lbl.textContent = item.m3Lbl;
+            if (csQuote) csQuote.textContent = item.quote;
+            if (csAvatar) csAvatar.textContent = item.avatar;
+            if (csAuthor) csAuthor.textContent = item.author;
+            if (csRole) csRole.textContent = item.role;
+            if (csFlowTag) csFlowTag.textContent = item.flowTag;
+            if (csS1Title) csS1Title.textContent = item.s1Title;
+            if (csS1Sub) csS1Sub.textContent = item.s1Sub;
+            if (csS2Title) csS2Title.textContent = item.s2Title;
+            if (csS2Sub) csS2Sub.textContent = item.s2Sub;
+            if (csS3Title) csS3Title.textContent = item.s3Title;
+            if (csS3Sub) csS3Sub.textContent = item.s3Sub;
+
+            // Update Tabs styling
+            csTabs.forEach(function(tab, i) {
+              if (i === csCurrentIndex) {
+                tab.className = 'cs-tab px-5 py-2.5 rounded-xl font-600 text-sm whitespace-nowrap transition-all cursor-pointer bg-gradient-to-r from-coral-deep to-orange-deep text-white shadow-lg shadow-coral/25';
+              } else {
+                tab.className = 'cs-tab px-5 py-2.5 rounded-xl font-500 text-sm whitespace-nowrap transition-all cursor-pointer text-slate-400 hover:text-white glass border border-white/5';
+              }
+            });
+
+            // Update Dots styling
+            csDots.forEach(function(dot, i) {
+              if (i === csCurrentIndex) {
+                dot.className = 'cs-dot w-3.5 h-3.5 rounded-full bg-cyan transition-all cursor-pointer';
+              } else {
+                dot.className = 'cs-dot w-2.5 h-2.5 rounded-full bg-white/20 hover:bg-white/40 transition-all cursor-pointer';
+              }
+            });
+
+            if (csCardContainer) {
+              csCardContainer.style.opacity = '1';
+              csCardContainer.style.transform = 'translateY(0)';
+            }
+          }, 150);
+        }
+
+        function startAutoRotate() {
+          stopAutoRotate();
+          csAutoTimer = setInterval(function() {
+            renderCaseStudy(csCurrentIndex + 1);
+          }, 6000);
+        }
+
+        function stopAutoRotate() {
+          if (csAutoTimer) clearInterval(csAutoTimer);
+        }
+
+        // Add event listeners for tabs, dots, and prev/next buttons
+        csTabs.forEach(function(tab) {
+          tab.addEventListener('click', function() {
+            var idx = parseInt(tab.getAttribute('data-case'), 10);
+            renderCaseStudy(idx);
+            startAutoRotate();
+          });
+        });
+
+        csDots.forEach(function(dot) {
+          dot.addEventListener('click', function() {
+            var idx = parseInt(dot.getAttribute('data-case'), 10);
+            renderCaseStudy(idx);
+            startAutoRotate();
+          });
+        });
+
+        if (csPrev) {
+          csPrev.addEventListener('click', function() {
+            renderCaseStudy(csCurrentIndex - 1);
+            startAutoRotate();
+          });
+        }
+
+        if (csNext) {
+          csNext.addEventListener('click', function() {
+            renderCaseStudy(csCurrentIndex + 1);
+            startAutoRotate();
+          });
+        }
+
+        // Pause auto-rotation on mouse enter
+        if (csCardContainer) {
+          csCardContainer.addEventListener('mouseenter', stopAutoRotate);
+          csCardContainer.addEventListener('mouseleave', startAutoRotate);
+        }
+
+        renderCaseStudy(0);
+        startAutoRotate();
+      })();
       // ── Smooth scroll centering for #book links ─────────────────────────
       function scrollToBookCard(e) {
         var targetCard = document.getElementById('book');
