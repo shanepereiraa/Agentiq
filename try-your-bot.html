@@ -594,12 +594,17 @@
       }
 
       function generateIntelligentReply(name, text, industry) {
-        var q = text.toLowerCase();
+        var q = text.toLowerCase().trim();
         
         // Exact preset match first
         var preset = INDUSTRY_PRESETS[industry] || INDUSTRY_PRESETS.restaurant;
         if (preset.responses && preset.responses[text]) {
           return preset.responses[text](name);
+        }
+
+        // Affirmative / Greetings / Follow-ups ("yes", "yeah", "sure", "ok", "hi", "hello")
+        if (q === 'yes' || q === 'yeah' || q === 'sure' || q === 'ok' || q === 'hi' || q === 'hello' || q === 'hey') {
+          return 'Hey there! 👋 Thanks for reaching out to ' + name + '. How can we help you today — looking to place an order, check our menu, or book a table? 🍽️';
         }
 
         // Parking / Valet / Car
@@ -647,7 +652,7 @@
           return 'We have a special 15% flat discount on all weekday pre-orders at ' + name + '! 🎉 Use code FEAST15 at checkout.';
         }
 
-        return 'Thanks for asking about ' + name + '! 🍽️ Our AI assistant handles table bookings, menu pre-orders, and FAQs 24/7 on WhatsApp. Click below to deploy this for your restaurant!';
+        return 'Hey there! 👋 Thanks for messaging ' + name + '. I am your 24/7 AI assistant. Would you like to book a table, view our menu, or check today’s specials?';
       }
 
       function handleUserSend(text) {
@@ -664,17 +669,15 @@
         // Try API fetch for dynamic Claude model streaming, fallback to smart local NLP
         var activeApi = (window.AgentIQConfig && window.AgentIQConfig.apiBase) || 'https://agentiq-chatbot.onrender.com';
         var ctrl = (typeof AbortController !== 'undefined') ? new AbortController() : null;
-        var timer = ctrl ? setTimeout(function() { ctrl.abort(); }, 3500) : null;
+        var timer = ctrl ? setTimeout(function() { ctrl.abort(); }, 4000) : null;
 
         fetch(activeApi + '/api/chat', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
+            system: 'You are the official 24/7 WhatsApp AI concierge for "' + currentBiz + '", a business in the ' + currentInd + ' industry in India. Answer directly as their friendly business concierge in 1-2 concise sentences with appropriate emojis. Never mention AgentIQ or being a general agency bot — act 100% as the actual AI assistant for ' + currentBiz + '.',
             messages: [
-              {
-                role: 'user',
-                content: '[Context: You are the official 24/7 WhatsApp AI concierge for "' + currentBiz + '", a business in the ' + currentInd + ' industry in India. Provide a helpful, friendly 1-2 sentence response to the customer. Use appropriate emojis.]\n\nCustomer Inquiry: ' + text
-              }
+              { role: 'user', content: text }
             ]
           }),
           signal: ctrl ? ctrl.signal : undefined
@@ -688,7 +691,7 @@
           return res.text();
         }).then(function(replyText) {
           removeTypingIndicator();
-          var finalReply = (replyText && replyText.trim() && !replyText.includes('Great question about')) ? replyText.trim() : localReply;
+          var finalReply = (replyText && replyText.trim() && !replyText.includes('AgentIQ') && !replyText.includes('automation agency')) ? replyText.trim() : localReply;
           appendBubble(finalReply, 'bot');
           isTyping = false;
         }).catch(function(err) {
