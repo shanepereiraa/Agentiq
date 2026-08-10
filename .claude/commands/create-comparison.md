@@ -23,6 +23,7 @@ This is the single most important constraint. Every claim about the competitor m
    - **Header Container:** Must use the floating pill container style (`<header class="fixed top-3 left-3 right-3 z-50"><nav aria-label="Primary" class="relative max-w-6xl mx-auto glass rounded-2xl px-4 sm:px-5 py-3 flex items-center justify-between">`).
    - **Header Navigation:** Must use the standardized 6 navigation items in this exact order: `Chatbots` (`/ai-chatbot-india`), `Voice Agents` (`/ai-voice-agents-india`), `Industries` (`/#industries`), `Pricing` (`/#pricing`), `Blog` (`/blog`), `FAQ` (`/#faq`).
    - **CTA Button:** Must use sentence case `"Book a demo"` and match the homepage pill-shaped white background & hover styling (`px-4 py-2 rounded-xl bg-white text-ink hover:bg-cyan hover:text-white transition-colors duration-200`) across desktop and mobile menus.
+   - **Footer Structure:** Must use the standardized 5-column footer with circular social icons (WhatsApp, Instagram, Facebook, LinkedIn, Email) in Column 1 (Brand), 5 link columns (Brand, Services, Company, Solutions in India, Contact), and full-width bottom copyright bar (`© 2026 AgentIQ. All rights reserved.`).
    - Required sections:
      - Hero: H1 stating the comparison plainly (e.g. "AgentIQ vs WATI: Done-for-You AI Chatbot or Self-Serve WhatsApp Platform?")
      - Comparison table: AgentIQ column uses real site facts; competitor column uses only sourced facts, `[VERIFY]` items omitted rather than guessed
