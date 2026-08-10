@@ -171,7 +171,7 @@
               Configure Your Business
             </h2>
 
-            <form id="sim-form" class="space-y-4">
+            <form id="sim-form" onsubmit="return false;" class="space-y-4">
               <!-- Business Name -->
               <div>
                 <label for="biz-name" class="block text-xs font-600 text-slate-300 uppercase tracking-wider mb-2">Business Name</label>
@@ -202,7 +202,7 @@
               </div>
 
               <!-- Submit Button -->
-              <button type="submit" id="btn-update-sim" class="w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-emerald-500 to-cyan text-slate-950 font-700 text-sm hover:brightness-110 transition-all duration-200 shadow-lg shadow-emerald-500/20 flex items-center justify-center gap-2 cursor-pointer">
+              <button type="button" id="btn-update-sim" class="w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-emerald-500 to-cyan text-slate-950 font-700 text-sm hover:brightness-110 transition-all duration-200 shadow-lg shadow-emerald-500/20 flex items-center justify-center gap-2 cursor-pointer">
                 <span>Generate Customized AI Bot</span>
                 <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </button>
@@ -645,9 +645,21 @@
         });
       }
 
-      // Live inputs synchronization (typing business name updates simulator immediately)
+      // Live inputs synchronization (typing business name or changing options updates simulator immediately)
+      var btnUpdateSim = document.getElementById('btn-update-sim');
+      if (btnUpdateSim) {
+        btnUpdateSim.addEventListener('click', function (e) {
+          if (e) e.preventDefault();
+          updateSimulator(inputBizName.value.trim(), selectIndustry.value);
+        });
+      }
+
       inputBizName.addEventListener('input', function() {
-        syncBizName();
+        updateSimulator(inputBizName.value.trim(), selectIndustry.value);
+      });
+
+      inputBizName.addEventListener('change', function() {
+        updateSimulator(inputBizName.value.trim(), selectIndustry.value);
       });
 
       selectIndustry.addEventListener('change', function() {
@@ -658,12 +670,11 @@
         updateSimulator(inputBizName.value.trim(), selectIndustry.value);
       });
 
-      // Form Submit
+      // Form Submit fallback
       form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        var bizName = inputBizName.value.trim() || 'My Business';
-        var industry = selectIndustry.value;
-        updateSimulator(bizName, industry);
+        if (e) e.preventDefault();
+        updateSimulator(inputBizName.value.trim(), selectIndustry.value);
+        return false;
       });
 
       btnSend.addEventListener('click', function () {
