@@ -1161,10 +1161,12 @@
         const pauseIcon = card.querySelector('.vs-icon-pause');
         const timeEl = card.querySelector('.vs-time');
         const badgeEl = card.querySelector('.vs-badge');
-        const descEl = card.querySelector('.text-slate-500');
+        const descEl = card.querySelector('.text-slate-400') || card.querySelector('.text-slate-500');
         const skeleton = card.querySelector('.vs-skeleton');
         // e.g. "Hindi Voice Demo - Restaurant" — feeds the mobile mini audio bar (MobileAudioBar.jsx)
-        const label = `${badgeEl.textContent} Voice Demo - ${descEl.textContent.split(' · ')[0]}`;
+        const descText = descEl ? descEl.textContent.split(' · ')[0] : 'Demo';
+        const badgeText = badgeEl ? badgeEl.textContent : 'Naina';
+        const label = `${badgeText} Voice Demo - ${descText}`;
         function setPlayingUI(isPlaying) {
           card.classList.toggle('is-playing', isPlaying);
           playIcon.classList.toggle('hidden', isPlaying);
