@@ -45,7 +45,6 @@
   <style>
     html{-webkit-font-smoothing:antialiased}body{background:#060f28}
     a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:3px solid #22D3EE;outline-offset:2px;border-radius:6px}
-    .bg-gradient-to-r.from-coral { text-shadow: 0 1px 2px rgba(7,23,58,.55); }
     .glass{background:rgba(255,255,255,.05);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.10)}
     .logo-grad-text{background:linear-gradient(135deg,#FF8A5B 0%,#FF5C8A 55%,#C74AFF 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
     
@@ -81,7 +80,7 @@
         <a href="/salons" class="hover:text-white transition-colors">Salons</a>
       </nav>
       <div class="flex items-center gap-2">
-        <a href="/#book" class="hidden md:inline-flex items-center justify-center px-4 py-2 rounded-xl bg-gradient-to-r from-coral to-orange text-white text-xs font-600 shadow-md shadow-coral/20 hover:shadow-coral/40 transition-shadow">Book Agency Demo</a>
+        <a href="/#book" class="hidden md:inline-flex items-center justify-center px-4 py-2 rounded-xl bg-gradient-to-r from-coral-deep to-orange-deep text-white text-xs font-600 shadow-md shadow-coral/20 hover:shadow-coral/40 transition-shadow">Book Agency Demo</a>
         <button id="aiq-nav-toggle" type="button" class="md:hidden grid place-items-center w-9 h-9 rounded-xl text-slate-200 hover:text-white hover:bg-white/10 transition-colors" aria-label="Open menu" aria-haspopup="true" aria-expanded="false" aria-controls="aiq-mobile-nav">
           <svg class="icon-open w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
           <svg class="icon-close w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
@@ -161,7 +160,7 @@
               <input id="lead-phone" type="tel" class="w-full bg-slate-900/80 border border-white/15 rounded-xl p-3 text-white text-sm focus:border-cyan focus:outline-none" placeholder="WhatsApp Number (+91...)" />
             </div>
 
-            <button id="btn-claim-savings" type="button" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-coral to-orange text-white font-600 text-sm shadow-lg shadow-coral/20 hover:shadow-coral/40 transition-all flex items-center justify-center gap-2">
+            <button id="btn-claim-savings" type="button" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-coral-deep to-orange-deep text-white font-600 text-sm shadow-lg shadow-coral/20 hover:shadow-coral/40 transition-all flex items-center justify-center gap-2">
               Claim Annual Savings Report →
             </button>
           </div>
@@ -268,20 +267,21 @@
           return;
         }
 
-        try {
-          await fetch('https://agentiq-chatbot.onrender.com/lead', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              name: name || 'Staff Calculator User',
-              email: 'staff-calc@agentiq.co.in',
-              phone: cleanPhone,
-              businessName: 'Staff vs AI Tool Lead',
-              industry: 'ROI Tool',
-              notes: 'Calculated annual savings: ' + outSavings.textContent
-            })
-          });
-        } catch(e) { console.log(e); }
+        // Fire-and-forget: never block on this call, since a cold Render
+        // backend can take 30-60s+ to wake — this is just background
+        // lead logging and shouldn't hold up the rest of the flow.
+        fetch('https://agentiq-chatbot.onrender.com/lead', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: name || 'Staff Calculator User',
+            email: 'staff-calc@agentiq.co.in',
+            phone: cleanPhone,
+            businessName: 'Staff vs AI Tool Lead',
+            industry: 'ROI Tool',
+            notes: 'Calculated annual savings: ' + outSavings.textContent
+          })
+        }).catch(function(e) { console.log('Lead log silent catch:', e); });
 
         alert('Thank you! Our agency team will send your custom Staff vs. AI breakdown via WhatsApp shortly.');
       });

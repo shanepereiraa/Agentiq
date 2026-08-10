@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./*.html', './blog/*.html'],
+  content: ['./*.html', './blog/*.html', './tools/*.html'],
   theme: {
     extend: {
       fontFamily: {
@@ -15,6 +15,21 @@ module.exports = {
         primarySoft: '#FFB36B',
         cyan: '#22D3EE',
         blue: '#3B82F6',
+        // "-deep" tokens: same hue family as their base color, darkened until
+        // white text on a from/to gradient of the pair clears WCAG 4.5:1
+        // (verified by hand — sRGB relative-luminance contrast against
+        // #FFFFFF — each endpoint independently, since text can sit
+        // anywhere along the gradient). Replaces the old text-shadow
+        // contrast crutch on CTA buttons; used only where buttons carry
+        // white text, not for decorative/icon uses of the base colors.
+        'coral-deep': '#C0392B',    // 5.44:1
+        'orange-deep': '#A85A1C',   // 5.07:1
+        'cyan-deep': '#0E7C8C',     // 4.90:1
+        'blue-deep': '#1E4FA3',     // 7.77:1
+        'fuchsia-deep': '#9333A6',  // 6.43:1
+        'pink-deep': '#A6265A',     // 6.90:1
+        'emerald-deep': '#0D7A55',  // 5.34:1
+        'teal-deep': '#0C6E66',     // 6.10:1
       },
       keyframes: {
         float: { '0%,100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-14px)' } },

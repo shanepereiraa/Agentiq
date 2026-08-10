@@ -60,7 +60,6 @@
   <style>
     html{-webkit-font-smoothing:antialiased}body{background:#060f28}
     a:focus-visible,button:focus-visible,summary:focus-visible,[tabindex]:focus-visible,input:focus-visible{outline:3px solid #22D3EE;outline-offset:2px;border-radius:6px}
-    .bg-gradient-to-r.from-cyan { text-shadow: 0 1px 2px rgba(7,23,58,.55); }
     .glass{background:rgba(255,255,255,.05);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.10)}
     .logo-grad-text{background:linear-gradient(135deg,#FF8A5B 0%,#FF5C8A 55%,#C74AFF 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
     .grad-text{background:linear-gradient(100deg,#22D3EE 0%,#3B82F6 50%,#8B5CF6 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
@@ -101,7 +100,7 @@
         <a href="/clinics" class="hover:text-white transition-colors">Clinics</a>
       </nav>
       <div class="flex items-center gap-2">
-        <a href="#book" class="hidden md:inline-flex items-center justify-center px-4 py-2 rounded-xl bg-gradient-to-r from-cyan to-blue text-white text-xs font-600 shadow-md shadow-cyan/20 hover:shadow-cyan/40 transition-shadow">Book a Demo</a>
+        <a href="#book" class="hidden md:inline-flex items-center justify-center px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-deep to-blue-deep text-white text-xs font-600 shadow-md shadow-cyan/20 hover:shadow-cyan/40 transition-shadow">Book a Demo</a>
         <button id="aiq-nav-toggle" type="button" class="md:hidden grid place-items-center w-9 h-9 rounded-xl text-slate-200 hover:text-white hover:bg-white/10 transition-colors" aria-label="Open menu" aria-haspopup="true" aria-expanded="false" aria-controls="aiq-mobile-nav">
           <svg class="icon-open w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
           <svg class="icon-close w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
@@ -138,7 +137,7 @@
           AgentIQ's AI voice agents answer your business phone line 24/7 in Hindi and English — booking appointments, routing departments, and capturing caller details, done-for-you.
         </p>
         <div class="flex flex-wrap items-center justify-center gap-4 mt-8">
-          <a href="#book" class="px-7 py-4 rounded-xl bg-gradient-to-r from-cyan to-blue text-white font-600 text-sm shadow-lg shadow-cyan/20 hover:shadow-cyan/40 transition-all">
+          <a href="#book" class="px-7 py-4 rounded-xl bg-gradient-to-r from-cyan-deep to-blue-deep text-white font-600 text-sm shadow-lg shadow-cyan/20 hover:shadow-cyan/40 transition-all">
             Get a Free Voice Agent Demo →
           </a>
         </div>
@@ -204,7 +203,7 @@
             </ul>
           </div>
           <div class="glass rounded-3xl p-6 border-2 border-cyan/40 relative">
-            <span class="absolute -top-3 left-6 px-3 py-1 rounded-full bg-gradient-to-r from-cyan to-blue text-white text-[11px] font-600">Most Popular</span>
+            <span class="absolute -top-3 left-6 px-3 py-1 rounded-full bg-gradient-to-r from-cyan-deep to-blue-deep text-white text-[11px] font-600">Most Popular</span>
             <h3 class="font-display font-700 text-white text-lg mb-1">Voice Professional</h3>
             <p class="text-3xl font-700 text-white mb-1">₹69,999<span class="text-sm font-400 text-slate-400"> setup</span></p>
             <p class="text-cyan font-600 text-sm mb-4">+ ₹24,999/mo</p>
@@ -287,7 +286,7 @@
               <label for="avi-phone" class="block text-xs text-slate-300 mb-1">WhatsApp Number</label>
               <input id="avi-phone" type="tel" class="w-full bg-slate-900/80 border border-white/15 rounded-xl p-3 text-white text-sm focus:border-cyan focus:outline-none" placeholder="+91 98765 43210" required data-mcp-param="phone" data-mcp-description="WhatsApp number in Indian format, e.g. +91 98765 43210 or 9876543210" />
             </div>
-            <button id="btn-submit-avi" type="button" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-cyan to-blue text-white font-600 text-sm shadow-lg shadow-cyan/20 hover:shadow-cyan/40 transition-all">
+            <button id="btn-submit-avi" type="button" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-cyan-deep to-blue-deep text-white font-600 text-sm shadow-lg shadow-cyan/20 hover:shadow-cyan/40 transition-all">
               Book My Free Demo →
             </button>
             <p id="formmsg" class="hidden items-start gap-2 text-sm text-emerald-300 text-left" role="status">
@@ -346,6 +345,7 @@
           <ul class="space-y-3 text-sm text-slate-400">
             <li><a href="/ai-chatbot-india" class="hover:text-white transition-colors">AI Chatbot India</a></li>
             <li><a href="/ai-voice-agents-india" class="text-white transition-colors">AI Voice Agents India</a></li>
+            <li><a href="/agentiq-vs-wati" class="hover:text-white transition-colors">AgentIQ vs WATI</a></li>
           </ul>
         </div>
         <div>
@@ -382,20 +382,21 @@
           return;
         }
 
-        try {
-          await fetch('https://agentiq-chatbot.onrender.com/lead', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              name: name || 'AI Voice Agents India Lead',
-              email: 'lead@agentiq.co.in',
-              phone: cleanPhone,
-              businessName: business || 'Not specified',
-              industry: 'AI Voice Agents India (landing page)',
-              notes: 'Requested demo via /ai-voice-agents-india'
-            })
-          });
-        } catch(e) { console.log(e); }
+        // Fire-and-forget: never block WhatsApp opening on this call, since a
+        // cold Render backend can take 30-60s+ to wake — the user shouldn't
+        // wait on it at all for what's just background lead logging.
+        fetch('https://agentiq-chatbot.onrender.com/lead', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: name || 'AI Voice Agents India Lead',
+            email: 'lead@agentiq.co.in',
+            phone: cleanPhone,
+            businessName: business || 'Not specified',
+            industry: 'AI Voice Agents India (landing page)',
+            notes: 'Requested demo via /ai-voice-agents-india'
+          })
+        }).catch(function(e) { console.log('Lead log silent catch:', e); });
 
         var waMessage = "Hi AgentIQ, I'd like to book a free AI voice agent demo.\nName: " + (name || 'Lead') + "\nWhatsApp: " + cleanPhone;
         if (business) waMessage += "\nBusiness: " + business;
