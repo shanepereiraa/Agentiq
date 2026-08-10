@@ -59,6 +59,14 @@
     input[type=range]::-webkit-slider-runnable-track{width:100%;height:8px;cursor:pointer;background:#1e293b;border-radius:4px}
     input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;height:22px;width:22px;border-radius:50%;background:#06b6d4;cursor:pointer;margin-top:-7px;box-shadow:0 0 10px rgba(6,182,212,0.6)}
   </style>
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RD3SW71LDT"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RD3SW71LDT');
+  </script>
 </head>
 <body class="font-sans text-slate-300 bg-[#060f28] min-h-screen selection:bg-cyan-500/30 selection:text-cyan-200">
 
@@ -385,6 +393,27 @@
       function closeNav() { navOpen = false; navPanel.classList.add('aiq-shut'); navPanel.setAttribute('inert', ''); }
       if (navToggle) navToggle.addEventListener('click', function () { navOpen ? closeNav() : openNav(); });
 
+    })();
+  </script>
+  <script>
+    (function(){
+      'use strict';
+      document.addEventListener('click', function(e){
+        var wa = e.target.closest('a[href*="wa.me"]');
+        if (wa && typeof gtag === 'function') {
+          gtag('event', 'click', { event_category: 'whatsapp_cta', event_label: 'WhatsApp' });
+        }
+        var submitBtn = e.target.closest('[id^="btn-submit-"]');
+        if (submitBtn && typeof gtag === 'function') {
+          gtag('event', 'generate_lead', { currency: 'INR', value: 0, method: 'lead_form' });
+        }
+      });
+      document.addEventListener('submit', function(e){
+        var wrapper = e.target.closest('[data-mcp-action]') || e.target.querySelector('[data-mcp-action]');
+        if (wrapper && typeof gtag === 'function') {
+          gtag('event', 'generate_lead', { currency: 'INR', value: 0, method: 'lead_form' });
+        }
+      });
     })();
   </script>
 </body>

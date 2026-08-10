@@ -61,6 +61,14 @@
     @media (forced-colors: active) { .logo-grad-text { background: none; -webkit-background-clip: initial; background-clip: initial; color: CanvasText; } }
     .prose-dark{color:#94a3b8}.prose-dark h2{color:#f8fafc;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.5rem;margin-top:2.5rem;margin-bottom:1rem;scroll-margin-top:6rem}.prose-dark p{margin-bottom:1.25rem;line-height:1.75}.prose-dark ul{list-style-type:disc;padding-left:1.25rem;margin-bottom:1.25rem}.prose-dark li{margin-bottom:.5rem}.prose-dark a{color:#22d3ee;text-decoration:underline}.prose-dark a:hover{color:#fff}.prose-dark strong{color:#f1f5f9}.prose-dark table{width:100%;border-collapse:collapse;margin:1.5rem 0}.prose-dark th,.prose-dark td{border:1px solid rgba(255,255,255,.12);padding:.75rem 1rem;text-align:left}.prose-dark th{background:rgba(255,255,255,.05);color:#fff}
   </style>
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RD3SW71LDT"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RD3SW71LDT');
+  </script>
 </head>
 <body class="font-sans text-slate-300 bg-[#060f28] min-h-screen selection:bg-cyan-500/30 selection:text-cyan-200">
 
@@ -355,6 +363,27 @@
       });
       window.matchMedia('(min-width: 768px)').addEventListener('change', function (e) {
         if (e.matches && navOpen) closeNav(false);
+      });
+    })();
+  </script>
+  <script>
+    (function(){
+      'use strict';
+      document.addEventListener('click', function(e){
+        var wa = e.target.closest('a[href*="wa.me"]');
+        if (wa && typeof gtag === 'function') {
+          gtag('event', 'click', { event_category: 'whatsapp_cta', event_label: 'WhatsApp' });
+        }
+        var submitBtn = e.target.closest('[id^="btn-submit-"]');
+        if (submitBtn && typeof gtag === 'function') {
+          gtag('event', 'generate_lead', { currency: 'INR', value: 0, method: 'lead_form' });
+        }
+      });
+      document.addEventListener('submit', function(e){
+        var wrapper = e.target.closest('[data-mcp-action]') || e.target.querySelector('[data-mcp-action]');
+        if (wrapper && typeof gtag === 'function') {
+          gtag('event', 'generate_lead', { currency: 'INR', value: 0, method: 'lead_form' });
+        }
       });
     })();
   </script>
