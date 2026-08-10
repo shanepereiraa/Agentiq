@@ -19,13 +19,16 @@ This is the single most important constraint. Every claim about the competitor m
 
 2. **Read `docs/content-templates/comparison-page-template.md`** for the structural pattern (frontmatter, comparison table, "when X might be better fit" section, FAQ).
 
-3. **Generate the HTML page** at the repo root (`agentiq-vs-<slug>.html`), matching the site's existing design system — copy the header/nav/footer/mobile-nav pattern and Tailwind class conventions from `ai-chatbot-india.html` (closest existing analog: a root-level, keyword-targeted landing page). Required sections:
-   - Hero: H1 stating the comparison plainly (e.g. "AgentIQ vs WATI: Done-for-You AI Chatbot or Self-Serve WhatsApp Platform?")
-   - Comparison table: AgentIQ column uses real site facts; competitor column uses only sourced facts, `[VERIFY]` items omitted rather than guessed
-   - "When [Competitor] might be the better fit" — write this honestly; a comparison that only disparages the competitor reads as biased to both readers and AI answer engines, which hurts citation-worthiness
-   - "When AgentIQ is the better fit" — reuse the site's existing done-for-you-vs-self-serve framing (see `index.html`'s FAQPage schema, question "How does AgentIQ differ from self-serve platforms like WATI or AiSensy?")
-   - FAQ section (visible `<details>/<summary>` accordion, matching the pattern in `ai-chatbot-india.html`)
-   - Lead capture CTA (WhatsApp deep link + demo form, matching the div-based `#book` pattern in `ai-chatbot-india.html` — including `data-mcp-*` attributes on the form fields, per this site's agent-transactability standard)
+3. **Generate the HTML page** at the repo root (`agentiq-vs-<slug>.html`), matching the site's existing design system — copy the header/nav/footer/mobile-nav pattern and Tailwind class conventions from `ai-chatbot-india.html` (closest existing analog: a root-level, keyword-targeted landing page).
+   - **Header Navigation:** Must use the standardized 6 navigation items in this exact order: `Chatbots` (`/ai-chatbot-india`), `Voice Agents` (`/ai-voice-agents-india`), `Industries` (`/#industries`), `Pricing` (`/#pricing`), `Blog` (`/blog`), `FAQ` (`/#faq`).
+   - **CTA Button:** Must use sentence case `"Book a demo"` and match the homepage pill-shaped white background & hover styling (`px-4 py-2 rounded-xl bg-white text-ink hover:bg-cyan hover:text-white transition-colors duration-200`) across desktop and mobile menus.
+   - Required sections:
+     - Hero: H1 stating the comparison plainly (e.g. "AgentIQ vs WATI: Done-for-You AI Chatbot or Self-Serve WhatsApp Platform?")
+     - Comparison table: AgentIQ column uses real site facts; competitor column uses only sourced facts, `[VERIFY]` items omitted rather than guessed
+     - "When [Competitor] might be the better fit" — write this honestly; a comparison that only disparages the competitor reads as biased to both readers and AI answer engines, which hurts citation-worthiness
+     - "When AgentIQ is the better fit" — reuse the site's existing done-for-you-vs-self-serve framing (see `index.html`'s FAQPage schema, question "How does AgentIQ differ from self-serve platforms like WATI or AiSensy?")
+     - FAQ section (visible `<details>/<summary>` accordion, matching the pattern in `ai-chatbot-india.html`)
+     - Lead capture CTA (WhatsApp deep link + demo form, matching the div-based `#book` pattern in `ai-chatbot-india.html` — including `data-mcp-*` attributes on the form fields, per this site's agent-transactability standard)
 
 4. **Structured data** — three JSON-LD blocks in `<head>`:
    - `BreadcrumbList` (AgentIQ → this page)
