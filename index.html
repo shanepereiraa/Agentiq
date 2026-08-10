@@ -2338,12 +2338,22 @@
               if (--remaining === 0) { io.disconnect(); }
             }
           });
-        }, { threshold: 0.12 });
+        }, { threshold: 0.12, rootMargin: '200px 0px 200px 0px' });
         // stagger siblings
         document.querySelectorAll('.grid').forEach(function (grid) {
           grid.querySelectorAll(':scope > .reveal').forEach(function (el, i) { el.dataset.delay = i * 90; });
         });
         revs.forEach(function (e) { io.observe(e); });
+        // Safety net: a fast/flicked scroll can carry an element past the
+        // observer's trigger zone between checks, leaving it stuck at
+        // opacity:0 forever. Catch anything already scrolled out of view
+        // that never got marked revealed, and reveal it immediately.
+        window.addEventListener('scroll', function () {
+          document.querySelectorAll('.reveal:not(.in)').forEach(function (el) {
+            var r = el.getBoundingClientRect();
+            if (r.bottom < 0 || r.top > innerHeight * 2) { el.classList.add('in'); }
+          });
+        }, { passive: true });
       }
       // Count-up
       var counted = false;
