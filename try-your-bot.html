@@ -626,20 +626,23 @@
             messages: [
               {
                 role: 'user',
-                content: '[Context: You are the official 24/7 WhatsApp AI concierge for "' + currentBiz + '", a business in the ' + currentInd + ' industry in India. Provide a helpful, friendly 1-2 sentence response to the customer. Use appropriate emojis.]'
-              },
-              { role: 'user', content: text }
+                content: '[Context: You are the official 24/7 WhatsApp AI concierge for "' + currentBiz + '", a business in the ' + currentInd + ' industry in India. Provide a helpful, friendly 1-2 sentence response to the customer. Use appropriate emojis.]\n\nCustomer Inquiry: ' + text
+              }
             ]
           }),
           signal: ctrl.signal
         }).then(function(res) {
           clearTimeout(timer);
           if (!res.ok) throw new Error('API ' + res.status);
-          return res.json();
-        }).then(function(data) {
+          var ct = res.headers.get('content-type') || '';
+          if (ct.includes('application/json')) {
+            return res.json().then(function(d) { return d.reply || d.error; });
+          }
+          return res.text();
+        }).then(function(replyText) {
           removeTypingIndicator();
-          var reply = data.reply || (preset.responses.default ? preset.responses.default(currentBiz, text) : 'Namaste! Thanks for reaching out to ' + currentBiz + '. How can we help you today?');
-          appendBubble(reply, 'bot');
+          var finalReply = (replyText && replyText.trim()) ? replyText.trim() : (preset.responses.default ? preset.responses.default(currentBiz, text) : 'Namaste! Thanks for reaching out to ' + currentBiz + '. How can we help you today?');
+          appendBubble(finalReply, 'bot');
           isTyping = false;
         }).catch(function(err) {
           clearTimeout(timer);
