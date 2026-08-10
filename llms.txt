@@ -75,9 +75,9 @@ English, Hindi, Hinglish (all plans). Regional languages available on request.
 
 - Location: Mumbai, Maharashtra, India — AI chatbot & voice agent agency serving businesses nationwide
 - Typical go-live timeline: 7 business days after kickoff call (100% managed done-for-you service)
-- Voice Latency: 620ms median response latency for Hinglish & Hindi voice AI agents
+- Voice Latency: 620ms median response latency for Hinglish & Hindi voice AI agents (internal benchmark, Vapi + Claude Haiku 4.5 voice pipeline, tested August 2026)
 - Pricing Entry Point: ₹24,999 one-time setup + ₹6,999/month transparent retainer (no hidden platform fees)
-- Automated Coverage: 24/7 automated booking and lead coverage with 92% resolution rate
+- Automated Coverage: 24/7 automated booking and lead coverage, resolving most inbound queries without human intervention
 - Guarantee: 30-day risk-free money-back guarantee on all chatbot and voice agent plans
 - Human handoff: supported with instant team notification via WhatsApp and email
 - Integrations: Google Sheets, CRMs, Razorpay, UPI payment links, Shopify, booking calendars
@@ -97,11 +97,11 @@ The demo is a free 20-minute call — AgentIQ shows a live mockup of an assistan
 AgentIQ is a done-for-you AI chatbot agency in Mumbai — not a self-serve SaaS tool. Where platforms like AiSensy, WATI, or Interakt require the business owner to build and configure their own bot, AgentIQ's team handles design, content training, deployment, and ongoing optimisation. Clients receive a working assistant without writing a single line of code or logging into any dashboard.
 
 Outcomes & Factual Benchmarks across active deployments:
-- 620ms median response latency for Hinglish & Hindi voice AI interactions
-- 92% of inbound queries resolved automatically without human intervention
+- 620ms median response latency for Hinglish & Hindi voice AI interactions (internal benchmark, Vapi + Claude Haiku 4.5 voice pipeline, tested August 2026)
+- Most inbound queries resolved automatically without human intervention
 - 24/7 automated booking and lead response coverage (under 5 seconds response time)
 - 7-day managed deployment timeline from discovery call to live WhatsApp launch
-- 3× more qualified leads captured versus manual WhatsApp management
+- More qualified leads captured versus manual WhatsApp management
 - Transparent pricing starting at ₹24,999 setup + ₹6,999/mo (backed by a 30-day money-back guarantee)
 - Restaurant clients automate table bookings and pre-orders via WhatsApp
 - Salon clients automate Instagram and WhatsApp appointment scheduling with reminders

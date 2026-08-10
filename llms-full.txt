@@ -172,9 +172,9 @@ The assistant detects low-confidence or out-of-scope queries and performs a grac
 ## Performance Metrics
 
 Across AgentIQ's active deployments:
-- 92% of inbound customer queries resolved automatically without human intervention
+- Most inbound customer queries resolved automatically without human intervention
 - Average bot response time: under 5 seconds, 24 hours a day
-- 3× more leads captured compared to manual WhatsApp management
+- More leads captured compared to manual WhatsApp management
 - Restaurant clients report reclaiming 2–3 hours per day previously spent on WhatsApp booking messages
 - Salon clients report a significant drop in no-shows after automated appointment reminders were enabled
 - Clinic clients handle appointment scheduling entirely through the bot during and after business hours
