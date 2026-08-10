@@ -43,9 +43,10 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
+    "@type": ["Organization", "ProfessionalService"],
     "@id": "https://agentiq.co.in/#organization",
     "name": "AgentIQ",
+    "legalName": "AgentIQ",
     "description": "AgentIQ builds done-for-you AI chatbots for WhatsApp, Instagram and websites — purpose-built for restaurants, salons, healthcare and more. Capture leads, take bookings and reply in seconds, 24/7.",
     "url": "https://agentiq.co.in/",
     "logo": "https://agentiq.co.in/og-image.png",
@@ -56,6 +57,15 @@
     "areaServed": {
       "@type": "Country",
       "name": "India"
+    },
+    "foundingLocation": {
+      "@type": "Place",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Mumbai",
+        "addressRegion": "Maharashtra",
+        "addressCountry": "IN"
+      }
     },
     "address": {
       "@type": "PostalAddress",
@@ -94,39 +104,8 @@
     "description": "Done-for-you AI chatbot agency in Mumbai — WhatsApp, Instagram, and website chatbots for Indian restaurants, salons, clinics, and D2C brands. Live in 7 days.",
     "inLanguage": ["en-IN", "hi"],
     "publisher": {
-      "@type": "Organization",
-      "name": "AgentIQ",
-      "url": "https://agentiq.co.in/",
-      "logo": "https://agentiq.co.in/og-image.png",
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+91-91596-65277",
-        "contactType": "sales",
-        "availableLanguage": ["en", "hi"]
-      },
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Mumbai",
-        "addressRegion": "Maharashtra",
-        "addressCountry": "IN"
-      }
+      "@id": "https://agentiq.co.in/#organization"
     }
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "@id": "https://agentiq.co.in/#org",
-    "name": "AgentIQ",
-    "legalName": "AgentIQ",
-    "url": "https://agentiq.co.in/",
-    "logo": "https://agentiq.co.in/og-image.png",
-    "description": "AgentIQ is an Indian technology company building done-for-you AI chatbots and voice agents for restaurants, salons, clinics, and D2C brands across WhatsApp, Instagram, and website channels.",
-    "foundingLocation": { "@type": "Place", "address": { "@type": "PostalAddress", "addressLocality": "Mumbai", "addressRegion": "Maharashtra", "addressCountry": "IN" } },
-    "address": { "@type": "PostalAddress", "addressLocality": "Mumbai", "addressRegion": "Maharashtra", "addressCountry": "IN" },
-    "sameAs": ["https://www.instagram.com/agentiqco"],
-    "contactPoint": { "@type": "ContactPoint", "telephone": "+91-91596-65277", "contactType": "sales", "availableLanguage": ["en", "hi"] }
   }
   </script>
   <script type="application/ld+json">
@@ -576,7 +555,7 @@
     }
     #aiq-go:hover { opacity: .85; }
     #aiq-go:focus-visible { outline: 2px solid #22D3EE; outline-offset: 2px; }
-    #aiq-in:focus-visible { outline: none; }
+    #aiq-in:focus-visible { outline: 2px solid #22D3EE; outline-offset: 2px; }
     #aiq-go:disabled { opacity: .4; cursor: default; }
     #aiq-go svg { width: 14px; height: 14px; fill: #fff; }
     #aiq-lead-form {
@@ -647,7 +626,7 @@
         <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
       </div>
       <div class="flex items-center gap-2">
-        <a href="#book" class="hidden md:inline-flex cursor-pointer min-h-[48px] items-center text-sm font-500 px-4 py-2 rounded-xl bg-white text-ink hover:bg-cyan hover:text-white transition-colors duration-200">Book a demo</a>
+        <a href="#book" class="hidden md:inline-flex cursor-pointer min-h-[48px] items-center text-sm font-500 px-4 py-2 rounded-xl bg-white text-ink hover:bg-cyan hover:text-white transition-colors duration-200">Book Free Demo</a>
         <button id="aiq-nav-toggle" type="button" class="md:hidden grid place-items-center min-w-[48px] min-h-[48px] rounded-xl text-slate-200 hover:text-white hover:bg-white/10 transition-colors" aria-label="Open menu" aria-haspopup="true" aria-expanded="false" aria-controls="aiq-mobile-nav">
           <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
         </button>
@@ -671,7 +650,7 @@
       <a href="#pricing" class="min-h-[48px] flex items-center px-3 py-3 rounded-xl hover:bg-white/10 hover:text-white transition-colors">Pricing</a>
       <a href="/blog" class="min-h-[48px] flex items-center px-3 py-3 rounded-xl hover:bg-white/10 hover:text-white transition-colors">Blog</a>
       <a href="#faq" class="min-h-[48px] flex items-center px-3 py-3 rounded-xl hover:bg-white/10 hover:text-white transition-colors">FAQ</a>
-      <a href="#book" class="cursor-pointer min-h-[48px] flex items-center justify-center mt-3 px-4 py-3 rounded-xl bg-white text-ink hover:bg-cyan hover:text-white text-sm font-500 transition-colors duration-200">Book a demo</a>
+      <a href="#book" class="cursor-pointer min-h-[48px] flex items-center justify-center mt-3 px-4 py-3 rounded-xl bg-white text-ink hover:bg-cyan hover:text-white text-sm font-500 transition-colors duration-200">Book Free Demo</a>
     </nav>
   </div>
   <main id="main" tabindex="-1" class="focus:outline-none">
@@ -696,7 +675,7 @@
           </p>
           <div class="reveal mt-9 flex flex-col sm:flex-row gap-3">
             <a href="#book" class="magnetic-cta btn-pop cursor-pointer group inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl bg-gradient-to-r from-coral-deep to-orange-deep text-white font-600 shadow-lg shadow-coral/30 hover:shadow-coral/50 transition-shadow duration-200 text-[15px]">
-              Book a free demo
+              Book Free Demo
               <svg class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
           </div>
@@ -706,8 +685,8 @@
             <div class="flex items-center gap-2"><svg class="w-4 h-4 text-cyan" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Hindi + English</div>
           </div>
           <p class="reveal mt-5 text-xs text-slate-400">Plans from <span class="text-slate-400">₹6,999/mo</span> · Free demo · No commitment</p>
-          <p class="reveal mt-3 flex items-center gap-1.5 text-xs text-slate-400/80">
-            <svg class="w-3.5 h-3.5 text-slate-400/80 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          <p class="reveal mt-3 flex items-center gap-1.5 text-xs text-slate-300">
+            <svg class="w-3.5 h-3.5 text-slate-300 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
             DPDP-compliant · AES-256 encrypted · Data hosted in India
           </p>
         </div>
@@ -1479,23 +1458,23 @@
           <div class="mb-8">
             <div class="flex items-baseline justify-between mb-2">
               <label for="roi-volume" class="text-slate-300 text-sm font-medium">Daily inbound calls / messages</label>
-              <span id="roi-volume-val" class="text-white font-display font-bold text-lg">45</span>
+              <span id="roi-volume-val" class="text-white font-display font-bold text-lg" aria-live="polite">45</span>
             </div>
             <input id="roi-volume" type="range" min="10" max="200" value="45" step="1" class="roi-range" />
-            <div class="flex justify-between text-xs text-slate-500 mt-1"><span>10</span><span>200</span></div>
+            <div class="flex justify-between text-xs text-slate-400 mt-1"><span>10</span><span>200</span></div>
           </div>
           <div class="mb-9">
             <div class="flex items-baseline justify-between mb-2">
               <label for="roi-value" class="text-slate-300 text-sm font-medium">Average order / booking value</label>
-              <span id="roi-value-val" class="text-white font-display font-bold text-lg">₹1,500</span>
+              <span id="roi-value-val" class="text-white font-display font-bold text-lg" aria-live="polite">₹1,500</span>
             </div>
             <input id="roi-value" type="range" min="500" max="10000" value="1500" step="100" class="roi-range" />
-            <div class="flex justify-between text-xs text-slate-500 mt-1"><span>₹500</span><span>₹10,000</span></div>
+            <div class="flex justify-between text-xs text-slate-400 mt-1"><span>₹500</span><span>₹10,000</span></div>
           </div>
           <div class="roi-result rounded-2xl p-6 text-center mb-7">
             <p class="text-slate-400 text-sm mb-1">Estimated Monthly Lost Revenue</p>
-            <p id="roi-output" class="font-display font-bold text-4xl sm:text-5xl grad-text-roi">₹0</p>
-            <p class="text-slate-500 text-xs mt-3">Based on ~30% of inbound traffic landing after hours, and roughly 1 in 4 of those going unanswered and lost to a competitor.</p>
+            <p id="roi-output" class="font-display font-bold text-4xl sm:text-5xl grad-text-roi" aria-live="polite">₹0</p>
+            <p class="text-slate-400 text-xs mt-3">Based on ~30% of inbound traffic landing after hours, and roughly 1 in 4 of those going unanswered and lost to a competitor.</p>
           </div>
           <a href="#book" class="roi-cta btn-pop group flex items-center justify-center gap-2 w-full rounded-xl px-6 py-4 font-semibold text-slate-950 text-[15px]">
             Stop Losing Revenue — Book A Free Setup Call
@@ -1548,12 +1527,12 @@
           <table class="w-full text-left border-collapse">
             <thead>
               <tr>
-                <th class="p-5 text-xs text-slate-400 uppercase tracking-wide font-semibold">Feature</th>
-                <th class="p-5 text-xs uppercase tracking-wide font-semibold relative" style="background:rgba(255,255,255,0.06)">
+                <th scope="col" class="p-5 text-xs text-slate-400 uppercase tracking-wide font-semibold">Feature</th>
+                <th scope="col" class="p-5 text-xs uppercase tracking-wide font-semibold relative" style="background:rgba(255,255,255,0.06)">
                   <span class="grad-text">Agent IQ</span>
                 </th>
-                <th class="p-5 text-xs text-slate-400 uppercase tracking-wide font-semibold">In-House Staff</th>
-                <th class="p-5 text-xs text-slate-400 uppercase tracking-wide font-semibold">Traditional BPO</th>
+                <th scope="col" class="p-5 text-xs text-slate-400 uppercase tracking-wide font-semibold">In-House Staff</th>
+                <th scope="col" class="p-5 text-xs text-slate-400 uppercase tracking-wide font-semibold">Traditional BPO</th>
               </tr>
             </thead>
             <tbody>
@@ -1628,11 +1607,11 @@
               </span>
             </div>
             <div class="flex items-center justify-between px-3 py-1.5 text-sm">
-              <span class="text-slate-400/80 text-xs">In-House Staff</span>
+              <span class="text-slate-300 text-xs">In-House Staff</span>
               <span class="text-slate-400">2–10 minutes</span>
             </div>
             <div class="flex items-center justify-between px-3 py-1.5 text-sm">
-              <span class="text-slate-400/80 text-xs">Traditional BPO</span>
+              <span class="text-slate-300 text-xs">Traditional BPO</span>
               <span class="text-slate-400">5–15 minutes</span>
             </div>
           </div>
@@ -1647,11 +1626,11 @@
               </span>
             </div>
             <div class="flex items-center justify-between px-3 py-1.5 text-sm">
-              <span class="text-slate-400/80 text-xs">In-House Staff</span>
+              <span class="text-slate-300 text-xs">In-House Staff</span>
               <span class="text-slate-400">Business hours only</span>
             </div>
             <div class="flex items-center justify-between px-3 py-1.5 text-sm">
-              <span class="text-slate-400/80 text-xs">Traditional BPO</span>
+              <span class="text-slate-300 text-xs">Traditional BPO</span>
               <span class="text-slate-400">Shift-dependent</span>
             </div>
           </div>
@@ -1666,11 +1645,11 @@
               </span>
             </div>
             <div class="flex items-center justify-between px-3 py-1.5 text-sm">
-              <span class="text-slate-400/80 text-xs">In-House Staff</span>
+              <span class="text-slate-300 text-xs">In-House Staff</span>
               <span class="text-slate-400">₹150–300 + overhead</span>
             </div>
             <div class="flex items-center justify-between px-3 py-1.5 text-sm">
-              <span class="text-slate-400/80 text-xs">Traditional BPO</span>
+              <span class="text-slate-300 text-xs">Traditional BPO</span>
               <span class="text-slate-400">₹200–450</span>
             </div>
           </div>
@@ -1685,11 +1664,11 @@
               </span>
             </div>
             <div class="flex items-center justify-between px-3 py-1.5 text-sm">
-              <span class="text-slate-400/80 text-xs">In-House Staff</span>
+              <span class="text-slate-300 text-xs">In-House Staff</span>
               <span class="text-slate-400">Hiring &amp; training lag</span>
             </div>
             <div class="flex items-center justify-between px-3 py-1.5 text-sm">
-              <span class="text-slate-400/80 text-xs">Traditional BPO</span>
+              <span class="text-slate-300 text-xs">Traditional BPO</span>
               <span class="text-slate-400">Contract renegotiation</span>
             </div>
           </div>
@@ -1704,11 +1683,11 @@
               </span>
             </div>
             <div class="flex items-center justify-between px-3 py-1.5 text-sm">
-              <span class="text-slate-400/80 text-xs">In-House Staff</span>
+              <span class="text-slate-300 text-xs">In-House Staff</span>
               <span class="text-slate-400">Depends on hire</span>
             </div>
             <div class="flex items-center justify-between px-3 py-1.5 text-sm">
-              <span class="text-slate-400/80 text-xs">Traditional BPO</span>
+              <span class="text-slate-300 text-xs">Traditional BPO</span>
               <span class="text-slate-400">Limited, extra cost</span>
             </div>
           </div>
@@ -1744,7 +1723,7 @@
               <li class="flex gap-3"><span class="text-orange-400 font-700 shrink-0">+</span>Product catalog management</li>
               <li class="flex gap-3"><span class="text-orange-400 font-700 shrink-0">+</span>Hindi, Hinglish &amp; English support</li>
             </ul>
-            <a href="#book" data-plan="Chatbot Starter" data-value="24999" class="cursor-pointer mt-8 inline-flex justify-center px-5 py-3.5 rounded-xl text-white font-500 cta-outline btn-pop">Get started</a>
+            <a href="#book" data-plan="Chatbot Starter" data-value="24999" class="cursor-pointer mt-8 inline-flex justify-center px-5 py-3.5 rounded-xl text-white font-500 cta-outline btn-pop">Book Free Demo</a>
             <p class="mt-3 text-center text-xs text-slate-400">30-day money-back guarantee</p>
           </div>
           <!-- Growth (featured) -->
@@ -1764,7 +1743,7 @@
               <li class="flex gap-3"><span class="text-pink-400 font-700 shrink-0">+</span>24/7 priority support</li>
               <li class="flex gap-3"><span class="text-pink-400 font-700 shrink-0">+</span>Google Sheets Sync</li>
             </ul>
-            <a href="#book" data-plan="Chatbot Growth" data-value="39999" class="cursor-pointer mt-8 inline-flex justify-center px-5 py-3.5 rounded-xl text-white font-600 cta-glow-pink btn-pop">Book a demo</a>
+            <a href="#book" data-plan="Chatbot Growth" data-value="39999" class="cursor-pointer mt-8 inline-flex justify-center px-5 py-3.5 rounded-xl text-white font-600 cta-glow-pink btn-pop">Book Free Demo</a>
             <p class="mt-3 text-center text-xs text-slate-400">30-day money-back guarantee</p>
           </div>
           <!-- Pro -->
@@ -1786,7 +1765,7 @@
               <li class="flex gap-3"><span class="text-cyan-400 font-700 shrink-0">+</span>Dedicated infrastructure</li>
               <li class="flex gap-3"><span class="text-cyan-400 font-700 shrink-0">+</span>All 8+ languages</li>
             </ul>
-            <a href="#book" data-plan="Chatbot Pro" data-value="79999" class="cursor-pointer mt-8 inline-flex justify-center px-5 py-3.5 rounded-xl text-white font-500 cta-outline btn-pop">Get started</a>
+            <a href="#book" data-plan="Chatbot Pro" data-value="79999" class="cursor-pointer mt-8 inline-flex justify-center px-5 py-3.5 rounded-xl text-white font-500 cta-outline btn-pop">Book Free Demo</a>
             <p class="mt-3 text-center text-xs text-slate-400">30-day money-back guarantee</p>
           </div>
         </div>
@@ -1823,7 +1802,7 @@
               <li class="flex gap-3"><span class="text-violet-400 font-700 shrink-0">+</span>CRM / Sheets logging</li>
               <li class="flex gap-3"><span class="text-violet-400 font-700 shrink-0">+</span>Monthly call report</li>
             </ul>
-            <a href="#book" data-plan="Voice Growth" data-value="39999" class="cursor-pointer mt-8 inline-flex justify-center px-5 py-3.5 rounded-xl text-white font-500 cta-outline btn-pop">Get started</a>
+            <a href="#book" data-plan="Voice Growth" data-value="39999" class="cursor-pointer mt-8 inline-flex justify-center px-5 py-3.5 rounded-xl text-white font-500 cta-outline btn-pop">Book Free Demo</a>
           </div>
           <!-- Professional (featured) -->
           <div class="reveal pricing-featured relative flex flex-col rounded-2xl p-8 mt-6 md:mt-0" style="background:rgba(124,58,237,0.08);border:1px solid rgba(168,85,247,0.40);backdrop-filter:blur(16px);box-shadow:0 0 60px rgba(124,58,237,0.15)">
@@ -1841,7 +1820,7 @@
               <li class="flex gap-3"><span class="text-pink-400 font-700 shrink-0">+</span>Custom voice + multilingual</li>
               <li class="flex gap-3"><span class="text-pink-400 font-700 shrink-0">+</span>Up to 3 outlets</li>
             </ul>
-            <a href="#book" data-plan="Voice Professional" data-value="69999" class="cursor-pointer mt-8 inline-flex justify-center px-5 py-3.5 rounded-xl text-white font-600 cta-glow-purple btn-pop">Get started</a>
+            <a href="#book" data-plan="Voice Professional" data-value="69999" class="cursor-pointer mt-8 inline-flex justify-center px-5 py-3.5 rounded-xl text-white font-600 cta-glow-purple btn-pop">Book Free Demo</a>
           </div>
           <!-- Advanced -->
           <div class="reveal tilt-card flex flex-col rounded-2xl p-8" style="background:rgba(255,255,255,0.04);border:1px solid rgba(139,92,246,0.18);backdrop-filter:blur(16px)">
@@ -1858,7 +1837,7 @@
               <li class="flex gap-3"><span class="text-blue-400 font-700 shrink-0">+</span>Multi-location support</li>
               <li class="flex gap-3"><span class="text-blue-400 font-700 shrink-0">+</span>24/7 priority support</li>
             </ul>
-            <a href="#book" data-plan="Voice Advanced" data-value="129999" class="cursor-pointer mt-8 inline-flex justify-center px-5 py-3.5 rounded-xl text-white font-500 cta-outline btn-pop">Contact us</a>
+            <a href="#book" data-plan="Voice Advanced" data-value="129999" class="cursor-pointer mt-8 inline-flex justify-center px-5 py-3.5 rounded-xl text-white font-500 cta-outline btn-pop">Book Free Demo</a>
           </div>
         </div>
       </div>
@@ -2074,7 +2053,7 @@
             <span class="btn-label">Book My Free Demo</span>
             <svg class="btn-arrow w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </button>
-          <p class="text-center text-xs text-slate-400 mt-2">We'll WhatsApp you within 2 hours to pick a time. Free, no commitment.</p>
+          <p class="text-center text-xs text-slate-400 mt-2">Submitting opens a direct WhatsApp chat with our team to confirm your demo. Free, no commitment.</p>
           <p id="formmsg" class="hidden items-start gap-2 text-sm text-emerald-300" role="status">
             <svg class="form-success-check w-[18px] h-[18px] shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5 9.5 18 20 6"/></svg>
             <span>Thanks! We've opened WhatsApp in a new tab to confirm your demo. If it didn't open, <a id="wa-fallback-link" href="https://wa.me/919159665277?text=Hi%20AgentIQ%2C%20I%27d%20like%20to%20book%20a%20demo" target="_blank" rel="noopener noreferrer" class="underline hover:text-white">click here to message us on WhatsApp</a>.</span>
