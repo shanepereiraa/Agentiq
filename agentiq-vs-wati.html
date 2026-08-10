@@ -82,19 +82,19 @@
   <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-cyan-500 focus:text-slate-950 focus:font-bold focus:rounded-lg">Skip to main content</a>
 
   <!-- Header -->
-  <header class="sticky top-0 z-50 bg-[#060f28]/80 backdrop-blur-md border-b border-white/8">
-    <div class="max-w-6xl mx-auto px-5 h-16 flex items-center justify-between relative">
+  <header class="fixed top-3 left-3 right-3 z-50">
+    <nav aria-label="Primary" class="relative max-w-6xl mx-auto glass rounded-2xl px-4 sm:px-5 py-3 flex items-center justify-between">
       <a href="/" class="flex items-center gap-2.5" aria-label="AgentIQ home">
         <span class="font-display font-700 text-lg text-white tracking-tight inline-flex items-baseline gap-0.5">Agent<span class="logo-grad-text">IQ</span><svg class="w-2.5 h-2.5 shrink-0" viewBox="0 0 16 14" fill="none" aria-hidden="true" focusable="false"><defs><linearGradient id="iq-wave-vw-hdr" x1="0" y1="14" x2="16" y2="0"><stop offset="0" stop-color="#FF8A5B"/><stop offset="0.5" stop-color="#FF5C8A"/><stop offset="1" stop-color="#C74AFF"/></linearGradient></defs><rect x="0" y="9" width="3" height="5" rx="1.2" fill="url(#iq-wave-vw-hdr)"/><rect x="4.5" y="6" width="3" height="8" rx="1.2" fill="url(#iq-wave-vw-hdr)"/><rect x="9" y="3" width="3" height="11" rx="1.2" fill="url(#iq-wave-vw-hdr)"/><rect x="13" y="0" width="3" height="14" rx="1.2" fill="url(#iq-wave-vw-hdr)"/></svg></span>
       </a>
-      <nav aria-label="Primary" class="hidden md:flex items-center gap-6 text-sm font-500 text-slate-300">
+      <div class="hidden md:flex items-center gap-6 text-sm font-500 text-slate-300">
         <a href="/ai-chatbot-india" class="hover:text-white transition-colors">Chatbots</a>
         <a href="/ai-voice-agents-india" class="hover:text-white transition-colors">Voice Agents</a>
         <a href="/#industries" class="hover:text-white transition-colors">Industries</a>
         <a href="/#pricing" class="hover:text-white transition-colors">Pricing</a>
         <a href="/blog" class="hover:text-white transition-colors">Blog</a>
         <a href="/#faq" class="hover:text-white transition-colors">FAQ</a>
-      </nav>
+      </div>
       <div class="flex items-center gap-2">
         <a href="#book" class="hidden md:inline-flex items-center justify-center cursor-pointer min-h-[44px] text-sm font-500 px-4 py-2 rounded-xl bg-white text-ink hover:bg-cyan hover:text-white transition-colors duration-200">Book a demo</a>
         <button id="aiq-nav-toggle" type="button" class="md:hidden grid place-items-center w-9 h-9 rounded-xl text-slate-200 hover:text-white hover:bg-white/10 transition-colors" aria-label="Open menu" aria-haspopup="true" aria-expanded="false" aria-controls="aiq-mobile-nav">
@@ -111,10 +111,10 @@
         <a href="/#faq" class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-white transition-colors">FAQ</a>
         <a href="#book" class="mt-2 cursor-pointer text-center py-2.5 px-4 rounded-xl bg-white text-ink hover:bg-cyan hover:text-white text-sm font-500 transition-colors duration-200">Book a demo</a>
       </div>
-    </div>
+    </nav>
   </header>
 
-  <main id="main" tabindex="-1" class="focus:outline-none pt-12 pb-20 px-5">
+  <main id="main" tabindex="-1" class="focus:outline-none pt-28 pb-20 px-5">
     <div class="max-w-4xl mx-auto">
 
       <!-- Hero -->
