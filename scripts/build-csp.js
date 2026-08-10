@@ -22,22 +22,26 @@ const path = require('path');
 const crypto = require('crypto');
 
 const ROOT = path.resolve(__dirname, '..');
-const PAGES = [
-  'index.html', 'clinics.html', 'restaurants.html', 'salons.html', 'demo.html', 'd2c-ecommerce.html',
-  'ai-chatbot-india.html', 'ai-voice-agents-india.html', 'agentiq-vs-wati.html',
-  'agentiq-vs-aisensy.html', 'agentiq-vs-interakt.html', 'agentiq-vs-yellow-ai.html',
-  'tools/whatsapp-link-generator.html',
-  'tools/staff-vs-ai-calculator.html',
-  'blog/index.html',
-  'blog/whatsapp-business-api-vs-chatbot-restaurants.html',
-  'blog/ai-chatbot-pricing-india-2026-guide.html',
-  'blog/ai-voice-agents-reduce-missed-calls-no-shows.html',
-  'blog/d2c-whatsapp-order-support-automation.html',
-  'blog/instagram-dm-automation-salons-guide.html',
-  'blog/ai-chatbot-vs-hiring-staff-cost-comparison.html',
-  'blog/ai-voice-agent-cost-india-pricing-guide.html',
-  'blog/mumbai-clinics-whatsapp-phone-appointment-automation.html',
-];
+
+function getAllHtmlFiles(dir, relative = '') {
+  let results = [];
+  const list = fs.readdirSync(dir);
+  for (const file of list) {
+    const filePath = path.join(dir, file);
+    const relPath = relative ? path.join(relative, file) : file;
+    const stat = fs.statSync(filePath);
+    if (stat && stat.isDirectory()) {
+      if (file !== 'node_modules' && file !== '.git' && file !== '.claude-flow' && file !== 'react-widgets' && file !== '_archive') {
+        results = results.concat(getAllHtmlFiles(filePath, relPath));
+      }
+    } else if (file.endsWith('.html')) {
+      results.push(relPath);
+    }
+  }
+  return results;
+}
+
+const PAGES = getAllHtmlFiles(ROOT);
 const VERCEL_JSON = path.join(ROOT, 'vercel.json');
 
 function extractInlineScripts(html, page) {
