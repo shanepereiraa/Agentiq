@@ -14,9 +14,10 @@ WIDGET_CSS = """
     /* ── Floating WhatsApp (above orange web chat widget) ─ */
     #wa-float {
       position: fixed;
-      bottom: 88px;
+      bottom: 90px;
       right: 20px;
-      z-index: 9998;
+      z-index: 99998;
+      pointer-events: auto !important;
       width: 52px;
       height: 52px;
       border-radius: 50%;
@@ -44,7 +45,7 @@ WIDGET_CSS = """
       }
     }
     /* ── AI Chat Widget ─────────────────────────────── */
-    #aiq-float { position: fixed; bottom: 24px; right: 20px; z-index: 9999; }
+    #aiq-float { position: fixed; bottom: 24px; right: 20px; z-index: 99999; pointer-events: auto !important; }
     @media (max-width: 767px) { #aiq-float { bottom: 84px; right: 16px; } }
     #aiq-toggle {
       width: 52px; height: 52px; border-radius: 50%;
@@ -455,6 +456,12 @@ WIDGET_HTML_AND_SCRIPTS = """
         var business = leadBizInput.value.trim();
 
         var activeApi = (window.AgentIQConfig && window.AgentIQConfig.apiBase) || 'https://agentiq-chatbot.onrender.com';
+        fetch('/api/capture-lead', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name: name, phone: phone, business: business, timestamp: new Date().toISOString() }),
+        }).catch(function(e){ console.warn('[AgentIQ] Local lead capture endpoint:', e); });
+
         fetch(activeApi + '/lead', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
