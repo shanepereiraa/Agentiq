@@ -1,4 +1,5 @@
 import { createRoot } from 'react-dom/client';
+import Navbar from './components/Navbar';
 import LanguageToggle from './components/LanguageToggle';
 import VoiceOrbWidget from './components/VoiceOrbWidget';
 import InboxComparisonSlider from './components/InboxComparisonSlider';
@@ -14,6 +15,7 @@ import FAQSection from './components/FAQSection';
 import './index.css';
 
 const MOUNTS = [
+  ['navbar-root', Navbar],
   ['language-toggle-root', LanguageToggle],
   ['voice-orb-root', VoiceOrbWidget],
   ['inbox-slider-root', InboxComparisonSlider],
