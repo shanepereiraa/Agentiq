@@ -141,6 +141,8 @@
             "monthly_fee": 14999,
             "minutes_included": 250,
             "best_for": "Restaurants and single-outlet businesses",
+            "use_case": "Single-outlet restaurant or clinic handling missed calls, reservations, table bookings, and address/timing FAQs.",
+            "sales_pitch": "For less than the salary of one receptionist, you have an AI answering every single call instantly in Hindi and English 24/7—zero missed table bookings on Friday/Saturday nights.",
             "includes": [
               "1 Dedicated inbound voice agent",
               "Human-like natural conversation & interruptions handling",
@@ -159,6 +161,8 @@
             "monthly_fee": 24999,
             "minutes_included": 500,
             "best_for": "D2C brands & multi-outlet restaurants",
+            "use_case": "High-volume restaurant chain (up to 3 outlets) or D2C brand running outbound COD confirmation and delivery address checks.",
+            "sales_pitch": "Automates 100% of COD verification calls within 60 seconds of order placement, slashing RTO (Return to Origin) losses by 20–30%.",
             "includes": [
               "Everything in Starter",
               "Inbound + automated outbound calling agents",
@@ -177,6 +181,8 @@
             "monthly_fee": 34999,
             "minutes_included": 800,
             "best_for": "Chains, high-volume D2C & enterprise",
+            "use_case": "Scaling D2C brands and multi-branch retail chains needing bespoke voice cloning, POS integration, and high concurrency.",
+            "sales_pitch": "A full enterprise voice operations team powered by AI. Get bespoke cloned brand voices, deep custom integration into your internal POS/ERP systems, and unlimited call concurrency so your lines never drop a single customer during flash sales or festival spikes.",
             "includes": [
               "Everything in Starter & Growth",
               "Unlimited agent concurrency & custom lines",
