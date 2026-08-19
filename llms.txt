@@ -48,12 +48,12 @@ One unified assistant powers all three channels simultaneously.
 
 | Plan       | One-Time Setup | Monthly Retainer | Scope                                                    |
 |------------|---------------|-----------------|-------------------------------------------------------------|
-| Starter    | Rs. 24,999    | Rs. 6,999       | Up to 5,000 chats/month, WhatsApp chatbot, product catalog   |
-| Growth     | Rs. 39,999    | Rs. 9,999       | Everything in Starter, up to 10,000 chats/month, CRM + payments |
-| Pro        | Rs. 79,999    | Rs. 19,999      | Everything in Starter & Growth, up to 30,000 chats/month, dedicated infrastructure |
-| Enterprise | Custom        | Custom          | High-volume, custom build, white-label         |
+| Starter    | Rs. 24,999    | Rs. 7,999       | Up to 1,000 conversations/month, official WhatsApp API, human-like AI WhatsApp chatbot |
+| Growth     | Rs. 39,999    | Rs. 14,999      | Everything in Starter, up to 2,000 conversations/month, website chatbot, WhatsApp Pay & checkout links |
+| Pro        | Rs. 79,999    | Rs. 24,999      | Everything in Starter & Growth, up to 5,000 conversations/month, multi-location routing, dynamic inventory & live POS sync |
+| Enterprise | Custom        | Custom          | High-volume (5,000+ chats/mo), custom ERP/POS integrations, white-label |
 
-GST extra. Every plan includes design, content training, launch, and ongoing optimisation. 30-day money-back guarantee. For chat volumes exceeding 30,000 chats per month, custom enterprise plans are available — contact Shane@agentiq.co.in.
+GST extra. (Meta WhatsApp conversation fees charged separately by Meta). Every plan includes design, content training, launch, and ongoing optimisation. 30-day money-back guarantee. For chat volumes exceeding 5,000 chats per month or custom ERP/POS integrations, custom enterprise plans are available — contact Shane@agentiq.co.in.
 
 ### AI Voice Agent Plans
 
@@ -76,7 +76,7 @@ English, Hindi, Hinglish (all plans). Regional languages available on request.
 - Location: Mumbai, Maharashtra, India — AI chatbot & voice agent agency serving businesses nationwide
 - Typical go-live timeline: 7 business days after kickoff call (100% managed done-for-you service)
 - Voice Latency: 620ms median response latency for Hinglish & Hindi voice AI agents (internal benchmark, Vapi + Claude Haiku 4.5 voice pipeline, tested August 2026)
-- Pricing Entry Point: ₹24,999 one-time setup + ₹6,999/month transparent retainer (no hidden platform fees)
+- Pricing Entry Point: ₹7,999/month (+ ₹24,999 one-time setup) transparent retainer (no hidden platform fees)
 - Automated Coverage: 24/7 automated booking and lead coverage, resolving most inbound queries without human intervention
 - Guarantee: 30-day risk-free money-back guarantee on all chatbot and voice agent plans
 - Human handoff: supported with instant team notification via WhatsApp and email
@@ -102,7 +102,7 @@ Outcomes & Factual Benchmarks across active deployments:
 - 24/7 automated booking and lead response coverage (under 5 seconds response time)
 - 7-day managed deployment timeline from discovery call to live WhatsApp launch
 - More qualified leads captured versus manual WhatsApp management
-- Transparent pricing starting at ₹24,999 setup + ₹6,999/mo (backed by a 30-day money-back guarantee)
+- Transparent pricing starting at ₹7,999/mo (+ ₹24,999 setup) (backed by a 30-day money-back guarantee)
 - Restaurant clients automate table bookings and pre-orders via WhatsApp
 - Salon clients automate Instagram and WhatsApp appointment scheduling with reminders
 - Clinic clients schedule and confirm patient appointments without receptionist involvement

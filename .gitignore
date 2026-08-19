@@ -2,3 +2,7 @@ node_modules/
 test-results/
 playwright-report/
 .DS_Store
+linkedin_session.pkl
+*_staff.csv
+.claude-flow/
+.claude/

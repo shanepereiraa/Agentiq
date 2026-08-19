@@ -50,55 +50,68 @@
         "plans": [
           {
             "name": "Starter",
+            "tagline": "One channel to get going fast.",
             "setup_fee": 24999,
-            "monthly_fee": 6999,
+            "monthly_fee": 7999,
             "channels": 1,
-            "chat_volume": "Up to 5,000 chats/month",
+            "chat_volume": "Up to 1,000 conversations/mo",
             "includes": [
-              "Email support",
-              "Human-like AI WhatsApp chatbot integration",
+              "Up to 1,000 conversations/mo",
+              "Official WhatsApp API",
+              "Human-like AI WhatsApp Chatbot Integration",
+              "Built on state-of-the-art LLM architecture (ChatGPT / Claude class)",
+              "24/7 automated conversations",
+              "Interactive quick-action buttons & automated replies",
               "Product catalog management",
-              "Hindi, Hinglish & English support"
+              "Enterprise-grade Security",
+              "Standard Email support",
+              "English, Hindi, & Hinglish Support"
             ]
           },
           {
             "name": "Growth",
+            "popular_pick": true,
+            "tagline": "Automate orders, leads & revenue.",
             "setup_fee": 39999,
-            "monthly_fee": 9999,
+            "monthly_fee": 14999,
             "channels": 3,
-            "chat_volume": "Up to 10,000 chats/month",
+            "chat_volume": "Up to 2,000 conversations/mo",
             "includes": [
               "Everything in Starter",
-              "Full CRM integration + payment link",
-              "Monthly optimisation and priority support",
-              "Lead capture and email alerts",
-              "24/7 priority support",
-              "Google Sheets Sync"
+              "Up to 2,000 conversations/mo",
+              "Website Chatbot Support",
+              "WhatsApp Pay, Checkout & Direct Payment Links",
+              "Automated abandoned cart recovery & Follow-up sequences",
+              "Website AI chat widget integration",
+              "Instant lead & Query email alerts",
+              "Monthly AI Optimization & Prompt Fine-tuning",
+              "24/7 Priority Support"
             ]
           },
           {
             "name": "Pro",
+            "tagline": "Multi-outlet chains & scaling D2C brands.",
             "setup_fee": 79999,
-            "monthly_fee": 19999,
+            "monthly_fee": 24999,
             "channels": 3,
-            "chat_volume": "Up to 30,000 chats/month",
+            "chat_volume": "Up to 5,000 conversations/mo",
             "includes": [
-              "Everything in Starter and Growth",
-              "Customer profiling and VIP tags",
-              "Source code ownership",
-              "Multi-location support",
-              "Advanced automation rules",
-              "Custom integrations",
-              "On-call support",
-              "Dedicated infrastructure",
-              "All 8+ languages"
+              "Everything in Starter & Growth",
+              "Up to 5,000 conversations/mo",
+              "Multi-location & multi-branch intelligent routing",
+              "Customer profiling & VIP Segmentation tags",
+              "Dynamic Inventory & Live POS Sync",
+              "CRM Integration (HubSpot/Zoho) available",
+              "Advanced custom automation rules & webhooks",
+              "All 8+ languages",
+              "Dedicated Account Manager & on-call phone support"
             ]
           },
           {
             "name": "Enterprise",
             "setup_fee": "custom",
             "monthly_fee": "custom",
-            "note": "For chat volumes exceeding 30,000 chats per month, custom enterprise plans are available. Please reach out to Shane@agentiq.co.in",
+            "note": "For chat volumes exceeding 5,000 chats per month or custom ERP/POS integrations, custom enterprise plans are available. Reach out to shane@agentiq.co.in.",
             "includes": [
               "High-volume deployments",
               "Custom AI model fine-tuning",
