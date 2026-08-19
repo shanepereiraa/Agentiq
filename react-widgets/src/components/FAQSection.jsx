@@ -80,16 +80,17 @@ export default function FAQSection() {
         </div>
 
         {/* Bottom Help CTA */}
-        <div className="text-center mt-12">
-          <p className="text-slate-400 text-sm">
+        <div className="mt-16 text-center">
+          <p className="text-sm md:text-base text-gray-400">
             Have a custom workflow question?{' '}
             <a
-              href="https://wa.me/919159665277?text=Hi%20AgentIQ%2C%20I%20have%20a%20question%20about%20your%20solutions"
+              href="https://wa.me/919159665277?text=Hi%20AgentIQ%20team%2C%20I%20have%20a%20question%20about%20a%20custom%20AI%20workflow"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white hover:text-cyan-400 font-medium underline-offset-4 hover:underline"
+              className="text-white font-medium hover:text-cyan-400 transition-colors inline-flex items-center gap-1 group underline decoration-white/30 hover:decoration-cyan-400 underline-offset-4"
             >
-              Chat directly with our solutions team on WhatsApp →
+              Chat directly with our solutions team on WhatsApp
+              <span className="inline-block transition-transform group-hover:translate-x-1">→</span>
             </a>
           </p>
         </div>
