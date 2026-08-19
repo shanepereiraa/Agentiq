@@ -65,9 +65,10 @@ The service is positioned as the most accessible AI chatbot solution for Indian 
 - Up to 2,000 conversations/mo
 - Website Chatbot Support
 - WhatsApp Pay, Checkout & Direct Payment Links
-- Automated abandoned cart recovery & Follow-up sequences
+- Real-time Lead Capture & Google Sheets Sync
+- Automated abandoned cart recovery & follow-up sequences
 - Website AI chat widget integration
-- Instant lead & Query email alerts
+- Instant lead & query email alerts
 - Monthly AI Optimization & Prompt Fine-tuning
 - 24/7 Priority Support
 
