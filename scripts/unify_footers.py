@@ -94,7 +94,7 @@ CLEAN_FOOTER = '''  <!-- FOOTER -->
       <!-- BOTTOM DIVIDER & COPYRIGHT -->
       <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
         <p class="text-xs text-gray-500">
-          © 2026 AgentIQ. All rights reserved.
+          © <span id="year">2026</span> AgentIQ. All rights reserved.
         </p>
         <div class="flex items-center gap-6 text-xs text-gray-500">
           <a class="hover:text-gray-400 transition-colors" href="/privacy">Privacy Policy</a>
