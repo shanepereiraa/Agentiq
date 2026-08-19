@@ -64,7 +64,7 @@ export default function Navbar() {
                       <p className="text-xs font-semibold uppercase tracking-wider text-gray-400">By Use Case</p>
                       <div className="space-y-2">
                         <a 
-                          href="/solutions#use-case-sales" 
+                          href="/solutions/sales" 
                           onClick={() => setSolutionsOpen(false)}
                           className="flex items-start gap-3 p-2 rounded-lg hover:bg-white/5 transition-colors group"
                         >
@@ -76,7 +76,7 @@ export default function Navbar() {
                         </a>
 
                         <a 
-                          href="/solutions#use-case-support" 
+                          href="/solutions/customer-support" 
                           onClick={() => setSolutionsOpen(false)}
                           className="flex items-start gap-3 p-2 rounded-lg hover:bg-white/5 transition-colors group"
                         >
@@ -88,7 +88,7 @@ export default function Navbar() {
                         </a>
 
                         <a 
-                          href="/solutions#use-case-bookings" 
+                          href="/solutions/bookings" 
                           onClick={() => setSolutionsOpen(false)}
                           className="flex items-start gap-3 p-2 rounded-lg hover:bg-white/5 transition-colors group"
                         >
@@ -210,6 +210,10 @@ export default function Navbar() {
             </div>
             <div className="flex flex-col gap-3 py-6 text-base font-semibold text-slate-200">
               <a href="/solutions" className="text-cyan-400">⚡ Solutions Hub</a>
+              <a href="/solutions/sales" className="pl-4 text-sm text-cyan-300">🛍️ Sales &amp; Conversion</a>
+              <a href="/solutions/customer-support" className="pl-4 text-sm text-slate-300">🎧 24/7 Customer Support</a>
+              <a href="/solutions/bookings" className="pl-4 text-sm text-slate-300">📅 Bookings &amp; Lead Gen</a>
+              <div className="border-t border-white/10 my-1"></div>
               <a href="/restaurants" className="pl-4 text-sm text-slate-400">🍽️ Restaurants &amp; Cafes</a>
               <a href="/d2c-ecommerce" className="pl-4 text-sm text-slate-400">📦 D2C &amp; E-Commerce</a>
               <a href="/clinics" className="pl-4 text-sm text-slate-400">🏥 Clinics &amp; Healthcare</a>
