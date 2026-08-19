@@ -207,8 +207,8 @@
     ::-webkit-scrollbar { width: 6px; height: 6px; }
     ::-webkit-scrollbar-track { background: #1e293b; }
     ::-webkit-scrollbar-thumb { background: #475569; border-radius: 9999px; }
-    ::-webkit-scrollbar-thumb:hover { background: #64748b; }
-    html { scrollbar-width: thin; scrollbar-color: #475569 #1e293b; }
+    html { scroll-padding-top: 96px; scrollbar-width: thin; scrollbar-color: #475569 #1e293b; }
+    section[id], div[id] { scroll-margin-top: 96px; }
     /* Opt-in: hides the scrollbar entirely on horizontal carousels (marquee, story
        avatars, mobile industry tabs) while keeping them scrollable. */
     .scrollbar-hide { scrollbar-width: none; -ms-overflow-style: none; }
@@ -3479,13 +3479,10 @@
         }
         if (target) {
           if (e && e.preventDefault) e.preventDefault();
-          target.querySelectorAll(".reveal").forEach(function(r){ r.classList.add("in"); });
-          var headerOffset = 80;
-          var elementPosition = target.getBoundingClientRect().top;
-          var offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-          window.scrollTo({
-            top: Math.max(0, offsetPosition),
-            behavior: smooth === false ? 'auto' : 'smooth'
+          target.querySelectorAll('.reveal').forEach(function(r){ r.classList.add('in'); });
+          target.scrollIntoView({
+            behavior: smooth === false ? 'auto' : 'smooth',
+            block: 'start'
           });
           if (history.pushState) {
             history.pushState(null, null, '#' + cleanId);
@@ -3520,7 +3517,7 @@
 
       function handleInitialHash() {
         if (window.location.hash) {
-          setTimeout(function() { scrollToHash(window.location.hash, null, false); }, 100);
+          setTimeout(function() { scrollToHash(window.location.hash, null, false); }, 150);
         }
       }
       if (document.readyState === 'loading') {
@@ -3528,7 +3525,6 @@
       } else {
         handleInitialHash();
       }
-      window.addEventListener('load', handleInitialHash);
       window.addEventListener('hashchange', function() {
         if (window.location.hash) scrollToHash(window.location.hash, null, true);
       });
