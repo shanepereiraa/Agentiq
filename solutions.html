@@ -72,64 +72,64 @@
             <svg class="w-3.5 h-3.5 text-cyan group-hover/menu:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
           </a>
           
-          <!-- Dropdown Body -->
-          <div class="invisible opacity-0 group-hover/menu:visible group-hover/menu:opacity-100 transition-all duration-200 absolute top-full -left-20 w-[580px] pt-3 pointer-events-none group-hover/menu:pointer-events-auto z-[70]">
-            <div class="rounded-2xl p-5 border border-white/15 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9)] backdrop-blur-2xl bg-[#080B11]/98 grid grid-cols-2 gap-6">
-              <div>
-                <p class="text-[11px] font-bold uppercase tracking-wider text-cyan-400 mb-3 px-2">By Use Case</p>
+          <!-- Dropdown Body (100% Opaque, High Elevation) -->
+          <div class="invisible opacity-0 group-hover/menu:visible group-hover/menu:opacity-100 transition-all duration-200 absolute top-full left-0 mt-3 w-[620px] bg-[#080B11] border border-white/20 rounded-2xl p-6 shadow-2xl shadow-black z-[100] pointer-events-none group-hover/menu:pointer-events-auto">
+            <div class="grid grid-cols-2 gap-8 divide-x divide-white/10">
+              <div class="space-y-3">
+                <p class="text-xs font-semibold uppercase tracking-wider text-cyan-400 px-1">By Use Case</p>
                 <div class="space-y-1">
-                  <a href="/solutions#solutions-bento" class="flex items-start gap-3 p-2 rounded-xl hover:bg-white/5 transition-colors group/item">
+                  <a href="/solutions#solutions-bento" class="flex items-start gap-3 p-2.5 rounded-xl hover:bg-white/5 transition-colors group/item">
                     <span class="text-lg">🛍️</span>
                     <div>
                       <p class="text-white text-xs font-semibold group-hover/item:text-cyan-300 transition-colors">Sales &amp; Conversion</p>
-                      <p class="text-slate-400 text-[11px] leading-snug">Lead qualification, cart recovery, WhatsApp checkout</p>
+                      <p class="text-slate-400 text-[11px] leading-snug">Lead qualification &amp; cart recovery</p>
                     </div>
                   </a>
-                  <a href="/solutions#solutions-bento" class="flex items-start gap-3 p-2 rounded-xl hover:bg-white/5 transition-colors group/item">
+                  <a href="/solutions#solutions-bento" class="flex items-start gap-3 p-2.5 rounded-xl hover:bg-white/5 transition-colors group/item">
                     <span class="text-lg">🎧</span>
                     <div>
                       <p class="text-white text-xs font-semibold group-hover/item:text-cyan-300 transition-colors">24/7 Customer Support</p>
-                      <p class="text-slate-400 text-[11px] leading-snug">FAQ deflection, WISMO order tracking &amp; refunds</p>
+                      <p class="text-slate-400 text-[11px] leading-snug">FAQ deflection &amp; WISMO order tracking</p>
                     </div>
                   </a>
-                  <a href="/solutions#solutions-bento" class="flex items-start gap-3 p-2 rounded-xl hover:bg-white/5 transition-colors group/item">
+                  <a href="/solutions#solutions-bento" class="flex items-start gap-3 p-2.5 rounded-xl hover:bg-white/5 transition-colors group/item">
                     <span class="text-lg">📅</span>
                     <div>
                       <p class="text-white text-xs font-semibold group-hover/item:text-cyan-300 transition-colors">Bookings &amp; Lead Gen</p>
-                      <p class="text-slate-400 text-[11px] leading-snug">Table reservations, doctor visits, CRM sync</p>
+                      <p class="text-slate-400 text-[11px] leading-snug">Appointments &amp; live CRM sync</p>
                     </div>
                   </a>
                 </div>
               </div>
-              <div class="border-l border-white/8 pl-6">
-                <p class="text-[11px] font-bold uppercase tracking-wider text-purple-400 mb-3 px-2">By Industry</p>
+              <div class="pl-8 space-y-3">
+                <p class="text-xs font-semibold uppercase tracking-wider text-purple-400 px-1">By Industry</p>
                 <div class="space-y-1">
-                  <a href="/restaurants" class="flex items-start gap-3 p-2 rounded-xl hover:bg-white/5 transition-colors group/item">
+                  <a href="/restaurants" class="flex items-start gap-3 p-2.5 rounded-xl hover:bg-white/5 transition-colors group/item">
                     <span class="text-lg">🍽️</span>
                     <div>
                       <p class="text-white text-xs font-semibold group-hover/item:text-purple-300 transition-colors">Restaurants &amp; Cafes</p>
-                      <p class="text-slate-400 text-[11px] leading-snug">Petpooja POS, table booking, takeouts</p>
+                      <p class="text-slate-400 text-[11px] leading-snug">Petpooja POS &amp; reservations</p>
                     </div>
                   </a>
-                  <a href="/d2c-ecommerce" class="flex items-start gap-3 p-2 rounded-xl hover:bg-white/5 transition-colors group/item">
+                  <a href="/d2c-ecommerce" class="flex items-start gap-3 p-2.5 rounded-xl hover:bg-white/5 transition-colors group/item">
                     <span class="text-lg">📦</span>
                     <div>
                       <p class="text-white text-xs font-semibold group-hover/item:text-purple-300 transition-colors">D2C &amp; E-Commerce</p>
-                      <p class="text-slate-400 text-[11px] leading-snug">Shopify, COD-to-prepaid, tracking</p>
+                      <p class="text-slate-400 text-[11px] leading-snug">Shopify &amp; COD recovery</p>
                     </div>
                   </a>
-                  <a href="/clinics" class="flex items-start gap-3 p-2 rounded-xl hover:bg-white/5 transition-colors group/item">
+                  <a href="/clinics" class="flex items-start gap-3 p-2.5 rounded-xl hover:bg-white/5 transition-colors group/item">
                     <span class="text-lg">🏥</span>
                     <div>
                       <p class="text-white text-xs font-semibold group-hover/item:text-purple-300 transition-colors">Clinics &amp; Healthcare</p>
-                      <p class="text-slate-400 text-[11px] leading-snug">Practo &amp; Clinicea slot locking</p>
+                      <p class="text-slate-400 text-[11px] leading-snug">Doctor appointments &amp; Practo</p>
                     </div>
                   </a>
-                  <a href="/salons" class="flex items-start gap-3 p-2 rounded-xl hover:bg-white/5 transition-colors group/item">
+                  <a href="/salons" class="flex items-start gap-3 p-2.5 rounded-xl hover:bg-white/5 transition-colors group/item">
                     <span class="text-lg">💇</span>
                     <div>
-                      <p class="text-white text-xs font-semibold group-hover/item:text-purple-300 transition-colors">Salons &amp; High-Ticket</p>
-                      <p class="text-slate-400 text-[11px] leading-snug">Instagram DM automation &amp; stylist cal</p>
+                      <p class="text-white text-xs font-semibold group-hover/item:text-purple-300 transition-colors">Salons &amp; Spas</p>
+                      <p class="text-slate-400 text-[11px] leading-snug">Instagram DM automation</p>
                     </div>
                   </a>
                 </div>

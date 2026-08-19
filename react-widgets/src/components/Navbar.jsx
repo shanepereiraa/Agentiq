@@ -40,28 +40,28 @@ export default function Navbar() {
 
             {/* Solutions Mega Menu Dropdown */}
             {solutionsOpen && (
-              <div className="absolute top-full left-1/2 -translate-x-1/2 w-[540px] pt-2 z-[70]">
-                <div className="bg-[#080B11]/98 backdrop-blur-2xl border border-white/15 rounded-2xl p-6 shadow-2xl shadow-black/90 grid grid-cols-2 gap-6">
+              <div className="absolute top-full left-0 mt-3 w-[620px] bg-[#080B11] border border-white/20 rounded-2xl p-6 shadow-2xl shadow-black z-[100]">
+                <div className="grid grid-cols-2 gap-8 divide-x divide-white/10">
                   
                   {/* By Use Case */}
-                  <div>
-                    <p className="text-[11px] font-bold uppercase tracking-wider text-cyan-400 mb-3 px-2">By Use Case</p>
+                  <div className="space-y-3">
+                    <p className="text-xs font-semibold uppercase tracking-wider text-cyan-400 px-1">By Use Case</p>
                     <div className="space-y-1">
-                      <a href="/solutions#solutions-bento" className="flex items-start gap-3 p-2 rounded-xl hover:bg-white/5 transition-colors group">
+                      <a href="/solutions#solutions-bento" className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-white/5 transition-colors group">
                         <span className="text-lg">🛍️</span>
                         <div>
                           <p className="text-white text-xs font-semibold group-hover:text-cyan-300 transition-colors">Sales &amp; Conversion</p>
                           <p className="text-slate-400 text-[11px] leading-snug">Lead qualification &amp; cart recovery</p>
                         </div>
                       </a>
-                      <a href="/solutions#solutions-bento" className="flex items-start gap-3 p-2 rounded-xl hover:bg-white/5 transition-colors group">
+                      <a href="/solutions#solutions-bento" className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-white/5 transition-colors group">
                         <span className="text-lg">🎧</span>
                         <div>
                           <p className="text-white text-xs font-semibold group-hover:text-cyan-300 transition-colors">24/7 Customer Support</p>
                           <p className="text-slate-400 text-[11px] leading-snug">FAQ deflection &amp; WISMO order tracking</p>
                         </div>
                       </a>
-                      <a href="/solutions#solutions-bento" className="flex items-start gap-3 p-2 rounded-xl hover:bg-white/5 transition-colors group">
+                      <a href="/solutions#solutions-bento" className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-white/5 transition-colors group">
                         <span className="text-lg">📅</span>
                         <div>
                           <p className="text-white text-xs font-semibold group-hover:text-cyan-300 transition-colors">Bookings &amp; Lead Gen</p>
@@ -72,31 +72,31 @@ export default function Navbar() {
                   </div>
 
                   {/* By Industry */}
-                  <div className="border-l border-white/10 pl-6">
-                    <p className="text-[11px] font-bold uppercase tracking-wider text-purple-400 mb-3 px-2">By Industry</p>
+                  <div className="pl-8 space-y-3">
+                    <p className="text-xs font-semibold uppercase tracking-wider text-purple-400 px-1">By Industry</p>
                     <div className="space-y-1">
-                      <a href="/restaurants" className="flex items-start gap-3 p-2 rounded-xl hover:bg-white/5 transition-colors group">
+                      <a href="/restaurants" className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-white/5 transition-colors group">
                         <span className="text-lg">🍽️</span>
                         <div>
                           <p className="text-white text-xs font-semibold group-hover:text-purple-300 transition-colors">Restaurants &amp; Cafes</p>
                           <p className="text-slate-400 text-[11px] leading-snug">Petpooja POS &amp; reservations</p>
                         </div>
                       </a>
-                      <a href="/d2c-ecommerce" className="flex items-start gap-3 p-2 rounded-xl hover:bg-white/5 transition-colors group">
+                      <a href="/d2c-ecommerce" className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-white/5 transition-colors group">
                         <span className="text-lg">📦</span>
                         <div>
                           <p className="text-white text-xs font-semibold group-hover:text-purple-300 transition-colors">D2C &amp; E-Commerce</p>
                           <p className="text-slate-400 text-[11px] leading-snug">Shopify &amp; COD recovery</p>
                         </div>
                       </a>
-                      <a href="/clinics" className="flex items-start gap-3 p-2 rounded-xl hover:bg-white/5 transition-colors group">
+                      <a href="/clinics" className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-white/5 transition-colors group">
                         <span className="text-lg">🏥</span>
                         <div>
                           <p className="text-white text-xs font-semibold group-hover:text-purple-300 transition-colors">Clinics &amp; Healthcare</p>
                           <p className="text-slate-400 text-[11px] leading-snug">Doctor appointments &amp; Practo</p>
                         </div>
                       </a>
-                      <a href="/salons" className="flex items-start gap-3 p-2 rounded-xl hover:bg-white/5 transition-colors group">
+                      <a href="/salons" className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-white/5 transition-colors group">
                         <span className="text-lg">💇</span>
                         <div>
                           <p className="text-white text-xs font-semibold group-hover:text-purple-300 transition-colors">Salons &amp; Spas</p>
