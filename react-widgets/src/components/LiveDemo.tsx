@@ -1,29 +1,27 @@
 'use client';
 import { useState, useRef, useEffect } from 'react';
-import { Send, Zap, Bot, User, CheckCircle2 } from 'lucide-react';
+import { Send, Zap, Bot, X } from 'lucide-react';
 import Link from 'next/link';
 
 interface Message {
   id: string;
   from: 'bot' | 'user';
   text: string;
-  time?: string;
 }
 
-const samplePrompts = [
-  'Book a table for tonight',
-  'Schedule a salon visit',
-  'Book a doctor appointment',
-  'Can it talk in Hindi?',
-  'What is your pricing?',
+const promptChips = [
+  { label: 'Book a table for 4', query: 'Book a table for 4 tonight' },
+  { label: 'View today menu 📜', query: "Can I see today's special menu?" },
+  { label: 'Pre-order Paneer Tikka 🍗', query: 'Pre-order 2 portions of Paneer Tikka' },
+  { label: 'Valet parking available?', query: 'Is valet parking available at your outlet?' },
 ];
 
 const cannedReplies: Record<string, string> = {
-  'Book a table for tonight': "Sure! How many guests and what time? I can confirm instantly and take pre-orders so your food's ready when you arrive. 🍽️",
-  'Schedule a salon visit': "I'd love to! Which service — haircut, hair spa or grooming? I'll show open slots with your favourite stylist and lock it in. 💇",
-  'Book a doctor appointment': "Of course. Tell me the department and I'll show the next available slots with Dr. Rao, book it, and send your pre-visit form on WhatsApp. 🩺",
-  'Can it talk in Hindi?': "Bilkul! 🙌 Main Hindi, English aur Hinglish teeno mein seamlessly baat kar sakta hoon. Aapki language preference kya hai?",
-  'What is your pricing?': "Managed WhatsApp AI chatbots start at ₹7,999/mo (+ ₹24,999 setup). Voice AI starts at ₹14,999/mo. Both include complete done-for-you training and 30-day money-back guarantee! 🚀",
+  'Book a table for 4 tonight': "Sure! Table for 4 is reserved for tonight at 8:00 PM at Spice Garden ✅ Would you like me to pre-order starters so they're ready when you arrive?",
+  "Can I see today's special menu?": "Here are today's chef specials: 1. Truffle Butter Naan (₹180) 2. Dum Pukht Biryani (₹480) 3. Smoked Paneer Tikka (₹360). Would you like to add any of these to your order? 📜",
+  'Pre-order 2 portions of Paneer Tikka': "Added 2× Smoked Paneer Tikka (₹720) to your reservation. Shall I send a UPI payment link or would you prefer paying at the table? 🍢",
+  'Is valet parking available at your outlet?': "Yes! Complimentary valet parking is available right at our main entrance for all dining guests. 🚗",
+  'What is your pricing?': "Managed WhatsApp AI chatbots start at ₹7,999/mo (+ ₹24,999 setup). Voice AI starts at ₹14,999/mo (+ ₹29,999 setup with 250 mins included). Both include complete done-for-you training and 30-day money-back guarantee! 🚀",
 };
 
 export default function LiveDemo() {
@@ -42,7 +40,7 @@ export default function LiveDemo() {
     chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, isTyping]);
 
-  const handleSend = (textToSend?: string) => {
+  const handleSendMessage = (textToSend?: string) => {
     const text = (textToSend || inputValue).trim();
     if (!text || isTyping) return;
 
@@ -59,7 +57,7 @@ export default function LiveDemo() {
     setTimeout(() => {
       const replyText =
         cannedReplies[text] ||
-        `Thanks for asking about "${text}"! Our AI understands complex context and resolves 80%+ of inquiries instantly before human escalation.`;
+        `Thanks for asking about "${text}"! Our AI understands complex context and resolves 80%+ of customer inquiries instantly before human escalation.`;
 
       setMessages((prev) => [
         ...prev,
@@ -171,24 +169,30 @@ export default function LiveDemo() {
             <div ref={chatEndRef} />
           </div>
 
-          {/* Quick Prompts */}
-          <div className="px-4 py-2 border-t border-white/10 bg-black/20 flex flex-wrap gap-2 overflow-x-auto">
-            {samplePrompts.map((prompt) => (
-              <button
-                key={prompt}
-                onClick={() => handleSend(prompt)}
-                className="text-xs px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-slate-300 hover:bg-white/15 hover:text-white transition-colors cursor-pointer whitespace-nowrap"
-              >
-                {prompt}
-              </button>
-            ))}
+          {/* Prompt Chips Bar */}
+          <div className="px-6 py-3 border-t border-white/10 bg-white/[0.02] space-y-2">
+            <div className="text-[10px] font-bold uppercase tracking-wider text-gray-400">
+              TEST INSTANT PROMPT CHIPS:
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {promptChips.map((chip, idx) => (
+                <button
+                  key={idx}
+                  type="button"
+                  onClick={() => handleSendMessage(chip.query)}
+                  className="text-xs px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-gray-300 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all active:scale-95 cursor-pointer"
+                >
+                  {chip.label}
+                </button>
+              ))}
+            </div>
           </div>
 
           {/* Input Bar */}
           <form
             onSubmit={(e) => {
               e.preventDefault();
-              handleSend();
+              handleSendMessage();
             }}
             className="p-3 border-t border-white/10 bg-slate-950 flex gap-2"
           >

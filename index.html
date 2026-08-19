@@ -1123,8 +1123,25 @@
                 Namaste! 👋 I'm AgentIQ. Pick a prompt below or type anything to see how I handle real customer inquiries.
               </div>
             </div>
-            <div class="px-4 py-2.5 border-t border-white/10 bg-black/20">
-              <div id="chips" class="flex flex-wrap gap-2"></div>
+            <!-- Prompt Chips Bar -->
+            <div class="px-6 py-3 border-t border-white/10 bg-white/[0.02] space-y-2">
+              <div class="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                TEST INSTANT PROMPT CHIPS:
+              </div>
+              <div id="chips" class="flex flex-wrap gap-2">
+                <button type="button" data-query="Book a table for 4 tonight" class="demo-chip-btn text-xs px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-slate-300 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all active:scale-95 cursor-pointer">
+                  Book a table for 4
+                </button>
+                <button type="button" data-query="Can I see today's special menu?" class="demo-chip-btn text-xs px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-slate-300 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all active:scale-95 cursor-pointer">
+                  View today menu 📜
+                </button>
+                <button type="button" data-query="Pre-order 2 portions of Paneer Tikka" class="demo-chip-btn text-xs px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-slate-300 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all active:scale-95 cursor-pointer">
+                  Pre-order Paneer Tikka 🍗
+                </button>
+                <button type="button" data-query="Is valet parking available at your outlet?" class="demo-chip-btn text-xs px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-slate-300 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all active:scale-95 cursor-pointer">
+                  Valet parking available?
+                </button>
+              </div>
             </div>
             <form id="demo-chat-form" class="p-3 border-t border-white/10 bg-[#050914] flex gap-2">
               <input id="demo-chat-input" type="text" placeholder="Ask anything..." class="flex-1 px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white text-sm placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-cyan">
@@ -2818,6 +2835,10 @@
       }
       // Interactive demo
       var convo = {
+        'Book a table for 4 tonight': "Sure! Table for 4 is reserved for tonight at 8:00 PM at Spice Garden ✅ Would you like me to pre-order starters so they're ready when you arrive?",
+        'Can I see today\'s special menu?': "Here are today's chef specials: 1. Truffle Butter Naan (₹180) 2. Dum Pukht Biryani (₹480) 3. Smoked Paneer Tikka (₹360). Would you like to add any of these to your order? 📜",
+        'Pre-order 2 portions of Paneer Tikka': "Added 2× Smoked Paneer Tikka (₹720) to your reservation. Shall I send a UPI payment link or would you prefer paying at the table? 🍢",
+        'Is valet parking available at your outlet?': "Yes! Complimentary valet parking is available right at our main entrance for all dining guests. 🚗",
         'Book a table for tonight': "Sure! How many guests and what time? I can confirm instantly and even take pre-orders so your food's ready when you arrive. 🍽️",
         'Schedule a salon visit': "I'd love to! Which service — haircut, hair spa or grooming? I'll show open slots with your favourite stylist and lock it in. 💇",
         'Book a doctor appointment': "Of course. Tell me the department and I'll show the next available slots, book it, and send your pre-visit form on WhatsApp. 🩺",
@@ -2825,7 +2846,7 @@
         'What is your pricing?': "Managed WhatsApp AI chatbots start at ₹7,999/mo (+ ₹24,999 setup). Voice AI starts at ₹14,999/mo (+ ₹29,999 setup with 250 mins included). Both include complete done-for-you training and 30-day money-back guarantee! 🚀",
         'Book a demo': "Love it! Drop your name and WhatsApp number in the form below and our team will reach out within a few hours to lock a 20-min slot. 📅",
       };
-      var log = document.getElementById('chatlog'), chips = document.getElementById('chips');
+      var log = document.getElementById('chatlog');
       function bubble(text, who) {
         var d = document.createElement('div');
         d.className = who === 'me'
@@ -2837,8 +2858,6 @@
       function typing() {
         var d = document.createElement('div');
         d.className = 'inline-flex items-center gap-1.5 bg-white/8 rounded-2xl rounded-tl-md px-4 py-3';
-        // Decorative dots hidden from AT; SR-only text announces the loading state via the polite live region
-        // Using DOM construction instead of innerHTML to eliminate any string-injection surface
         var sr = document.createElement('span');
         sr.className = 'sr-only';
         sr.textContent = 'AgentIQ is typing…';
@@ -2857,7 +2876,6 @@
         setTimeout(function () {
           t.remove();
           if (reduce) { bubble(text, 'bot'); return; }
-          // streaming text — hide partial fragments from AT, then announce the full reply once
           var d = bubble('', 'bot'); var i = 0;
           d.setAttribute('aria-hidden', 'true');
           (function stream() {
@@ -2876,20 +2894,14 @@
         setTimeout(function () { isTyping = false; }, 1200);
       }
       function activateChat() {
-        if (!chips) return;
-        chips.innerHTML = '';
-        Object.keys(convo).forEach(function (q) {
-          var b = document.createElement('button');
-          b.type = 'button';
-          b.className = 'cursor-pointer text-xs px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-slate-300 hover:bg-white/15 hover:text-white transition-colors duration-200';
-          b.textContent = q;
-          b.addEventListener('click', function () {
+        document.querySelectorAll('.demo-chip-btn').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            var q = btn.getAttribute('data-query') || btn.textContent.trim();
             ask(q);
             if (typeof gtag === 'function') {
               gtag('event', 'select_content', { content_type: 'demo_chip', item_id: q });
             }
           });
-          chips.appendChild(b);
         });
 
         var chatForm = document.getElementById('demo-chat-form');
