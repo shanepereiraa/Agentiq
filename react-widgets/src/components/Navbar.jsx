@@ -1,8 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 export default function Navbar() {
   const [solutionsOpen, setSolutionsOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  // Close when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setSolutionsOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   return (
     <header className="sticky top-0 z-50 w-full px-4 md:px-8 py-3 bg-[#080B11]/90 backdrop-blur-xl border-b border-white/10">
@@ -18,94 +30,132 @@ export default function Navbar() {
         {/* 2. CENTER NAV LINKS */}
         <nav className="hidden md:flex items-center gap-6 text-sm text-gray-300 font-medium">
           
-          {/* Solutions Dropdown Trigger */}
+          {/* Solutions Dropdown Trigger with Invisible Hover Bridge + Click Toggle */}
           <div 
+            ref={dropdownRef}
             className="relative"
             onMouseEnter={() => setSolutionsOpen(true)}
             onMouseLeave={() => setSolutionsOpen(false)}
           >
-            <a 
-              href="/solutions"
-              className="flex items-center gap-1 hover:text-white transition-colors py-2"
+            <button 
+              type="button"
+              onClick={() => setSolutionsOpen((prev) => !prev)}
+              className="flex items-center gap-1.5 py-2 text-sm font-medium text-gray-300 hover:text-white transition-colors focus:outline-none"
+              aria-expanded={solutionsOpen}
             >
-              Solutions
+              <span>Solutions</span>
               <svg 
-                className={`w-4 h-4 transition-transform text-gray-400 ${solutionsOpen ? 'rotate-180 text-cyan-400' : ''}`}
+                className={`w-4 h-4 transition-transform duration-200 text-gray-400 ${solutionsOpen ? 'rotate-180 text-cyan-400' : ''}`}
                 viewBox="0 0 20 20" 
                 fill="currentColor"
               >
                 <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
               </svg>
-            </a>
+            </button>
 
-            {/* Solutions Mega Menu Dropdown */}
+            {/* Solutions Mega Menu Dropdown Panel + Invisible Bridge */}
             {solutionsOpen && (
-              <div className="absolute top-full left-0 mt-3 w-[620px] bg-[#080B11] border border-white/20 rounded-2xl p-6 shadow-2xl shadow-black z-[100]">
-                <div className="grid grid-cols-2 gap-8 divide-x divide-white/10">
-                  
-                  {/* By Use Case */}
-                  <div className="space-y-3">
-                    <p className="text-xs font-semibold uppercase tracking-wider text-cyan-400 px-1">By Use Case</p>
-                    <div className="space-y-1">
-                      <a href="/solutions#solutions-bento" className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-white/5 transition-colors group">
-                        <span className="text-lg">🛍️</span>
-                        <div>
-                          <p className="text-white text-xs font-semibold group-hover:text-cyan-300 transition-colors">Sales &amp; Conversion</p>
-                          <p className="text-slate-400 text-[11px] leading-snug">Lead qualification &amp; cart recovery</p>
-                        </div>
-                      </a>
-                      <a href="/solutions#solutions-bento" className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-white/5 transition-colors group">
-                        <span className="text-lg">🎧</span>
-                        <div>
-                          <p className="text-white text-xs font-semibold group-hover:text-cyan-300 transition-colors">24/7 Customer Support</p>
-                          <p className="text-slate-400 text-[11px] leading-snug">FAQ deflection &amp; WISMO order tracking</p>
-                        </div>
-                      </a>
-                      <a href="/solutions#solutions-bento" className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-white/5 transition-colors group">
-                        <span className="text-lg">📅</span>
-                        <div>
-                          <p className="text-white text-xs font-semibold group-hover:text-cyan-300 transition-colors">Bookings &amp; Lead Gen</p>
-                          <p className="text-slate-400 text-[11px] leading-snug">Table reservations &amp; CRM sync</p>
-                        </div>
-                      </a>
-                    </div>
-                  </div>
+              <div className="absolute top-full left-0 pt-2 w-[580px] z-[100] animate-in fade-in slide-in-from-top-1 duration-150">
+                <div className="bg-[#0B0F17] border border-white/20 rounded-2xl p-6 shadow-2xl shadow-black ring-1 ring-white/10">
+                  <div className="grid grid-cols-2 gap-8 divide-x divide-white/10">
+                    
+                    {/* Left Column: BY USE CASE */}
+                    <div className="space-y-4">
+                      <p className="text-xs font-semibold uppercase tracking-wider text-gray-400">By Use Case</p>
+                      <div className="space-y-2">
+                        <a 
+                          href="/solutions#solutions-bento" 
+                          onClick={() => setSolutionsOpen(false)}
+                          className="flex items-start gap-3 p-2 rounded-lg hover:bg-white/5 transition-colors group"
+                        >
+                          <span className="text-lg">🛍️</span>
+                          <div>
+                            <div className="text-sm font-semibold text-white group-hover:text-cyan-400 transition-colors">Sales &amp; Conversion</div>
+                            <div className="text-xs text-gray-400">Lead qualification &amp; cart recovery</div>
+                          </div>
+                        </a>
 
-                  {/* By Industry */}
-                  <div className="pl-8 space-y-3">
-                    <p className="text-xs font-semibold uppercase tracking-wider text-purple-400 px-1">By Industry</p>
-                    <div className="space-y-1">
-                      <a href="/restaurants" className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-white/5 transition-colors group">
-                        <span className="text-lg">🍽️</span>
-                        <div>
-                          <p className="text-white text-xs font-semibold group-hover:text-purple-300 transition-colors">Restaurants &amp; Cafes</p>
-                          <p className="text-slate-400 text-[11px] leading-snug">Petpooja POS &amp; reservations</p>
-                        </div>
-                      </a>
-                      <a href="/d2c-ecommerce" className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-white/5 transition-colors group">
-                        <span className="text-lg">📦</span>
-                        <div>
-                          <p className="text-white text-xs font-semibold group-hover:text-purple-300 transition-colors">D2C &amp; E-Commerce</p>
-                          <p className="text-slate-400 text-[11px] leading-snug">Shopify &amp; COD recovery</p>
-                        </div>
-                      </a>
-                      <a href="/clinics" className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-white/5 transition-colors group">
-                        <span className="text-lg">🏥</span>
-                        <div>
-                          <p className="text-white text-xs font-semibold group-hover:text-purple-300 transition-colors">Clinics &amp; Healthcare</p>
-                          <p className="text-slate-400 text-[11px] leading-snug">Doctor appointments &amp; Practo</p>
-                        </div>
-                      </a>
-                      <a href="/salons" className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-white/5 transition-colors group">
-                        <span className="text-lg">💇</span>
-                        <div>
-                          <p className="text-white text-xs font-semibold group-hover:text-purple-300 transition-colors">Salons &amp; Spas</p>
-                          <p className="text-slate-400 text-[11px] leading-snug">Instagram DM automation</p>
-                        </div>
-                      </a>
-                    </div>
-                  </div>
+                        <a 
+                          href="/solutions#solutions-bento" 
+                          onClick={() => setSolutionsOpen(false)}
+                          className="flex items-start gap-3 p-2 rounded-lg hover:bg-white/5 transition-colors group"
+                        >
+                          <span className="text-lg">🎧</span>
+                          <div>
+                            <div className="text-sm font-semibold text-white group-hover:text-cyan-400 transition-colors">24/7 Support</div>
+                            <div className="text-xs text-gray-400">FAQ resolution &amp; order tracking</div>
+                          </div>
+                        </a>
 
+                        <a 
+                          href="/solutions#solutions-bento" 
+                          onClick={() => setSolutionsOpen(false)}
+                          className="flex items-start gap-3 p-2 rounded-lg hover:bg-white/5 transition-colors group"
+                        >
+                          <span className="text-lg">📅</span>
+                          <div>
+                            <div className="text-sm font-semibold text-white group-hover:text-cyan-400 transition-colors">Bookings &amp; Leads</div>
+                            <div className="text-xs text-gray-400">Appointments &amp; live CRM sync</div>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+
+                    {/* Right Column: BY INDUSTRY */}
+                    <div className="pl-8 space-y-4">
+                      <p className="text-xs font-semibold uppercase tracking-wider text-gray-400">By Industry</p>
+                      <div className="space-y-2">
+                        <a 
+                          href="/restaurants" 
+                          onClick={() => setSolutionsOpen(false)}
+                          className="flex items-start gap-3 p-2 rounded-lg hover:bg-white/5 transition-colors group"
+                        >
+                          <span className="text-lg">🍽️</span>
+                          <div>
+                            <div className="text-sm font-semibold text-white group-hover:text-cyan-400 transition-colors">Restaurants &amp; Cafes</div>
+                            <div className="text-xs text-gray-400">Petpooja POS &amp; reservations</div>
+                          </div>
+                        </a>
+
+                        <a 
+                          href="/d2c-ecommerce" 
+                          onClick={() => setSolutionsOpen(false)}
+                          className="flex items-start gap-3 p-2 rounded-lg hover:bg-white/5 transition-colors group"
+                        >
+                          <span className="text-lg">📦</span>
+                          <div>
+                            <div className="text-sm font-semibold text-white group-hover:text-cyan-400 transition-colors">D2C &amp; E-Commerce</div>
+                            <div className="text-xs text-gray-400">Shopify &amp; COD recovery</div>
+                          </div>
+                        </a>
+
+                        <a 
+                          href="/clinics" 
+                          onClick={() => setSolutionsOpen(false)}
+                          className="flex items-start gap-3 p-2 rounded-lg hover:bg-white/5 transition-colors group"
+                        >
+                          <span className="text-lg">🏥</span>
+                          <div>
+                            <div className="text-sm font-semibold text-white group-hover:text-cyan-400 transition-colors">Clinics &amp; Healthcare</div>
+                            <div className="text-xs text-gray-400">Doctor appointments &amp; Practo</div>
+                          </div>
+                        </a>
+
+                        <a 
+                          href="/salons" 
+                          onClick={() => setSolutionsOpen(false)}
+                          className="flex items-start gap-3 p-2 rounded-lg hover:bg-white/5 transition-colors group"
+                        >
+                          <span className="text-lg">💇</span>
+                          <div>
+                            <div className="text-sm font-semibold text-white group-hover:text-cyan-400 transition-colors">Salons &amp; Spas</div>
+                            <div className="text-xs text-gray-400">Instagram DM automation</div>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+
+                  </div>
                 </div>
               </div>
             )}
