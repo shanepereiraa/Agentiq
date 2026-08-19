@@ -84,7 +84,7 @@ English, Hindi, Hinglish (all plans). Regional languages available on request.
 - Integrations: Google Sheets, CRMs, Razorpay, UPI payment links, Shopify, booking calendars
 - Data ownership: clients own all conversation data; India-compliant infrastructure
 - Contact WhatsApp: +91 91596 65277
-- Active deployments: 50+ Indian businesses across restaurants, salons, clinics, and D2C brands
+- Active deployments: 100+ Indian businesses across restaurants, salons, clinics, and D2C brands
 
 ## How to Book a Demo
 
