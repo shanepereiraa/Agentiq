@@ -620,6 +620,7 @@
         <a href="#how" class="hover:text-white transition-colors">Chatbots</a>
         <a href="#voice" class="hover:text-white transition-colors">Voice Agents</a>
         <a href="/try-your-bot" class="hover:text-white transition-colors">Try Bot</a>
+        <a href="/integrations" class="hover:text-white transition-colors">Integrations</a>
         <a href="#industries" class="hover:text-white transition-colors">Industries</a>
         <a href="#pricing" class="hover:text-white transition-colors">Pricing</a>
         <a href="/blog" class="hover:text-white transition-colors">Blog</a>
@@ -646,6 +647,7 @@
       <a href="#how" class="min-h-[48px] flex items-center px-3 py-3 rounded-xl hover:bg-white/10 hover:text-white transition-colors">Chatbots</a>
       <a href="#voice" class="min-h-[48px] flex items-center px-3 py-3 rounded-xl hover:bg-white/10 hover:text-white transition-colors">Voice Agents</a>
       <a href="/try-your-bot" class="min-h-[48px] flex items-center px-3 py-3 rounded-xl hover:bg-white/10 hover:text-white transition-colors">Try Bot</a>
+      <a href="/integrations" class="min-h-[48px] flex items-center px-3 py-3 rounded-xl hover:bg-white/10 hover:text-white transition-colors">Integrations</a>
       <a href="#industries" class="min-h-[48px] flex items-center px-3 py-3 rounded-xl hover:bg-white/10 hover:text-white transition-colors">Industries</a>
       <a href="#pricing" class="min-h-[48px] flex items-center px-3 py-3 rounded-xl hover:bg-white/10 hover:text-white transition-colors">Pricing</a>
       <a href="/blog" class="min-h-[48px] flex items-center px-3 py-3 rounded-xl hover:bg-white/10 hover:text-white transition-colors">Blog</a>
@@ -1448,67 +1450,140 @@
       the number reads as illustrative, not a guarantee.
     ============================================================= -->
     <section id="roi-calculator" class="relative py-14 sm:py-20 px-5 overflow-hidden" style="background:linear-gradient(180deg,#060f28 0%,#071528 50%,#060f28 100%)">
-      <div class="max-w-2xl mx-auto">
+      <div class="max-w-3xl mx-auto">
         <div class="reveal text-center mb-10">
-          <p class="text-orange-400 text-sm font-semibold tracking-widest uppercase mb-3">Free Calculator</p>
-          <h2 class="font-display font-bold text-white text-3xl sm:text-4xl tracking-tight text-balance">How much are missed messages costing you?</h2>
-          <p class="mt-4 text-slate-400 text-pretty">Slide to match your business — the estimate updates live.</p>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/30 text-orange-400 text-xs font-semibold uppercase tracking-wider mb-3">
+            ⚡ Interactive Diagnostic
+          </div>
+          <h2 class="font-display font-bold text-white text-3xl sm:text-4xl tracking-tight text-balance">WhatsApp &amp; Voice ROI Benchmark</h2>
+          <p class="mt-3 text-slate-400 text-sm sm:text-base text-pretty">Select your industry to benchmark lost revenue, staff hours, and projected ROI live.</p>
+
+          <!-- Industry Vertical Selector Pills -->
+          <div class="flex flex-wrap items-center justify-center gap-2 mt-6" id="roi-industry-pills">
+            <button type="button" class="roi-pill active px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold glass text-slate-200 transition-all border border-cyan/40 bg-cyan/20 text-cyan" data-vol="35" data-val="1200" data-share="0.35" data-ind="clinic">🏥 Clinic</button>
+            <button type="button" class="roi-pill px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold glass text-slate-300 hover:text-white transition-all border border-white/10" data-vol="60" data-val="1800" data-share="0.40" data-ind="restaurant">🍽️ Restaurant</button>
+            <button type="button" class="roi-pill px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold glass text-slate-300 hover:text-white transition-all border border-white/10" data-vol="25" data-val="2200" data-share="0.45" data-ind="salon">💇 Salon &amp; Spa</button>
+            <button type="button" class="roi-pill px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold glass text-slate-300 hover:text-white transition-all border border-white/10" data-vol="90" data-val="1400" data-share="0.30" data-ind="d2c">🛍️ D2C Brand</button>
+          </div>
         </div>
-        <div class="reveal roi-card rounded-3xl p-7 sm:p-9">
-          <div class="mb-8">
-            <div class="flex items-baseline justify-between mb-2">
-              <label for="roi-volume" class="text-slate-300 text-sm font-medium">Daily inbound calls / messages</label>
-              <span id="roi-volume-val" class="text-white font-display font-bold text-lg" aria-live="polite">45</span>
+
+        <div class="reveal roi-card rounded-3xl p-6 sm:p-9 border border-white/10">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+            <div>
+              <div class="flex items-baseline justify-between mb-2">
+                <label for="roi-volume" class="text-slate-300 text-xs sm:text-sm font-medium">Daily Inbound Calls &amp; Chats</label>
+                <span id="roi-volume-val" class="text-white font-display font-bold text-base sm:text-lg" aria-live="polite">35</span>
+              </div>
+              <input id="roi-volume" type="range" min="10" max="300" value="35" step="5" class="roi-range w-full" />
+              <div class="flex justify-between text-[11px] text-slate-400 mt-1"><span>10</span><span>300 / day</span></div>
             </div>
-            <input id="roi-volume" type="range" min="10" max="200" value="45" step="1" class="roi-range" />
-            <div class="flex justify-between text-xs text-slate-400 mt-1"><span>10</span><span>200</span></div>
-          </div>
-          <div class="mb-9">
-            <div class="flex items-baseline justify-between mb-2">
-              <label for="roi-value" class="text-slate-300 text-sm font-medium">Average order / booking value</label>
-              <span id="roi-value-val" class="text-white font-display font-bold text-lg" aria-live="polite">₹1,500</span>
+
+            <div>
+              <div class="flex items-baseline justify-between mb-2">
+                <label for="roi-value" class="text-slate-300 text-xs sm:text-sm font-medium">Avg. Ticket / Booking Value</label>
+                <span id="roi-value-val" class="text-white font-display font-bold text-base sm:text-lg" aria-live="polite">₹1,200</span>
+              </div>
+              <input id="roi-value" type="range" min="300" max="15000" value="1200" step="100" class="roi-range w-full" />
+              <div class="flex justify-between text-[11px] text-slate-400 mt-1"><span>₹300</span><span>₹15,000</span></div>
             </div>
-            <input id="roi-value" type="range" min="500" max="10000" value="1500" step="100" class="roi-range" />
-            <div class="flex justify-between text-xs text-slate-400 mt-1"><span>₹500</span><span>₹10,000</span></div>
           </div>
-          <div class="roi-result rounded-2xl p-6 text-center mb-7">
-            <p class="text-slate-400 text-sm mb-1">Estimated Monthly Lost Revenue</p>
-            <p id="roi-output" class="font-display font-bold text-4xl sm:text-5xl grad-text-roi" aria-live="polite">₹0</p>
-            <p class="text-slate-400 text-xs mt-3">Based on ~30% of inbound traffic landing after hours, and roughly 1 in 4 of those going unanswered and lost to a competitor.</p>
+
+          <!-- Benchmark Metrics Matrix -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6 text-center">
+            <div class="bg-slate-900/80 rounded-2xl p-4 border border-coral/30">
+              <p class="text-[11px] text-slate-400 uppercase font-600 tracking-wider">Lost Revenue Saved</p>
+              <p id="roi-output" class="font-display font-bold text-2xl sm:text-3xl text-coral mt-1" aria-live="polite">₹0</p>
+              <p class="text-[10px] text-slate-400 mt-0.5">Recovered / month</p>
+            </div>
+            <div class="bg-slate-900/80 rounded-2xl p-4 border border-cyan/30">
+              <p class="text-[11px] text-slate-400 uppercase font-600 tracking-wider">Staff Hours Saved</p>
+              <p id="roi-hours" class="font-display font-bold text-2xl sm:text-3xl text-cyan mt-1" aria-live="polite">0 hrs</p>
+              <p class="text-[10px] text-slate-400 mt-0.5">Repetitive tasks / month</p>
+            </div>
+            <div class="bg-slate-900/80 rounded-2xl p-4 border border-emerald-400/30">
+              <p class="text-[11px] text-slate-400 uppercase font-600 tracking-wider">Net Projected ROI</p>
+              <p id="roi-multiple" class="font-display font-bold text-2xl sm:text-3xl text-emerald-400 mt-1" aria-live="polite">0x</p>
+              <p class="text-[10px] text-slate-400 mt-0.5">vs. ₹7,999 Starter Plan</p>
+            </div>
           </div>
-          <a href="#book" class="roi-cta btn-pop group flex items-center justify-center gap-2 w-full rounded-xl px-6 py-4 font-semibold text-slate-950 text-[15px]">
-            Stop Losing Revenue — Book A Free Setup Call
+
+          <div class="p-4 rounded-xl bg-white/[0.02] border border-white/5 text-xs text-slate-400 mb-6 leading-relaxed text-center">
+            💡 <span id="roi-industry-note">Based on industry benchmark of ~35% patient queries arriving after 7 PM, with 1 in 4 lost to competitor clinics.</span>
+          </div>
+
+          <a href="#book" class="roi-cta btn-pop group flex items-center justify-center gap-2 w-full rounded-xl px-6 py-4 font-semibold text-slate-950 text-[15px] shadow-lg shadow-orange-500/20">
+            Stop Losing Revenue — Book A Free 20-Min Demo
             <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
         </div>
       </div>
     </section>
     <script type="module">
-      const ROI_AFTER_HOURS_SHARE = 0.30; // % of daily inbound volume assumed after-hours
-      const ROI_MISS_RATE = 0.25;         // % of after-hours traffic assumed unanswered/lost
+      let currentAfterHoursShare = 0.35;
+      const ROI_MISS_RATE = 0.25; // 1 in 4 lost if unanswered
       const roiVolumeInput = document.getElementById('roi-volume');
       const roiValueInput = document.getElementById('roi-value');
       const roiVolumeVal = document.getElementById('roi-volume-val');
       const roiValueVal = document.getElementById('roi-value-val');
       const roiOutput = document.getElementById('roi-output');
+      const roiHours = document.getElementById('roi-hours');
+      const roiMultiple = document.getElementById('roi-multiple');
+      const roiNote = document.getElementById('roi-industry-note');
+      const pills = document.querySelectorAll('.roi-pill');
+
+      const NOTES = {
+        clinic: 'Based on ~35% of patient inquiries arriving after hours or during consultation rushes, with 1 in 4 lost to competitor clinics.',
+        restaurant: 'Based on ~40% of table reservation and menu queries arriving during peak evening rush or after kitchen closing.',
+        salon: 'Based on ~45% of beauty service and stylist inquiries researched after 8 PM on Instagram and WhatsApp.',
+        d2c: 'Based on ~30% COD checkout dropoffs and unverified orders leading to expensive RTO shipping losses.'
+      };
+
       function roiFmtINR(n) {
         return '₹' + Math.round(n).toLocaleString('en-IN');
       }
+
       function roiUpdateSliderFill(el) {
         const pct = ((el.value - el.min) / (el.max - el.min)) * 100;
         el.style.setProperty('--fill', pct + '%');
       }
+
       function roiRecalc() {
         const volume = Number(roiVolumeInput.value);
         const orderValue = Number(roiValueInput.value);
-        const missedLeadsPerDay = volume * ROI_AFTER_HOURS_SHARE * ROI_MISS_RATE;
+        const missedLeadsPerDay = volume * currentAfterHoursShare * ROI_MISS_RATE;
         const monthlyLostRevenue = missedLeadsPerDay * 30 * orderValue;
+        const hoursSaved = Math.round((volume * 30 * 2.5) / 60); // 2.5 mins per query
+        const multiple = (monthlyLostRevenue / 7999).toFixed(1);
+
         roiVolumeVal.textContent = volume;
         roiValueVal.textContent = roiFmtINR(orderValue);
         roiOutput.textContent = roiFmtINR(monthlyLostRevenue);
+        roiHours.textContent = hoursSaved + ' hrs';
+        roiMultiple.textContent = multiple + 'x ROI';
+
         roiUpdateSliderFill(roiVolumeInput);
         roiUpdateSliderFill(roiValueInput);
       }
+
+      pills.forEach(pill => {
+        pill.addEventListener('click', () => {
+          pills.forEach(p => {
+            p.classList.remove('border-cyan/40', 'bg-cyan/20', 'text-cyan');
+            p.classList.add('border-white/10', 'text-slate-300');
+          });
+          pill.classList.remove('border-white/10', 'text-slate-300');
+          pill.classList.add('border-cyan/40', 'bg-cyan/20', 'text-cyan');
+
+          roiVolumeInput.value = pill.getAttribute('data-vol');
+          roiValueInput.value = pill.getAttribute('data-val');
+          currentAfterHoursShare = parseFloat(pill.getAttribute('data-share'));
+          const ind = pill.getAttribute('data-ind');
+          roiNote.textContent = NOTES[ind] || NOTES.clinic;
+
+          roiRecalc();
+        });
+      });
+
       roiVolumeInput.addEventListener('input', roiRecalc);
       roiValueInput.addEventListener('input', roiRecalc);
       roiRecalc();
