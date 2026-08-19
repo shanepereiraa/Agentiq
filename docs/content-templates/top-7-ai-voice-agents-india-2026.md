@@ -73,9 +73,9 @@ The "AI voice agent India 2026" search space is heavily polluted by what appear 
 
 **Model**: Fully managed / done-for-you — AgentIQ's team builds, trains, and deploys the voice agent; the client doesn't configure a dashboard.
 
-**Pricing**: Voice Growth ₹39,999 setup + ₹14,999/mo (250 min/month, 1 inbound agent) · Voice Professional ₹69,999 setup + ₹24,999/mo (500 min/month, inbound+outbound, up to 3 outlets) · Voice Advanced ₹1,29,999 setup + ₹34,999/mo (800 min/month, unlimited agents, voice cloning). Overage ₹45/min on all plans, GST extra.
+**Pricing**: Starter ₹29,999 setup + ₹14,999/mo (250 min/month, 1 inbound agent) · Growth ₹49,999 setup + ₹24,999/mo (500 min/month, inbound+outbound, up to 3 outlets) · Pro ₹99,999 setup + ₹34,999/mo (800 min/month, unlimited agents, voice cloning). Overage ₹45/min on all plans, GST extra.
 
-**Language support**: Hindi and English on all plans; multilingual support on Professional/Advanced tiers.
+**Language support**: Hindi and English on all plans; multilingual support on Growth/Pro tiers.
 
 **Standout feature**: Unified with AgentIQ's WhatsApp/Instagram/website chatbot under one vendor relationship — businesses running both a chatbot and a voice agent deal with a single team, not two separate vendors.
 
@@ -91,7 +91,7 @@ The "AI voice agent India 2026" search space is heavily polluted by what appear 
 | 4 | [VERIFY — unconfirmed] | [VERIFY] | [VERIFY] | [VERIFY] | [VERIFY] |
 | 5 | MyOperator | Self-serve (trial/demo signup) | [VERIFY — not publicly listed; behind trial flow] | Multilingual AI chatbot (specific languages [VERIFY]) | Indian SMBs wanting telephony + AI voicebot + WhatsApp in one platform |
 | 6 | Ozonetel | Self-service platform + enterprise demo path | [VERIFY — quote-only] | 24 vernacular languages (per Ozonetel's own site, checked 2026-08-09) | Indian SMBs/mid-market needing broad regional-language voice coverage |
-| 7 | AgentIQ | Done-for-you managed service | ₹39,999 setup + ₹14,999/mo | Hindi, English (+multilingual on higher tiers) | Indian SMBs wanting a working voice agent without managing telephony themselves |
+| 7 | AgentIQ | Done-for-you managed service | ₹29,999 setup + ₹14,999/mo | Hindi, English (+multilingual on higher tiers) | Indian SMBs wanting a working voice agent without managing telephony themselves |
 
 ## FAQ
 
@@ -102,7 +102,7 @@ The "AI voice agent India 2026" search space is heavily polluted by what appear 
 It depends on whether you have in-house resources to configure and maintain a self-serve platform. A done-for-you service like AgentIQ costs more per month but requires no configuration time from the business owner.
 
 **How much do AI voice agents cost in India?**
-Pricing varies by vendor and model (self-serve vs managed). AgentIQ's done-for-you voice agent plans range from ₹39,999 setup + ₹14,999/month (Voice Growth) to ₹1,29,999 setup + ₹34,999/month (Voice Advanced), all exclusive of GST, with ₹45/minute overage. [Add comparable competitor price ranges once VERIFY items above are filled.]
+Pricing varies by vendor and model (self-serve vs managed). AgentIQ's done-for-you voice agent plans range from ₹29,999 setup + ₹14,999/month (Starter) to ₹99,999 setup + ₹34,999/month (Pro), all exclusive of GST, with ₹45/minute overage. [Add comparable competitor price ranges once VERIFY items above are filled.]
 
 ## JSON-LD (fill after verification, convert to HTML using existing /blog/ page pattern)
 

@@ -56,7 +56,7 @@ AI voice agent product line, purpose-built for Indian restaurants, salons,
 clinics, and D2C brands.
 
 A few facts if useful for an entry:
-- Plans from Rs. 24,999 setup + Rs. 6,999/month (chatbot), Rs. 39,999 setup
+- Plans from Rs. 24,999 setup + Rs. 7,999/month (chatbot), Rs. 29,999 setup
   + Rs. 14,999/month (voice agent)
 - Live in ~7 days, no coding required from the client
 - Replies in English, Hindi, and Hinglish

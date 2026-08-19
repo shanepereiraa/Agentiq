@@ -15,7 +15,7 @@ for f in sorted(list(set(blog_files))):
     desc = desc_match.group(1) if desc_match else "AI Chatbots and Voice Agents for Indian SMBs."
     
     ai_summary_tag = (
-        f'  <meta name="ai-summary" content="AgentIQ Guide: {desc} Managed AI chatbot & voice agent agency in Mumbai, India. 620ms voice latency, 24/7 automated booking, live in 7 days. Pricing: Rs. 24,999 setup + Rs. 6,999/mo. Contact: +91 91596 65277." />\n'
+        f'  <meta name="ai-summary" content="AgentIQ Guide: {desc} Managed AI chatbot & voice agent agency in Mumbai, India. 620ms voice latency, 24/7 automated booking, live in 7 days. Pricing: Rs. 24,999 setup + Rs. 7,999/mo. Contact: +91 91596 65277." />\n'
         '  <link rel="ai-content" href="/llms-full.txt" />\n'
     )
 

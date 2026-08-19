@@ -49,7 +49,7 @@ Do **not** spread thin across four channels. One active channel (Upwork proposal
 ## 3. Marketplace pricing — what it SHOULD be
 
 ### The reference point
-AgentIQ chatbot Starter = ₹24,999 setup (~$300) + ₹6,999/mo (~$85/mo). That's the *validated* worth of the underlying capability. Current Fiverr Basic ($50) is ~6x below just the AgentIQ *setup fee*, with no recurring component at all — a ~25x total gap. That underpricing actively signals "amateur" and attracts the worst clients.
+AgentIQ chatbot Starter = ₹24,999 setup (~$300) + ₹7,999/mo (~$95/mo). That's the *validated* worth of the underlying capability. Current Fiverr Basic ($50) is ~6x below just the AgentIQ *setup fee*, with no recurring component at all — a ~25x total gap. That underpricing actively signals "amateur" and attracts the worst clients.
 
 ### The reasoning for marketplace pricing
 - **Discount the setup fee, don't gut it.** Marketplace buyers are more price-sensitive, Fiverr takes 20%, and you're building trust with no reviews. A ~30-40% discount off AgentIQ's setup pricing is defensible. Racing to $50 is not.
@@ -79,7 +79,7 @@ AgentIQ chatbot Starter = ₹24,999 setup (~$300) + ₹6,999/mo (~$85/mo). That'
 ### The recurring-revenue bridge (ToS-safe)
 Fiverr one-time gigs have no retainer — but **Fiverr Gig Subscriptions are native and ToS-compliant.** Add a monthly maintenance/optimization offering:
 - **"Monthly Bot Care" subscription — $80/mo:** content updates, prompt tuning, monthly performance check, priority fixes.
-- This is the on-platform analog of AgentIQ's ₹6,999/mo retainer. It converts one-time buyers into MRR *without* violating Fiverr's rules.
+- This is the on-platform analog of AgentIQ's ₹7,999/mo retainer. It converts one-time buyers into MRR *without* violating Fiverr's rules.
 - On Upwork, do this the native way: convert the fixed-price build into an **ongoing hourly/retainer contract** for maintenance — fully encouraged by the platform.
 
 > **ToS guardrail:** Never solicit off-platform payment (WhatsApp/UPI/bank) on Fiverr or Upwork for work sourced there. It's the fastest way to get banned. Use Fiverr Subscriptions and Upwork ongoing contracts for recurring revenue. AgentIQ direct clients are a *separate* pipeline — keep the two worlds cleanly apart, which the existing brand-separation decision already enforces.

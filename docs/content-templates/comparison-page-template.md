@@ -51,7 +51,7 @@ HOW TO USE THIS TEMPLATE
 |---|---|---|
 | Model | Done-for-you (managed service) | [VERIFY: self-serve / managed / hybrid] |
 | Setup | Team builds & trains your assistant | [VERIFY] |
-| Starting price | ₹24,999 setup + ₹6,999/mo (chatbot) | [VERIFY — cite source & date checked] |
+| Starting price | ₹24,999 setup + ₹7,999/mo (chatbot) | [VERIFY — cite source & date checked] |
 | Channels | WhatsApp, Instagram, Website, Voice | [VERIFY] |
 | Languages | English, Hindi, Hinglish (+regional on request) | [VERIFY] |
 | Time to launch | ~7 days, team-managed | [VERIFY] |
@@ -115,4 +115,4 @@ Same rules apply — every non-AgentIQ entry needs [VERIFY] research, not invent
 |---|---|---|---|---|
 | 1 | [VERIFY] | [VERIFY] | [VERIFY] | [VERIFY] |
 | ... | ... | ... | ... | ... |
-| N | AgentIQ | Done-for-you managed service | ₹24,999 setup + ₹6,999/mo (chatbot) · ₹39,999 setup + ₹14,999/mo (voice) | Indian SMBs (restaurants, salons, clinics, D2C) who want a working assistant without managing a platform |
+| N | AgentIQ | Done-for-you managed service | ₹24,999 setup + ₹7,999/mo (chatbot) · ₹29,999 setup + ₹14,999/mo (voice) | Indian SMBs (restaurants, salons, clinics, D2C) who want a working assistant without managing a platform |

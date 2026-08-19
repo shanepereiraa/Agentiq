@@ -28,35 +28,31 @@ OUR SERVICES
 We build AI-powered phone agents that handle inbound and outbound calls 24/7 — no hold music, no missed leads.
 
 What they do:
-- Answer customer calls instantly, any time of day or night
-- Book appointments and send confirmations automatically
+- Answer customer calls instantly in Hindi & English, any time of day or night
+- Book appointments, take reservations, and send confirmations automatically
 - Qualify leads before they ever reach your team
 - Handle FAQs, escalate complex issues to humans when needed
-- Speak naturally in Hindi, Hinglish, or English
-- Log every call and transcript automatically
+- Log every call, transcript, and recording to Google Sheets / CRM automatically
 
-Powered by: VAPI + ElevenLabs + Claude AI
-Best for: Clinics, hospitals, real estate agencies, service businesses, D2C brands
+VOICE AGENT PACKAGES (Overage ₹45/min on all plans · GST extra):
+- Starter — ₹14,999/mo (+ ₹29,999 setup) | Includes 250 mins/mo, 1 dedicated inbound voice agent, Hindi & English support, real-time Google Sheets logging, post-call email/SMS summary.
+- Growth (Popular Pick) — ₹24,999/mo (+ ₹49,999 setup) | Includes 500 mins/mo, inbound + outbound calling, real-time appointment booking, custom brand voice, up to 3 outlets routing, live call transfer to staff.
+- Pro — ₹34,999/mo (+ ₹99,999 setup) | Includes 800 mins/mo, unlimited concurrency & custom lines, bespoke voice cloning, POS/ERP integrations, sentiment analysis, dedicated Account Manager.
 
 2. AI CHATBOTS
 Smart chatbots that live where your customers already are — WhatsApp, your website, Instagram DM.
 
 What they do:
 - Answer questions instantly, 24/7 — no human needed
-- Capture lead details (name, number, requirement) automatically
-- Book appointments and sync with your calendar
-- Handle returns, order tracking, support tickets
-- Connect to your CRM or database — no manual data entry
-- Zero hallucinations — grounded in your business knowledge
+- Official WhatsApp Business API integration (Meta Cloud API)
+- Capture lead details (name, number, requirement) and sync to Google Sheets
+- Product catalog management, payment links, and automated cart recovery
+- English, Hindi, and Hinglish multilingual support
 
-Powered by: Botpress + Claude AI + Make.com
-Platforms: WhatsApp, website chat widget, Instagram DM
-Best for: E-commerce, clinics, real estate, restaurants, service businesses
-
-CHATBOT PACKAGES:
-- Starter Bot — ₹5,085 | AI LLM integration, pre-set conversational journey, answers FAQs, captures leads, handles queries 24/7 | 2-day delivery, 1 revision
-- Business Bot — ₹12,205 | Everything in Starter + appointment scheduling, lead capture, CRM integration. Never miss a lead again | 4-day delivery, 2 revisions
-- Pro AI Bot — ₹25,426 | Full advanced build: CRM integration, multi-platform deployment (WhatsApp + web + Instagram), custom conversation flows, user authentication, multi-language support, source code handover | 6-day delivery, 3 revisions
+CHATBOT PACKAGES (All plans include setup, training & launch · GST extra):
+- Starter — ₹7,999/mo (+ ₹24,999 setup) | Up to 1,000 conversations/mo, Official WhatsApp API, 24/7 automated chats, product catalog, standard email support.
+- Growth (Popular Pick) — ₹14,999/mo (+ ₹39,999 setup) | Up to 2,000 conversations/mo, WhatsApp + Website Chatbot, WhatsApp Pay & payment links, real-time Google Sheets sync, abandoned cart recovery, 24/7 priority support.
+- Pro — ₹24,999/mo (+ ₹79,999 setup) | Up to 5,000 conversations/mo, multi-branch intelligent routing, VIP customer profiling, Dynamic Inventory & Live POS sync, CRM integration (HubSpot/Zoho), dedicated Account Manager.
 
 3. AI SHORT-FORM VIDEO & REELS
 We turn your long-form content — podcasts, interviews, webinars, raw footage — into scroll-stopping Reels, Shorts, and TikToks at scale.
