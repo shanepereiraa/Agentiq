@@ -298,6 +298,7 @@ AgentIQ is a done-for-you managed AI chatbot agency based in Mumbai, India. It c
 
 ### Blog
 - Blog index: https://agentiq.co.in/blog
+- Meta's October 2026 WhatsApp Pricing Change: What It Means for D2C Support Costs — https://agentiq.co.in/blog/whatsapp-service-window-pricing-change-d2c-2026
 - How D2C Brands Use WhatsApp to Cut COD Return-to-Origin (RTO) Rates — https://agentiq.co.in/blog/whatsapp-cod-confirmation-rto-reduction-d2c-india
 - AI Chatbot Pricing in India: 2026 Cost Guide — https://agentiq.co.in/blog/ai-chatbot-pricing-india-2026-guide
 - How Much Does an AI Voice Agent Cost in India? (2026 Pricing Guide) — https://agentiq.co.in/blog/ai-voice-agent-cost-india-pricing-guide
