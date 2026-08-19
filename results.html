@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Client Results & Case Studies — AgentIQ AI</title>
+  <meta name="description" content="Real results from Indian businesses using AgentIQ AI chatbots and voice agents. Slashed RTO, zero missed table bookings, and 24/7 lead conversion." />
+  <link rel="canonical" href="https://agentiq.co.in/results" />
+  
+  <meta property="og:title" content="Client Results & Case Studies — AgentIQ AI" />
+  <meta property="og:description" content="Real results from Indian businesses using AgentIQ AI chatbots and voice agents." />
+  <meta property="og:url" content="https://agentiq.co.in/results" />
+  <meta property="og:image" content="https://agentiq.co.in/og-image.png" />
+  
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/tailwind.min.css" />
+  
+  <style>
+    @font-face {
+      font-family: 'Cabinet Grotesk';
+      font-weight: 700 800 900;
+      font-display: swap;
+      src: url('/assets/fonts/CabinetGrotesk-Variable.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Plus Jakarta Sans';
+      font-weight: 400 500 600 700;
+      font-display: swap;
+      src: url('/assets/fonts/PlusJakartaSans-Variable.woff2') format('woff2');
+    }
+    .font-display { font-family: 'Cabinet Grotesk', system-ui, sans-serif; }
+    .font-sans { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
+    .glass { background: rgba(6,15,40,.80); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,.10); }
+    .glass-card { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); backdrop-filter: blur(12px); }
+    .hero-grad-text { background: linear-gradient(135deg, #FF9F45, #FF6B5C, #22D3EE); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .logo-grad-text { background: linear-gradient(135deg, #FF9F45, #FF6B5C); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .cta-glow-pink { background: linear-gradient(135deg,#ec4899,#a855f7); box-shadow: 0 4px 25px rgba(236,72,153,.35); }
+
+    /* ── Floating WhatsApp ── */
+    #wa-float {
+      position: fixed; bottom: 88px; right: 20px; z-index: 9998;
+      width: 52px; height: 52px; border-radius: 50%;
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 22px rgba(37,211,102,.5);
+      transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+    }
+    #wa-float:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(37,211,102,.7); filter: brightness(1.06); }
+    #wa-float:focus-visible { outline: 3px solid #22D3EE; outline-offset: 3px; }
+    @media (max-width: 767px) { #wa-float { bottom: 148px; right: 16px; } }
+
+    /* ── AI Chat Widget ── */
+    #aiq-float { position: fixed; bottom: 24px; right: 20px; z-index: 9999; }
+    @media (max-width: 767px) { #aiq-float { bottom: 84px; right: 16px; } }
+    #aiq-toggle { width: 52px; height: 52px; border-radius: 50%; background: linear-gradient(135deg, #FF9F45, #FF6B5C); border: none; cursor: pointer; box-shadow: 0 4px 22px rgba(255,107,92,.5); display: flex; align-items: center; justify-content: center; position: relative; }
+    #aiq-notif { position: absolute; top: -3px; right: -3px; width: 18px; height: 18px; border-radius: 50%; background: #22D3EE; color: #07173a; font-size: 10px; font-weight: 700; display: flex; align-items: center; justify-content: center; border: 2px solid #07173a; }
+    #aiq-notif.aiq-gone { display: none; }
+    #aiq-panel { position: absolute; bottom: 60px; right: 0; width: 340px; background: rgba(7,23,58,.96); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,.12); border-radius: 20px; box-shadow: 0 16px 60px rgba(0,0,0,.55); display: flex; flex-direction: column; overflow: hidden; transition: opacity .2s ease, transform .2s ease; }
+    #aiq-panel.aiq-shut { opacity: 0; transform: translateY(10px) scale(.97); pointer-events: none; }
+    #aiq-hdr { padding: 13px 15px; background: linear-gradient(135deg, rgba(255,159,69,.18), rgba(255,107,92,.14)); border-bottom: 1px solid rgba(255,255,255,.09); display: flex; align-items: center; gap: 10px; }
+    #aiq-hdr .av { width: 34px; height: 34px; border-radius: 50%; background: linear-gradient(135deg, #FF9F45, #FF6B5C); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    #aiq-hdr .info p.name { font-size: 13px; font-weight: 600; color: #fff; line-height: 1.2; }
+    #aiq-hdr .info .st { font-size: 11px; color: #34d399; display: flex; align-items: center; gap: 4px; }
+    #aiq-hdr .info .st::before { content: ''; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #34d399; }
+    #aiq-x { margin-left: auto; background: none; border: none; color: rgba(255,255,255,.7); cursor: pointer; font-size: 17px; line-height: 1; width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+    #aiq-lead-form { padding: 18px 16px; display: flex; flex-direction: column; gap: 10px; }
+    #aiq-lead-form p { font-size: 12px; color: #cbd5e1; line-height: 1.4; }
+    #aiq-lead-form input { width: 100%; padding: 9px 12px; border-radius: 10px; font-size: 13px; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.14); color: #fff; outline: none; }
+    #aiq-lead-start { margin-top: 4px; padding: 10px; border-radius: 10px; font-size: 13px; font-weight: 600; background: linear-gradient(135deg, #FF9F45, #FF6B5C); color: #fff; border: none; cursor: pointer; }
+    #aiq-log { flex: 1; overflow-y: auto; padding: 12px 11px; display: flex; flex-direction: column; gap: 9px; max-height: 300px; }
+    .ab { max-width: 85%; padding: 9px 13px; border-radius: 15px; font-size: 13px; line-height: 1.55; word-wrap: break-word; }
+    .ab.bot { background: rgba(255,255,255,.08); color: #e2e8f0; align-self: flex-start; }
+    .ab.me { background: linear-gradient(135deg,#FF9F45,#FF6B5C); color: #fff; align-self: flex-end; }
+    #aiq-bar { padding: 9px 11px; background: rgba(4,13,33,.85); border-top: 1px solid rgba(255,255,255,.08); display: flex; gap: 7px; align-items: center; }
+    #aiq-in { flex: 1; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12); border-radius: 10px; padding: 8px 11px; font-size: 13px; color: #fff; outline: none; }
+    #aiq-go { width: 34px; height: 34px; border-radius: 10px; background: linear-gradient(135deg, #FF9F45, #FF6B5C); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+
+    /* ── Voice Assistant Widget ── */
+    #vaq-float { position: fixed; bottom: 24px; left: 20px; z-index: 9999; }
+    @media (max-width: 767px) { #vaq-float { bottom: 80px; } }
+    #vaq-btn { width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, #22D3EE, #3B82F6); border: none; cursor: pointer; box-shadow: 0 4px 22px rgba(34,211,238,.5); display: flex; align-items: center; justify-content: center; }
+    #vaq-status { position: absolute; bottom: calc(100% + 8px); left: 0; background: rgba(10,14,28,.92); border: 1px solid rgba(34,211,238,.35); color: #A5E9FA; font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 20px; white-space: nowrap; opacity: 0; }
+
+    /* ── Mobile quick bar ── */
+    .mqb-bar { display: none; backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); background: rgba(10,10,10,0.8); border-top: 1px solid rgba(255,255,255,0.10); padding-bottom: calc(0.75rem + env(safe-area-inset-bottom)); }
+    @media (max-width: 767px) { .mqb-bar { display: flex; } body { padding-bottom: calc(4.25rem + env(safe-area-inset-bottom)); } }
+    .mqb-btn { display: flex; align-items: center; justify-content: center; gap: 0.4rem; min-height: 48px; padding: 0.7rem 0.75rem; border-radius: 0.85rem; font-weight: 600; font-size: 0.75rem; }
+    .mqb-btn-whatsapp { background: #15803D; color: #fff; }
+    .mqb-btn-demo { background: linear-gradient(135deg,#FF6B5C,#FF9F45); color: #0b1222; }
+  </style>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RD3SW71LDT"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RD3SW71LDT');
+  </script>
+</head>
+<body class="font-sans text-slate-300 bg-[#060f28] min-h-screen selection:bg-cyan-500/30 selection:text-cyan-200">
+
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-cyan-500 focus:text-slate-950 focus:font-bold focus:rounded-lg">Skip to main content</a>
+
+  <!-- Header -->
+  <header class="fixed top-3 left-3 right-3 z-50">
+    <nav id="site-nav" aria-label="Primary" class="relative max-w-6xl mx-auto glass rounded-2xl px-4 sm:px-5 py-3 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2.5 group" aria-label="AgentIQ home">
+        <span class="font-display font-700 text-lg text-white tracking-tight inline-flex items-baseline gap-0.5">Agent<span class="logo-grad-text">IQ</span><svg class="w-2.5 h-2.5 shrink-0" viewBox="0 0 16 14" fill="none" aria-hidden="true" focusable="false"><defs><linearGradient id="iq-wave-pri-hdr" x1="0" y1="14" x2="16" y2="0"><stop offset="0" stop-color="#FF8A5B"/><stop offset="0.5" stop-color="#FF5C8A"/><stop offset="1" stop-color="#C74AFF"/></linearGradient></defs><rect x="0" y="9" width="3" height="5" rx="1.2" fill="url(#iq-wave-pri-hdr)"/><rect x="4.5" y="6" width="3" height="8" rx="1.2" fill="url(#iq-wave-pri-hdr)"/><rect x="9" y="3" width="3" height="11" rx="1.2" fill="url(#iq-wave-pri-hdr)"/><rect x="13" y="0" width="3" height="14" rx="1.2" fill="url(#iq-wave-pri-hdr)"/></svg></span>
+      </a>
+
+      <!-- Desktop Links -->
+      <div class="hidden md:flex items-center gap-6 text-sm text-slate-300">
+        <a href="/#how" class="hover:text-white transition-colors">Chatbots</a>
+        <a href="/#voice" class="hover:text-white transition-colors">Voice AI</a>
+        <a href="/try-your-bot" class="hover:text-white transition-colors">Try Bot</a>
+        <a href="/integrations" class="hover:text-white transition-colors">Integrations</a>
+        <a href="/pricing" class="hover:text-white transition-colors">Pricing</a>
+        <a href="/blog" class="hover:text-white transition-colors">Blog</a>
+        <a href="/faq" class="hover:text-white transition-colors">FAQ</a>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <a href="/#book" class="hidden md:inline-flex cursor-pointer min-h-[48px] items-center text-sm font-500 px-4 py-2 rounded-xl bg-white text-ink hover:bg-cyan hover:text-slate-950 transition-colors duration-200 font-semibold">Book Free Demo</a>
+        <button id="aiq-nav-toggle" type="button" class="md:hidden grid place-items-center min-w-[48px] min-h-[48px] rounded-xl text-slate-200 hover:text-white hover:bg-white/10 transition-colors" aria-label="Open menu" aria-haspopup="true" aria-expanded="false" aria-controls="aiq-mobile-nav">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+        </button>
+      </div>
+
+      <!-- Mobile nav panel -->
+      <div id="aiq-mobile-nav" class="aiq-shut md:hidden rounded-2xl p-5 mt-2" inert>
+        <div class="flex flex-col gap-3 text-base text-slate-200">
+          <a href="/restaurants" class="pl-3 text-sm text-slate-300">🍽️ Restaurants &amp; Cafes</a>
+          <a href="/d2c-ecommerce" class="pl-3 text-sm text-slate-300">📦 D2C &amp; E-Commerce</a>
+          <a href="/clinics" class="pl-3 text-sm text-slate-300">🏥 Clinics &amp; Healthcare</a>
+          <a href="/salons" class="pl-3 text-sm text-slate-300">💇 Salons &amp; Spas</a>
+          <a href="/#how" class="py-2 hover:text-white transition-colors">Chatbots</a>
+          <a href="/#voice" class="py-2 hover:text-white transition-colors">Voice AI</a>
+          <a href="/try-your-bot" class="py-2 hover:text-white transition-colors">Try Bot</a>
+          <a href="/integrations" class="py-2 hover:text-white transition-colors">Integrations</a>
+          <a href="/pricing" class="py-2 hover:text-white transition-colors">Pricing</a>
+          <a href="/blog" class="py-2 hover:text-white transition-colors">Blog</a>
+          <a href="/faq" class="py-2 hover:text-white transition-colors">FAQ</a>
+          <a href="/#book" class="mt-2 inline-flex items-center justify-center py-3 rounded-xl bg-white text-slate-950 font-600 text-sm">Book Free Demo</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main" tabindex="-1" class="focus:outline-none pt-28 pb-20 px-5">
+    <div class="max-w-6xl mx-auto">
+
+      <!-- Breadcrumb -->
+      <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-xs text-slate-400 mb-8">
+        <a href="/" class="hover:text-slate-200 transition-colors">Home</a>
+        <span>/</span>
+        <span class="text-slate-200">Client Results</span>
+      </nav>
+
+      <!-- Hero Header -->
+      <section class="text-center max-w-3xl mx-auto mb-16">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-600 mb-6">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          Proven Business Impact Across India
+        </div>
+        <h1 class="font-display font-800 text-white text-4xl sm:text-5xl md:text-6xl leading-tight tracking-tight mb-4">
+          Real Numbers. <span class="hero-grad-text">Real Revenue Growth.</span>
+        </h1>
+        <p class="text-slate-300 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
+          See how Indian restaurants, D2C brands, clinics, and salons capture 100% of inbound demand without adding support staff.
+        </p>
+      </section>
+
+      <!-- METRICS STRIP -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 mb-20">
+        <div class="glass-card rounded-2xl p-6 text-center border border-white/10">
+          <p class="font-display font-800 text-3xl sm:text-4xl text-emerald-400 mb-1">0</p>
+          <p class="text-xs text-slate-300 uppercase tracking-wider font-600">Missed Phone Bookings</p>
+        </div>
+        <div class="glass-card rounded-2xl p-6 text-center border border-white/10">
+          <p class="font-display font-800 text-3xl sm:text-4xl text-cyan mb-1">&lt; 2s</p>
+          <p class="text-xs text-slate-300 uppercase tracking-wider font-600">Avg WhatsApp Reply Time</p>
+        </div>
+        <div class="glass-card rounded-2xl p-6 text-center border border-white/10">
+          <p class="font-display font-800 text-3xl sm:text-4xl text-pink-400 mb-1">28%</p>
+          <p class="text-xs text-slate-300 uppercase tracking-wider font-600">Cut in D2C RTO Losses</p>
+        </div>
+        <div class="glass-card rounded-2xl p-6 text-center border border-white/10">
+          <p class="font-display font-800 text-3xl sm:text-4xl text-purple-400 mb-1">24/7</p>
+          <p class="text-xs text-slate-300 uppercase tracking-wider font-600">Autonomous Coverage</p>
+        </div>
+      </div>
+
+      <!-- INDUSTRY CASE STUDIES -->
+      <div class="grid md:grid-cols-2 gap-8 mb-20">
+
+        <!-- Case Study 1: D2C Brand -->
+        <div class="glass-card rounded-3xl p-8 border border-white/10">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs font-700 px-3 py-1 rounded-full bg-orange-500/10 text-orange-400 border border-orange-500/20 uppercase tracking-wider">D2C Streetwear Brand</span>
+            <span class="text-xs text-emerald-400 font-600">3.4x ROI</span>
+          </div>
+          <h3 class="font-display font-700 text-white text-2xl mb-3">Slashing Cash-on-Delivery RTO by 31%</h3>
+          <p class="text-slate-300 text-sm leading-relaxed mb-6">
+            By triggering an automated WhatsApp confirmation message within 60 seconds of order placement with address verification, fake orders were filtered immediately before shipping.
+          </p>
+          <ul class="space-y-2 text-xs text-slate-400 border-t border-white/10 pt-4">
+            <li class="flex items-center gap-2"><span class="text-emerald-400 font-bold">✓</span> ₹4.2L saved in monthly reverse courier logistics</li>
+            <li class="flex items-center gap-2"><span class="text-emerald-400 font-bold">✓</span> 84% automated answers to &ldquo;Where is my order?&rdquo; (WISMO)</li>
+          </ul>
+        </div>
+
+        <!-- Case Study 2: Fine Dine Restaurant -->
+        <div class="glass-card rounded-3xl p-8 border border-white/10">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs font-700 px-3 py-1 rounded-full bg-pink-500/10 text-pink-400 border border-pink-500/20 uppercase tracking-wider">Multi-Outlet Restaurant</span>
+            <span class="text-xs text-emerald-400 font-600">140+ Tables / Wk</span>
+          </div>
+          <h3 class="font-display font-700 text-white text-2xl mb-3">Zero Missed Table Bookings on Peak Weekends</h3>
+          <p class="text-slate-300 text-sm leading-relaxed mb-6">
+            An AI Voice Agent handles simultaneous phone calls on Friday and Saturday evenings, taking table reservations, dietary preferences, and sending location pins over WhatsApp instantly.
+          </p>
+          <ul class="space-y-2 text-xs text-slate-400 border-t border-white/10 pt-4">
+            <li class="flex items-center gap-2"><span class="text-emerald-400 font-bold">✓</span> Hindi, Hinglish & English natural phone voice</li>
+            <li class="flex items-center gap-2"><span class="text-emerald-400 font-bold">✓</span> 100% reservation details synced to Google Sheets in real-time</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- CTA -->
+      <section class="glass-card rounded-3xl p-8 sm:p-12 border border-white/10 text-center">
+        <h2 class="font-display font-700 text-white text-3xl sm:text-4xl mb-4">Want Similar Results for Your Business?</h2>
+        <p class="text-slate-300 text-base max-w-xl mx-auto mb-8">
+          Book a free 20-minute live demonstration. We will analyze your inbound channels and show you an exact revenue model.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="/#book" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-white text-slate-950 hover:bg-cyan hover:text-slate-950 font-bold text-sm transition-colors duration-200">
+            Book Free Demo
+          </a>
+          <a href="https://wa.me/919159665277?text=Hi%20AgentIQ%2C%20I%27d%20like%20to%20see%20more%20case%20studies" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm flex items-center justify-center gap-2 transition-colors duration-200">
+            <img src="/assets/icons8-whatsapp-48.png" alt="WhatsApp" class="w-5 h-5 object-contain" width="20" height="20" />
+            Chat on WhatsApp
+          </a>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="px-5 pt-16 pb-10 border-t border-white/8">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-10 mb-12">
+        <div class="col-span-2 md:col-span-1">
+          <a href="/" class="flex items-center gap-2.5 mb-4" aria-label="AgentIQ home">
+            <span class="font-display font-700 text-lg text-white tracking-tight inline-flex items-baseline gap-0.5">Agent<span class="logo-grad-text">IQ</span><svg class="w-2.5 h-2.5 shrink-0" viewBox="0 0 16 14" fill="none" aria-hidden="true" focusable="false"><defs><linearGradient id="iq-wave-pri-ftr" x1="0" y1="14" x2="16" y2="0"><stop offset="0" stop-color="#FF8A5B"/><stop offset="0.5" stop-color="#FF5C8A"/><stop offset="1" stop-color="#C74AFF"/></linearGradient></defs><rect x="0" y="9" width="3" height="5" rx="1.2" fill="url(#iq-wave-pri-ftr)"/><rect x="4.5" y="6" width="3" height="8" rx="1.2" fill="url(#iq-wave-pri-ftr)"/><rect x="9" y="3" width="3" height="11" rx="1.2" fill="url(#iq-wave-pri-ftr)"/><rect x="13" y="0" width="3" height="14" rx="1.2" fill="url(#iq-wave-pri-ftr)"/></svg></span>
+          </a>
+          <p class="text-slate-400 text-sm leading-relaxed max-w-[200px]">AI chatbots for Indian businesses — WhatsApp, Instagram &amp; Web.</p>
+          <div class="flex items-center gap-2.5 mt-5">
+            <a href="https://wa.me/919159665277" target="_blank" rel="noopener noreferrer" aria-label="AgentIQ on WhatsApp" class="w-8 h-8 rounded-full bg-white/[0.06] hover:bg-emerald-500/20 border border-white/10 hover:border-emerald-500/40 text-slate-400 hover:text-emerald-400 flex items-center justify-center transition-all duration-200 hover:scale-110">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
+            </a>
+            <a href="https://instagram.com/agentiqco" target="_blank" rel="noopener noreferrer" aria-label="AgentIQ on Instagram" class="w-8 h-8 rounded-full bg-white/[0.06] hover:bg-pink-500/20 border border-white/10 hover:border-pink-500/40 text-slate-400 hover:text-pink-400 flex items-center justify-center transition-all duration-200 hover:scale-110">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069M12 0C8.741 0 8.332.014 7.052.072 2.695.272.273 2.69.073 7.052.014 8.332 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.69.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0m0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324M12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8m6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/shanepereiraa/" target="_blank" rel="noopener noreferrer" aria-label="Shane Pereira on LinkedIn" class="w-8 h-8 rounded-full bg-white/[0.06] hover:bg-blue-500/20 border border-white/10 hover:border-blue-500/40 text-slate-400 hover:text-blue-400 flex items-center justify-center transition-all duration-200 hover:scale-110">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </a>
+            <a href="https://www.facebook.com/people/Agentiq/61590432627451" target="_blank" rel="noopener noreferrer" aria-label="AgentIQ on Facebook" class="w-8 h-8 rounded-full bg-white/[0.06] hover:bg-blue-600/20 border border-white/10 hover:border-blue-600/40 text-slate-400 hover:text-blue-400 flex items-center justify-center transition-all duration-200 hover:scale-110">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="mailto:shane@agentiq.co.in" aria-label="Email AgentIQ" class="w-8 h-8 rounded-full bg-white/[0.06] hover:bg-cyan-500/20 border border-white/10 hover:border-cyan-500/40 text-slate-400 hover:text-cyan flex items-center justify-center transition-all duration-200 hover:scale-110">
+              <svg class="w-4 h-4 fill-none stroke-current" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <p class="text-white font-600 text-sm mb-4">Services</p>
+          <ul class="space-y-3 text-sm text-slate-400">
+            <li><a href="/ai-chatbot-india" class="hover:text-white transition-colors">AI Chatbots</a></li>
+            <li><a href="/ai-voice-agents-india" class="hover:text-white transition-colors">Voice Agents</a></li>
+            <li><a href="/d2c-ecommerce" class="hover:text-white transition-colors">D2C &amp; E-Commerce</a></li>
+            <li><a href="/restaurants" class="hover:text-white transition-colors">Restaurants &amp; Cafés</a></li>
+            <li><a href="/salons" class="hover:text-white transition-colors">Salons &amp; Spas</a></li>
+            <li><a href="/clinics" class="hover:text-white transition-colors">Clinics &amp; Healthcare</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-white font-600 text-sm mb-4">Company</p>
+          <ul class="space-y-3 text-sm text-slate-400">
+            <li><a href="/results" class="text-white transition-colors">Results</a></li>
+            <li><a href="/pricing" class="hover:text-white transition-colors">Pricing</a></li>
+            <li><a href="/faq" class="hover:text-white transition-colors">FAQ</a></li>
+            <li><a href="/blog" class="hover:text-white transition-colors">Blog</a></li>
+            <li><a href="/privacy-security" class="hover:text-white transition-colors">Security &amp; Privacy</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-white font-600 text-sm mb-4">Compare & Platforms</p>
+          <ul class="space-y-3 text-sm text-slate-400">
+            <li><a href="/ai-chatbot-india" class="hover:text-white transition-colors">AI Chatbot India</a></li>
+            <li><a href="/ai-voice-agents-india" class="hover:text-white transition-colors">AI Voice Agents India</a></li>
+            <li><a href="/agentiq-vs-wati" class="hover:text-white transition-colors">AgentIQ vs WATI</a></li>
+            <li><a href="/agentiq-vs-yellow-ai" class="hover:text-white transition-colors">AgentIQ vs Yellow.ai</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-white font-600 text-sm mb-4">Contact</p>
+          <ul class="space-y-3 text-sm text-slate-400">
+            <li><a href="tel:+919159665277" class="hover:text-white transition-colors">+91 91596 65277</a></li>
+            <li><a href="https://wa.me/919159665277" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">WhatsApp us</a></li>
+            <li><a href="/#book" class="hover:text-white transition-colors">Book a demo</a></li>
+            <li class="text-slate-400">Mumbai, India 🇮🇳</li>
+          </ul>
+        </div>
+      </div>
+      <div class="pt-8 border-t border-white/8 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400">
+        <p>© <span id="year">2026</span> AgentIQ. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- AI Chat Widget -->
+  <div id="aiq-float">
+    <button id="aiq-toggle" type="button" aria-label="Chat with AgentIQ AI" aria-haspopup="dialog" aria-expanded="false" aria-controls="aiq-panel">
+      <img src="/assets/icons8-message-96.png" alt="Chat" class="w-8 h-8 object-contain" width="32" height="32" aria-hidden="true" loading="eager" />
+      <span id="aiq-notif" class="aiq-gone" aria-hidden="true">1</span>
+    </button>
+    <div id="aiq-panel" class="aiq-shut" role="dialog" aria-label="AgentIQ chat assistant" inert>
+      <div id="aiq-hdr">
+        <div class="av">
+          <img src="/assets/icons8-message-48.png" alt="" class="w-5 h-5 object-contain" width="20" height="20" aria-hidden="true" />
+        </div>
+        <div class="info">
+          <p class="name">AgentIQ AI</p>
+          <span class="st">Typically replies instantly</span>
+        </div>
+        <button id="aiq-x" type="button" aria-label="Close chat">&#x2715;</button>
+      </div>
+      <div id="aiq-lead-form">
+        <p>👋 Before we chat, tell us a bit about yourself:</p>
+        <label for="aiq-lname" class="sr-only">Your name</label>
+        <input id="aiq-lname" type="text" placeholder="Your name" maxlength="60" autocomplete="name" />
+        <label for="aiq-lphone" class="sr-only">WhatsApp / phone number</label>
+        <input id="aiq-lphone" type="tel" placeholder="WhatsApp / phone number" maxlength="15" autocomplete="tel" />
+        <label for="aiq-lbiz" class="sr-only">Business type</label>
+        <input id="aiq-lbiz" type="text" placeholder="Business type (e.g. Retail, Healthcare)" maxlength="80" />
+        <button id="aiq-lead-start" type="button">Start Chat →</button>
+      </div>
+      <div id="aiq-log" aria-live="polite" style="display:none"></div>
+      <div id="aiq-bar" style="display:none">
+        <input id="aiq-in" type="text" placeholder="Ask anything…" aria-label="Type your message to AgentIQ" maxlength="400" autocomplete="off" />
+        <button id="aiq-go" type="button" aria-label="Send message">
+          <svg viewBox="0 0 24 24" fill="white" class="w-3.5 h-3.5" aria-hidden="true"><path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating WhatsApp button -->
+  <a id="wa-float" href="https://wa.me/919159665277?text=Hi%20AgentIQ%2C%20I%27d%20like%20to%20book%20a%20demo" target="_blank" rel="noopener noreferrer" aria-label="Chat with AgentIQ on WhatsApp" class="cursor-pointer">
+    <img src="/assets/icons8-whatsapp-96.png" alt="WhatsApp" class="w-8 h-8 object-contain" width="32" height="32" loading="eager" />
+  </a>
+
+  <!-- Voice Assistant Widget -->
+  <div id="vaq-float">
+    <button id="vaq-btn" data-state="idle" aria-label="Talk to AgentIQ voice assistant">
+      <svg class="vaq-icon-mic" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M12 2a3 3 0 0 1 3 3v7a3 3 0 0 1-6 0V5a3 3 0 0 1 3-3z"/>
+        <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+        <line x1="12" y1="19" x2="12" y2="23"/>
+        <line x1="8" y1="23" x2="16" y2="23"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Quick Bar -->
+  <div id="mobile-quickbar" class="mqb-bar fixed bottom-0 left-0 right-0 z-50 gap-3 px-4 py-3">
+    <a href="https://wa.me/919159665277?text=Hi%20AgentIQ%2C%20I%27d%20like%20to%20know%20more" target="_blank" rel="noopener noreferrer" class="mqb-btn mqb-btn-whatsapp flex-1">
+      <img src="/assets/icons8-whatsapp-48.png" alt="" class="w-5 h-5 object-contain" width="20" height="20" aria-hidden="true" />
+      WhatsApp Us
+    </a>
+    <a href="/#book" class="mqb-btn mqb-btn-demo flex-1">
+      Book Free Demo
+    </a>
+  </div>
+
+  <script>
+    window.AgentIQConfig = {
+      apiBase: 'https://agentiq-chatbot.onrender.com',
+      vapiPublicKey: 'b430edb7-0dc0-4c14-9e56-5445fdba2912'
+    };
+  </script>
+
+  <!-- Mobile Nav Controller -->
+  <script>
+    (function(){
+      "use strict";
+      var navToggle = document.getElementById("aiq-nav-toggle");
+      var navPanel = document.getElementById("aiq-mobile-nav");
+      if (!navToggle || !navPanel) return;
+      var navOpen = false;
+      function openNav() { navOpen = true; navPanel.removeAttribute("inert"); navPanel.classList.remove("aiq-shut"); navToggle.setAttribute("aria-expanded", "true"); }
+      function closeNav() { navOpen = false; navPanel.classList.add("aiq-shut"); navToggle.setAttribute("aria-expanded", "false"); navPanel.setAttribute("inert", ""); }
+      navToggle.addEventListener("click", function() { navOpen ? closeNav() : openNav(); });
+      function syncNavState() {
+        document.body.classList.toggle("aiq-nav-open", !navPanel.classList.contains("aiq-shut"));
+      }
+      new MutationObserver(syncNavState).observe(navPanel, { attributes: true, attributeFilter: ["class"] });
+      syncNavState();
+    })();
+  </script>
+</body>
+</html>
