@@ -19,14 +19,17 @@ export default function IndustryPills() {
   return (
     <section className="relative py-16 sm:py-24 px-5 overflow-hidden" id="explore-industries">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-semibold uppercase tracking-wider mb-4">
-            🏢 Tailored By Vertical
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-400 text-xs font-semibold uppercase tracking-widest mb-4">
+            📁 TAILORED BY VERTICAL
           </div>
-          <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight leading-tight">
-            Explore Solutions For <span className="bg-gradient-to-r from-cyan-400 via-teal-300 to-emerald-400 bg-clip-text text-transparent">Your Exact Industry</span>
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-white mb-4">
+            Explore Solutions for{" "}
+            <span className="bg-gradient-to-r from-cyan-400 via-teal-300 to-blue-500 bg-clip-text text-transparent">
+              Every Industry
+            </span>
           </h2>
-          <p className="mt-4 text-slate-300 text-base sm:text-lg">
+          <p className="text-gray-400 text-base md:text-lg">
             Every vertical has unique booking logic, compliance rules, and customer behavior. Explore purpose-built architectures for your sector.
           </p>
         </div>
