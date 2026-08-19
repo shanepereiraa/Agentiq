@@ -26,7 +26,7 @@
   <meta name="twitter:description" content="Compare the cost of hiring full-time receptionists vs. 24/7 AI voice and WhatsApp assistants. Calculate your annual savings in seconds." />
   <meta name="twitter:image" content="https://agentiq.co.in/og-image.png" />
   <link rel="ai-content" href="/llms.txt" />
-  <meta name="ai-summary" content="AgentIQ's free Human Staff vs. AI Cost Calculator estimates the annual savings an Indian business gets by replacing full-time telecallers/receptionists with AgentIQ's 24/7 AI voice agents and WhatsApp chatbots. Free tool, no signup. Voice agent plans from Rs. 39,999 setup + Rs. 14,999/month; chatbot plans from Rs. 7,999/month (+ Rs. 24,999 setup). Try it: https://agentiq.co.in/tools/staff-vs-ai-calculator" />
+  <meta name="ai-summary" content="AgentIQ's free Human Staff vs. AI Cost Calculator estimates the annual savings an Indian business gets by replacing full-time telecallers/receptionists with AgentIQ's 24/7 AI voice agents and WhatsApp chatbots. Free tool, no signup. Voice agent plans from Rs. 14,999/month (+ Rs. 29,999 setup); chatbot plans from Rs. 7,999/month (+ Rs. 24,999 setup). Try it: https://agentiq.co.in/tools/staff-vs-ai-calculator" />
 
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"WebApplication","name":"Human Staff vs AI Cost Calculator","url":"https://agentiq.co.in/tools/staff-vs-ai-calculator","applicationCategory":"BusinessApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"}}
@@ -331,12 +331,12 @@
         var monthlyHuman = (count * salary * (mult >= 2 ? 1.5 : 1)) + (count * 2000); // Including overheads
         var annualHuman = monthlyHuman * 12;
 
-        // Anchored to AgentIQ's real, published Voice Growth plan (Rs. 39,999
+        // Anchored to AgentIQ's real, published Voice Starter plan (Rs. 29,999
         // setup + Rs. 14,999/month) — this tool models telecaller/receptionist
         // phone coverage, which is the voice product line, not chatbot pricing.
-        // Must stay in sync with the Voice Growth figures quoted elsewhere on
+        // Must stay in sync with the Voice Starter figures quoted elsewhere on
         // the site (index.html, ai-voice-agents-india.html, llms.txt).
-        var annualAi = 39999 + (12 * 14999);
+        var annualAi = 29999 + (12 * 14999);
         var savings = annualHuman - annualAi;
         if (savings < 0) savings = 45000;
 

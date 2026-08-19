@@ -135,42 +135,56 @@
         "overage_rate_per_minute": 45,
         "plans": [
           {
-            "name": "Voice Growth",
-            "setup_fee": 39999,
+            "name": "Starter",
+            "tagline": "For restaurants & single-outlet businesses.",
+            "setup_fee": 29999,
             "monthly_fee": 14999,
             "minutes_included": 250,
             "best_for": "Restaurants and single-outlet businesses",
             "includes": [
-              "1 inbound voice agent",
-              "Hindi and English support",
-              "CRM and Google Sheets logging",
-              "Monthly call report"
+              "1 Dedicated inbound voice agent",
+              "Human-like natural conversation & interruptions handling",
+              "Hindi & English conversational support",
+              "Real-time CRM & Google Sheets call logging",
+              "Instant post-call email/SMS summary & alerts",
+              "Monthly call analytics report",
+              "Standard email support"
             ]
           },
           {
-            "name": "Voice Professional",
-            "setup_fee": 69999,
+            "name": "Growth",
+            "popular_pick": true,
+            "tagline": "For D2C brands & multi-outlet restaurants.",
+            "setup_fee": 49999,
             "monthly_fee": 24999,
             "minutes_included": 500,
-            "best_for": "D2C brands and multi-outlet restaurants",
+            "best_for": "D2C brands & multi-outlet restaurants",
             "includes": [
-              "Inbound and outbound agents",
-              "Appointment booking with CRM integration",
-              "Custom voice and multilingual support",
-              "Up to 3 outlets"
+              "Everything in Starter",
+              "Inbound + automated outbound calling agents",
+              "Real-time appointment booking & table reservations",
+              "Custom brand voice tone & multilingual support",
+              "Up to 3 branch / outlet intelligent routing",
+              "Live call transfer to human staff on escalation",
+              "Monthly voice latency & script optimization",
+              "24/7 priority support"
             ]
           },
           {
-            "name": "Voice Advanced",
-            "setup_fee": 129999,
+            "name": "Pro",
+            "tagline": "For chains, high-volume D2C & enterprise.",
+            "setup_fee": 99999,
             "monthly_fee": 34999,
             "minutes_included": 800,
-            "best_for": "Chains, large D2C brands, and enterprise",
+            "best_for": "Chains, high-volume D2C & enterprise",
             "includes": [
-              "Unlimited voice agents",
-              "Voice cloning and custom integrations",
-              "Multi-location support",
-              "24/7 priority support"
+              "Everything in Starter & Growth",
+              "Unlimited agent concurrency & custom lines",
+              "Bespoke voice cloning & custom audio branding",
+              "Full multi-location enterprise routing",
+              "Custom CRM / POS / ERP direct integrations",
+              "Advanced sentiment analysis & call recording archive",
+              "Dedicated Account Manager & on-call phone support"
             ]
           }
         ]

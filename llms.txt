@@ -57,15 +57,15 @@ GST extra. (Meta WhatsApp conversation fees charged separately by Meta). Every p
 
 ### AI Voice Agent Plans
 
-| Plan                | One-Time Setup | Monthly Retainer | Minutes Included | Overage    |
-|---------------------|---------------|-----------------|-----------------|------------|
-| Voice Growth        | Rs. 39,999    | Rs. 14,999      | 250 min/month   | Rs. 45/min |
-| Voice Professional  | Rs. 69,999    | Rs. 24,999      | 500 min/month   | Rs. 45/min |
-| Voice Advanced      | Rs. 1,29,999  | Rs. 34,999      | 800 min/month   | Rs. 45/min |
+| Plan       | One-Time Setup | Monthly Retainer | Minutes Included | Overage    | Scope                                                    |
+|------------|---------------|-----------------|-----------------|------------|-------------------------------------------------------------|
+| Starter    | Rs. 29,999    | Rs. 14,999      | 250 min/month   | Rs. 45/min | 1 dedicated inbound agent, Hindi & English, CRM/Sheets call logging |
+| Growth     | Rs. 49,999    | Rs. 24,999      | 500 min/month   | Rs. 45/min | Everything in Starter, inbound+outbound, appointment booking, up to 3 outlets |
+| Pro        | Rs. 99,999    | Rs. 34,999      | 800 min/month   | Rs. 45/min | Everything in Starter & Growth, unlimited agents, voice cloning, custom CRM/POS integrations, multi-location routing |
 
-Voice Growth: 1 inbound agent, Hindi + English, CRM/Sheets logging. Best for restaurants and single-outlet businesses.
-Voice Professional: Inbound + outbound agents, appointment booking, custom voice, multilingual, up to 3 outlets.
-Voice Advanced: Unlimited agents, voice cloning, custom integrations, multi-location, 24/7 priority support.
+Starter: 1 dedicated inbound agent, Hindi + English, CRM/Sheets logging. Best for restaurants and single-outlet businesses.
+Growth (Popular Pick): Inbound + outbound agents, appointment booking, custom voice, multilingual, up to 3 outlets.
+Pro: Unlimited agents, voice cloning, custom CRM/POS/ERP integrations, multi-location, 24/7 priority support.
 
 ## Languages
 
