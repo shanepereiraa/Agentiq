@@ -919,9 +919,7 @@
 
       function handleInitialHash() {
         if (window.location.hash) {
-          setTimeout(function() { scrollToHash(window.location.hash, null, true); }, 100);
-          setTimeout(function() { scrollToHash(window.location.hash, null, true); }, 400);
-          setTimeout(function() { scrollToHash(window.location.hash, null, true); }, 800);
+          setTimeout(function() { scrollToHash(window.location.hash, null, false); }, 100);
         }
       }
       if (document.readyState === 'loading') {
