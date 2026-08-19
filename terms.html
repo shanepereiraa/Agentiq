@@ -860,5 +860,91 @@
     })();
   </script>
 
+<script>
+    // ── Universal smooth scroll & hash router ─────────────────────────
+    (function() {
+      function scrollToHash(hash, e, smooth) {
+        if (!hash || hash === '#' || hash === '/') return;
+        var cleanId = hash.replace(/^(\/?#|\/?)/, '');
+        if (!cleanId) return;
+        var target = document.getElementById(cleanId);
+        if (!target && cleanId === 'book') target = document.getElementById('book-section');
+        if (target) {
+          if (e && e.preventDefault) e.preventDefault();
+          var headerOffset = 80;
+          var elementPosition = target.getBoundingClientRect().top;
+          var offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+          window.scrollTo({
+            top: Math.max(0, offsetPosition),
+            behavior: smooth === false ? 'auto' : 'smooth'
+          });
+          if (history.pushState) {
+            history.pushState(null, null, '#' + cleanId);
+          }
+          return true;
+        }
+        return false;
+      }
+
+      document.addEventListener('click', function(e) {
+        var anchor = e.target.closest('a');
+        if (!anchor) return;
+        var href = anchor.getAttribute('href');
+        if (!href) return;
+
+        // Handle in-page anchors
+        if (href.startsWith('#') && href.length > 1) {
+          var cleanId = href.substring(1);
+          var target = document.getElementById(cleanId);
+          if (!target && cleanId === 'book') target = document.getElementById('book-section');
+          if (target) {
+            e.preventDefault();
+            scrollToHash(href, e, true);
+            var navPanel = document.getElementById('aiq-mobile-nav');
+            var navToggle = document.getElementById('aiq-nav-toggle');
+            if (navPanel && !navPanel.classList.contains('aiq-shut')) {
+              navPanel.classList.add('aiq-shut');
+              if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
+              navPanel.setAttribute('inert', '');
+            }
+          }
+        }
+        // Handle /# anchors when on the target page or homepage
+        else if (href.startsWith('/#') && href.length > 2) {
+          var cleanId = href.substring(2);
+          var target = document.getElementById(cleanId);
+          if (!target && cleanId === 'book') target = document.getElementById('book-section');
+          if (target) {
+            e.preventDefault();
+            scrollToHash(cleanId, e, true);
+            var navPanel = document.getElementById('aiq-mobile-nav');
+            var navToggle = document.getElementById('aiq-nav-toggle');
+            if (navPanel && !navPanel.classList.contains('aiq-shut')) {
+              navPanel.classList.add('aiq-shut');
+              if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
+              navPanel.setAttribute('inert', '');
+            }
+          }
+        }
+      });
+
+      function handleInitialHash() {
+        if (window.location.hash) {
+          setTimeout(function() { scrollToHash(window.location.hash, null, true); }, 100);
+          setTimeout(function() { scrollToHash(window.location.hash, null, true); }, 400);
+          setTimeout(function() { scrollToHash(window.location.hash, null, true); }, 800);
+        }
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', handleInitialHash);
+      } else {
+        handleInitialHash();
+      }
+      window.addEventListener('load', handleInitialHash);
+      window.addEventListener('hashchange', function() {
+        if (window.location.hash) scrollToHash(window.location.hash, null, true);
+      });
+    })();
+</script>
 </body>
 </html>
