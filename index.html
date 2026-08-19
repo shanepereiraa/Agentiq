@@ -393,7 +393,7 @@
       padding-bottom: calc(0.75rem + env(safe-area-inset-bottom));
     }
     @media (max-width: 767px) { .mqb-bar { display: flex; } body { padding-bottom: calc(4.25rem + env(safe-area-inset-bottom)); } }
-    body.aiq-nav-open .mqb-bar, body.aiq-nav-open #aiq-float, body.aiq-nav-open #vaq-float { display: none !important; }
+    body.aiq-nav-open .mqb-bar, body.aiq-nav-open #aiq-float, body.aiq-nav-open #vaq-float, body.aiq-nav-open #wa-float { display: none !important; }
     .mqb-btn { display: flex; align-items: center; justify-content: center; gap: 0.4rem; min-height: 48px; padding: 0.7rem 0.75rem; border-radius: 0.85rem; font-weight: 600; font-size: 0.75rem; white-space: nowrap; transition: transform 0.15s ease, box-shadow 0.2s ease; } @media (min-width: 640px) { .mqb-btn { font-size: 0.875rem; padding: 0.7rem 1rem; } }
     .mqb-btn:active { transform: scale(0.97); }
     .mqb-btn-whatsapp { background: #15803D; color: #fff; box-shadow: 0 4px 16px rgba(21,128,61,0.35); }
@@ -434,6 +434,38 @@
       .vs-card.is-playing .vs-wave span { animation: none; }
       .btn-pop:hover, .btn-pop:focus-visible { transform: none; }
       .tilt-card { transform: none !important; }
+    }
+    /* ── Floating WhatsApp (above orange web chat widget) ─ */
+    #wa-float {
+      position: fixed;
+      bottom: 88px;
+      right: 20px;
+      z-index: 9998;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: #10B981;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      box-shadow: 0 4px 22px rgba(16,185,129,.45);
+      transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease;
+    }
+    #wa-float:hover {
+      background: #059669;
+      transform: scale(1.08);
+      box-shadow: 0 6px 28px rgba(16,185,129,.65);
+    }
+    #wa-float:focus-visible {
+      outline: 3px solid #22D3EE;
+      outline-offset: 3px;
+    }
+    @media (max-width: 767px) {
+      #wa-float {
+        bottom: 148px;
+        right: 16px;
+      }
     }
     /* ── AI Chat Widget ─────────────────────────────── */
     #aiq-float { position: fixed; bottom: 24px; right: 20px; z-index: 9999; }
@@ -2343,9 +2375,8 @@
       </div>
     </div>
   </div>
-  <!-- Floating WhatsApp button (desktop only — mobile gets the quick bar below,
-       so the two don't visually stack/duplicate on small screens) -->
-  <a href="https://wa.me/919159665277?text=Hi%20AgentIQ%2C%20I%27d%20like%20to%20book%20a%20demo" target="_blank" rel="noopener noreferrer" aria-label="Chat with AgentIQ on WhatsApp" class="cursor-pointer fixed bottom-24 right-5 z-50 hidden md:grid place-items-center w-14 h-14 rounded-full bg-emerald-500 text-white shadow-xl shadow-emerald-500/30 hover:bg-emerald-400 transition-colors duration-200 animate-float">
+  <!-- Floating WhatsApp button (positioned above the orange web chatbot widget) -->
+  <a id="wa-float" href="https://wa.me/919159665277?text=Hi%20AgentIQ%2C%20I%27d%20like%20to%20book%20a%20demo" target="_blank" rel="noopener noreferrer" aria-label="Chat with AgentIQ on WhatsApp" class="cursor-pointer">
     <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
   </a>
   <!-- ============================================================
