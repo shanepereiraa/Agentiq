@@ -2565,7 +2565,7 @@
         window.addEventListener('scroll', function () {
           document.querySelectorAll('.reveal:not(.in)').forEach(function (el) {
             var r = el.getBoundingClientRect();
-            if (r.bottom < 0 || r.top > innerHeight * 2) { el.classList.add('in'); }
+            if (r.bottom < 0 || r.top < innerHeight + 250) { el.classList.add('in'); }
           });
         }, { passive: true });
       }
@@ -3479,6 +3479,7 @@
         }
         if (target) {
           if (e && e.preventDefault) e.preventDefault();
+          target.querySelectorAll(".reveal").forEach(function(r){ r.classList.add("in"); });
           var headerOffset = 80;
           var elementPosition = target.getBoundingClientRect().top;
           var offsetPosition = elementPosition + window.pageYOffset - headerOffset;
