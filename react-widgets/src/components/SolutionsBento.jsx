@@ -6,14 +6,17 @@ export default function SolutionsBento() {
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-semibold uppercase tracking-wider mb-4">
-            ⚡ Enterprise Solutions Architecture
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-400 text-xs font-semibold uppercase tracking-widest mb-4">
+            ⚡ CORE CAPABILITIES
           </div>
-          <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight leading-tight">
-            Engineered for <span className="bg-gradient-to-r from-cyan-400 via-teal-300 to-emerald-400 bg-clip-text text-transparent">Conversion, Support &amp; Scale</span>
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-white mb-4">
+            Engineered for{" "}
+            <span className="bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400 bg-clip-text text-transparent">
+              Autonomous Growth
+            </span>
           </h2>
-          <p className="mt-4 text-slate-300 text-base sm:text-lg">
-            Purpose-built conversational infrastructure that turns complex workflows into autonomous, revenue-generating experiences.
+          <p className="text-gray-400 text-base md:text-lg">
+            Purpose-built conversational infrastructure that turns complex inquiries into autonomous, revenue-generating experiences.
           </p>
         </div>
 

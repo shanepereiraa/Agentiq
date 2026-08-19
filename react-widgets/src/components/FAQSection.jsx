@@ -87,7 +87,7 @@ export default function FAQSection() {
               href="https://wa.me/919159665277?text=Hi%20AgentIQ%2C%20I%20have%20a%20question%20about%20your%20solutions"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-cyan-400 font-semibold hover:underline"
+              className="text-white hover:text-cyan-400 font-medium underline-offset-4 hover:underline"
             >
               Chat directly with our solutions team on WhatsApp →
             </a>
