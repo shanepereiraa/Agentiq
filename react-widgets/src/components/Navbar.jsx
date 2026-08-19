@@ -64,7 +64,7 @@ export default function Navbar() {
                       <p className="text-xs font-semibold uppercase tracking-wider text-gray-400">By Use Case</p>
                       <div className="space-y-2">
                         <a 
-                          href="/solutions#solutions-bento" 
+                          href="/solutions#use-case-sales" 
                           onClick={() => setSolutionsOpen(false)}
                           className="flex items-start gap-3 p-2 rounded-lg hover:bg-white/5 transition-colors group"
                         >
@@ -76,25 +76,25 @@ export default function Navbar() {
                         </a>
 
                         <a 
-                          href="/solutions#solutions-bento" 
+                          href="/solutions#use-case-support" 
                           onClick={() => setSolutionsOpen(false)}
                           className="flex items-start gap-3 p-2 rounded-lg hover:bg-white/5 transition-colors group"
                         >
                           <span className="text-lg">🎧</span>
                           <div>
-                            <div className="text-sm font-semibold text-white group-hover:text-cyan-400 transition-colors">24/7 Support</div>
-                            <div className="text-xs text-gray-400">FAQ resolution &amp; order tracking</div>
+                            <div className="text-sm font-semibold text-white group-hover:text-cyan-400 transition-colors">24/7 Customer Support</div>
+                            <div className="text-xs text-gray-400">FAQ deflection &amp; WISMO order tracking</div>
                           </div>
                         </a>
 
                         <a 
-                          href="/solutions#solutions-bento" 
+                          href="/solutions#use-case-bookings" 
                           onClick={() => setSolutionsOpen(false)}
                           className="flex items-start gap-3 p-2 rounded-lg hover:bg-white/5 transition-colors group"
                         >
                           <span className="text-lg">📅</span>
                           <div>
-                            <div className="text-sm font-semibold text-white group-hover:text-cyan-400 transition-colors">Bookings &amp; Leads</div>
+                            <div className="text-sm font-semibold text-white group-hover:text-cyan-400 transition-colors">Bookings &amp; Lead Gen</div>
                             <div className="text-xs text-gray-400">Appointments &amp; live CRM sync</div>
                           </div>
                         </a>

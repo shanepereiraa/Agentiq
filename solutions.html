@@ -78,21 +78,21 @@
               <div class="space-y-4">
                 <p class="text-xs font-semibold uppercase tracking-wider text-cyan-400 px-1">By Use Case</p>
                 <div class="space-y-2">
-                  <a href="/solutions#solutions-bento" class="flex items-start gap-3 p-2 rounded-lg hover:bg-white/5 transition-colors group/item">
+                  <a href="#use-case-sales" class="flex items-start gap-3 p-2 rounded-lg hover:bg-white/5 transition-colors group/item">
                     <span class="text-lg">🛍️</span>
                     <div>
                       <p class="text-white text-xs font-semibold group-hover/item:text-cyan-300 transition-colors">Sales &amp; Conversion</p>
                       <p class="text-slate-400 text-[11px] leading-snug">Lead qualification &amp; cart recovery</p>
                     </div>
                   </a>
-                  <a href="/solutions#solutions-bento" class="flex items-start gap-3 p-2 rounded-lg hover:bg-white/5 transition-colors group/item">
+                  <a href="#use-case-support" class="flex items-start gap-3 p-2 rounded-lg hover:bg-white/5 transition-colors group/item">
                     <span class="text-lg">🎧</span>
                     <div>
                       <p class="text-white text-xs font-semibold group-hover/item:text-cyan-300 transition-colors">24/7 Customer Support</p>
                       <p class="text-slate-400 text-[11px] leading-snug">FAQ deflection &amp; WISMO order tracking</p>
                     </div>
                   </a>
-                  <a href="/solutions#solutions-bento" class="flex items-start gap-3 p-2 rounded-lg hover:bg-white/5 transition-colors group/item">
+                  <a href="#use-case-bookings" class="flex items-start gap-3 p-2 rounded-lg hover:bg-white/5 transition-colors group/item">
                     <span class="text-lg">📅</span>
                     <div>
                       <p class="text-white text-xs font-semibold group-hover/item:text-cyan-300 transition-colors">Bookings &amp; Lead Gen</p>
@@ -221,96 +221,109 @@
         </p>
       </div>
 
-      <!-- Top Bento Grid (2 Large Cards) -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+      <!-- 3 Core Use-Case Bento Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
         
-        <!-- Card 1: 24/7 Customer Support & WISMO -->
-        <div class="bento-card rounded-3xl p-7 sm:p-9 glass border border-white/10 hover:border-cyan-500/40 relative overflow-hidden group shadow-2xl flex flex-col justify-between">
-          <div class="absolute -right-16 -top-16 w-48 h-48 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none group-hover:bg-cyan-500/20 transition-all"></div>
-          
+        <!-- USE CASE 1: SALES & CONVERSION -->
+        <div id="use-case-sales" class="scroll-mt-28 bento-card rounded-3xl p-7 glass border border-white/10 hover:border-purple-500/50 relative overflow-hidden group shadow-2xl flex flex-col justify-between transition-all duration-300">
+          <div class="absolute -right-16 -top-16 w-48 h-48 bg-purple-500/10 rounded-full blur-3xl pointer-events-none group-hover:bg-purple-500/20 transition-all"></div>
           <div>
-            <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-2xl mb-6 shadow-inner">
-              🎧
+            <div class="w-12 h-12 rounded-2xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 text-2xl mb-6 shadow-inner">
+              🛍️
             </div>
-            <h3 class="text-white font-display font-bold text-2xl sm:text-3xl mb-3 leading-snug">
-              Let AI handle repetitive customer inquiries
+            <div class="text-xs font-bold uppercase tracking-wider text-purple-400 mb-2">Use Case 01</div>
+            <h3 class="text-white font-display font-bold text-xl sm:text-2xl mb-3 leading-snug">
+              Capture &amp; qualify high-intent leads 24/7
             </h3>
-            <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-8">
-              Resolve 70%+ of FAQs, returns, sizing questions, and real-time order tracking (WISMO) automatically on WhatsApp. Free your team for high-value client consultations.
+            <p class="text-slate-300 text-sm leading-relaxed mb-6">
+              Turn browsers into confirmed buyers. Automatically collect contact info, qualify budget &amp; intent, and sync records straight into Google Sheets, Zoho, or HubSpot CRM in real-time.
             </p>
           </div>
 
-          <!-- WhatsApp Interactive Mockup -->
-          <div class="bg-slate-950/80 rounded-2xl p-4 sm:p-5 border border-white/10 shadow-xl space-y-3 font-sans">
+          <!-- Visual CRM Pipeline Mockup -->
+          <div class="bg-slate-950/90 rounded-2xl p-4 border border-white/10 shadow-xl space-y-3 font-sans">
             <div class="flex items-center justify-between text-xs text-slate-400 border-b border-white/5 pb-2">
-              <span class="flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                WhatsApp Live Status
-              </span>
-              <span>Just now</span>
+              <span>⚡ Real-Time CRM Pipeline</span>
+              <span class="text-emerald-400 font-semibold">+ ₹45,000 Deal</span>
             </div>
-            
-            <!-- User Message -->
-            <div class="flex justify-end">
-              <div class="bg-emerald-600/90 text-white rounded-2xl rounded-tr-sm px-4 py-2 text-xs sm:text-sm max-w-[80%] shadow">
-                Where is my order #9421?
+            <div class="space-y-2 text-xs">
+              <div class="bg-slate-900 p-2.5 rounded-xl border border-white/5 flex items-center justify-between">
+                <span class="text-slate-300">WhatsApp Lead Trigger</span>
+                <span class="text-cyan-400 font-medium">Qualified VIP</span>
               </div>
-            </div>
-
-            <!-- Bot Reply with Live Tracker -->
-            <div class="flex justify-start">
-              <div class="bg-slate-800/90 text-slate-100 rounded-2xl rounded-tl-sm p-3.5 text-xs sm:text-sm max-w-[90%] border border-white/5 space-y-2">
-                <p>Hi Ananya! Your package is <strong>Out for Delivery</strong> 🚚</p>
-                <div class="p-2.5 rounded-xl bg-slate-900/90 border border-cyan-500/30 text-[11px] space-y-1">
-                  <div class="flex justify-between text-slate-300">
-                    <span>Carrier: BlueDart Express</span>
-                    <span class="text-cyan-400 font-semibold">ETA: Today, 3:45 PM</span>
-                  </div>
-                  <div class="w-full bg-slate-700 h-1.5 rounded-full overflow-hidden">
-                    <div class="bg-gradient-to-r from-cyan-400 to-emerald-400 h-full w-[85%]"></div>
-                  </div>
-                </div>
+              <div class="bg-emerald-500/10 p-2.5 rounded-xl border border-emerald-500/30 flex items-center justify-between">
+                <span class="text-emerald-300 font-medium">Zoho CRM &amp; Sheets</span>
+                <span class="text-emerald-400 font-bold">Auto-Synced ✓</span>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Card 2: High-Intent Sales & Lead Qualification -->
-        <div class="bento-card rounded-3xl p-7 sm:p-9 glass border border-white/10 hover:border-purple-500/40 relative overflow-hidden group shadow-2xl flex flex-col justify-between">
-          <div class="absolute -right-16 -top-16 w-48 h-48 bg-purple-500/10 rounded-full blur-3xl pointer-events-none group-hover:bg-purple-500/20 transition-all"></div>
-          
+        <!-- USE CASE 2: 24/7 CUSTOMER SUPPORT -->
+        <div id="use-case-support" class="scroll-mt-28 bento-card rounded-3xl p-7 glass border border-white/10 hover:border-cyan-500/50 relative overflow-hidden group shadow-2xl flex flex-col justify-between transition-all duration-300">
+          <div class="absolute -right-16 -top-16 w-48 h-48 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none group-hover:bg-cyan-500/20 transition-all"></div>
           <div>
-            <div class="w-12 h-12 rounded-2xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 text-2xl mb-6 shadow-inner">
-              🛍️
+            <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-2xl mb-6 shadow-inner">
+              🎧
             </div>
-            <h3 class="text-white font-display font-bold text-2xl sm:text-3xl mb-3 leading-snug">
-              Capture &amp; qualify high-intent leads 24/7
+            <div class="text-xs font-bold uppercase tracking-wider text-cyan-400 mb-2">Use Case 02</div>
+            <h3 class="text-white font-display font-bold text-xl sm:text-2xl mb-3 leading-snug">
+              Let AI handle repetitive customer inquiries
             </h3>
-            <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-8">
-              Turn browsers into confirmed buyers. Automatically collect contact info, qualify budget &amp; intent, and sync records straight into Google Sheets, Zoho, or HubSpot CRM in real-time.
+            <p class="text-slate-300 text-sm leading-relaxed mb-6">
+              Resolve 70%+ of FAQs, returns, sizing questions, and real-time order tracking (WISMO) automatically on WhatsApp. Free your team for high-value client consultations.
             </p>
           </div>
 
-          <!-- Lead Capture Visual Pipeline -->
-          <div class="bg-slate-950/80 rounded-2xl p-4 sm:p-5 border border-white/10 shadow-xl space-y-3 font-sans">
+          <!-- Live Delivery Status Mockup -->
+          <div class="bg-slate-950/90 rounded-2xl p-4 border border-white/10 shadow-xl space-y-3 font-sans">
             <div class="flex items-center justify-between text-xs text-slate-400 border-b border-white/5 pb-2">
-              <span>⚡ Real-Time CRM Pipeline</span>
-              <span class="text-emerald-400 font-semibold">+ ₹45,000 Deal Qualified</span>
+              <span class="flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                Live Delivery Status
+              </span>
+              <span class="text-cyan-400 font-semibold">Order #9421</span>
             </div>
+            <div class="p-2.5 rounded-xl bg-slate-900 border border-cyan-500/30 text-xs space-y-1.5">
+              <div class="flex justify-between text-slate-200">
+                <span>Out for Delivery 🚚</span>
+                <span class="text-cyan-400 font-bold">BlueDart Express</span>
+              </div>
+              <div class="w-full bg-slate-700 h-1.5 rounded-full overflow-hidden">
+                <div class="bg-gradient-to-r from-cyan-400 to-emerald-400 h-full w-[85%]"></div>
+              </div>
+            </div>
+          </div>
+        </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-center text-xs">
-              <div class="bg-slate-900 p-2.5 rounded-xl border border-white/5">
-                <p class="text-slate-400 text-[10px]">1. Lead Trigger</p>
-                <p class="text-white font-semibold mt-0.5">WhatsApp Inquiry</p>
+        <!-- USE CASE 3: BOOKINGS & LEADS -->
+        <div id="use-case-bookings" class="scroll-mt-28 bento-card rounded-3xl p-7 glass border border-white/10 hover:border-emerald-500/50 relative overflow-hidden group shadow-2xl flex flex-col justify-between transition-all duration-300">
+          <div class="absolute -right-16 -top-16 w-48 h-48 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none group-hover:bg-emerald-500/20 transition-all"></div>
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-2xl mb-6 shadow-inner">
+              📅
+            </div>
+            <div class="text-xs font-bold uppercase tracking-wider text-emerald-400 mb-2">Use Case 03</div>
+            <h3 class="text-white font-display font-bold text-xl sm:text-2xl mb-3 leading-snug">
+              Seamless automated table &amp; appointment bookings
+            </h3>
+            <p class="text-slate-300 text-sm leading-relaxed mb-6">
+              Never lose a booking during peak hours. AI checks live availability, reserves slots, takes pre-orders/deposits, and sends automated reminder alerts.
+            </p>
+          </div>
+
+          <!-- Reservation Confirmation Card Mockup -->
+          <div class="bg-slate-950/90 rounded-2xl p-4 border border-white/10 shadow-xl space-y-3 font-sans">
+            <div class="flex items-center justify-between text-xs text-slate-400 border-b border-white/5 pb-2">
+              <span>🍽️ Booking Engine</span>
+              <span class="text-emerald-400 font-semibold">Petpooja POS Locked</span>
+            </div>
+            <div class="p-2.5 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-xs space-y-1">
+              <div class="flex justify-between text-emerald-300 font-semibold">
+                <span>Table for 4 confirmed 🍽️</span>
+                <span>8:00 PM Tonight</span>
               </div>
-              <div class="bg-slate-900 p-2.5 rounded-xl border border-cyan-500/30">
-                <p class="text-cyan-400 text-[10px]">2. AI Qualification</p>
-                <p class="text-white font-semibold mt-0.5">Budget: ₹50k+ (VIP)</p>
-              </div>
-              <div class="bg-emerald-500/10 p-2.5 rounded-xl border border-emerald-500/30">
-                <p class="text-emerald-400 text-[10px]">3. Auto-Sync</p>
-                <p class="text-emerald-300 font-semibold mt-0.5">Logged to Sheets &amp; CRM</p>
-              </div>
+              <p class="text-[11px] text-slate-400">Confirmation WhatsApp &amp; calendar invite dispatched.</p>
             </div>
           </div>
         </div>

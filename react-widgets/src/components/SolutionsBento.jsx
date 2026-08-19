@@ -4,6 +4,7 @@ export default function SolutionsBento() {
   return (
     <section className="relative py-16 sm:py-24 px-5 overflow-hidden" id="solutions-bento">
       <div className="max-w-6xl mx-auto">
+        
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-400 text-xs font-semibold uppercase tracking-widest mb-4">
@@ -20,107 +21,132 @@ export default function SolutionsBento() {
           </p>
         </div>
 
-        {/* Top Bento Grid (2 Large Cards) */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+        {/* 3 Core Use-Case Bento Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
           
-          {/* Card 1: 24/7 Customer Support & WISMO */}
-          <div className="rounded-3xl p-7 sm:p-9 bg-slate-900/60 border border-white/10 hover:border-cyan-500/40 transition-all duration-300 relative overflow-hidden group shadow-2xl flex flex-col justify-between">
-            <div className="absolute -right-16 -top-16 w-48 h-48 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none group-hover:bg-cyan-500/20 transition-all"></div>
-            
-            <div>
-              <div className="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-2xl mb-6 shadow-inner">
-                🎧
-              </div>
-              <h3 className="text-white font-display font-bold text-2xl sm:text-3xl mb-3 leading-snug">
-                Let AI handle repetitive customer inquiries
-              </h3>
-              <p className="text-slate-300 text-sm sm:text-base leading-relaxed mb-8">
-                Resolve 70%+ of FAQs, returns, sizing questions, and real-time order tracking (WISMO) automatically on WhatsApp. Free your team for high-value client consultations.
-              </p>
-            </div>
-
-            {/* WhatsApp Interactive Mockup */}
-            <div className="bg-slate-950/80 rounded-2xl p-4 sm:p-5 border border-white/10 shadow-xl space-y-3 font-sans">
-              <div className="flex items-center justify-between text-xs text-slate-400 border-b border-white/5 pb-2">
-                <span className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                  WhatsApp Live Status
-                </span>
-                <span>Just now</span>
-              </div>
-              
-              {/* User Message */}
-              <div className="flex justify-end">
-                <div className="bg-emerald-600/90 text-white rounded-2xl rounded-tr-sm px-4 py-2 text-xs sm:text-sm max-w-[80%] shadow">
-                  Where is my order #9421?
-                </div>
-              </div>
-
-              {/* Bot Reply with Live Tracker */}
-              <div className="flex justify-start">
-                <div className="bg-slate-800/90 text-slate-100 rounded-2xl rounded-tl-sm p-3.5 text-xs sm:text-sm max-w-[90%] border border-white/5 space-y-2">
-                  <p>Hi Ananya! Your package is <strong>Out for Delivery</strong> 🚚</p>
-                  <div className="p-2.5 rounded-xl bg-slate-900/90 border border-cyan-500/30 text-[11px] space-y-1">
-                    <div className="flex justify-between text-slate-300">
-                      <span>Carrier: BlueDart Express</span>
-                      <span className="text-cyan-400 font-semibold">ETA: Today, 3:45 PM</span>
-                    </div>
-                    <div className="w-full bg-slate-700 h-1.5 rounded-full overflow-hidden">
-                      <div className="bg-gradient-to-r from-cyan-400 to-emerald-400 h-full w-[85%]"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Card 2: High-Intent Sales & Lead Qualification */}
-          <div className="rounded-3xl p-7 sm:p-9 bg-slate-900/60 border border-white/10 hover:border-purple-500/40 transition-all duration-300 relative overflow-hidden group shadow-2xl flex flex-col justify-between">
+          {/* USE CASE 1: SALES & CONVERSION */}
+          <div 
+            id="use-case-sales" 
+            className="scroll-mt-28 rounded-3xl p-7 bg-slate-900/60 border border-white/10 hover:border-purple-500/50 transition-all duration-300 relative overflow-hidden group shadow-2xl flex flex-col justify-between"
+          >
             <div className="absolute -right-16 -top-16 w-48 h-48 bg-purple-500/10 rounded-full blur-3xl pointer-events-none group-hover:bg-purple-500/20 transition-all"></div>
             
             <div>
               <div className="w-12 h-12 rounded-2xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 text-2xl mb-6 shadow-inner">
                 🛍️
               </div>
-              <h3 className="text-white font-display font-bold text-2xl sm:text-3xl mb-3 leading-snug">
+              <div className="text-xs font-bold uppercase tracking-wider text-purple-400 mb-2">Use Case 01</div>
+              <h3 className="text-white font-display font-bold text-xl sm:text-2xl mb-3 leading-snug">
                 Capture &amp; qualify high-intent leads 24/7
               </h3>
-              <p className="text-slate-300 text-sm sm:text-base leading-relaxed mb-8">
+              <p className="text-slate-300 text-sm leading-relaxed mb-6">
                 Turn browsers into confirmed buyers. Automatically collect contact info, qualify budget &amp; intent, and sync records straight into Google Sheets, Zoho, or HubSpot CRM in real-time.
               </p>
             </div>
 
-            {/* Lead Capture Visual Pipeline */}
-            <div className="bg-slate-950/80 rounded-2xl p-4 sm:p-5 border border-white/10 shadow-xl space-y-3 font-sans">
+            {/* Visual CRM Pipeline Mockup */}
+            <div className="bg-slate-950/90 rounded-2xl p-4 border border-white/10 shadow-xl space-y-3 font-sans">
               <div className="flex items-center justify-between text-xs text-slate-400 border-b border-white/5 pb-2">
                 <span>⚡ Real-Time CRM Pipeline</span>
-                <span className="text-emerald-400 font-semibold">+ ₹45,000 Deal Qualified</span>
+                <span className="text-emerald-400 font-semibold">+ ₹45,000 Deal</span>
               </div>
+              <div className="space-y-2 text-xs">
+                <div className="bg-slate-900 p-2.5 rounded-xl border border-white/5 flex items-center justify-between">
+                  <span className="text-slate-300">WhatsApp Lead Trigger</span>
+                  <span className="text-cyan-400 font-medium">Qualified VIP</span>
+                </div>
+                <div className="bg-emerald-500/10 p-2.5 rounded-xl border border-emerald-500/30 flex items-center justify-between">
+                  <span className="text-emerald-300 font-medium">Zoho CRM &amp; Sheets</span>
+                  <span className="text-emerald-400 font-bold">Auto-Synced ✓</span>
+                </div>
+              </div>
+            </div>
+          </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-center text-xs">
-                <div className="bg-slate-900 p-2.5 rounded-xl border border-white/5">
-                  <p className="text-slate-400 text-[10px]">1. Lead Trigger</p>
-                  <p className="text-white font-semibold mt-0.5">WhatsApp Inquiry</p>
+          {/* USE CASE 2: 24/7 CUSTOMER SUPPORT */}
+          <div 
+            id="use-case-support" 
+            className="scroll-mt-28 rounded-3xl p-7 bg-slate-900/60 border border-white/10 hover:border-cyan-500/50 transition-all duration-300 relative overflow-hidden group shadow-2xl flex flex-col justify-between"
+          >
+            <div className="absolute -right-16 -top-16 w-48 h-48 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none group-hover:bg-cyan-500/20 transition-all"></div>
+            
+            <div>
+              <div className="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-2xl mb-6 shadow-inner">
+                🎧
+              </div>
+              <div className="text-xs font-bold uppercase tracking-wider text-cyan-400 mb-2">Use Case 02</div>
+              <h3 className="text-white font-display font-bold text-xl sm:text-2xl mb-3 leading-snug">
+                Let AI handle repetitive customer inquiries
+              </h3>
+              <p className="text-slate-300 text-sm leading-relaxed mb-6">
+                Resolve 70%+ of FAQs, returns, sizing questions, and real-time order tracking (WISMO) automatically on WhatsApp. Free your team for high-value client consultations.
+              </p>
+            </div>
+
+            {/* Live Delivery Status Mockup */}
+            <div className="bg-slate-950/90 rounded-2xl p-4 border border-white/10 shadow-xl space-y-3 font-sans">
+              <div className="flex items-center justify-between text-xs text-slate-400 border-b border-white/5 pb-2">
+                <span className="flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                  Live Delivery Status
+                </span>
+                <span className="text-cyan-400 font-semibold">Order #9421</span>
+              </div>
+              <div className="p-2.5 rounded-xl bg-slate-900 border border-cyan-500/30 text-xs space-y-1.5">
+                <div className="flex justify-between text-slate-200">
+                  <span>Out for Delivery 🚚</span>
+                  <span className="text-cyan-400 font-bold">BlueDart Express</span>
                 </div>
-                <div className="bg-slate-900 p-2.5 rounded-xl border border-cyan-500/30">
-                  <p className="text-cyan-400 text-[10px]">2. AI Qualification</p>
-                  <p className="text-white font-semibold mt-0.5">Budget: ₹50k+ (VIP)</p>
+                <div className="w-full bg-slate-700 h-1.5 rounded-full overflow-hidden">
+                  <div className="bg-gradient-to-r from-cyan-400 to-emerald-400 h-full w-[85%]"></div>
                 </div>
-                <div className="bg-emerald-500/10 p-2.5 rounded-xl border border-emerald-500/30">
-                  <p className="text-emerald-400 text-[10px]">3. Auto-Sync</p>
-                  <p className="text-emerald-300 font-semibold mt-0.5">Logged to Sheets &amp; CRM</p>
+              </div>
+            </div>
+          </div>
+
+          {/* USE CASE 3: BOOKINGS & LEADS */}
+          <div 
+            id="use-case-bookings" 
+            className="scroll-mt-28 rounded-3xl p-7 bg-slate-900/60 border border-white/10 hover:border-emerald-500/50 transition-all duration-300 relative overflow-hidden group shadow-2xl flex flex-col justify-between"
+          >
+            <div className="absolute -right-16 -top-16 w-48 h-48 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none group-hover:bg-emerald-500/20 transition-all"></div>
+            
+            <div>
+              <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-2xl mb-6 shadow-inner">
+                📅
+              </div>
+              <div className="text-xs font-bold uppercase tracking-wider text-emerald-400 mb-2">Use Case 03</div>
+              <h3 className="text-white font-display font-bold text-xl sm:text-2xl mb-3 leading-snug">
+                Seamless automated table &amp; appointment bookings
+              </h3>
+              <p className="text-slate-300 text-sm leading-relaxed mb-6">
+                Never lose a booking during peak hours. AI checks live availability, reserves slots, takes pre-orders/deposits, and sends automated reminder alerts.
+              </p>
+            </div>
+
+            {/* Reservation Confirmation Card Mockup */}
+            <div className="bg-slate-950/90 rounded-2xl p-4 border border-white/10 shadow-xl space-y-3 font-sans">
+              <div className="flex items-center justify-between text-xs text-slate-400 border-b border-white/5 pb-2">
+                <span>🍽️ Booking Engine</span>
+                <span className="text-emerald-400 font-semibold">Petpooja POS Locked</span>
+              </div>
+              <div className="p-2.5 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-xs space-y-1">
+                <div className="flex justify-between text-emerald-300 font-semibold">
+                  <span>Table for 4 confirmed 🍽️</span>
+                  <span>8:00 PM Tonight</span>
                 </div>
+                <p className="text-[11px] text-slate-400">Confirmation WhatsApp &amp; calendar invite dispatched.</p>
               </div>
             </div>
           </div>
 
         </div>
 
-        {/* Bottom Bento Grid (Trio Cards) */}
+        {/* Bottom Feature Trio */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           
-          {/* Trio 1: Multilingual Tone & Hinglish */}
-          <div className="rounded-3xl p-6 sm:p-7 bg-slate-900/50 border border-white/10 hover:border-teal-500/40 transition-all duration-300">
+          {/* Trio 1 */}
+          <div className="rounded-3xl p-6 bg-slate-900/50 border border-white/10 hover:border-teal-500/40 transition-all duration-300">
             <div className="w-10 h-10 rounded-xl bg-teal-500/10 border border-teal-500/30 flex items-center justify-center text-teal-400 text-xl mb-4">
               🗣️
             </div>
@@ -132,8 +158,8 @@ export default function SolutionsBento() {
             </p>
           </div>
 
-          {/* Trio 2: Omni-Channel Voice & WhatsApp Sync */}
-          <div className="rounded-3xl p-6 sm:p-7 bg-slate-900/50 border border-white/10 hover:border-cyan-500/40 transition-all duration-300">
+          {/* Trio 2 */}
+          <div className="rounded-3xl p-6 bg-slate-900/50 border border-white/10 hover:border-cyan-500/40 transition-all duration-300">
             <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-xl mb-4">
               🔄
             </div>
@@ -141,12 +167,12 @@ export default function SolutionsBento() {
               Unified Voice &amp; Chat Sync
             </h4>
             <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
-              If a customer calls Naina on the phone, their appointment summary is sent straight to their WhatsApp in seconds. Zero data disconnects.
+              If a customer calls on the phone, their appointment summary is sent straight to their WhatsApp in seconds. Zero data disconnects.
             </p>
           </div>
 
-          {/* Trio 3: Human Escalation & Live Transfer */}
-          <div className="rounded-3xl p-6 sm:p-7 bg-slate-900/50 border border-coral-500/40 transition-all duration-300">
+          {/* Trio 3 */}
+          <div className="rounded-3xl p-6 bg-slate-900/50 border border-white/10 hover:border-coral-500/40 transition-all duration-300">
             <div className="w-10 h-10 rounded-xl bg-coral-500/10 border border-coral-500/30 flex items-center justify-center text-coral-400 text-xl mb-4">
               🛡️
             </div>
@@ -159,6 +185,7 @@ export default function SolutionsBento() {
           </div>
 
         </div>
+
       </div>
     </section>
   );
