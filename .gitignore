@@ -6,3 +6,5 @@ linkedin_session.pkl
 *_staff.csv
 .claude-flow/
 .claude/
+.env
+*.env
