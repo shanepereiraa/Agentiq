@@ -789,13 +789,6 @@
       var currentBiz = 'Spice Garden Restaurant';
       var currentInd = 'restaurant';
       var isTyping = false;
-      var conversationHistory = [];
-
-      // Pre-warm Render backend on page load for near-zero simulator latency
-      try {
-        var activeApiWarm = (window.AgentIQConfig && window.AgentIQConfig.apiBase) || 'https://agentiq-chatbot.onrender.com';
-        fetch(activeApiWarm + '/health', { method: 'GET', mode: 'cors' }).catch(function () {});
-      } catch (e) {}
 
       // Knowledge & Responses Preset Library
       var INDUSTRY_PRESETS = {
@@ -934,33 +927,6 @@
         bubble.appendChild(inner);
         chatLog.appendChild(bubble);
         chatLog.scrollTop = chatLog.scrollHeight;
-        return inner;
-      }
-
-      function appendStreamingBubble() {
-        var bubble = document.createElement('div');
-        bubble.className = 'flex justify-start';
-        
-        var inner = document.createElement('div');
-        inner.className = 'max-w-[85%] px-4 py-2.5 rounded-2xl text-sm leading-relaxed text-white shadow-sm chat-bubble-bot border border-white/10';
-        inner.textContent = '';
-
-        bubble.appendChild(inner);
-        chatLog.appendChild(bubble);
-        chatLog.scrollTop = chatLog.scrollHeight;
-
-        return {
-          bubble: bubble,
-          inner: inner,
-          append: function(text) {
-            inner.textContent += text;
-            chatLog.scrollTop = chatLog.scrollHeight;
-          },
-          setContent: function(text) {
-            inner.textContent = text;
-            chatLog.scrollTop = chatLog.scrollHeight;
-          }
-        };
       }
 
       function showTypingIndicator() {
@@ -999,11 +965,9 @@
         chatLog.innerHTML = '';
 
         var preset = INDUSTRY_PRESETS[currentInd] || INDUSTRY_PRESETS.restaurant;
-        var initialGreeting = preset.greetings(currentBiz);
         
         // Initial Greeting
-        appendBubble(initialGreeting, 'bot');
-        conversationHistory = [{ role: 'assistant', content: initialGreeting }];
+        appendBubble(preset.greetings(currentBiz), 'bot');
 
         // Render Prompt Chips
         chipsContainer.innerHTML = '';
@@ -1088,104 +1052,42 @@
         userInput.value = '';
 
         appendBubble(text, 'user');
-        conversationHistory.push({ role: 'user', content: text });
-        if (conversationHistory.length > 10) {
-          conversationHistory = conversationHistory.slice(-10);
-        }
-
         showTypingIndicator();
 
         var localReply = generateIntelligentReply(currentBiz, text, currentInd);
 
-        var goal = selectGoal ? selectGoal.value : 'booking';
-        var goalDescriptions = {
-          booking: 'prioritize fast table/slot bookings and time reservations',
-          preorder: 'help with menu exploration, item recommendations, and taking pre-orders',
-          lead: 'qualify customer interest and capture booking or contact details politely',
-          support: 'answer customer FAQs, timings, parking, pricing, and location details'
-        };
-        var goalInstruction = goalDescriptions[goal] || 'assist customers with bookings, inquiries, and orders';
-        var systemPrompt = 'You are the official 24/7 WhatsApp AI concierge for "' + currentBiz + '", a business in the ' + currentInd + ' industry in India. Your primary goal is to ' + goalInstruction + '. Answer directly as their friendly, professional business concierge in 1-2 concise sentences with relevant emojis. Never mention AgentIQ or being a general agency bot — act 100% as the actual AI assistant for ' + currentBiz + '. Speak naturally in the same language the user uses (English, Hindi, or Hinglish) and use realistic Indian pricing (₹) where applicable.';
-
+        // Try API fetch for dynamic Claude model streaming, fallback to smart local NLP
         var activeApi = (window.AgentIQConfig && window.AgentIQConfig.apiBase) || 'https://agentiq-chatbot.onrender.com';
         var ctrl = (typeof AbortController !== 'undefined') ? new AbortController() : null;
-        var timer = ctrl ? setTimeout(function() { ctrl.abort(); }, 35000) : null;
+        var timer = ctrl ? setTimeout(function() { ctrl.abort(); }, 4000) : null;
 
         fetch(activeApi + '/api/chat', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            system: systemPrompt,
-            messages: conversationHistory
+            system: 'You are the official 24/7 WhatsApp AI concierge for "' + currentBiz + '", a business in the ' + currentInd + ' industry in India. Answer directly as their friendly business concierge in 1-2 concise sentences with appropriate emojis. Never mention AgentIQ or being a general agency bot — act 100% as the actual AI assistant for ' + currentBiz + '.',
+            messages: [
+              { role: 'user', content: text }
+            ]
           }),
           signal: ctrl ? ctrl.signal : undefined
         }).then(function(res) {
           if (timer) clearTimeout(timer);
           if (!res.ok) throw new Error('API ' + res.status);
-          
           var ct = res.headers.get('content-type') || '';
           if (ct.includes('application/json')) {
-            return res.json().then(function(d) {
-              removeTypingIndicator();
-              var replyText = (d.reply || '').trim();
-              var finalReply = (replyText && !replyText.includes('AgentIQ') && !replyText.includes('automation agency')) ? replyText : localReply;
-              appendBubble(finalReply, 'bot');
-              conversationHistory.push({ role: 'assistant', content: finalReply });
-              isTyping = false;
-            });
+            return res.json().then(function(d) { return d.reply || d.error; });
           }
-
-          // Plain text streaming reader
-          if (res.body && typeof res.body.getReader === 'function') {
-            removeTypingIndicator();
-            var reader = res.body.getReader();
-            var decoder = new TextDecoder('utf-8');
-            var streamBubble = appendStreamingBubble();
-            var accumulated = '';
-
-            function readNext() {
-              return reader.read().then(function(chunkResult) {
-                if (chunkResult.done) {
-                  var finalStream = accumulated.trim();
-                  if (!finalStream || finalStream.includes('AgentIQ') || finalStream.includes('automation agency')) {
-                    streamBubble.setContent(localReply);
-                    finalStream = localReply;
-                  }
-                  conversationHistory.push({ role: 'assistant', content: finalStream });
-                  isTyping = false;
-                  return;
-                }
-                var textChunk = decoder.decode(chunkResult.value, { stream: true });
-                accumulated += textChunk;
-                streamBubble.append(textChunk);
-                return readNext();
-              });
-            }
-
-            return readNext().catch(function() {
-              if (!accumulated.trim()) {
-                streamBubble.setContent(localReply);
-                conversationHistory.push({ role: 'assistant', content: localReply });
-              } else {
-                conversationHistory.push({ role: 'assistant', content: accumulated.trim() });
-              }
-              isTyping = false;
-            });
-          } else {
-            return res.text().then(function(replyText) {
-              removeTypingIndicator();
-              var trimmed = (replyText || '').trim();
-              var finalReply = (trimmed && !trimmed.includes('AgentIQ') && !trimmed.includes('automation agency')) ? trimmed : localReply;
-              appendBubble(finalReply, 'bot');
-              conversationHistory.push({ role: 'assistant', content: finalReply });
-              isTyping = false;
-            });
-          }
+          return res.text();
+        }).then(function(replyText) {
+          removeTypingIndicator();
+          var finalReply = (replyText && replyText.trim() && !replyText.includes('AgentIQ') && !replyText.includes('automation agency')) ? replyText.trim() : localReply;
+          appendBubble(finalReply, 'bot');
+          isTyping = false;
         }).catch(function(err) {
           if (timer) clearTimeout(timer);
           removeTypingIndicator();
           appendBubble(localReply, 'bot');
-          conversationHistory.push({ role: 'assistant', content: localReply });
           isTyping = false;
         });
       }
