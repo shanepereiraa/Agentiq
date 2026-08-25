@@ -40,6 +40,12 @@ Allow: /
 User-agent: Bytespider
 Disallow: /
 
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
 # --- Default: allow all other crawlers ---
 User-agent: *
 Allow: /

@@ -6,3 +6,11 @@ linkedin_session.pkl
 *_staff.csv
 .claude-flow/
 .claude/
+audit-results.json
+seo-report-*.html
+FULL-AUDIT-REPORT.md
+ACTION-PLAN.md
+seo.plugin
+.env
+.env.*
+backend-api/.env
