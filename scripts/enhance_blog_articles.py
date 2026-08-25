@@ -4,6 +4,45 @@ import re
 
 BLOG_DIR = "/Users/shanepereira/Projects/agentiq/blog"
 
+# Author assignment map
+AUTHORS = {
+    "shane": {
+        "name": "Shane Pereira",
+        "title": "Founder & AI Automation Lead at AgentIQ",
+        "short_title": "Founder, AgentIQ",
+        "initials": "SP",
+        "avatar_grad": "from-[#FF8A5B] to-[#C74AFF]",
+        "linkedin": "https://www.linkedin.com/in/shanepereiraa/",
+        "bio": "Building production AI chatbots and voice agents for Indian SMBs across Mumbai, Delhi, and Bangalore. Connect on <a href=\"https://www.linkedin.com/in/shanepereiraa/\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"text-cyan underline\">LinkedIn</a>."
+    },
+    "prachi": {
+        "name": "Prachi Borikar",
+        "title": "Co-Founder & Client Solutions Lead at AgentIQ",
+        "short_title": "Co-Founder, AgentIQ",
+        "initials": "PB",
+        "avatar_grad": "from-[#C74AFF] to-[#22D3EE]",
+        "linkedin": "https://agentiq.co.in/",
+        "bio": "Specializing in customer journey automation, appointment workflows, and no-show reduction for Indian clinics, salons, and D2C brands."
+    }
+}
+
+# Assign author per article
+ARTICLE_AUTHORS = {
+    "ai-chatbot-pricing-india-2026-guide.html": "shane",
+    "ai-voice-agent-cost-india-pricing-guide.html": "shane",
+    "world-class-ai-chatbot-not-generic-india-revenue.html": "shane",
+    "whatsapp-service-window-pricing-change-d2c-2026.html": "shane",
+    "whatsapp-business-api-vs-chatbot-restaurants.html": "shane",
+    "will-ai-chatbot-replace-your-staff-india-guide.html": "shane",
+    
+    "ai-chatbot-vs-hiring-staff-cost-comparison.html": "prachi",
+    "ai-voice-agents-reduce-missed-calls-no-shows.html": "prachi",
+    "d2c-whatsapp-order-support-automation.html": "prachi",
+    "instagram-dm-automation-salons-guide.html": "prachi",
+    "mumbai-clinics-whatsapp-phone-appointment-automation.html": "prachi",
+    "whatsapp-cod-confirmation-rto-reduction-d2c-india.html": "prachi"
+}
+
 TOPIC_CLUSTERS = {
     "pricing": [
         ("/blog/ai-chatbot-pricing-india-2026-guide", "AI Chatbot Pricing India (2026 Guide)"),
@@ -50,86 +89,69 @@ def process_file(filepath):
     if filename == "index.html":
         return
     
+    author_key = ARTICLE_AUTHORS.get(filename, "shane")
+    author = AUTHORS[author_key]
+
     with open(filepath, "r", encoding="utf-8") as f:
         content = f.read()
 
-    new_author_json = '"author":{"@type":"Person","name":"Shane Pereira","jobTitle":"Founder & AI Automation Lead","url":"https://agentiq.co.in/","sameAs":"https://www.linkedin.com/in/shanepereiraa/"},"publisher":{"@type":"Organization","name":"AgentIQ","url":"https://agentiq.co.in/","logo":{"@type":"ImageObject","url":"https://agentiq.co.in/og-image.png"}}'
-    
+    # 1. Update Schema Author
+    new_author_json = (
+        f'"author":{{"@type":"Person","name":"{author["name"]}","jobTitle":"{author["title"]}","url":"https://agentiq.co.in/","sameAs":"{author["linkedin"]}"}}'
+    )
     content = re.sub(
-        r'"author":\s*\{\s*"@type":\s*"Organization",\s*"name":\s*"AgentIQ",\s*"url":\s*"https://agentiq\.co\.in/"\s*\},?\s*"publisher":\s*\{\s*"@type":\s*"Organization",\s*"logo":\s*\{\s*"@type":\s*"ImageObject",\s*"url":\s*"https://agentiq\.co\.in/og-image\.png"\s*\}\s*\}',
+        r'"author":\s*\{[^}]+\}',
         new_author_json,
         content
     )
 
-    byline_pat = re.compile(r'<p class="text-slate-400 text-sm mb-10">(Published [^<]+? · [^<]+?)</p>')
-    
-    def byline_repl(match):
-        orig_text = match.group(1)
-        return (
-            f'<div class="flex items-center gap-3 text-slate-400 text-sm mb-10 pb-6 border-b border-white/10 flex-wrap">'
-            f'<div class="w-8 h-8 rounded-full bg-gradient-to-tr from-[#FF8A5B] to-[#C74AFF] flex items-center justify-center font-bold text-white text-xs">SP</div>'
-            f'<div>'
-            f'<span class="text-white font-medium">Shane Pereira</span> · <span class="text-slate-400 text-xs">Founder, AgentIQ</span>'
-            f'<div class="text-xs text-slate-400 mt-0.5">{orig_text}</div>'
-            f'</div>'
-            f'</div>'
-        )
-    
-    if 'Shane Pereira' not in content[:content.find('<div class="prose">')]:
-        content = byline_pat.sub(byline_repl, content, count=1)
-
-    old_compare_footer = re.compile(
-        r'<!-- Column 4: Compare & Platforms -->\s*<div>\s*<h4 class="text-white font-semibold text-sm tracking-wide mb-4">Compare &amp; Platforms</h4>\s*<ul class="space-y-2\.5">.*?</ul>\s*</div>',
-        re.DOTALL
+    # 2. Update Header Byline Block
+    byline_block = (
+        f'<div class="flex items-center gap-3 text-slate-400 text-sm mb-10 pb-6 border-b border-white/10 flex-wrap">'
+        f'<div class="w-8 h-8 rounded-full bg-gradient-to-tr {author["avatar_grad"]} flex items-center justify-center font-bold text-white text-xs">{author["initials"]}</div>'
+        f'<div>'
+        f'<span class="text-white font-medium">{author["name"]}</span> · <span class="text-slate-400 text-xs">{author["short_title"]}</span>'
+        f'<div class="text-xs text-slate-400 mt-0.5">'
     )
-    new_compare_footer = (
-        '<!-- Column 4: Compare & Platforms -->\n'
-        '        <div>\n'
-        '          <h4 class="text-white font-semibold text-sm tracking-wide mb-4">Compare &amp; Platforms</h4>\n'
-        '          <ul class="space-y-2.5">\n'
-        '            <li><a class="hover:text-white transition-colors" href="/ai-chatbot-india">AI Chatbot India</a></li>\n'
-        '            <li><a class="hover:text-white transition-colors" href="/ai-voice-agents-india">AI Voice Agents India</a></li>\n'
-        '            <li><a class="hover:text-white transition-colors" href="/agentiq-vs-wati">AgentIQ vs WATI</a></li>\n'
-        '            <li><a class="hover:text-white transition-colors" href="/agentiq-vs-aisensy">AgentIQ vs AiSensy</a></li>\n'
-        '            <li><a class="hover:text-white transition-colors" href="/agentiq-vs-interakt">AgentIQ vs Interakt</a></li>\n'
-        '            <li><a class="hover:text-white transition-colors" href="/agentiq-vs-yellow-ai">AgentIQ vs Yellow.ai</a></li>\n'
-        '          </ul>\n'
-        '        </div>'
-    )
-    content = old_compare_footer.sub(new_compare_footer, content)
+    
+    # Replace existing byline block
+    old_byline_block_pat = re.compile(r'<div class="flex items-center gap-3 text-slate-400 text-sm mb-10 pb-6 border-b border-white/10 flex-wrap">.*?<div class="text-xs text-slate-400 mt-0\.5">', re.DOTALL)
+    if old_byline_block_pat.search(content):
+        content = old_byline_block_pat.sub(byline_block, content)
 
-    if 'About the Author' not in content and 'Written by Shane Pereira' not in content:
-        related_links = get_cluster_links(filename)
-        links_html = "".join([f'<li><a href="{href}" class="hover:text-white text-orange-400 transition-colors underline underline-offset-2">{title} →</a></li>' for href, title in related_links])
-        
-        cluster_block = (
-            f'\n        <!-- AUTHOR E-E-A-T BIO & TOPICAL CLUSTER LINKS -->\n'
-            f'        <div class="mt-12 pt-8 border-t border-white/10 grid grid-cols-1 md:grid-cols-2 gap-8 text-sm not-prose">\n'
-            f'          <div class="p-5 rounded-xl bg-white/[0.03] border border-white/10">\n'
-            f'            <div class="flex items-center gap-3 mb-2">\n'
-            f'              <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-[#FF8A5B] to-[#C74AFF] flex items-center justify-center font-bold text-white text-sm">SP</div>\n'
-            f'              <div>\n'
-            f'                <p class="font-semibold text-white">Written by Shane Pereira</p>\n'
-            f'                <p class="text-xs text-slate-400">Founder & AI Automation Lead at AgentIQ</p>\n'
-            f'              </div>\n'
-            f'            </div>\n'
-            f'            <p class="text-xs text-slate-300 leading-relaxed">Building production AI chatbots and voice agents for Indian SMBs across Mumbai, Delhi, and Bangalore. Connect on <a href="https://www.linkedin.com/in/shanepereiraa/" target="_blank" rel="noopener noreferrer" class="text-cyan underline">LinkedIn</a>.</p>\n'
-            f'          </div>\n'
-            f'          <div class="p-5 rounded-xl bg-white/[0.03] border border-white/10">\n'
-            f'            <p class="font-semibold text-white mb-2.5">Related Guides & Resources</p>\n'
-            f'            <ul class="space-y-2 text-xs text-slate-300">\n'
-            f'              {links_html}\n'
-            f'            </ul>\n'
-            f'          </div>\n'
-            f'        </div>\n'
-        )
-        cta_pat = '<div class="mt-14 rounded-2xl p-8 text-center"'
-        if cta_pat in content:
-            content = content.replace(cta_pat, cluster_block + "\n        " + cta_pat)
+    # 3. Update Author Bio Box
+    related_links = get_cluster_links(filename)
+    links_html = "".join([f'<li><a href="{href}" class="hover:text-white text-orange-400 transition-colors underline underline-offset-2">{title} →</a></li>' for href, title in related_links])
+
+    new_author_box = (
+        f'<!-- AUTHOR E-E-A-T BIO & TOPICAL CLUSTER LINKS -->\n'
+        f'        <div class="mt-12 pt-8 border-t border-white/10 grid grid-cols-1 md:grid-cols-2 gap-8 text-sm not-prose">\n'
+        f'          <div class="p-5 rounded-xl bg-white/[0.03] border border-white/10">\n'
+        f'            <div class="flex items-center gap-3 mb-2">\n'
+        f'              <div class="w-10 h-10 rounded-full bg-gradient-to-tr {author["avatar_grad"]} flex items-center justify-center font-bold text-white text-sm">{author["initials"]}</div>\n'
+        f'              <div>\n'
+        f'                <p class="font-semibold text-white">Written by {author["name"]}</p>\n'
+        f'                <p class="text-xs text-slate-400">{author["title"]}</p>\n'
+        f'              </div>\n'
+        f'            </div>\n'
+        f'            <p class="text-xs text-slate-300 leading-relaxed">{author["bio"]}</p>\n'
+        f'          </div>\n'
+        f'          <div class="p-5 rounded-xl bg-white/[0.03] border border-white/10">\n'
+        f'            <p class="font-semibold text-white mb-2.5">Related Guides & Resources</p>\n'
+        f'            <ul class="space-y-2 text-xs text-slate-300">\n'
+        f'              {links_html}\n'
+        f'            </ul>\n'
+        f'          </div>\n'
+        f'        </div>'
+    )
+
+    old_author_box_pat = re.compile(r'<!-- AUTHOR E-E-A-T BIO & TOPICAL CLUSTER LINKS -->.*?</ul>\s*</div>\s*</div>', re.DOTALL)
+    if old_author_box_pat.search(content):
+        content = old_author_box_pat.sub(new_author_box, content)
 
     with open(filepath, "w", encoding="utf-8") as f:
         f.write(content)
-    print(f"Updated: {filename}")
+    print(f"Updated {filename} -> Author: {author['name']}")
 
 for f in sorted(glob.glob(os.path.join(BLOG_DIR, "*.html"))):
     process_file(f)
