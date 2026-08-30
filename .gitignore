@@ -13,4 +13,5 @@ ACTION-PLAN.md
 seo.plugin
 .env
 .env.*
+!.env.example
 backend-api/.env
