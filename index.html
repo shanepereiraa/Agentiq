@@ -92,6 +92,10 @@
       "contactType": "sales",
       "availableLanguage": ["en", "hi"]
     },
+    "founder": {
+      "@type": "Person",
+      "@id": "https://agentiq.co.in/#shane-pereira"
+    },
     "knowsAbout": ["WhatsApp chatbots", "Instagram automation", "Website chatbots", "AI customer support", "Appointment booking bots", "AI voice agents"],
     "keywords": ["AI chatbot India", "WhatsApp chatbot service India", "WhatsApp automation for restaurants", "AI chatbot for salons India", "done for you chatbot India", "AI voice agent India", "WhatsApp Business API chatbot", "chatbot for clinics India", "D2C chatbot India", "AI customer support India"],
     "makesOffer": [
@@ -121,6 +125,29 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": "https://agentiq.co.in/#shane-pereira",
+    "name": "Shane Pereira",
+    "givenName": "Shane",
+    "familyName": "Pereira",
+    "jobTitle": "Founder & AI Automation Lead",
+    "description": "Founder of AgentIQ. Builds done-for-you AI chatbots and voice agents for Indian SMBs across restaurants, salons, clinics and D2C e-commerce.",
+    "url": "https://agentiq.co.in/",
+    "worksFor": { "@id": "https://agentiq.co.in/#organization" },
+    "knowsAbout": ["AI chatbots", "WhatsApp Business API", "AI voice agents", "Conversational AI", "Marketing automation", "Instagram DM automation"],
+    "homeLocation": {
+      "@type": "Place",
+      "name": "Mumbai, Maharashtra, India"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/in/shanepereiraa/",
+      "https://www.instagram.com/shanepereiraa"
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
       { "@type": "Question", "name": "How do conversation limits and Meta WhatsApp fees work?", "acceptedAnswer": { "@type": "Answer", "text": "Each Agentiq tier includes a set monthly quota of AI-handled conversations. If you exceed your plan's included limit, extra conversations are billed at a flat rate of ₹2.50 each. Official Meta WhatsApp conversation fees (marketing, utility, service) are charged directly by Meta via your linked payment method and are separate from your Agentiq subscription." } },
@@ -140,9 +167,7 @@
     ]
   }
   </script>
-  <!-- Fonts: preconnect first, then async non-blocking load with font-display:swap baked in via display=swap param -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Fonts: self-hosted variable woff2 (see @font-face in tailwind.min.css); preload the above-the-fold latin subsets -->
   <!-- esm.sh hosts the VAPI web SDK (type=module, auto-deferred); crossorigin because
        ES module fetches use CORS mode -->
   <link rel="preconnect" href="https://esm.sh" crossorigin />
@@ -153,9 +178,8 @@
        is user-triggered, not page-load-critical -->
   <link rel="dns-prefetch" href="https://agentiq-chatbot.onrender.com" />
   <link rel="dns-prefetch" href="https://api.vapi.ai" />
-  <link id="font-preload" rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Space+Grotesk:wght@500;600;700&display=swap" />
-  <script>document.getElementById('font-preload').onload=function(){this.onload=null;this.rel='stylesheet';};</script>
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Space+Grotesk:wght@500;600;700&display=swap" /></noscript>
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/dm-sans-latin.woff2" crossorigin />
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/space-grotesk-latin.woff2" crossorigin />
   <!-- Tailwind: compiled at build time via `npm run build:css` (tailwind.config.js), not the CDN JIT compiler. -->
   <link rel="stylesheet" href="/tailwind.min.css" />
   <!-- React island bundle (react-widgets/): built via `npm run build` in that folder.
