@@ -183,11 +183,13 @@
   <!-- Tailwind: compiled at build time via `npm run build:css` (tailwind.config.js), not the CDN JIT compiler. -->
   <link rel="stylesheet" href="/tailwind.min.css" />
   <!-- React island bundle (react-widgets/): built via `npm run build` in that folder.
-       Preloaded non-blocking (same pattern as the font preload above) since none of
-       its components render above the fold. -->
-  <link id="widgets-css-preload" rel="preload" as="style" href="/react-widgets/dist/agentiq-widgets.css" />
-  <script>document.getElementById('widgets-css-preload').onload=function(){this.onload=null;this.rel='stylesheet';};</script>
-  <noscript><link rel="stylesheet" href="/react-widgets/dist/agentiq-widgets.css" /></noscript>
+       CSS is a plain blocking stylesheet, loaded right after tailwind.min.css so the
+       island-only utilities win equal-specificity ties. It previously used an async
+       rel=preload -> onload -> rel=stylesheet swap; that swap was not promoting to a
+       stylesheet reliably, so islands (e.g. the chaos/order comparison slider) rendered
+       with only the main Tailwind build's class set, which purges island-only utilities
+       such as opacity-0 on the drag input, w-0.5, and aspect-[16/10]. -->
+  <link rel="stylesheet" href="/react-widgets/dist/agentiq-widgets.css" />
   <style>
     html { -webkit-font-smoothing: antialiased; }
     body { background: #07173a; }
