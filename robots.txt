@@ -1,4 +1,4 @@
-# AI Crawler Access Policy — Updated 2026-06-29
+# AI Crawler Access Policy — Updated 2026-08-31
 
 # --- Standard search engine crawlers ---
 User-agent: Googlebot
@@ -34,6 +34,9 @@ User-agent: cohere-ai
 Allow: /
 
 User-agent: Amazonbot
+Allow: /
+
+User-agent: CCBot
 Allow: /
 
 # --- Aggressive scraper — block ---
