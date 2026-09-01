@@ -59,19 +59,21 @@ All scores from `audit-results.json → scores.categories`; weights from `scores
 
 ### 2b. Lagging indicators — outcome, review **monthly**
 
-Per **keyword tier** (query lists in §4c). All rows: `TBD` until the **GSC Performance → Queries/Pages export** is folded in — GSC has data from **2026-07-14** (Domain property, already verified); only the Coverage/indexing report has been exported so far.
+Per **keyword tier** (query lists in §4c). **Baseline = GSC Performance, 3 months, read 2026-09-01** — full data in `docs/gsc-exports/performance-2026-09-01.md`.
 
-> **Site-wide impressions** (from `docs/gsc-exports/coverage-2026-09-01.csv`): ~5/day late Jul → 30–50/day mid-Aug → **spike to 134 (Aug 27) and 114 (Aug 28)** while indexed count stayed flat at 16 → an **existing** page surged. Identify which query/page in the Performance export. Total web-search clicks to date ≈ 50 (GSC Overview).
+> **Current organic reality (2026-09-01):** 50 clicks / ~1,200 impr / 4.2% CTR / **avg position 56.4** over 3 months. ~46 of 50 clicks are **branded** (`agentiq` pos 4.5). **Zero clicks from any commercial query.** Only **17 of 38 pages** have any impression — the 4 not-yet-indexed comparison pages and both buyer guides have **0**. The Aug 27–28 impression spike = `/ai-voice-agents-india` (416 impr, **pos 79.3**) ranking deep for a high-volume voice cluster. Highest-demand page, worst position.
 
-| Metric | Source | Cadence | Current baseline | Target curve |
+| Metric | Source | Cadence | Current baseline (2026-09-01) | Target curve |
 |---|---|---|---|---|
-| Impressions — Tier 1 (comparison/brand) | GSC Performance, query filter = Tier-1 list | Monthly | TBD | >0 / indexed by M1 · ramping M2–M3 |
-| Avg position — Tier 1 | GSC Performance, same filter | Monthly | TBD | **≤10 by M3 (Nov)** · ≤5 by M5 (Jan) |
-| Clicks — Tier 1 | GSC Performance | Monthly | TBD | First clicks by M3 · compounding M4+ |
-| CTR — Tier 1 | GSC Performance | Monthly | TBD | ≥3% once avg position ≤10 |
-| Impressions / Avg position / Clicks / CTR — Tier 2 (vertical+geo) | GSC Performance, Tier-2 filter | Monthly | TBD | Impressions >0 by M2 · **avg position ≤10 by M5 (Jan)** |
-| Impressions / Avg position / Clicks / CTR — Tier 3 (service/intent) | GSC Performance, Tier-3 filter | Monthly | TBD | Impressions >0 by M4 · **avg position ≤10 by M8 (Apr)** |
-| Impressions / Avg position / Clicks / CTR — Tier 4 (head terms) | GSC Performance, Tier-4 filter | Monthly | TBD | Impressions climbing by M6 · **top 10 by M8–M14** |
+| Impressions — Tier 1 (comparison) | GSC Performance, query filter = Tier-1 list | Monthly | ~70 (only `wati vs aisensy` 56, `wati vs interakt` 9, `aisensy vs wati` 2). `agentiq vs *` and `* alternative` = **0** (pages not indexed). | >0 on `agentiq vs *` + `* alternative` by M1 (needs indexing) · ramping M2–M3 |
+| Avg position — Tier 1 | GSC Performance, same filter | Monthly | **~86** (`wati vs aisensy` 85.9) | **≤10 by M3 (Nov)** · ≤5 by M5 (Jan) |
+| Clicks — Tier 1 | GSC Performance | Monthly | **0** | First clicks by M3 · compounding M4+ |
+| CTR — Tier 1 | GSC Performance | Monthly | 0% | ≥3% once avg position ≤10 |
+| Tier 2 (vertical+geo) — impr / pos / clicks / CTR | GSC Performance, Tier-2 filter | Monthly | impr ~13 · **pos ~85** (`whatsapp chatbot for restaurants` 71, `chatbot for restaurants` 89.2) · 0 clicks. `/salons` `/clinics` + both buyer guides = **0 impr**. | Impressions >0 on salon/clinic/d2c + guides by M2 · **avg position ≤10 by M5 (Jan)** |
+| Tier 3 (service/agency) — impr / pos / clicks / CTR | GSC Performance, Tier-3 filter | Monthly | impr ~47 · **pos ~34** — *best-positioned tier* (`chatbot service pricing` 24.6, `chatbot agency pricing` 25.4, `chatbot agency` 44.7) · 0 clicks. No dedicated Tier-3 content yet. | Impressions climbing by M2 · **avg position ≤10 by M6** (build the Tier-3 page — cheapest win) |
+| Tier 4 (head terms) — impr / pos / clicks / CTR | GSC Performance, Tier-4 filter | Monthly | impr ~16 · **pos ~65** (`ai chatbot india` 45.0, `chatbots in india` 50.0, `ai chatbot for business india` 92.8) · 0 clicks | Impressions climbing by M6 · **top 10 by M8–M14** |
+| Voice cluster (not a formal tier, but the biggest demand) | GSC Performance, page = `/ai-voice-agents-india` | Monthly | **416 impr · pos 79.3 · 2 clicks** (`ai voice agent services for businesses` alone = 153 impr @ 97.3) | pos ≤30 by M3 · ≤15 by M5 — highest-leverage single-page move |
+| Branded (`agentiq`, `agent iq`) | GSC Performance | Monthly | 23 clicks · 160 impr · **pos ~4.7** | pos ≤2 (blocked by NVIDIA / agentiq.com name collision — needs entity + Crunchbase work) |
 | Organic sessions | GA4 → exploration (see §4b), Session default channel group = "Organic Search" | Monthly | `TBD — awaiting export` | Positive MoM trend from M3; step-change when Tier-2 ranks |
 | Demo-booking conversions from organic | GA4 → same exploration, Key event = demo booking (form submit `/#book` and/or `wa.me` demo click), filtered to Organic Search | Monthly | `TBD — awaiting export` (AgentIQ leads are in-memory per `CLAUDE.md` — GA4 event is the system of record) | ≥1 by M3 · compounding with Tier-2/3 traffic |
 | Organic landing pages — top 10 by sessions | GA4 exploration, dimension = Landing page + query string | Monthly | `TBD — awaiting export` | `/ai-chatbot-india` + comparison pages enter top 10 by M4 |
