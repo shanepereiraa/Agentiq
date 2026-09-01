@@ -8,6 +8,7 @@ For the full reference — detailed plan features, FAQs, onboarding process, per
 
 - [Homepage](https://agentiq.co.in/): Overview of AgentIQ's chatbot and voice agent services, pricing, and industries served
 - [AI Chatbot India](https://agentiq.co.in/ai-chatbot-india): Done-for-you WhatsApp/Instagram/website AI chatbot service, pricing, and comparison to self-serve platforms (WATI, AiSensy, Interakt)
+- [WhatsApp Chatbot Agency India](https://agentiq.co.in/whatsapp-chatbot-agency-india): Dedicated agency service page detailing done-for-you WhatsApp AI chatbot delivery, transparent agency pricing (from ₹7,999/mo), and managed lifecycle
 - [AI Voice Agents India](https://agentiq.co.in/ai-voice-agents-india): Hindi & English inbound AI voice agents — 24/7 call answering, appointment booking, department routing
 - [Integrations Hub](https://agentiq.co.in/integrations): 20+ native integrations (Shopify, Google Sheets, Razorpay, Zoho CRM, HubSpot, Petpooja POS, Practo)
 - [Restaurants](https://agentiq.co.in/restaurants): AI chatbot for table reservations, menu FAQs, and order status for restaurants and cloud kitchens
