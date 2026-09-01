@@ -1,19 +1,31 @@
 # GEO Baseline & Listicle-Inclusion Targets — agentiq.co.in
 
-**Run:** 2026-09-01. Method: Claude WebSearch (US index) on the 4 queries below, reading the AI-generated answer summary + the organic result set it drew from. A live Perplexity/ChatGPT cross-check was blocked by a session rate limit — repeat that step from a browser (see "How to finish the baseline").
+**Run:** 2026-09-01. Two passes: (a) Claude WebSearch (US index) on the category queries; (b) **live checks in Perplexity (5 queries) and Google AI Overview (2 queries)** from a browser. Results below are the live pass. Re-run monthly — this table is the GEO KPI.
 
 ---
 
-## 1. Baseline — is AgentIQ cited?
+## 1. Baseline — is AgentIQ cited? (live, 2026-09-01)
 
-| Query | AgentIQ in the AI answer? | Who *is* named |
-|---|---|---|
-| `best AI chatbot company in India 2026` | **No** | Cyfuture AI, Haptik, Yellow.ai, Infosys, Verloop.io, Instinctools (via GoodFirms) |
-| `best AI voice agent companies India` | **No** | SquadStack, MyOperator, Vyora AI, Caller Digital, Ringg AI, DialNexa; global: Cognigy, Ada, Parloa, Kore.ai, PolyAI, Haptik |
-| `best WhatsApp chatbot for small business India` | **No** | WATI, Interakt, Kommunicate, AiSensy, Gupshup, Verloop |
-| `AgentIQ agentiq.co.in AI chatbot` (branded) | Own site ranks; description accurate | — |
+### Perplexity
 
-**Verdict:** zero citation coverage on all three category queries — matches the Aug-18 competitive benchmark. AI answer engines are pulling from third-party roundups and directories (GoodFirms, Clutch) that don't list AgentIQ. On-page work alone will not fix this; AgentIQ has to appear *in the sources those engines cite*.
+| Query | AgentIQ cited? | Who Perplexity named | Publishers it leaned on |
+|---|---|---|---|
+| best AI chatbot company in India for small business | **No** | Hyperleap AI (#1), SmatBot, Botsify, Inceptimind, Gupshup | hyperleap.io (own blog), cyfuture, viewgates, inceptimind |
+| best AI voice agent for small business in India | **No** | Vyora AI, Bolna AI, Edesy, DialNexa, Tabbly.io | edesy, vyora, dialnexa, tabbly, caller.digital, myoperator |
+| WATI alternative for Indian small businesses | **No** | AiSensy, Interakt, Go4whatsup, Gallabox, DoubleTick, WatEase | scalifylabs, ynexgen, go4whatsup, watease, sleekflow |
+| what is AgentIQ agentiq.co.in Mumbai chatbot agency | **Yes — accurate** | AgentIQ India (correct: done-for-you agency, verticals, pricing matches `llms-full.txt`, founder Shane Pereira from LinkedIn) | agentiq.co.in, linkedin.com |
+| `AgentIQ` (bare) | **Yes — but 3rd of ~7** | NVIDIA AgentIQ toolkit (#1), Agent IQ banking / agentiq.com (#2), **AgentIQ India (#3)**, then agentiq.app, agentiq.io, agentiqai.tech, a Play Store app | docs.nvidia.com, agentiq.com, agentiq.co.in |
+
+### Google AI Overview
+
+| Query | AI Overview shown? | AgentIQ cited? | Named | Sources AI Overview linked |
+|---|---|---|---|---|
+| best AI chatbot company in India for small business | Yes | **No** | Haptik (Jio), Yellow.ai; budget: WATI, Engati | **WACTO** ("Choosing the Right Chatbot Companies in India (2026)"), **WebXion** ("Top 10 AI Chatbot Providers for Website & WhatsApp in India", 3 Jul 2026) |
+| wati alternative india | Yes | **No** | AiSensy, Interakt, Gupshup | AiSensy blog ("11 Best Wati Alternatives in 2026"), **RichAutomate** ("Best Wati Alternative India 2026 (Ranked)") |
+
+**Verdict:** zero citation on every category / "alternative" query in both engines. Branded (disambiguated) is accurate — the `Person` schema + LinkedIn `sameAs` are working. Bare "AgentIQ" is buried at #3 behind NVIDIA's toolkit and the funded US `agentiq.com`.
+
+**What the engines actually cite:** vendor-authored roundups (hyperleap's own blog), small SEO-aggregator sites (WACTO, WebXion, RichAutomate, scalifylabs, ynexgen, viewgates, edesy), and directories (GoodFirms, Clutch). None list AgentIQ. On-page work will not fix this — AgentIQ has to get *into those roundups*.
 
 ### Brand-collision finding (new, and material)
 
@@ -35,7 +47,18 @@ Consequence for GEO: an AI engine asked "what is AgentIQ" is as likely to descri
 
 Discovered fresh 2026-09-01. **Not yet fully qualified** — before emailing any, confirm: (a) live & updated within ~12 months, (b) a genuine multi-vendor "Top N" (not a single-vendor sponsored post or a competitor's own blog), (c) AgentIQ not already listed, (d) a real editorial/author contact (not a sales inbox). Use the email template in `OFF_PAGE_AEO_PLAYBOOK.md` §1 Step 3.
 
-### Tier A — independent roundups, highest leverage (pitch first)
+### Tier S — directly cited by Google AI Overview / Perplexity on 2026-09-01 (pitch these first)
+
+| # | URL / publisher | Category | Why |
+|---|---|---|---|
+| S1 | **WACTO** — "Choosing the Right Chatbot Companies in India (2026)" (search `wacto choosing chatbot companies india`) | Chatbot | Cited *in* the Google AI Overview for the head query. Third playbook-hypothesis name — **confirmed live and influential**. |
+| S2 | **WebXion** — "Top 10 AI Chatbot Providers for Website & WhatsApp in India" (3 Jul 2026) | Chatbot / WhatsApp | Cited in the same AI Overview. |
+| S3 | **RichAutomate** — "Best Wati Alternative India 2026 (Ranked)" | WhatsApp / alternative | Cited in the Google AI Overview for `wati alternative india`. |
+| S4 | **hyperleap.io** blog — its "best chatbot for Indian SMBs" roundup | Chatbot | Perplexity's #1 source for the small-business query (it cites Hyperleap's own post as "frequently cited as best overall"). |
+| S5 | **edesy** blog — its AI voice agent roundup | Voice | Perplexity's primary source for the voice query. |
+| S6 | scalifylabs / ynexgen / viewgates — WhatsApp & chatbot roundups | Mixed | Small aggregators Perplexity pulled from; low domain authority but they feed the answer. Qualify each. |
+
+### Tier A — independent roundups, high leverage
 
 | # | URL | Category | Notes |
 |---|---|---|---|
@@ -81,14 +104,15 @@ Rules (from playbook): one polite follow-up only, then stop. Log the live URL of
 
 ---
 
-## 4. How to finish the baseline (do from a browser, ~20 min)
+## 4. Baseline status & monthly re-run
 
-The WebSearch summary above is a proxy. For the real GEO picture, ask each engine directly and record the **cited sources**:
+**Done 2026-09-01:** Perplexity ×5, Google AI Overview ×2 (see §1). AgentIQ absent from every category/alternative query in both engines.
 
-1. **Perplexity** (perplexity.ai, no login) — ask: "best AI chatbot company in India", "best AI voice agent for small business in India", "WATI alternative for Indian SMBs", "what is AgentIQ". Screenshot the Sources panel each time; note if agentiq.co.in appears and which roundups it cites.
-2. **ChatGPT** (chatgpt.com, needs login) — same 4 prompts with web search on.
-3. **Google** — same 4 as a normal search; note whether an **AI Overview** renders and what it links.
-4. Log results in a small table (query · engine · AgentIQ cited? · top 3 sources cited). Re-run monthly — this is the GEO KPI.
+**Still to add (needs your login):**
+- **ChatGPT** (chatgpt.com, web search on) — same 4 category prompts + "what is AgentIQ".
+- **Google AI Overview** on the remaining queries: `best AI voice agent India`, `best whatsapp chatbot small business india`, `AI chatbot for restaurants india`.
+
+**Monthly re-run:** repeat the §1 tables. Track "# of category queries where AgentIQ is cited (0 of 4)" as the GEO KPI in `SEO-MEASUREMENT-FRAMEWORK.md`. First non-zero result should follow the first 2–3 listicle placements.
 
 ---
 
