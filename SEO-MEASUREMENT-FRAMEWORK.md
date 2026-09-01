@@ -51,7 +51,7 @@ All scores from `audit-results.json → scores.categories`; weights from `scores
 |---|---|---|---|---|
 | Referring domains (unique) | Ahrefs Webmaster Tools (free) → Backlink profile → Referring domains | Weekly | `TBD — awaiting export` (audit `unique_external_domains = 4` is **outbound**, not inbound) | ≥5 by M2 (Oct) · ≥8 by M3 (Nov) · ≥12 by M5 (Jan) · **≥15 by M6 (Feb)** · 15–30 by M8 (Apr) |
 | New pages published (net, indexable) | `sitemap.xml` diff on `main` + manual log | Weekly | 34 URLs (`sitemap.xml`: 13 blog + 4 comparison + 3 vertical + tools + core) | +2–4 / month; Tier-2 vertical+geo pages prioritised M2–M5 |
-| Pages indexed | GSC → Pages (Indexing) report → "Indexed" count | Weekly | `TBD — awaiting export` | ≥30 of 34 by M2 · ≥95% of submitted by M4 |
+| Pages indexed | GSC → Pages (Indexing) report → "Indexed" count | Weekly | **16 indexed / 23 not indexed** as of 2026-08-28 (`docs/gsc-exports/coverage-2026-09-01.csv`; 38 URLs in sitemap). Not-indexed = **17 Discovered–not-crawled** + 3 Crawled–not-indexed + 3 redirects. Indexed share **declining**: 53% (Jul 25, 10/9) → 41% (Aug 28, 16/23) — publishing is outpacing crawl. | ≥30 of 38 by M2 (Oct) · ≥95% of submitted by M4. **Immediate: request indexing on the ~17 discovered URLs; backlinks to raise crawl priority.** |
 | CWV pass rate (mobile, % of URLs "Good") | GSC → Core Web Vitals (mobile); cross-check PageSpeed Insights per template | Weekly (monthly for field data to populate) | `TBD — awaiting GSC field export`. **Lab (audit 2026-08-31, homepage, mobile): `performance_score = 91`; LCP 2701 ms + FCP 2101 ms = needs-improvement; CLS 0 + TTFB 9 ms = good.** | Field data measured by M1 (Sep) · **all templates "Good" (LCP <2.5s, INP <200ms, CLS <0.1) by M2 (Oct)** |
 | Internal links → `/ai-chatbot-india` | Audit re-run (`data.sections.link_profile.top_linked_pages`) + GSC → Links → Top linked pages (internal) | Weekly | **55** (`link_profile`, 20-page crawl) / **16** (`internal_links` module, 16-page crawl) | ≥70 by M2 · ≥90 by M4 (every vertical + blog post links the hub with a descriptive anchor) |
 | Audit score (overall + the amber/red categories) | Re-run the SEO audit skill (same tool as `audit-results.json`) | Weekly (or per significant deploy) | **83 → 86** (re-run 2026-08-31, confidence Medium → High). Now 🟢: `pagespeed 0→91`, `robots 96→100`, `link_profile 65→85`, `broken_links 88→90`, `article 0→50`. Still amber/red: `entity 0` (Person + Org schema now *detected* — the 0 is a KG-presence artifact: no Wikidata/Wikipedia/X), `hreflang 0` (single-language artifact), `readability 64`, `internal_links 80` (12 near-orphan blog posts). | ≥88 by M1 · ≥92 by M3 · ≥95 by M6 |
@@ -59,7 +59,9 @@ All scores from `audit-results.json → scores.categories`; weights from `scores
 
 ### 2b. Lagging indicators — outcome, review **monthly**
 
-Per **keyword tier** (query lists in §4c). All rows: `TBD — awaiting export` until GSC history accrues.
+Per **keyword tier** (query lists in §4c). All rows: `TBD` until the **GSC Performance → Queries/Pages export** is folded in — GSC has data from **2026-07-14** (Domain property, already verified); only the Coverage/indexing report has been exported so far.
+
+> **Site-wide impressions** (from `docs/gsc-exports/coverage-2026-09-01.csv`): ~5/day late Jul → 30–50/day mid-Aug → **spike to 134 (Aug 27) and 114 (Aug 28)** while indexed count stayed flat at 16 → an **existing** page surged. Identify which query/page in the Performance export. Total web-search clicks to date ≈ 50 (GSC Overview).
 
 | Metric | Source | Cadence | Current baseline | Target curve |
 |---|---|---|---|---|
