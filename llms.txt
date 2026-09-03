@@ -21,8 +21,10 @@ For the full reference — detailed plan features, FAQs, onboarding process, per
 - [AgentIQ vs Yellow.ai](https://agentiq.co.in/agentiq-vs-yellow-ai): Affordable managed SMB AI automation vs complex enterprise chatbot platform (Yellow.ai)
 - [AgentIQ vs LimeChat](https://agentiq.co.in/agentiq-vs-limechat): Done-for-you managed AI chatbot agency vs self-serve, e-commerce-first conversational-commerce platform (LimeChat)
 - [AgentIQ vs Gupshup](https://agentiq.co.in/agentiq-vs-gupshup): Fixed-retainer managed AI chatbot agency vs per-message conversational-messaging platform and WhatsApp BSP (Gupshup)
+- [Free Tools Hub](https://agentiq.co.in/tools): Central directory of free business utilities and calculators
 - [WhatsApp Link & QR Code Generator](https://agentiq.co.in/tools/whatsapp-link-generator): Free tool to create a WhatsApp click-to-chat link and QR code for a business
 - [Human Staff vs. AI Cost Calculator](https://agentiq.co.in/tools/staff-vs-ai-calculator): Free tool comparing the cost of hiring staff versus an AI chatbot/voice agent
+- [Interactive Bot Simulator](https://agentiq.co.in/try-your-bot): Interactive 30-second live test of a custom WhatsApp chatbot persona for any business
 - [Blog](https://agentiq.co.in/blog): Guides on AI chatbot/voice agent pricing, ROI, and automation for Indian SMBs
 
 ## What AgentIQ Does

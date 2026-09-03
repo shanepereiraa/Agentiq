@@ -323,8 +323,10 @@ AgentIQ is a done-for-you managed AI chatbot agency based in Mumbai, India. It c
 - AgentIQ vs Gupshup: https://agentiq.co.in/agentiq-vs-gupshup — Fixed-retainer managed AI chatbot agency vs per-message conversational-messaging platform and WhatsApp BSP (Gupshup) comparison
 
 ### Free Tools
+- Free Tools Hub: https://agentiq.co.in/tools — Directory of free utilities and calculators for Indian businesses
 - WhatsApp Link & QR Code Generator: https://agentiq.co.in/tools/whatsapp-link-generator
 - Human Staff vs. AI Cost Comparison Calculator: https://agentiq.co.in/tools/staff-vs-ai-calculator
+- Interactive WhatsApp Bot Simulator: https://agentiq.co.in/try-your-bot — 30-second live custom bot simulation for any business name & industry
 
 ### Blog
 - Blog index: https://agentiq.co.in/blog

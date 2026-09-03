@@ -31,16 +31,19 @@
   <meta name="ai-summary" content="AgentIQ's free WhatsApp Link & QR Code Generator instantly creates pre-filled click-to-chat wa.me links and downloadable QR codes for any Indian business — no signup required. Built by AgentIQ, a Mumbai-based AI chatbot and voice agent agency. Try it: https://agentiq.co.in/tools/whatsapp-link-generator" />
 
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"WebApplication","name":"WhatsApp Link & QR Code Generator","url":"https://agentiq.co.in/tools/whatsapp-link-generator","applicationCategory":"BusinessApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"}}
+  {"@context":"https://schema.org","@type":"WebApplication","name":"WhatsApp Link & QR Code Generator","url":"https://agentiq.co.in/tools/whatsapp-link-generator","applicationCategory":"BusinessApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"provider":{"@type":"Organization","name":"AgentIQ","url":"https://agentiq.co.in"}}
   </script>
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"AgentIQ","item":"https://agentiq.co.in/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://agentiq.co.in/tools/whatsapp-link-generator"}]}
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"AgentIQ","item":"https://agentiq.co.in/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://agentiq.co.in/tools"},{"@type":"ListItem","position":3,"name":"WhatsApp Link Generator","item":"https://agentiq.co.in/tools/whatsapp-link-generator"}]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does a WhatsApp click-to-chat link work?","acceptedAnswer":{"@type":"Answer","text":"WhatsApp's official click-to-chat feature (wa.me) allows customers to start a chat with your business without saving your phone number in their phonebook. When clicked, it automatically opens WhatsApp on mobile or WhatsApp Web on desktop with your pre-filled text message."}},{"@type":"Question","name":"Is this WhatsApp link and QR code generator completely free?","acceptedAnswer":{"@type":"Answer","text":"Yes, 100% free with no account creation or signup required. You can generate unlimited WhatsApp links and download high-resolution QR codes anytime."}},{"@type":"Question","name":"Where can I use my generated WhatsApp QR code?","acceptedAnswer":{"@type":"Answer","text":"You can print your QR code on physical marketing materials such as restaurant table tents, clinic reception counters, salon rate cards, product packaging, stickers, storefront banners, or digital advertisements."}},{"@type":"Question","name":"Can an AI chatbot automatically answer when customers click my link?","acceptedAnswer":{"@type":"Answer","text":"Yes! That is AgentIQ's core service. We connect official Meta WhatsApp Business API chatbots that answer in seconds, share menus, check slot availability, book appointments, and sync data directly to your CRM or Google Sheets 24/7."}}]}
   </script>
 
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/dm-sans-latin.woff2" crossorigin />
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/space-grotesk-latin.woff2" crossorigin />
   <link rel="stylesheet" href="/tailwind.min.css" />
-  <script defer src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+  <script defer src="/assets/qrcode.min.js"></script>
 
   <style>
     html{-webkit-font-smoothing:antialiased}body{background:#060f28}
@@ -455,24 +458,75 @@
 
       </div>
 
+      <!-- Cross-Tool Recommendations -->
+      <div class="mt-12 p-6 glass rounded-2xl border border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div>
+          <span class="text-cyan text-xs font-semibold uppercase tracking-wider">Related Free Tool</span>
+          <h3 class="text-white font-600 text-base mt-0.5">Compare Human Staff vs. AI Costs</h3>
+          <p class="text-slate-400 text-xs mt-1 max-w-lg">Calculate your annual savings from deploying 24/7 AI voice agents & WhatsApp bots vs. hiring manual receptionists.</p>
+        </div>
+        <a href="/tools/staff-vs-ai-calculator" class="shrink-0 px-4 py-2.5 rounded-xl bg-cyan/10 hover:bg-cyan/20 text-cyan text-xs font-600 border border-cyan/30 transition-colors">
+          Open Cost Calculator →
+        </a>
+      </div>
+
       <!-- Agency Integration Pitch -->
       <div class="mt-16 glass rounded-3xl p-8 border border-white/10 text-center max-w-2xl mx-auto space-y-4">
         <h2 class="font-display font-700 text-white text-2xl">Want AI to answer your WhatsApp customers 24/7?</h2>
         <p class="text-slate-400 text-sm leading-relaxed">
           Getting customers to your WhatsApp chat is step 1. AgentIQ connects a custom AI chatbot that automatically books clinic appointments, sends restaurant menus, and collects leads 24/7 without manual staff intervention.
         </p>
-        <a href="/#book" class="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-gradient-to-r from-coral-deep to-orange-deep text-white font-600 text-sm shadow-lg shadow-coral/30 hover:shadow-coral/50 transition-shadow">
-          Book Free 20-Min AI Consultation →
-        </a>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+          <a href="/try-your-bot" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-white/10 hover:bg-white/15 text-white font-600 text-sm border border-white/15 transition-colors">
+            Test Bot Simulator (30s)
+          </a>
+          <a href="/#book" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-coral-deep to-orange-deep text-white font-600 text-sm shadow-lg shadow-coral/30 hover:shadow-coral/50 transition-shadow">
+            Book Free Consultation →
+          </a>
+        </div>
       </div>
+
+      <!-- FAQ Section -->
+      <section id="faq" class="mt-16 max-w-3xl mx-auto">
+        <h2 class="font-display font-700 text-white text-2xl sm:text-3xl tracking-tight text-center mb-8">Frequently Asked Questions</h2>
+        <div class="space-y-3">
+          <details class="group rounded-2xl px-5 sm:px-6 [&_summary::-webkit-details-marker]:hidden glass border border-white/10">
+            <summary class="cursor-pointer list-none flex items-center justify-between gap-4 py-5 text-white font-500 text-base">
+              How does a WhatsApp click-to-chat link work?
+              <svg class="w-5 h-5 text-cyan shrink-0 transition-transform duration-200 group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <p class="text-slate-400 text-sm leading-relaxed pb-5 -mt-1">WhatsApp's official click-to-chat feature (wa.me) allows customers to start a chat with your business without saving your phone number in their phonebook. When clicked, it automatically opens WhatsApp on mobile or WhatsApp Web on desktop with your pre-filled text message.</p>
+          </details>
+
+          <details class="group rounded-2xl px-5 sm:px-6 [&_summary::-webkit-details-marker]:hidden glass border border-white/10">
+            <summary class="cursor-pointer list-none flex items-center justify-between gap-4 py-5 text-white font-500 text-base">
+              Is this WhatsApp link and QR code generator completely free?
+              <svg class="w-5 h-5 text-cyan shrink-0 transition-transform duration-200 group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <p class="text-slate-400 text-sm leading-relaxed pb-5 -mt-1">Yes, 100% free with no account creation or signup required. You can generate unlimited WhatsApp links and download high-resolution QR codes anytime.</p>
+          </details>
+
+          <details class="group rounded-2xl px-5 sm:px-6 [&_summary::-webkit-details-marker]:hidden glass border border-white/10">
+            <summary class="cursor-pointer list-none flex items-center justify-between gap-4 py-5 text-white font-500 text-base">
+              Where can I use my generated WhatsApp QR code?
+              <svg class="w-5 h-5 text-cyan shrink-0 transition-transform duration-200 group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <p class="text-slate-400 text-sm leading-relaxed pb-5 -mt-1">You can print your QR code on physical marketing materials such as restaurant table tents, clinic reception counters, salon rate cards, product packaging, stickers, storefront banners, or digital advertisements.</p>
+          </details>
+
+          <details class="group rounded-2xl px-5 sm:px-6 [&_summary::-webkit-details-marker]:hidden glass border border-white/10">
+            <summary class="cursor-pointer list-none flex items-center justify-between gap-4 py-5 text-white font-500 text-base">
+              Can an AI chatbot automatically answer when customers click my link?
+              <svg class="w-5 h-5 text-cyan shrink-0 transition-transform duration-200 group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <p class="text-slate-400 text-sm leading-relaxed pb-5 -mt-1">Yes! That is AgentIQ's core service. We connect official Meta WhatsApp Business API chatbots that answer in seconds, share menus, check slot availability, book appointments, and sync data directly to your CRM or Google Sheets 24/7.</p>
+          </details>
+        </div>
+      </section>
 
     </div>
   </main>
 
-  <!-- FOOTER -->
-  <!-- FOOTER -->
-  <!-- FOOTER -->
-  <!-- FOOTER -->
   <!-- FOOTER -->
   <!-- FOOTER -->
   <footer class="w-full bg-[#05070B] border-t border-white/10 pt-16 pb-12 text-gray-400 text-sm">
@@ -562,10 +616,10 @@
                 WhatsApp us
               </a>
             </li>
-            <li><a class="hover:text-white transition-colors" href="/#book">Book Free Demo</a></li>
-            <li><a class="hover:text-white transition-colors" href="/try-your-bot">Interactive Bot Simulator</a></li>
+            <li><a class="hover:text-white transition-colors" href="/tools">Free Business Tools</a></li>
             <li><a class="hover:text-white transition-colors" href="/tools/whatsapp-link-generator">WhatsApp Link Generator</a></li>
             <li><a class="hover:text-white transition-colors" href="/tools/staff-vs-ai-calculator">Staff vs AI Calculator</a></li>
+            <li><a class="hover:text-white transition-colors" href="/try-your-bot">Interactive Bot Simulator</a></li>
             <li class="text-gray-400">Mumbai, India 🇮🇳</li>
           </ul>
         </div>
@@ -578,11 +632,8 @@
           © <span id="year">2026</span> AgentIQ. All rights reserved.
         </p>
         <div class="flex items-center gap-6 text-xs text-gray-500">
-          <a class="hover:text-gray-400 transition-colors" href="/tools/whatsapp-link-generator">Free Tools</a>
+          <a class="hover:text-gray-400 transition-colors" href="/tools">Free Tools</a>
           <a class="hover:text-gray-400 transition-colors" href="/privacy">Privacy Policy</a>
-          <a class="hover:text-gray-400 transition-colors" href="/terms">Terms of Service</a>
-        </div>
-      </div>
           <a class="hover:text-gray-400 transition-colors" href="/terms">Terms of Service</a>
         </div>
       </div>

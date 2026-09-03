@@ -85,14 +85,20 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://agentiq.co.in/tools</loc>
+    <lastmod>2026-09-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://agentiq.co.in/tools/whatsapp-link-generator</loc>
-    <lastmod>2026-07-30</lastmod>
+    <lastmod>2026-09-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://agentiq.co.in/tools/staff-vs-ai-calculator</loc>
-    <lastmod>2026-07-30</lastmod>
+    <lastmod>2026-09-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>

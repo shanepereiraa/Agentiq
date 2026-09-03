@@ -90,10 +90,10 @@ CLEAN_FOOTER = '''  <!-- FOOTER -->
                 WhatsApp us
               </a>
             </li>
-            <li><a class="hover:text-white transition-colors" href="/#book">Book Free Demo</a></li>
-            <li><a class="hover:text-white transition-colors" href="/try-your-bot">Interactive Bot Simulator</a></li>
+            <li><a class="hover:text-white transition-colors" href="/tools">Free Business Tools</a></li>
             <li><a class="hover:text-white transition-colors" href="/tools/whatsapp-link-generator">WhatsApp Link Generator</a></li>
             <li><a class="hover:text-white transition-colors" href="/tools/staff-vs-ai-calculator">Staff vs AI Calculator</a></li>
+            <li><a class="hover:text-white transition-colors" href="/try-your-bot">Interactive Bot Simulator</a></li>
             <li class="text-gray-400">Mumbai, India 🇮🇳</li>
           </ul>
         </div>
@@ -106,11 +106,8 @@ CLEAN_FOOTER = '''  <!-- FOOTER -->
           © <span id="year">2026</span> AgentIQ. All rights reserved.
         </p>
         <div class="flex items-center gap-6 text-xs text-gray-500">
-          <a class="hover:text-gray-400 transition-colors" href="/tools/whatsapp-link-generator">Free Tools</a>
+          <a class="hover:text-gray-400 transition-colors" href="/tools">Free Tools</a>
           <a class="hover:text-gray-400 transition-colors" href="/privacy">Privacy Policy</a>
-          <a class="hover:text-gray-400 transition-colors" href="/terms">Terms of Service</a>
-        </div>
-      </div>
           <a class="hover:text-gray-400 transition-colors" href="/terms">Terms of Service</a>
         </div>
       </div>
