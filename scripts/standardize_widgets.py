@@ -125,12 +125,12 @@ WIDGET_CSS = """
     #aiq-lead-start {
       margin-top: 4px; padding: 10px;
       border-radius: 10px; font-size: 13px; font-weight: 600;
-      background: linear-gradient(135deg, #FF9F45, #FF6B5C);
+      background: linear-gradient(135deg, #A85A1C, #C0392B);
       color: #fff; border: none; cursor: pointer;
-      box-shadow: 0 4px 14px rgba(255,107,92,.4);
+      box-shadow: 0 4px 14px rgba(192,57,43,.4);
       transition: transform .15s, box-shadow .15s;
     }
-    #aiq-lead-start:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(255,107,92,.55); }
+    #aiq-lead-start:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(192,57,43,.55); }
     #aiq-log {
       flex: 1; overflow-y: auto; padding: 12px 11px;
       display: flex; flex-direction: column; gap: 9px;
@@ -144,7 +144,7 @@ WIDGET_CSS = """
       word-wrap: break-word;
     }
     .ab.bot { background: rgba(255,255,255,.08); color: #e2e8f0; align-self: flex-start; border-bottom-left-radius: 4px; }
-    .ab.me  { background: linear-gradient(135deg,#FF9F45,#FF6B5C); color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; }
+    .ab.me  { background: linear-gradient(135deg, #A85A1C, #C0392B); color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; }
     .ab.tdot { align-self: flex-start; padding: 11px 14px; background: rgba(255,255,255,.08); border-bottom-left-radius: 4px; }
     .aiq-dots { display: flex; gap: 4px; }
     .aiq-dots span {

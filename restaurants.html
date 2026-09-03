@@ -35,7 +35,45 @@
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"AgentIQ","item":"https://agentiq.co.in/"},{"@type":"ListItem","position":2,"name":"Restaurants","item":"https://agentiq.co.in/restaurants"}]}
   </script>
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Service","name":"AI WhatsApp Chatbot for Restaurants in India","serviceType":"Restaurant AI Automation","provider":{"@id":"https://agentiq.co.in/#organization"},"areaServed":{"@type":"Country","name":"India"},"description":"24/7 WhatsApp AI chatbot taking table reservations, sharing menus, answering customer queries, and automating order follow-ups."}
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "AI WhatsApp Chatbot for Restaurants in India",
+    "serviceType": "Restaurant AI Automation",
+    "provider": { "@id": "https://agentiq.co.in/#organization" },
+    "areaServed": {
+      "@type": "Country",
+      "name": "India"
+    },
+    "description": "24/7 WhatsApp AI chatbot taking table reservations, sharing menus, answering customer queries, and automating order follow-ups.",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Restaurant AI Chatbot Plans",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "name": "Starter Plan",
+          "price": "7999",
+          "priceCurrency": "INR",
+          "description": "WhatsApp table booking and menu chatbot for single-outlet restaurants up to 1,000 chats/mo"
+        },
+        {
+          "@type": "Offer",
+          "name": "Growth Plan",
+          "price": "14999",
+          "priceCurrency": "INR",
+          "description": "Web widget + WhatsApp, Petpooja POS sync, and UPI pre-orders up to 2,000 chats/mo"
+        },
+        {
+          "@type": "Offer",
+          "name": "Pro Plan",
+          "price": "24999",
+          "priceCurrency": "INR",
+          "description": "Multi-outlet restaurant chains, floor routing, and live table status up to 5,000 chats/mo"
+        }
+      ]
+    }
+  }
   </script>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
@@ -108,8 +146,7 @@
     }
     @media (max-width: 767px) {
       #wa-float {
-        bottom: 144px;
-        right: 16px;
+        display: none !important;
       }
     }
     /* ── AI Chat & Voice Widgets ─────────────────────────────── */
@@ -195,7 +232,7 @@
       word-wrap: break-word;
     }
     .ab.bot { background: rgba(255,255,255,.08); color: #e2e8f0; align-self: flex-start; border-bottom-left-radius: 4px; }
-    .ab.me  { background: linear-gradient(135deg,#FF9F45,#FF6B5C); color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; }
+    .ab.me  { background: linear-gradient(135deg, #A85A1C, #C0392B); color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; }
     .ab.tdot { align-self: flex-start; padding: 11px 14px; background: rgba(255,255,255,.08); border-bottom-left-radius: 4px; }
     .aiq-dots { display: flex; gap: 4px; }
     .aiq-dots span {
@@ -254,7 +291,7 @@
     }
     #aiq-lead-start {
       margin-top: 2px; padding: 9px;
-      background: linear-gradient(135deg,#FF9F45,#FF6B5C);
+      background: linear-gradient(135deg, #A85A1C, #C0392B);
       border: none; border-radius: 10px;
       color: #fff; font-size: 13px; font-weight: 600;
       cursor: pointer; transition: opacity .15s;

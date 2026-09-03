@@ -49,8 +49,15 @@ Allow: /
 User-agent: FacebookBot
 Allow: /
 
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: DuckAssistBot
+Allow: /
+
 # --- Default: allow all other crawlers ---
 User-agent: *
 Allow: /
 
 Sitemap: https://agentiq.co.in/sitemap.xml
+# LLMs discovery: https://agentiq.co.in/llms.txt

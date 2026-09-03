@@ -32,7 +32,44 @@
   <meta name="ai-summary" content="AgentIQ's D2C e-commerce solution automates WhatsApp abandoned-cart recovery, Cash-on-Delivery (COD) order verification, and 'Where Is My Order' (WISMO) support for Indian D2C and Shopify brands, cutting RTO (Return to Origin) rates by up to 40%. Built and deployed by AgentIQ's team within 7 days — no self-serve setup required. Based in Mumbai, India. Book a free D2C WhatsApp audit: https://agentiq.co.in/d2c-ecommerce#book or WhatsApp https://wa.me/919159665277." />
 
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Service","name":"D2C E-Commerce WhatsApp Automation","provider":{"@id":"https://agentiq.co.in/#organization"},"serviceType":"AI Chatbot & Automation for D2C Brands","areaServed":"India"}
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "D2C E-Commerce WhatsApp Automation",
+    "provider": { "@id": "https://agentiq.co.in/#organization" },
+    "serviceType": "AI Chatbot & Automation for D2C Brands",
+    "areaServed": {
+      "@type": "Country",
+      "name": "India"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "D2C WhatsApp AI Plans",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "name": "Starter Plan",
+          "price": "7999",
+          "priceCurrency": "INR",
+          "description": "WhatsApp automation for boutique D2C stores up to 1,000 chats/mo"
+        },
+        {
+          "@type": "Offer",
+          "name": "Growth Plan",
+          "price": "14999",
+          "priceCurrency": "INR",
+          "description": "Full cart recovery, COD confirmation and Shopify sync up to 2,000 chats/mo"
+        },
+        {
+          "@type": "Offer",
+          "name": "Pro Plan",
+          "price": "24999",
+          "priceCurrency": "INR",
+          "description": "Omnichannel D2C scale, VIP segmentation and custom CRM integration up to 5,000 chats/mo"
+        }
+      ]
+    }
+  }
   </script>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"AgentIQ","item":"https://agentiq.co.in/"},{"@type":"ListItem","position":2,"name":"D2C E-Commerce","item":"https://agentiq.co.in/d2c-ecommerce"}]}
@@ -174,7 +211,7 @@
     #aiq-lead-start {
       margin-top: 4px; padding: 10px;
       border-radius: 10px; font-size: 13px; font-weight: 600;
-      background: linear-gradient(135deg, #FF9F45, #FF6B5C);
+      background: linear-gradient(135deg, #A85A1C, #C0392B);
       color: #fff; border: none; cursor: pointer;
       box-shadow: 0 4px 14px rgba(255,107,92,.4);
       transition: transform .15s, box-shadow .15s;
@@ -193,7 +230,7 @@
       word-wrap: break-word;
     }
     .ab.bot { background: rgba(255,255,255,.08); color: #e2e8f0; align-self: flex-start; border-bottom-left-radius: 4px; }
-    .ab.me  { background: linear-gradient(135deg,#FF9F45,#FF6B5C); color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; }
+    .ab.me  { background: linear-gradient(135deg, #A85A1C, #C0392B); color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; }
     .ab.tdot { align-self: flex-start; padding: 11px 14px; background: rgba(255,255,255,.08); border-bottom-left-radius: 4px; }
     .aiq-dots { display: flex; gap: 4px; }
     .aiq-dots span {
@@ -589,24 +626,28 @@
           <h2 class="font-display font-700 text-white text-2xl">Scale Your D2C Brand with AgentIQ</h2>
           <p class="text-slate-400 text-xs sm:text-sm">Enter your brand details for a 1-on-1 WhatsApp audit &amp; custom flow setup in 7 days.</p>
 
-          <div class="space-y-4 text-left">
+          <form id="d2c-leadform" class="space-y-4 text-left" novalidate>
             <div>
               <label for="d2c-name" class="block text-xs text-slate-300 mb-1">Your Name</label>
-              <input id="d2c-name" type="text" class="w-full bg-slate-900/80 border border-white/15 rounded-xl p-3 text-white text-base focus:border-cyan focus:outline-none" placeholder="Ananya Roy" data-mcp-param="name" data-mcp-description="Full name of the person requesting the audit (optional)" />
+              <input id="d2c-name" name="name" type="text" class="w-full bg-slate-900/80 border border-white/15 rounded-xl p-3 text-white text-base focus:border-cyan focus:outline-none" placeholder="Ananya Roy" data-mcp-param="name" data-mcp-description="Full name of the person requesting the audit (optional)" />
             </div>
             <div>
               <label for="d2c-brand" class="block text-xs text-slate-300 mb-1">D2C Brand Name / Website</label>
-              <input id="d2c-brand" type="text" class="w-full bg-slate-900/80 border border-white/15 rounded-xl p-3 text-white text-base focus:border-cyan focus:outline-none" placeholder="Bombay Botanicals (myshopify.com)" data-mcp-param="brand" data-mcp-description="D2C brand name or Shopify store URL (optional)" />
+              <input id="d2c-brand" name="brand" type="text" class="w-full bg-slate-900/80 border border-white/15 rounded-xl p-3 text-white text-base focus:border-cyan focus:outline-none" placeholder="Bombay Botanicals (myshopify.com)" data-mcp-param="brand" data-mcp-description="D2C brand name or Shopify store URL (optional)" />
             </div>
             <div>
-              <label for="d2c-phone" class="block text-xs text-slate-300 mb-1">WhatsApp Number</label>
-              <input id="d2c-phone" type="tel" class="w-full bg-slate-900/80 border border-white/15 rounded-xl p-3 text-white text-base focus:border-cyan focus:outline-none" placeholder="+91 98765 43210" required data-mcp-param="phone" data-mcp-description="WhatsApp number in Indian format, e.g. +91 98765 43210 or 9876543210" />
+              <label for="d2c-phone" class="block text-xs text-slate-300 mb-1">WhatsApp Number <span class="text-coral" aria-hidden="true">*</span></label>
+              <input id="d2c-phone" name="phone" type="tel" class="w-full bg-slate-900/80 border border-white/15 rounded-xl p-3 text-white text-base focus:border-cyan focus:outline-none" placeholder="+91 98765 43210" required aria-required="true" aria-describedby="d2c-phone-err" data-mcp-param="phone" data-mcp-description="WhatsApp number in Indian format, e.g. +91 98765 43210 or 9876543210" />
+              <p id="d2c-phone-err" role="alert" class="hidden mt-1.5 text-xs text-red-400">Please enter a valid WhatsApp number.</p>
             </div>
 
-            <button id="btn-submit-d2c" type="button" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-coral-deep to-orange-deep text-white font-600 text-sm shadow-lg shadow-coral/20 hover:shadow-coral/40 transition-all">
+            <button id="btn-submit-d2c" type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-coral-deep to-orange-deep text-white font-600 text-sm shadow-lg shadow-coral/20 hover:shadow-coral/40 transition-all cursor-pointer">
               Book Free D2C WhatsApp Audit →
             </button>
-          </div>
+            <p id="d2c-formmsg" class="hidden items-start gap-2 text-xs text-emerald-300" role="status">
+              <span>Thanks! We've opened WhatsApp to confirm your audit. If it didn't open, <a id="d2c-wa-fallback" href="https://wa.me/919159665277" target="_blank" rel="noopener noreferrer" class="underline hover:text-white">click here to message us directly on WhatsApp</a>.</span>
+            </p>
+          </form>
         </div>
       </section>
 
@@ -784,40 +825,58 @@
       'use strict';
       var yearEl = document.getElementById('year-d2c');
       if (yearEl) yearEl.textContent = new Date().getFullYear();
-      var btn = document.getElementById('btn-submit-d2c');
-      btn.addEventListener('click', async function() {
-        var name = document.getElementById('d2c-name').value.trim();
-        var brand = document.getElementById('d2c-brand').value.trim();
-        var phone = document.getElementById('d2c-phone').value.trim();
-        var cleanPhone = phone.replace(/\D/g, '');
+      var form = document.getElementById('d2c-leadform');
+      if (form) {
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          var nameInput = document.getElementById('d2c-name');
+          var brandInput = document.getElementById('d2c-brand');
+          var phoneInput = document.getElementById('d2c-phone');
+          var errEl = document.getElementById('d2c-phone-err');
+          var msgEl = document.getElementById('d2c-formmsg');
+          var fallbackLink = document.getElementById('d2c-wa-fallback');
 
-        if (!cleanPhone) {
-          alert('Please enter a valid WhatsApp number.');
-          document.getElementById('d2c-phone').focus();
-          return;
-        }
+          var name = nameInput ? nameInput.value.trim() : '';
+          var brand = brandInput ? brandInput.value.trim() : '';
+          var phone = phoneInput ? phoneInput.value.trim() : '';
+          var cleanPhone = phone.replace(/\D/g, '');
 
-        // Fire-and-forget: never block WhatsApp opening on this call, since a
-        // cold Render backend can take 30-60s+ to wake — the user shouldn't
-        // wait on it at all for what's just background lead logging.
-        fetch('https://agentiq-chatbot.onrender.com/lead', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            name: name || 'D2C Lead',
-            email: 'd2c@agentiq.co.in',
-            phone: cleanPhone,
-            businessName: brand || 'D2C Brand',
-            industry: 'D2C E-Commerce',
-            notes: 'Requested D2C WhatsApp Cart Recovery & COD audit'
-          })
-        }).catch(function(e) { console.log('Lead log silent catch:', e); });
+          if (cleanPhone.length < 8) {
+            phoneInput.classList.add('ring-2', 'ring-red-400');
+            phoneInput.setAttribute('aria-invalid', 'true');
+            if (errEl) errEl.classList.remove('hidden');
+            phoneInput.focus();
+            return;
+          } else {
+            phoneInput.classList.remove('ring-2', 'ring-red-400');
+            phoneInput.removeAttribute('aria-invalid');
+            if (errEl) errEl.classList.add('hidden');
+          }
 
-        var waMessage = "Hi AgentIQ, I'd like to book a free D2C WhatsApp audit.\nName: " + (name || 'D2C Lead') + "\nWhatsApp: " + cleanPhone;
-        if (brand) waMessage += "\nBrand: " + brand;
-        var waUrl = 'https://wa.me/919159665277?text=' + encodeURIComponent(waMessage);
-        window.open(waUrl, '_blank', 'noopener,noreferrer');
-      });
+          // Fire-and-forget backend lead log
+          fetch('https://agentiq-chatbot.onrender.com/lead', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              name: name || 'D2C Lead',
+              email: 'd2c@agentiq.co.in',
+              phone: cleanPhone,
+              businessName: brand || 'D2C Brand',
+              industry: 'D2C E-Commerce',
+              notes: 'Requested D2C WhatsApp Cart Recovery & COD audit'
+            })
+          }).catch(function(err) { console.error('[AgentIQ] D2C lead log catch:', err); });
+
+          var waMessage = "Hi AgentIQ, I'd like to book a free D2C WhatsApp audit.\nName: " + (name || 'D2C Lead') + "\nWhatsApp: " + cleanPhone;
+          if (brand) waMessage += "\nBrand: " + brand;
+          var waUrl = 'https://wa.me/919159665277?text=' + encodeURIComponent(waMessage);
+
+          if (fallbackLink) fallbackLink.href = waUrl;
+          if (msgEl) msgEl.classList.remove('hidden');
+
+          window.open(waUrl, '_blank', 'noopener,noreferrer');
+        });
+      }
 
       // BurgerBae Live Interactive Demo Simulator
       var d2cConvo = {

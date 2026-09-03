@@ -96,29 +96,28 @@
   }
   </script>
   
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/dm-sans-latin.woff2" crossorigin />
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/space-grotesk-latin.woff2" crossorigin />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="/tailwind.min.css" />
   
   <style>
-    @font-face {
-      font-family: 'Cabinet Grotesk';
-      font-weight: 700 800 900;
-      font-display: swap;
-      src: url('/assets/fonts/CabinetGrotesk-Variable.woff2') format('woff2');
+    /* Global high-contrast focus indicator (WCAG 2.2 Level AA) */
+    a:focus-visible, button:focus-visible, summary:focus-visible,
+    [tabindex]:focus-visible, select:focus-visible,
+    input:focus-visible, textarea:focus-visible {
+      outline: 3px solid #22D3EE;
+      outline-offset: 2px;
     }
-    @font-face {
-      font-family: 'Plus Jakarta Sans';
-      font-weight: 400 500 600 700;
-      font-display: swap;
-      src: url('/assets/fonts/PlusJakartaSans-Variable.woff2') format('woff2');
-    }
-    .font-display { font-family: 'Cabinet Grotesk', system-ui, sans-serif; }
-    .font-sans { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
     .glass { background: rgba(6,15,40,.80); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,.10); }
     .glass-card { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); backdrop-filter: blur(12px); }
     .hero-grad-text { background: linear-gradient(135deg, #FF9F45, #FF6B5C, #22D3EE); -webkit-background-clip: text; background-clip: text; color: transparent; }
     .logo-grad-text { background: linear-gradient(135deg, #FF9F45, #FF6B5C); -webkit-background-clip: text; background-clip: text; color: transparent; }
-    .cta-glow-pink { background: linear-gradient(135deg,#ec4899,#a855f7); box-shadow: 0 4px 25px rgba(236,72,153,.35); }
+    .cta-glow-pink { background: linear-gradient(135deg,#A6265A,#9333A6); box-shadow: 0 4px 25px rgba(166,38,90,.35); }
+
+    /* Mobile Nav Dropdown */
+    #aiq-mobile-nav { position: absolute; top: calc(100% + 8px); left: 0; right: 0; background: rgba(7,23,58,.97); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,.12); border-radius: 18px; box-shadow: 0 16px 60px rgba(0,0,0,.55); transition: opacity .18s ease, transform .18s ease; z-index: 50; }
+    #aiq-mobile-nav.aiq-shut { opacity: 0; transform: translateY(-6px) scale(.98); pointer-events: none; }
 
     /* ── Floating WhatsApp ── */
     #wa-float {
@@ -145,7 +144,8 @@
       transition: transform .2s ease, box-shadow .2s ease;
       position: relative;
     }
-    #aiq-toggle:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(255,107,92,.6); }
+    #aiq-toggle:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(255,107,92,.7); filter: brightness(1.06); }
+    #aiq-toggle:focus-visible { outline: 3px solid #22D3EE; outline-offset: 3px; }
     #aiq-notif { position: absolute; top: -3px; right: -3px; width: 18px; height: 18px; border-radius: 50%; background: #22D3EE; color: #07173a; font-size: 10px; font-weight: 700; display: flex; align-items: center; justify-content: center; border: 2px solid #07173a; }
     #aiq-notif.aiq-gone { display: none; }
     #aiq-panel { position: absolute; bottom: 60px; right: 0; width: 340px; background: rgba(7,23,58,.96); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,.12); border-radius: 20px; box-shadow: 0 16px 60px rgba(0,0,0,.55); display: flex; flex-direction: column; overflow: hidden; transition: opacity .2s ease, transform .2s ease; }
@@ -159,11 +159,11 @@
     #aiq-lead-form { padding: 18px 16px; display: flex; flex-direction: column; gap: 10px; }
     #aiq-lead-form p { font-size: 12px; color: #cbd5e1; line-height: 1.4; }
     #aiq-lead-form input { width: 100%; padding: 9px 12px; border-radius: 10px; font-size: 13px; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.14); color: #fff; outline: none; }
-    #aiq-lead-start { margin-top: 4px; padding: 10px; border-radius: 10px; font-size: 13px; font-weight: 600; background: linear-gradient(135deg, #FF9F45, #FF6B5C); color: #fff; border: none; cursor: pointer; }
+    #aiq-lead-start { margin-top: 4px; padding: 10px; border-radius: 10px; font-size: 13px; font-weight: 600; background: linear-gradient(135deg, #A85A1C, #C0392B); color: #fff; border: none; cursor: pointer; }
     #aiq-log { flex: 1; overflow-y: auto; padding: 12px 11px; display: flex; flex-direction: column; gap: 9px; max-height: 300px; }
     .ab { max-width: 85%; padding: 9px 13px; border-radius: 15px; font-size: 13px; line-height: 1.55; word-wrap: break-word; }
     .ab.bot { background: rgba(255,255,255,.08); color: #e2e8f0; align-self: flex-start; }
-    .ab.me { background: linear-gradient(135deg,#FF9F45,#FF6B5C); color: #fff; align-self: flex-end; }
+    .ab.me { background: linear-gradient(135deg, #A85A1C, #C0392B); color: #fff; align-self: flex-end; }
     #aiq-bar { padding: 9px 11px; background: rgba(4,13,33,.85); border-top: 1px solid rgba(255,255,255,.08); display: flex; gap: 7px; align-items: center; }
     #aiq-in { flex: 1; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12); border-radius: 10px; padding: 8px 11px; font-size: 13px; color: #fff; outline: none; }
     #aiq-go { width: 34px; height: 34px; border-radius: 10px; background: linear-gradient(135deg, #FF9F45, #FF6B5C); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; }
@@ -564,6 +564,226 @@
       apiBase: 'https://agentiq-chatbot.onrender.com',
       vapiPublicKey: 'b430edb7-0dc0-4c14-9e56-5445fdba2912'
     };
+  </script>
+
+  <!-- Chat Widget Script -->
+  <script>
+    (function () {
+      var msgs = [];
+      var open = false;
+
+      var toggle = document.getElementById('aiq-toggle');
+      var panel  = document.getElementById('aiq-panel');
+      var xBtn   = document.getElementById('aiq-x');
+      var log    = document.getElementById('aiq-log');
+      var inp    = document.getElementById('aiq-in');
+      var goBtn  = document.getElementById('aiq-go');
+      var notif  = document.getElementById('aiq-notif');
+
+      var leadCaptured = false;
+      var leadNameInput = document.getElementById('aiq-lname');
+      var leadPhoneInput = document.getElementById('aiq-lphone');
+      var leadBizInput = document.getElementById('aiq-lbiz');
+      var leadStartBtn = document.getElementById('aiq-lead-start');
+      var leadForm = document.getElementById('aiq-lead-form');
+      var aiqBar = document.getElementById('aiq-bar');
+
+      if (!toggle || !panel) return;
+
+      leadStartBtn.addEventListener('click', function () {
+        var name = leadNameInput.value.trim();
+        var phone = leadPhoneInput.value.trim();
+        if (!name || !phone) {
+          if (!name) leadNameInput.focus(); else leadPhoneInput.focus();
+          return;
+        }
+        leadStartBtn.disabled = true;
+        leadStartBtn.textContent = 'Starting…';
+        var business = leadBizInput.value.trim();
+
+        var activeApi = (window.AgentIQConfig && window.AgentIQConfig.apiBase) || 'https://agentiq-chatbot.onrender.com';
+        fetch(activeApi + '/lead', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name: name, phone: phone, business: business }),
+        }).catch(function () {});
+
+        leadCaptured = true;
+        leadForm.style.display = 'none';
+        log.style.display = 'flex';
+        aiqBar.style.display = 'flex';
+
+        var greeting = 'Hi ' + name + '! 👋 Ask me anything about our AI chatbots, voice agents, pricing, or FAQ.';
+        msgs.push({ role: 'user', content: '[Lead form completed — Name: ' + name + '. Phone: ' + phone + '. Business: ' + business + ']' });
+        msgs.push({ role: 'assistant', content: greeting });
+        addBubble(greeting, 'bot');
+        inp.focus();
+      });
+
+      function openChat() {
+        open = true;
+        panel.removeAttribute('inert');
+        panel.classList.remove('aiq-shut');
+        toggle.setAttribute('aria-expanded', 'true');
+        if (notif) notif.classList.add('aiq-gone');
+        if (leadCaptured) inp.focus(); else leadNameInput.focus();
+      }
+      function closeChat() {
+        open = false;
+        panel.classList.add('aiq-shut');
+        toggle.setAttribute('aria-expanded', 'false');
+        panel.setAttribute('inert', '');
+      }
+
+      toggle.addEventListener('click', function () { open ? closeChat() : openChat(); });
+      xBtn.addEventListener('click', function () { closeChat(); });
+
+      function addBubble(text, who) {
+        var d = document.createElement('div');
+        d.className = 'ab ' + who;
+        d.textContent = text;
+        log.appendChild(d);
+        log.scrollTop = log.scrollHeight;
+        return d;
+      }
+
+      function addTyping() {
+        var d = document.createElement('div');
+        d.className = 'ab tdot';
+        var dots = document.createElement('div');
+        dots.className = 'aiq-dots';
+        dots.setAttribute('aria-hidden', 'true');
+        for (var i = 0; i < 3; i++) dots.appendChild(document.createElement('span'));
+        d.appendChild(dots);
+        log.appendChild(d);
+        log.scrollTop = log.scrollHeight;
+        return d;
+      }
+
+      function send() {
+        var text = inp.value.trim();
+        if (!text) return;
+        inp.value = '';
+        addBubble(text, 'me');
+        msgs.push({ role: 'user', content: text });
+        var t = addTyping();
+        goBtn.disabled = true;
+
+        var activeApi = (window.AgentIQConfig && window.AgentIQConfig.apiBase) || 'https://agentiq-chatbot.onrender.com';
+        var ctrl = new AbortController();
+        var fetchTimer = setTimeout(function () { ctrl.abort(); }, 45000);
+        fetch(activeApi + '/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ messages: msgs }),
+          signal: ctrl.signal,
+        }).then(function (r) {
+          clearTimeout(fetchTimer);
+          return r.json();
+        }).then(function (data) {
+          t.remove();
+          var reply = data.reply || 'Great question! Our AI assistants handle customer queries, bookings and lead qualification 24/7.';
+          msgs.push({ role: 'assistant', content: reply });
+          addBubble(reply, 'bot');
+          goBtn.disabled = false;
+        }).catch(function () {
+          t.remove();
+          var fb = 'Our AI voice and chat assistants handle customer support 24/7 — reach us on WhatsApp or book a demo!';
+          addBubble(fb, 'bot');
+          goBtn.disabled = false;
+        });
+      }
+
+      goBtn.addEventListener('click', send);
+      inp.addEventListener('keydown', function (e) { if (e.key === 'Enter') send(); });
+    })();
+  </script>
+
+  <!-- Voice Assistant Integration -->
+  <script type="module">
+    (function () {
+      var floatEl  = document.getElementById('vaq-float');
+      var btn      = document.getElementById('vaq-btn');
+      var statusEl = document.getElementById('vaq-status');
+      var VAPI_KEY = (window.AgentIQConfig && window.AgentIQConfig.vapiPublicKey) || '';
+
+      if (!floatEl || !btn) return;
+      if (!VAPI_KEY || VAPI_KEY === 'YOUR_VAPI_PUBLIC_KEY') {
+        floatEl.style.display = 'none'; return;
+      }
+
+      var vapi = null;
+      var state = 'idle';
+      var connectTimer = null;
+      var sdkLoading = false;
+
+      function setState(s) {
+        state = s;
+        btn.setAttribute('data-state', s);
+        var labels = { connecting: 'Connecting…', listening: 'Listening…', speaking: 'Speaking…' };
+        if (statusEl) {
+          statusEl.textContent   = labels[s] || '';
+          statusEl.style.opacity = s === 'idle' ? '0' : '1';
+        }
+        btn.setAttribute('aria-label', s === 'idle'
+          ? 'Talk to AgentIQ voice assistant'
+          : (labels[s] || '') + ' — click to stop');
+      }
+
+      function wireVapi(mod) {
+        var Vapi = mod.default;
+        vapi = new Vapi(VAPI_KEY, undefined, { avoidEval: true });
+        vapi.on('call-start',   function() { clearTimeout(connectTimer); setState('listening'); });
+        vapi.on('call-end',     function() { clearTimeout(connectTimer); setState('idle');      });
+        vapi.on('speech-start', function() { setState('speaking');  });
+        vapi.on('speech-end',   function() { setState('listening'); });
+        vapi.on('error', function(e) {
+          clearTimeout(connectTimer);
+          console.error('[AgentIQ] VAPI error:', e);
+          setState('idle');
+          if (statusEl) {
+            statusEl.textContent = 'Call failed — try again';
+            statusEl.style.opacity = '1';
+            setTimeout(function () { statusEl.style.opacity = '0'; statusEl.textContent = ''; }, 3000);
+          }
+        });
+      }
+
+      function startCall() {
+        setState('connecting');
+        connectTimer = setTimeout(function() { if (vapi) vapi.stop(); setState('idle'); }, 12000);
+        if (typeof gtag === 'function') {
+          gtag('event', 'voice_agent_start', { event_category: 'voice_agent' });
+        }
+        try {
+          vapi.start('e699b5d0-7cf8-4809-ab19-ed8687ab830f');
+        } catch (err) {
+          clearTimeout(connectTimer);
+          console.error('[AgentIQ] VAPI start failed:', err);
+          setState('idle');
+        }
+      }
+
+      btn.addEventListener('click', function() {
+        if (state !== 'idle') {
+          clearTimeout(connectTimer);
+          if (vapi) vapi.stop();
+          setState('idle');
+          return;
+        }
+        if (vapi) { startCall(); return; }
+        if (sdkLoading) return;
+        sdkLoading = true;
+        setState('connecting');
+        import('https://esm.sh/@vapi-ai/web@2.1.2')
+          .then(function(mod) { sdkLoading = false; wireVapi(mod); startCall(); })
+          .catch(function(err) {
+            sdkLoading = false;
+            console.error('[AgentIQ] Failed to load VAPI SDK:', err);
+            setState('idle');
+          });
+      });
+    })();
   </script>
 
   <!-- Mobile Nav Controller -->

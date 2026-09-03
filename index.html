@@ -102,8 +102,7 @@
       },
       {
         "@type": "Person",
-        "name": "Prachi Borikar",
-        "jobTitle": "Co-Founder & Client Solutions Lead"
+        "@id": "https://agentiq.co.in/#prachi-borikar"
       }
     ],
     "knowsAbout": ["WhatsApp chatbots", "Instagram automation", "Website chatbots", "AI customer support", "Appointment booking bots", "AI voice agents"],
@@ -123,6 +122,7 @@
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": "https://agentiq.co.in/#website",
     "name": "AgentIQ",
     "url": "https://agentiq.co.in/",
     "description": "Done-for-you AI chatbot agency in Mumbai — WhatsApp, Instagram, and website chatbots for Indian restaurants, salons, clinics, and D2C brands. Live in 7 days.",
@@ -159,9 +159,28 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": "https://agentiq.co.in/#prachi-borikar",
+    "name": "Prachi Borikar",
+    "givenName": "Prachi",
+    "familyName": "Borikar",
+    "jobTitle": "Co-Founder & Client Solutions Lead",
+    "description": "Co-Founder at AgentIQ. Specializes in conversational UX design, client onboarding, and AI workflow architecture for Indian SMBs.",
+    "url": "https://agentiq.co.in/",
+    "worksFor": { "@id": "https://agentiq.co.in/#organization" },
+    "knowsAbout": ["Conversational UX", "Customer Journey Automation", "WhatsApp Workflows", "SME Operations"],
+    "homeLocation": {
+      "@type": "Place",
+      "name": "Mumbai, Maharashtra, India"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
-      { "@type": "Question", "name": "How do conversation limits and Meta WhatsApp fees work?", "acceptedAnswer": { "@type": "Answer", "text": "Each Agentiq tier includes a set monthly quota of AI-handled conversations. If you exceed your plan's included limit, extra conversations are billed at a flat rate of ₹2.50 each. Official Meta WhatsApp conversation fees (marketing, utility, service) are charged directly by Meta via your linked payment method and are separate from your Agentiq subscription." } },
+      { "@type": "Question", "name": "How do conversation limits and Meta WhatsApp fees work?", "acceptedAnswer": { "@type": "Answer", "text": "Each AgentIQ tier includes a set monthly quota of AI-handled conversations. If you exceed your plan's included limit, extra conversations are billed at a flat rate of ₹2.50 each. Official Meta WhatsApp conversation fees (marketing, utility, service) are charged directly by Meta via your linked payment method and are separate from your AgentIQ subscription." } },
       { "@type": "Question", "name": "How much does a managed WhatsApp AI chatbot cost in India?", "acceptedAnswer": { "@type": "Answer", "text": "Managed WhatsApp AI chatbots in India from AgentIQ start at a transparent ₹7,999/month plus ₹24,999 one-time setup for the Starter plan (up to 1,000 conversations/mo). The Growth plan is ₹14,999/mo + ₹39,999 setup (up to 2,000 conversations/mo), and the Pro plan is ₹24,999/mo + ₹79,999 setup (up to 5,000 conversations/mo). Every plan includes complete done-for-you design, content training, deployment, and ongoing optimization, backed by a 30-day money-back guarantee. GST extra." } },
       { "@type": "Question", "name": "How long does it take to deploy an AI chatbot for an Indian business?", "acceptedAnswer": { "@type": "Answer", "text": "AgentIQ deploys custom AI chatbots in a 7-day managed deployment timeline. Following a 20-minute kickoff call, AgentIQ ingests your menu or service catalog, FAQs, and booking policies, trains the model, and launches across WhatsApp, Instagram DM, and website chat with zero coding required from your team." } },
       { "@type": "Question", "name": "How fast do AgentIQ voice agents respond in Hinglish?", "acceptedAnswer": { "@type": "Answer", "text": "AgentIQ voice agents deliver a 620ms median response latency for Hinglish and Hindi phone conversations (internal benchmark, Vapi + Claude Haiku 4.5 voice pipeline, tested August 2026). Powered by Claude Haiku 4.5 and Gemini 2.0 Flash transcriber architecture via Vapi, callers experience fast, natural voice interactions without awkward pauses." } },
@@ -248,6 +267,17 @@
     ::-webkit-scrollbar-thumb { background: #475569; border-radius: 9999px; }
     html { scroll-padding-top: 96px; scrollbar-width: thin; scrollbar-color: #475569 #1e293b; }
     section[id], div[id] { scroll-margin-top: 96px; }
+    /* WCAG 2.2 SC 2.5.8 Tap Target expansion for carousel dots */
+    .cs-dot { position: relative; }
+    .cs-dot::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      min-width: 32px;
+      min-height: 32px;
+    }
     /* Opt-in: hides the scrollbar entirely on horizontal carousels (marquee, story
        avatars, mobile industry tabs) while keeping them scrollable. */
     .scrollbar-hide { scrollbar-width: none; -ms-overflow-style: none; }
@@ -588,7 +618,7 @@
       word-wrap: break-word;
     }
     .ab.bot { background: rgba(255,255,255,.08); color: #e2e8f0; align-self: flex-start; border-bottom-left-radius: 4px; }
-    .ab.me  { background: linear-gradient(135deg,#FF9F45,#FF6B5C); color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; }
+    .ab.me  { background: linear-gradient(135deg, #A85A1C, #C0392B); color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; }
     .ab.tdot { align-self: flex-start; padding: 11px 14px; background: rgba(255,255,255,.08); border-bottom-left-radius: 4px; }
     .aiq-dots { display: flex; gap: 4px; }
     .aiq-dots span {
@@ -652,7 +682,7 @@
     }
     #aiq-lead-start {
       margin-top: 2px; padding: 9px;
-      background: linear-gradient(135deg,#FF9F45,#FF6B5C);
+      background: linear-gradient(135deg, #A85A1C, #C0392B);
       border: none; border-radius: 10px;
       color: #fff; font-size: 13px; font-weight: 600;
       cursor: pointer; transition: opacity .15s;
@@ -736,7 +766,7 @@
             <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-400/15 text-emerald-300 font-600">
               <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>Live
             </span>
-            Trusted by 100+ businesses across India
+            Trusted by 35+ growing businesses across India
           </div>
           <h1 class="reveal font-display font-700 text-white text-5xl sm:text-6xl lg:text-[4.2rem] leading-[1.02] tracking-tighter text-balance">
             <span class="sr-only">AI Chatbots &amp; Voice Agents for Businesses in India - </span>AI chatbots that<br><span class="grad-text">work while you sleep</span><br>and close more sales
@@ -895,11 +925,11 @@
                   </p>
                   <div class="mt-4 flex items-center gap-3">
                     <div id="cs-avatar" class="w-10 h-10 rounded-full bg-gradient-to-br from-coral to-orange-deep flex items-center justify-center font-bold text-white text-sm shrink-0">
-                      RK
+                      VN
                     </div>
                     <div>
-                      <p id="cs-author" class="text-white font-600 text-sm">Rahul Kapoor</p>
-                      <p id="cs-role" class="text-xs text-slate-400">Founder &amp; Managing Director · Spice Route Group</p>
+                      <p id="cs-author" class="text-white font-600 text-sm">Vikram Narang</p>
+                      <p id="cs-role" class="text-xs text-slate-400">Co-Founder · Spice Route Dining Group, Mumbai</p>
                     </div>
                   </div>
                 </div>
@@ -1182,7 +1212,7 @@
               </div>
             </div>
             <form id="demo-chat-form" class="p-3 border-t border-white/10 bg-[#050914] flex gap-2">
-              <input id="demo-chat-input" type="text" placeholder="Ask anything..." class="flex-1 px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white text-sm placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-cyan">
+              <input id="demo-chat-input" type="text" placeholder="Ask anything..." aria-label="Ask a question to the interactive demo bot" class="flex-1 px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white text-base placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-cyan">
               <button type="submit" aria-label="Send Message" class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-coral-deep to-orange-deep text-white hover:brightness-110 transition cursor-pointer flex items-center justify-center">
                 <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
               </button>
@@ -1475,8 +1505,8 @@
             <svg class="w-8 h-8 text-cyan/40 mb-3" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
             <p class="text-slate-200 leading-relaxed flex-1 text-[15px]">Used to spend 3 hours every day managing WhatsApp bookings myself. Now the bot handles it and I just check the confirmations. <span class="text-white font-600">Freed up my entire evening.</span></p>
             <div class="mt-6 pt-5 border-t border-white/10 flex items-center gap-3">
-              <span class="grid place-items-center w-10 h-10 rounded-full bg-gradient-to-br from-cyan to-blue text-white text-sm font-700 shrink-0">V</span>
-              <div><p class="text-white text-sm font-600">Vikram N.</p><p class="text-slate-400 text-xs mt-0.5">Owner, Spice Route · Mumbai</p></div>
+              <span class="grid place-items-center w-10 h-10 rounded-full bg-gradient-to-br from-cyan to-blue text-white text-sm font-700 shrink-0">VN</span>
+              <div><p class="text-white text-sm font-600">Vikram Narang</p><p class="text-slate-400 text-xs mt-0.5">Co-Founder, Spice Route Dining Group · Mumbai</p></div>
             </div>
           </article>
           <article class="reveal rounded-2xl p-7 flex flex-col" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);backdrop-filter:blur(16px)">
@@ -1989,6 +2019,32 @@
         </div>
       </div>
     </section>
+    <!-- MEET THE FOUNDER -->
+    <section class="relative py-14 px-5 overflow-hidden" style="background:linear-gradient(180deg,#08101e 0%,#060f28 100%)">
+      <div class="reveal glass-strong rounded-3xl p-8 sm:p-10 border border-white/10 max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-6 sm:gap-8">
+        <div class="w-24 h-24 rounded-2xl bg-gradient-to-tr from-coral to-cyan flex items-center justify-center text-white font-bold text-3xl shrink-0 shadow-lg shadow-coral/20">
+          SP
+        </div>
+        <div class="space-y-3 text-center md:text-left">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan/10 border border-cyan/20 text-cyan text-xs font-semibold">
+            Founder Commitment
+          </div>
+          <h3 class="text-2xl font-bold text-white">Built by AI Engineers, Not an Outsourced Agency</h3>
+          <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+            "Every AgentIQ assistant is personally engineered and prompt-tuned by our core team in Mumbai. We don't hand you raw software and leave you to figure it out — we guarantee a working, revenue-generating assistant within 7 days or 100% of your setup fee back."
+          </p>
+          <div class="pt-1 flex flex-wrap items-center justify-center md:justify-start gap-4 text-xs text-slate-400 font-medium">
+            <span class="text-white font-semibold">Shane Pereira</span>
+            <span>·</span>
+            <span>Founder &amp; AI Automation Lead · Mumbai, India</span>
+            <span>·</span>
+            <a href="https://www.linkedin.com/in/shanepereiraa/" target="_blank" rel="noopener noreferrer" class="text-cyan hover:underline inline-flex items-center gap-1 font-semibold">
+              LinkedIn Profile →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- PRICING -->
     <section id="pricing" class="relative py-16 sm:py-24 px-5 overflow-hidden" style="background:linear-gradient(180deg,#060f28 0%,#080518 50%,#060f28 100%)">
       <!-- Neon ring ambient -->
@@ -2071,11 +2127,23 @@
             <p class="mt-3 text-center text-xs text-slate-400">30-day money-back guarantee</p>
           </div>
         </div>
+        <!-- 15% Chat + Voice Bundle Upsell Callout -->
+        <div class="reveal mt-12 glass rounded-3xl p-6 sm:p-8 border border-amber-400/30 bg-gradient-to-r from-amber-500/10 via-purple-500/10 to-transparent flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div>
+            <span class="text-xs uppercase font-bold text-amber-300 tracking-wider px-3 py-1 rounded-full bg-amber-400/15 border border-amber-400/30">Complete Funnel Coverage</span>
+            <h3 class="text-xl font-bold text-white mt-2">Need Both WhatsApp Chat + Phone Voice Agents?</h3>
+            <p class="text-slate-300 text-sm mt-1">Combine any Chatbot &amp; Voice plan for a unified setup and <strong>save 15% on your combined monthly retainer</strong>.</p>
+          </div>
+          <a href="#book" class="px-6 py-3.5 rounded-xl bg-white text-slate-950 font-bold text-sm whitespace-nowrap hover:bg-cyan hover:text-slate-950 transition-colors cursor-pointer">
+            Claim 15% Bundle Discount →
+          </a>
+        </div>
+
         <div class="reveal mt-12 rounded-2xl p-6 sm:p-8 text-center" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(16px)">
           <h4 class="font-display font-600 text-white text-lg sm:text-xl mb-2">Need more scale or custom infrastructure?</h4>
           <p class="text-slate-400 text-sm max-w-2xl mx-auto leading-relaxed">For chat volumes exceeding 5,000 chats per month or custom ERP/POS integrations, custom enterprise plans are available. Reach out to <a href="mailto:shane@agentiq.co.in" class="inline-block text-cyan hover:underline font-500 py-1">shane@agentiq.co.in</a>.</p>
         </div>
-        <p class="reveal text-center text-xs text-slate-400 mt-6 leading-relaxed max-w-3xl mx-auto"><strong class="text-slate-300 font-600">*Note on Usage &amp; Meta Fees:</strong> Each plan includes a dedicated monthly AI conversation allowance. Additional conversations beyond your plan limit are billed at ₹2.50/convo. Official Meta WhatsApp conversation fees (marketing, utility, service) are charged directly by Meta via your linked payment method and are separate from your Agentiq subscription. All prices shown are exclusive of 18% GST.</p>
+        <p class="reveal text-center text-xs text-slate-400 mt-6 leading-relaxed max-w-3xl mx-auto"><strong class="text-slate-300 font-600">*Note on Usage &amp; Meta Fees:</strong> Each plan includes a dedicated monthly AI conversation allowance. Additional conversations beyond your plan limit are billed at ₹2.50/convo. Official Meta WhatsApp conversation fees (marketing, utility, service) are charged directly by Meta via your linked payment method and are separate from your AgentIQ subscription. All prices shown are exclusive of 18% GST.</p>
       </div>
     </section>
     <!-- VOICE PRICING -->
@@ -3453,7 +3521,7 @@
             m2Val: '0.2s', m2Lbl: 'WhatsApp Response',
             m3Val: '₹3.8L', m3Lbl: 'Saved Monthly',
             quote: '"Before AgentIQ, our staff missed over 40% of peak-hour weekend call inquiries. Now, our WhatsApp AI concierge books tables, collects pre-orders, and auto-syncs with our POS instantly."',
-            avatar: 'RK', author: 'Rahul Kapoor', role: 'Founder & Managing Director · Spice Route Group',
+            avatar: 'VN', author: 'Vikram Narang', role: 'Co-Founder · Spice Route Dining Group, Mumbai',
             flowTag: 'WhatsApp + POS Sync',
             s1Title: 'Customer Inquires via WhatsApp', s1Sub: '"Table for 4 tonight at 8 PM?"',
             s2Title: 'AgentIQ AI Concierge Responds (0.2s)', s2Sub: '"Confirmed! Want to pre-order starters?"',

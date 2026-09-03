@@ -120,32 +120,31 @@
   }
   </script>
   
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/dm-sans-latin.woff2" crossorigin />
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/space-grotesk-latin.woff2" crossorigin />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="/tailwind.min.css" />
   
   <style>
-    @font-face {
-      font-family: 'Cabinet Grotesk';
-      font-weight: 700 800 900;
-      font-display: swap;
-      src: url('/assets/fonts/CabinetGrotesk-Variable.woff2') format('woff2');
+    /* Global high-contrast focus indicator (WCAG 2.2 Level AA) */
+    a:focus-visible, button:focus-visible, summary:focus-visible,
+    [tabindex]:focus-visible, select:focus-visible,
+    input:focus-visible, textarea:focus-visible {
+      outline: 3px solid #22D3EE;
+      outline-offset: 2px;
     }
-    @font-face {
-      font-family: 'Plus Jakarta Sans';
-      font-weight: 400 500 600 700;
-      font-display: swap;
-      src: url('/assets/fonts/PlusJakartaSans-Variable.woff2') format('woff2');
-    }
-    .font-display { font-family: 'Cabinet Grotesk', system-ui, sans-serif; }
-    .font-sans { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
     .glass { background: rgba(6,15,40,.80); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,.10); }
     .glass-card { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); backdrop-filter: blur(12px); }
     .hero-grad-text { background: linear-gradient(135deg, #FF9F45, #FF6B5C, #22D3EE); -webkit-background-clip: text; background-clip: text; color: transparent; }
     .logo-grad-text { background: linear-gradient(135deg, #FF9F45, #FF6B5C); -webkit-background-clip: text; background-clip: text; color: transparent; }
-    .cta-glow-pink { background: linear-gradient(135deg,#ec4899,#a855f7); box-shadow: 0 4px 25px rgba(236,72,153,.35); transition: transform .15s ease, box-shadow .2s ease; }
-    .cta-glow-pink:hover { transform: translateY(-2px); box-shadow: 0 6px 30px rgba(236,72,153,.5); }
+    .cta-glow-pink { background: linear-gradient(135deg,#A6265A,#9333A6); box-shadow: 0 4px 25px rgba(166,38,90,.35); transition: transform .15s ease, box-shadow .2s ease; }
+    .cta-glow-pink:hover { transform: translateY(-2px); box-shadow: 0 6px 30px rgba(166,38,90,.5); }
     .cta-outline { border: 1px solid rgba(255,255,255,.2); background: rgba(255,255,255,.05); transition: all .2s; }
     .cta-outline:hover { background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.4); transform: translateY(-2px); }
+
+    /* Mobile Nav Dropdown */
+    #aiq-mobile-nav { position: absolute; top: calc(100% + 8px); left: 0; right: 0; background: rgba(7,23,58,.97); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,.12); border-radius: 18px; box-shadow: 0 16px 60px rgba(0,0,0,.55); transition: opacity .18s ease, transform .18s ease; z-index: 50; }
+    #aiq-mobile-nav.aiq-shut { opacity: 0; transform: translateY(-6px) scale(.98); pointer-events: none; }
 
     /* ── Floating WhatsApp (above orange web chat widget) ─ */
     #wa-float {
@@ -257,12 +256,12 @@
     #aiq-lead-start {
       margin-top: 4px; padding: 10px;
       border-radius: 10px; font-size: 13px; font-weight: 600;
-      background: linear-gradient(135deg, #FF9F45, #FF6B5C);
+      background: linear-gradient(135deg, #A85A1C, #C0392B);
       color: #fff; border: none; cursor: pointer;
-      box-shadow: 0 4px 14px rgba(255,107,92,.4);
+      box-shadow: 0 4px 14px rgba(192,57,43,.4);
       transition: transform .15s, box-shadow .15s;
     }
-    #aiq-lead-start:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(255,107,92,.55); }
+    #aiq-lead-start:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(192,57,43,.55); }
     #aiq-log {
       flex: 1; overflow-y: auto; padding: 12px 11px;
       display: flex; flex-direction: column; gap: 9px;
@@ -276,7 +275,7 @@
       word-wrap: break-word;
     }
     .ab.bot { background: rgba(255,255,255,.08); color: #e2e8f0; align-self: flex-start; border-bottom-left-radius: 4px; }
-    .ab.me  { background: linear-gradient(135deg,#FF9F45,#FF6B5C); color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; }
+    .ab.me  { background: linear-gradient(135deg, #A85A1C, #C0392B); color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; }
     .ab.tdot { align-self: flex-start; padding: 11px 14px; background: rgba(255,255,255,.08); border-bottom-left-radius: 4px; }
     .aiq-dots { display: flex; gap: 4px; }
     .aiq-dots span {
@@ -655,8 +654,22 @@
         </div>
       </section>
 
+      <!-- 15% Chat + Voice Bundle Upsell Callout -->
+      <section class="mb-12">
+        <div class="glass-card rounded-3xl p-6 sm:p-8 border border-amber-400/30 bg-gradient-to-r from-amber-500/10 via-purple-500/10 to-transparent flex flex-col sm:flex-row items-center justify-between gap-6 max-w-5xl mx-auto">
+          <div>
+            <span class="text-xs uppercase font-bold text-amber-300 tracking-wider px-3 py-1 rounded-full bg-amber-400/15 border border-amber-400/30">Complete Funnel Coverage</span>
+            <h3 class="text-xl font-bold text-white mt-2">Need Both WhatsApp Chat + Phone Voice Agents?</h3>
+            <p class="text-slate-300 text-sm mt-1">Combine any Chatbot &amp; Voice plan for a unified setup and <strong>save 15% on your combined monthly retainer</strong>.</p>
+          </div>
+          <a href="#book" class="px-6 py-3.5 rounded-xl bg-white text-slate-950 font-bold text-sm whitespace-nowrap hover:bg-cyan hover:text-slate-950 transition-colors cursor-pointer">
+            Claim 15% Bundle Discount →
+          </a>
+        </div>
+      </section>
+
       <!-- Usage and Meta WhatsApp Fee Note -->
-      <section class="mb-20 glass-card rounded-3xl p-6 sm:p-8 border border-white/10">
+      <section class="mb-16 glass-card rounded-3xl p-6 sm:p-8 border border-white/10">
         <h3 class="font-display font-700 text-white text-lg sm:text-xl mb-3 flex items-center gap-2">
           <svg class="w-5 h-5 text-cyan shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
           Important Note on Usage &amp; Meta Fees
@@ -665,8 +678,49 @@
           Each plan includes a dedicated monthly AI conversation allowance. Additional conversations beyond your plan limit are billed at a flat rate of <strong>₹2.50/convo</strong>.
         </p>
         <p class="text-slate-400 text-xs leading-relaxed">
-          Official Meta WhatsApp conversation fees (marketing, utility, service) are charged directly by Meta via your linked payment method and are separate from your Agentiq subscription. All prices shown are exclusive of 18% GST.
+          Official Meta WhatsApp conversation fees (marketing, utility, service) are charged directly by Meta via your linked payment method and are separate from your AgentIQ subscription. All prices shown are exclusive of 18% GST.
         </p>
+      </section>
+
+      <!-- Embedded Demo Booking Form Section -->
+      <section id="book" class="mb-20 scroll-mt-24">
+        <div class="relative w-full max-w-4xl mx-auto rounded-[2rem] p-8 sm:p-12 grid lg:grid-cols-2 gap-10 items-center glass border border-white/10">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan/10 border border-cyan/20 text-cyan text-xs font-semibold mb-3">
+              Free 20-Min Strategy Call
+            </div>
+            <h2 class="font-display font-700 text-white text-3xl sm:text-4xl tracking-tight leading-tight">Book Your Free Live Demo</h2>
+            <p class="mt-4 text-slate-300 text-sm leading-relaxed">See a working AI assistant tailored to your exact industry and menu/catalogue before spending a rupee. No obligation, 30-day money-back guarantee on all plans.</p>
+            <div class="mt-6 space-y-2.5 text-xs text-slate-300">
+              <div class="flex items-center gap-2.5"><svg class="w-4 h-4 text-emerald-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Live mockup of your WhatsApp bot &amp; voice agent</span></div>
+              <div class="flex items-center gap-2.5"><svg class="w-4 h-4 text-emerald-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Custom ROI &amp; staff savings projection</span></div>
+              <div class="flex items-center gap-2.5"><svg class="w-4 h-4 text-emerald-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>7-day launch roadmap walkthrough</span></div>
+            </div>
+          </div>
+
+          <form id="pricing-leadform" class="space-y-4" novalidate>
+            <div>
+              <label for="p-name" class="block text-xs text-slate-300 mb-1.5 font-medium">Your Name <span class="text-coral" aria-hidden="true">*</span></label>
+              <input id="p-name" name="name" type="text" required aria-required="true" placeholder="Rohan Sharma" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-white placeholder:text-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-cyan transition" />
+              <p id="p-name-err" role="alert" class="hidden mt-1 text-xs text-red-400">Please enter your name.</p>
+            </div>
+            <div>
+              <label for="p-phone" class="block text-xs text-slate-300 mb-1.5 font-medium">WhatsApp Number <span class="text-coral" aria-hidden="true">*</span></label>
+              <input id="p-phone" name="phone" type="tel" required aria-required="true" placeholder="+91 98765 43210" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-white placeholder:text-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-cyan transition" />
+              <p id="p-phone-err" role="alert" class="hidden mt-1 text-xs text-red-400">Please enter a valid WhatsApp number.</p>
+            </div>
+            <div>
+              <label for="p-biz" class="block text-xs text-slate-300 mb-1.5 font-medium">Business Name &amp; Industry</label>
+              <input id="p-biz" name="business" type="text" placeholder="Spice Route (Restaurant)" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-white placeholder:text-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-cyan transition" />
+            </div>
+            <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-coral-deep to-orange-deep text-white font-600 text-sm shadow-lg shadow-coral/25 hover:shadow-coral/40 transition-all cursor-pointer">
+              Book My Free Demo →
+            </button>
+            <p id="p-formmsg" class="hidden items-start gap-2 text-xs text-emerald-300" role="status">
+              <span>Thanks! We've opened WhatsApp to confirm your demo. If it didn't open, <a id="p-wa-fallback" href="https://wa.me/919159665277" target="_blank" rel="noopener noreferrer" class="underline hover:text-white">click here to message us directly on WhatsApp</a>.</span>
+            </p>
+          </form>
+        </div>
       </section>
 
       <!-- FAQ Section -->
@@ -1183,6 +1237,70 @@
             scrollToHash(href, e, true);
           }
         }
+      });
+    })();
+  </script>
+
+  <!-- Pricing Lead Form Controller -->
+  <script>
+    (function() {
+      var pForm = document.getElementById('pricing-leadform');
+      if (!pForm) return;
+
+      pForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var nameInput = document.getElementById('p-name');
+        var phoneInput = document.getElementById('p-phone');
+        var bizInput = document.getElementById('p-biz');
+        var nameErr = document.getElementById('p-name-err');
+        var phoneErr = document.getElementById('p-phone-err');
+        var msgEl = document.getElementById('p-formmsg');
+        var fallbackLink = document.getElementById('p-wa-fallback');
+
+        var name = nameInput ? nameInput.value.trim() : '';
+        var phone = phoneInput ? phoneInput.value.trim() : '';
+        var cleanPhone = phone.replace(/\D/g, '');
+        var biz = bizInput ? bizInput.value.trim() : '';
+
+        var valid = true;
+        if (!name) {
+          if (nameErr) nameErr.classList.remove('hidden');
+          nameInput.focus();
+          valid = false;
+        } else {
+          if (nameErr) nameErr.classList.add('hidden');
+        }
+
+        if (cleanPhone.length < 8) {
+          if (phoneErr) phoneErr.classList.remove('hidden');
+          if (valid) phoneInput.focus();
+          valid = false;
+        } else {
+          if (phoneErr) phoneErr.classList.add('hidden');
+        }
+
+        if (!valid) return;
+
+        // Background logging
+        fetch('https://agentiq-chatbot.onrender.com/lead', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: name,
+            phone: cleanPhone,
+            businessName: biz || 'Pricing Lead',
+            notes: 'Demo booked via pricing page form'
+          })
+        }).catch(function(err) { console.error('[AgentIQ] Lead log:', err); });
+
+        var waMessage = "Hi AgentIQ! I'd like to book a free live demo.\nName: " + name + "\nWhatsApp: " + cleanPhone;
+        if (biz) waMessage += "\nBusiness: " + biz;
+        var waUrl = 'https://wa.me/919159665277?text=' + encodeURIComponent(waMessage);
+
+        if (fallbackLink) fallbackLink.href = waUrl;
+        if (msgEl) msgEl.classList.remove('hidden');
+
+        window.open(waUrl, '_blank', 'noopener,noreferrer');
       });
     })();
   </script>

@@ -35,7 +35,45 @@
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"AgentIQ","item":"https://agentiq.co.in/"},{"@type":"ListItem","position":2,"name":"Salons","item":"https://agentiq.co.in/salons"}]}
   </script>
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Service","name":"AI Chatbot & Receptionist for Salons in India","serviceType":"Salon & Spa AI Automation","provider":{"@id":"https://agentiq.co.in/#organization"},"areaServed":{"@type":"Country","name":"India"},"description":"24/7 AI appointment booking and Instagram DM / WhatsApp assistant for salons, spas, and beauty studios across India."}
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "AI Chatbot & Receptionist for Salons in India",
+    "serviceType": "Salon & Spa AI Automation",
+    "provider": { "@id": "https://agentiq.co.in/#organization" },
+    "areaServed": {
+      "@type": "Country",
+      "name": "India"
+    },
+    "description": "24/7 AI appointment booking and Instagram DM / WhatsApp assistant for salons, spas, and beauty studios across India.",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Salon & Spa AI Chatbot Plans",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "name": "Starter Plan",
+          "price": "7999",
+          "priceCurrency": "INR",
+          "description": "WhatsApp slot booking and price card assistant for single-location studios up to 1,000 chats/mo"
+        },
+        {
+          "@type": "Offer",
+          "name": "Growth Plan",
+          "price": "14999",
+          "priceCurrency": "INR",
+          "description": "Instagram DM + WhatsApp bot, stylist calendar sync, and automated no-show reduction up to 2,000 chats/mo"
+        },
+        {
+          "@type": "Offer",
+          "name": "Pro Plan",
+          "price": "24999",
+          "priceCurrency": "INR",
+          "description": "Multi-location salon chains and luxury spas with membership & VIP packages up to 5,000 chats/mo"
+        }
+      ]
+    }
+  }
   </script>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
@@ -189,7 +227,7 @@
       word-wrap: break-word;
     }
     .ab.bot { background: rgba(255,255,255,.08); color: #e2e8f0; align-self: flex-start; border-bottom-left-radius: 4px; }
-    .ab.me  { background: linear-gradient(135deg,#FF9F45,#FF6B5C); color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; }
+    .ab.me  { background: linear-gradient(135deg, #A85A1C, #C0392B); color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; }
     .ab.tdot { align-self: flex-start; padding: 11px 14px; background: rgba(255,255,255,.08); border-bottom-left-radius: 4px; }
     .aiq-dots { display: flex; gap: 4px; }
     .aiq-dots span {
@@ -248,7 +286,7 @@
     }
     #aiq-lead-start {
       margin-top: 2px; padding: 9px;
-      background: linear-gradient(135deg,#FF9F45,#FF6B5C);
+      background: linear-gradient(135deg, #A85A1C, #C0392B);
       border: none; border-radius: 10px;
       color: #fff; font-size: 13px; font-weight: 600;
       cursor: pointer; transition: opacity .15s;

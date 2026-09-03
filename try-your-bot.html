@@ -19,15 +19,21 @@
   <meta property="og:image" content="https://agentiq.co.in/og-image.png" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet" />
+  <!-- Fonts: self-hosted variable woff2 preloaded -->
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/dm-sans-latin.woff2" crossorigin />
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/space-grotesk-latin.woff2" crossorigin />
 
   <!-- Tailwind CSS -->
   <link rel="stylesheet" href="/tailwind.min.css" />
 
   <style>
+    /* Global high-contrast focus indicator (WCAG 2.2 Level AA) */
+    a:focus-visible, button:focus-visible, summary:focus-visible,
+    [tabindex]:focus-visible, select:focus-visible,
+    input:focus-visible, textarea:focus-visible {
+      outline: 3px solid #22D3EE;
+      outline-offset: 2px;
+    }
     .glass {
       background: rgba(255, 255, 255, 0.03);
       backdrop-filter: blur(16px);
@@ -49,6 +55,27 @@
       background: linear-gradient(135deg, #FFFFFF 30%, #34D399 70%, #22D3EE 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+    }
+    /* Mobile Nav Dropdown */
+    #aiq-mobile-nav {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      right: 0;
+      background: rgba(7,23,58,.97);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 18px;
+      box-shadow: 0 16px 60px rgba(0,0,0,.55);
+      transition: opacity .18s ease, transform .18s ease;
+      z-index: 50;
+    }
+    #aiq-mobile-nav.aiq-shut {
+      opacity: 0;
+      transform: translateY(-6px) scale(.98);
+      pointer-events: none;
+      display: none !important;
     }
     .aiq-shut { display: none !important; }
     
@@ -185,7 +212,7 @@
     #aiq-lead-start {
       margin-top: 4px; padding: 10px;
       border-radius: 10px; font-size: 13px; font-weight: 600;
-      background: linear-gradient(135deg, #FF9F45, #FF6B5C);
+      background: linear-gradient(135deg, #A85A1C, #C0392B);
       color: #fff; border: none; cursor: pointer;
       box-shadow: 0 4px 14px rgba(255,107,92,.4);
       transition: transform .15s, box-shadow .15s;
@@ -204,7 +231,7 @@
       word-wrap: break-word;
     }
     .ab.bot { background: rgba(255,255,255,.08); color: #e2e8f0; align-self: flex-start; border-bottom-left-radius: 4px; }
-    .ab.me  { background: linear-gradient(135deg,#FF9F45,#FF6B5C); color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; }
+    .ab.me  { background: linear-gradient(135deg, #A85A1C, #C0392B); color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; }
     .ab.tdot { align-self: flex-start; padding: 11px 14px; background: rgba(255,255,255,.08); border-bottom-left-radius: 4px; }
     .aiq-dots { display: flex; gap: 4px; }
     .aiq-dots span {
@@ -665,7 +692,7 @@
             </div>
 
             <!-- Chat Message Log -->
-            <div id="sim-chat-log" class="p-4 sm:p-6 space-y-4 min-h-[380px] max-h-[440px] overflow-y-auto bg-[radial-gradient(#1f2c34_1px,transparent_1px)] [background-size:16px_16px]">
+            <div id="sim-chat-log" role="log" aria-live="polite" class="p-4 sm:p-6 space-y-4 min-h-[380px] max-h-[440px] overflow-y-auto bg-[radial-gradient(#1f2c34_1px,transparent_1px)] [background-size:16px_16px]">
               <!-- Dynamic bubbles injected via script -->
             </div>
 
@@ -679,7 +706,7 @@
 
             <!-- Interactive Chat Input -->
             <div class="p-3 bg-[#1f2c34] flex items-center gap-2 border-t border-slate-700/50">
-              <input id="sim-user-input" type="text" placeholder="Type a message to test your AI..." class="flex-1 px-4 py-2.5 rounded-full bg-[#2a3942] text-white text-base placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-400" />
+              <input id="sim-user-input" type="text" placeholder="Type a message to test your AI..." aria-label="Type message for simulator" class="flex-1 px-4 py-2.5 rounded-full bg-[#2a3942] text-white text-base placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-400" />
               <button id="sim-btn-send" type="button" class="w-10 h-10 rounded-full bg-emerald-500 text-slate-950 flex items-center justify-center hover:bg-emerald-400 transition-colors shrink-0 cursor-pointer" aria-label="Send message">
                 <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
               </button>
