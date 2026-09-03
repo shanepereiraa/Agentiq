@@ -78,12 +78,7 @@
       outline: 3px solid #22D3EE;
       outline-offset: 3px;
     }
-    @media (max-width: 767px) {
-      #wa-float {
-        bottom: 148px;
-        right: 16px;
-      }
-    }
+    @media (max-width: 767px) { #wa-float { display: none !important; } }
     /* ── AI Chat Widget ─────────────────────────────── */
     #aiq-float { position: fixed; bottom: 24px; right: 20px; z-index: 9999; }
     @media (max-width: 767px) { #aiq-float { bottom: 84px; right: 16px; } }
@@ -362,7 +357,7 @@
         <a href="/#faq" class="hover:text-white transition-colors">FAQ</a>
       </div>
       <div class="flex items-center gap-2">
-        <a href="/#book" class="hidden md:inline-flex items-center justify-center cursor-pointer min-h-[48px] text-sm font-500 px-4 py-2 rounded-xl bg-white text-ink hover:bg-cyan hover:text-white transition-colors duration-200">Book a demo</a>
+        <a href="/#book" class="hidden md:inline-flex items-center justify-center cursor-pointer min-h-[48px] text-sm font-500 px-4 py-2 rounded-xl bg-white text-ink hover:bg-cyan hover:text-slate-950 transition-colors duration-200">Book a demo</a>
         <button id="aiq-nav-toggle" type="button" class="md:hidden grid place-items-center w-9 h-9 rounded-xl text-slate-200 hover:text-white hover:bg-white/10 transition-colors" aria-label="Open menu" aria-haspopup="true" aria-expanded="false" aria-controls="aiq-mobile-nav">
           <svg class="icon-open w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
           <svg class="icon-close w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
@@ -376,7 +371,7 @@
         <a href="/#pricing" class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-white transition-colors">Pricing</a>
         <a href="/blog" class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-white transition-colors">Blog</a>
         <a href="/#faq" class="px-3 py-2.5 rounded-xl hover:bg-white/10 hover:text-white transition-colors">FAQ</a>
-        <a href="/#book" class="mt-2 cursor-pointer text-center py-2.5 px-4 rounded-xl bg-white text-ink hover:bg-cyan hover:text-white text-sm font-500 transition-colors duration-200">Book a demo</a>
+        <a href="/#book" class="mt-2 cursor-pointer text-center py-2.5 px-4 rounded-xl bg-white text-ink hover:bg-cyan hover:text-slate-950 text-sm font-500 transition-colors duration-200">Book a demo</a>
       </div>
     </nav>
   </header>
@@ -484,6 +479,7 @@
   <!-- FOOTER -->
   <!-- FOOTER -->
   <!-- FOOTER -->
+  <!-- FOOTER -->
   <footer class="w-full bg-[#05070B] border-t border-white/10 pt-16 pb-12 text-gray-400 text-sm">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       
@@ -525,10 +521,12 @@
           <ul class="space-y-2.5">
             <li><a class="hover:text-white transition-colors" href="/ai-chatbot-india">AI Chatbots</a></li>
             <li><a class="hover:text-white transition-colors" href="/ai-voice-agents-india">Voice Agents</a></li>
+            <li><a class="hover:text-white transition-colors" href="/whatsapp-chatbot-agency-india">Chatbot Agency</a></li>
             <li><a class="hover:text-white transition-colors" href="/d2c-ecommerce">D2C &amp; E-Commerce</a></li>
             <li><a class="hover:text-white transition-colors" href="/restaurants">Restaurants &amp; Cafés</a></li>
             <li><a class="hover:text-white transition-colors" href="/salons">Salons &amp; Spas</a></li>
             <li><a class="hover:text-white transition-colors" href="/clinics">Clinics &amp; Healthcare</a></li>
+            <li><a class="hover:text-white transition-colors" href="/integrations">Integrations Hub</a></li>
           </ul>
         </div>
 
@@ -551,13 +549,17 @@
             <li><a class="hover:text-white transition-colors" href="/ai-chatbot-india">AI Chatbot India</a></li>
             <li><a class="hover:text-white transition-colors" href="/ai-voice-agents-india">AI Voice Agents India</a></li>
             <li><a class="hover:text-white transition-colors" href="/agentiq-vs-wati">AgentIQ vs WATI</a></li>
+            <li><a class="hover:text-white transition-colors" href="/agentiq-vs-aisensy">AgentIQ vs AiSensy</a></li>
+            <li><a class="hover:text-white transition-colors" href="/agentiq-vs-interakt">AgentIQ vs Interakt</a></li>
             <li><a class="hover:text-white transition-colors" href="/agentiq-vs-yellow-ai">AgentIQ vs Yellow.ai</a></li>
+            <li><a class="hover:text-white transition-colors" href="/agentiq-vs-limechat">AgentIQ vs LimeChat</a></li>
+            <li><a class="hover:text-white transition-colors" href="/agentiq-vs-gupshup">AgentIQ vs Gupshup</a></li>
           </ul>
         </div>
 
-        <!-- Column 5: Contact -->
+        <!-- Column 5: Contact & Tools -->
         <div>
-          <h4 class="text-white font-semibold text-sm tracking-wide mb-4">Contact</h4>
+          <h4 class="text-white font-semibold text-sm tracking-wide mb-4">Contact &amp; Tools</h4>
           <ul class="space-y-2.5">
             <li class="text-gray-300 font-medium">+91 91596 65277</li>
             <li>
@@ -566,6 +568,9 @@
               </a>
             </li>
             <li><a class="hover:text-white transition-colors" href="/#book">Book Free Demo</a></li>
+            <li><a class="hover:text-white transition-colors" href="/try-your-bot">Interactive Bot Simulator</a></li>
+            <li><a class="hover:text-white transition-colors" href="/tools/whatsapp-link-generator">WhatsApp Link Generator</a></li>
+            <li><a class="hover:text-white transition-colors" href="/tools/staff-vs-ai-calculator">Staff vs AI Calculator</a></li>
             <li class="text-gray-400">Mumbai, India 🇮🇳</li>
           </ul>
         </div>
@@ -578,7 +583,11 @@
           © <span id="year">2026</span> AgentIQ. All rights reserved.
         </p>
         <div class="flex items-center gap-6 text-xs text-gray-500">
+          <a class="hover:text-gray-400 transition-colors" href="/tools/whatsapp-link-generator">Free Tools</a>
           <a class="hover:text-gray-400 transition-colors" href="/privacy">Privacy Policy</a>
+          <a class="hover:text-gray-400 transition-colors" href="/terms">Terms of Service</a>
+        </div>
+      </div>
           <a class="hover:text-gray-400 transition-colors" href="/terms">Terms of Service</a>
         </div>
       </div>

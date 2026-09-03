@@ -149,7 +149,7 @@ The fastest path to book a free demo is WhatsApp. Message AgentIQ directly:
 - WhatsApp number: +91 91596 65277
 - Direct link: https://wa.me/919159665277?text=Hi%20AgentIQ%2C%20I%27d%20like%20to%20book%20a%20demo
 
-Alternatively, fill the on-page demo request form at https://agentiq.co.in/#book. Required fields: full name and WhatsApp number. Optional: business name and channel interest (AI Chatbot / Voice Agent / Both / Not sure). On form submission, a calendar booking link opens automatically. No commitment or payment is required to book.
+Alternatively, fill the on-page demo request form at https://agentiq.co.in/#book (or click the Book Free Demo button). Required fields: full name and WhatsApp number. Optional: business name and channel interest (AI Chatbot / Voice Agent / Both / Not sure). On form submission, a calendar booking link opens automatically. No commitment or payment is required to book.
 
 The demo is a free 20-minute call. AgentIQ shows a live mockup of an AI assistant configured for your specific industry, maps your channels, and provides a launch plan.
 

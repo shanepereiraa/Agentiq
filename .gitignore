@@ -15,3 +15,9 @@ seo.plugin
 .env.*
 !.env.example
 backend-api/.env
+.cline/
+.clinerules
+.continue/
+.cursor/
+.windsurf/
+.seo-audit-run/

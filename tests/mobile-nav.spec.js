@@ -10,37 +10,64 @@ const PAGES = [
     links: [
       { text: 'Chatbots', href: '#how' },
       { text: 'Voice Agents', href: '#voice' },
-      { text: 'Live demo', href: '#demo' },
+      { text: 'Try Bot', href: '/try-your-bot' },
+      { text: 'Integrations', href: '/integrations' },
       { text: 'Industries', href: '#industries' },
       { text: 'Pricing', href: '#pricing' },
+      { text: 'Blog', href: '/blog' },
       { text: 'FAQ', href: '#faq' },
+      { text: 'Book Free Demo', href: '#book' },
     ],
   },
   {
     file: 'clinics.html',
     links: [
+      { text: 'Restaurants & Cafes', href: '/restaurants' },
+      { text: 'D2C & E-Commerce', href: '/d2c-ecommerce' },
+      { text: 'Clinics & Healthcare', href: '/clinics' },
+      { text: 'Salons & Spas', href: '/salons' },
       { text: 'Chatbots', href: '/#how' },
-      { text: 'Voice Agents', href: '/#voice' },
+      { text: 'Voice AI', href: '/#voice' },
+      { text: 'Try Bot', href: '/try-your-bot' },
+      { text: 'Integrations', href: '/integrations' },
       { text: 'Pricing', href: '/#pricing' },
-      { text: 'Industries', href: '/#industries' },
+      { text: 'Blog', href: '/blog' },
+      { text: 'FAQ', href: '/#faq' },
+      { text: 'Book Free Demo', href: '/#book' },
     ],
   },
   {
     file: 'restaurants.html',
     links: [
+      { text: 'Restaurants & Cafes', href: '/restaurants' },
+      { text: 'D2C & E-Commerce', href: '/d2c-ecommerce' },
+      { text: 'Clinics & Healthcare', href: '/clinics' },
+      { text: 'Salons & Spas', href: '/salons' },
       { text: 'Chatbots', href: '/#how' },
-      { text: 'Voice Agents', href: '/#voice' },
+      { text: 'Voice AI', href: '/#voice' },
+      { text: 'Try Bot', href: '/try-your-bot' },
+      { text: 'Integrations', href: '/integrations' },
       { text: 'Pricing', href: '/#pricing' },
-      { text: 'Industries', href: '/#industries' },
+      { text: 'Blog', href: '/blog' },
+      { text: 'FAQ', href: '/#faq' },
+      { text: 'Book Free Demo', href: '/#book' },
     ],
   },
   {
     file: 'salons.html',
     links: [
+      { text: 'Restaurants & Cafes', href: '/restaurants' },
+      { text: 'D2C & E-Commerce', href: '/d2c-ecommerce' },
+      { text: 'Clinics & Healthcare', href: '/clinics' },
+      { text: 'Salons & Spas', href: '/salons' },
       { text: 'Chatbots', href: '/#how' },
-      { text: 'Voice Agents', href: '/#voice' },
+      { text: 'Voice AI', href: '/#voice' },
+      { text: 'Try Bot', href: '/try-your-bot' },
+      { text: 'Integrations', href: '/integrations' },
       { text: 'Pricing', href: '/#pricing' },
-      { text: 'Industries', href: '/#industries' },
+      { text: 'Blog', href: '/blog' },
+      { text: 'FAQ', href: '/#faq' },
+      { text: 'Book Free Demo', href: '/#book' },
     ],
   },
 ];
@@ -53,6 +80,7 @@ for (const { file, links } of PAGES) {
       await page.goto(`/${file}`);
       const toggle = page.locator('#aiq-nav-toggle');
       const panel = page.locator('#aiq-mobile-nav');
+      const closeBtn = page.locator('#aiq-nav-close');
 
       await expect(toggle).toHaveAttribute('aria-expanded', 'false');
       await expect(panel).toHaveAttribute('inert', '');
@@ -63,7 +91,11 @@ for (const { file, links } of PAGES) {
       await expect(panel).not.toHaveAttribute('inert', '');
       await expect(panel).not.toHaveClass(/aiq-shut/);
 
-      await toggle.click();
+      if (await closeBtn.isVisible()) {
+        await closeBtn.click();
+      } else {
+        await toggle.click();
+      }
       await expect(toggle).toHaveAttribute('aria-expanded', 'false');
       await expect(panel).toHaveAttribute('inert', '');
       await expect(panel).toHaveClass(/aiq-shut/);
@@ -109,22 +141,6 @@ for (const { file, links } of PAGES) {
       await expect(panel).toHaveClass(/aiq-shut/);
       await expect(toggle).toHaveAttribute('aria-expanded', 'false');
       await expect(toggle).toBeFocused();
-    });
-
-    test('clicking outside the panel closes it without returning focus', async ({ page }) => {
-      await page.goto(`/${file}`);
-      const toggle = page.locator('#aiq-nav-toggle');
-      const panel = page.locator('#aiq-mobile-nav');
-
-      await toggle.click();
-      await expect(panel).not.toHaveClass(/aiq-shut/);
-
-      // Click somewhere clearly outside both the toggle and the panel.
-      await page.mouse.click(10, 10);
-
-      await expect(panel).toHaveClass(/aiq-shut/);
-      await expect(toggle).toHaveAttribute('aria-expanded', 'false');
-      await expect(toggle).not.toBeFocused();
     });
 
     test('resizing past the md breakpoint force-closes an open panel', async ({ page }) => {

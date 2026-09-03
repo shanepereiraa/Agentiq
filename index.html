@@ -191,16 +191,8 @@
   <link rel="dns-prefetch" href="https://api.vapi.ai" />
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/dm-sans-latin.woff2" crossorigin />
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/space-grotesk-latin.woff2" crossorigin />
-  <!-- Tailwind: compiled at build time via `npm run build:css` (tailwind.config.js), not the CDN JIT compiler. -->
+  <!-- Tailwind: compiled at build time via `npm run build:css` (tailwind.config.js), includes both static site and react-widgets styles -->
   <link rel="stylesheet" href="/tailwind.min.css" />
-  <!-- React island bundle (react-widgets/): built via `npm run build` in that folder.
-       CSS is a plain blocking stylesheet, loaded right after tailwind.min.css so the
-       island-only utilities win equal-specificity ties. It previously used an async
-       rel=preload -> onload -> rel=stylesheet swap; that swap was not promoting to a
-       stylesheet reliably, so islands (e.g. the chaos/order comparison slider) rendered
-       with only the main Tailwind build's class set, which purges island-only utilities
-       such as opacity-0 on the drag input, w-0.5, and aspect-[16/10]. -->
-  <link rel="stylesheet" href="/react-widgets/dist/agentiq-widgets.css" />
   <style>
     html { -webkit-font-smoothing: antialiased; }
     body { background: #07173a; }
@@ -510,8 +502,7 @@
     }
     @media (max-width: 767px) {
       #wa-float {
-        bottom: 148px;
-        right: 16px;
+        display: none !important;
       }
     }
     /* ── AI Chat Widget ─────────────────────────────── */
@@ -705,7 +696,7 @@
         <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
       </div>
       <div class="flex items-center gap-2">
-        <a href="#book" class="hidden md:inline-flex cursor-pointer min-h-[48px] items-center text-sm font-500 px-4 py-2 rounded-xl bg-white text-ink hover:bg-cyan hover:text-white transition-colors duration-200">Book Free Demo</a>
+        <a href="#book" class="hidden md:inline-flex cursor-pointer min-h-[48px] items-center text-sm font-500 px-4 py-2 rounded-xl bg-white text-ink hover:bg-cyan hover:text-slate-950 transition-colors duration-200">Book Free Demo</a>
         <button id="aiq-nav-toggle" type="button" class="md:hidden grid place-items-center min-w-[48px] min-h-[48px] rounded-xl text-slate-200 hover:text-white hover:bg-white/10 transition-colors" aria-label="Open menu" aria-haspopup="true" aria-expanded="false" aria-controls="aiq-mobile-nav">
           <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
         </button>
@@ -730,7 +721,7 @@
       <a href="#pricing" class="min-h-[48px] flex items-center px-3 py-3 rounded-xl hover:bg-white/10 hover:text-white transition-colors">Pricing</a>
       <a href="/blog" class="min-h-[48px] flex items-center px-3 py-3 rounded-xl hover:bg-white/10 hover:text-white transition-colors">Blog</a>
       <a href="#faq" class="min-h-[48px] flex items-center px-3 py-3 rounded-xl hover:bg-white/10 hover:text-white transition-colors">FAQ</a>
-      <a href="#book" class="cursor-pointer min-h-[48px] flex items-center justify-center mt-3 px-4 py-3 rounded-xl bg-white text-ink hover:bg-cyan hover:text-white text-sm font-500 transition-colors duration-200">Book Free Demo</a>
+      <a href="#book" class="cursor-pointer min-h-[48px] flex items-center justify-center mt-3 px-4 py-3 rounded-xl bg-white text-ink hover:bg-cyan hover:text-slate-950 text-sm font-500 transition-colors duration-200">Book Free Demo</a>
     </nav>
   </div>
   <main id="main" tabindex="-1" class="focus:outline-none">
@@ -2470,6 +2461,7 @@
     </section>
   <!-- FOOTER -->
   <!-- FOOTER -->
+  <!-- FOOTER -->
   <footer class="w-full bg-[#05070B] border-t border-white/10 pt-16 pb-12 text-gray-400 text-sm">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       
@@ -2516,6 +2508,7 @@
             <li><a class="hover:text-white transition-colors" href="/restaurants">Restaurants &amp; Cafés</a></li>
             <li><a class="hover:text-white transition-colors" href="/salons">Salons &amp; Spas</a></li>
             <li><a class="hover:text-white transition-colors" href="/clinics">Clinics &amp; Healthcare</a></li>
+            <li><a class="hover:text-white transition-colors" href="/integrations">Integrations Hub</a></li>
           </ul>
         </div>
 
@@ -2574,6 +2567,9 @@
         <div class="flex items-center gap-6 text-xs text-gray-500">
           <a class="hover:text-gray-400 transition-colors" href="/tools/whatsapp-link-generator">Free Tools</a>
           <a class="hover:text-gray-400 transition-colors" href="/privacy">Privacy Policy</a>
+          <a class="hover:text-gray-400 transition-colors" href="/terms">Terms of Service</a>
+        </div>
+      </div>
           <a class="hover:text-gray-400 transition-colors" href="/terms">Terms of Service</a>
         </div>
       </div>

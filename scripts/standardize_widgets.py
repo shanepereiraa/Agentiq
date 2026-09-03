@@ -38,12 +38,7 @@ WIDGET_CSS = """
       outline: 3px solid #22D3EE;
       outline-offset: 3px;
     }
-    @media (max-width: 767px) {
-      #wa-float {
-        bottom: 148px;
-        right: 16px;
-      }
-    }
+    @media (max-width: 767px) { #wa-float { display: none !important; } }
     /* ── AI Chat Widget ─────────────────────────────── */
     #aiq-float { position: fixed; bottom: 24px; right: 20px; z-index: 99999; pointer-events: auto !important; }
     @media (max-width: 767px) { #aiq-float { bottom: 84px; right: 16px; } }

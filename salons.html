@@ -35,7 +35,15 @@
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"AgentIQ","item":"https://agentiq.co.in/"},{"@type":"ListItem","position":2,"name":"Salons","item":"https://agentiq.co.in/salons"}]}
   </script>
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Service","name":"AI Chatbot & Receptionist for Salons in India","serviceType":"Salon & Spa AI Automation","provider":{"@type":"Organization","name":"AgentIQ","url":"https://agentiq.co.in/"},"areaServed":{"@type":"Country","name":"India"},"description":"24/7 AI appointment booking and Instagram DM / WhatsApp assistant for salons, spas, and beauty studios across India."}
+  {"@context":"https://schema.org","@type":"Service","name":"AI Chatbot & Receptionist for Salons in India","serviceType":"Salon & Spa AI Automation","provider":{"@id":"https://agentiq.co.in/#organization"},"areaServed":{"@type":"Country","name":"India"},"description":"24/7 AI appointment booking and Instagram DM / WhatsApp assistant for salons, spas, and beauty studios across India."}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"Can clients book specific stylists or technicians through WhatsApp and Instagram?","acceptedAnswer":{"@type":"Answer","text":"Yes. The AI presents available stylists, their specialties, and live opening slots for haircuts, coloring, spa therapies, and bridal treatments, allowing clients to reserve their preferred professional in seconds."}},
+    {"@type":"Question","name":"Does the AI automate Instagram DM replies for haircut and service pricing enquiries?","acceptedAnswer":{"@type":"Answer","text":"Absolutely. When potential clients message on Instagram asking for service rates or hair treatments, the bot replies instantly with transparent rate cards, package specials, and a direct booking link."}},
+    {"@type":"Question","name":"Can the salon bot send re-engagement reminders to past clients?","acceptedAnswer":{"@type":"Answer","text":"Yes. AgentIQ automatically tracks client service intervals (such as 4 weeks for root touch-ups or men's grooming) and triggers personalized WhatsApp rebooking reminders with seasonal promotions, driving high-margin repeat appointments."}},
+    {"@type":"Question","name":"How does the bot collect advance booking deposits to prevent weekend no-shows?","acceptedAnswer":{"@type":"Answer","text":"For high-value appointments or busy weekend slots, the AI can generate and send instant UPI or Razorpay payment links over WhatsApp to secure non-refundable booking tokens before reserving the slot."}}
+  ]}
   </script>
 
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/dm-sans-latin.woff2" crossorigin />
@@ -97,12 +105,7 @@
       outline: 3px solid #22D3EE;
       outline-offset: 3px;
     }
-    @media (max-width: 767px) {
-      #wa-float {
-        bottom: 148px;
-        right: 16px;
-      }
-    }
+    @media (max-width: 767px) { #wa-float { display: none !important; } }
     /* ── AI Chat & Voice Widgets ─────────────────────────────── */
     #aiq-float { position: fixed; bottom: 24px; right: 20px; z-index: 9999; }
     @media (max-width: 767px) { #aiq-float { bottom: 80px; } }
@@ -555,6 +558,48 @@
       </div>
     </section>
 
+    <!-- FAQ -->
+    <section id="faq" class="max-w-3xl mx-auto mb-16 px-5">
+      <h2 class="font-display font-700 text-white text-2xl sm:text-3xl tracking-tight text-center mb-8">Frequently Asked Questions</h2>
+      <div class="space-y-3">
+        <details class="group rounded-2xl px-5 sm:px-6 [&_summary::-webkit-details-marker]:hidden glass border border-white/10">
+          <summary class="cursor-pointer list-none flex items-center justify-between gap-4 py-5 text-white font-500">
+            Can clients book specific stylists or technicians through WhatsApp and Instagram?
+            <svg class="w-5 h-5 text-cyan shrink-0 transition-transform duration-200 group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <p class="text-slate-400 text-sm leading-relaxed pb-5 -mt-1">Yes. The AI presents available stylists, their specialties, and live opening slots for haircuts, coloring, spa therapies, and bridal treatments, allowing clients to reserve their preferred professional in seconds.</p>
+        </details>
+
+        <details class="group rounded-2xl px-5 sm:px-6 [&_summary::-webkit-details-marker]:hidden glass border border-white/10">
+          <summary class="cursor-pointer list-none flex items-center justify-between gap-4 py-5 text-white font-500">
+            Does the AI automate Instagram DM replies for haircut and service pricing enquiries?
+            <svg class="w-5 h-5 text-cyan shrink-0 transition-transform duration-200 group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <p class="text-slate-400 text-sm leading-relaxed pb-5 -mt-1">Absolutely. When potential clients message on Instagram asking for service rates or hair treatments, the bot replies instantly with transparent rate cards, package specials, and a direct booking link.</p>
+        </details>
+
+        <details class="group rounded-2xl px-5 sm:px-6 [&_summary::-webkit-details-marker]:hidden glass border border-white/10">
+          <summary class="cursor-pointer list-none flex items-center justify-between gap-4 py-5 text-white font-500">
+            Can the salon bot send re-engagement reminders to past clients?
+            <svg class="w-5 h-5 text-cyan shrink-0 transition-transform duration-200 group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <p class="text-slate-400 text-sm leading-relaxed pb-5 -mt-1">Yes. AgentIQ automatically tracks client service intervals (such as 4 weeks for root touch-ups or men's grooming) and triggers personalized WhatsApp rebooking reminders with seasonal promotions, driving high-margin repeat appointments.</p>
+        </details>
+
+        <details class="group rounded-2xl px-5 sm:px-6 [&_summary::-webkit-details-marker]:hidden glass border border-white/10">
+          <summary class="cursor-pointer list-none flex items-center justify-between gap-4 py-5 text-white font-500">
+            How does the bot collect advance booking deposits to prevent weekend no-shows?
+            <svg class="w-5 h-5 text-cyan shrink-0 transition-transform duration-200 group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <p class="text-slate-400 text-sm leading-relaxed pb-5 -mt-1">For high-value appointments or busy weekend slots, the AI can generate and send instant UPI or Razorpay payment links over WhatsApp to secure non-refundable booking tokens before reserving the slot.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="py-10 px-5 text-center">
+      <p class="text-slate-400 text-sm max-w-2xl mx-auto">Looking to turn Instagram followers into booked appointments? Read our <a href="/blog/instagram-dm-automation-salons-guide" class="text-cyan hover:text-white underline underline-offset-2">salon &amp; spa guide to Instagram DM automation</a>.</p>
+    </section>
+
     <!-- BOOK A DEMO -->
     <section id="book-section" class="relative min-h-[calc(100vh-4rem)] flex items-center justify-center py-16 sm:py-24 px-5 scroll-mt-16 overflow-hidden" style="background:linear-gradient(180deg,#060f28 0%,#07142a 50%,#060f28 100%)">
       <div aria-hidden="true" class="pointer-events-none absolute left-1/2 -translate-x-1/2 top-0 w-[600px] h-64 rounded-full" style="background:radial-gradient(ellipse,rgba(217,70,239,.10) 0%,transparent 70%);filter:blur(60px)"></div>
@@ -685,6 +730,7 @@
     </section>
   <!-- FOOTER -->
   <!-- FOOTER -->
+  <!-- FOOTER -->
   <footer class="w-full bg-[#05070B] border-t border-white/10 pt-16 pb-12 text-gray-400 text-sm">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       
@@ -726,10 +772,12 @@
           <ul class="space-y-2.5">
             <li><a class="hover:text-white transition-colors" href="/ai-chatbot-india">AI Chatbots</a></li>
             <li><a class="hover:text-white transition-colors" href="/ai-voice-agents-india">Voice Agents</a></li>
+            <li><a class="hover:text-white transition-colors" href="/whatsapp-chatbot-agency-india">Chatbot Agency</a></li>
             <li><a class="hover:text-white transition-colors" href="/d2c-ecommerce">D2C &amp; E-Commerce</a></li>
             <li><a class="hover:text-white transition-colors" href="/restaurants">Restaurants &amp; Cafés</a></li>
             <li><a class="hover:text-white transition-colors" href="/salons">Salons &amp; Spas</a></li>
             <li><a class="hover:text-white transition-colors" href="/clinics">Clinics &amp; Healthcare</a></li>
+            <li><a class="hover:text-white transition-colors" href="/integrations">Integrations Hub</a></li>
           </ul>
         </div>
 
@@ -752,13 +800,17 @@
             <li><a class="hover:text-white transition-colors" href="/ai-chatbot-india">AI Chatbot India</a></li>
             <li><a class="hover:text-white transition-colors" href="/ai-voice-agents-india">AI Voice Agents India</a></li>
             <li><a class="hover:text-white transition-colors" href="/agentiq-vs-wati">AgentIQ vs WATI</a></li>
+            <li><a class="hover:text-white transition-colors" href="/agentiq-vs-aisensy">AgentIQ vs AiSensy</a></li>
+            <li><a class="hover:text-white transition-colors" href="/agentiq-vs-interakt">AgentIQ vs Interakt</a></li>
             <li><a class="hover:text-white transition-colors" href="/agentiq-vs-yellow-ai">AgentIQ vs Yellow.ai</a></li>
+            <li><a class="hover:text-white transition-colors" href="/agentiq-vs-limechat">AgentIQ vs LimeChat</a></li>
+            <li><a class="hover:text-white transition-colors" href="/agentiq-vs-gupshup">AgentIQ vs Gupshup</a></li>
           </ul>
         </div>
 
-        <!-- Column 5: Contact -->
+        <!-- Column 5: Contact & Tools -->
         <div>
-          <h4 class="text-white font-semibold text-sm tracking-wide mb-4">Contact</h4>
+          <h4 class="text-white font-semibold text-sm tracking-wide mb-4">Contact &amp; Tools</h4>
           <ul class="space-y-2.5">
             <li class="text-gray-300 font-medium">+91 91596 65277</li>
             <li>
@@ -767,6 +819,9 @@
               </a>
             </li>
             <li><a class="hover:text-white transition-colors" href="/#book">Book Free Demo</a></li>
+            <li><a class="hover:text-white transition-colors" href="/try-your-bot">Interactive Bot Simulator</a></li>
+            <li><a class="hover:text-white transition-colors" href="/tools/whatsapp-link-generator">WhatsApp Link Generator</a></li>
+            <li><a class="hover:text-white transition-colors" href="/tools/staff-vs-ai-calculator">Staff vs AI Calculator</a></li>
             <li class="text-gray-400">Mumbai, India 🇮🇳</li>
           </ul>
         </div>
@@ -779,7 +834,11 @@
           © <span id="year">2026</span> AgentIQ. All rights reserved.
         </p>
         <div class="flex items-center gap-6 text-xs text-gray-500">
+          <a class="hover:text-gray-400 transition-colors" href="/tools/whatsapp-link-generator">Free Tools</a>
           <a class="hover:text-gray-400 transition-colors" href="/privacy">Privacy Policy</a>
+          <a class="hover:text-gray-400 transition-colors" href="/terms">Terms of Service</a>
+        </div>
+      </div>
           <a class="hover:text-gray-400 transition-colors" href="/terms">Terms of Service</a>
         </div>
       </div>
