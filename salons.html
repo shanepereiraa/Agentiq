@@ -673,11 +673,11 @@
           <div class="mt-6 space-y-3 text-xs">
             <div class="flex items-center justify-between gap-4 px-4 py-3 rounded-xl" style="background:rgba(217,70,239,.08);border:1px solid rgba(217,70,239,.18)">
               <div><p class="text-white font-600 text-sm">Chatbot</p><p class="text-slate-400 mt-0.5">WhatsApp · Website · Instagram</p></div>
-              <div class="text-right"><p class="text-fuchsia-400 font-700 text-base whitespace-nowrap">₹7,999<span class="text-slate-400 font-400">/mo</span></p><p class="text-slate-500 text-[11px] whitespace-nowrap">+₹24,999 setup</p></div>
+              <div class="text-right"><p class="text-fuchsia-400 font-700 text-base whitespace-nowrap">₹7,999<span class="text-slate-400 font-400">/mo</span></p><p class="text-slate-400 text-[11px] whitespace-nowrap">+₹24,999 setup</p></div>
             </div>
             <div class="flex items-center justify-between gap-4 px-4 py-3 rounded-xl" style="background:rgba(244,114,182,.08);border:1px solid rgba(244,114,182,.18)">
               <div><p class="text-white font-600 text-sm">Voice Agent</p><p class="text-slate-400 mt-0.5">Inbound calls · 24/7 · Multilingual</p></div>
-              <div class="text-right"><p class="text-pink-400 font-700 text-base whitespace-nowrap">₹14,999<span class="text-slate-400 font-400">/mo</span></p><p class="text-slate-500 text-[11px] whitespace-nowrap">+₹29,999 setup</p></div>
+              <div class="text-right"><p class="text-pink-400 font-700 text-base whitespace-nowrap">₹14,999<span class="text-slate-400 font-400">/mo</span></p><p class="text-slate-400 text-[11px] whitespace-nowrap">+₹29,999 setup</p></div>
             </div>
             <p class="text-[11px] text-slate-400">All prices shown are exclusive of 18% GST.</p>
           </div>
@@ -1247,26 +1247,7 @@
 
       var AGENTIQ_API = (window.AgentIQConfig && window.AgentIQConfig.apiBase) || 'https://agentiq-chatbot.onrender.com';
 
-      leadStartBtn.addEventListener('click', function () {
-        var name = leadNameInput.value.trim();
-        var phone = leadPhoneInput.value.trim();
-        if (!name || phone.replace(/\D/g, '').length < 8) {
-          leadNameInput.style.borderColor = !name ? '#ef4444' : '';
-          leadPhoneInput.style.borderColor = phone.replace(/\D/g, '').length < 8 ? '#ef4444' : '';
-          return;
-        }
-        leadStartBtn.disabled = true;
-        leadStartBtn.textContent = 'Starting…';
-        var business = leadBizInput.value.trim();
-
-        if (AGENTIQ_API) {
-          fetch(AGENTIQ_API + '/lead', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name: name, phone: phone, business: business }),
-          }).catch(function (err) { console.error('[AgentIQ] Widget lead error:', err); });
-        }
-
+      function proceedToChat(name, phone, business) {
         leadCaptured = true;
         leadForm.style.display = 'none';
         log.style.display = 'flex';
@@ -1277,6 +1258,69 @@
         msgs.push({ role: 'assistant', content: greeting });
         addBubble(greeting, 'bot');
         inp.focus();
+      }
+
+      leadStartBtn.addEventListener('click', function () {
+        var name = leadNameInput.value.trim();
+        var phone = leadPhoneInput.value.trim();
+        if (!name || phone.replace(/\D/g, '').length < 8) {
+          leadNameInput.style.borderColor = !name ? '#ef4444' : '';
+          leadPhoneInput.style.borderColor = phone.replace(/\D/g, '').length < 8 ? '#ef4444' : '';
+          return;
+        }
+        leadStartBtn.disabled = true;
+        leadStartBtn.textContent = 'Connecting…';
+        var business = leadBizInput.value.trim();
+
+        var existingErr = document.getElementById('aiq-lead-err');
+        if (existingErr) existingErr.remove();
+
+        var ctrl = new AbortController();
+        var timer = setTimeout(function () { ctrl.abort(); }, 7000);
+
+        var targetUrl = '/api/capture-lead';
+        fetch(targetUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name: name, phone: phone.replace(/[\s\-\(\)]/g, ''), business: business, source: 'chat_widget' }),
+          signal: ctrl.signal,
+        }).then(function (r) {
+          clearTimeout(timer);
+          if (!r.ok) throw new Error('Server returned ' + r.status);
+          if (typeof gtag === 'function') {
+            gtag('event', 'generate_lead', { currency: 'INR', value: 0, method: 'chat_widget' });
+          }
+          proceedToChat(name, phone, business);
+        }).catch(function (err) {
+          clearTimeout(timer);
+          console.error('[AgentIQ] Widget lead submission error:', err);
+          leadStartBtn.disabled = false;
+          leadStartBtn.textContent = 'Start Chat →';
+
+          var errDiv = document.createElement('div');
+          errDiv.id = 'aiq-lead-err';
+          errDiv.className = 'mt-3 p-2.5 rounded-xl text-center border text-xs';
+          errDiv.style.background = 'rgba(239, 68, 68, 0.12)';
+          errDiv.style.borderColor = 'rgba(239, 68, 68, 0.35)';
+          errDiv.style.color = '#fca5a5';
+
+          var waMsg = "Hi AgentIQ, I'd like to chat.\nName: " + name + "\nWhatsApp: " + phone + (business ? "\nBusiness: " + business : "");
+          var waLink = "https://wa.me/919159665277?text=" + encodeURIComponent(waMsg);
+
+          errDiv.innerHTML = '<span style="font-weight:600;">⚠️ Network delay saving details.</span><br>' +
+            '<a href="' + waLink + '" target="_blank" rel="noopener noreferrer" style="color:#34d399;font-weight:600;text-decoration:underline;display:inline-block;margin-top:4px;">Chat directly on WhatsApp →</a> ' +
+            '<span style="color:#94a3b8;margin:0 4px;">or</span> ' +
+            '<button type="button" id="aiq-skip-lead" style="color:#94a3b8;text-decoration:underline;cursor:pointer;background:none;border:none;padding:0;font-size:12px;">continue to web chat</button>';
+
+          leadForm.appendChild(errDiv);
+
+          var skipBtn = document.getElementById('aiq-skip-lead');
+          if (skipBtn) {
+            skipBtn.addEventListener('click', function () {
+              proceedToChat(name, phone, business);
+            });
+          }
+        });
       });
 
       function openChat() {

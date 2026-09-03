@@ -820,24 +820,7 @@
 
       if (!toggle || !panel) return;
 
-      leadStartBtn.addEventListener('click', function () {
-        var name = leadNameInput.value.trim();
-        var phone = leadPhoneInput.value.trim();
-        if (!name || !phone) {
-          if (!name) leadNameInput.focus(); else leadPhoneInput.focus();
-          return;
-        }
-        leadStartBtn.disabled = true;
-        leadStartBtn.textContent = 'Starting…';
-        var business = leadBizInput.value.trim();
-
-        var activeApi = (window.AgentIQConfig && window.AgentIQConfig.apiBase) || 'https://agentiq-chatbot.onrender.com';
-        fetch(activeApi + '/lead', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name: name, phone: phone, business: business }),
-        }).catch(function (err) { console.error('[AgentIQ] Widget lead error:', err); });
-
+      function proceedToChat(name, phone, business) {
         leadCaptured = true;
         leadForm.style.display = 'none';
         log.style.display = 'flex';
@@ -848,6 +831,69 @@
         msgs.push({ role: 'assistant', content: greeting });
         addBubble(greeting, 'bot');
         inp.focus();
+      }
+
+      leadStartBtn.addEventListener('click', function () {
+        var name = leadNameInput.value.trim();
+        var phone = leadPhoneInput.value.trim();
+        if (!name || phone.replace(/\D/g, '').length < 8) {
+          leadNameInput.style.borderColor = !name ? '#ef4444' : '';
+          leadPhoneInput.style.borderColor = phone.replace(/\D/g, '').length < 8 ? '#ef4444' : '';
+          return;
+        }
+        leadStartBtn.disabled = true;
+        leadStartBtn.textContent = 'Connecting…';
+        var business = leadBizInput.value.trim();
+
+        var existingErr = document.getElementById('aiq-lead-err');
+        if (existingErr) existingErr.remove();
+
+        var ctrl = new AbortController();
+        var timer = setTimeout(function () { ctrl.abort(); }, 7000);
+
+        var targetUrl = '/api/capture-lead';
+        fetch(targetUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name: name, phone: phone.replace(/[\s\-\(\)]/g, ''), business: business, source: 'chat_widget' }),
+          signal: ctrl.signal,
+        }).then(function (r) {
+          clearTimeout(timer);
+          if (!r.ok) throw new Error('Server returned ' + r.status);
+          if (typeof gtag === 'function') {
+            gtag('event', 'generate_lead', { currency: 'INR', value: 0, method: 'chat_widget' });
+          }
+          proceedToChat(name, phone, business);
+        }).catch(function (err) {
+          clearTimeout(timer);
+          console.error('[AgentIQ] Widget lead submission error:', err);
+          leadStartBtn.disabled = false;
+          leadStartBtn.textContent = 'Start Chat →';
+
+          var errDiv = document.createElement('div');
+          errDiv.id = 'aiq-lead-err';
+          errDiv.className = 'mt-3 p-2.5 rounded-xl text-center border text-xs';
+          errDiv.style.background = 'rgba(239, 68, 68, 0.12)';
+          errDiv.style.borderColor = 'rgba(239, 68, 68, 0.35)';
+          errDiv.style.color = '#fca5a5';
+
+          var waMsg = "Hi AgentIQ, I'd like to chat.\nName: " + name + "\nWhatsApp: " + phone + (business ? "\nBusiness: " + business : "");
+          var waLink = "https://wa.me/919159665277?text=" + encodeURIComponent(waMsg);
+
+          errDiv.innerHTML = '<span style="font-weight:600;">⚠️ Network delay saving details.</span><br>' +
+            '<a href="' + waLink + '" target="_blank" rel="noopener noreferrer" style="color:#34d399;font-weight:600;text-decoration:underline;display:inline-block;margin-top:4px;">Chat directly on WhatsApp →</a> ' +
+            '<span style="color:#94a3b8;margin:0 4px;">or</span> ' +
+            '<button type="button" id="aiq-skip-lead" style="color:#94a3b8;text-decoration:underline;cursor:pointer;background:none;border:none;padding:0;font-size:12px;">continue to web chat</button>';
+
+          leadForm.appendChild(errDiv);
+
+          var skipBtn = document.getElementById('aiq-skip-lead');
+          if (skipBtn) {
+            skipBtn.addEventListener('click', function () {
+              proceedToChat(name, phone, business);
+            });
+          }
+        });
       });
 
       function openChat() {

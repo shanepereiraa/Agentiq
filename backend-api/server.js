@@ -156,8 +156,33 @@ app.post('/lead', leadLimiter, async (req, res) => {
   res.json({ success: true, message: 'Lead received' });
 });
 
+// In-memory daily budget cap circuit breaker
+// Caps total AI requests per UTC calendar day to prevent unexpected API bill spikes.
+const DAILY_CHAT_LIMIT = parseInt(process.env.DAILY_CHAT_LIMIT, 10) || 1000;
+let dailyChatCount = 0;
+let currentChatDay = new Date().getUTCDate();
+
+function checkDailyBudget(req, res, next) {
+  if (process.env.NODE_ENV === 'test') {
+    return next();
+  }
+  const today = new Date().getUTCDate();
+  if (today !== currentChatDay) {
+    currentChatDay = today;
+    dailyChatCount = 0;
+  }
+  if (dailyChatCount >= DAILY_CHAT_LIMIT) {
+    return res.status(429).json({
+      error: 'Daily demo chat limit reached. Please reach out directly on WhatsApp at https://wa.me/919159665277 to chat with us immediately!',
+      whatsappUrl: 'https://wa.me/919159665277?text=Hi%20AgentIQ%2C%20I%20hit%20the%20daily%20demo%20limit%20and%20would%20like%20to%20chat',
+    });
+  }
+  dailyChatCount++;
+  next();
+}
+
 // ─── CHAT ENDPOINT ────────────────────────────────────────────────────────────
-app.post('/api/chat', chatLimiter, async (req, res) => {
+app.post('/api/chat', chatLimiter, checkDailyBudget, async (req, res) => {
   const { messages } = req.body;
 
   if (!messages || !Array.isArray(messages))

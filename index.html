@@ -2294,7 +2294,7 @@
             <p class="text-slate-300 text-sm leading-relaxed flex-1">Your customer data is siloed and never used to train public AI models. Full stop. What your customers tell your bot stays inside your business.</p>
           </article>
         </div>
-        <p class="reveal text-center text-xs text-slate-500 mt-10">Data Processing Agreement available on request · GDPR-ready architecture</p>
+        <p class="reveal text-center text-xs text-slate-400 mt-10">Data Processing Agreement available on request · GDPR-ready architecture</p>
       </div>
     </section>
     <!-- FAQ -->
@@ -3198,7 +3198,7 @@
           var ctrl = new AbortController();
           var timer = setTimeout(function () { ctrl.abort(); }, 7000);
 
-          var targetUrl = (AGENTIQ_API ? AGENTIQ_API + '/lead' : '/api/capture-lead');
+          var targetUrl = '/api/capture-lead';
           fetch(targetUrl, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
