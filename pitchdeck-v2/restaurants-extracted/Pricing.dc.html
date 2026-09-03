@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Public+Sans:wght@400;500;600;700&display=swap">
+<style>
+  :root{ --navy:#0A1830; --ink:#101828; --paper:#F4F2EE; --muted:#5B6472; --accent:#E8944A; --accent2:#C97A34; --line-light:#DBD8D1; }
+  *{box-sizing:border-box;} body{margin:0;}
+  .slide{width:1600px;height:900px;position:relative;font-family:'Public Sans',system-ui,sans-serif;background:var(--paper);color:var(--ink);overflow:hidden;}
+  h1,h2,h3{font-family:'Sora',system-ui,sans-serif;margin:0;}
+  .eyebrow{font-size:14px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent2);padding:40px 88px 0 88px;}
+  .title{font-size:34px;font-weight:800;padding:0 88px;margin-top:10px;}
+  .bundle{margin:16px 88px 0 88px;background:var(--navy);color:#fff;padding:16px 26px;font-size:15px;display:flex;justify-content:space-between;align-items:center;gap:24px;}
+  .bundle b{color:var(--accent);}
+  .tables{display:grid;grid-template-columns:1fr 1fr;gap:28px;padding:0 88px;margin-top:22px;}
+  .table-h{font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#9AA1AC;margin-bottom:10px;}
+  .tiers{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;}
+  .tier{background:#fff;border:1px solid #E3E0D9;padding:14px 14px;}
+  .tier.pop{background:var(--navy);color:#fff;border-color:var(--navy);}
+  .tier .name{font-size:13px;font-weight:700;color:var(--accent2);}
+  .tier.pop .name{color:var(--accent);}
+  .tier .price{font-family:'Sora',sans-serif;font-size:18px;font-weight:800;margin-top:6px;}
+  .tier .sub{font-size:11px;color:var(--muted);margin-top:2px;}
+  .tier.pop .sub{color:#AEB7C4;}
+  .tier .feat{font-size:11px;margin-top:8px;line-height:1.5;color:var(--ink);}
+  .tier.pop .feat{color:#DDE3EC;}
+  .flex-note{margin:16px 88px 0 88px;font-size:13px;color:var(--muted);}
+  .flex-note b{color:var(--ink);}
+  .note{position:absolute;bottom:56px;left:88px;right:88px;font-size:12px;color:#9AA1AC;}
+  .footer{position:absolute;bottom:24px;left:88px;right:88px;display:flex;justify-content:space-between;font-size:13px;color:#9AA1AC;}
+</style>
+</helmet>
+<div class="slide">
+  <div class="eyebrow">Pricing</div>
+  <h1 class="title">Priced Against the Leak You Already Saw</h1>
+  <div class="bundle">Recovering just 10% of the peak-window leakage from Slide 2 nets meaningfully more than the plan cost most months. Buy chat + voice together for <b>15% off</b> the combined monthly retainer — one setup, one training pass.</div>
+  <div class="tables">
+    <div>
+      <div class="table-h">Chatbot — WhatsApp, Instagram, Web</div>
+      <div class="tiers">
+        <div class="tier"><div class="name">Starter</div><div class="price">₹24,999</div><div class="sub">+₹7,999/mo · 1,000 chats</div><div class="feat">WhatsApp API, menu & catalog mgmt, Hindi/Hinglish/English, standard support</div></div>
+        <div class="tier pop"><div class="name">Growth</div><div class="price">₹39,999</div><div class="sub">+₹14,999/mo · 2,000 chats</div><div class="feat">+ WhatsApp Pay, follow-ups & win-back, chat widget, 24/7 priority support</div></div>
+        <div class="tier"><div class="name">Pro</div><div class="price">₹79,999</div><div class="sub">+₹24,999/mo · 5,000 chats</div><div class="feat">+ Multi-location routing, guest profiling, CRM integration, dedicated AM</div></div>
+      </div>
+    </div>
+    <div>
+      <div class="table-h">Voice Agent — Phone Line</div>
+      <div class="tiers">
+        <div class="tier pop"><div class="name">Starter</div><div class="price">₹29,999</div><div class="sub">+₹14,999/mo · 250 min</div><div class="feat">1 inbound voice agent, handles interruptions, Hindi & English, call logging</div></div>
+        <div class="tier"><div class="name">Growth</div><div class="price">₹49,999</div><div class="sub">+₹24,999/mo · 500 min</div><div class="feat">+ Outbound calling, real-time table booking, live human transfer</div></div>
+        <div class="tier"><div class="name">Pro</div><div class="price">₹99,999</div><div class="sub">+₹34,999/mo · 800 min</div><div class="feat">+ Unlimited concurrency, voice cloning, custom integrations</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="flex-note"><b>Seasonal? </b>Ask about a shorter initial term on Starter if your footfall swings hard by season — we'd rather flex the plan than lose the relationship over one slow month.</div>
+  <p class="note">30-day money-back guarantee on both. Overage on voice billed at ₹45/min. Meta conversation fees billed separately. GST extra.</p>
+  <div class="footer"><span>AgentIQ | Restaurants</span><span>10</span></div>
+</div>
+</x-dc>
+<script data-dc-script data-props='{}'>
+class Component extends DCLogic { renderVals() { return {}; } }
+</script>
+</body>
+</html>

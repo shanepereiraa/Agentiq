@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Public+Sans:wght@400;500;600;700&display=swap">
+<style>
+  :root{ --navy:#0A1830; --ink:#101828; --paper:#F4F2EE; --muted:#5B6472; --accent:#E8944A; --accent2:#C97A34; --line-light:#DBD8D1; }
+  *{box-sizing:border-box;} body{margin:0;}
+  .slide{width:1600px;height:900px;position:relative;font-family:'Public Sans',system-ui,sans-serif;background:var(--paper);color:var(--ink);overflow:hidden;}
+  h1,h2,h3{font-family:'Sora',system-ui,sans-serif;margin:0;}
+  .eyebrow{font-size:14px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent2);padding:56px 88px 0 88px;}
+  .title{font-size:44px;font-weight:800;padding:0 88px;margin-top:14px;max-width:1250px;line-height:1.12;}
+  .subhead{font-size:20px;color:var(--muted);padding:0 88px;margin-top:16px;max-width:1200px;}
+  .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;padding:0 88px;margin-top:52px;}
+  .cell{padding-right:40px;border-right:1px solid var(--line-light);}
+  .cell:last-child{border-right:none;}
+  .num{font-family:'Sora',sans-serif;font-size:52px;font-weight:800;color:var(--ink);}
+  .label{font-size:18px;font-weight:700;color:var(--accent2);margin-top:14px;}
+  .body{font-size:15px;color:var(--muted);line-height:1.55;margin-top:10px;}
+  .scale{margin:32px 88px 0 88px;background:var(--navy);color:#fff;padding:18px 26px;font-size:15px;line-height:1.5;}
+  .scale b{color:var(--accent);}
+  .sources{position:absolute;bottom:44px;left:88px;right:88px;font-size:13px;color:#9AA1AC;line-height:1.5;}
+  .footer{position:absolute;bottom:12px;left:88px;right:88px;display:none;}
+</style>
+</helmet>
+<div class="slide">
+  <div class="eyebrow">The Cost of Doing Nothing</div>
+  <h1 class="title">What a Busy Friday Night Is Actually Costing You</h1>
+  <p class="subhead">A dinner rush runs on split-second timing. Here's where the revenue actually leaks — and the math scales whether you run 40 covers or 400.</p>
+  <div class="grid">
+    <div class="cell">
+      <div class="num">20–35%</div>
+      <div class="label">of walk-ins leave when the wait isn't managed</div>
+      <div class="body">India's walk-in dining culture means a meaningful share of would-be diners leave rather than wait. One study of an Indian restaurant found removing that wait lifted total revenue by ~15%.</div>
+    </div>
+    <div class="cell">
+      <div class="num">60–80%</div>
+      <div class="label">of daily revenue happens in the peak window alone</div>
+      <div class="body">Lunch and dinner rushes generate most of a restaurant's daily revenue — exactly when overloaded staff have the least time to answer a call or suggest the extra starter or round of drinks.</div>
+    </div>
+    <div class="cell">
+      <div class="num">5–20%</div>
+      <div class="label">no-show rate on reservations, industry-wide</div>
+      <div class="body">Every no-show is a table sat empty during your busiest window — turning away walk-ins who would have filled it, and revenue that doesn't come back that night.</div>
+    </div>
+  </div>
+  <div class="scale">The math scales with you: on an average <b>₹700–900 check</b>, a single unanswered call or unmanaged no-show during peak hours is a real ₹2,000–4,000+ walking out the door — whether that happens once a week or five times.</div>
+  <p class="sources">Sources: industry waiting-time and walkout research on Indian restaurants; commonly cited no-show benchmarks from Indian restaurant-tech platforms. Figures are directional industry ranges — ask us for the underlying reports.</p>
+</div>
+</x-dc>
+<script data-dc-script data-props='{}'>
+class Component extends DCLogic { renderVals() { return {}; } }
+</script>
+</body>
+</html>

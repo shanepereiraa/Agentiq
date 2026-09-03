@@ -1,0 +1,107 @@
+# AgentIQ New Leads — Batch 2 (100 new, no overlap with existing 180)
+
+## D2C Brands (60)
+
+- [ ] Plum (Pureplay Skin Sciences) — Shankar Prasad, Founder & CEO
+- [ ] Minimalist — Mohit Yadav, Co-founder
+- [ ] The Derma Co — Founder & CEO
+- [ ] Foxtale — Romita Mazumdar, Founder & CEO
+- [ ] Bare Anatomy — Co-founder
+- [ ] Aqualogica (Honasa Consumer) — Varun Alagh, Co-founder & CEO
+- [ ] Juicy Chemistry — Megha Asher, Co-founder
+- [ ] Soulflower — Rahul Anand, Founder
+- [ ] Renee Cosmetics — Aashka Malik, Co-founder
+- [ ] MyGlamm — Darpan Sanghvi, Founder & CEO
+- [ ] Arata — Founder
+- [ ] Chemist at Play — Founder
+- [ ] FabIndia — CEO
+- [ ] Global Desi — Brand CEO
+- [ ] Aurelia — Brand Head
+- [ ] Manyavar — Ravi Modi, Founder & CEO
+- [ ] Nautanky — Founder
+- [ ] Urbanic — Anuj Bhargava, Co-founder
+- [ ] Clovia — Pankaj Vermani, Founder & CEO
+- [ ] Berrylush — Founder
+- [ ] Libas — Sidhant Keshwani, Founder & CEO
+- [ ] DeMoza — Founder
+- [ ] Fablestreet — Anuja Parekh, Founder
+- [ ] Van Heusen (ABFRL) — Brand CEO
+- [ ] Sleepy Owl Coffee — Ashwajeet Singh, Co-founder & CEO
+- [ ] Blue Tokai Coffee — Matt Chitharanjan, Co-founder & CEO
+- [ ] Rage Coffee — Bharat Sethi, Founder & CEO
+- [ ] Wingreens Farms — Arudra Pandey, Co-founder
+- [ ] Urban Platter — Vishal Attreja, Founder
+- [ ] True Elements — Puru Gupta, Co-founder & CEO
+- [ ] Farmley — Akshay Jain, Co-founder
+- [ ] RAW Pressery — Anuj Rakyan, Founder
+- [ ] Country Delight — Chakradhar Gade, Co-founder & CEO
+- [ ] Licious — Vivek Gupta, Co-founder
+- [ ] FreshToHome — Shan Kadavil, Co-founder & CEO
+- [ ] Zoff Foods — Founder
+- [ ] Slurrp Farm — Meghana Narayan, Co-founder
+- [ ] Two Brothers Organic Farms — Co-founder
+- [ ] Wakefit — Chaitanya Ramalingegowda, Co-founder & CEO
+- [ ] The Sleep Company — Priyanka Salot, Co-founder
+- [ ] Urban Ladder — CEO
+- [ ] Chumbak — Shubhra Chadda, Co-founder
+- [ ] Milton (Hamilton Housewares) — CEO
+- [ ] Petsy — Founder
+- [ ] Just Dogs — Founder
+- [ ] Pawsindia — Founder
+- [ ] Fire-Boltt — Arnav Kishore, Co-founder & CEO
+- [ ] pTron — Founder
+- [ ] Zebronics — Rajesh Doshi, Co-founder & Director
+- [ ] Portronics — Founder
+- [ ] Crossbeats — Founder
+- [ ] Mylo — Pushpinder Singh, Founder
+- [ ] LuvLap — Nishant Agarwal, Co-founder & Director
+- [ ] R for Rabbit — Vikas Bagaria, Founder
+- [ ] Baby Chakra — Naiyya Saggi, Founder
+- [ ] OZiva — Mihir Gadani, Co-founder & CEO
+- [ ] Kapiva — Ameve Sharma, Co-founder
+- [ ] Setu Nutrition — Nihaal Mariwala, Founder & CEO
+- [ ] INLIFE — Founder
+- [ ] GRITZO — Head of Growth
+
+## Restaurants / QSR / Hospitality (40)
+
+- [ ] Wow! Momo — Sagar Daryani, Co-founder & CEO
+- [ ] Burger Singh — Kabir Jeet Singh, Founder & CEO
+- [ ] Faasos (Rebel Foods) — Jaydeep Barman, Co-founder & CEO
+- [ ] Behrouz Biryani (Rebel Foods) — Jaydeep Barman, Co-founder & CEO
+- [ ] Oven Story Pizza (Rebel Foods) — Jaydeep Barman, Co-founder & CEO
+- [ ] Box8 — Anshul Gupta, Co-founder & CEO
+- [ ] FreshMenu — Rashmi Daga, Founder & CEO
+- [ ] Haldiram's — Krishan Kumar Chutani, CEO
+- [ ] Bikanervala — Suresh Goel, CEO
+- [ ] Barbeque Nation — Rahul Agrawal, CEO & Whole-Time Director
+- [ ] Absolute Barbecues — Head of Customer Experience
+- [ ] Social (Impresario Handmade Restaurants) — Riyaaz Amlani, CEO & MD
+- [ ] Smoke House Deli (Impresario) — Riyaaz Amlani, CEO & MD
+- [ ] Subway India — Head of Marketing
+- [ ] Domino's Pizza India (Jubilant FoodWorks) — Sameer Khetarpal, CEO
+- [ ] Pizza Hut India (Sapphire Foods) — Head of Customer Experience
+- [ ] KFC India (Sapphire Foods) — Head of Marketing
+- [ ] Burger King India (Restaurant Brands Asia) — Rajeev Varman, CEO
+- [ ] Nando's India — Head of Operations
+- [ ] Café Delhi Heights — Founder
+- [ ] Mad Over Donuts — Tarak Bhattacharya, ED & CEO
+- [ ] Theobroma — Kainaz Messman Harchandrai, Co-founder
+- [ ] Monginis — Head of Marketing
+- [ ] Karachi Bakery — Rajesh Ramnani, Director
+- [ ] Keventers — Shaurya Prabhat, CEO
+- [ ] Giani's Ice Cream — Taranjit Singh, Director
+- [ ] Baskin Robbins India (Graviss Group) — Head of Marketing
+- [ ] Belgian Waffle Co. — Ankit Patel, CEO
+- [ ] La Pino'z Pizza — Sanchit Nagpal, Founder
+- [ ] Pind Balluchi — Head of Customer Experience
+- [ ] Punjab Grill (Lite Bite Foods) — Ranjit Paliath, CEO
+- [ ] Mavalli Tiffin Room (MTR) — Head of Operations
+- [ ] Toit Brewpub — Sibi Venkataraju, Co-founder & CEO
+- [ ] The Beer Cafe — Rahul Singh, Founder & CEO
+- [ ] Doolally Taproom — Suketu Talekar, Co-founder
+- [ ] Sly Granny — Head of Marketing
+- [ ] Hard Rock Cafe India — Head of Guest Experience
+- [ ] TGI Fridays India — Head of Marketing
+- [ ] Cream Centre — Head of Customer Experience
+- [ ] Saravana Bhavan — Head of Operations

@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Public+Sans:wght@400;500;600;700&display=swap">
+<style>
+  :root{
+    --navy:#0A1830; --navy2:#132A48; --ink:#101828; --paper:#F4F2EE;
+    --muted:#5B6472; --accent:#E8944A; --accent2:#C97A34;
+    --line-dark:#28405F; --line-light:#DBD8D1; --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;} body{margin:0;}
+  .slide{width:1600px;height:900px;position:relative;font-family:'Public Sans',system-ui,sans-serif;overflow:hidden;}
+  .dark{background:var(--navy);color:var(--white);}
+  h1,h2,h3{font-family:'Sora',system-ui,sans-serif;margin:0;}
+  .eyebrow-row{display:flex;align-items:center;gap:12px;padding:56px 88px 0 88px;}
+  .dot{width:10px;height:10px;background:var(--accent);flex:none;}
+  .eyebrow{font-size:14px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);}
+  .hr{height:1px;background:var(--line-dark);margin:22px 88px 0 88px;}
+  .hero-title{font-size:88px;line-height:1.02;font-weight:800;padding:0 88px;margin-top:52px;}
+  .accent{color:var(--accent);}
+  .subhead{font-size:28px;line-height:1.4;color:#C7CEDA;max-width:1020px;padding:0 88px;margin-top:28px;font-weight:400;}
+  .stat-row{display:flex;gap:0;padding:0 88px;margin-top:64px;}
+  .stat{flex:1;display:flex;flex-direction:column;gap:10px;padding-right:40px;}
+  .stat-num{font-family:'Sora',sans-serif;font-size:44px;font-weight:800;color:var(--accent);}
+  .stat-label{font-size:18px;color:#AEB7C4;}
+  .divider-v{width:1px;background:var(--line-dark);margin:4px 40px 4px 0;}
+  .footnote{position:absolute;bottom:56px;left:88px;right:88px;font-size:16px;color:#8B95A6;}
+</style>
+</helmet>
+<div class="slide dark">
+  <div class="eyebrow-row">
+    <div class="dot"></div>
+    <div class="eyebrow">Newly Launched · Now Onboarding Restaurants Across India</div>
+  </div>
+  <div class="hr"></div>
+  <h1 class="hero-title">AgentIQ <span class="accent">for Restaurants</span></h1>
+  <p class="subhead">More tables booked. Faster orders. Guests who come back. Works alongside your POS and booking tools — not instead of them.</p>
+  <div class="stat-row">
+    <div class="stat"><div class="stat-num">10–30%</div><div class="stat-label">higher order value</div></div>
+    <div class="divider-v"></div>
+    <div class="stat"><div class="stat-num">up to 30%</div><div class="stat-label">of lost call revenue recovered</div></div>
+    <div class="divider-v"></div>
+    <div class="stat"><div class="stat-num">single digits</div><div class="stat-label">no-show rate, down from ~20%</div></div>
+  </div>
+  <p class="footnote">One AI team member, chat + voice, one contract · WhatsApp, Instagram & Website · Made in India</p>
+</div>
+</x-dc>
+<script data-dc-script data-props='{}'>
+class Component extends DCLogic { renderVals() { return {}; } }
+</script>
+</body>
+</html>

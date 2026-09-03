@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Public+Sans:wght@400;500;600;700&display=swap">
+<style>
+  :root{ --navy:#0A1830; --ink:#101828; --paper:#F4F2EE; --muted:#5B6472; --accent:#E8944A; --accent2:#C97A34; --panel:#132A48; }
+  *{box-sizing:border-box;} body{margin:0;}
+  .slide{width:1600px;height:900px;position:relative;font-family:'Public Sans',system-ui,sans-serif;background:var(--paper);color:var(--ink);overflow:hidden;}
+  h1,h2,h3{font-family:'Sora',system-ui,sans-serif;margin:0;}
+  .eyebrow{font-size:14px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent2);padding:56px 88px 0 88px;}
+  .title{font-size:44px;font-weight:800;padding:0 88px;margin-top:14px;max-width:1250px;}
+  .subhead{font-size:19px;color:var(--muted);padding:0 88px;margin-top:16px;max-width:1240px;line-height:1.55;}
+  .cost{margin:0 88px;margin-top:28px;background:#fff;border:1px solid #E3E0D9;padding:18px 26px;font-size:16px;color:var(--ink);display:inline-flex;gap:10px;align-items:baseline;}
+  .cost b{font-family:'Sora',sans-serif;font-size:20px;color:var(--accent2);}
+  .panels{display:grid;grid-template-columns:1fr 1fr;gap:24px;padding:0 88px;margin-top:32px;}
+  .panel{background:var(--panel);color:#fff;padding:30px 32px;min-height:250px;}
+  .ch-label{font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent);}
+  .ch-title{font-family:'Sora',sans-serif;font-size:24px;font-weight:700;margin-top:10px;}
+  .ch-sub{font-size:14px;color:#AEB7C4;font-weight:400;}
+  .ch-list{margin-top:20px;list-style:none;padding:0;font-size:16px;line-height:1.9;}
+  .ch-list li{border-top:1px solid #274766;padding-top:10px;margin-top:10px;}
+  .ch-list li:first-child{border-top:none;padding-top:0;margin-top:0;}
+  .footer{position:absolute;bottom:40px;left:88px;right:88px;display:flex;justify-content:space-between;font-size:13px;color:#9AA1AC;}
+</style>
+</helmet>
+<div class="slide">
+  <div class="eyebrow">Meet Mei</div>
+  <h1 class="title">One AI Team Member. Every Channel. Knows Her Limits.</h1>
+  <p class="subhead">Mei lives on your WhatsApp, Instagram, and phone line. She books tables, takes orders, and follows up after every visit — instantly, 24/7. Whenever something falls outside her playbook, she hands it straight to your team.</p>
+  <div class="cost">She sits on top of your POS and booking system — not instead of it: <b>Mei answers guests, your existing tools still run the kitchen and the books.</b> No rip-and-replace, no migration.</div>
+  <div class="panels">
+    <div class="panel">
+      <div class="ch-label">Channel 01</div>
+      <div class="ch-title">Mei on Chat <span class="ch-sub">WhatsApp, Instagram, Web</span></div>
+      <ul class="ch-list">
+        <li>Books tables and answers menu questions</li>
+        <li>Takes dine-in and takeaway orders directly</li>
+        <li>Sends payment links via UPI / Razorpay</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <div class="ch-label">Channel 02</div>
+      <div class="ch-title">Mei on the Phone <span class="ch-sub">Voice agent</span></div>
+      <ul class="ch-list">
+        <li>Answers every call, no busy tone, ever</li>
+        <li>Confirms reservations the evening before</li>
+        <li>Follows up after the visit for feedback</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer"><span>AgentIQ | Restaurants</span><span>04</span></div>
+</div>
+</x-dc>
+<script data-dc-script data-props='{}'>
+class Component extends DCLogic { renderVals() { return {}; } }
+</script>
+</body>
+</html>

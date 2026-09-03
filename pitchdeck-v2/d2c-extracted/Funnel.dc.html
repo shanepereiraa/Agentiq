@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Public+Sans:wght@400;500;600;700&display=swap">
+<style>
+  :root{ --navy:#0A1830; --ink:#101828; --paper:#F4F2EE; --muted:#5B6472; --accent:#E8944A; --accent2:#C97A34; --line-dark:#28405F; }
+  *{box-sizing:border-box;} body{margin:0;}
+  .slide{width:1600px;height:900px;position:relative;font-family:'Public Sans',system-ui,sans-serif;background:var(--navy);color:#fff;overflow:hidden;}
+  h1,h2,h3{font-family:'Sora',system-ui,sans-serif;margin:0;}
+  .eyebrow{font-size:14px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);padding:56px 88px 0 88px;}
+  .hr{height:1px;background:var(--line-dark);margin:18px 88px 0 88px;}
+  .title{font-size:44px;font-weight:800;padding:0 88px;margin-top:32px;max-width:1200px;}
+  .subhead{font-size:18px;color:#B9C2D0;padding:0 88px;margin-top:14px;max-width:1200px;line-height:1.5;}
+  .stages{display:grid;grid-template-columns:repeat(4,1fr);gap:0;padding:0 88px;margin-top:48px;}
+  .stage{padding-right:32px;border-right:1px solid var(--line-dark);}
+  .stage:last-child{border-right:none;}
+  .stage-label{font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#8B95A6;}
+  .stage-title{font-family:'Sora',sans-serif;font-size:22px;font-weight:700;margin-top:10px;}
+  .stage-list{margin-top:16px;font-size:15px;color:#C7CEDA;line-height:1.7;list-style:none;padding:0;}
+  .highlight{background:var(--accent);color:var(--navy);display:inline-block;padding:2px 8px;font-weight:700;margin-top:4px;}
+  .footer{position:absolute;bottom:44px;left:88px;right:88px;display:flex;justify-content:space-between;font-size:13px;color:#8B95A6;}
+</style>
+</helmet>
+<div class="slide">
+  <div class="eyebrow">One AI Team Member, Every Stage</div>
+  <div class="hr"></div>
+  <h1 class="title">Pre-Purchase to Post-Purchase — One Bot, End to End</h1>
+  <p class="subhead">Mia isn't bolted onto one part of the journey. From the first Instagram comment to the fifth repeat order, she has a role at every stage — the next three chapters go deep on the highlighted ones.</p>
+  <div class="stages">
+    <div class="stage">
+      <div class="stage-label">Discovery</div>
+      <div class="stage-title">Guided Shopping</div>
+      <ul class="stage-list">
+        <li>Ad comment → instant DM reply</li>
+        <li>Menu-driven catalog browsing</li>
+        <li>FAQs: sizing, shipping, ingredients</li>
+      </ul>
+    </div>
+    <div class="stage">
+      <div class="stage-label">Conversion</div>
+      <div class="stage-title">Cart & Checkout</div>
+      <ul class="stage-list">
+        <li>Abandoned cart recovery, direct resume link</li>
+        <li class="highlight">COD confirmation call</li>
+        <li>Restock alerts on wait-listed sizes</li>
+      </ul>
+    </div>
+    <div class="stage">
+      <div class="stage-label">Fulfillment</div>
+      <div class="stage-title">Tracking</div>
+      <ul class="stage-list">
+        <li class="highlight">No WISMO tickets</li>
+        <li>Live status via WhatsApp</li>
+        <li>Repeat-refuser flagging</li>
+      </ul>
+    </div>
+    <div class="stage">
+      <div class="stage-label">Retention</div>
+      <div class="stage-title">Returns & Win-Back</div>
+      <ul class="stage-list">
+        <li>No-portal exchanges & refunds</li>
+        <li class="highlight">Exchange before refund</li>
+        <li>Win-back calls for lapsed buyers</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer"><span>AgentIQ | D2C Brands</span><span>05</span></div>
+</div>
+</x-dc>
+<script data-dc-script data-props='{}'>
+class Component extends DCLogic { renderVals() { return {}; } }
+</script>
+</body>
+</html>

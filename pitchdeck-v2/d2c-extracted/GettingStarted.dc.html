@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Public+Sans:wght@400;500;600;700&display=swap">
+<style>
+  :root{ --navy:#0A1830; --ink:#101828; --paper:#F4F2EE; --muted:#5B6472; --accent:#E8944A; --accent2:#C97A34; --line-light:#DBD8D1; }
+  *{box-sizing:border-box;} body{margin:0;}
+  .slide{width:1600px;height:900px;position:relative;font-family:'Public Sans',system-ui,sans-serif;background:var(--paper);color:var(--ink);overflow:hidden;}
+  h1,h2,h3{font-family:'Sora',system-ui,sans-serif;margin:0;}
+  .eyebrow{font-size:14px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent2);padding:56px 88px 0 88px;}
+  .title{font-size:44px;font-weight:800;padding:0 88px;margin-top:14px;max-width:1200px;}
+  .subhead{font-size:19px;color:var(--muted);padding:0 88px;margin-top:14px;max-width:1200px;line-height:1.5;}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;padding:0 88px;margin-top:52px;}
+  .step{padding-right:36px;border-right:1px solid var(--line-light);}
+  .step:last-child{border-right:none;}
+  .step-num{font-family:'Sora',sans-serif;font-size:34px;font-weight:800;color:var(--accent2);}
+  .step-title{font-family:'Sora',sans-serif;font-size:22px;font-weight:700;margin-top:12px;}
+  .step-body{font-size:15px;color:var(--muted);line-height:1.55;margin-top:10px;}
+  .banner{background:var(--navy);color:#fff;margin:44px 88px 0 88px;padding:24px 30px;font-size:17px;line-height:1.5;}
+  .banner b{color:var(--accent);}
+  .footer{position:absolute;bottom:40px;left:88px;right:88px;display:flex;justify-content:space-between;font-size:13px;color:#9AA1AC;}
+</style>
+</helmet>
+<div class="slide">
+  <div class="eyebrow">Getting Started</div>
+  <h1 class="title">We Don't Just Build Mia — We Launch Her For You</h1>
+  <p class="subhead">Before Mia can recover a single cart, customers need to actually find her. That's part of the setup we handle — not an extra you figure out later.</p>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-title">Click-to-Chat, Everywhere</div>
+      <div class="step-body">A WhatsApp button on your website, Instagram bio, and checkout page — the first touch the moment a customer has a question or abandons a cart.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-title">On Every Order Touchpoint</div>
+      <div class="step-body">The same number gets added to order-confirmation SMS, shipping emails, and your Meta/Google ad campaigns — so customers already know where to reach her.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-title">Your Catalog & Policies, Loaded</div>
+      <div class="step-body">We load your full product catalog, sizing charts, and return/exchange policy into her before you ever go live.</div>
+    </div>
+  </div>
+  <div class="banner">You focus on the product and the brand. <b>We handle the integration, the catalog upload, and getting your number in front of customers at every touchpoint</b> — typically live within 7 days.</div>
+  <div class="footer"><span>AgentIQ | D2C Brands</span><span>06</span></div>
+</div>
+</x-dc>
+<script data-dc-script data-props='{}'>
+class Component extends DCLogic { renderVals() { return {}; } }
+</script>
+</body>
+</html>

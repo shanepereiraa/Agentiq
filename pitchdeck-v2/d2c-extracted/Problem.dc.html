@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Public+Sans:wght@400;500;600;700&display=swap">
+<style>
+  :root{ --navy:#0A1830; --ink:#101828; --paper:#F4F2EE; --muted:#5B6472; --accent:#E8944A; --accent2:#C97A34; --line-light:#DBD8D1; }
+  *{box-sizing:border-box;} body{margin:0;}
+  .slide{width:1600px;height:900px;position:relative;font-family:'Public Sans',system-ui,sans-serif;background:var(--paper);color:var(--ink);overflow:hidden;}
+  h1,h2,h3{font-family:'Sora',system-ui,sans-serif;margin:0;}
+  .eyebrow{font-size:14px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent2);padding:56px 88px 0 88px;}
+  .title{font-size:46px;font-weight:800;padding:0 88px;margin-top:14px;max-width:1200px;line-height:1.12;}
+  .subhead{font-size:20px;color:var(--muted);padding:0 88px;margin-top:16px;max-width:1200px;}
+  .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;padding:0 88px;margin-top:56px;}
+  .cell{padding-right:40px;border-right:1px solid var(--line-light);}
+  .cell:last-child{border-right:none;}
+  .num{font-family:'Sora',sans-serif;font-size:56px;font-weight:800;color:var(--ink);}
+  .label{font-size:19px;font-weight:700;color:var(--accent2);margin-top:14px;}
+  .body{font-size:16px;color:var(--muted);line-height:1.55;margin-top:10px;}
+  .sources{position:absolute;bottom:96px;left:88px;right:88px;font-size:13px;color:#9AA1AC;line-height:1.5;}
+  .footer{position:absolute;bottom:44px;left:88px;right:88px;display:flex;justify-content:space-between;font-size:13px;color:#9AA1AC;}
+</style>
+</helmet>
+<div class="slide">
+  <div class="eyebrow">The Cost of Doing Nothing</div>
+  <h1 class="title">What Cart Abandonment and RTO Are Actually Costing You</h1>
+  <p class="subhead">Indian D2C brands lose revenue at three points in the journey — before checkout, at the door, and after the sale. The math scales with your volume, whether you're shipping 200 orders a month or 20,000.</p>
+  <div class="grid">
+    <div class="cell">
+      <div class="num">~70%</div>
+      <div class="label">of online carts are abandoned</div>
+      <div class="body">Globally, 7 in 10 shoppers leave without completing checkout — Indian D2C storefronts are widely reported to run higher still. Without a fast, personal nudge, that revenue typically doesn't come back on its own.</div>
+    </div>
+    <div class="cell">
+      <div class="num">20–30%</div>
+      <div class="label">RTO rate for Indian D2C brands</div>
+      <div class="body">India's Return-to-Origin rate runs 20–30% industry-wide, spiking well past that during festive-season COD volume — driven largely by orders that were never confirmed before dispatch.</div>
+    </div>
+    <div class="cell">
+      <div class="num">20–40%</div>
+      <div class="label">of support tickets are "Where is my order?"</div>
+      <div class="body">WISMO queries are widely reported to make up a fifth to two-fifths of support volume, climbing further in sale season — tying up a team that could be doing higher-value work.</div>
+    </div>
+  </div>
+  <p class="sources">Sources: Baymard Institute cart abandonment research; industry RTO benchmarks reported across Indian D2C logistics and returns-management platforms; commonly cited WISMO/support-ticket industry estimates. Figures are directional industry ranges, not AgentIQ measurements — ask us for the underlying reports.</p>
+  <div class="footer"><span>AgentIQ | D2C Brands</span><span>02</span></div>
+</div>
+</x-dc>
+<script data-dc-script data-props='{}'>
+class Component extends DCLogic { renderVals() { return {}; } }
+</script>
+</body>
+</html>

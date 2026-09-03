@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Public+Sans:wght@400;500;600;700&display=swap">
+<style>
+  :root{ --navy:#0A1830; --ink:#101828; --paper:#F4F2EE; --muted:#5B6472; --accent:#E8944A; --accent2:#C97A34; --line-light:#DBD8D1; }
+  *{box-sizing:border-box;} body{margin:0;}
+  .slide{width:1600px;height:900px;position:relative;font-family:'Public Sans',system-ui,sans-serif;background:var(--paper);color:var(--ink);overflow:hidden;}
+  h1,h2,h3{font-family:'Sora',system-ui,sans-serif;margin:0;}
+  .eyebrow{font-size:14px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent2);padding:56px 88px 0 88px;}
+  .title{font-size:38px;font-weight:800;padding:0 88px;margin-top:14px;max-width:760px;line-height:1.2;}
+  .col-left{position:absolute;left:88px;top:200px;width:700px;}
+  .how{font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#9AA1AC;}
+  .steps{list-style:none;padding:0;margin-top:18px;}
+  .steps li{display:flex;gap:16px;padding:14px 0;border-top:1px solid var(--line-light);}
+  .steps li:first-child{border-top:none;}
+  .steps b{color:var(--accent2);font-family:'Sora',sans-serif;font-size:18px;flex:none;width:22px;}
+  .steps span{font-size:16px;line-height:1.5;color:var(--ink);}
+  .smart{background:#FBF3E4;border-left:4px solid var(--accent);padding:16px 20px;margin-top:22px;font-size:14px;line-height:1.55;}
+  .smart b{color:var(--accent2);text-transform:uppercase;font-size:12px;letter-spacing:0.04em;display:block;margin-bottom:6px;}
+  .phone{position:absolute;right:88px;top:180px;width:560px;background:var(--navy);color:#fff;border-radius:6px;overflow:hidden;}
+  .phone-head{background:#132A48;padding:16px 20px;font-weight:700;font-size:16px;}
+  .phone-sub{font-size:12px;color:#AEB7C4;font-weight:400;}
+  .phone-body{padding:20px;display:flex;flex-direction:column;gap:12px;font-size:14px;}
+  .bubble{background:#1B3557;padding:10px 14px;border-radius:4px;max-width:80%;}
+  .bubble.me{background:#0F7D5C;align-self:flex-end;max-width:70%;}
+  .footer{position:absolute;bottom:40px;left:88px;right:88px;display:flex;justify-content:space-between;font-size:13px;color:#9AA1AC;}
+</style>
+</helmet>
+<div class="slide">
+  <div class="eyebrow">Chapter 2 of 3 · Order Placement</div>
+  <h1 class="title">Orders Reach the Kitchen in Seconds — and Grow Along the Way</h1>
+  <div class="col-left">
+    <div class="how">How It Works</div>
+    <ul class="steps">
+      <li><b>1</b><span>Guest scans the table QR code, or messages directly for takeaway.</span></li>
+      <li><b>2</b><span>Mei shows the live menu — prices, spice level, veg/non-veg tags — guest picks items directly, no server wait.</span></li>
+      <li><b>3</b><span>Order fires straight to the kitchen/POS, payment link follows.</span></li>
+    </ul>
+    <div class="smart"><b>Smart upselling</b>Ordered a curry but no rice, no drinks yet? Mei suggests adding instantly in the same chat — built to lift average order value 10–30%.</div>
+  </div>
+  <div class="phone">
+    <div class="phone-head">Spice Garden <span class="phone-sub">Table 7 · scanned</span></div>
+    <div class="phone-body">
+      <div class="bubble me">Paneer Tikka + Dal Makhani ×2</div>
+      <div class="bubble">Added. Breads or rice with that? Most tables add Butter Naan ₹90.</div>
+      <div class="bubble me">2 butter naan</div>
+      <div class="bubble">Sent to the kitchen. Total ₹1,240 — pay here: pay.spicegarden.in/t7</div>
+    </div>
+  </div>
+  <div class="footer"><span>AgentIQ | Restaurants</span><span>07</span></div>
+</div>
+</x-dc>
+<script data-dc-script data-props='{}'>
+class Component extends DCLogic { renderVals() { return {}; } }
+</script>
+</body>
+</html>

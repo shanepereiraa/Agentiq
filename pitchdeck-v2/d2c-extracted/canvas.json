@@ -1,0 +1,92 @@
+{
+  "artboards": [
+    {
+      "file": "Main.dc.html",
+      "x": 0,
+      "y": 0,
+      "w": 1600,
+      "h": 900
+    },
+    {
+      "file": "Problem.dc.html",
+      "x": 1700,
+      "y": 0,
+      "w": 1600,
+      "h": 900
+    },
+    {
+      "file": "Outcome.dc.html",
+      "x": 3400,
+      "y": 0,
+      "w": 1600,
+      "h": 900
+    },
+    {
+      "file": "MeetMia.dc.html",
+      "x": 5100,
+      "y": 0,
+      "w": 1600,
+      "h": 900
+    },
+    {
+      "file": "Funnel.dc.html",
+      "x": 6800,
+      "y": 0,
+      "w": 1600,
+      "h": 900
+    },
+    {
+      "file": "GettingStarted.dc.html",
+      "x": 8500,
+      "y": 0,
+      "w": 1600,
+      "h": 900
+    },
+    {
+      "file": "Chapter1.dc.html",
+      "x": 10200,
+      "y": 0,
+      "w": 1600,
+      "h": 900
+    },
+    {
+      "file": "Chapter2.dc.html",
+      "x": 11900,
+      "y": 0,
+      "w": 1600,
+      "h": 900
+    },
+    {
+      "file": "Chapter3.dc.html",
+      "x": 13600,
+      "y": 0,
+      "w": 1600,
+      "h": 900
+    },
+    {
+      "file": "WhyAgentIQ.dc.html",
+      "x": 15300,
+      "y": 0,
+      "w": 1600,
+      "h": 900
+    },
+    {
+      "file": "Pricing.dc.html",
+      "x": 17000,
+      "y": 0,
+      "w": 1600,
+      "h": 900
+    },
+    {
+      "file": "NextSteps.dc.html",
+      "x": 18700,
+      "y": 0,
+      "w": 1600,
+      "h": 900
+    }
+  ],
+  "launch": {
+    "view": "focused",
+    "file": "Main.dc.html"
+  }
+}

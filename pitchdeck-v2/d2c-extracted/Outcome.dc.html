@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Public+Sans:wght@400;500;600;700&display=swap">
+<style>
+  :root{ --navy:#0A1830; --ink:#101828; --paper:#F4F2EE; --muted:#5B6472; --accent:#E8944A; --accent2:#C97A34; --line-light:#DBD8D1; }
+  *{box-sizing:border-box;} body{margin:0;}
+  .slide{width:1600px;height:900px;position:relative;font-family:'Public Sans',system-ui,sans-serif;background:var(--paper);color:var(--ink);overflow:hidden;}
+  h1,h2,h3{font-family:'Sora',system-ui,sans-serif;margin:0;}
+  .eyebrow{font-size:14px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent2);padding:56px 88px 0 88px;}
+  .title{font-size:46px;font-weight:800;padding:0 88px;margin-top:14px;max-width:1100px;}
+  .subhead{font-size:19px;color:var(--muted);padding:0 88px;margin-top:14px;max-width:1180px;line-height:1.5;}
+  .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:36px 0;padding:0 88px;margin-top:44px;}
+  .row{display:flex;align-items:baseline;gap:22px;padding-right:40px;}
+  .num{font-family:'Sora',sans-serif;font-size:48px;font-weight:800;color:var(--ink);white-space:nowrap;}
+  .num.accent{color:var(--accent2);}
+  .desc{font-size:16px;color:var(--muted);line-height:1.45;max-width:420px;}
+  .roi{background:var(--navy);color:#fff;margin:40px 88px 0 88px;padding:26px 32px;font-size:16px;line-height:1.55;}
+  .roi b{color:var(--accent);}
+  .footer{position:absolute;bottom:40px;left:88px;right:88px;display:flex;justify-content:space-between;font-size:13px;color:#9AA1AC;}
+</style>
+</helmet>
+<div class="slide">
+  <div class="eyebrow">What Mia Is Designed To Deliver</div>
+  <h1 class="title">The Outcome We're Built For — Not Yet a Track Record</h1>
+  <p class="subhead">We're a newly launched product, so these are the outcomes Mia is engineered and benchmarked to hit, grounded in independent industry research on where D2C revenue leaks — not a customer average. That's exactly why the next step is a live mockup on your own numbers, not a slide of someone else's.</p>
+  <div class="grid">
+    <div class="row"><div class="num accent">100%</div><div class="desc">of COD orders get a verification call within 60 seconds — built to cut RTO losses by 20–30%.</div></div>
+    <div class="row"><div class="num">10–30%</div><div class="desc">higher average order value from AI-prompted upselling at checkout and on the confirmation call.</div></div>
+    <div class="row"><div class="num">20–40%</div><div class="desc">of tickets are WISMO queries — largely removable with automated, proactive tracking.</div></div>
+    <div class="row"><div class="num accent">3.4×</div><div class="desc">the profit margin for brands running 25%+ repeat purchase rate vs. under 15% — retention math Mia is built to move.</div></div>
+  </div>
+  <div class="roi">Quick math for your brand: <b>your monthly order volume × average order value × 10–30% recovery rate</b> is a rough floor on the monthly upside — before counting the RTO and support-time savings above. We'll run this on your actual numbers on the call.</div>
+  <div class="footer"><span>AgentIQ | D2C Brands</span><span>03</span></div>
+</div>
+</x-dc>
+<script data-dc-script data-props='{}'>
+class Component extends DCLogic { renderVals() { return {}; } }
+</script>
+</body>
+</html>

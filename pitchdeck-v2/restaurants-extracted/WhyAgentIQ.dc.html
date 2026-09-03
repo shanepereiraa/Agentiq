@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Public+Sans:wght@400;500;600;700&display=swap">
+<style>
+  :root{ --navy:#0A1830; --ink:#101828; --paper:#F4F2EE; --muted:#5B6472; --accent:#E8944A; --accent2:#C97A34; --line-light:#DBD8D1; }
+  *{box-sizing:border-box;} body{margin:0;}
+  .slide{width:1600px;height:900px;position:relative;font-family:'Public Sans',system-ui,sans-serif;background:var(--paper);color:var(--ink);overflow:hidden;}
+  h1,h2,h3{font-family:'Sora',system-ui,sans-serif;margin:0;}
+  .eyebrow{font-size:14px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent2);padding:56px 88px 0 88px;}
+  .title{font-size:42px;font-weight:800;padding:0 88px;margin-top:14px;max-width:1200px;}
+  .cols{display:grid;grid-template-columns:1.05fr 1fr;gap:60px;padding:0 88px;margin-top:38px;}
+  .checklist-title{font-size:15px;font-weight:700;color:var(--accent2);text-transform:uppercase;letter-spacing:0.05em;}
+  .checklist{list-style:none;padding:0;margin-top:16px;}
+  .checklist li{display:flex;gap:12px;padding:11px 0;border-top:1px solid var(--line-light);font-size:15px;line-height:1.5;}
+  .checklist li:first-child{border-top:none;}
+  .checklist svg{flex:none;margin-top:2px;}
+  .side{background:var(--navy);color:#fff;padding:28px 30px;}
+  .side-h{font-size:15px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.05em;}
+  .side p{font-size:15px;line-height:1.6;color:#C7CEDA;margin-top:14px;}
+  .side .quote{font-size:16px;line-height:1.6;color:#fff;margin-top:20px;padding-top:18px;border-top:1px solid #274766;}
+  .side .quote b{color:var(--accent);}
+  .footer{position:absolute;bottom:40px;left:88px;right:88px;display:flex;justify-content:space-between;font-size:13px;color:#9AA1AC;}
+</style>
+</helmet>
+<div class="slide">
+  <div class="eyebrow">Why AgentIQ</div>
+  <h1 class="title">Complements Petpooja and Your Booking Tools — Doesn't Replace Them</h1>
+  <div class="cols">
+    <div>
+      <div class="checklist-title">Ask any vendor these five questions</div>
+      <ul class="checklist">
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="#C97A34" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Does it replace my POS, or sit on top and talk to guests while my POS still runs the kitchen?</span></li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="#C97A34" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Does it train and optimize itself for my menu, or do I configure it myself?</span></li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="#C97A34" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Is there a real Hindi/Hinglish conversation layer, or just English menu-tree buttons?</span></li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="#C97A34" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Does chat and phone run as one system, or two separate tools?</span></li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="#C97A34" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Can they show you live on your actual menu before you sign anything?</span></li>
+      </ul>
+    </div>
+    <div class="side">
+      <div class="side-h">Done-For-You, Not Self-Serve</div>
+      <p>Live in 7 days: kickoff call, we build and train Mei on your menu and policies, you approve, we launch — no code on your end. Anything outside her playbook escalates to your team instantly. Your data stays encrypted, India-compliant, never sold or reused to train anyone else's bot.</p>
+      <div class="quote">You already pay for a POS and maybe a booking app to run the back of house. <b>AgentIQ is the layer that talks to guests</b> — before, during, and after the table — and hands what it captures straight into the systems you already use.</div>
+    </div>
+  </div>
+  <div class="footer"><span>AgentIQ | Restaurants</span><span>09</span></div>
+</div>
+</x-dc>
+<script data-dc-script data-props='{}'>
+class Component extends DCLogic { renderVals() { return {}; } }
+</script>
+</body>
+</html>

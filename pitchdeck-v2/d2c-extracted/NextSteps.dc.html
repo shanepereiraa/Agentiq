@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Public+Sans:wght@400;500;600;700&display=swap">
+<style>
+  :root{ --navy:#0A1830; --accent:#E8944A; --line-dark:#28405F; }
+  *{box-sizing:border-box;} body{margin:0;}
+  .slide{width:1600px;height:900px;position:relative;font-family:'Public Sans',system-ui,sans-serif;background:var(--navy);color:#fff;overflow:hidden;}
+  h1,h2,h3{font-family:'Sora',system-ui,sans-serif;margin:0;}
+  .eyebrow-row{display:flex;align-items:center;gap:12px;padding:56px 88px 0 88px;}
+  .dot{width:10px;height:10px;background:var(--accent);flex:none;}
+  .eyebrow{font-size:14px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);}
+  .hr{height:1px;background:var(--line-dark);margin:20px 88px 0 88px;}
+  .title{font-size:60px;font-weight:800;padding:0 88px;margin-top:38px;max-width:1100px;line-height:1.05;}
+  .subhead{font-size:20px;color:#B9C2D0;padding:0 88px;margin-top:18px;max-width:900px;line-height:1.5;}
+  .path{display:flex;gap:0;padding:0 88px;margin-top:44px;}
+  .pstep{flex:1;padding-right:28px;position:relative;}
+  .pstep .n{font-family:'Sora',sans-serif;font-size:15px;font-weight:800;color:var(--accent);}
+  .pstep .t{font-size:16px;font-weight:700;margin-top:8px;}
+  .pstep .d{font-size:13px;color:#AEB7C4;margin-top:6px;line-height:1.5;}
+  .arrow{position:absolute;right:-2px;top:6px;color:#4C6383;font-size:18px;}
+  .contact{display:flex;gap:0;padding:0 88px;margin-top:52px;}
+  .c{flex:1;padding-right:32px;}
+  .c-label{font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent);}
+  .c-val{font-size:18px;margin-top:8px;}
+</style>
+</helmet>
+<div class="slide">
+  <div class="eyebrow-row"><div class="dot"></div><div class="eyebrow">Next Step</div></div>
+  <div class="hr"></div>
+  <h1 class="title">Let's Put Mia on Your Storefront.</h1>
+  <p class="subhead">Book your free 20-minute demo. We'll show a live mockup built for your catalog and return policy, no obligation — here's what happens after.</p>
+  <div class="path">
+    <div class="pstep"><div class="n">01</div><div class="t">20-min demo</div><div class="d">Live mockup on your catalog, this week.</div><div class="arrow">→</div></div>
+    <div class="pstep"><div class="n">02</div><div class="t">Custom quote</div><div class="d">Priced against your order volume, not a generic tier.</div><div class="arrow">→</div></div>
+    <div class="pstep"><div class="n">03</div><div class="t">7-day build</div><div class="d">Trained on your catalog and policies, you approve before launch.</div><div class="arrow">→</div></div>
+    <div class="pstep"><div class="n">04</div><div class="t">Live, with support</div><div class="d">30-day money-back guarantee while you see real results.</div></div>
+  </div>
+  <div class="contact">
+    <div class="c"><div class="c-label">Call</div><div class="c-val">+91 91596 65277</div></div>
+    <div class="c"><div class="c-label">WhatsApp</div><div class="c-val">wa.me/919159665277</div></div>
+    <div class="c"><div class="c-label">Email</div><div class="c-val">shane@agentiq.co.in</div></div>
+    <div class="c"><div class="c-label">Based In</div><div class="c-val">Mumbai, India · nationwide</div></div>
+  </div>
+</div>
+</x-dc>
+<script data-dc-script data-props='{}'>
+class Component extends DCLogic { renderVals() { return {}; } }
+</script>
+</body>
+</html>

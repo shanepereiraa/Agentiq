@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Public+Sans:wght@400;500;600;700&display=swap">
+<style>
+  :root{ --navy:#0A1830; --ink:#101828; --paper:#F4F2EE; --muted:#5B6472; --accent:#E8944A; --accent2:#C97A34; --line-light:#DBD8D1; }
+  *{box-sizing:border-box;} body{margin:0;}
+  .slide{width:1600px;height:900px;position:relative;font-family:'Public Sans',system-ui,sans-serif;background:var(--paper);color:var(--ink);overflow:hidden;}
+  h1,h2,h3{font-family:'Sora',system-ui,sans-serif;margin:0;}
+  .eyebrow{font-size:14px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent2);padding:44px 88px 0 88px;}
+  .title{font-size:36px;font-weight:800;padding:0 88px;margin-top:10px;}
+  .bundle{margin:20px 88px 0 88px;background:var(--navy);color:#fff;padding:18px 26px;font-size:16px;display:flex;justify-content:space-between;align-items:center;}
+  .bundle b{color:var(--accent);}
+  .tables{display:grid;grid-template-columns:1fr 1fr;gap:28px;padding:0 88px;margin-top:26px;}
+  .table-h{font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#9AA1AC;margin-bottom:10px;}
+  .tiers{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;}
+  .tier{background:#fff;border:1px solid #E3E0D9;padding:14px 14px;}
+  .tier.pop{background:var(--navy);color:#fff;border-color:var(--navy);}
+  .tier .name{font-size:13px;font-weight:700;color:var(--accent2);}
+  .tier.pop .name{color:var(--accent);}
+  .tier .price{font-family:'Sora',sans-serif;font-size:18px;font-weight:800;margin-top:6px;}
+  .tier .sub{font-size:11px;color:var(--muted);margin-top:2px;}
+  .tier.pop .sub{color:#AEB7C4;}
+  .tier .feat{font-size:11px;margin-top:8px;line-height:1.5;color:var(--ink);}
+  .tier.pop .feat{color:#DDE3EC;}
+  .note{position:absolute;bottom:64px;left:88px;right:88px;font-size:12px;color:#9AA1AC;}
+  .footer{position:absolute;bottom:32px;left:88px;right:88px;display:flex;justify-content:space-between;font-size:13px;color:#9AA1AC;}
+</style>
+</helmet>
+<div class="slide">
+  <div class="eyebrow">Pricing</div>
+  <h1 class="title">One Team Member, Two Channels, One Bundle</h1>
+  <div class="bundle">Buy chat + voice together and Mia's story holds: one setup call, one training pass, <b>15% off</b> the combined monthly retainer. Chat alone or voice alone still works — this is the recommended path.</div>
+  <div class="tables">
+    <div>
+      <div class="table-h">Chatbot — WhatsApp, Instagram, Web</div>
+      <div class="tiers">
+        <div class="tier"><div class="name">Starter</div><div class="price">₹24,999</div><div class="sub">+₹7,999/mo · 1,000 chats</div><div class="feat">WhatsApp API, catalog mgmt, cart-recovery nudges included, Hindi/Hinglish/English</div></div>
+        <div class="tier pop"><div class="name">Growth</div><div class="price">₹39,999</div><div class="sub">+₹14,999/mo · 2,000 chats</div><div class="feat">+ WhatsApp Pay, full cart-recovery automation, chat widget, 24/7 priority support</div></div>
+        <div class="tier"><div class="name">Pro</div><div class="price">₹79,999</div><div class="sub">+₹24,999/mo · 5,000 chats</div><div class="feat">+ Multi-location routing, VIP tags, CRM integration, dedicated AM</div></div>
+      </div>
+    </div>
+    <div>
+      <div class="table-h">Voice Agent — Phone Line</div>
+      <div class="tiers">
+        <div class="tier pop"><div class="name">Starter</div><div class="price">₹29,999</div><div class="sub">+₹14,999/mo · 250 min</div><div class="feat">1 inbound voice agent, handles interruptions, Hindi & English, call logging</div></div>
+        <div class="tier"><div class="name">Growth</div><div class="price">₹49,999</div><div class="sub">+₹24,999/mo · 500 min</div><div class="feat">+ Outbound calling, COD verification at scale, live human transfer</div></div>
+        <div class="tier"><div class="name">Pro</div><div class="price">₹99,999</div><div class="sub">+₹34,999/mo · 800 min</div><div class="feat">+ Unlimited concurrency, voice cloning, custom integrations</div></div>
+      </div>
+    </div>
+  </div>
+  <p class="note">30-day money-back guarantee on both. Overage on voice billed at ₹45/min. Meta conversation fees billed separately. GST extra. Enterprise 5,000+ chats/mo — contact shane@agentiq.co.in.</p>
+  <div class="footer"><span>AgentIQ | D2C Brands</span><span>11</span></div>
+</div>
+</x-dc>
+<script data-dc-script data-props='{}'>
+class Component extends DCLogic { renderVals() { return {}; } }
+</script>
+</body>
+</html>

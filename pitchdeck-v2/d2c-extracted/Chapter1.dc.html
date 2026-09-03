@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Public+Sans:wght@400;500;600;700&display=swap">
+<style>
+  :root{ --navy:#0A1830; --ink:#101828; --paper:#F4F2EE; --muted:#5B6472; --accent:#E8944A; --accent2:#C97A34; --line-light:#DBD8D1; }
+  *{box-sizing:border-box;} body{margin:0;}
+  .slide{width:1600px;height:900px;position:relative;font-family:'Public Sans',system-ui,sans-serif;background:var(--paper);color:var(--ink);overflow:hidden;}
+  h1,h2,h3{font-family:'Sora',system-ui,sans-serif;margin:0;}
+  .eyebrow{font-size:14px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent2);padding:56px 88px 0 88px;}
+  .title{font-size:38px;font-weight:800;padding:0 88px;margin-top:14px;max-width:760px;line-height:1.2;}
+  .col-left{position:absolute;left:88px;top:200px;width:700px;}
+  .how{font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#9AA1AC;}
+  .steps{list-style:none;padding:0;margin-top:18px;}
+  .steps li{display:flex;gap:16px;padding:14px 0;border-top:1px solid var(--line-light);}
+  .steps li:first-child{border-top:none;}
+  .steps b{color:var(--accent2);font-family:'Sora',sans-serif;font-size:18px;flex:none;width:22px;}
+  .steps span{font-size:16px;line-height:1.5;color:var(--ink);}
+  .smart{background:#FBF3E4;border-left:4px solid var(--accent);padding:16px 20px;margin-top:22px;font-size:14px;line-height:1.55;}
+  .smart b{color:var(--accent2);text-transform:uppercase;font-size:12px;letter-spacing:0.04em;display:block;margin-bottom:6px;}
+  .phone{position:absolute;right:88px;top:180px;width:560px;background:var(--navy);color:#fff;border-radius:6px;overflow:hidden;}
+  .phone-head{background:#132A48;padding:16px 20px;font-weight:700;font-size:16px;}
+  .phone-body{padding:20px;display:flex;flex-direction:column;gap:12px;font-size:14px;}
+  .bubble{background:#1B3557;padding:10px 14px;border-radius:4px;max-width:80%;}
+  .bubble.me{background:#0F7D5C;align-self:flex-end;max-width:70%;}
+  .footer{position:absolute;bottom:40px;left:88px;right:88px;display:flex;justify-content:space-between;font-size:13px;color:#9AA1AC;}
+</style>
+</helmet>
+<div class="slide">
+  <div class="eyebrow">Chapter 1 of 3 · Discovery, Guided Shopping & Cart Recovery</div>
+  <h1 class="title">Guides Browsing With a Menu, Wins Back the Sale With a Link</h1>
+  <div class="col-left">
+    <div class="how">How It Works</div>
+    <ul class="steps">
+      <li><b>1</b><span>Customer messages, or taps through from an ad comment — Mia greets with a simple menu.</span></li>
+      <li><b>2</b><span>She asks broadly what they're looking for, narrows by category, sends a direct link to browse and check out.</span></li>
+      <li><b>3</b><span>If they stall before paying, an abandonment nudge fires within minutes with a direct link back to their saved cart.</span></li>
+      <li><b>4</b><span>COD orders placed this way are automatically flagged for a confirmation call before dispatch.</span></li>
+    </ul>
+    <div class="smart"><b>Smart layer</b>Mia ranks categories using browse/purchase history, and offers a small prepaid discount on the confirmation call — built to convert 8–14% of COD customers on the spot.</div>
+  </div>
+  <div class="phone">
+    <div class="phone-head">Thread Story</div>
+    <div class="phone-body">
+      <div class="bubble">Hi there! Choose an option: Shop Latest Styles, Track Order, Order Help.</div>
+      <div class="bubble me">Shop Latest Styles</div>
+      <div class="bubble">Hey! Noticed you left the Linen Midi (M) in your cart — tap to resume: threadstory.com/cart/8841</div>
+      <div class="bubble me">Just paid ✅</div>
+      <div class="bubble">Got it — we'll call to confirm before it ships.</div>
+    </div>
+  </div>
+  <div class="footer"><span>AgentIQ | D2C Brands</span><span>07</span></div>
+</div>
+</x-dc>
+<script data-dc-script data-props='{}'>
+class Component extends DCLogic { renderVals() { return {}; } }
+</script>
+</body>
+</html>
