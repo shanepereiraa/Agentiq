@@ -263,6 +263,10 @@ WIDGET_CSS = """
       0%, 100% { height: 25%; }
       50%      { height: 95%; }
     }
+    @media (prefers-reduced-motion: reduce) {
+      #vaq-glow, #vaq-ring, #vaq-btn::after, .vaq-waveform span { animation: none !important; }
+      #aiq-panel, #aiq-toggle, #wa-float, #vaq-btn { transition: none !important; }
+    }
 """
 
 WIDGET_HTML_AND_SCRIPTS = """

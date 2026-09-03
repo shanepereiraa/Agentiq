@@ -182,6 +182,15 @@
     .mqb-btn { display: flex; align-items: center; justify-content: center; gap: 0.4rem; min-height: 48px; padding: 0.7rem 0.75rem; border-radius: 0.85rem; font-weight: 600; font-size: 0.75rem; }
     .mqb-btn-whatsapp { background: #15803D; color: #fff; }
     .mqb-btn-demo { background: linear-gradient(135deg,#FF6B5C,#FF9F45); color: #0b1222; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .reveal { opacity: 1 !important; transform: none !important; }
+      html { scroll-behavior: auto; }
+      .animate-blob, .animate-float, .animate-marquee, .magnetic-cta { will-change: auto; }
+      #vaq-glow, #vaq-ring, #vaq-btn::after, .vaq-waveform span { animation: none !important; }
+      .btn-pop:hover, .btn-pop:focus-visible { transform: none; }
+      .tilt-card { transform: none !important; }
+    }
   </style>
 
   <!-- Google Analytics 4 -->
@@ -223,7 +232,7 @@
       </div>
 
       <!-- Mobile nav panel -->
-      <div id="aiq-mobile-nav" class="aiq-shut md:hidden rounded-2xl p-5 mt-2" inert>
+      <div id="aiq-mobile-nav" class="aiq-shut md:hidden rounded-2xl p-5 mt-2" role="dialog" aria-modal="true" aria-label="Site navigation" inert>
         <div class="flex flex-col gap-3 text-base text-slate-200">
           <a href="/restaurants" class="pl-3 text-sm text-slate-300">🍽️ Restaurants &amp; Cafes</a>
           <a href="/d2c-ecommerce" class="pl-3 text-sm text-slate-300">📦 D2C &amp; E-Commerce</a>
@@ -794,9 +803,45 @@
       var navPanel = document.getElementById("aiq-mobile-nav");
       if (!navToggle || !navPanel) return;
       var navOpen = false;
-      function openNav() { navOpen = true; navPanel.removeAttribute("inert"); navPanel.classList.remove("aiq-shut"); navToggle.setAttribute("aria-expanded", "true"); }
-      function closeNav() { navOpen = false; navPanel.classList.add("aiq-shut"); navToggle.setAttribute("aria-expanded", "false"); navPanel.setAttribute("inert", ""); }
+      function openNav() {
+        navOpen = true;
+        navPanel.removeAttribute("inert");
+        navPanel.classList.remove("aiq-shut");
+        navToggle.setAttribute("aria-expanded", "true");
+        var firstLink = navPanel.querySelector("a");
+        if (firstLink) firstLink.focus();
+      }
+      function closeNav(returnFocus) {
+        navOpen = false;
+        navPanel.classList.add("aiq-shut");
+        navToggle.setAttribute("aria-expanded", "false");
+        if (returnFocus !== false) navToggle.focus();
+        navPanel.setAttribute("inert", "");
+      }
       navToggle.addEventListener("click", function() { navOpen ? closeNav() : openNav(); });
+      navPanel.querySelectorAll("a").forEach(function(a) {
+        a.addEventListener("click", function() { closeNav(false); });
+      });
+      document.addEventListener("keydown", function(e) {
+        if (navOpen && e.key === "Escape") closeNav();
+      });
+      navPanel.addEventListener("keydown", function(e) {
+        if (e.key !== "Tab") return;
+        var focusables = navPanel.querySelectorAll("a, button, [tabindex]:not([tabindex=\"-1\"])");
+        if (!focusables.length) return;
+        var first = focusables[0];
+        var last = focusables[focusables.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      });
+      window.matchMedia("(min-width: 768px)").addEventListener("change", function(e) {
+        if (e.matches && navOpen) closeNav(false);
+      });
       function syncNavState() {
         document.body.classList.toggle("aiq-nav-open", !navPanel.classList.contains("aiq-shut"));
       }

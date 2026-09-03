@@ -389,6 +389,15 @@
     .mqb-btn:active { transform: scale(0.97); }
     .mqb-btn-whatsapp { background: #15803D; color: #fff; box-shadow: 0 4px 16px rgba(21,128,61,0.35); }
     .mqb-btn-demo { background: linear-gradient(135deg,#FF6B5C,#FF9F45); color: #0b1222; box-shadow: 0 4px 16px rgba(255,107,92,0.4); }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .reveal { opacity: 1 !important; transform: none !important; }
+      html { scroll-behavior: auto; }
+      .animate-blob, .animate-float, .animate-marquee, .magnetic-cta { will-change: auto; }
+      #vaq-glow, #vaq-ring, #vaq-btn::after, .vaq-waveform span { animation: none !important; }
+      .btn-pop:hover, .btn-pop:focus-visible { transform: none; }
+      .tilt-card { transform: none !important; }
+    }
   </style>
   <!-- Google Analytics 4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-RD3SW71LDT"></script>
@@ -429,7 +438,7 @@
       </div>
 
       <!-- Mobile nav panel -->
-      <div id="aiq-mobile-nav" class="aiq-shut md:hidden rounded-2xl p-5 mt-2" inert>
+      <div id="aiq-mobile-nav" class="aiq-shut md:hidden rounded-2xl p-5 mt-2" role="dialog" aria-modal="true" aria-label="Site navigation" inert>
         <div class="flex flex-col gap-3 text-base text-slate-200">
           <a href="/restaurants" class="pl-3 text-sm text-slate-300">🍽️ Restaurants &amp; Cafes</a>
           <a href="/d2c-ecommerce" class="pl-3 text-sm text-slate-300">📦 D2C &amp; E-Commerce</a>
@@ -1022,6 +1031,8 @@
         navPanel.removeAttribute('inert');
         navPanel.classList.remove('aiq-shut');
         navToggle.setAttribute('aria-expanded', 'true');
+        var firstLink = navPanel.querySelector('a');
+        if (firstLink) firstLink.focus();
       }
       function closeNav(returnFocus) {
         navOpen = false;
@@ -1030,6 +1041,20 @@
         if (returnFocus !== false) navToggle.focus();
         navPanel.setAttribute('inert', '');
       }
+      navPanel.addEventListener('keydown', function (e) {
+        if (e.key !== 'Tab') return;
+        var focusables = navPanel.querySelectorAll('a, button, [tabindex]:not([tabindex="-1"])');
+        if (!focusables.length) return;
+        var first = focusables[0];
+        var last = focusables[focusables.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      });
       navToggle.addEventListener('click', function () { navOpen ? closeNav() : openNav(); });
       navPanel.querySelectorAll('a').forEach(function (a) {
         a.addEventListener('click', function () { closeNav(false); });

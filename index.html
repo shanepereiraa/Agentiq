@@ -735,7 +735,7 @@
   </header>
   <!-- MOBILE NAV: full-screen slide-up sheet (app-modal style). Close via the
        X button, Escape, tapping a link, or resizing past the md breakpoint. -->
-  <div id="aiq-mobile-nav" class="aiq-shut md:hidden fixed inset-0 z-[60] flex flex-col" style="background:rgba(6,15,40,0.98);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)" inert>
+  <div id="aiq-mobile-nav" class="aiq-shut md:hidden fixed inset-0 z-[60] flex flex-col" style="background:rgba(6,15,40,0.98);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)" role="dialog" aria-modal="true" aria-label="Site navigation" inert>
     <div class="flex items-center justify-between px-5 pt-5">
       <span class="font-display font-700 text-lg text-white tracking-tight">Agent<span class="logo-grad-text">IQ</span></span>
       <button id="aiq-nav-close" type="button" class="grid place-items-center min-w-[48px] min-h-[48px] rounded-xl text-slate-200 hover:text-white hover:bg-white/10 transition-colors" aria-label="Close menu">
@@ -2809,6 +2809,7 @@
         navPanel.classList.remove('aiq-shut');
         navToggle.setAttribute('aria-expanded', 'true');
         document.body.style.overflow = 'hidden'; // lock background scroll while the sheet is open
+        if (navClose) navClose.focus();
       }
       function closeNav(returnFocus) {
         navOpen = false;
@@ -2818,6 +2819,20 @@
         navPanel.setAttribute('inert', '');
         document.body.style.overflow = '';
       }
+      navPanel.addEventListener('keydown', function (e) {
+        if (e.key !== 'Tab') return;
+        var focusables = navPanel.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+        if (!focusables.length) return;
+        var first = focusables[0];
+        var last = focusables[focusables.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      });
       navToggle.addEventListener('click', function () { navOpen ? closeNav() : openNav(); });
       if (navClose) navClose.addEventListener('click', function () { closeNav(); });
       navPanel.querySelectorAll('a').forEach(function (a) {
@@ -3998,9 +4013,54 @@
   <!-- Global React mounts: mirrors the real #voice-samples audio player state
        (see the custom-event dispatch added to that section's script above). -->
   <div id="mobile-audio-bar-root"></div>
-  <!-- React island bundle (react-widgets/): mounts into every #*-root container
-       present on the page (see react-widgets/src/main.jsx for the full list). -->
-  <script type="module" src="/react-widgets/dist/agentiq-widgets.js"></script>
+  <!-- React island bundle (react-widgets/): lazy-loaded via IntersectionObserver / idle interaction -->
+  <script>
+    (function () {
+      var roots = [
+        'language-toggle-root',
+        'stories-demo-root',
+        'inbox-slider-root',
+        'mobile-swipe-tabs-root',
+        'mobile-audio-bar-root'
+      ];
+      var loaded = false;
+      function loadWidgets() {
+        if (loaded) return;
+        loaded = true;
+        if (observer) observer.disconnect();
+        var s = document.createElement('script');
+        s.type = 'module';
+        s.src = '/react-widgets/dist/agentiq-widgets.js';
+        document.body.appendChild(s);
+      }
+      var observer = null;
+      if ('IntersectionObserver' in window) {
+        observer = new IntersectionObserver(function (entries) {
+          for (var i = 0; i < entries.length; i++) {
+            if (entries[i].isIntersecting) {
+              loadWidgets();
+              break;
+            }
+          }
+        }, { rootMargin: '400px 0px' });
+        roots.forEach(function (id) {
+          var el = document.getElementById(id);
+          if (el) observer.observe(el);
+        });
+      } else {
+        window.addEventListener('load', loadWidgets);
+      }
+      ['scroll', 'touchstart', 'mousemove', 'keydown'].forEach(function (evt) {
+        window.addEventListener(evt, function () {
+          if ('requestIdleCallback' in window) {
+            requestIdleCallback(loadWidgets);
+          } else {
+            setTimeout(loadWidgets, 1000);
+          }
+        }, { once: true, passive: true });
+      });
+    })();
+  </script>
   <script>
     (function(){
       "use strict";
