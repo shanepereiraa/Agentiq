@@ -45,20 +45,16 @@ const PAGES = getAllHtmlFiles(ROOT);
 const VERCEL_JSON = path.join(ROOT, 'vercel.json');
 
 function extractInlineScripts(html, page) {
-  // Strip HTML comments first — the tag regex below doesn't know about markup
-  // comments, so a documentation comment that merely mentions the text
-  // "<script>" (e.g. "edit the main <script> block") gets misread as a real
-  // opening tag. That previously made the regex capture everything from the
-  // comment through the next real </script>, hash that bogus oversized blob,
-  // and never produce a hash for the real (smaller) script — which the
-  // browser then silently blocked since its real hash matched nothing in the
-  // CSP allow-list. Comment content is never executed, so stripping it first
-  // is safe.
-  const withoutComments = html.replace(/<!--[\s\S]*?-->/g, '');
+  // Tokenize HTML so we recognize HTML comments outside scripts without altering
+  // the exact byte content inside <script> blocks. If a comment contains "<script>",
+  // it gets consumed as a comment. If a script contains "<!--", its content remains intact.
   const scripts = [];
-  const re = /<script(\s[^>]*)?>([\s\S]*?)<\/script>/gi;
+  const tokenRe = /<!--[\s\S]*?-->|<script(\s[^>]*)?>([\s\S]*?)<\/script>/gi;
   let m;
-  while ((m = re.exec(withoutComments))) {
+  while ((m = tokenRe.exec(html))) {
+    // If it is an HTML comment, skip it
+    if (m[0].startsWith('<!--')) continue;
+
     const attrs = m[1] || '';
     if (/\bsrc\s*=/i.test(attrs)) continue; // external script, no hash needed
     if (/type\s*=\s*["']application\/ld\+json["']/i.test(attrs)) continue; // inert data

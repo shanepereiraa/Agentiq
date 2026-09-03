@@ -4,18 +4,22 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { name, phone, business, message, timestamp } = req.body || {};
+    const { name, phone, business, message } = req.body || {};
 
-    if (!name && !phone) {
-      return res.status(400).json({ error: 'Name or phone is required' });
+    const rawName = String(name || '').trim();
+    const rawPhone = String(phone || '').trim();
+    const cleanPhone = rawPhone.replace(/[\s\-\(\)]/g, '');
+
+    if (!cleanPhone || cleanPhone.replace(/\D/g, '').length < 8) {
+      return res.status(400).json({ error: 'Valid phone number is required' });
     }
 
     const payload = {
-      name: name || 'Anonymous',
-      phone: phone || '',
-      business: business || 'General',
-      message: message || '',
-      timestamp: timestamp || new Date().toISOString(),
+      name: rawName ? rawName.slice(0, 60) : 'Anonymous',
+      phone: cleanPhone.slice(0, 20),
+      business: String(business || 'General').trim().slice(0, 80),
+      message: String(message || '').trim().slice(0, 500),
+      timestamp: new Date().toISOString(),
       source: 'website_floating_chatbot'
     };
 
@@ -23,7 +27,10 @@ export default async function handler(req, res) {
     try {
       await fetch('https://agentiq-chatbot.onrender.com/lead', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Origin': 'https://agentiq.co.in'
+        },
         body: JSON.stringify(payload)
       });
     } catch (renderErr) {

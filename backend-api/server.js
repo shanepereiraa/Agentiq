@@ -107,11 +107,17 @@ YOUR BEHAVIOUR AS THIS ASSISTANT
 // ─── SECURITY MIDDLEWARE ──────────────────────────────────────────────────────
 app.use(helmet({ crossOriginResourcePolicy: { policy: 'cross-origin' } }));
 
-// CORS — open to all origins so the chatbot works on any domain/preview
+const ALLOWED_ORIGINS = (process.env.ALLOWED_ORIGIN || 'https://agentiq.co.in,https://www.agentiq.co.in').split(',').map(s => s.trim());
+
 app.use(cors({
-  origin: true,
+  origin: function (origin, callback) {
+    if (!origin || ALLOWED_ORIGINS.includes(origin) || process.env.NODE_ENV !== 'production') {
+      return callback(null, true);
+    }
+    return callback(new Error('Not allowed by CORS'));
+  },
   methods: ['POST', 'GET', 'OPTIONS'],
-  allowedHeaders: ['Content-Type']
+  allowedHeaders: ['Content-Type', 'Origin']
 }));
 
 app.use(express.json({ limit: '20kb' }));
@@ -124,9 +130,30 @@ const chatLimiter = rateLimit({
   message: { error: 'Too many messages. Please wait a moment before trying again.' }
 });
 
+const leadLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 10,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { error: 'Too many lead submissions. Please wait before trying again.' }
+});
+
 // ─── HEALTH CHECK ─────────────────────────────────────────────────────────────
 app.get('/health', (req, res) => {
   res.json({ status: 'ok', service: 'AgentIQ Chat API', timestamp: new Date().toISOString() });
+});
+
+// ─── LEAD ENDPOINT ────────────────────────────────────────────────────────────
+app.post('/lead', leadLimiter, async (req, res) => {
+  const { name, phone, business } = req.body || {};
+  if (!name || !phone) {
+    return res.status(400).json({ error: 'name and phone required' });
+  }
+  const cleanPhone = String(phone).replace(/[\s\-\(\)]/g, '');
+  if (!/^\+?\d{7,15}$/.test(cleanPhone)) {
+    return res.status(400).json({ error: 'Invalid phone number format' });
+  }
+  res.json({ success: true, message: 'Lead received' });
 });
 
 // ─── CHAT ENDPOINT ────────────────────────────────────────────────────────────
@@ -154,8 +181,8 @@ app.post('/api/chat', chatLimiter, async (req, res) => {
         'anthropic-version': '2023-06-01'
       },
       body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 1000,
+        model: 'claude-haiku-4-5',
+        max_tokens: 400,
         system: SYSTEM_PROMPT,
         messages
       })

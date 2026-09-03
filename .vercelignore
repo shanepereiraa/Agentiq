@@ -1,0 +1,44 @@
+# Version control & local editor metadata
+.git
+.github
+.claude
+.claude-flow
+.windsurf
+.cline
+.clinerules
+.continue
+.cursor
+.DS_Store
+
+# Internal reports & audits
+seo-report-agentiq_co_in.html
+audit-results.json
+FULL-AUDIT-REPORT.md
+ACTION-PLAN.md
+SEO-MEASUREMENT-FRAMEWORK.md
+OFF_PAGE_AEO_PLAYBOOK.md
+.seo-audit-run
+
+# Client & test datasets / credentials
+*.csv
+*.pkl
+linkedin_session.pkl
+
+# Build scripts, scrapers & tests
+scripts/
+tests/
+test-results/
+playwright.config.js
+generate_naina_samples.py
+backend-api/
+
+# Node dependencies & source code
+node_modules/
+react-widgets/src/
+react-widgets/node_modules/
+react-widgets/package.json
+react-widgets/package-lock.json
+react-widgets/vite.config.js
+react-widgets/postcss.config.js
+tailwind-input.css
+tailwind.config.js

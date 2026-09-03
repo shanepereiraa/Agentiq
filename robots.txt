@@ -57,6 +57,8 @@ Allow: /
 
 # --- Default: allow all other crawlers ---
 User-agent: *
+Disallow: /seo-report-agentiq_co_in.html
+Disallow: /audit-results.json
 Allow: /
 
 Sitemap: https://agentiq.co.in/sitemap.xml
