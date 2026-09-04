@@ -8,8 +8,9 @@
     "test:e2e:ui": "playwright test --ui",
     "build:widgets": "npm --prefix react-widgets run build",
     "build:css": "tailwindcss -i ./tailwind-input.css -o ./tailwind.min.css --minify",
+    "build:hash": "node scripts/hash-assets.js",
     "build:csp": "node scripts/build-csp.js",
-    "build:all": "npm run build:widgets && npm run build:css && npm run build:csp"
+    "build:all": "npm run build:widgets && npm run build:css && npm run build:hash && npm run build:csp"
   },
   "devDependencies": {
     "@playwright/test": "^1.61.1",

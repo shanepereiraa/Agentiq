@@ -211,7 +211,7 @@
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/dm-sans-latin.woff2" crossorigin />
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/space-grotesk-latin.woff2" crossorigin />
   <!-- Tailwind: compiled at build time via `npm run build:css` (tailwind.config.js), includes both static site and react-widgets styles -->
-  <link rel="stylesheet" href="/tailwind.min.css" />
+  <link rel="stylesheet" href="/tailwind.65f3846e.min.css" />
   <style>
     html { -webkit-font-smoothing: antialiased; }
     body { background: #07173a; }
@@ -286,10 +286,10 @@
     /* Pricing card CTA hover states — CSS instead of onmouseover/onmouseout so they don't need CSP script-src allowance. */
     .cta-outline { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); transition: background-color .2s ease; }
     .cta-outline:hover { background: rgba(255,255,255,0.12); }
-    .cta-glow-pink { background: linear-gradient(135deg,#ec4899,#a855f7); box-shadow: 0 4px 24px rgba(168,85,247,0.45); transition: box-shadow .2s ease; }
-    .cta-glow-pink:hover { box-shadow: 0 4px 32px rgba(168,85,247,0.65); }
-    .cta-glow-purple { background: linear-gradient(135deg,#7c3aed,#a855f7); box-shadow: 0 4px 24px rgba(124,58,237,0.5); transition: box-shadow .2s ease; }
-    .cta-glow-purple:hover { box-shadow: 0 4px 32px rgba(124,58,237,0.7); }
+    .cta-glow-pink { background: linear-gradient(135deg,#A6265A,#9333A6); box-shadow: 0 4px 24px rgba(166,38,90,0.45); transition: box-shadow .2s ease; }
+    .cta-glow-pink:hover { box-shadow: 0 4px 32px rgba(166,38,90,0.65); }
+    .cta-glow-purple { background: linear-gradient(135deg,#6d28d9,#581c87); box-shadow: 0 4px 24px rgba(109,40,217,0.5); transition: box-shadow .2s ease; }
+    .cta-glow-purple:hover { box-shadow: 0 4px 32px rgba(109,40,217,0.7); }
     .card-lift:hover { transform: translateY(-4px); box-shadow: 0 20px 50px rgba(0,0,0,.35); }
     /* Magnetic hero CTA — JS translates this element toward the cursor within ~40px; transition smooths the settle/reset. */
     .magnetic-cta { transition: transform .15s ease-out; will-change: transform; }
@@ -1505,7 +1505,7 @@
             <svg class="w-8 h-8 text-cyan/40 mb-3" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
             <p class="text-slate-200 leading-relaxed flex-1 text-[15px]">Used to spend 3 hours every day managing WhatsApp bookings myself. Now the bot handles it and I just check the confirmations. <span class="text-white font-600">Freed up my entire evening.</span></p>
             <div class="mt-6 pt-5 border-t border-white/10 flex items-center gap-3">
-              <span class="grid place-items-center w-10 h-10 rounded-full bg-gradient-to-br from-cyan to-blue text-white text-sm font-700 shrink-0">VN</span>
+              <span class="grid place-items-center w-10 h-10 rounded-full bg-gradient-to-br from-cyan-deep to-blue-deep text-white text-sm font-700 shrink-0">VN</span>
               <div><p class="text-white text-sm font-600">Vikram Narang</p><p class="text-slate-400 text-xs mt-0.5">Co-Founder, Spice Route Dining Group · Mumbai</p></div>
             </div>
           </article>
@@ -3000,7 +3000,7 @@
       function bubble(text, who) {
         var d = document.createElement('div');
         d.className = who === 'me'
-          ? 'ml-auto max-w-[82%] bg-gradient-to-br from-cyan to-blue text-white rounded-2xl rounded-tr-md px-3.5 py-2.5'
+          ? 'ml-auto max-w-[82%] bg-gradient-to-br from-cyan-deep to-blue-deep text-white rounded-2xl rounded-tr-md px-3.5 py-2.5'
           : 'max-w-[82%] bg-white/10 text-slate-100 rounded-2xl rounded-tl-md px-3.5 py-2.5';
         d.textContent = text;
         log.appendChild(d); log.scrollTop = log.scrollHeight; return d;
@@ -4030,7 +4030,7 @@
         if (observer) observer.disconnect();
         var s = document.createElement('script');
         s.type = 'module';
-        s.src = '/react-widgets/dist/agentiq-widgets.js';
+        s.src = '/react-widgets/dist/agentiq-widgets.add7c380.js';
         document.body.appendChild(s);
       }
       var observer = null;

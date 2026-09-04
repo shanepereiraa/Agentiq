@@ -87,7 +87,7 @@
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/dm-sans-latin.woff2" crossorigin />
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/space-grotesk-latin.woff2" crossorigin />
   <!-- Tailwind: compiled at build time via `npm run build:css` (tailwind.config.js), not the CDN JIT compiler. -->
-  <link rel="stylesheet" href="/tailwind.min.css" />
+  <link rel="stylesheet" href="/tailwind.65f3846e.min.css" />
   <style>
     html{-webkit-font-smoothing:antialiased}body{background:#060f28}
     a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:3px solid #22D3EE;outline-offset:2px;border-radius:6px}
@@ -540,7 +540,7 @@
         <div class="reveal">
           <div class="glass-strong rounded-[1.75rem] overflow-hidden shadow-2xl shadow-black/40">
             <div class="flex items-center gap-3 px-5 py-4 border-b border-white/10" style="background:linear-gradient(90deg,rgba(34,211,238,.14),transparent)">
-              <span class="grid place-items-center w-9 h-9 rounded-full bg-gradient-to-br from-cyan to-blue text-white shrink-0">
+              <span class="grid place-items-center w-9 h-9 rounded-full bg-gradient-to-br from-cyan-deep to-blue-deep text-white shrink-0">
                 <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.17 12a19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 3.08 1h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
               </span>
               <div><p class="text-white font-500 text-sm">Healwell Clinic · WhatsApp</p><p class="text-cyan text-xs flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-cyan"></span>online</p></div>
@@ -602,7 +602,7 @@
         </div>
         <p class="text-slate-200 text-base leading-relaxed mb-6">"We were losing 15–20 patient calls every evening to voicemail. Since deploying AgentIQ's voice agent, those calls get answered, appointments get booked, and patients receive a WhatsApp confirmation within minutes — even at 10 PM."</p>
         <div class="flex items-center gap-3">
-          <span class="grid place-items-center w-10 h-10 rounded-full bg-gradient-to-br from-cyan to-blue text-white text-sm font-700 shrink-0">A</span>
+          <span class="grid place-items-center w-10 h-10 rounded-full bg-gradient-to-br from-cyan-deep to-blue-deep text-white text-sm font-700 shrink-0">A</span>
           <div><p class="text-white text-sm font-600">Dr. Arjun M.</p><p class="text-slate-400 text-xs mt-0.5">Clinic Director, Healwell Clinic · Pune</p></div>
         </div>
       </div>
@@ -1150,7 +1150,7 @@
         'Can I speak in Hindi?':"Bilkul! Main Hindi mein baat kar sakta hoon. Aapko kya madad chahiye? 😊"
       };
       var log=document.getElementById('chatlog'),chips=document.getElementById('chips');
-      function bubble(text,who){var d=document.createElement('div');d.className=who==='me'?'ml-auto max-w-[82%] bg-gradient-to-br from-cyan to-blue text-white rounded-2xl rounded-tr-md px-3.5 py-2.5 text-sm':'max-w-[82%] bg-white/10 text-slate-100 rounded-2xl rounded-tl-md px-3.5 py-2.5 text-sm';d.textContent=text;log.appendChild(d);log.scrollTop=log.scrollHeight;}
+      function bubble(text,who){var d=document.createElement('div');d.className=who==='me'?'ml-auto max-w-[82%] bg-gradient-to-br from-cyan-deep to-blue-deep text-white rounded-2xl rounded-tr-md px-3.5 py-2.5 text-sm':'max-w-[82%] bg-white/10 text-slate-100 rounded-2xl rounded-tl-md px-3.5 py-2.5 text-sm';d.textContent=text;log.appendChild(d);log.scrollTop=log.scrollHeight;}
       function typing(){var d=document.createElement('div');d.className='inline-flex items-center gap-1.5 bg-white/8 rounded-2xl rounded-tl-md px-4 py-3';var sr=document.createElement('span');sr.className='sr-only';sr.textContent='AgentIQ is typing…';d.appendChild(sr);for(var i=0;i<3;i++){var dot=document.createElement('span');dot.setAttribute('aria-hidden','true');dot.className='dot';d.appendChild(dot);}log.appendChild(d);log.scrollTop=log.scrollHeight;return d;}
       function botReply(text){var t=typing();setTimeout(function(){t.remove();if(reduce){bubble(text,'bot');return;}var d=document.createElement('div');d.className='max-w-[82%] bg-white/10 text-slate-100 rounded-2xl rounded-tl-md px-3.5 py-2.5 text-sm';d.setAttribute('aria-hidden','true');log.appendChild(d);log.scrollTop=log.scrollHeight;var i=0;(function stream(){if(i<=text.length){d.textContent=text.slice(0,i);log.scrollTop=log.scrollHeight;i+=2;setTimeout(stream,14);}else{d.removeAttribute('aria-hidden');d.textContent=text;}})();},reduce?250:850);}
       var busy=false;

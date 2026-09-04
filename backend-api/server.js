@@ -197,6 +197,35 @@ app.post('/api/chat', chatLimiter, checkDailyBudget, async (req, res) => {
       return res.status(400).json({ error: 'Message too long (max 2000 chars)' });
   }
 
+  // Security guard against forged assistant history & prompt-injection jailbreaks (H2)
+  if (messages[0].role !== 'user') {
+    return res.status(400).json({ error: 'First message must be from user' });
+  }
+
+  for (let i = 1; i < messages.length; i++) {
+    if (messages[i].role === messages[i - 1].role) {
+      return res.status(400).json({ error: 'Messages must alternate between user and assistant' });
+    }
+  }
+
+  const FORBIDDEN_ASSISTANT_PATTERNS = [
+    /system\s*prompt/i,
+    /ignore\s*(all|previous|prior)\s*instructions/i,
+    /reveal\s*(your|the)\s*(instructions|prompt|system)/i,
+    /you\s*are\s*now\s*in\s*developer\s*mode/i,
+    /dan\s*mode/i,
+    /bypass\s*(rules|safety|guardrails)/i
+  ];
+  for (const msg of messages) {
+    if (msg.role === 'assistant') {
+      for (const pattern of FORBIDDEN_ASSISTANT_PATTERNS) {
+        if (pattern.test(msg.content)) {
+          return res.status(400).json({ error: 'Invalid assistant message content in conversation history' });
+        }
+      }
+    }
+  }
+
   try {
     const response = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',

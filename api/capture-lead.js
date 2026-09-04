@@ -24,6 +24,7 @@ export default async function handler(req, res) {
     };
 
     // Forward to Render backend webhook for Google Sheets synchronization
+    // Use a 2.5s timeout so Render cold starts never hang the serverless function
     try {
       await fetch('https://agentiq-chatbot.onrender.com/lead', {
         method: 'POST',
@@ -31,16 +32,16 @@ export default async function handler(req, res) {
           'Content-Type': 'application/json',
           'Origin': 'https://agentiq.co.in'
         },
-        body: JSON.stringify(payload)
+        body: JSON.stringify(payload),
+        signal: AbortSignal.timeout(2500)
       });
     } catch (renderErr) {
-      console.error('[API] Render webhook error:', renderErr);
+      console.error('[API] Render webhook error:', renderErr.message);
     }
 
     return res.status(200).json({
       success: true,
-      message: 'Lead captured successfully',
-      data: payload
+      message: 'Lead captured successfully'
     });
   } catch (error) {
     console.error('[API] Lead capture error:', error);
