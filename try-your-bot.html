@@ -1550,6 +1550,9 @@
       }
 
       leadStartBtn.addEventListener('click', function () {
+        // Re-entrancy guard: ignore a second click/tap fired before the
+        // disabled state takes visual/DOM effect (double-submit fix).
+        if (leadStartBtn.disabled) return;
         var name = leadNameInput.value.trim();
         var phone = leadPhoneInput.value.trim();
         if (!name || phone.replace(/\D/g, '').length < 8) {
