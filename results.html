@@ -45,7 +45,7 @@
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/dm-sans-latin.woff2" crossorigin />
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/space-grotesk-latin.woff2" crossorigin />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="/tailwind.65f3846e.min.css" />
+  <link rel="stylesheet" href="/tailwind.3eacaf6a.min.css" />
   
   <style>
     /* Global high-contrast focus indicator (WCAG 2.2 Level AA) */
@@ -84,7 +84,7 @@
     #aiq-toggle { width: 52px; height: 52px; border-radius: 50%; background: linear-gradient(135deg, #FF9F45, #FF6B5C); border: none; cursor: pointer; box-shadow: 0 4px 22px rgba(255,107,92,.5); display: flex; align-items: center; justify-content: center; position: relative; }
     #aiq-notif { position: absolute; top: -3px; right: -3px; width: 18px; height: 18px; border-radius: 50%; background: #22D3EE; color: #07173a; font-size: 10px; font-weight: 700; display: flex; align-items: center; justify-content: center; border: 2px solid #07173a; }
     #aiq-notif.aiq-gone { display: none; }
-    #aiq-panel { position: absolute; bottom: 60px; right: 0; width: 340px; background: rgba(7,23,58,.96); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,.12); border-radius: 20px; box-shadow: 0 16px 60px rgba(0,0,0,.55); display: flex; flex-direction: column; overflow: hidden; transition: opacity .2s ease, transform .2s ease; }
+    #aiq-panel { position: absolute; bottom: 60px; right: 0; width: 340px; max-width: calc(100vw - 24px); background: rgba(7,23,58,.96); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,.12); border-radius: 20px; box-shadow: 0 16px 60px rgba(0,0,0,.55); display: flex; flex-direction: column; overflow: hidden; transition: opacity .2s ease, transform .2s ease; }
     #aiq-panel.aiq-shut { opacity: 0; transform: translateY(10px) scale(.97); pointer-events: none; }
     #aiq-hdr { padding: 13px 15px; background: linear-gradient(135deg, rgba(255,159,69,.18), rgba(255,107,92,.14)); border-bottom: 1px solid rgba(255,255,255,.09); display: flex; align-items: center; gap: 10px; }
     #aiq-hdr .av { width: 34px; height: 34px; border-radius: 50%; background: linear-gradient(135deg, #FF9F45, #FF6B5C); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
@@ -315,9 +315,9 @@
           <table class="w-full text-left text-sm">
             <thead>
               <tr class="border-b border-white/10 text-xs font-semibold text-slate-400 uppercase tracking-wider">
-                <th class="pb-4 pr-6">Performance Indicator</th>
-                <th class="pb-4 px-6 text-slate-400">Traditional / Manual</th>
-                <th class="pb-4 pl-6 text-cyan font-bold">AgentIQ Autonomous AI</th>
+                <th scope="col" class="pb-4 pr-6">Performance Indicator</th>
+                <th scope="col" class="pb-4 px-6 text-slate-400">Traditional / Manual</th>
+                <th scope="col" class="pb-4 pl-6 text-cyan font-bold">AgentIQ Autonomous AI</th>
               </tr>
             </thead>
             <tbody class="divide-y divide-white/5 text-xs sm:text-sm">
@@ -867,7 +867,7 @@
         if (sdkLoading) return;
         sdkLoading = true;
         setState('connecting');
-        import('https://esm.sh/@vapi-ai/web@2.1.2')
+        import('https://esm.sh/@vapi-ai/web@2.6.1')
           .then(function(mod) { sdkLoading = false; wireVapi(mod); startCall(); })
           .catch(function(err) {
             sdkLoading = false;

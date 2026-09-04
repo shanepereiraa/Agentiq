@@ -4,7 +4,6 @@ import InboxComparisonSlider from './components/InboxComparisonSlider';
 import StoriesDemo from './components/StoriesDemo';
 import MobileSwipeTabs from './components/MobileSwipeTabs';
 import MobileAudioBar from './components/MobileAudioBar';
-import './index.css';
 
 const MOUNTS = [
   ['language-toggle-root', LanguageToggle],

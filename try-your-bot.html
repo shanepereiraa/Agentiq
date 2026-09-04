@@ -24,7 +24,7 @@
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/space-grotesk-latin.woff2" crossorigin />
 
   <!-- Tailwind CSS -->
-  <link rel="stylesheet" href="/tailwind.65f3846e.min.css" />
+  <link rel="stylesheet" href="/tailwind.3eacaf6a.min.css" />
 
   <style>
     /* Global high-contrast focus indicator (WCAG 2.2 Level AA) */
@@ -150,9 +150,7 @@
       border: 2px solid #07173a;
     }
     #aiq-notif.aiq-gone { display: none; }
-    #aiq-panel {
-      position: absolute; bottom: 60px; right: 0;
-      width: 340px;
+    #aiq-panel { position: absolute; bottom: 60px; right: 0; width: 340px; max-width: calc(100vw - 24px);
       background: rgba(7,23,58,.96);
       backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
       border: 1px solid rgba(255,255,255,.12);
@@ -1246,7 +1244,10 @@
           if (!res.ok) throw new Error('API ' + res.status);
           var ct = res.headers.get('content-type') || '';
           if (ct.includes('application/json')) {
-            return res.json().then(function(d) { return d.reply || d.error; });
+            return res.json().then(function(d) {
+              if (d && d.reply) return d.reply;
+              throw new Error(d && d.error ? d.error : 'No reply');
+            });
           }
           return res.text();
         }).then(function(replyText) {
@@ -1665,10 +1666,12 @@
           signal: ctrl.signal,
         }).then(function (r) {
           clearTimeout(fetchTimer);
+          if (!r.ok) throw new Error('API ' + r.status);
           return r.json();
         }).then(function (data) {
           t.remove();
-          var reply = data.reply || 'Great question! Our AI assistants handle bookings, orders and customer FAQs 24/7.';
+          if (!data || !data.reply) throw new Error(data && data.error ? data.error : 'Invalid reply');
+          var reply = data.reply;
           msgs.push({ role: 'assistant', content: reply });
           addBubble(reply, 'bot');
           goBtn.disabled = false;

@@ -38,7 +38,7 @@
 
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/dm-sans-latin.woff2" crossorigin />
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/space-grotesk-latin.woff2" crossorigin />
-  <link rel="stylesheet" href="/tailwind.65f3846e.min.css" />
+  <link rel="stylesheet" href="/tailwind.3eacaf6a.min.css" />
   <style>
     html{-webkit-font-smoothing:antialiased}body{background:#060f28}
     a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:3px solid #22D3EE;outline-offset:2px;border-radius:6px}
@@ -113,9 +113,7 @@
       border: 2px solid #07173a;
     }
     #aiq-notif.aiq-gone { display: none; }
-    #aiq-panel {
-      position: absolute; bottom: 60px; right: 0;
-      width: 340px;
+    #aiq-panel { position: absolute; bottom: 60px; right: 0; width: 340px; max-width: calc(100vw - 24px);
       background: rgba(7,23,58,.96);
       backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
       border: 1px solid rgba(255,255,255,.12);
@@ -625,7 +623,7 @@
       <img src="/assets/icons8-message-96.png" alt="Chat" class="w-8 h-8 object-contain" width="32" height="32" aria-hidden="true" loading="eager" />
       <span id="aiq-notif" class="aiq-gone" aria-hidden="true">1</span>
     </button>
-    <div id="aiq-panel" class="aiq-shut" role="dialog" aria-label="AgentIQ chat assistant" inert>
+    <div id="aiq-panel" class="aiq-shut" role="dialog" aria-modal="true" aria-label="AgentIQ chat assistant" inert>
       <div id="aiq-hdr">
         <div class="av">
           <img src="/assets/icons8-message-48.png" alt="" class="w-5 h-5 object-contain" width="20" height="20" aria-hidden="true" />

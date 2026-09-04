@@ -99,7 +99,7 @@
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/dm-sans-latin.woff2" crossorigin />
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/space-grotesk-latin.woff2" crossorigin />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="/tailwind.65f3846e.min.css" />
+  <link rel="stylesheet" href="/tailwind.3eacaf6a.min.css" />
   
   <style>
     /* Global high-contrast focus indicator (WCAG 2.2 Level AA) */
@@ -148,7 +148,7 @@
     #aiq-toggle:focus-visible { outline: 3px solid #22D3EE; outline-offset: 3px; }
     #aiq-notif { position: absolute; top: -3px; right: -3px; width: 18px; height: 18px; border-radius: 50%; background: #22D3EE; color: #07173a; font-size: 10px; font-weight: 700; display: flex; align-items: center; justify-content: center; border: 2px solid #07173a; }
     #aiq-notif.aiq-gone { display: none; }
-    #aiq-panel { position: absolute; bottom: 60px; right: 0; width: 340px; background: rgba(7,23,58,.96); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,.12); border-radius: 20px; box-shadow: 0 16px 60px rgba(0,0,0,.55); display: flex; flex-direction: column; overflow: hidden; transition: opacity .2s ease, transform .2s ease; }
+    #aiq-panel { position: absolute; bottom: 60px; right: 0; width: 340px; max-width: calc(100vw - 24px); background: rgba(7,23,58,.96); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,.12); border-radius: 20px; box-shadow: 0 16px 60px rgba(0,0,0,.55); display: flex; flex-direction: column; overflow: hidden; transition: opacity .2s ease, transform .2s ease; }
     #aiq-panel.aiq-shut { opacity: 0; transform: translateY(10px) scale(.97); pointer-events: none; }
     #aiq-hdr { padding: 13px 15px; background: linear-gradient(135deg, rgba(255,159,69,.18), rgba(255,107,92,.14)); border-bottom: 1px solid rgba(255,255,255,.09); display: flex; align-items: center; gap: 10px; }
     #aiq-hdr .av { width: 34px; height: 34px; border-radius: 50%; background: linear-gradient(135deg, #FF9F45, #FF6B5C); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
@@ -281,10 +281,8 @@
         <!-- 1. Conversation limits & Meta Fees -->
         <details class="glass-card rounded-2xl p-6 border border-cyan-500/30 group" open>
           <summary class="font-display font-700 text-white text-lg cursor-pointer list-none flex items-center justify-between gap-4">
-            <span class="flex items-center gap-3">
-              <span class="text-cyan text-sm font-bold bg-cyan-500/10 px-2.5 py-1 rounded-lg">Featured</span>
-              How do conversation limits and Meta WhatsApp fees work?
-            </span>
+            <h3 class="font-inherit text-inherit text-lg font-700 m-0 inline flex items-center gap-3"><span class="text-cyan text-sm font-bold bg-cyan-500/10 px-2.5 py-1 rounded-lg">Featured</span> <span>How do conversation limits and Meta WhatsApp fees work?
+            </span></h3>
             <span class="text-cyan transition-transform group-open:rotate-180">↓</span>
           </summary>
           <div class="text-slate-300 text-sm leading-relaxed mt-4 pt-4 border-t border-white/10 space-y-3">
@@ -300,7 +298,7 @@
         <!-- 2. Chatbot Pricing -->
         <details class="glass-card rounded-2xl p-6 border border-white/10 group">
           <summary class="font-display font-700 text-white text-lg cursor-pointer list-none flex items-center justify-between gap-4">
-            <span>How much does a managed WhatsApp AI chatbot cost in India?</span>
+            <h3 class="font-inherit text-inherit text-lg font-700 m-0 inline">How much does a managed WhatsApp AI chatbot cost in India?</h3>
             <span class="text-cyan transition-transform group-open:rotate-180">↓</span>
           </summary>
           <p class="text-slate-300 text-sm leading-relaxed mt-4 pt-4 border-t border-white/10">
@@ -311,7 +309,7 @@
         <!-- 3. Deployment speed -->
         <details class="glass-card rounded-2xl p-6 border border-white/10 group">
           <summary class="font-display font-700 text-white text-lg cursor-pointer list-none flex items-center justify-between gap-4">
-            <span>How long does it take to launch an AI assistant?</span>
+            <h3 class="font-inherit text-inherit text-lg font-700 m-0 inline">How long does it take to launch an AI assistant?</h3>
             <span class="text-cyan transition-transform group-open:rotate-180">↓</span>
           </summary>
           <p class="text-slate-300 text-sm leading-relaxed mt-4 pt-4 border-t border-white/10">
@@ -322,7 +320,7 @@
         <!-- 4. Difference vs WATI / AiSensy -->
         <details class="glass-card rounded-2xl p-6 border border-white/10 group">
           <summary class="font-display font-700 text-white text-lg cursor-pointer list-none flex items-center justify-between gap-4">
-            <span>What is the difference between AgentIQ and self-serve platforms like WATI or AiSensy?</span>
+            <h3 class="font-inherit text-inherit text-lg font-700 m-0 inline">What is the difference between AgentIQ and self-serve platforms like WATI or AiSensy?</h3>
             <span class="text-cyan transition-transform group-open:rotate-180">↓</span>
           </summary>
           <p class="text-slate-300 text-sm leading-relaxed mt-4 pt-4 border-t border-white/10">
@@ -333,7 +331,7 @@
         <!-- 5. Voice latency -->
         <details class="glass-card rounded-2xl p-6 border border-white/10 group">
           <summary class="font-display font-700 text-white text-lg cursor-pointer list-none flex items-center justify-between gap-4">
-            <span>How fast do AgentIQ voice agents respond in Hindi and Hinglish?</span>
+            <h3 class="font-inherit text-inherit text-lg font-700 m-0 inline">How fast do AgentIQ voice agents respond in Hindi and Hinglish?</h3>
             <span class="text-cyan transition-transform group-open:rotate-180">↓</span>
           </summary>
           <p class="text-slate-300 text-sm leading-relaxed mt-4 pt-4 border-t border-white/10">
@@ -344,7 +342,7 @@
         <!-- 6. Guarantee -->
         <details class="glass-card rounded-2xl p-6 border border-white/10 group">
           <summary class="font-display font-700 text-white text-lg cursor-pointer list-none flex items-center justify-between gap-4">
-            <span>Does AgentIQ offer a money-back guarantee?</span>
+            <h3 class="font-inherit text-inherit text-lg font-700 m-0 inline">Does AgentIQ offer a money-back guarantee?</h3>
             <span class="text-cyan transition-transform group-open:rotate-180">↓</span>
           </summary>
           <p class="text-slate-300 text-sm leading-relaxed mt-4 pt-4 border-t border-white/10">
@@ -355,7 +353,7 @@
         <!-- 7. Instagram DMs -->
         <details class="glass-card rounded-2xl p-6 border border-white/10 group">
           <summary class="font-display font-700 text-white text-lg cursor-pointer list-none flex items-center justify-between gap-4">
-            <span>How does Instagram DM automation work?</span>
+            <h3 class="font-inherit text-inherit text-lg font-700 m-0 inline">How does Instagram DM automation work?</h3>
             <span class="text-cyan transition-transform group-open:rotate-180">↓</span>
           </summary>
           <p class="text-slate-300 text-sm leading-relaxed mt-4 pt-4 border-t border-white/10">
@@ -830,7 +828,7 @@
         if (sdkLoading) return;
         sdkLoading = true;
         setState('connecting');
-        import('https://esm.sh/@vapi-ai/web@2.1.2')
+        import('https://esm.sh/@vapi-ai/web@2.6.1')
           .then(function(mod) { sdkLoading = false; wireVapi(mod); startCall(); })
           .catch(function(err) {
             sdkLoading = false;

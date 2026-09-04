@@ -65,7 +65,7 @@ WIDGET_CSS = """
     #aiq-notif.aiq-gone { display: none; }
     #aiq-panel {
       position: absolute; bottom: 60px; right: 0;
-      width: 340px;
+      width: 340px; max-width: calc(100vw - 24px);
       background: rgba(7,23,58,.96);
       backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
       border: 1px solid rgba(255,255,255,.12);
@@ -276,7 +276,7 @@ WIDGET_HTML_AND_SCRIPTS = """
       <img src="/assets/icons8-message-96.png" alt="Chat" class="w-8 h-8 object-contain" width="32" height="32" aria-hidden="true" loading="eager" />
       <span id="aiq-notif" class="aiq-gone" aria-hidden="true">1</span>
     </button>
-    <div id="aiq-panel" class="aiq-shut" role="dialog" aria-label="AgentIQ chat assistant" inert>
+    <div id="aiq-panel" class="aiq-shut" role="dialog" aria-modal="true" aria-label="AgentIQ chat assistant" inert>
       <div id="aiq-hdr">
         <div class="av">
           <img src="/assets/icons8-message-48.png" alt="" class="w-5 h-5 object-contain" width="20" height="20" aria-hidden="true" />
