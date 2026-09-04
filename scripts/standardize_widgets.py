@@ -580,6 +580,8 @@ WIDGET_HTML_AND_SCRIPTS = """
           signal: ctrl.signal,
         }).then(function (r) {
           clearTimeout(fetchTimer);
+          var sId = r.headers.get('x-session-id');
+          if (sId) chatSessionId = sId;
           return r.json();
         }).then(function (data) {
           t.remove();
@@ -609,6 +611,8 @@ def process_file(filepath):
     if 'node_modules' in filepath or 'sections' in filepath:
         return
 
+    orig = content
+
     # Check if CSS needs injection
     if '#wa-float {' not in content or '#aiq-float {' not in content:
         if '</style>' in content:
@@ -628,9 +632,39 @@ def process_file(filepath):
         elif '</body>' in content:
             content = content.replace('</body>', WIDGET_HTML_AND_SCRIPTS + '\n</body>', 1)
 
-    with open(filepath, 'w', encoding='utf-8') as f:
-        f.write(content)
-    print(f"Processed: {filepath}")
+    # Ensure chat widget scripts declare chatSessionId
+    if 'chatSessionId' not in content:
+        if "var aiqBar = document.getElementById('aiq-bar');" in content:
+            content = content.replace(
+                "var aiqBar = document.getElementById('aiq-bar');",
+                "var aiqBar = document.getElementById('aiq-bar');\n      var chatSessionId = 'aiq_' + Math.random().toString(36).slice(2, 11) + '_' + Date.now().toString(36);"
+            )
+        elif "var leadStartBtn = document.getElementById('aiq-lead-start');" in content:
+            content = content.replace(
+                "var leadStartBtn = document.getElementById('aiq-lead-start');",
+                "var leadStartBtn = document.getElementById('aiq-lead-start');\n      var chatSessionId = 'aiq_' + Math.random().toString(36).slice(2, 11) + '_' + Date.now().toString(36);"
+            )
+
+    # Ensure sessionId is passed in fetch
+    if 'body: JSON.stringify({ messages: msgs })' in content:
+        content = content.replace(
+            'body: JSON.stringify({ messages: msgs })',
+            'body: JSON.stringify({ messages: msgs, sessionId: chatSessionId })'
+        )
+
+    # Capture X-Session-Id from response header
+    if 'clearTimeout(fetchTimer);' in content and 'x-session-id' not in content:
+        content = content.replace(
+            'clearTimeout(fetchTimer);',
+            "clearTimeout(fetchTimer);\n          var sId = r.headers.get('x-session-id');\n          if (sId) chatSessionId = sId;"
+        )
+
+    if content != orig:
+        with open(filepath, 'w', encoding='utf-8') as f:
+            f.write(content)
+        print(f"Updated: {filepath}")
+    else:
+        print(f"No changes: {filepath}")
 
 def main():
     root = '/Users/shanepereira/Projects/agentiq'

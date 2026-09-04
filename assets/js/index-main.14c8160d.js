@@ -649,6 +649,8 @@
           })
             .then(function (r) {
               clearTimeout(fetchTimer);
+              var sId = r.headers.get('x-session-id');
+              if (sId) chatSessionId = sId;
               if (!r.ok) {
                 return r.json().catch(function () { return {}; }).then(function (data) {
                   throw new Error(data.error || ('HTTP ' + r.status));
