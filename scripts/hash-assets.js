@@ -56,6 +56,27 @@ function hashAssets() {
   fs.copyFileSync(cssPath, hashedCssPath);
   fs.copyFileSync(widgetsPath, hashedJsPath);
 
+  // Hash index-main.js if present
+  const indexJsPath = path.join(ROOT, 'assets', 'js', 'index-main.js');
+  let indexJsHash = null;
+  let hashedIndexJsName = null;
+  if (fs.existsSync(indexJsPath)) {
+    indexJsHash = getHash(indexJsPath);
+    hashedIndexJsName = `index-main.${indexJsHash}.js`;
+    const hashedIndexJsPath = path.join(ROOT, 'assets', 'js', hashedIndexJsName);
+    fs.copyFileSync(indexJsPath, hashedIndexJsPath);
+
+    // Clean up prior versioned copies in assets/js
+    const jsDir = path.join(ROOT, 'assets', 'js');
+    const jsFiles = fs.readdirSync(jsDir);
+    for (const f of jsFiles) {
+      if (/^index-main\.[a-f0-9]{8}\.js$/.test(f) && f !== hashedIndexJsName) {
+        fs.unlinkSync(path.join(jsDir, f));
+        console.log(`Cleaned up old index JS asset: ${f}`);
+      }
+    }
+  }
+
   // Clean up prior versioned copies in root
   const rootFiles = fs.readdirSync(ROOT);
   for (const f of rootFiles) {
@@ -79,6 +100,7 @@ function hashAssets() {
   const htmlFiles = getAllHtmlFiles(ROOT);
   const cssRegex = /(['"])\/tailwind(?:\.[a-f0-9]{8})?\.min\.css\1/g;
   const jsRegex = /(['"])\/react-widgets\/dist\/agentiq-widgets(?:\.[a-f0-9]{8})?\.js\1/g;
+  const indexJsRegex = /(['"])\/assets\/js\/index-main(?:\.[a-f0-9]{8})?\.js\1/g;
 
   let updatedCount = 0;
   for (const relPath of htmlFiles) {
@@ -86,6 +108,9 @@ function hashAssets() {
     const original = fs.readFileSync(fullPath, 'utf8');
     let updated = original.replace(cssRegex, `$1/tailwind.${cssHash}.min.css$1`);
     updated = updated.replace(jsRegex, `$1/react-widgets/dist/agentiq-widgets.${jsHash}.js$1`);
+    if (hashedIndexJsName) {
+      updated = updated.replace(indexJsRegex, `$1/assets/js/${hashedIndexJsName}$1`);
+    }
     if (updated !== original) {
       fs.writeFileSync(fullPath, updated, 'utf8');
       updatedCount++;
@@ -93,8 +118,11 @@ function hashAssets() {
   }
 
   console.log(`Asset hashing complete:`);
-  console.log(`  CSS: ${hashedCssName}`);
-  console.log(`  JS:  ${hashedJsName}`);
+  console.log(`  CSS:      ${hashedCssName}`);
+  console.log(`  Widgets:  ${hashedJsName}`);
+  if (hashedIndexJsName) {
+    console.log(`  Index JS: ${hashedIndexJsName}`);
+  }
   console.log(`Updated asset references in ${updatedCount} HTML files.`);
 }
 

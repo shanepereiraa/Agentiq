@@ -440,6 +440,7 @@ WIDGET_HTML_AND_SCRIPTS = """
       var leadStartBtn = document.getElementById('aiq-lead-start');
       var leadForm = document.getElementById('aiq-lead-form');
       var aiqBar = document.getElementById('aiq-bar');
+      var chatSessionId = 'aiq_' + Math.random().toString(36).slice(2, 11) + '_' + Date.now().toString(36);
 
       if (!toggle || !panel) return;
 
@@ -575,7 +576,7 @@ WIDGET_HTML_AND_SCRIPTS = """
         fetch(activeApi + '/api/chat', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ messages: msgs }),
+          body: JSON.stringify({ messages: msgs, sessionId: chatSessionId }),
           signal: ctrl.signal,
         }).then(function (r) {
           clearTimeout(fetchTimer);

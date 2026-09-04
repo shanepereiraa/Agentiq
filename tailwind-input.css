@@ -39,3 +39,10 @@
     outline-offset: 2px !important;
   }
 }
+
+/* Below-the-fold rendering optimization */
+.content-visibility-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 800px;
+}
+
