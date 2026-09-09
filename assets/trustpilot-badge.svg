@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="190" height="44" viewBox="0 0 190 44">
+  <defs>
+    <filter id="shadow-tp" x="-20%" y="-20%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="1.5" stdDeviation="1.5" flood-color="#191E29" flood-opacity="0.16"/>
+    </filter>
+  </defs>
+  <rect x="1" y="1" width="188" height="42" rx="10" fill="#191E29" stroke="#33394A" filter="url(#shadow-tp)"/>
+  <polygon points="23,11.5 25.45,18.1 32.5,18.45 27,22.75 28.9,29.5 23,25.6 17.1,29.5 19,22.75 13.5,18.45 20.55,18.1" fill="#00b67a"/>
+  <text x="44" y="19" font-family="Helvetica, Arial, sans-serif" font-size="8.5" font-weight="700" letter-spacing="1.3" fill="#9FB0C4">REVIEW US ON</text>
+  <text x="44" y="34" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#FFFFFF">Trustpilot</text>
+</svg>

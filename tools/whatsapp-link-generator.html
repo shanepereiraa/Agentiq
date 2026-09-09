@@ -60,8 +60,8 @@
     /* ── Floating WhatsApp (above orange web chat widget) ─ */
     #wa-float {
       position: fixed;
-      bottom: 88px;
-      right: 20px;
+      bottom: 90px;
+      right: 24px;
       z-index: 9998;
       width: 52px;
       height: 52px;
@@ -84,7 +84,7 @@
     }
     @media (max-width: 767px) { #wa-float { display: none !important; } }
     /* ── AI Chat Widget ─────────────────────────────── */
-    #aiq-float { position: fixed; bottom: 24px; right: 20px; z-index: 9999; }
+    #aiq-float { position: fixed; bottom: 24px; right: 24px; z-index: 9999; }
     @media (max-width: 767px) { #aiq-float { bottom: 84px; right: 16px; } }
     #aiq-toggle {
       width: 52px; height: 52px; border-radius: 50%;
@@ -315,9 +315,6 @@
     gtag('js', new Date());
     gtag('config', 'G-RD3SW71LDT');
   </script>
-  <!-- TrustBox script -->
-  <script type="text/javascript" src="https://widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
-  <!-- End TrustBox script -->
 </head>
 <body class="font-sans text-slate-300 bg-[#060f28] min-h-screen selection:bg-cyan-500/30 selection:text-cyan-200">
 
@@ -566,31 +563,21 @@
               <svg class="w-4 h-4 fill-none stroke-current" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
             </a>
           </div>
-          <div class="pt-1">
-            <a href="https://maidensail.com/startup/agentiq" rel="dofollow" target="_blank" class="inline-block opacity-90 hover:opacity-100 transition-opacity">
-              <img src="/assets/maidensail-badge.svg" alt="Featured on Maidensail" width="190" height="44" loading="lazy">
+          <div class="grid grid-cols-1 sm:grid-cols-2 w-full" style="gap:10px;max-width:320px">
+            <a href="https://maidensail.com/startup/agentiq" rel="dofollow" target="_blank" class="flex items-center justify-center">
+              <img src="/assets/maidensail-badge.svg" alt="Featured on Maidensail" width="190" height="44" loading="lazy" class="w-full" style="height:auto">
             </a>
-          </div>
-          <div class="pt-2">
-            <a href="https://maps.google.com/?cid=17418594170346873408" target="_blank" rel="noopener noreferrer" class="inline-block opacity-90 hover:opacity-100 transition-opacity">
-              <img src="/assets/google-badge.svg" alt="Review AgentIQ on Google" width="190" height="44" loading="lazy">
+            <a href="https://www.producthunt.com/products/agentiq" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center">
+              <img src="/assets/producthunt-badge.svg" alt="AgentIQ — Featured on Product Hunt" width="250" height="54" loading="lazy" class="w-full" style="height:auto">
             </a>
-          </div>
-          <div class="pt-2">
-            <a href="https://www.crunchbase.com/organization/agentiq" rel="dofollow" target="_blank" class="inline-block opacity-90 hover:opacity-100 transition-opacity">
-              <img src="/assets/crunchbase-badge.svg" alt="AgentIQ on Crunchbase" width="190" height="44" loading="lazy">
+            <a href="https://maps.google.com/?cid=17418594170346873408" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center">
+              <img src="/assets/google-badge.svg" alt="Review AgentIQ on Google" width="190" height="44" loading="lazy" class="w-full" style="height:auto">
             </a>
-          </div>
-          <div class="pt-2 text-left">
-            <!-- TrustBox widget - Review Collector -->
-            <div class="trustpilot-widget inline-block" data-locale="en-US" data-theme="dark" data-template-id="56278e9abfbbba0bdcd568bc" data-businessunit-id="6aa1466c770a29c465442a1c" data-style-height="52px" data-style-width="220px" data-token="1e856924-413f-4a37-ba23-51aef593422d">
-              <a href="https://www.trustpilot.com/review/agentiq.co.in" target="_blank" rel="noopener">Trustpilot</a>
-            </div>
-            <!-- End TrustBox widget -->
-          </div>
-          <div class="pt-2">
-            <a href="https://www.producthunt.com/products/agentiq" target="_blank" rel="noopener noreferrer" class="inline-block opacity-90 hover:opacity-100 transition-opacity">
-              <img src="/assets/producthunt-badge.svg" alt="AgentIQ — Featured on Product Hunt" width="250" height="54" loading="lazy">
+            <a href="https://www.crunchbase.com/organization/agentiq" rel="dofollow" target="_blank" class="flex items-center justify-center">
+              <img src="/assets/crunchbase-badge.svg" alt="AgentIQ on Crunchbase" width="190" height="44" loading="lazy" class="w-full" style="height:auto">
+            </a>
+            <a href="https://www.trustpilot.com/review/agentiq.co.in" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center" style="grid-column:1/-1">
+              <img src="/assets/trustpilot-badge.svg" alt="Review AgentIQ on Trustpilot" width="190" height="44" loading="lazy" class="w-full" style="height:auto;max-width:152px">
             </a>
           </div>
         </div>
