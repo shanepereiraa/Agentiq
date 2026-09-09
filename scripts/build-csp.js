@@ -95,7 +95,7 @@ const headerRule = vercelConfig.headers.find((h) => h.headers && h.headers.some(
 const cspHeader = headerRule.headers.find((h) => h.key === 'Content-Security-Policy');
 
 const scriptSrcRe = /script-src [^;]*;/;
-const newScriptSrc = `script-src 'self' 'wasm-unsafe-eval' blob: ${sortedHashes.join(' ')} https://esm.sh https://www.googletagmanager.com https://*.daily.co;`;
+const newScriptSrc = `script-src 'self' 'wasm-unsafe-eval' blob: ${sortedHashes.join(' ')} https://esm.sh https://www.googletagmanager.com https://*.daily.co https://widget.trustpilot.com;`;
 
 if (!scriptSrcRe.test(cspHeader.value)) {
   throw new Error('Could not find script-src directive in vercel.json CSP header');
