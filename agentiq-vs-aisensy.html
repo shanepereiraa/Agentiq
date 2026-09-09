@@ -215,7 +215,7 @@
     @media (max-width: 767px) { #wa-float { display: none !important; } }
     /* ── AI Chat Widget ─────────────────────────────── */
     #aiq-float { position: fixed; bottom: 24px; right: 24px; z-index: 9999; }
-    @media (max-width: 767px) { #aiq-float { bottom: 84px; right: 16px; } }
+    @media (max-width: 767px) { #aiq-float { bottom: calc(5.5rem + env(safe-area-inset-bottom)); right: 16px; } }
     #aiq-toggle {
       width: 52px; height: 52px; border-radius: 50%;
       background: linear-gradient(135deg, #FF9F45, #FF6B5C);
@@ -357,7 +357,7 @@
     #vaq-float {
       position: fixed; bottom: 24px; left: 20px; z-index: 9999;
     }
-    @media (max-width: 767px) { #vaq-float { bottom: 80px; } }
+    @media (max-width: 767px) { #vaq-float { bottom: calc(5.5rem + env(safe-area-inset-bottom)); } }
     #vaq-status {
       position: absolute; bottom: calc(100% + 8px); left: 0;
       background: rgba(10,14,28,.92);
@@ -654,7 +654,19 @@
   <!-- FOOTER -->
   <!-- FOOTER -->
     <!-- TRUST & INFRASTRUCTURE STRIP -->
-    <section class="relative mb-10 px-4 border-t border-b border-white/10" style="background:rgba(15,23,42,0.6);padding-top:2rem;padding-bottom:2rem">
+    <style>
+      @media (max-width: 767px) {
+        #trust-strip > div > div { gap: 8px; }
+        #trust-strip > div > div > div {
+          flex: 1 1 calc(50% - 4px);
+          max-width: calc(50% - 4px);
+          border-radius: 12px;
+          justify-content: flex-start;
+          padding: 0.55rem 0.7rem;
+        }
+      }
+    </style>
+    <section id="trust-strip" class="relative mb-10 px-4 border-t border-b border-white/10" style="background:rgba(15,23,42,0.6);padding-top:2rem;padding-bottom:2rem">
       <div class="max-w-7xl mx-auto">
         <div class="flex flex-wrap justify-center items-center gap-3 md:gap-4">
           <div class="flex items-center gap-1.5 py-2.5 px-4 rounded-full bg-white/5 backdrop-blur-md border border-white/10 hover:border-cyan/40 hover:scale-[1.02] transition-all duration-200 basis-[30%] sm:basis-[22%] lg:basis-auto lg:shrink-0">

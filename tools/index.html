@@ -139,7 +139,7 @@
     @media (max-width: 767px) { #wa-float { display: none !important; } }
     /* ── AI Chat Widget ─────────────────────────────── */
     #aiq-float { position: fixed; bottom: 24px; right: 24px; z-index: 9999; }
-    @media (max-width: 767px) { #aiq-float { bottom: 84px; right: 16px; } }
+    @media (max-width: 767px) { #aiq-float { bottom: calc(5.5rem + env(safe-area-inset-bottom)); right: 16px; } }
     #aiq-toggle {
       width: 52px; height: 52px; border-radius: 50%;
       background: linear-gradient(135deg, #FF9F45, #FF6B5C);
@@ -164,7 +164,7 @@
 
     /* ── Voice Assistant Widget (vaq-*) ─────────────────────────────── */
     #vaq-float { position: fixed; bottom: 24px; left: 20px; z-index: 9999; }
-    @media (max-width: 767px) { #vaq-float { bottom: 84px; left: 16px; } }
+    @media (max-width: 767px) { #vaq-float { bottom: calc(5.5rem + env(safe-area-inset-bottom)); left: 16px; } }
     #vaq-toggle {
       width: 52px; height: 52px; border-radius: 50%;
       background: linear-gradient(135deg, #22D3EE, #0284C7);

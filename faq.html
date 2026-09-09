@@ -134,7 +134,7 @@
 
     /* ── AI Chat Widget ── */
     #aiq-float { position: fixed; bottom: 24px; right: 24px; z-index: 9999; }
-    @media (max-width: 767px) { #aiq-float { bottom: 84px; right: 16px; } }
+    @media (max-width: 767px) { #aiq-float { bottom: calc(5.5rem + env(safe-area-inset-bottom)); right: 16px; } }
     #aiq-toggle {
       width: 52px; height: 52px; border-radius: 50%;
       background: linear-gradient(135deg, #FF9F45, #FF6B5C);
@@ -170,7 +170,7 @@
 
     /* ── Voice Assistant Widget ── */
     #vaq-float { position: fixed; bottom: 24px; left: 20px; z-index: 9999; }
-    @media (max-width: 767px) { #vaq-float { bottom: 80px; } }
+    @media (max-width: 767px) { #vaq-float { bottom: calc(5.5rem + env(safe-area-inset-bottom)); } }
     #vaq-btn { width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, #22D3EE, #3B82F6); border: none; cursor: pointer; box-shadow: 0 4px 22px rgba(34,211,238,.5); display: flex; align-items: center; justify-content: center; }
     #vaq-status { position: absolute; bottom: calc(100% + 8px); left: 0; background: rgba(10,14,28,.92); border: 1px solid rgba(34,211,238,.35); color: #A5E9FA; font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 20px; white-space: nowrap; opacity: 0; }
     .vaq-waveform { display: none; align-items: flex-end; gap: 3px; height: 18px; }

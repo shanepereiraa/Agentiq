@@ -265,7 +265,7 @@
 
     /* Floating Chat */
     #aiq-float { position: fixed; bottom: 24px; right: 24px; z-index: 9999; }
-    @media (max-width: 767px) { #aiq-float { bottom: 84px; right: 16px; } }
+    @media (max-width: 767px) { #aiq-float { bottom: calc(5.5rem + env(safe-area-inset-bottom)); right: 16px; } }
     #aiq-toggle { width: 52px; height: 52px; border-radius: 50%; background: linear-gradient(135deg, #FF9F45, #FF6B5C); border: none; cursor: pointer; box-shadow: 0 4px 22px rgba(255, 107, 92, .5); display: flex; align-items: center; justify-content: center; transition: transform .2s ease; }
     #aiq-panel { position: absolute; bottom: 60px; right: 0; width: 340px; max-width: calc(100vw - 24px); background: rgba(7, 23, 58, .96); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, .12); border-radius: 20px; box-shadow: 0 16px 60px rgba(0, 0, 0, .55); display: flex; flex-direction: column; overflow: hidden; transition: opacity .2s ease, transform .2s ease; }
     #aiq-panel.aiq-shut { opacity: 0; transform: translateY(10px) scale(.97); pointer-events: none; }
