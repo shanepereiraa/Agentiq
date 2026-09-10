@@ -7,6 +7,19 @@ module.exports = {
         sans: ['DM Sans', 'system-ui', 'sans-serif'],
         display: ['Space Grotesk', 'DM Sans', 'sans-serif'],
       },
+      // Numeric aliases — the markup uses `font-700` / `font-600` / `font-500`
+      // etc. site-wide, which Tailwind does NOT generate by default (only the
+      // named scale: font-bold, font-semibold, …). Under `extend` so the named
+      // classes are still emitted too.
+      fontWeight: {
+        300: '300',
+        400: '400',
+        500: '500',
+        600: '600',
+        700: '700',
+        800: '800',
+        900: '900',
+      },
       colors: {
         ink: '#07173a',
         primary: '#FF6B5C',
