@@ -1,10 +1,13 @@
-# AI Crawler Access Policy — Updated 2026-08-31
+# AI Crawler Access Policy — Updated 2026-09-22
 
 # --- Standard search engine crawlers ---
 User-agent: Googlebot
 Allow: /
 
 User-agent: Bingbot
+Allow: /
+
+User-agent: Applebot
 Allow: /
 
 # --- AI search-augmented crawlers (drive real-time AI citations) ---
@@ -14,7 +17,10 @@ Allow: /
 User-agent: OAI-SearchBot
 Allow: /
 
-# --- AI training + response crawlers (drive ChatGPT, Claude, Gemini citations) ---
+User-agent: Claude-SearchBot
+Allow: /
+
+# --- AI training crawlers (drive ChatGPT, Claude, Gemini citations) ---
 User-agent: GPTBot
 Allow: /
 
@@ -39,26 +45,31 @@ Allow: /
 User-agent: CCBot
 Allow: /
 
-# --- Aggressive scraper — block ---
-User-agent: Bytespider
-Disallow: /
-
-User-agent: ChatGPT-User
+User-agent: Meta-ExternalAgent
 Allow: /
 
 User-agent: FacebookBot
 Allow: /
 
-User-agent: Meta-ExternalAgent
+# --- User-triggered fetchers (a person asked an assistant to read a page) ---
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Perplexity-User
 Allow: /
 
 User-agent: DuckAssistBot
 Allow: /
 
+# --- Aggressive scraper — block ---
+User-agent: Bytespider
+Disallow: /
+
 # --- Default: allow all other crawlers ---
 User-agent: *
-Disallow: /seo-report-agentiq_co_in.html
-Disallow: /audit-results.json
 Allow: /
 
 Sitemap: https://agentiq.co.in/sitemap.xml
