@@ -1,17 +1,17 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
-  "rewrites": [
+  "redirects": [
     {
       "source": "/(.*)",
-      "has": [
+      "missing": [
         {
-          "type": "header",
-          "key": "accept",
-          "value": "(.*)text/html(.*)"
+          "type": "query",
+          "key": "m"
         }
       ],
-      "destination": "/maintenance.html"
+      "destination": "/maintenance?m=1",
+      "permanent": false
     }
   ],
   "headers": [
