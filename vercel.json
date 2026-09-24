@@ -1,19 +1,6 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
-  "redirects": [
-    {
-      "source": "/(.*)",
-      "missing": [
-        {
-          "type": "query",
-          "key": "m"
-        }
-      ],
-      "destination": "/maintenance?m=1",
-      "permanent": false
-    }
-  ],
   "headers": [
     {
       "source": "/(.*)",
