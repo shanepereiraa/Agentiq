@@ -124,6 +124,8 @@
         overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scroll-padding-inline: 20px; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
       .hero-stage::-webkit-scrollbar { display: none; }
       .hero-stage__glow { display: none; }
+      /* Centre the badge under the phone: the fixed chat/voice widgets live in the bottom corners and used to cover it. */
+      .hero-tryit { left: 0; right: 0; margin-inline: auto; width: max-content; }
       .hero-stage__pro, .hero-stage__duoslide { position: static; flex: 0 0 calc(100vw - 56px); width: calc(100vw - 56px); display: flex; justify-content: center; align-items: center; scroll-snap-align: center; scroll-snap-stop: always; z-index: auto; }
       .duo { position: relative; left: auto; top: auto; flex: none; zoom: var(--duo-z, .72); }
       .hero-dots:not([hidden]) { display: flex; justify-content: center; gap: 2px; margin-top: -8px; }
@@ -925,7 +927,7 @@
             </div>
 
             <!-- Floating "Try it live" badge anchored at bottom-right corner of device chassis -->
-            <a href="/try-your-bot" class="btn-pop absolute -bottom-3 right-1 sm:-right-2 z-30 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white text-slate-950 font-700 text-xs shadow-[0_12px_32px_rgba(0,0,0,0.65),0_0_20px_rgba(34,211,238,0.3)] hover:scale-105 transition-all duration-200 border border-slate-200/80 group">
+            <a href="/try-your-bot" class="hero-tryit btn-pop absolute -bottom-3 right-1 sm:-right-2 z-30 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white text-slate-950 font-700 text-xs shadow-[0_12px_32px_rgba(0,0,0,0.65),0_0_20px_rgba(34,211,238,0.3)] hover:scale-105 transition-all duration-200 border border-slate-200/80 group">
               <span class="relative flex h-2 w-2">
                 <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                 <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
