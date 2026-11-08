@@ -474,6 +474,7 @@
     .mqb-btn { display: flex; align-items: center; justify-content: center; gap: 0.4rem; min-height: 48px; padding: 0.7rem 0.75rem; border-radius: 0.85rem; font-weight: 600; font-size: 0.75rem; white-space: nowrap; transition: transform 0.15s ease, box-shadow 0.2s ease; } @media (min-width: 640px) { .mqb-btn { font-size: 0.875rem; padding: 0.7rem 1rem; } }
     .mqb-btn:active { transform: scale(0.97); }
     .mqb-btn-whatsapp { background: #15803D; color: #fff; box-shadow: 0 4px 16px rgba(21,128,61,0.35); }
+    .mqb-btn-single { font-size: 1rem; min-height: 52px; letter-spacing: -0.01em; }
     .mqb-btn-demo { background: linear-gradient(135deg,#FF6B5C,#FF9F45); color: #0b1222; box-shadow: 0 4px 16px rgba(255,107,92,0.4); }
     /* ── Shared button micro-interaction ────────────────────────
        Applied alongside each button's own background/shadow classes —
@@ -2980,14 +2981,11 @@
     floating WhatsApp button above instead).
   ============================================================= -->
   <div id="mobile-quickbar" class="mqb-bar fixed bottom-0 left-0 right-0 z-50 gap-3 px-4 py-3">
-    <a href="https://wa.me/919159665277?text=Hi%20AgentIQ%2C%20I%27d%20like%20to%20know%20more"
-       target="_blank" rel="noopener noreferrer"
-       class="mqb-btn mqb-btn-whatsapp btn-pop flex-1">
-      <img src="/assets/icons8-whatsapp-48.png" alt="" class="w-5 h-5 object-contain" width="20" height="20" aria-hidden="true" />
-      WhatsApp Us
-    </a>
-    <a href="#book" class="mqb-btn mqb-btn-demo btn-pop flex-1">
-      Book Free Demo
+    <!-- Single high-intent CTA (was WhatsApp + Book Demo): opens WhatsApp with a prefilled buy-intent message. -->
+    <a href="https://wa.me/919159665277?text=Hi%20AgentIQ%2C%20I%27d%20like%20to%20buy%20an%20AI%20chatbot%20for%20my%20business" target="_blank" rel="noopener noreferrer" class="mqb-btn mqb-btn-demo mqb-btn-single btn-pop flex-1">
+      <img src="/assets/icons8-whatsapp-48.png" alt="" class="w-6 h-6 object-contain" width="24" height="24" aria-hidden="true" />
+      Buy Your AI Chatbot Now
+      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </a>
   </div>
   <!-- AgentIQ chatbot backend -->
